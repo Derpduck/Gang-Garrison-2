@@ -24,6 +24,7 @@
     bubbled = false;
     reflector = noone;
     knockback = 10;
+    shotHit=false
 }
 </argument>
       </arguments>

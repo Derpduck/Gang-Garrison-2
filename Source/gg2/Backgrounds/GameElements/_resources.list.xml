@@ -5,4 +5,5 @@
   <resource name="MenuBackground3" type="RESOURCE"/>
   <resource name="SplashScreenB" type="RESOURCE"/>
   <resource name="popupBackgroundB" type="RESOURCE"/>
+  <resource name="DSM_BG" type="GROUP"/>
 </resources>

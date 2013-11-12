@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, direction, c_white, 1);
+        <argument kind="STRING">if team == TEAM_RED sprite_index = FlareS
+else if team == TEAM_BLUE sprite_index = FlareBlueS
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,direction,c_white,1)
 </argument>
       </arguments>
     </action>

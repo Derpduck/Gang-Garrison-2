@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if instance_exists(DeathCam) exit;
+if global.respawnTimer!=1 exit;
+
+draw_set_color(c_white)
+draw_set_halign(fa_center)
+draw_set_valign(fa_middle)
+draw_set_alpha(rectAlpha)
+draw_rectangle_color((view_xview[0]+view_wview[0]/2)-90,(view_yview[0]+view_hview[0]/2)-10,(view_xview[0]+view_wview[0]/2)+90,(view_yview[0]+view_hview[0]/2)+10,c_black,c_black,c_black,c_black,false)
+draw_set_alpha(1)
+draw_text(view_xview[0]+view_wview[0]/2,view_yview[0]+view_hview[0]/2,'Respawn in ' +string(ceil((global.Server_Respawntime-time)/30))+ ' seconds.')
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

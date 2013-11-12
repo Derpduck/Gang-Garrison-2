@@ -28,12 +28,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//Override this if we're airblasting
+        <argument kind="STRING">if global.recoilAnimations==1{
+//Override this if we're airblasting
 if (sprite_index != blastSprite) {
     sprite_index = dropSprite;
     image_speed = dropImageSpeed;
     image_index = 0;
     alarm[7] = dropTime;
+}
 }
 </argument>
       </arguments>

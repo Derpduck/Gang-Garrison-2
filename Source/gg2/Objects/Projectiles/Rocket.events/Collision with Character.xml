@@ -22,7 +22,8 @@
             cloakFlicker = true;
             alarm[7] = 3;
         }
-        characterHit = other;
+        characterHit=other;
+        shotHit=true
         event_user(5);
     }
     else if (ds_list_find_index(playersPassed, other.player) == -1 and other.player != ownerPlayer)

@@ -25,32 +25,32 @@
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>
       <isForeground>false</isForeground>
-      <backgroundImage/>
+      <backgroundImage>DSM_MenuBackground1</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
-      <stretch>false</stretch>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
+      <stretch>true</stretch>
     </backgroundDef>
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>
       <isForeground>false</isForeground>
-      <backgroundImage/>
+      <backgroundImage>DSM_MenuBackground2</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
-      <stretch>false</stretch>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
+      <stretch>true</stretch>
     </backgroundDef>
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>
       <isForeground>false</isForeground>
-      <backgroundImage/>
+      <backgroundImage>DSM_MenuBackground3</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
-      <stretch>false</stretch>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
+      <stretch>true</stretch>
     </backgroundDef>
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>

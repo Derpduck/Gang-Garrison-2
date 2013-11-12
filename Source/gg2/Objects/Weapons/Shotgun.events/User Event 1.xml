@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(readyToShoot and ammoCount &gt;0 and global.isHost)
+        <argument kind="STRING">if(readyToShoot and ammoCount &gt;0 and (global.isHost or global.isPlayingReplay))
 {
     var seed;
     seed = irandom(65535);

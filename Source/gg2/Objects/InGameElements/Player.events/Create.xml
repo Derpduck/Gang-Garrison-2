@@ -38,6 +38,8 @@
     stats[DOMINATIONS] = 0;
     stats[REVENGE] = 0;
     stats[POINTS] = 0;
+    stats[HIT]=0
+    stats[MISSED]=0
     
     //statistic array for single life/arena
     roundStats[KILLS] = 0;
@@ -53,6 +55,8 @@
     roundStats[DOMINATIONS] = 0;
     roundStats[REVENGE] = 0;
     roundStats[POINTS] = 0;
+    roundStats[HIT]=0
+    roundStats[MISSED]=0
     
     timesChangedCapLimit = 0;
     
@@ -72,6 +76,8 @@
     
     // Haxxy rewards
     rewards = -1;
+
+    alarm[2]=5
 }
 </argument>
       </arguments>

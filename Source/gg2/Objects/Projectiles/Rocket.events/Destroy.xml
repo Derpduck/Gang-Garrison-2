@@ -16,8 +16,14 @@
         <argument kind="STRING">if(variable_local_exists("rocketblurParticleType")) {
     part_type_destroy(rocketblurParticleType);
 }
-ds_list_destroy(playersPassed);
 
+if shotHit=false{
+    handleHitOrMiss(ownerPlayer,0)
+}else{
+    handleHitOrMiss(ownerPlayer,1)
+}
+
+ds_list_destroy(playersPassed);
 </argument>
       </arguments>
     </action>

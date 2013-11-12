@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(240, 70, -300, -400, 30);
+    
+    statsTracker()
+    calcAccuracy()
+    calcKD()
+    
+    menu_addtext(string(floor(global.statsGames)))
+    menu_addtext(string(floor(global.statsWins)))
+    menu_addtext(string(floor(global.statsLosses)))
+    menu_addtext(string(floor(global.statsPoints)))
+    menu_addtext(string(floor(global.statsKills)))
+    menu_addtext(string(floor(global.statsDeaths)))
+    //menu_addtext(global.kdRatioString)
+    menu_addtext(string(floor(global.statsAssists)))
+    menu_addtext(string(floor(global.statsDestruction)))
+    menu_addtext(string(floor(global.statsCaps)))
+    menu_addtext(string(floor(global.statsDefences)))
+    menu_addtext(string(floor(global.statsInvulns)))
+    menu_addtext(string(floor(global.statsHealing)))
+    menu_addtext(string(floor(global.statsStabs)))
+    menu_addtext(string(floor(global.statsShotsHit)))
+    menu_addtext(string(floor(global.statsShotsMissed)))
+    menu_addtext(string(floor(global.accuracy))+"%")
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

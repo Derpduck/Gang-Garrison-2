@@ -21,16 +21,15 @@ if (alarm[6] &lt;= 0){
     //if we are not shooting or recoiling
     imageOffset = owner.team;
 } else {
-    //Play the current animation normally
-    var animLength;
-    if (object_index != Rifle)
-        animLength = recoilAnimLength;
-    else if (sprite_index == recoilSprite)
-        animLength = recoilAnimLength;
-    else
-        animLength = reloadAnimLength;
-        
-    imageOffset = floor(image_index mod animLength) + animLength*owner.team;
+        //Play the current animation normally
+        var animLength;
+        if (object_index != Rifle)
+            animLength = recoilAnimLength;
+        else if (sprite_index == recoilSprite)
+            animLength = recoilAnimLength;
+        else
+            animLength = reloadAnimLength;
+        imageOffset = floor(image_index mod animLength) + animLength*owner.team;
 }
 if (!owner.invisible and !owner.taunting and !owner.omnomnomnom and !owner.player.humiliated)
 {

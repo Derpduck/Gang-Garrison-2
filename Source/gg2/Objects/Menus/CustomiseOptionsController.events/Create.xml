@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(40, 100, 300, 200, 30);
+
+    if room != Options {
+        menu_setdimmed();
+    }
+    
+    alarm[0]=1
+    
+    menu_addedit_select("Text Highlight Colour:", "global.textHighlightColour", '
+        DSM_write_ini("Custom", "TextHighlightColour", argument0);
+        alarm[0]=1
+    ');
+    menu_add_option(0, "Red (Default)");
+    menu_add_option(1, "Blue");
+    menu_add_option(2, "Green");
+    menu_add_option(3, "Random");
+    
+    menu_addedit_select("Background:", "global.dsmBackground", '
+        DSM_write_ini("Custom", "DSMBG", argument0);
+        alarm[0]=1
+    ');
+    menu_add_option(0, "Normal")
+    menu_add_option(1, "DSM (Match text colour)")
+    menu_add_option(2, "DSM (Any colour)")
+    menu_add_option(3, "Normal (No downloaded backgrounds)")
+    
+    
+    menu_addback("Back", '
+        instance_create(x,y,DSMOptionsController);
+        instance_destroy();
+    ');
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

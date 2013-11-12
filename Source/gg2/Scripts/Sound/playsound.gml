@@ -8,6 +8,8 @@
         sound_stop(argument2);
     
     sound_volume(argument2, vol);
-    sound_pan(argument2, calculatePan(argument0));
+    if global.soundPanning==1{ //This will not happen if panning is off
+        sound_pan(argument2, calculatePan(argument0));
+    }
     sound_play(argument2);
 }

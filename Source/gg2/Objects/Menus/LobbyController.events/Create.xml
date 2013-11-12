@@ -21,11 +21,14 @@ width = 435;
 items = 12;
 offset = 0;
 
+alarm[0]=1
+
 servers = ds_list_create();
 
 numServers = -1;
 serversRead = 0;
 serverInfoLength = -1;
+global.serverGenStab=0 //The server the client joins next may not have gen stabs disabled.
 
 lobbysocket = tcp_connect(LOBBY_SERVER_HOST, LOBBY_SERVER_PORT);
 set_little_endian(lobbysocket, false);
@@ -37,6 +40,9 @@ parseUuid("297d0df4-430c-bf61-640a-640897eaef57", lobbysocket);
 write_buffer(lobbysocket, global.gg2lobbyId);
 
 socket_send(lobbysocket);
+
+colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
 </argument>
       </arguments>
     </action>

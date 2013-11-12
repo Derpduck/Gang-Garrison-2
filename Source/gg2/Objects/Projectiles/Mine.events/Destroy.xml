@@ -13,7 +13,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">owner.currentWeapon.lobbed -= 1;</argument>
+        <argument kind="STRING">owner.currentWeapon.lobbed -= 1;
+
+if shotHit=false{
+    handleHitOrMiss(ownerPlayer,0)
+}else{
+    handleHitOrMiss(ownerPlayer,1)
+}
+</argument>
       </arguments>
     </action>
   </actions>

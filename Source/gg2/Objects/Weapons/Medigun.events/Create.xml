@@ -33,6 +33,7 @@
     reloadBuffer = 0;
     idle=true;
     
+    
     if(golden)
     {
         normalSprite = MedigunGoldS;
@@ -44,7 +45,7 @@
         recoilSprite = MedigunFS;
     }
     sprite_index = normalSprite;
-        
+    
     //This makes it so that the timer will keep resetting
     //Until Mouse1 is let go
     recoilTime = refireTime+1;

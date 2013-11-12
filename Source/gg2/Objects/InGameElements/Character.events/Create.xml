@@ -37,7 +37,6 @@
     wantToJump = false;
     timeUnscathed = 0;
     syncWrongness = 0;
-    
     //afterburn stuff
     burnIntensity = 0;
     maxIntensity = 9; //maximum afterburn intensity in DPS

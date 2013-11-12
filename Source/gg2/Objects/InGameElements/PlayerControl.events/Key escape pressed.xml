@@ -13,8 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(!instance_exists(InGameMenuController) &amp;&amp; !instance_exists(OptionsController) &amp;&amp; !instance_exists(ControlsController))
- &amp;&amp; !instance_exists(HUDOptionsController) {
+        <argument kind="STRING">if(!instance_exists(InGameMenuController) and !instance_exists(OptionsController) and !instance_exists(ControlsController)
+&amp;&amp; !instance_exists(HUDOptionsController) and !instance_exists(DSMOptionsController) and !instance_exists(StatsDisplayController)
+and !instance_exists(Console)){
     instance_create(x,y,InGameMenuController);
 }
 </argument>

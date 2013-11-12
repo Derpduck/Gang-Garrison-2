@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(40, 100, 300, 200, 30);
+
+    if room != Options {
+        menu_setdimmed();
+    }
+    
+    menu_addedit_boolean("Draw Intel Arrows:", "global.drawIntelArrows", '
+        DSM_write_ini("Settings", "DrawIntelArrows", argument0);
+    ');
+    
+    menu_addedit_select("HP Bar Text:", "global.hpBarText", '
+        DSM_write_ini("Settings", "HPBarText", argument0);
+    ');
+    menu_add_option(0, "Disabled");
+    menu_add_option(1, "Centre");
+    menu_add_option(2, "Left");
+    
+    menu_addedit_boolean("Ammo Bar:", "global.ammoBar", '
+        DSM_write_ini("Settings", "AmmoBar", argument0);
+    ');
+    
+    menu_addedit_boolean("Recoil Animations:", "global.recoilAnimations", '
+        DSM_write_ini("Settings", "RecoilAnimations", argument0);
+    ');
+    
+    menu_addedit_boolean("Show Kill-Log:", "global.showKillLog", '
+        DSM_write_ini("Settings", "ShowKillLog", argument0);
+    ');
+    
+    menu_addedit_boolean("Healing Arrow:", "global.healingArrow", '
+        DSM_write_ini("Settings", "HealingArrow", argument0)
+    ');
+    
+    menu_addedit_boolean("Record Stats:", "global.recordStats", '
+        DSM_write_ini("Settings", "RecordStats", argument0)
+    ');
+    
+    menu_addedit_boolean("War Spectator HUD:", "global.chuWarSpecHud", '
+        DSM_write_ini("Settings", "ChuWarSpecHud", argument0)
+    ');
+    
+    menu_addedit_select("Respawn Timer:", "global.respawnTimer", '
+        DSM_write_ini("Settings", "RespawnTimer", argument0)
+    ');
+    menu_add_option(0, "Disabled");
+    menu_add_option(1, "DSM");
+    menu_add_option(2, "Vanilla");
+    
+    menu_addedit_boolean("Sound Panning:", "global.soundPanning", '
+        DSM_write_ini("Settings", "SoundPanning", argument0)
+    ');
+    
+    menu_addedit_boolean("Plugin cleanup prompt:", "global.pluginCleanup", '
+        DSM_write_ini("Settings", "PluginCleanup", argument0)
+    ');
+    
+    menu_addedit_key("Uber Bubble Key:", "global.superburst");
+    
+    menu_addedit_key("Screenshot Key:", "global.screenshotButton");
+    
+    menu_addlink("Customise", '
+        instance_create(x,y,CustomiseOptionsController)
+        instance_destroy()
+    ');
+    
+    if(room == Options){ //We don't want these changed ingame.
+        menu_addlink("Host Only Options", '
+            instance_create(x,y,DSMHostOptionsController)
+            instance_destroy()
+        ');
+    }
+    
+    menu_addback("Back", '
+        instance_create(x,y,OptionsController);
+        instance_destroy();
+    ');
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

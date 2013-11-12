@@ -46,6 +46,12 @@ case STATE_EXPECT_HELLO:
         if(read_uint(socket) != read_uint(global.protocolUuid))
             sameProtocol = false;
             
+    if ds_list_find_index(global.banned_ips, socket_remote_ip(socket)) >= 0{
+        // This person is banned, kill the socket (->kick them)
+        socket_destroy_abortive(socket)
+        exit;
+    }
+            
     if(!sameProtocol)
         write_ubyte(socket, INCOMPATIBLE_PROTOCOL);
     else if(global.serverPassword == "")
@@ -110,7 +116,7 @@ case STATE_EXPECT_COMMAND:
         messageState = STATE_EXPECT_NAME;
         expectedBytes = 1;
         break;
-        
+
     case DOWNLOAD_MAP:
         if(advertisedMapMd5 != "" and file_exists("Maps/" + advertisedMap + ".png"))
         {   // If the md5 was empty, we advertised an internal map, which obviously can't be downloaded.
@@ -150,10 +156,11 @@ case STATE_EXPECT_NAME:
     player.name = read_string(player.socket, expectedBytes);
     player.name = string_copy(player.name, 0, MAX_PLAYERNAME_LENGTH);
     player.name = string_replace_all(player.name, "#", " ");
-    
+
     ds_list_add(global.players, player);
     ServerPlayerJoin(player.name, global.sendBuffer);
     
+    console_print(player.name+" has joined the server.")
     // message lobby to update playercount if we became full
     if(noOfPlayers+1 == global.playerLimit)
         sendLobbyRegistration();
@@ -162,6 +169,7 @@ case STATE_EXPECT_NAME:
         ServerMessageString(global.welcomeMessage, player.socket);
     
     break;
+    
 }
 
 socket_send(socket);

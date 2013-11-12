@@ -20,23 +20,49 @@
     menu_create(40, 300, 200, 200, 30);
     menu_setdimmed();
     
+    //Because chat makes one of its object have this as its parent, trying to chat will open the console instead if Open Console is on.
+    switch global.consoleIsOpen{
+        case true:
+            instance_create(0, 0, Console);
+            menu_addlink("Close Console", '
+                console_close();
+            ');
+            break;
+            
+        case false:
+            menu_addlink("Open Console", '
+                console_open();
+            ');
+            break;
+    }
+    
+    menu_addlink("Lobby", '
+        splash_set_main(false)
+        splash_set_border(false)
+        splash_set_interrupt(false)
+        splash_set_size(800,600)
+        splash_show_web("http://www.ganggarrison.com/lobby/status",0)
+    ');
+    
     menu_addlink("Options", '
         instance_destroy();
         instance_create(0,0,OptionsController);
     ');
+    
     menu_addback("Return to Game", '
         instance_destroy();
     ');
-    if (global.isHost) {
-        menu_addlink("Kick players", '
-            if(!instance_exists(ScoreTableController)) instance_create(0,0,ScoreTableController);
-            ScoreTableController.showadmin = true;
-            instance_destroy();
-        ');
-    }
+    //if (global.isHost) {
+        //menu_addlink("Kick players", '
+            //if(!instance_exists(ScoreTableController)) instance_create(0,0,ScoreTableController);
+            //ScoreTableController.showadmin = true;
+            //instance_destroy();
+        //');
+    //}
     menu_addlink("", '');
     menu_addlink("Disconnect", '
         // Force dedicated mode to off so you can go to main menu instead of just restarting server
+        if global.alreadyWroteStats==0 addStats()
         global.dedicatedMode = 0;
         with(Client)
             instance_destroy();
@@ -45,8 +71,15 @@
             instance_destroy();
     ');
     menu_addlink("Quit Game", '
+        if global.alreadyWroteStats==0 addStats()
+        if global.recordingEnabled{
+            endRecording();
+        }
         game_end();
     ');
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
 }
 </argument>
       </arguments>

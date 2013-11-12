@@ -23,8 +23,10 @@ if (alarm[6] &lt;= 0){
     //set the sprite to idle
     imageOffset = owner.team;
 }else{
+    if global.recoilAnimations==1{
     //We are shooting, loop the shoot animation
     imageOffset = floor(image_index mod recoilAnimLength) + recoilAnimLength*owner.team
+    }
 }
     draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,c_white,image_alpha);
     /*if (sprite_index == normalSprite) {

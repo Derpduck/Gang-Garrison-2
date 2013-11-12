@@ -50,7 +50,7 @@
                 
                 justShot=true;
                 readyToFlare=false;
-                ammoCount -= 35;
+                ammoCount -= 35
                 alarm[2] = flareReloadTime;
             }
         }

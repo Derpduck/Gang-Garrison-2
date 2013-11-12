@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">var i, map, n1, t1, w1, n2, t2, in, str, color,yoffset;
+        <argument kind="STRING">if global.showKillLog==1{
+var i, map, n1, t1, w1, n2, t2, in, str, color,yoffset;
 
 if (global.kothHudPos)
     yoffset = 65*global.killLogPos;
@@ -70,6 +71,7 @@ for (i = 0; i &lt; ds_list_size(kills); i += 1) {
         draw_set_color(c_white);
     }
     draw_text(view_xview[0] + view_wview[0] - string_width(n2) - 8, view_yview[0] + i * 20 + 24 + yoffset, n2);
+}
 }
 </argument>
       </arguments>

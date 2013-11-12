@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.displayingFPS==1{
+    if fps==30{
+        fpsColour=c_green
+    }else if fps&lt;30{
+        fpsColour=c_yellow
+    }else if fps&lt;20{
+        fpsColour=c_red
+    }
+    
+    draw_set_valign(fa_center)
+    draw_set_halign(fa_middle)
+    draw_set_color(c_black)
+    draw_set_alpha(0.7)
+    draw_rectangle(view_xview+140,view_yview+20,view_xview+180,view_yview+50,false)
+
+    draw_set_color(fpsColour)
+    draw_set_alpha(1)
+    draw_text(view_xview+160,view_yview+35,fps)
+    draw_set_color(c_white)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -22,6 +22,30 @@
     global.tcpListener = -1;
     global.serverSocket = -1;
     
+    //DSM
+    //global.dsmPlayers=ds_list_create()
+    
+    global.banned_ips = ds_list_create();
+    var text, str;
+    if (file_exists("Banned ips.txt")){
+        // If a list of banned ips exists, load them into the list
+        text = file_text_open_read("Banned ips.txt")
+        while not file_text_eof(text){
+            str = file_text_read_string(text)
+            file_text_readln(text)
+            ds_list_add(global.banned_ips, str)
+        }
+        file_text_close(text);
+    }
+    global.currentMapIndex = 0;
+    global.currentMapArea = 1;
+    
+    if global.recordingEnabled
+    {
+        global.justEnabledRecording = 1
+    }
+    
+    
     var i;
     serverId = buffer_create();
     for (i = 0; i < 16; i += 1)
@@ -88,19 +112,23 @@
 
     var map, i;
     if (global.shuffleRotation) {
-        ds_list_shuffle(global.map_rotation);
-        map = ds_list_find_value(global.map_rotation, 0);
-        // "Shuffle, don't make arena map first" chosen
-        if (global.shuffleRotation == 1) {
-            // if first map is arena
-            if (string_copy(map, 0, 6) == 'arena_') {
-                // try to find something else
-                for (i = 0; i < ds_list_size(global.map_rotation); i += 1) {
-                    map = ds_list_find_value(global.map_rotation, i);
-                    // swap with first map
-                    if (string_copy(map, 0, 6) != 'arena_') {
-                        ds_list_replace(global.map_rotation, i, ds_list_find_value(global.map_rotation, 0));
-                        ds_list_replace(global.map_rotation, 0, map);
+        if (global.shuffleRotation==3){
+            randomiseRotation()
+        }else{
+            ds_list_shuffle(global.map_rotation);
+            map = ds_list_find_value(global.map_rotation, 0);
+            // "Shuffle, don't make arena map first" chosen
+            if (global.shuffleRotation == 1) {
+                // if first map is arena
+                if (string_copy(map, 0, 6) == 'arena_') {
+                    // try to find something else
+                    for (i = 0; i < ds_list_size(global.map_rotation); i += 1) {
+                        map = ds_list_find_value(global.map_rotation, i);
+                        // swap with first map
+                        if (string_copy(map, 0, 6) != 'arena_') {
+                            ds_list_replace(global.map_rotation, i, ds_list_find_value(global.map_rotation, 0));
+                            ds_list_replace(global.map_rotation, 0, map);
+                        }
                     }
                 }
             }
@@ -130,6 +158,18 @@
         }
 
         // Load plugins
+        if global.myCurrentPlugins!=''{
+            var pluginQuestion;
+            pluginQuestion=show_message_ext("Current Plugins: "+string(global.myCurrentPlugins)+"#Server's Plugins: "+string(pluginList)+
+            "##If your plugins do not match the server's plugins (could cause clients to desync) please select restart or quit.","Continue","Restart","Quit")
+            if (pluginQuestion==2){
+                restartGG2()
+                exit;
+            }else if (pluginQuestion==3){
+                game_end()
+                exit;
+            }
+        }
         if (!loadserverplugins(pluginList))
         {
             show_message("Error ocurred loading server-sent plugins.");
@@ -141,5 +181,9 @@
     else
     {
         pluginList = '';
+    }
+    
+    if global.recordingEnabled{
+        global.justEnabledRecording = 1
     }
 }

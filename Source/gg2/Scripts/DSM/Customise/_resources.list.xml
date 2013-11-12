@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="custom_init" type="RESOURCE"/>
+  <resource name="spriteLoader" type="RESOURCE"/>
+  <resource name="soundLoader" type="RESOURCE"/>
+  <resource name="menu_image_select" type="RESOURCE"/>
+</resources>

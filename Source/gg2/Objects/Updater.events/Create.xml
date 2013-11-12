@@ -29,7 +29,7 @@ if(global.updaterBetaChannel)
 else
     url = UPDATE_SOURCE;
 
-tmpfile = temp_directory + "\gg2update.zip";
+tmpfile = temp_directory + "\dsmupdate.zip";
     
 downloadHandle = httpGet(url, -1);
 
@@ -58,6 +58,8 @@ while(!httpRequestStatus(downloadHandle))
     minutes=floor(timer/60);
     seconds=floor(timer-minutes*60);
     draw_text(x,y-20,string(minutes) + " minutes " + string(seconds) + " seconds Remaining...");
+    //percent=floor(timer/100)
+    //draw_text(x,y-20,string(percent) + "% done...");
     counter+=1;
     var progress, size;
     progress = httpRequestResponseBodyProgress(downloadHandle);
@@ -101,13 +103,13 @@ if(!file_exists(tmpfile))
 {
     window_set_showborder(window_oldshowborder);
     window_set_fullscreen(window_oldfullscreen);
-    show_message("Error updating: Missing gg2update.zip in temp directory, download failed(?)");
+    show_message("Error updating: Missing dsmupdate.zip in temp directory, download failed(?)");
     room_goto_fix(Menu);
     exit;
 }
 
-// rename existing "Gang Garrison 2.exe" to avoid conflict when extracting
-if (file_exists("Gang Garrison 2.exe"))
+// rename existing "DSM.exe" to avoid conflict when extracting
+if (file_exists("DSM.exe"))
 {
     var newName, n;
     n = 1;
@@ -115,12 +117,12 @@ if (file_exists("Gang Garrison 2.exe"))
     // increment until unused name found
     do
     {
-        newName = "gg2-old.delete.me." + string(n);
+        newName = "dsm-old.delete.me." + string(n);
         n += 1;
     }
     until(!file_exists(newName));
 
-    file_rename("Gang Garrison 2.exe", newName);
+    file_rename("DSM.exe", newName);
 }
 
 
@@ -129,7 +131,7 @@ if (file_exists("Gang Garrison 2.exe"))
 extractzip(tmpfile, working_directory);
 
 // run new version    
-execute_program("Gang Garrison 2.exe", "", false);
+execute_program("DSM.exe", "", false);
 
 // exit
 game_end();

@@ -5,4 +5,5 @@
   <resource name="BlueTeamWin" type="RESOURCE"/>
   <resource name="WinBannerS" type="RESOURCE"/>
   <resource name="Scoreboard" type="RESOURCE"/>
+  <resource name="StatsBoardS" type="RESOURCE"/>
 </resources>

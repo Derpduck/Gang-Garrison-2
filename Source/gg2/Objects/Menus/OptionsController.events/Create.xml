@@ -20,10 +20,13 @@
         menu_setdimmed();
     }
     
+    alarm[0]=1
+    
     oldPlayerName = global.playerName;
     menu_addedit_text2("Player name:", "global.playerName", '
         var newName;
         newName = string_copy(argument0, 0, min(string_length(argument0), MAX_PLAYERNAME_LENGTH));
+        draw_text(440,80,string((MAX_PLAYERNAME_LENGTH)-string_length(newName)))
         if string_count("#",newName) &gt; 0 {
             show_message("Invalid character ' + "'\#'" + ' in name");
             newName = "Player";
@@ -126,6 +129,10 @@
         instance_create(x,y,HUDOptionsController);
         instance_destroy();
     ');
+    menu_addlink("DSM Options", '
+        instance_create(x,y,DSMOptionsController)
+        instance_destroy()
+    ')
     menu_addback("Back", '
         instance_destroy();
         if(room == Options)
@@ -133,6 +140,9 @@
         else
             instance_create(0,0,InGameMenuController);
     ');
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
 }
 </argument>
       </arguments>

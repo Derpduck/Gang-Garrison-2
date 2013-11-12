@@ -39,6 +39,9 @@
         instance_destroy();
         instance_create(x,y,OptionsController);
     ');
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
 }
 </argument>
       </arguments>

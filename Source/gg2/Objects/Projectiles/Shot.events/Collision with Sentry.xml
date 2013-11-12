@@ -16,6 +16,7 @@
         <argument kind="STRING">if(other.team != team)
 {
     other.hp -= hitDamage;
+    shotHit=true
     other.lastDamageDealer = ownerPlayer;
     other.lastDamageSource = weapon;
     instance_destroy();

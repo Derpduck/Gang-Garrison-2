@@ -26,7 +26,8 @@ if (global.Server_RespawntimeSec == 0)
 else
     global.Server_Respawntime = global.Server_RespawntimeSec * 30;
 
-menu_create(40, 130, 500, 200, 30);
+menu_create(40, 110, 500, 200, 30);
+
 menu_addedit_text2("Server Name:", "global.serverName", '
     var newName;
     newName = string_copy(argument0, 0, 25);
@@ -68,19 +69,27 @@ menu_addedit_select("Shuffle map rotation:", "global.shuffleRotation", '
 menu_add_option(0, "Don't shuffle");
 menu_add_option(1, "Shuffle, don't make arena map first");
 menu_add_option(2, "Shuffle without bias");
+menu_add_option(3, "Shuffle, but start with first map");
 
 menu_addedit_boolean("Auto Balance:", "global.autobalance", '
     gg2_write_ini("Server", "AutoBalance", argument0);
+');
+menu_addedit_boolean("Recording:", "global.recordingEnabled", '
+    DSM_write_ini("Settings", "RecordingEnabled", argument0)
 ');
 menu_addedit_boolean("Announce to Lobby:", "global.useLobbyServer", '
     gg2_write_ini("Settings", "UseLobby", argument0);
 ');
 
 menu_addedit_boolean("Attempt UPnP Forwarding:", "global.attemptPortForward", '
-        if (argument0 == 1)
-            show_message("Warning: UPNP support is currently experimental and enabling it may cause freezing while starting a server, but should cause no freezing ingame")
-        gg2_write_ini("Server", "Attempt UPnP Forwarding", argument0);
-    ');
+    if (argument0 == 1)
+        show_message("Warning: UPNP support is currently experimental and enabling it may cause freezing while starting a server, but should cause no freezing ingame")
+    gg2_write_ini("Server", "Attempt UPnP Forwarding", argument0);
+');
+
+menu_addedit_text("Map Rotation:", "global.mapRotationFile", '
+    gg2_write_ini("Server", "MapRotation", argument0);
+');
     
 menu_addlink("Classlimits", '
     instance_create(x,y,ClasslimitsMenuController);
@@ -100,6 +109,9 @@ menu_addback("Back", '
     instance_create(x,y,MainMenuController);
     instance_destroy();
 ');
+
+colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
 </argument>
       </arguments>
     </action>

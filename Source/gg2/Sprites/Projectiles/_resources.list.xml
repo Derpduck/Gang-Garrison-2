@@ -6,10 +6,14 @@
   <resource name="ShotS" type="RESOURCE"/>
   <resource name="BubbleS" type="RESOURCE"/>
   <resource name="FlameS" type="RESOURCE"/>
+  <resource name="FlameBlueS" type="RESOURCE"/>
   <resource name="FlareS" type="RESOURCE"/>
+  <resource name="FlareBlueS" type="RESOURCE"/>
   <resource name="MineS" type="RESOURCE"/>
   <resource name="NeedleS" type="RESOURCE"/>
   <resource name="BladeProjectileS" type="RESOURCE"/>
+  <resource name="BladeProjectileRedS" type="RESOURCE"/>
+  <resource name="BladeProjectileBlueS" type="RESOURCE"/>
   <resource name="BladeMask" type="RESOURCE"/>
   <resource name="PopS" type="RESOURCE"/>
   <resource name="StabMaskS" type="RESOURCE"/>

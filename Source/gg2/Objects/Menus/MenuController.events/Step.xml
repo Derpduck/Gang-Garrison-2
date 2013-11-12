@@ -52,6 +52,9 @@ if(editing != -1) {
                 case "script":
                     execute_string(item_script[virtualitem]);
                     break;
+                case "text":
+                    val = argument1;
+                    break;
                 case "editkey":
                 case "editkeyormouse":
                     io_clear();

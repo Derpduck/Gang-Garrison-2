@@ -6,6 +6,10 @@ if(global.useLobbyServer and (frame mod 900)==0)
     sendLobbyRegistration();
 frame += 1;
 
+if global.recordingEnabled and global.justEnabledRecording{
+    beginRecording();
+}
+
 // Service all players
 var i;
 for(i=0; i<ds_list_size(global.players); i+=1)
@@ -19,6 +23,7 @@ for(i=0; i<ds_list_size(global.players); i+=1)
         ServerPlayerLeave(i, global.sendBuffer);
         ServerBalanceTeams();
         i-=1;
+
     }
     else
         processClientCommands(player, i);
@@ -110,4 +115,9 @@ if(impendingMapChange == 0)
     }
     // message lobby to update map name
     sendLobbyRegistration();
+}
+
+if global.recordingEnabled{
+    write_ushort(global.replayBuffer, buffer_size(global.sendBuffer));
+    write_buffer(global.replayBuffer, global.sendBuffer);
 }

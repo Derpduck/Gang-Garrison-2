@@ -4,6 +4,7 @@
   <resource name="Menu" type="RESOURCE"/>
   <resource name="Credits" type="RESOURCE"/>
   <resource name="Options" type="RESOURCE"/>
+  <resource name="StatsR" type="RESOURCE"/>
   <resource name="Lobby" type="RESOURCE"/>
   <resource name="Maps" type="GROUP"/>
   <resource name="DownloadRoom" type="RESOURCE"/>

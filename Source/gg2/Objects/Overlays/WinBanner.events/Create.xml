@@ -24,8 +24,10 @@
 if(global.myself.team != global.winners) {
     sound=FailureSnd;
     global.myself.humiliated = 1;
+    global.statsLosses+=1
 } else {
     sound = VictorySnd;
+    global.statsWins+=1
 }
 
 with (Player) {
@@ -34,6 +36,18 @@ with (Player) {
     else {
         humiliated = 1;
     }
+}
+
+//DSM stuff
+//Stats
+global.statsGames+=1
+addStats()
+global.alreadyWroteStats=1
+
+//Replays
+if global.recordingType==1 and global.recordingEnabled and global.justEnabledRecording==0{
+    endRecording()
+    global.recordingEnabled=1
 }
 
 if(!instance_exists(ArenaHUD)) {

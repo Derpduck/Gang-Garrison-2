@@ -6,4 +6,6 @@
   <resource name="CreditsS" type="RESOURCE"/>
   <resource name="gg2FontS" type="RESOURCE"/>
   <resource name="countFontS" type="RESOURCE"/>
+  <resource name="consoleFontS" type="RESOURCE"/>
+  <resource name="DSM" type="GROUP"/>
 </resources>

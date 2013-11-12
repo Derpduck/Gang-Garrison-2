@@ -14,7 +14,10 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">done=false;
-alpha=1;</argument>
+alpha=1;
+
+alarm[0]=1
+</argument>
       </arguments>
     </action>
   </actions>

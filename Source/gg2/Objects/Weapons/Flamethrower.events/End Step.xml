@@ -29,12 +29,14 @@
         <argument kind="STRING">if (justBlast)
 {
     justBlast = false;
+    if global.recoilAnimations==1{
     //Airblast Recoil Animation
     sprite_index = blastSprite;
     image_index = 0;
     image_speed = blastImageSpeed;
     alarm[7] = blastNoFlameTime;
     alarm[6] = 0;
+    }
 }
 </argument>
       </arguments>

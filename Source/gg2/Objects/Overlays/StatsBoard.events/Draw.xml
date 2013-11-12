@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">xoffset = view_xview[0]+view_wview[0]/6-15
+yoffset = view_yview[0]+view_hview[0]/10+50+405
+    
+draw_set_alpha(alpha)
+draw_set_color(c_white)
+draw_set_valign(fa_top)
+draw_set_halign(fa_middle)
+    
+draw_sprite_ext(StatsBoardS, 0, xoffset, yoffset, 1, 1, 0, c_white, alpha*0.8)
+draw_text(xoffset+5+50, yoffset+8, "Kills: " + string(floor(global.myself.stats[KILLS])))
+draw_text(xoffset+5+50, yoffset+25, "Deaths: " + string(floor(global.myself.stats[DEATHS])))
+draw_text(xoffset+5+50, yoffset+42, "Assists: " + string(floor(global.myself.stats[ASSISTS])))
+draw_text(xoffset+230+50, yoffset+8, "Destruction: " + string(floor(global.myself.stats[DESTRUCTION])))
+draw_text(xoffset+230+50, yoffset+25, "Captures: " + string(floor(global.myself.stats[CAPS])))
+draw_text(xoffset+230+50, yoffset+42, "Defences: " + string(floor(global.myself.stats[DEFENSES])))
+draw_text(xoffset+450+50, yoffset+8, "Invulns: " + string(floor(global.myself.stats[INVULNS])))
+draw_text(xoffset+450+50, yoffset+25, "Healing: " + string(floor(global.myself.stats[HEALING])))
+draw_text(xoffset+450+50, yoffset+42, "Stabs: " + string(floor(global.myself.stats[STABS])))
+//draw_text(xoffset+670+50, yoffset+25, "Accuracy: " + string(floor(global.accuracy))+"%")
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -19,6 +19,7 @@
 afktimer-=1;
 if(afktimer&lt;=0) &amp;&amp; global.myself.object.afk == false{
     global.myself.object.afk = true;
+    afktimer=180*30 //so people don't immedietly get de-classed when picking a team from being afk
     if !instance_exists(TeamSelectController) instance_create(0,0,TeamSelectController);
     with(TeamSelectController) afk=true;
 }

@@ -58,6 +58,10 @@
     if(variable_local_exists("jumpFlameParticleType")) {
             part_type_destroy(jumpFlameParticleType);
     }
+    
+    if !instance_exists(respawnTimerO) and global.myself==player and !instance_exists(ArenaHUD) and (global.respawnTimer){
+        instance_create(0,0,respawnTimerO)
+    }
 }
 </argument>
       </arguments>

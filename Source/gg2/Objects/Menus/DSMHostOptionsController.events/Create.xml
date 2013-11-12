@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(40, 100, 300, 200, 30);
+
+    if room != Options {
+        menu_setdimmed();
+    }
+    //For hosts only.
+    
+    //menu_addedit_boolean("Randomise Map Rotation:", "global.randomiseMapRotation", '
+    //    DSM_write_ini("Settings", "RandomiseMapRotation", argument0);
+    //');
+    
+    // menu_addedit_boolean("Generator Stab:", "global.generatorStab", '
+    //    DSM_write_ini("Settings", "GeneratorStab", argument0);
+    //');
+    
+    menu_addedit_select("Recording Type:", "global.recordingType", '
+        DSM_write_ini("Settings", "RecordingType", argument0);
+    ');
+    menu_add_option(0, "Continuous (Default)");
+    menu_add_option(1, "Segmented by map");
+        
+    menu_addback("Back", '
+        instance_create(x,y,DSMOptionsController);
+        instance_destroy();
+    ');
+    
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

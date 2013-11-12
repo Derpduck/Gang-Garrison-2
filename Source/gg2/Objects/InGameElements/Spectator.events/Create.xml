@@ -37,6 +37,12 @@ numpadKeys[7] = vk_numpad7;
 numpadKeys[8] = vk_numpad8;
 numpadKeys[9] = vk_numpad9;
 
+
+if (global.chuWarSpecHud){
+    advSpec=instance_create(0,0,AdvSpecHUD)
+    advSpec.parent=self
+}
+
 // deals with problem of global.myself not existing prior to deserialisation
 myTeam = TEAM_SPECTATOR;
 if (global.myself != -1)

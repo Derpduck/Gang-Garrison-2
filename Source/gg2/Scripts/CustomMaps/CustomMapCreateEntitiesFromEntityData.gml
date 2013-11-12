@@ -1,5 +1,4 @@
 // creates game objects per the list in the entity data
-
 // argument0: entity data
 
 {
@@ -42,9 +41,6 @@ while(string_pos(DIVIDER, argument0) != 0) { // continue until there are no more
     case "spawnroom":
       instance_create(entityX, entityY, SpawnRoom);
     break;
-/*REMINDER: Get Leiche or Cspot to add 8 new spawn entities to Garrison Builder or 
- *get Garrison Builder source to try out for self. In GB, aesthetics are as follows:
- * 0=Runner, 1=Firebug, 2=Rocketman, 3=Overweight, 4=Detonator*/
     case "redspawn":
       instance_create(entityX, entityY, SpawnPointRed);
     break;
@@ -198,261 +194,18 @@ while(string_pos(DIVIDER, argument0) != 0) { // continue until there are no more
     case "KothBlueControlPoint":
       instance_create(entityX, entityY, KothBlueControlPoint);
     break;
-    
-    /* 
-    
-    Code from this point on is for experimental objects that aren't added yet, like teleports and map logics
-    Shit also needs to be fixed/cleaned up/done better before implementing.  
-    
-    case "teleport_1_point_1":
-      if (instance_exists(teleport_1_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_1_point_1);
-      }
-    break; 
-    case "teleport_1_point_2":
-      if (instance_exists(teleport_1_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_1_point_2);
-      }
-    case "teleport_2_point_1":
-      if (instance_exists(teleport_2_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_2_point_1);
-      }
-    break; 
-    case "teleport_2_point_2":
-      if (instance_exists(teleport_2_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_2_point_2);
-      }      
-    break; 
-    case "teleport_3_point_1":
-      if (instance_exists(teleport_3_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_3_point_1);
-      }
-    break; 
-    case "teleport_3_point_2":
-      if (instance_exists(teleport_3_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_3_point_2);
-      }      
-    break; 
-    case "teleport_4_point_1":
-      if (instance_exists(teleport_4_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_4_point_1);
-      }
-    break; 
-    case "teleport_4_point_2":
-      if (instance_exists(teleport_4_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_4_point_2);
-      }      
-    break; 
-    case "teleport_5_point_1":
-      if (instance_exists(teleport_5_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_5_point_1);
-      }
-    break; 
-    case "teleport_5_point_2":
-      if (instance_exists(teleport_5_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_5_point_2);
-      }      
-    break; 
-    case "teleport_6_point_1":
-      if (instance_exists(teleport_6_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_6_point_1);
-      }
-    break; 
-    case "teleport_6_point_2":
-      if (instance_exists(teleport_6_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_6_point_2);
-      }      
-    break; 
-    case "teleport_7_point_1":
-      if (instance_exists(teleport_7_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_7_point_1);
-      }
-    break; 
-    case "teleport_7_point_2":
-      if (instance_exists(teleport_7_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_7_point_2);
-      }      
+    case "CustomEnt1":
+      instance_create(entityX, entityY, CustomEntity1);
     break;
-    case "teleport_8_point_1":
-      if (instance_exists(teleport_8_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_8_point_1);
-      }
-    break; 
-    case "teleport_8_point_2":
-      if (instance_exists(teleport_8_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_8_point_2);
-      }      
-    break;     
-    case "teleport_9_point_1":
-      if (instance_exists(teleport_9_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_9_point_1);
-      }
-    break; 
-    case "teleport_9_point_2":
-      if (instance_exists(teleport_9_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_9_point_2);
-      }      
-    break; 
-    case "teleport_10_point_1":
-      if (instance_exists(teleport_10_point_1))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, teleport_10_point_1);
-      }
-    break; 
-    case "teleport_10_point_2":
-      if (instance_exists(teleport_10_point_2))
-      {
-            break;
-      }    
-      else
-      {
-            instance_create(entityX, entityY, teleport_10_point_2);
-      }      
+    case "CustomEnt2":
+      instance_create(entityX, entityY, CustomEntity2);
     break;
-    case "gameMode_ctf":
-      // in the future with new gametypes, make sure to include more instance_exists checks, each for a gametype.
-      if (instance_exists(gameMode_VIP_Logic))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, gameMode_CTF_Logic);
-            global.gameMode = GAMEMODE_CTF;
-      }
-    break;   
-    case "gameMode_vip":
-    {
-      if (instance_exists(gameMode_CTF_Logic))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, gameMode_VIP_Logic);
-            global.gameMode = GAMEMODE_VIP;
-      }
-    break;                                                 
-    }
-    case "vip_start":
-    {
-      if (instance_exists(courierStart))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, courierStart);
-      }
-    break;                                                 
-    }    
-    case "vip_end":
-    {
-      if (instance_exists(courierGoal))
-      {
-            break;
-      }
-      else
-      {
-            instance_create(entityX, entityY, courierGoal);
-      }
-    break;                                                 
-    }    
-    */    
+    case "CustomEnt3":
+      instance_create(entityX, entityY, CustomEntity3);
+    break;
+    case "CustomEnt4":
+      instance_create(entityX, entityY, CustomEntity4);
+    break;
   }
 }
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(40, 70, 300, -200, 30);
+    //This object doesn't work with the menu thing for some reason
+    instance_create(1,1,StatsDisplayValue)
+
+    if room != StatsR {
+        menu_setdimmed();
+    }
+    
+    alarm[0]=1
+    
+    global.statsMainM=1
+    global.statsKillsM=0
+    
+    menu_addtext("Games:")
+    menu_addtext("Wins:")
+    menu_addtext("Losses:")
+    menu_addtext("Points:")
+    menu_addtext("Kills:")
+    menu_addtext("Deaths:")
+    //menu_addtext("K/D Ratio:")
+    menu_addtext("Assists:")
+    menu_addtext("Destruction:")
+    menu_addtext("Caps:")
+    menu_addtext("Defences:")
+    menu_addtext("Ubers:")
+    menu_addtext("Healing:")
+    menu_addtext("Stabs:")
+    menu_addtext("Shots Hit:")
+    menu_addtext("Shots Missed:")
+    menu_addtext("Accuracy:")
+        
+    menu_addback("Back", '
+        instance_destroy();
+        with(StatsDisplayValue){
+            instance_destroy()
+        }
+        if(room == StatsR)
+            room_goto_fix(Menu);
+        else
+            instance_create(0,0,InGameMenuController);
+    ');
+
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

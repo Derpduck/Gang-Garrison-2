@@ -26,7 +26,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">fade -= 1/90;
+        <argument kind="STRING">if global.dsmBackground==0{
+fade -= 1/90;
 if (fade &lt; 0)
 {
     fade = 0;
@@ -48,6 +49,8 @@ if (global.backgroundHash != "default")
             action_splash_web(global.backgroundURL, 1);
         }
     }
+}
+
 }
 </argument>
       </arguments>

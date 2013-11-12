@@ -18,6 +18,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
 {
     text = ds_list_find_value(list, i);
     pluginname = string_copy(text, 0, string_pos("@", text) - 1);
+    global.myCurrentPlugins+=string(pluginname+' ')
     pluginhash = string_copy(text, string_pos("@", text) + 1, string_length(text) - string_pos("@", text));
     ds_list_replace(list, i, pluginname);
     ds_list_add(hashList, pluginhash);

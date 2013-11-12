@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.displayingPing==0{
+    instance_destroy()
+}
+
+if !global.isHost{
+    if cooldown&lt;=0{
+        if(!pingRunning){
+            pingSocket=tcp_connect(global.serverIP,global.serverPort)
+            pingStartTime=current_time
+            pingRunning=true
+        }else{
+            if(not socket_connecting(pingSocket)){
+                if(socket_has_error(pingSocket)){
+                    ping=-1
+                }else{
+                    ping=current_time-pingStartTime
+                }
+                socket_destroy_abortive(pingSocket)
+                pingRunning=false;
+                cooldown = 150;      
+            }
+        }
+    }else{
+        cooldown-=1
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

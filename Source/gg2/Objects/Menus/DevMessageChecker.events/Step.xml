@@ -69,14 +69,15 @@ else if (status == 1)
             version = string_copy(versioncheck,1,versionend-1);
             changeslength = string_length(versioncheck)-versionend;
             changes=string_copy(versioncheck,versionend+1,changeslength);
-            if(real(version) &gt; VERSION)
+            if(real(version) &gt; DSM_VERSION)
             {
                 var popup;
                 popup = instance_create(250, 471, DevMessagePopup);
-                popup.msg = "Updates have been made to Gang Garrison 2!##"+changes;
+                popup.msg = "Updates have been made to DSM!##"+changes;
                 popup.updating = true;
             }
             break;
+        if global.dsmBackground==0{
         case "Background":
             var text, list, hash, title, url, showVersion;
             text = ds_list_find_value(data, c + 1);
@@ -153,6 +154,7 @@ else if (status == 1)
                 ini_close();
             }
             break;
+            }
         }
     }
 

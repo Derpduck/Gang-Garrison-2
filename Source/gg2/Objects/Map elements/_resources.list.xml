@@ -4,6 +4,7 @@
   <resource name="Unused" type="GROUP"/>
   <resource name="Spawnroom objects" type="GROUP"/>
   <resource name="Player Influencing" type="GROUP"/>
+  <resource name="Custom" type="GROUP"/>
   <resource name="Colliders" type="GROUP"/>
   <resource name="NextAreaO" type="RESOURCE"/>
   <resource name="PreviousAreaO" type="RESOURCE"/>

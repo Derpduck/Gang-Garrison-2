@@ -32,7 +32,7 @@
     if(myMedigun != -1) {
         draw_healthbar(xoffset+665, yoffset+500, xoffset+785, yoffset+532,myMedigun.uberCharge*100/2000,c_black,c_white,c_white,0,true,true);
         draw_sprite_ext(UberHudS,uberoffset,xoffset+720,yoffset+515,2,2,0,c_white,1);
-        draw_text_color(xoffset+730,yoffset+510,"SUPERBURST",c_white,c_white,c_white,c_white,1);
+        draw_text_color(xoffset+730,yoffset+510,"SUPERBURST:"+string(floor(myMedigun.uberCharge/20))+"%",c_white,c_white,c_white,c_white,1);
     }
 </argument>
       </arguments>

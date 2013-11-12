@@ -2,6 +2,8 @@ room_caption = global.currentMap;
 
 global.startedGame = true;
 
+global.alreadyWroteStats=0
+
 global.totalMapAreas = 1+instance_number(NextAreaO);
 
 if global.totalMapAreas > 1 {

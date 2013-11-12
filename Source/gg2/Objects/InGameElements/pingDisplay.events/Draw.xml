@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.displayingPing==1{
+    docol=c_red
+    showping=string(ping)
+    if (ping&lt;275){
+        docol=c_yellow
+    }
+    if (ping&lt;135){
+        docol=c_green
+    }
+    if (ping&lt;75){
+        docol=c_aqua
+    }
+    if (ping==-1){
+        docol=c_gray
+        showping='TIMEOUT'
+    }
+    draw_set_valign(fa_center)
+    draw_set_halign(fa_middle)
+    draw_set_color(c_black)
+    draw_set_alpha(0.7)
+    draw_rectangle(view_xview+140,view_yview+520,view_xview+180,view_yview+550,false)
+    
+    draw_set_color(docol)
+    draw_set_alpha(1)
+    draw_text(view_xview[0]+160, view_yview[0]+535,showping)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

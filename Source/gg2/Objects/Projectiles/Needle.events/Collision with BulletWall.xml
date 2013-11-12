@@ -19,7 +19,8 @@
     imp = instance_create(x,y,Impact);
     imp.image_angle=direction;
     instance_destroy();
-}</argument>
+}
+</argument>
       </arguments>
     </action>
   </actions>

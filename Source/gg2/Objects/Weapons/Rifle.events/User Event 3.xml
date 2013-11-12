@@ -17,6 +17,7 @@
 shot=true;
 justShot=true;
 readyToShoot = false;
+shotHit=false
 alarm[0] = reloadTime + 20*owner.zoomed;
 
 // for drawing:
@@ -75,6 +76,7 @@ with(Player) {
     if(id != other.ownerPlayer and team != other.owner.team and object != -1) {
         if(collision_line(other.x,other.y,other.x2,other.y2,object,true,false)&gt;=0) &amp;&amp; object.ubered == 0 {
             object.hp -= other.hitDamage;
+            shotHit=true
             object.timeUnscathed = 0;
             if (object.lastDamageDealer != other.ownerPlayer &amp;&amp; object.lastDamageDealer != object.player){
                 object.secondToLastDamageDealer = object.lastDamageDealer;
@@ -102,6 +104,7 @@ with(Sentry) {
     if(team != other.owner.team) {
         if(collision_line(other.x,other.y,other.x2,other.y2,id,false,false)&gt;=0) {
             hp -= other.hitDamage;
+            shotHit=true
             lastDamageDealer = other.ownerPlayer;
             if (!other.owner.zoomed)
                 lastDamageSource = WEAPON_RIFLE;
@@ -117,6 +120,7 @@ with(Generator) {
         if(collision_line(other.x,other.y,other.x2,other.y2,id,true,false)&gt;=0) {
             alarm[0] = regenerationBuffer;
             isShieldRegenerating = false;
+            shotHit=true
             //allow overkill to be applied directly to the target
             if (other.hitDamage &gt; shieldHp) {
                 hp -= other.hitDamage - shieldHp;
@@ -133,6 +137,11 @@ with(Generator) {
     }
 }
 
+if shotHit=false{
+    handleHitOrMiss(ownerPlayer,0)
+}else{
+    handleHitOrMiss(ownerPlayer,1)
+}
 </argument>
       </arguments>
     </action>

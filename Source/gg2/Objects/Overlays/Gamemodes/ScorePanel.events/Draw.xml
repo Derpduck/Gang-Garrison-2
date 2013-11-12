@@ -129,9 +129,10 @@
         if global.myself.team==TEAM_RED &amp;&amp; global.myself.object.intel==true drawblue=false;
         if global.myself.team==TEAM_BLUE &amp;&amp; global.myself.object.intel==true drawred=false;
     }
-    if drawred==true draw_sprite_ext(IntelArrowS, 0, redx, redy, 3, 3, reddir, c_white, 1);
-    if drawblue==true draw_sprite_ext(IntelArrowS, 1, bluex, bluey, 3, 3, bluedir, c_white, 1);
-    
+    if global.drawIntelArrows==1{
+        if drawred==true draw_sprite_ext(IntelArrowS, 0, redx, redy, 3, 3, reddir, c_white, 1);
+        if drawblue==true draw_sprite_ext(IntelArrowS, 1, bluex, bluey, 3, 3, bluedir, c_white, 1);
+    }
     draw_sprite_ext(IntelStatusS, redintelstatus, redx, redy, 2, 2, 0, c_white, 1);
     draw_sprite_ext(IntelStatusS, blueintelstatus, bluex, bluey, 2, 2, 0, c_white, 1);
 

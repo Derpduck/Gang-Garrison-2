@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="Stats" type="GROUP"/>
   <resource name="LobbySideController" type="RESOURCE"/>
   <resource name="LobbyNameController" type="RESOURCE"/>
   <resource name="OptionsController" type="RESOURCE"/>
+  <resource name="DSMOptionsController" type="RESOURCE"/>
+  <resource name="DSMHostOptionsController" type="RESOURCE"/>
+  <resource name="CustomiseOptionsController" type="RESOURCE"/>
   <resource name="HUDOptionsController" type="RESOURCE"/>
   <resource name="HostOptionsController" type="RESOURCE"/>
   <resource name="ControlsController" type="RESOURCE"/>

@@ -24,10 +24,21 @@
         
     with(PlayerControl)
         instance_destroy();
+    
+    with(Console)
+        instance_destroy();
+
+    global.isPlayingReplay=0
 
     room_goto_fix(returnRoom);
-    if (global.serverPluginsInUse &amp;&amp; !noUnloadPlugins)
-        pluginscleanup();
+    
+    if (global.serverPluginsInUse &amp;&amp; !noUnloadPlugins){
+        if global.pluginCleanup==1{
+            if show_message_ext("Clean up server plugins?","Yes","","No")==1{
+                pluginscleanup()
+            }
+        }
+    }
 }
 
 </argument>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="statsTracker" type="RESOURCE"/>
+  <resource name="addStats" type="RESOURCE"/>
+  <resource name="writeStats" type="RESOURCE"/>
+  <resource name="calcAccuracy" type="RESOURCE"/>
+  <resource name="calcKD" type="RESOURCE"/>
+  <resource name="handleHitOrMiss" type="RESOURCE"/>
+</resources>

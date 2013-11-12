@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(instance_exists(InGameMenuController) || instance_exists(OptionsController) || instance_exists(ControlsController) || instance_exists(HUDOptionsController))
+        <argument kind="STRING">if(instance_exists(InGameMenuController) or instance_exists(OptionsController) or instance_exists(ControlsController)
+or instance_exists(HUDOptionsController) or instance_exists(DSMOptionsController) or instance_exists(StatsDisplayController)
+or instance_exists(Console))
     exit;
     
 var kickOpen;
@@ -55,6 +57,11 @@ if(global.myself.object != -1)
         if(keyboard_check_pressed(global.chat2)) inputChat2();
         if(keyboard_check_pressed(global.chat3)) inputChat3();
         if(keyboard_check_pressed(global.drop)) inputDrop();
+        
+        if keyboard_check_pressed(global.superburst){
+            write_ubyte(global.serverSocket, CHAT_BUBBLE);
+            write_ubyte(global.serverSocket, 46);
+        }
         
         if(!global.myself.humiliated)
         {
@@ -108,7 +115,6 @@ if(keybyte != 0
         or keyboard_check(global.down)) {
     afktimer=afktimeout;
 }
-
 </argument>
       </arguments>
     </action>

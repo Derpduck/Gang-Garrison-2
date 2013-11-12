@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Stats" type="GROUP"/>
+  <resource name="Replay" type="GROUP"/>
+  <resource name="Console" type="GROUP"/>
+  <resource name="Customise" type="GROUP"/>
+  <resource name="DSM_Change_Log" type="RESOURCE"/>
+  <resource name="DSM_BugsList" type="RESOURCE"/>
+  <resource name="DSM_init" type="RESOURCE"/>
+  <resource name="randomiseRotation" type="RESOURCE"/>
+</resources>

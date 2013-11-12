@@ -16,26 +16,28 @@
         <argument kind="STRING">if (justShot)
 {
     justShot = false;
-    //Recoil Animation
-    if (owner.zoomed)
-    {
-        if (sprite_index != reloadSprite)
+    if global.recoilAnimations==1{
+        //Recoil Animation
+        if (owner.zoomed)
         {
-            sprite_index = reloadSprite
-            image_index = 0
-            image_speed = reloadImageSpeed;
+            if (sprite_index != reloadSprite)
+            {
+                sprite_index = reloadSprite
+                image_index = 0
+                image_speed = reloadImageSpeed;
+            }
+            alarm[6] = longRecoilTime;
         }
-        alarm[6] = longRecoilTime;
-    }
-    else
-    {
-        if (sprite_index != recoilSprite)
+        else
         {
-            sprite_index = recoilSprite
-            image_index = 0
-            image_speed = recoilImageSpeed;
+            if (sprite_index != recoilSprite)
+            {
+                sprite_index = recoilSprite
+                image_index = 0
+                image_speed = recoilImageSpeed;
+            }
+            alarm[6] = recoilTime;
         }
-        alarm[6] = recoilTime;
     }
 }
 </argument>

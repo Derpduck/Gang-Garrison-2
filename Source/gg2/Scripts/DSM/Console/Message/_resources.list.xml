@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="kickMessage" type="RESOURCE"/>
+  <resource name="banMessage" type="RESOURCE"/>
+  <resource name="tempBanMessage" type="RESOURCE"/>
+</resources>

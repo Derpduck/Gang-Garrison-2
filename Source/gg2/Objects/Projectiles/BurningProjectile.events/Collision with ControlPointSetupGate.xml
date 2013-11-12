@@ -14,10 +14,11 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if global.setupTimer &gt;0 {
-
+    shotHit=false
     instance_destroy();
 
-}</argument>
+}
+</argument>
       </arguments>
     </action>
   </actions>

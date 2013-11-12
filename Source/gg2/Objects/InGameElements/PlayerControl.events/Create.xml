@@ -13,9 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">afktimeout=60*30;
+        <argument kind="STRING">afktimeout=180*30; //was 60*30, but 1 minute is way too low
 afktimer=afktimeout;
 oldScoreKeyDown=false;
+if global.isPlayingReplay instance_create(0,0,ReplayGUI)
+
+alarm[0]=10
 </argument>
       </arguments>
     </action>

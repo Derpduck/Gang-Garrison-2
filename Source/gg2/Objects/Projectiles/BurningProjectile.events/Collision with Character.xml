@@ -23,6 +23,7 @@
     other.alarm[3] = ASSIST_TIME;
     other.lastDamageDealer = ownerPlayer;
     other.lastDamageSource = weapon;
+    shotHit=true
     
     if(!object_is_ancestor(other.object_index, Pyro))
     {

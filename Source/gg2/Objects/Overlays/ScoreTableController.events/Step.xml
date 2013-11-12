@@ -15,17 +15,18 @@
       <arguments>
         <argument kind="STRING">if(not done) {
     if(alpha&lt;0.99) {
-        alpha = power(alpha,0.7);
+        alpha = power(alpha,0.5);
     } else {
         alpha = 0.99;
     }
 } else {
-    if(alpha&gt;0.02) {
-        alpha = power(alpha,1/0.7);
+    if(alpha&gt;0.05) {
+        alpha = power(alpha,1/0.5);
     } else {
         instance_destroy();
     }
-}</argument>
+}
+</argument>
       </arguments>
     </action>
   </actions>

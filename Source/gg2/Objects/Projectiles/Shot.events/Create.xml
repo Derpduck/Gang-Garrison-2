@@ -19,6 +19,7 @@
     alarm[0] = lifetime;
     originx=x;
     originy=y;
+    shotHit=false
 }
 </argument>
       </arguments>

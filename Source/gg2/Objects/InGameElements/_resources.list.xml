@@ -5,6 +5,7 @@
   <resource name="Character" type="RESOURCE"/>
   <resource name="Weapon" type="RESOURCE"/>
   <resource name="PlayerControl" type="RESOURCE"/>
+  <resource name="Console" type="RESOURCE"/>
   <resource name="SpeechBubbleO" type="RESOURCE"/>
   <resource name="SentryTurret" type="RESOURCE"/>
   <resource name="SentryGibs" type="RESOURCE"/>
@@ -17,4 +18,7 @@
   <resource name="Spectator" type="RESOURCE"/>
   <resource name="JoiningPlayer" type="RESOURCE"/>
   <resource name="Balancer" type="RESOURCE"/>
+  <resource name="fpsDisplay" type="RESOURCE"/>
+  <resource name="pingDisplay" type="RESOURCE"/>
+  <resource name="respawnTimerO" type="RESOURCE"/>
 </resources>

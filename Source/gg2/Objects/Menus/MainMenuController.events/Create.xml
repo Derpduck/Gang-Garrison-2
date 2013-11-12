@@ -30,6 +30,24 @@
     menu_addlink("Options", '
         room_goto_fix(Options);
     ');
+    menu_addlink("Stats", '
+        room_goto_fix(StatsR);
+    ');
+    menu_addlink("Watch Replay", '
+        global.isHost = false;
+        global.isPlayingReplay = 1;
+    
+        loadReplay();
+        if !global.isPlayingReplay// If the user gave an invalid file.
+        {
+            exit
+        }
+    
+        global.serverIP = 127.0.0.1
+        global.serverPort = global.hostingPort
+        instance_create(0,0,Client);
+        Client.returnRoom = Menu;
+    ');
     menu_addlink("Credits", '
         room_goto_fix(Credits);
     ');
@@ -49,6 +67,7 @@
 
     fade = 0;
     
+    if global.dsmBackground==0{
     // ini says we have a downloaded background
     if (global.backgroundHash != "default")
     {
@@ -88,15 +107,42 @@
             ini_close();
         }
     }
+    
+    }
 
     // use default background if ini says we should
-    if (global.backgroundHash == "default")
+    if (global.backgroundHash == "default") or global.dsmBackground==3
     {
         menuimage = choose(MenuBackground1, MenuBackground2);
+    }
+    
+    if global.dsmBackground==1{ //Match text colour
+        if global.textHighlightColour==0{
+            menuimage=DSM_MenuBackground2
+        }else if global.textHighlightColour==1{
+            menuimage=DSM_MenuBackground3
+        }else if global.textHighlightColour==2{
+            menuimage=DSM_MenuBackground1
+        }else if global.textHighlightColour==3{ //Random
+            menuimage=choose(DSM_MenuBackground1,DSM_MenuBackground2,DSM_MenuBackground3)
+            versionImage=choose(DSM_MenuBackgroundVersion1S,DSM_MenuBackgroundVersion2S,DSM_MenuBackgroundVersion3S)
+        }
+    }else if global.dsmBackground==2{ //Any
+        menuimage=choose(DSM_MenuBackground1,DSM_MenuBackground2,DSM_MenuBackground3)
+        if menuimage==DSM_MenuBackground1{
+            versionImage=DSM_MenuBackgroundVersion1S
+        }else if menuimage==DSM_MenuBackground2{
+            versionImage=DSM_MenuBackgroundVersion2S
+        }else if menuimage==DSM_MenuBackground3{
+            versionImage=DSM_MenuBackgroundVersion3S
+        }
     }
 
     if(global.dedicatedMode == 1)
         event_user(0);
+        
+    colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
+    colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
 }
 </argument>
       </arguments>

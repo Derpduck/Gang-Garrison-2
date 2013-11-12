@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if (global.backgroundHash != "default")
+        <argument kind="STRING">if global.dsmBackground==0{
+if (global.backgroundHash != "default")
 {
     // Load new background image
     oldBackground = menuimage;
@@ -27,6 +28,8 @@ else
     menuimage = choose(MenuBackground1, MenuBackground2);
 }
 fade = 1;
+
+}
 </argument>
       </arguments>
     </action>

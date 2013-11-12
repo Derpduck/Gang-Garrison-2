@@ -5,7 +5,9 @@
   <resource name="TeamSelectController" type="RESOURCE"/>
   <resource name="ClassSelectController" type="RESOURCE"/>
   <resource name="ScoreTableController" type="RESOURCE"/>
+  <resource name="StatsBoard" type="RESOURCE"/>
   <resource name="HUD" type="RESOURCE"/>
+  <resource name="AdvSpecHUD" type="RESOURCE"/>
   <resource name="KillLog" type="RESOURCE"/>
   <resource name="BubbleMenuZ" type="RESOURCE"/>
   <resource name="RespawnTimer" type="RESOURCE"/>
@@ -23,4 +25,5 @@
   <resource name="WinBanner" type="RESOURCE"/>
   <resource name="HealedHud" type="RESOURCE"/>
   <resource name="HealingHud" type="RESOURCE"/>
+  <resource name="ReplayGUI" type="RESOURCE"/>
 </resources>

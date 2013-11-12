@@ -40,18 +40,30 @@ if KothControlPoint.team == TEAM_RED teamoffset = 60;
 else if KothControlPoint.team == TEAM_BLUE teamoffset = 90;
 if KothControlPoint.cappingTeam == TEAM_RED &amp;&amp; KothControlPoint.team == -1 teamoffset = 30;
 else if KothControlPoint.cappingTeam != TEAM_RED &amp;&amp; KothControlPoint.team == -1 teamoffset = 0;    
-if KothControlPoint.capping != 0 draw_sprite_ext(ControlPointStatusS, teamoffset+floor(KothControlPoint.capping/KothControlPoint.capTime*30), xoffset+xsize/2, yoffset+560, 3, 3, 0, c_white, 1);
+//DSM - added cap percentage, changed line 43 and 46.
+if KothControlPoint.capping != 0{
+    draw_sprite_ext(ControlPointStatusS, teamoffset+floor(KothControlPoint.capping/KothControlPoint.capTime*30), xoffset+xsize/2, yoffset+560, 3, 3, 0, c_white, 1);
+        cpcappercent = string(floor(KothControlPoint.capping/KothControlPoint.capTime*100)) + "%";
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_center);
+        draw_text_transformed_color((xoffset+xsize/2)+4, yoffset+572, cpcappercent,1,1,0,c_black,c_black,c_black,c_black,1);
+    }
 else if KothControlPoint.capping == 0 draw_sprite_ext(ControlPointStatusS, teamoffset, xoffset+xsize/2, yoffset+560, 3, 3, 0, c_white, 1);
 if KothControlPoint.locked == 1 {
     draw_set_halign(fa_center);
-    if cpUnlock &gt;= 150 draw_sprite_ext(ControlPointLockS, 0, xoffset+xsize/2, yoffset+560, 3, 3, 0, c_white, 1);
-    else if cpUnlock &gt;= 30 draw_text_transformed(xoffset+xsize/2+2, yoffset+562, ceil(cpUnlock/30), 3,3, 0);
+    draw_set_valign(fa_center);
+    if cpUnlock &gt;= 1800 {} //To prevent display problems at server join and during set-up
+    else if cpUnlock &gt; 900 draw_text_transformed(xoffset+xsize/2+2, yoffset+562, ceil(cpUnlock/30), 1.0, 1.0, 0);
+    else if cpUnlock &gt; 450 draw_text_transformed(xoffset+xsize/2+2, yoffset+562, ceil(cpUnlock/30), 1.5, 1.5, 0);
+    else if cpUnlock &gt; 300 draw_text_transformed(xoffset+xsize/2+2, yoffset+562, ceil(cpUnlock/30), 2.0, 2.0, 0);
+    else if cpUnlock &gt; 150 draw_text_transformed(xoffset+xsize/2+2, yoffset+562, ceil(cpUnlock/30), 2.5, 2.5, 0);
+    else if cpUnlock &gt;= 1 draw_text_transformed(xoffset+xsize/2+2, yoffset+562, ceil(cpUnlock/30), 3, 3, 0);
 }
 else if KothControlPoint.cappers &gt; 0 &amp;&amp; KothControlPoint.locked == 0{
-    draw_sprite_ext(ControlPointCappersS, 0, xoffset+xsize/2, yoffset+560, 3, 3, 0, c_white, 1);
+    draw_sprite_ext(ControlPointCappersS, 0, xoffset+xsize/2, yoffset+555, 3, 3, 0, c_white, 1);
     draw_set_halign(fa_center);
     draw_set_color(c_black);
-    draw_text_transformed(xoffset+xsize/2+13, yoffset+563, string(KothControlPoint.cappers),1.5,1.5,0);
+    draw_text_transformed(xoffset+xsize/2+13, yoffset+557, string(KothControlPoint.cappers),1.5,1.5,0);
 }
 
 if instance_exists(WinBanner) exit;

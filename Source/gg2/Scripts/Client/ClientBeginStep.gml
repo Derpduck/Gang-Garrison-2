@@ -10,6 +10,19 @@ if(tcp_eof(global.serverSocket)) {
     exit;
 }
 
+if global.isPlayingReplay{
+    var length;
+    
+    for(a=0; a<global.replaySpeed; a+=1){
+        length = read_ushort(global.replayBuffer)
+        for(i=0; i<length; i+=1){
+            write_ubyte(global.replaySocket, read_ubyte(global.replayBuffer))
+        }
+        global.replayTime += 1
+    }
+    socket_send(global.replaySocket)
+}
+
 if(room == DownloadRoom and keyboard_check(vk_escape))
 {
     instance_destroy();
@@ -45,6 +58,18 @@ do {
             receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
             pluginsRequired = read_ubyte(global.tempBuffer);
             plugins = receivestring(global.serverSocket, 1);
+            if global.myCurrentPlugins!=''{
+                var pluginQuestion;
+                pluginQuestion=show_message_ext("Current Plugins: "+string(global.myCurrentPlugins)+"#Server's Plugins: "+string(plugins)+
+                "##If your plugins do not match the server's plugins or if you have plugins the server does not please select restart or quit.","Continue","Restart","Quit")
+                if (pluginQuestion==2){
+                    restartGG2()
+                    exit;
+                }else if (pluginQuestion==3){
+                    game_end()
+                    exit;
+                }
+            }
             if(string_pos("/", downloadMapName) != 0 or string_pos("\", downloadMapName) != 0)
             {
                 show_message("Server sent illegal map name: "+downloadMapName);
@@ -52,7 +77,8 @@ do {
                 exit;
             }
 
-            if (!noReloadPlugins && string_length(plugins))
+            if (!noReloadPlugins and string_length(plugins) and !global.isPlayingReplay)
+
             {
                 usePlugins = pluginsRequired || !global.serverPluginsPrompt;
                 if (global.serverPluginsPrompt)
@@ -153,7 +179,7 @@ do {
             global.playerID = read_ubyte(global.tempBuffer);
             global.currentMapArea = read_ubyte(global.tempBuffer);
             break;
-        
+            
         case FULL_UPDATE:
             deserializeState(FULL_UPDATE);
             break;
@@ -168,7 +194,7 @@ do {
                   
         case INPUTSTATE:
             deserializeState(INPUTSTATE);
-            break;             
+            break;
         
         case PLAYER_JOIN:
             player = instance_create(0,0,Player);
@@ -178,6 +204,10 @@ do {
             if(ds_list_size(global.players)-1 == global.playerID) {
                 global.myself = player;
                 instance_create(0,0,PlayerControl);
+            }else if global.isPlayingReplay and global.myself != -1{
+                ds_list_delete(global.players, ds_list_find_index(global.players, global.myself));
+                ds_list_add(global.players, global.myself);
+                global.playerID = ds_list_size(global.players)-1
             }
             break;
             
@@ -493,6 +523,8 @@ do {
                     player.stats[DOMINATIONS] = 0;
                     player.stats[REVENGE] = 0;
                     player.stats[POINTS] = 0;
+                    player.stats[HIT] = 0;
+                    player.stats[MISSED] = 0;
                     player.roundStats[KILLS] = 0;
                     player.roundStats[DEATHS] = 0;
                     player.roundStats[CAPS] = 0;
@@ -506,6 +538,8 @@ do {
                     player.roundStats[DOMINATIONS] = 0;
                     player.roundStats[REVENGE] = 0;
                     player.roundStats[POINTS] = 0;
+                    player.roundStats[HIT] = 0;
+                    player.roundStats[MISSED] = 0;
                     player.team = TEAM_SPECTATOR;
                 }
             }
@@ -533,6 +567,12 @@ do {
             var rewardString;
             rewardString = receivestring(global.serverSocket, 2);
             doEventUpdateRewards(player, rewardString);
+            break;
+            
+        case REPLAY_END:
+            show_message("This replay is finished.#Exiting to menu.")
+            global.isPlayingReplay = 0;
+            instance_destroy();
             break;
             
         case MESSAGE_STRING:
@@ -602,8 +642,7 @@ do {
                 buffer_destroy(buf);
                 show_error("ERROR when reading plugin packet: no such plugin packet ID " + string(packetID), true);
             }
-            break;
-        
+            break; 
         case CLIENT_SETTINGS:
             receiveCompleteMessage(global.serverSocket,2,global.tempBuffer);
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));

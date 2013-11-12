@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="DSM" type="GROUP"/>
   <resource name="game_init" type="RESOURCE"/>
   <resource name="offloadSpawnPoints" type="RESOURCE"/>
   <resource name="removePlayer" type="RESOURCE"/>
@@ -50,8 +51,8 @@
   <resource name="calculateHealingFactor" type="RESOURCE"/>
   <resource name="toggleZoom" type="RESOURCE"/>
   <resource name="ds_list_sorted_insert" type="RESOURCE"/>
-  <resource name="restartGG2" type="RESOURCE"/>
   <resource name="isBetaVersion" type="RESOURCE"/>
+  <resource name="restartGG2" type="RESOURCE"/>
   <resource name="promptRestartOrQuit" type="RESOURCE"/>
   <resource name="split" type="RESOURCE"/>
 </resources>

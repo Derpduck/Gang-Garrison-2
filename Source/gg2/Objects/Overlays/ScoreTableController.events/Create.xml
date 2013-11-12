@@ -14,10 +14,12 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    alpha=0.02;
+    alpha=0.05;
     done = false;
     nameLen = 0;
     showadmin = false;
+    if global.myself != -1 and instance_exists(global.myself)
+    instance_create(x,y+402,StatsBoard)
 }
 </argument>
       </arguments>

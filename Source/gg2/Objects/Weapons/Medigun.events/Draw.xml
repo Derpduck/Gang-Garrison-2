@@ -32,6 +32,9 @@ if(instance_exists(healTarget))
             
         draw_set_alpha(0.3);
         draw_line_width_color(xdrawpos+lengthdir_x(24,owner.aimDirection),ydrawpos+lengthdir_y(24,owner.aimDirection),healTarget.object.x, healTarget.object.y, 5, color, color);
+        if global.healingArrow==1{
+            draw_triangle_color(healTarget.object.x,healTarget.object.y-40,healTarget.object.x-8,healTarget.object.y-50,healTarget.object.x+8,healTarget.object.y-50,color,color,color,0);
+        }
         if (sprite_index != normalSprite) {
             //cancel the fire animation
             sprite_index = normalSprite;
@@ -44,8 +47,10 @@ if(instance_exists(healTarget))
         //set the sprite to idle
         imageOffset = owner.team
     }else{
-        //We are shooting, loop the shoot animation
-         imageOffset = floor(image_index mod recoilAnimLength) + recoilAnimLength*owner.team
+        if global.recoilAnimations==1{
+            //We are shooting, loop the shoot animation
+            imageOffset = floor(image_index mod recoilAnimLength) + recoilAnimLength*owner.team
+        }
     }
 }
 

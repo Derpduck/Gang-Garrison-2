@@ -16,6 +16,7 @@
         <argument kind="STRING">{
     draw_background(menuimage, 0, 0);
 
+    if global.dsmBackground==0{
     // display background info, if downloaded
     if (global.backgroundHash != "default")
     {
@@ -43,10 +44,26 @@
     {
         draw_background_ext(oldBackground, 0, 0, 1, 1, 0, c_white, fade);
     }
+    
+    }
 
-    if (!(global.backgroundHash != "default" &amp;&amp; !global.backgroundShowVersion))
+    if (!(global.backgroundHash != "default" &amp;&amp; !global.backgroundShowVersion) and (global.dsmBackground==0 or global.dsmBackground==3))
     {
         draw_sprite(MenuBackgroundVersionS,0,300,300);
+    }
+    
+    if global.dsmBackground==1{
+        if global.textHighlightColour==0{
+            draw_sprite(DSM_MenuBackgroundVersion2S,0,300,300);
+        }else if global.textHighlightColour==1{
+           draw_sprite(DSM_MenuBackgroundVersion3S,0,300,300);
+        }else if global.textHighlightColour==2{
+            draw_sprite(DSM_MenuBackgroundVersion1S,0,300,300);
+        }else if global.textHighlightColour==3{
+            draw_sprite(versionImage,0,300,300);
+        }
+    }else if global.dsmBackground==2{
+        draw_sprite(versionImage,0,300,300);
     }
 }
 </argument>

@@ -56,17 +56,19 @@
     }
     sprite_index = normalSprite;
     
-    //play at least 2 frames
-    recoilTime = 3;
-    recoilAnimLength = sprite_get_number(recoilSprite)/2;
-    recoilImageSpeed = recoilAnimLength/recoilTime;
+    if global.recoilAnimations==1{
+        //play at least 2 frames
+        recoilTime = 3;
+        recoilAnimLength = sprite_get_number(recoilSprite)/2;
+        recoilImageSpeed = recoilAnimLength/recoilTime;
     
-    blastAnimLength = sprite_get_number(blastSprite)/2;
-    blastImageSpeed = blastAnimLength/blastNoFlameTime;
+        blastAnimLength = sprite_get_number(blastSprite)/2;
+        blastImageSpeed = blastAnimLength/blastNoFlameTime;
 
-    dropTime = 4;
-    dropAnimLength = sprite_get_number(dropSprite)/2;
-    dropImageSpeed = dropAnimLength/dropTime;
+        dropTime = 4;
+        dropAnimLength = sprite_get_number(dropSprite)/2;
+        dropImageSpeed = dropAnimLength/dropTime;
+    }
 }
 </argument>
       </arguments>

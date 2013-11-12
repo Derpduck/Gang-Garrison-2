@@ -28,7 +28,9 @@
         sound_volume(global.IngameMusic, 0.8);
     if(global.FaucetMusic != -1)
         sound_volume(global.FaucetMusic, 0.8);
-        
+    
+    clipboard_set_text("")
+    
     global.sendBuffer = buffer_create();
     global.tempBuffer = buffer_create();
     global.HudCheck = false;
@@ -37,6 +39,9 @@
     global.CustomMapCollisionSprite = -1;
     
     window_set_region_scale(-1, false);
+    
+    DSM_init()
+    console_init()
     
     ini_open("gg2.ini");
     global.playerName = ini_read_string("Settings", "PlayerName", "Player");
@@ -82,7 +87,7 @@
     global.mapRotationFile = customMapRotationFile;
     global.dedicatedMode = ini_read_real("Server", "Dedicated", 0);
     global.serverName = ini_read_string("Server", "ServerName", "My Server");
-    global.welcomeMessage = ini_read_string("Server", "WelcomeMessage", "");
+    global.welcomeMessage = ini_read_string("Server", "WelcomeMessage", "Welcome! This server is running on DSM.");
     global.caplimit = max(1, min(255, ini_read_real("Server", "CapLimit", 5)));
     global.caplimitBkup = global.caplimit;
     global.autobalance = ini_read_real("Server", "AutoBalance",1);
@@ -401,6 +406,7 @@ global.launchMap = "";
     window_set_fullscreen(global.fullscreen);
     
     global.gg2Font = font_add_sprite(gg2FontS,ord("!"),false,0);
+    global.DSMConsoleFont = font_add_sprite(consoleFontS,ord("!"),false,0);
     global.countFont = font_add_sprite(countFontS, ord("0"),false,2);
     draw_set_font(global.gg2Font);
     cursor_sprite = CrosshairS;
@@ -434,6 +440,8 @@ global.launchMap = "";
     global.changeTeam = ini_read_real("Controls", "changeTeam", ord("N"));
     global.changeClass = ini_read_real("Controls", "changeClass", ord("M"));
     global.showScores = ini_read_real("Controls", "showScores", vk_shift);
+    global.superburst = ini_read_real("Controls", "superburst", ord("R"));
+    global.screenshotButton = ini_read_real("Controls", "screenshotButton", vk_f10);
     ini_close();
     
     calculateMonthAndDay();

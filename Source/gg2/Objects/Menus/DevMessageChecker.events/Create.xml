@@ -34,6 +34,8 @@ else
 handle = httpGet(url, -1);
 
 image_speed = 5/room_speed;
+
+alarm[0]=10*30
 </argument>
       </arguments>
     </action>

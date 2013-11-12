@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="CustomEntity1" type="RESOURCE"/>
+  <resource name="CustomEntity2" type="RESOURCE"/>
+  <resource name="CustomEntity3" type="RESOURCE"/>
+  <resource name="CustomEntity4" type="RESOURCE"/>
+</resources>
