@@ -55,6 +55,10 @@ if (myTeam == TEAM_SPECTATOR)
 {
     event_user(7);
 }
+
+//Spectator dragging
+canvasMove=false
+cursorUpdate=true
 </argument>
       </arguments>
     </action>

@@ -24,4 +24,6 @@
   <resource name="Boot" type="RESOURCE"/>
   <resource name="SpectatorHealthCross" type="RESOURCE"/>
   <resource name="SpectatorHealthFill" type="RESOURCE"/>
+  <resource name="MoveCursorS" type="RESOURCE"/>
+  <resource name="DragCursorS" type="RESOURCE"/>
 </resources>

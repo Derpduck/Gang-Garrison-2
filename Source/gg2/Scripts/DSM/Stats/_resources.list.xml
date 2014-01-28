@@ -4,6 +4,7 @@
   <resource name="addStats" type="RESOURCE"/>
   <resource name="writeStats" type="RESOURCE"/>
   <resource name="calcAccuracy" type="RESOURCE"/>
-  <resource name="calcKD" type="RESOURCE"/>
+  <resource name="calcAccuracy2" type="RESOURCE"/>
+  <resource name="timeString" type="RESOURCE"/>
   <resource name="handleHitOrMiss" type="RESOURCE"/>
 </resources>

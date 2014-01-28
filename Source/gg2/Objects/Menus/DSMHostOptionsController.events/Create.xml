@@ -34,6 +34,10 @@
     ');
     menu_add_option(0, "Continuous (Default)");
     menu_add_option(1, "Segmented by map");
+    
+    menu_addedit_boolean("Prompt For Replay Names:", "global.replayNamePropmt", '
+        DSM_write_ini("Settings", "ReplayNamePrompt", argument0);
+    ');
         
     menu_addback("Back", '
         instance_create(x,y,DSMOptionsController);

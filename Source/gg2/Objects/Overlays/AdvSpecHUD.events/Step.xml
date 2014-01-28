@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if(global.myself.team == TEAM_SPECTATOR)
+{
+    if(cursorUpdate)
+    {
+        _px[2] = _px[1];
+        _py[2] = _py[1];
+        _px[1] = _px[0];
+        _py[1] = _py[0];
+        _px[0] = _x;
+        _py[0] = _y; // PS: `var[0]` is equivalent to `var`
+        _x = mouse_x;
+        _y = mouse_y;
+    }
+    if (mouseMode == 1)
+    {
+        // extrapolate abstract points from extant ones
+        vx0 = (_px[1] - _px[2])*1.5+_px[2];
+        vy0 = (_py[1] - _py[2])*1.5+_py[2];
+        vx1 = (_px[0] - _x    )*1.5+_x;
+        vy1 = (_py[0] - _y    )*1.5+_y;
+        // create weighted average abstract point from those points
+        vxa = mean(vx0, vx1);
+        vya = mean(vy0, vy1);
+        // create virtual point from abstract and real points
+        vx = mean(vxa, _px[0], _px[1]);
+        vy = mean(vya, _py[0], _py[1]);
+        _linewidth = global.spec_draw_width;
+        
+        if mouse_check_button(mb_left) or mouse_check_button_released(mb_left)
+        {
+            surface_set_target(page);
+            draw_set_color(c_red);
+            draw_line_width(round(_px[1]/global.spec_draw_xscale), round(_py[1]/global.spec_draw_yscale), round(vx/global.spec_draw_xscale), round(vy/global.spec_draw_yscale), _linewidth);
+            draw_line_width(round(vx/global.spec_draw_xscale), round(vy/global.spec_draw_yscale), round(_px[0]/global.spec_draw_xscale), round(_py[0]/global.spec_draw_yscale), _linewidth);
+            draw_circle(round(_px[1]/global.spec_draw_xscale), round(_py[1]/global.spec_draw_yscale), _linewidth/2, false); // this helps prevent the "low ink"-like stutter effect at very slow speeds
+            draw_circle(round(vx/global.spec_draw_xscale), round(vy/global.spec_draw_yscale), _linewidth/2, false);
+            surface_reset_target();
+        }
+        if mouse_check_button_released(mb_left)
+        {
+            surface_set_target(page);
+            draw_set_color(c_red);
+            draw_line_width(round(_px/global.spec_draw_xscale), round(_py/global.spec_draw_yscale), round(_x/global.spec_draw_xscale), round(_y/global.spec_draw_yscale), _linewidth);
+            draw_circle(round(_px/global.spec_draw_yscale), round(_py/global.spec_draw_yscale), _linewidth/2, false);
+            draw_circle(round(_x/global.spec_draw_yscale), round(_y/global.spec_draw_yscale), _linewidth/2, false);
+            surface_reset_target();
+        }
+        if mouse_check_button(mb_right) or mouse_check_button_released(mb_right)
+        {
+            surface_set_target(page);
+            draw_set_color(c_blue);
+            draw_line_width(round(_px[1]/global.spec_draw_xscale), round(_py[1]/global.spec_draw_yscale), round(vx/global.spec_draw_xscale), round(vy/global.spec_draw_yscale), _linewidth);
+            draw_line_width(round(vx/global.spec_draw_xscale), round(vy/global.spec_draw_yscale), round(_px[0]/global.spec_draw_xscale), round(_py[0]/global.spec_draw_yscale), _linewidth);
+            draw_circle(round(_px[1]/global.spec_draw_xscale), round(_py[1]/global.spec_draw_yscale), _linewidth/2, false); // this helps prevent the "low ink"-like stutter effect at very slow speeds
+            draw_circle(round(vx/global.spec_draw_xscale), round(vy/global.spec_draw_yscale), _linewidth/2, false);
+            surface_reset_target();
+        }
+        if mouse_check_button_released(mb_right)
+        {
+            surface_set_target(page);
+            draw_set_color(c_blue);
+            draw_line_width(round(_px/global.spec_draw_xscale), round(_py/global.spec_draw_yscale), round(_x/global.spec_draw_xscale), round(_y/global.spec_draw_yscale), _linewidth);
+            draw_circle(round(_px/global.spec_draw_yscale), round(_py/global.spec_draw_yscale), _linewidth/2, false);
+            draw_circle(round(_x/global.spec_draw_yscale), round(_y/global.spec_draw_yscale), _linewidth/2, false);
+            surface_reset_target();
+        }
+    }
+    if mouseMode==2{
+        if mouse_check_button(mb_left) &amp;&amp; cursorUpdate
+        {
+            with Spectator {
+                hspeed = 0;
+                vspeed = 0;
+            }
+            _x = mouse_x;
+            _y = mouse_y;
+            cursorUpdate=false;
+            cursor_sprite = DragCursorS;
+        }
+        if mouse_check_button(mb_left) &amp;&amp; !cursorUpdate
+        {
+            _px = mouse_x;
+            _py = mouse_y; 
+            
+            _dx = _x - _px;
+            _dy = _y - _py;
+            
+            with Spectator {
+                x += other._dx/4;
+                y += other._dy/4;
+            }
+        }
+        if mouse_check_button_released(mb_left) &amp;&amp; !cursorUpdate{
+            with Spectator {
+                hspeed = other._dx/4;
+                vspeed = other._dy/4;
+            }
+            cursorUpdate=true;
+            cursor_sprite = MoveCursorS;
+        }
+        
+        if mouse_check_button(mb_right) &amp;&amp; cursorUpdate{
+            cursorUpdate=false;
+            with Spectator {
+                hspeed = 0;
+                vspeed = 0;
+                x = mouse_x;
+                y = mouse_y;
+            }
+            cursor_sprite = DragCursorS;
+        }
+        if mouse_check_button_released(mb_right) &amp;&amp; !cursorUpdate{
+            cursorUpdate=true;
+            cursor_sprite = MoveCursorS;
+        }
+        
+        if mouse_check_button(mb_middle) &amp;&amp; cursorUpdate
+        {
+            with (Spectator)
+            {
+                hspeed = 0;
+                vspeed = 0;
+            }
+            m_wstart_x = window_mouse_get_x();
+            m_wstart_y = window_mouse_get_y();
+            m_state_x = mouse_x;
+            m_state_y = mouse_y;
+            v_state_x = view_xview;
+            v_state_y = view_yview;
+            cursorUpdate = false;
+            cursor_sprite = DragCursorS;
+        }
+        else if mouse_check_button(mb_middle) &amp;&amp; !cursorUpdate
+        {
+            //xdiff = window_mouse_get_x() - m_state_x;
+            //ydiff = window_mouse_get_y() - m_state_y;
+            delta_x = (mouse_x - view_xview) - (m_state_x - v_state_x);
+            delta_y = (mouse_y - view_yview) - (m_state_y - v_state_y);
+            m_state_x = mouse_x;
+            m_state_y = mouse_y;
+            v_state_x = view_xview;
+            v_state_y = view_yview;
+            Spectator.x += delta_x;
+            Spectator.y += delta_y;
+            //window_mouse_set(m_wstart_x, m_wstart_y);
+        }
+        if mouse_check_button_released(mb_middle) &amp;&amp; !cursorUpdate{
+            cursorUpdate=true;
+            cursor_sprite = MoveCursorS;
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

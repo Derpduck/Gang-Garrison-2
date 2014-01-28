@@ -13,9 +13,10 @@ global.respawnTimer=ini_read_real("Settings","RespawnTimer",1)
 global.recordingType=ini_read_real("Settings","RecordingType",0)
 global.soundPanning=ini_read_real("Settings","SoundPanning",1)
 global.pluginCleanup=ini_read_real("Settings","PluginCleanup",1)
+global.oldAutobalance=ini_read_real("Settings","OldAutobalance",0)
+global.replayNamePropmt=ini_read_real("Settings","ReplayNamePrompt",1)
+global.deadScoreboard=ini_read_real("Settings","DeadScoreboard",0)
 
-global.alreadyWroteStats=0
-//global.serverGenStab=0
 global.displayingFPS=0
 global.displayingPing=0
 global.myCurrentPlugins=''
@@ -35,6 +36,9 @@ ini_write_real("Settings","RespawnTimer",global.respawnTimer)
 ini_write_real("Settings","RecordingType",global.recordingType)
 ini_write_real("Settings","SoundPanning",global.soundPanning)
 ini_write_real("Settings","PluginCleanup",global.pluginCleanup)
+ini_write_real("Settings","OldAutobalance",global.oldAutobalance)
+ini_write_real("Settings","ReplayNamePrompt",global.replayNamePropmt)
+ini_write_real("Settings","DeadScoreboard",global.deadScoreboard)
 ini_close()
 
 statsTracker()

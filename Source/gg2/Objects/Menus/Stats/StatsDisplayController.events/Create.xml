@@ -24,16 +24,13 @@
     
     alarm[0]=1
     
-    global.statsMainM=1
-    global.statsKillsM=0
-    
+    menu_addtext("In-Game Time (Minutes):")
     menu_addtext("Games:")
     menu_addtext("Wins:")
     menu_addtext("Losses:")
     menu_addtext("Points:")
     menu_addtext("Kills:")
     menu_addtext("Deaths:")
-    //menu_addtext("K/D Ratio:")
     menu_addtext("Assists:")
     menu_addtext("Destruction:")
     menu_addtext("Caps:")

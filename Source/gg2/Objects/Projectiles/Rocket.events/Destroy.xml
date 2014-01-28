@@ -17,11 +17,7 @@
     part_type_destroy(rocketblurParticleType);
 }
 
-if shotHit=false{
-    handleHitOrMiss(ownerPlayer,0)
-}else{
-    handleHitOrMiss(ownerPlayer,1)
-}
+handleHitOrMiss(ownerPlayer,shotHit)
 
 ds_list_destroy(playersPassed);
 </argument>

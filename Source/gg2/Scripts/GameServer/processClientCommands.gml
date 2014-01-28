@@ -70,7 +70,6 @@ while(commandLimitRemaining > 0) {
         case PLAYER_LEAVE:
             socket_destroy(player.socket);
             player.socket = -1;
-            console_print(player.name+" has left the server.")
             break;
             
         case PLAYER_CHANGECLASS:

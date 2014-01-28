@@ -5,6 +5,8 @@
 //shooter=argument0
 //hit=argument1
 
+if global.recordStats==0 exit;
+
 if argument1==1{
     argument0.stats[HIT]+=1
 }else{

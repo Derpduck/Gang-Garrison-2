@@ -15,6 +15,37 @@
       <arguments>
         <argument kind="STRING">parent=self
 visible=true
+
+with(AdvSpecHUD)
+    if (id != other.id)
+        instance_destroy();
+
+parent=self;
+visible = true;
+
+//0 = nothing
+//1 = total healing + ubercharges
+//2 = total deaths
+specBarType=0;
+
+//0 = nothing
+//1 = pen mode
+//2 = move mode
+mouseMode=0;
+
+cursorUpdate=true;
+
+//mouse variables
+_px[2] = mouse_x;
+_py[2] = mouse_y;
+_px[1] = mouse_x;
+_py[1] = mouse_y;
+_px[0] = mouse_x;
+_py[0] = mouse_y;
+_x = mouse_x;
+_y = mouse_y;
+_dx = 0;
+_dy = 0;
 </argument>
       </arguments>
     </action>

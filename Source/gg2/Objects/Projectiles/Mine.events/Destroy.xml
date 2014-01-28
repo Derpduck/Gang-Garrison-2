@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">owner.currentWeapon.lobbed -= 1;
 
-if shotHit=false{
+if shotHit==false{
     handleHitOrMiss(ownerPlayer,0)
 }else{
     handleHitOrMiss(ownerPlayer,1)

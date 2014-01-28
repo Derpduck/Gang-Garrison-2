@@ -31,7 +31,6 @@
         part_particles_create(global.flameParticleSystem,x,y,global.flameParticleType,1);
     }
 }
-
 </argument>
       </arguments>
     </action>

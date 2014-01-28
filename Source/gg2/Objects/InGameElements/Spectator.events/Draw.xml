@@ -15,8 +15,13 @@
       <arguments>
         <argument kind="STRING">xoffset = view_xview[0];
 yoffset = view_yview[0];
-xsize = view_wview[0];
 ysize = view_hview[0];
+
+if !(global.chuWarSpecHud){
+    xsize = view_wview[0];
+}else{
+    xsize = view_wview[0]+180
+}
 
 // special thanks to wareya for the warhud HP cross code &amp; images
 var sprite_xpos, sprite_ypos, icon_xpos, icon_ypos, hppixels;

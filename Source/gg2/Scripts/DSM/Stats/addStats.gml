@@ -1,5 +1,6 @@
 //Games, wins and losses changed in create event of win banner.
-if global.recordStats==1{
+if global.recordStats==1 and global.alreadyWroteStats==0{
+    global.statsTime+=global.inGameTime
     global.statsPoints+=global.myself.stats[POINTS]
     global.statsKills+=global.myself.stats[KILLS]
     global.statsDeaths+=global.myself.stats[DEATHS]
@@ -13,4 +14,6 @@ if global.recordStats==1{
     global.statsShotsHit+=global.myself.stats[HIT]
     global.statsShotsMissed+=global.myself.stats[MISSED]
     writeStats()
+    
+    global.inGameTime=0
 }

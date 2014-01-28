@@ -19,6 +19,7 @@ for(i=0; i<ds_list_size(global.players); i+=1)
     
     if(socket_has_error(player.socket) or player.kicked)
     {
+        console_print(player.name+" has left the server. GameServerBeginStep()")
         removePlayer(player);
         ServerPlayerLeave(i, global.sendBuffer);
         ServerBalanceTeams();

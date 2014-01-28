@@ -128,6 +128,12 @@
     omnomnomnomOverlay = -1;
     omnomnomnomSprite = OmnomnomnomS;
     sniperCrouchOverlay = -1;
+    demon = -1;
+    demonX = 0;
+    demonY = 0;
+    demonOffset = 0;
+    demonDir = 0.5;
+    demonFrame = 0;
 
     // Let's spawn our weapon
     global.paramOwner = id;
@@ -139,6 +145,10 @@
     {
         overlay = global.HatBobbleClassOverlay[player.class];
         tauntOverlay = global.HatBobbleClassTaunt[player.class];
+    }
+    if (hasReward(player, 'WillOWisp'))
+    {
+        demon = WillOWispS;
     }
 }
 </argument>

@@ -216,6 +216,7 @@ do {
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
             playerID = read_ubyte(global.tempBuffer);
             player = ds_list_find_value(global.players, playerID);
+            console_print(player.name+" has left the server. ClientBeginStep()")
             removePlayer(player);
             if(playerID < global.playerID) {
                 global.playerID -= 1;

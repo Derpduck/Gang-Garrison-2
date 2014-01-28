@@ -31,11 +31,16 @@ if(global.updaterBetaChannel)
 else
     url = DEVMESSAGES_SOURCE;
 
-handle = httpGet(url, -1);
+handle = http_new_get(url);
 
 image_speed = 5/room_speed;
 
-alarm[0]=10*30
+alarm[0]=900
+//manually forcing an update works fine, it seems to be the devmessage.txt causing the problem
+/*var popup;
+popup = instance_create(250, 471, DevMessagePopup);
+                popup.msg = "Updates have been made to DSM!##"
+                popup.updating = true;
 </argument>
       </arguments>
     </action>

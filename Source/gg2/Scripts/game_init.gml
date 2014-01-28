@@ -442,6 +442,7 @@ global.launchMap = "";
     global.showScores = ini_read_real("Controls", "showScores", vk_shift);
     global.superburst = ini_read_real("Controls", "superburst", ord("R"));
     global.screenshotButton = ini_read_real("Controls", "screenshotButton", vk_f10);
+    global.showWMButt=ini_read_real("Controls","ShowWMButt",ord("O"))
     ini_close();
     
     calculateMonthAndDay();

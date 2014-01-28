@@ -435,7 +435,6 @@ console_print('Warning: Can cause crashes, use at own responsibility!');
 
 console_addCommand("quit", "
 game_end()
-if global.alreadyWroteStats==0 addStats()
 ", "
 console_print('Syntax: quit')
 console_print('Use: Closes the game.')
@@ -448,6 +447,12 @@ if not global.isHost{
 }
 var nextMap;
 nextMap=input[1]
+
+if!(findInternalMapRoom(nextMap) or file_exists('Maps/' + nextMap + '.png')){
+    console_print(nextMap+' is not a valid map name. Ensure you have the map in your maps folder and have spelt it correctly.')
+    exit;
+}
+
 ds_list_insert(global.map_rotation,global.currentMapIndex+1,nextMap)
 console_print('The next map is '+nextMap+'.')
 ", "

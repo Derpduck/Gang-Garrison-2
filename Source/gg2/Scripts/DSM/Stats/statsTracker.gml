@@ -1,4 +1,5 @@
 ini_open("stats.gg2")
+global.statsTime=ini_read_real("Stats","Time",0)
 global.statsGames=ini_read_real("Stats","Games",0)
 global.statsWins=ini_read_real("Stats","Wins",0)
 global.statsLosses=ini_read_real("Stats","Losses",0)
@@ -15,6 +16,7 @@ global.statsStabs=ini_read_real("Stats","Stabs",0)
 global.statsShotsHit=ini_read_real("Stats","ShotsHit",0)
 global.statsShotsMissed=ini_read_real("Stats","ShotsMissed",0)
 
+ini_write_real("Stats","Time",global.statsTime)
 ini_write_real("Stats","Games",global.statsGames)
 ini_write_real("Stats","Wins",global.statsWins)
 ini_write_real("Stats","Losses",global.statsLosses)
@@ -32,6 +34,7 @@ ini_write_real("Stats","ShotsHit",global.statsShotsHit)
 ini_write_real("Stats","ShotsMissed",global.statsShotsMissed)
 ini_close()
 
-global.statsMainM=0 
-global.statsKillsM=0
 global.accuracy=0
+global.alreadyWroteStats=0
+global.inGameTime=0 //Recorded in frames
+global.displayTime=""
