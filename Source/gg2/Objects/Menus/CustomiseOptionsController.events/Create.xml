@@ -40,6 +40,11 @@
     menu_add_option(2, "DSM (Any colour)")
     menu_add_option(3, "Normal (No downloaded backgrounds)")
     
+    menu_addedit_boolean("Show Scores When Dead:", "global.deadScoreboard", '
+        DSM_write_ini("Settings", "DeadScoreboard", argument0);
+    ')
+    
+    menu_addedit_key("Show Walkmask Button:", "global.showWMButt");
     
     menu_addback("Back", '
         instance_create(x,y,DSMOptionsController);

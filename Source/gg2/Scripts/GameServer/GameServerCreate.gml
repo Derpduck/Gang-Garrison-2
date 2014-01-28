@@ -138,6 +138,18 @@
     currentMapIndex = -1;
     global.currentMapArea = 1;
 
+    //This is pretty hacky, but it works for now.
+    var desiredMapName, i, numberOfMaps;
+    numberOfMaps = ds_list_size(global.map_rotation);
+
+    for(i = 1; i <= numberOfMaps; i += 1){
+        desiredMapName = ds_list_find_value(global.map_rotation, i);
+        if!(findInternalMapRoom(desiredMapName) or file_exists('Maps/' + string(desiredMapName) + '.png')){
+            ds_list_delete(global.map_rotation,i)
+            show_message(string(desiredMapName)+' is not a valid map name; this map will be skipped. Ensure you have the map in your maps folder and have spelt it correctly.')
+        }
+    }
+
     serverGotoMap(nextMapInRotation());
     
     global.joinedServerName = global.serverName; // so no errors of unknown variable occur when you create a server
@@ -185,5 +197,11 @@
     
     if global.recordingEnabled{
         global.justEnabledRecording = 1
+    }
+        //vsync makes the server desync
+    if (global.monitorSync == 1)
+    {
+        global.monitorSync = 0;
+        set_synchronization(0)
     }
 }

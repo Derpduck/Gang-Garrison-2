@@ -21,6 +21,9 @@
 if(global.myself.object != -1)
     instance_destroy();
 
+speed*=0.9
+if speed&lt;0.3 speed=0
+
 var moved;
 moved = false;
 stopTracking = false;
@@ -83,6 +86,46 @@ else if(tracking)
 if(tracking and stopTracking) 
 {
     tracking = false;
+}
+
+if canvasMove{
+    if mouse_check_button(mb_left) and cursorUpdate{
+        hspeed=0
+        vspeed=0
+        _x=mouse_x
+        _y=mouse_y
+        cursorUpdate=false
+        moved=true
+    }
+    if mouse_check_button(mb_left) and !cursorUpdate{
+        _px=mouse_x
+        _py=mouse_y
+        
+        _dx=_x-_px
+        _dy=_y-_py
+        
+        x+=other._dx/4
+        y+=other._dy/4
+        moved=true
+    }
+    if mouse_check_button_released(mb_left) and !cursorUpdate{
+        hspeed=other._dx/4
+        vspeed=other._dy/4
+        cursorUpdate=true
+        moved=true
+    }
+    if mouse_check_button(mb_right) and cursorUpdate{
+        cursorUpdate=false
+        hspeed=0
+        vspeed=0
+        x=mouse_x
+        y=mouse_y
+        moved=true
+    }
+    if mouse_check_button_released(mb_right) and !cursorUpdate{
+        cursorUpdate=true
+        moved=true
+    }
 }
 
 // Clip view to map area

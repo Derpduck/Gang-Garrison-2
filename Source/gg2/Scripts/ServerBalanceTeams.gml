@@ -39,10 +39,12 @@ if global.autobalance == 1 && !instance_exists(ArenaHUD) {
             player = ds_list_find_value(global.players, i);
             // find lowest pointed player on larger team
             if(player.team == balance && player.stats[POINTS] < points) {
-                // Only dead players
-                if (player.object != -1) {
-                    if (!(player.object.hp <= 0)) {
-                        continue;
+                if global.oldAutobalance==0{ //So it will just balance players that are dead, not just when they are killed, hmm...
+                    // Only dead players
+                    if (player.object != -1) {
+                        if (!(player.object.hp <= 0)) {
+                            continue;
+                        }
                     }
                 }
                 points = player.stats[POINTS];

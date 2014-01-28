@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">if(other.id != ownerPlayer.object and other.team != team &amp;&amp; other.ubered == 0  &amp;&amp; other.hp &gt; 0) {
     other.hp -= hitDamage;
+    shotHit=true
     other.timeUnscathed = 0;
     if (other.lastDamageDealer != ownerPlayer &amp;&amp; other.lastDamageDealer != other.player){
         other.secondToLastDamageDealer = other.lastDamageDealer;
@@ -23,7 +24,6 @@
     other.alarm[3] = ASSIST_TIME;
     other.lastDamageDealer = ownerPlayer;
     other.lastDamageSource = weapon;
-    shotHit=true
     
     if(!object_is_ancestor(other.object_index, Pyro))
     {

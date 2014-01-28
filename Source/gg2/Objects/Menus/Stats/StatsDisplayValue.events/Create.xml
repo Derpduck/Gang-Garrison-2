@@ -16,27 +16,47 @@
         <argument kind="STRING">{
     menu_create(240, 70, -300, -400, 30);
     
-    statsTracker()
-    calcAccuracy()
-    calcKD()
+    if room==StatsR{
+        statsTracker()
+    }
     
-    menu_addtext(string(floor(global.statsGames)))
+    timeString()
+    menu_addtext(string(global.displayTime))
+    menu_addtext(string(floor(global.statsGames))) //These aren't changed until the end of the round.
     menu_addtext(string(floor(global.statsWins)))
-    menu_addtext(string(floor(global.statsLosses)))
-    menu_addtext(string(floor(global.statsPoints)))
-    menu_addtext(string(floor(global.statsKills)))
-    menu_addtext(string(floor(global.statsDeaths)))
-    //menu_addtext(global.kdRatioString)
-    menu_addtext(string(floor(global.statsAssists)))
-    menu_addtext(string(floor(global.statsDestruction)))
-    menu_addtext(string(floor(global.statsCaps)))
-    menu_addtext(string(floor(global.statsDefences)))
-    menu_addtext(string(floor(global.statsInvulns)))
-    menu_addtext(string(floor(global.statsHealing)))
-    menu_addtext(string(floor(global.statsStabs)))
-    menu_addtext(string(floor(global.statsShotsHit)))
-    menu_addtext(string(floor(global.statsShotsMissed)))
-    menu_addtext(string(floor(global.accuracy))+"%")
+    menu_addtext(string(global.statsLosses))
+    
+    if room==StatsR{
+        menu_addtext(string(floor(global.statsPoints)))
+        menu_addtext(string(floor(global.statsKills)))
+        menu_addtext(string(floor(global.statsDeaths)))
+        menu_addtext(string(floor(global.statsAssists)))
+        menu_addtext(string(floor(global.statsDestruction)))
+        menu_addtext(string(floor(global.statsCaps)))
+        menu_addtext(string(floor(global.statsDefences)))
+        menu_addtext(string(floor(global.statsInvulns)))
+        menu_addtext(string(floor(global.statsHealing)))
+        menu_addtext(string(floor(global.statsStabs)))
+        menu_addtext(string(floor(global.statsShotsHit)))
+        menu_addtext(string(floor(global.statsShotsMissed)))
+        calcAccuracy()
+    }else{
+        menu_addtext(string(floor(global.statsPoints)+global.myself.stats[POINTS])) //Stats from current round
+        menu_addtext(string(floor(global.statsKills)+global.myself.stats[KILLS]))
+        menu_addtext(string(floor(global.statsDeaths)+global.myself.stats[DEATHS]))
+        menu_addtext(string(floor(global.statsAssists)+global.myself.stats[ASSISTS]))
+        menu_addtext(string(floor(global.statsDestruction)+global.myself.stats[DESTRUCTION]))
+        menu_addtext(string(floor(global.statsCaps)+global.myself.stats[CAPS]))
+        menu_addtext(string(floor(global.statsDefences)+global.myself.stats[DEFENSES]))
+        menu_addtext(string(floor(global.statsInvulns)+global.myself.stats[INVULNS]))
+        menu_addtext(string(floor(global.statsHealing)+global.myself.stats[HEALING]))
+        menu_addtext(string(floor(global.statsStabs)+global.myself.stats[STABS]))
+        menu_addtext(string(floor(global.statsShotsHit)+global.myself.stats[HIT]))
+        menu_addtext(string(floor(global.statsShotsMissed)+global.myself.stats[MISSED]))
+        calcAccuracy2()
+    }
+    menu_addtext(string(global.accuracy)+"%")
+    
     
     colour1=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))
     colour2=make_color_rgb(random_range(0,255),random_range(0,255),random_range(0,255))

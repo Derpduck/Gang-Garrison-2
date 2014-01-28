@@ -19,5 +19,23 @@
         <argument kind="MENU">0</argument>
       </arguments>
     </action>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">visible=1
+image_alpha=0
+setVisibility=0
+</argument>
+      </arguments>
+    </action>
   </actions>
 </event>

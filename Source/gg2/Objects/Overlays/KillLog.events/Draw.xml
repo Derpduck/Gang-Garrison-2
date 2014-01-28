@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.showKillLog==1{
+        <argument kind="STRING">if global.showKillLog!=0{
 var i, map, n1, t1, w1, n2, t2, in, str, color,yoffset;
 
 if (global.kothHudPos)
@@ -34,7 +34,11 @@ for (i = 0; i &lt; ds_list_size(kills); i += 1) {
     in = ds_map_find_value(map, "inthis"); // Am I involved in this event?
     str = ds_map_find_value(map, "string"); // Special text: Finish off, bid farewell, domination, revenge
     
-    draw_set_alpha(1);
+    if global.showKillLog==2{
+        draw_set_alpha(0.5);
+    }else{
+        draw_set_alpha(1);
+    }
     if (in)
        color = make_color_rgb(217,217,183);
     else color = make_color_rgb(49,45,26);

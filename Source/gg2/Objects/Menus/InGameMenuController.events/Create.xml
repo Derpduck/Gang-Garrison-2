@@ -44,6 +44,11 @@
         splash_show_web("http://www.ganggarrison.com/lobby/status",0)
     ');
     
+    menu_addlink("Stats", '
+        instance_destroy()
+        instance_create(0,0,StatsDisplayController)
+    ');
+    
     menu_addlink("Options", '
         instance_destroy();
         instance_create(0,0,OptionsController);
@@ -62,8 +67,10 @@
     menu_addlink("", '');
     menu_addlink("Disconnect", '
         // Force dedicated mode to off so you can go to main menu instead of just restarting server
-        if global.alreadyWroteStats==0 addStats()
         global.dedicatedMode = 0;
+        
+        addStats()
+        
         with(Client)
             instance_destroy();
             
@@ -71,10 +78,11 @@
             instance_destroy();
     ');
     menu_addlink("Quit Game", '
-        if global.alreadyWroteStats==0 addStats()
+        addStats()
         if global.recordingEnabled{
             endRecording();
         }
+        
         game_end();
     ');
     

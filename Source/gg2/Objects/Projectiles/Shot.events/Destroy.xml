@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if shotHit=false{
+        <argument kind="STRING">if shotHit==false{
     handleHitOrMiss(ownerPlayer,0)
 }else{
     handleHitOrMiss(ownerPlayer,1)

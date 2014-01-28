@@ -23,8 +23,11 @@ while (file_exists("Replays/" + timestamp + uniqueSuffix + ".rp ")) {
 write_ushort(global.replayBuffer, 1)// Length of the coming message
 write_ubyte(global.replayBuffer, REPLAY_END)
 
-//name = get_save_filename(".rp",working_directory+"\Replays\Replay.rp")
-name = get_save_filename(".rp",working_directory+"\Replays\"+global.currentMap+" "+timestamp + uniqueSuffix+".rp") 
+if global.replayNamePrompt==1{
+    name = get_save_filename(".rp",working_directory+"\Replays\"+global.currentMap+" "+timestamp + uniqueSuffix+".rp")
+}else{
+    name=string(working_directory+"\Replays\"+global.currentMap+" "+timestamp + uniqueSuffix+".rp")
+}
 
 if name != ""{
     text = file_bin_open(name, 1)

@@ -76,6 +76,7 @@
     
     // Haxxy rewards
     rewards = -1;
+    ghost = -1;
 
     alarm[2]=5
 }
