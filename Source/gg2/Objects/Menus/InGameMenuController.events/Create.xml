@@ -17,27 +17,31 @@
     cursor_sprite = CrosshairS;
     global.levelchoice = 1
 
-    instance_create(576,80,currentPlugins)
+    
 
     menu_create(40, 200, 200, 200, 32);
     menu_background(212, 24, 8, 12, 4);
     menu_setdimmed();
     
-    switch global.consoleIsOpen{
-        case true:
-            instance_create(0, 0, Console);
-            menu_addlink("Close Console", '
-                console_close();
-            ');
-        break;
-            
-        case false:
-            menu_addlink("Open Console", '
-                console_open();
-            ');
-        break;
+    if (object_get_parent(object_index) == MenuController)
+    {
+        instance_create(576,80,currentPlugins);
+        
+        switch global.consoleIsOpen{
+            case true:
+                    instance_create(0, 0, Console);
+                menu_addlink("Close Console", '
+                    console_close();
+                ');
+            break;
+                
+            case false:
+                menu_addlink("Open Console", '
+                    console_open();
+                ');
+            break;
+        }
     }
-
     menu_addlink("Return to Game", '
         instance_destroy();
     ');

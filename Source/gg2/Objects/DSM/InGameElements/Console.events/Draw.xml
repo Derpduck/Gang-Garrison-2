@@ -15,33 +15,42 @@
       <arguments>
         <argument kind="STRING">xoffset = view_xview[0];
 yoffset = view_yview[0];
-xsize = view_wview[0];
-ysize = view_hview[0];
-xbegin = 120;
-ybegin = 40;
+xsize = view_wview[0] + xoffset;
+ysize = view_hview[0] + yoffset;
 spacing = 16;
-width = 300;
 
-x_left = xoffset + 180;
-y_top = yoffset + 8;
-x_right = xoffset + xsize - 10;
-y_bottom = yoffset + ysize - 10;
+// top left
+console_x1 = xoffset + 180;
+console_y1 = yoffset + 9;
 
-// Window coordinates:
-window_left = x_left + 10;
-window_right = x_right - 10;
-window_top = y_top + 20;
-window_bottom = y_bottom - 30;
+// bottom right
+console_x2 = xsize - 8;
+console_y2 = ysize - 3;
 
-// Draw the console background
-draw_set_alpha(1);
-draw_set_color(c_white);
-draw_sprite(sprite_index, image_index, x_left, y_top)
+// colors
+c_bordergrey = make_color_rgb(87, 87, 87);
+c_bggrey = make_color_rgb(128, 128, 128);
+
+// background (the grey thingy)
+draw_set_color(c_bordergrey);
+draw_rectangle(console_x1, console_y1, console_x2, console_y2, true);
+draw_set_color(c_bggrey);
+draw_rectangle(console_x1 + 1, console_y1 + 1, console_x2 - 1, console_y2 - 1, false);
+
+// big black box
+draw_set_color(c_black);
+draw_rectangle(console_x1 + 11, console_y1 + 21, console_x2 - 11, console_y2 - 36, false);
+
+// text box
+// allign from the bottom
+draw_rectangle(console_x1 + 11, console_y2 - 31, console_x2 - 11, console_y2 - 11, false);
 
 // Draw the console Title
+draw_set_alpha(1);
+draw_set_color(c_white);
 draw_set_font(global.gg2Font); //we want the title to stand out
 draw_set_halign(fa_left)
-draw_text(x_left+15, y_top+10, "Console - DSM "+string(DSM_VERSION_STRING));
+draw_text(console_x1+15, console_y1+10, "Console - DSM "+string(DSM_VERSION_STRING));
 
 draw_set_halign(fa_left);
 draw_set_font(global.DSM_ConsoleFont);
@@ -49,9 +58,9 @@ var offset;
 // Draw text in input field
 if cursor_moving or blink{
     offset = string_width(string_copy(current_text, 0, cursor_position));
-    draw_text(x_left+offset+11, y_bottom-15, cursor_character);
+    draw_text(console_x1 + 11 + offset, console_y2-20, cursor_character);
 }
-draw_text(x_left+14, y_bottom-15, current_text);
+draw_text(console_x1+14, console_y2 - 20, current_text);
 
 // Draw the whole log
 var message;
@@ -61,12 +70,12 @@ for(i=0; i&lt;ds_list_size(global.consoleLog); i+=1){
     switch string_copy(message, 0, 3){
         case "/:/":// If a color-code was included.
             draw_set_color(getColorCode(string_copy(message, 4, COLOR_RGB_LENGTH)))
-            draw_text(window_left+12, (window_bottom-20)-i*spacing, string_copy(message, 4+COLOR_RGB_LENGTH, string_length(message)-(4+COLOR_RGB_LENGTH-1)));
+            draw_text(console_x1+22, (console_y2 - 57)-i*spacing, string_copy(message, 4+COLOR_RGB_LENGTH, string_length(message)-(4+COLOR_RGB_LENGTH-1)));
             break
 
         default:
             draw_set_color(c_white);
-            draw_text(window_left+7, (window_bottom-20)-i*spacing, message);
+            draw_text(console_x1+17, (console_y2-57)-i*spacing, message);
             break
     }
 }
