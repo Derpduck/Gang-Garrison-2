@@ -14,7 +14,6 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">image_speed = 0;
-
 if global.dsmBodyFade==0{
     alarm[0] = 300/global.delta_factor;
 }else if global.dsmBodyFade==1{
