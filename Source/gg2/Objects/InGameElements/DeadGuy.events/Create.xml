@@ -21,7 +21,6 @@ if global.dsmBodyFade==0{
 }else if global.dsmBodyFade==2{
     alarm[0] = 50/global.delta_factor;
 }
-hitground = false;
 </argument>
       </arguments>
     </action>
