@@ -19,6 +19,23 @@ if(room == DownloadRoom and keyboard_check(vk_escape))
     exit;
 }
 
+if (global.isPlayingReplay)
+{
+    var length;
+    
+    for(a=0; a<global.replaySpeed; a+=1)
+    {
+        length = read_ushort(global.replayBuffer);
+        for(i=0; i<length; i+=1)
+        {
+            write_ubyte(global.replaySocket, read_ubyte(global.replayBuffer));
+        }
+        global.replayTime += 1
+    }
+    socket_send(global.replaySocket);
+}
+
+
 if(downloadingMap)
 {
     while(tcp_receive(global.serverSocket, min(1024, downloadMapBytes-buffer_size(downloadMapBuffer))))

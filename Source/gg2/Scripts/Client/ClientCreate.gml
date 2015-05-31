@@ -24,7 +24,25 @@
     downloadingMap = false;
     downloadMapBuffer = -1;
     
+    var acceptor;
+    if global.isPlayingReplay
+    {
+        acceptor = tcp_listen(global.serverPort);
+    }
+    
     global.serverSocket = tcp_connect(global.serverIP, global.serverPort);
+    
+    if (global.isPlayingReplay)
+    {
+        do
+        {
+            global.replaySocket = socket_accept(acceptor);
+            io_handle();
+        }
+        until(global.replaySocket >= 0)
+        
+        socket_destroy(acceptor)// Not needed anymore
+    }
     
     write_ubyte(global.serverSocket, HELLO);
     write_buffer(global.serverSocket, global.protocolUuid);

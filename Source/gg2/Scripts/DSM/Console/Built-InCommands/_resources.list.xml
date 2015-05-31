@@ -27,4 +27,5 @@
   <resource name="console_command_rcon" type="RESOURCE"/>
   <resource name="console_command_unban" type="RESOURCE"/>
   <resource name="console_command_autokill" type="RESOURCE"/>
+  <resource name="console_command_record" type="RESOURCE"/>
 </resources>

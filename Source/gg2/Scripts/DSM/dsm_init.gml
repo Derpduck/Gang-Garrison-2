@@ -149,3 +149,10 @@ chat_hide()
 
 if(!directory_exists(working_directory+"\Custom")) directory_create(working_directory+"\Custom")
 if(!directory_exists(working_directory+"\ConsoleLogs")) directory_create(working_directory+"\ConsoleLogs")
+
+//replays
+global.replayBuffer = buffer_create();
+global.isPlayingReplay = false;
+global.replayTime = 0;
+global.recordingReplay = false;
+global.isPlayingReplay = false;

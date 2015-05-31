@@ -72,3 +72,4 @@ console_command_unmute()
 console_command_rcon()
 console_command_unban()
 console_command_autokill()
+console_command_record();
