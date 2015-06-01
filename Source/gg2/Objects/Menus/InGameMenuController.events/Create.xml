@@ -23,17 +23,17 @@
     menu_background(212, 24, 8, 12, 4);
     menu_setdimmed();
     
-    switch (global.recordingReplay) 
-    {
+    switch global.consoleIsOpen{
         case true:
-            menu_addlink("Record Replay", '
-                beginRecording();
+            instance_create(0, 0, Console);
+            menu_addlink("Close Console", '
+                console_close();
             ');
         break;
             
         case false:
-            menu_addlink("End Recording", '
-                endRecording();
+            menu_addlink("Open Console", '
+                console_open();
             ');
         break;
     }
@@ -77,20 +77,22 @@
         splash_set_size(800,600)
         splash_show_web("http://www.ganggarrison.com/lobby/status",0)
     ');
-    switch global.consoleIsOpen{
+    
+    switch (global.recordingReplay) 
+    {
         case true:
-            instance_create(0, 0, Console);
-            menu_addlink("Close Console", '
-                console_close();
+            menu_addlink("Record Replay", '
+                beginRecording();
             ');
         break;
             
         case false:
-            menu_addlink("Open Console", '
-                console_open();
+            menu_addlink("End Recording", '
+                endRecording();
             ');
         break;
     }
+    
     menu_addlink("Disconnect", '
         if (global.recordingReplay)
             endRecording();
