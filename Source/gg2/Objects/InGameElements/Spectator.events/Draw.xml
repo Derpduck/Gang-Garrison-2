@@ -83,6 +83,13 @@ if (global.myself != -1){
             global.enablePrimeNo=0
         }
     }
+    if (global.isPlayingReplay)
+    {
+        draw_set_valign(fa_center);
+        draw_set_halign(fa_left);
+        draw_set_color(c_white);
+        draw_text(view_xview[0] + 10, view_yview[0] + 10,'Replay Mode');
+    }
 }
 
 </argument>

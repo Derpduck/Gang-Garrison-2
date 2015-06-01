@@ -18,7 +18,12 @@ if(room == DownloadRoom and keyboard_check(vk_escape))
     instance_destroy();
     exit;
 }
-
+//hack or some shit idk
+if (global.isPlayingReplay and global.myself == -1)
+{
+    global.myself = instance_create(0,0,Player);
+    instance_create(0,0,PlayerControl);
+}
 if (global.isPlayingReplay)
 {
     var length;
@@ -26,11 +31,11 @@ if (global.isPlayingReplay)
     for(a=0; a<global.replaySpeed; a+=1)
     {
         length = read_ushort(global.replayBuffer);
-        for(i=0; i<length; i+=1)
+        for(i = 0; i < length; i += 1)
         {
             write_ubyte(global.replaySocket, read_ubyte(global.replayBuffer));
         }
-        global.replayTime += 1
+        global.replayTime += 1;
     }
     socket_send(global.replaySocket);
 }
@@ -704,7 +709,21 @@ do {
             show_message(message)
             break;
             */
-
+        case REPLAY_END:
+            show_message("Playback Complete")
+            if (global.serverPluginsInUse)
+            {
+                pluginscleanup(true);
+            }
+            else
+            {
+                with(Client)
+                    instance_destroy();
+                    
+                with(GameServer)
+                    instance_destroy();
+            }
+            break;
         default:
             promptRestartOrQuit("The Server sent unexpected data.");
             exit;

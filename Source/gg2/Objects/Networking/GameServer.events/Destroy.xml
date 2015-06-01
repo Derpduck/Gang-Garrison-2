@@ -49,9 +49,6 @@ if (global.serverPluginsInUse){
 }
     
 set_synchronization(global.monitorSync);
-
-if (global.recordingReplay)
-    endRecording();
 </argument>
       </arguments>
     </action>

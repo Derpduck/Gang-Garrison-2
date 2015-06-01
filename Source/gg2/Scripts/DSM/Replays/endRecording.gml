@@ -27,4 +27,4 @@ if (!directory_exists(working_directory + "\Replays\"))
 filename = working_directory+"\Replays\" + timestamp + sanitised + ".gg2r";
 write_buffer_to_file(global.replayBuffer, filename);
 buffer_clear(global.replayBuffer);
-show_message('Replay saved as: ' + filename);
+console_print('Replay saved as: ' + filename);
