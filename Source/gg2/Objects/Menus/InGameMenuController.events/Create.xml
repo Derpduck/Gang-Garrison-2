@@ -77,22 +77,23 @@
         splash_set_size(800,600)
         splash_show_web("http://www.ganggarrison.com/lobby/status",0)
     ');
-    
-    switch (global.recordingReplay) 
+    if (global.isHost)
     {
-        case true:
-            menu_addlink("Record Replay", '
-                beginRecording();
-            ');
-        break;
-            
-        case false:
-            menu_addlink("End Recording", '
-                endRecording();
-            ');
-        break;
+        switch (global.recordingReplay) 
+        {
+            case true:
+                menu_addlink("Record Replay", '
+                    beginRecording();
+                ');
+            break;
+                
+            case false:
+                menu_addlink("End Recording", '
+                    endRecording();
+                ');
+            break;
+        }
     }
-    
     menu_addlink("Disconnect", '
         if (global.recordingReplay)
             endRecording();
