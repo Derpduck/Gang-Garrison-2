@@ -44,6 +44,16 @@
     menu_addlink("Stats", '
         room_goto_fix(StatsR);
     ');
+    menu_addlink("Load Replay", '
+        global.isHost = false;
+        loadReplay();
+        if !global.isPlayingReplay// If the user gave an invalid file.
+            exit;
+        global.serverIP = 127.0.0.1
+        global.serverPort = global.hostingPort
+        instance_create(0,0,Client);
+        Client.returnRoom = Menu;
+    ');
     if (global.rewardId != '')
     {
         menu_addlink("Manage Haxxy Rewards", '

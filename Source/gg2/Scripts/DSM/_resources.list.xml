@@ -5,6 +5,7 @@
   <resource name="Customise" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
   <resource name="PluginFixesAndMods" type="GROUP"/>
+  <resource name="Replays" type="GROUP"/>
   <resource name="DSM_init" type="RESOURCE"/>
   <resource name="randomiseRotation" type="RESOURCE"/>
 </resources>

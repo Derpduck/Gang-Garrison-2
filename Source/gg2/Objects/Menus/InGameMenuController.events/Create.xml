@@ -51,7 +51,13 @@
             instance_destroy();
         ');
     }*/
-    
+    menu_addlink("Lobby", '
+        splash_set_main(false)
+        splash_set_border(false)
+        splash_set_interrupt(false)
+        splash_set_size(800,600)
+        splash_show_web("http://www.ganggarrison.com/lobby/status",0)
+    ');
     menu_addlink("Options", '
         instance_destroy();
         instance_create(0,0,OptionsController);
@@ -71,7 +77,26 @@
         splash_set_size(800,600)
         splash_show_web("http://www.ganggarrison.com/lobby/status",0)
     ');
+    if (global.isHost)
+    {
+        switch (global.recordingReplay) 
+        {
+            case true:
+                menu_addlink("Record Replay", '
+                    beginRecording();
+                ');
+            break;
+                
+            case false:
+                menu_addlink("End Recording", '
+                    endRecording();
+                ');
+            break;
+        }
+    }
     menu_addlink("Disconnect", '
+        if (global.recordingReplay)
+            endRecording();
         addStats()
         // Force dedicated mode to off so you can go to main menu instead of just restarting server
         if (global.serverPluginsInUse)
