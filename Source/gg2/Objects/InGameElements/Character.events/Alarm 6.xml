@@ -29,6 +29,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">canEat = true;
+//eatingDamage=0
 </argument>
       </arguments>
     </action>

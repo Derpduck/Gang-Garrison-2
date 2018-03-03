@@ -13,12 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if (ds_list_size(kills)) {
+        <argument kind="STRING">if (ds_list_size(kills)){
     ds_map_destroy(ds_list_find_value(kills, 0));
     ds_list_delete(kills, 0);
     
-    alarm[0] = 30*5;
-}</argument>
+    alarm[0] = 30*global.killLogTime/global.delta_factor;
+}
+</argument>
       </arguments>
     </action>
   </actions>

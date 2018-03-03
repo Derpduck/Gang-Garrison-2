@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">alpha=0;
-fade=0.05;
+fade=0.04;
 
 if(instance_exists(ArenaControlPoint)) {
     mode=2;     // Arena
@@ -41,7 +41,11 @@ bluePresence=0;
 capping=0;
 cappers=0;
 cappingTeam=-1;
-capTime=300;
+if(instance_exists(KothRedControlPoint) &amp;&amp; instance_exists(KothBlueControlPoint)) {
+    capTime=6*30
+}else{
+    capTime=10*30 //300;
+}
 </argument>
       </arguments>
     </action>

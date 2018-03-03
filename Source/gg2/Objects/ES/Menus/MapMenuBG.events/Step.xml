@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if eventCalled==1{
+    exit;
+}
+
+//Stop going off the top
+if y&gt;-2{
+    vspeed*=-1
+
+}
+
+//Stop left
+if x&gt;-2{
+    hspeed*=-1
+
+}
+
+//Stop bottom
+if y+(sprite_get_height(sprite_index)*scaleFactor)&lt;room_height+2{
+    vspeed*=-1
+}
+
+//Stop right
+if x+(sprite_get_width(sprite_index)*scaleFactor)&lt;room_width+2{
+    hspeed*=-1
+}
+
+
+if starty&gt;-2{
+    event_user(0)
+}
+
+if startx&gt;-2{
+    event_user(0)
+}
+
+//if starty+(sprite_get_height(sprite_index)*scaleFactor)&lt;room_height+2{
+//    event_user(0)
+//}
+
+//if startx+(sprite_get_height(sprite_index)*scaleFactor)&lt;room_height+2{
+//    event_user(0)
+//}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

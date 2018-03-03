@@ -2,4 +2,5 @@
 <resources>
   <resource name="compareServersByCompatAndPing" type="RESOURCE"/>
   <resource name="writeKeyValue" type="RESOURCE"/>
+  <resource name="parseUuid" type="RESOURCE"/>
 </resources>

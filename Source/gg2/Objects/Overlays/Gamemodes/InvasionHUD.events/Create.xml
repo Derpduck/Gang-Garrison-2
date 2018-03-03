@@ -17,8 +17,8 @@
 timer=timeLimit;
 teamoffset=0;
 overtime = 0;
-global.setupTimer=1800;
-
+global.setupTimer=40*30
+global.rupTime=5*30/global.delta_factor
 </argument>
       </arguments>
     </action>

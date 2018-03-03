@@ -19,6 +19,8 @@
 if(global.myself.object != -1)
     instance_destroy();
 
+if global.isChatting==1 or instance_exists(Console) exit;
+
 var moved;
 moved = false;
 stopTracking = false;
@@ -29,33 +31,33 @@ if(!instance_exists(MenuController))
     if keyboard_check(global.left)
     {
         if (x &gt; view_wview/2)
-            x -= 20 * global.delta_factor;
+            x -= specMoveSpeed * global.delta_factor;
         moved = true;
     }
     else if keyboard_check(global.right)
     {
         if (x &lt; map_width()-view_wview/2)
-            x += 20 * global.delta_factor;
+            x += specMoveSpeed * global.delta_factor;
         moved = true;
     }
     
     if keyboard_check(global.jump)
     {
         if (y &gt; view_hview/2)
-            y -= 20 * global.delta_factor;
+            y -= specMoveSpeed * global.delta_factor;
         moved = true;
     }
     else if keyboard_check(global.down)
     {
         if (y &lt; map_height()-view_hview/2)
-            y += 20 * global.delta_factor;
+            y += specMoveSpeed * global.delta_factor;
         moved = true;
     }
 }
 
 if(moved)
 {
-    afktimer = afktimeout;
+    //afktimer = afktimeout;
     stopTracking = true;
 }
 else if(tracking)
@@ -66,22 +68,22 @@ else if(tracking)
         {
             if(player.object)
             {
-                if(!(player.object.cloak &amp;&amp; player.team != myTeam))
-                {
+                //if(!(/*player.object.cloak &amp;&amp;*/ player.team != myTeam))
+                //{
                     x = round(player.object.x);
                     y = round(player.object.y);
-                }
-                else
-                    stopTracking = true;
+                //}
+                //else
+                    //stopTracking = true;
             }
         }
         else
             stopTracking = true;
-        if (instance_exists(player.corpse) and !player.object and tracking)
-        {
-            x = round(player.corpse.x);
-            y = round(player.corpse.y);
-        }
+        //if (instance_exists(player.corpse) and !player.object and tracking)
+        //{
+        //    x = round(player.corpse.x);
+        //    y = round(player.corpse.y);
+        //}
     }
     else
         stopTracking = true;
@@ -107,13 +109,23 @@ else // We're tracking a player, so allow the view to show area from off of the 
 view_xview = x-view_wview/2;
 view_yview = y-view_hview/2;
 
-afktimer -= 1 * global.delta_factor;
+//afktimer -= 1 * global.delta_factor;
 
-if((afktimer&lt;=0) and global.isHost==false)
-{
-    show_message("You have been disconnected from the server. Reason: AFK");
-    with(Client)
-        instance_destroy();
+//if((afktimer&lt;=0) and global.isHost==false)
+//{
+//    show_message("You have been disconnected from the server. Reason: AFK");
+//    with(Client)
+//        instance_destroy();
+//}
+
+if keyboard_check_pressed(global.taunt){
+    x=map_width()/2
+    y=map_height()/2
+}
+
+if global.isCasting==1{
+    if !instance_exists(CasterHUD)
+    castHUD=instance_create(0,0,CasterHUD)
 }
 </argument>
       </arguments>

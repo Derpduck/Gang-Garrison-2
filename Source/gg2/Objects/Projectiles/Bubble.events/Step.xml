@@ -13,15 +13,37 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//We want to move when the owner does, somewhat.
+        <argument kind="STRING">wallSetSolid();
+if(place_meeting(x, y, Obstacle)){
+    move_outside_solid(direction-180, speed);
+}
+if(place_meeting(x + hspeed, y + vspeed, Obstacle) and !place_meeting(x + hspeed, y + vspeed + 6, Obstacle)){
+    y += 6;
+}else if(place_meeting(x + hspeed, y + vspeed, Obstacle) and !place_meeting(x + hspeed, y + vspeed - 6, Obstacle)){
+    y -= 6;
+}
+
+if(place_meeting(x + hspeed, y, Obstacle)){
+    hspeed = 0;
+}
+if(place_meeting(x, y + vspeed, Obstacle)){
+    vspeed = 0;
+}
+if(place_meeting(x + hspeed, y + vspeed, Obstacle)){
+    speed = 0;
+}
+wallUnsetSolid();
+
+
+//We want to move when the owner does, somewhat.
 hspeed += owner.hspeed * 0.2 * global.delta_factor;
 vspeed += owner.vspeed * 0.2 * global.delta_factor;
 
 //We want to be near the crosshair, in respect to the player.
-motion_add(owner.aimDirection, 2 * global.delta_factor);
+motion_add(owner.aimDirection, 3 * global.delta_factor);
 
 //We want to stay in the circular area around the player.
-motion_add(point_direction(owner.x, owner.y, x, y), -2 * arctan((point_distance(x, y, owner.x, owner.y)-90)/4) * global.delta_factor);
+motion_add(point_direction(owner.x, owner.y, x, y), -3 * arctan((point_distance(x, y, owner.x, owner.y)-90)/4) * global.delta_factor);
 
 //The speed should stay around 3.3, which this code stablizes the speed to.
 speed = (speed + 2.2 * global.delta_factor) * delta_mult(0.6);
@@ -30,7 +52,6 @@ x += hspeed * global.delta_factor;
 y += vspeed * global.delta_factor;
 x -= hspeed;
 y -= vspeed;
-
 </argument>
       </arguments>
     </action>

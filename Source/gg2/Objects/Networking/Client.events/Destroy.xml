@@ -14,17 +14,36 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if(not nocreate) {
+
+    if instance_exists(ReadyUpController){
+        with ReadyUpController{
+            event_user(0)
+        }
+    }
+    
     socket_destroy(global.serverSocket);
     ds_list_destroy(global.players);
+    global.playerListExists=0
     buffer_destroy(global.deserializeBuffer);
     buffer_destroy(downloadMapBuffer);
+    ds_list_destroy(global.clientChatBanList)
     
     with(Player)
         instance_destroy();
         
     with(PlayerControl)
         instance_destroy();
-
+    
+    with(Console){
+        event_user(0)
+        instance_destroy()
+    }
+    
+    with(ChatBox){
+        event_user(15)
+        instance_destroy()
+    }
+    
     room_goto_fix(returnRoom);
     if (global.serverPluginsInUse &amp;&amp; !noUnloadPlugins)
         pluginscleanup();

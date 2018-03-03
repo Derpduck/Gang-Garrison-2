@@ -13,39 +13,40 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    xoffset = -5;
-    yoffset = -4;
-    refireTime = 20;
-    event_inherited();
+        <argument kind="STRING">xoffset = -5;
+yoffset = -4;
+refireTime = 20;
+event_inherited();
+
+maxAmmo = 6
+ammoCount = maxAmmo;
+reloadTime = 15;
+reloadBuffer = 20;
+idle=true;
     
-    maxAmmo = 6
-    ammoCount = maxAmmo;
-    reloadTime = 15;
-    reloadBuffer = 20;
-    idle=true;
+if(golden){
+    normalSprite = ScattergunGoldS;
+    recoilSprite = ScattergunGoldFS;
+    reloadSprite = ScattergunGoldFRS;
+}else{
+    normalSprite = ScattergunS;
+    recoilSprite = ScattergunFS;
+    reloadSprite = ScattergunFRS;
     
-    if(golden)
-    {
-        normalSprite = ScattergunGoldS;
-        recoilSprite = ScattergunGoldFS;
-        reloadSprite = ScattergunGoldFRS;
+    if global.dumbledankSprites==1{
+        normalSprite = ScattergunSM;
+        recoilSprite = ScattergunFSM;
+        reloadSprite = ScattergunFRSM;
     }
-    else
-    {
-        normalSprite = ScattergunS;
-        recoilSprite = ScattergunFS;
-        reloadSprite = ScattergunFRS;
-    }
-    sprite_index = normalSprite;
-    
-    recoilTime = refireTime;
-    recoilAnimLength = sprite_get_number(recoilSprite)/2;
-    recoilImageSpeed = recoilAnimLength/recoilTime;
-    
-    reloadAnimLength = sprite_get_number(reloadSprite)/2;
-    reloadImageSpeed = reloadAnimLength/reloadTime;
 }
+sprite_index = normalSprite;
+
+recoilTime = refireTime;
+recoilAnimLength = sprite_get_number(recoilSprite)/2;
+recoilImageSpeed = recoilAnimLength/recoilTime;
+
+reloadAnimLength = sprite_get_number(reloadSprite)/2;
+reloadImageSpeed = reloadAnimLength/reloadTime;
 </argument>
       </arguments>
     </action>

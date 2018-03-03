@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var xoffset, yoffset, xsize, ysize;
+xoffset=view_xview[0]
+yoffset=view_yview[0]
+xsize=view_wview[0]
+ysize=view_hview[0]
+
+redOffset=1
+bluOffset=1
+playerOffset=1
+draw_set_alpha(1)
+draw_set_color(c_black)
+draw_set_valign(fa_middle)
+
+orderedList=ds_list_create()
+for(i=0; i&lt;ds_list_size(global.players); i+=1){
+    player=ds_list_find_value(global.players, i)
+    if player.team == TEAM_RED{
+        ds_list_insert(orderedList,0,player)
+    }
+    if player.team == TEAM_BLUE{
+        ds_list_insert(orderedList,ds_list_size(orderedList),player)
+    }
+}
+
+for(i=0; i&lt;ds_list_size(orderedList); i+=1){
+    player=ds_list_find_value(orderedList, i)
+    //base position
+    spriteXOffset=xoffset+xsize
+    spriteYOffset=yoffset+ysize-(21*2*playerOffset)-80
+    draw_set_halign(fa_right)
+    //base sprite
+    draw_sprite_ext(CasterHUD_PlayersS,player.team,spriteXOffset-100,spriteYOffset,2,2,0,c_white,1)
+    //player class
+    draw_sprite_ext(Icon,player.class,spriteXOffset-100+12.5,spriteYOffset+5,2,2,0,c_white,1)
+    //health bars
+    if instance_exists(player.object) and player.object != -1{
+        //hp
+        draw_set_alpha(1)
+        draw_healthbar(spriteXOffset-3,spriteYOffset+15,spriteXOffset-56,spriteYOffset+22,player.object.hp*100/player.object.maxHp,c_black,c_red,c_green,0,true,true)
+        //uber
+        if player.class == CLASS_MEDIC{
+            draw_healthbar(spriteXOffset-3,spriteYOffset+23,spriteXOffset-56,spriteYOffset+30,player.object.currentWeapon.uberCharge*100/2000,c_black,c_teal,c_aqua,0,true,true)
+        }
+    }
+    //player name
+    draw_text_color(spriteXOffset-2+1,spriteYOffset+6+1,sanitiseNewlines(string_copy(player.name,0,12))+"#"+sanitiseNewlines(string_copy(player.name,13,20)),c_black,c_black,c_black,c_black,1)
+    draw_text_color(spriteXOffset-2,spriteYOffset+6,sanitiseNewlines(string_copy(player.name,0,12))+"#"+sanitiseNewlines(string_copy(player.name,13,20)),c_white,c_white,c_white,c_white,1)
+    if player.object==-1{
+        draw_set_color(c_white)
+        draw_text(spriteXOffset-3,spriteYOffset+20,'Spawn: ' +string(ceil(player.alarm[5]/30*global.delta_factor)))
+    }
+    playerOffset+=1
+}
+ds_list_destroy(orderedList)
+
+if specBar==1{
+    draw_sprite(CasterHUD_StatsS,0,xoffset+xsize/2,yoffset+100)
+    redCol=make_color_rgb(164,69,63)
+    bluCol=make_color_rgb(72,92,103)
+    txtCol=make_color_rgb(217,217,183)
+    draw_set_alpha(1)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    
+    //HEALING
+    var totalRedHealing,totalBlueHealing;
+    totalRedHealing=0
+    totalBlueHealing=0
+    
+    for(i=0; i&lt;ds_list_size(global.players); i+=1){
+        player=ds_list_find_value(global.players,i)
+        if player.team==TEAM_RED{
+            totalRedHealing+=player.stats[HEALING]
+        }else if player.team==TEAM_BLUE{
+            totalBlueHealing+=player.stats[HEALING]
+        }
+    }
+    
+    var healTotal,redHealPercent,blueHealPercent;
+    healTotal=totalRedHealing+totalBlueHealing+1
+    if totalRedHealing==0 and totalBlueHealing==0{
+        redHealPercent=0.5
+        blueHealPercent=0.5
+    }else{
+        redHealPercent=totalRedHealing/healTotal
+        blueHealPercent=1-redHealPercent
+    }
+    
+    draw_set_color(c_white)
+    draw_rectangle_color(xoffset+xsize/2-150,yoffset+130,(xoffset+xsize/2-150)+(300*redHealPercent),yoffset+140,redCol,redCol,redCol,redCol,false)
+    draw_rectangle_color((xoffset+xsize/2+150)-(300*blueHealPercent),yoffset+130,xoffset+xsize/2+150,yoffset+140,bluCol,bluCol,bluCol,bluCol,false)
+    draw_set_valign(fa_center)
+    draw_set_halign(fa_center)
+    draw_set_color(txtCol)
+    draw_text(xoffset+xsize/2,yoffset+120,"Healing")
+    draw_text((xoffset+xsize/2)-100,yoffset+120,totalRedHealing)
+    draw_text((xoffset+xsize/2)+100,yoffset+120,totalBlueHealing)
+    draw_line_width(xoffset+xsize/2,yoffset+129,xoffset+xsize/2,yoffset+142,2)
+    
+    //UBERS
+    var totalRedUbers,totalBlueUbers;
+    totalRedUbers=0
+    totalBlueUbers=0
+    
+    for(i=0; i&lt;ds_list_size(global.players); i+=1){
+        player=ds_list_find_value(global.players,i)
+        if player.team==TEAM_RED{
+            totalRedUbers+=player.stats[INVULNS]
+        }else if player.team==TEAM_BLUE{
+            totalBlueUbers+=player.stats[INVULNS]
+        }
+    }
+    
+    var uberTotal, redUberPercent, blueUberPercent;
+    uberTotal=totalRedUbers+totalBlueUbers+1
+    if totalRedUbers==0 and totalBlueUbers==0{
+        redUberPercent=0.5
+        blueUberPercent=0.5
+    }else{
+        redUberPercent=totalRedUbers/uberTotal
+        blueUberPercent=1-redUberPercent
+    }
+    
+    draw_set_color(c_white)
+    draw_rectangle_color(xoffset+xsize/2-150,yoffset+160,(xoffset+xsize/2-150)+(300*redUberPercent),yoffset+170,redCol,redCol,redCol,redCol,false)
+    draw_rectangle_color((xoffset+xsize/2+150)-(300*blueUberPercent),yoffset+160,xoffset+xsize/2+150,yoffset+170,bluCol,bluCol,bluCol,bluCol,false)
+    draw_set_color(txtCol)
+    draw_text(xoffset+xsize/2,yoffset+150,"Ubercharges")
+    draw_text(xoffset+xsize/2-100,yoffset+150,totalRedUbers)
+    draw_text(xoffset+xsize/2+100,yoffset+150,totalBlueUbers)
+    draw_line_width(xoffset+xsize/2,yoffset+159,xoffset+xsize/2,yoffset+172,2)
+    
+    //KILLS
+    var totalRedKills,totalBlueKills;
+    totalRedKills=0
+    totalBlueKills=0
+    
+    for(i=0; i&lt;ds_list_size(global.players); i+=1){
+        player = ds_list_find_value(global.players,i)
+        if player.team==TEAM_RED{
+            totalRedKills+=player.stats[KILLS]
+        }else if player.team==TEAM_BLUE{
+            totalBlueKills+=player.stats[KILLS]
+        }
+    }
+    
+    var killTotal,redKillPercent,blueKillPercent;
+    killTotal=totalRedKills+totalBlueKills+1
+    if totalRedKills==0 and totalBlueKills==0{
+        redKillPercent=0.5
+        blueKillPercent=0.5
+    }else{
+        redKillPercent=totalRedKills/killTotal
+        blueKillPercent=1-redKillPercent
+    }
+    
+    draw_set_color(c_white)
+    draw_rectangle_color(xoffset+xsize/2-150,yoffset+190,(xoffset+xsize/2-150)+(300*redKillPercent),yoffset+200,redCol,redCol,redCol,redCol,false)
+    draw_rectangle_color((xoffset+xsize/2+150)-(300*blueKillPercent),yoffset+190,xoffset+xsize/2+150,yoffset+200,bluCol,bluCol,bluCol,bluCol,false)
+    draw_set_color(txtCol)
+    draw_text(xoffset+xsize/2,yoffset+180,"Kills")
+    draw_text(xoffset+xsize/2-100,yoffset+180,totalRedKills)
+    draw_text(xoffset+xsize/2+100,yoffset+180,totalBlueKills)
+    draw_line_width(xoffset+xsize/2,yoffset+189,xoffset+xsize/2,yoffset+202,2)
+    
+    //DEATHS
+    var totalRedDeaths,totalBlueDeaths;
+    totalRedDeaths=0
+    totalBlueDeaths=0
+    
+    for(i=0; i&lt;ds_list_size(global.players); i+=1){
+        player = ds_list_find_value(global.players,i)
+        if player.team==TEAM_RED{
+            totalRedDeaths+=player.stats[DEATHS]
+        }else if player.team==TEAM_BLUE{
+            totalBlueDeaths+=player.stats[DEATHS]
+        }
+    }
+    
+    var deathTotal,redDeathPercent,blueDeathPercent;
+    deathTotal=totalRedDeaths+totalBlueDeaths+1
+    if totalRedDeaths==0 and totalBlueDeaths==0{
+        redDeathPercent=0.5
+        blueDeathPercent=0.5
+    }else{
+        redDeathPercent=totalRedDeaths/deathTotal
+        blueDeathPercent=1-redDeathPercent
+    }
+    
+    draw_set_color(c_white)
+    draw_rectangle_color(xoffset+xsize/2-150,yoffset+220,(xoffset+xsize/2-150)+(300*redDeathPercent),yoffset+230,redCol,redCol,redCol,redCol,false)
+    draw_rectangle_color((xoffset+xsize/2+150)-(300*blueDeathPercent),yoffset+220,xoffset+xsize/2+150,yoffset+230,bluCol,bluCol,bluCol,bluCol,false)
+    draw_set_color(txtCol)
+    draw_text(xoffset+xsize/2,yoffset+210,"Deaths")
+    draw_text(xoffset+xsize/2-100,yoffset+210,totalRedDeaths)
+    draw_text(xoffset+xsize/2+100,yoffset+210,totalBlueDeaths)
+    draw_line_width(xoffset+xsize/2,yoffset+219,xoffset+xsize/2,yoffset+232,2)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

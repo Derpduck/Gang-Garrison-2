@@ -21,28 +21,34 @@ ysize = view_hview[0];
 xshift = -320 * global.timerPos;
 yshift = 5 * global.timerPos;
 
-var width, height, xpos, ypos;
-width = sprite_get_width(sprite_index) * 3;
-height = sprite_get_height(sprite_index) * 3;
-xpos = xoffset + xsize / 2 - width / 2;
-ypos = yoffset + ysize;
-
 draw_set_alpha(1);
    
-draw_sprite_ext(sprite_index, 0, xpos, ypos, 3, 3, 0, c_white, 1);
+draw_sprite_ext(sprite_index, 0, xoffset+xsize/2+1, yoffset+ysize+100, 3, 3, 0, c_white, 1)
 
-draw_set_color(c_black);
-draw_set_valign(fa_middle);
-draw_set_halign(fa_center);
+draw_set_color(c_black)
+draw_set_valign(fa_middle)
+draw_set_halign(fa_center)
 
 // Red kills
-draw_text_transformed(xpos + width / 2 - width / 3.5, ypos - height / 2 + 6, string(global.redCaps), 2, 2, 0);
+if (global.redCaps&lt;=9){
+    draw_text_transformed(xoffset+xsize/2-32, yoffset+ysize-40, string(global.redCaps), 2, 2, 0)
+}else{
+    draw_text(xoffset+xsize/2-32, yoffset+ysize-40, string(global.redCaps))
+}
 
 // Blue kills
-draw_text_transformed(xpos + width / 2 + width / 3.5, ypos - height / 2 + 6, string(global.blueCaps), 2, 2, 0);
+if (global.blueCaps&lt;=9){
+    draw_text_transformed(xoffset+xsize/2+28, yoffset+ysize-40, string(global.blueCaps), 2, 2, 0)
+}else{
+    draw_text(xoffset+xsize/2+28, yoffset+ysize-40, string(global.blueCaps))
+}
 
 // Kill limit
-draw_text_transformed(xpos + width / 2, ypos - 14, string(killLimit), 2, 2, 0);
+if (killLimit&lt;=9){
+    draw_text_transformed(xoffset+xsize/2-2, yoffset+ysize-40, string(killLimit),2,2,0)
+}else{
+    draw_text(xoffset+xsize/2-2, yoffset+ysize-40, string(killLimit))
+}
 
 //timer
 if instance_exists(WinBanner) exit;
@@ -59,7 +65,6 @@ if (global.myself != -1)
 }
 
 draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
-
 </argument>
       </arguments>
     </action>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="12">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//refill game timers
+if instance_exists(CTFHUD){
+    CTFHUD.timer=CTFHUD.timeLimit
+    GameServer.syncTimer=1
+}
+if instance_exists(ControlPointHUD){
+    if ControlPointHUD.mode==1{
+        ControlPointHUD.timer=min(2*30*60,ControlPointHUD.timeLimit)
+    }else{
+        ControlPointHUD.timer=ControlPointHUD.timeLimit
+    }
+    GameServer.syncTimer=1
+}
+if instance_exists(KothHUD){
+    KothHUD.cpUnlock=900
+    GameServer.syncTimer=1
+}
+if instance_exists(DKothHUD){
+    DKothHUD.cpUnlock=900
+    GameServer.syncTimer=1
+}
+if instance_exists(GeneratorHUD){
+    GeneratorHUD.timer=GeneratorHUD.timeLimit
+    GameServer.syncTimer=1
+}
+if instance_exists(ArenaHUD){
+    ArenaHUD.timer=ArenaHUD.timeLimit
+    ArenaHUD.cpUnlock=45*30
+    GameServer.syncTimer=1
+}
+if instance_exists(TeamDeathmatchHUD){
+    TeamDeathmatchHUD.timer=TeamDeathmatchHUD.timeLimit
+    global.redCaps=0
+    global.blueCaps=0
+    GameServer.syncTimer=1
+}
+if instance_exists(InvasionHUD){
+    InvasionHUD.timer=InvasionHUD.timeLimit
+    GameServer.syncTimer=1
+}
+if instance_exists(MGE_HUD){
+    MGE_HUD.timer=MGE_HUD.timeLimit
+    GameServer.syncTimer=1
+}
+
+if global.isHost==1{
+    with(Player){
+        if object==-1{
+            canSpawn=1
+            if alarm[5]==-1{
+                alarm[5] = min(30,global.Server_Respawntime) / global.delta_factor
+            }
+            if team==TEAM_SPECTATOR{
+                alarm[5]=1
+            }
+        }
+    }
+    
+    timer+=(1/30)*global.delta_factor
+    global.rupTimeMin=floor(timer/60)
+    global.rupTimeSec=floor(timer-global.rupTimeMin*60)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

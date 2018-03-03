@@ -38,7 +38,7 @@ sound_play(IntelDropSnd);
 recordEventInLog(8, argument0, "", argument0);
 intelObj.x = intelBaseObj.x;
 intelObj.y = intelBaseObj.y;
-intelObj.alarm[0]=-1;
+intelObj.resetTimer=-1;
 // we should set x/yprevious in case of mods that give the intel collision
 intelObj.xprevious = intelBaseObj.x;
 intelObj.yprevious = intelBaseObj.y;

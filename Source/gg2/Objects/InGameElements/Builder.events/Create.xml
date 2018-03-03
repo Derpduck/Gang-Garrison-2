@@ -85,6 +85,7 @@ spriteOffsetY = -1;
 mirroredCenterX = -1;
 mirroredOffsetX = -1;
 selected = -1;
+oldSelected = -1
 selectedSprite = -1;
 selectedImage = -1;
 selectedProperties = -1;

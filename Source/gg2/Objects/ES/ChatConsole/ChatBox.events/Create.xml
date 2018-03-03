@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">chatLog = ds_list_create()
+var i;
+for (i=0; i&lt;CHATLOG_SIZE; i+=1){
+    ds_list_add(chatLog, "")
+}
+
+isTyping=false
+hidden=true
+idle=false
+idleTime=global.chatExpiryTime*30
+offset=0
+localCommand=""
+
+maxVisibleLines=12
+_maxVisibleLines=maxVisibleLines
+typedMsgDisplayLength=45
+
+blinking_underscore=false
+blink_speed=10
+
+placeholderMsg="Type your chat message..."
+placeholderMsgGlobal="(global)"
+placeholderMsgTeam="(team)"
+
+alpha=1
+
+chat_go_idle()
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

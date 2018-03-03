@@ -32,19 +32,63 @@ if ((alarm[6] &lt;= 0 and alarm[5] &lt;= 0) or object_index == Blade) {
         
     imageOffset = floor(image_index mod animLength) + animLength*owner.team;
 }
+
 if (!owner.invisible and !owner.taunting and !owner.omnomnomnom and !owner.player.humiliated)
 {
-    if (!owner.cloak)
+    if (!owner.cloak){
         image_alpha = power(owner.cloakAlpha, 0.5);
-    else
+    }else{
         image_alpha = power(owner.cloakAlpha, 2);
-    draw_sprite_ext(sprite_index, imageOffset, round(x+xoffset*image_xscale), round(y+yoffset) + owner.equipmentOffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
-    if (owner.ubered)
-    {
-        if (owner.team == TEAM_RED)
+    }
+    
+    if golden==1{
+        if global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+            _color=make_color_rgb(global.myHaxxyColorR,global.myHaxxyColorG,global.myHaxxyColorB)
+        }else{
+            _color=c_white
+        }
+    }else{
+        _color=c_white
+    }
+    
+    if global.weaponDraw==1 and !owner.cloak{
+        if owner==global.myself.object{
+            if keyboard_check(global.attack) or mouse_check_button(mb_left) or keyboard_check(global.special) or mouse_check_button(mb_right){
+                image_alpha=1
+            }else{
+                image_alpha=0
+            }
+        }
+    }
+    
+    if owner==global.myself.object and object_index == Blade and owner.canBubble==1{
+        mouseDir=point_direction(view_xview[0]+view_wview[0]/2, view_yview[0]+view_hview[0]/2, mouse_x, mouse_y)
+        draw_set_color(c_gray)
+        draw_set_alpha(0.15)
+        draw_line_width(x,y,x+lengthdir_x(min(150,owner.aimDistance),mouseDir),y+lengthdir_y(min(150,owner.aimDistance),mouseDir),2)
+        //draw_circle(x+lengthdir_x(min(150,owner.aimDistance),owner.aimDirection),y+lengthdir_y(min(150,owner.aimDistance),owner.aimDirection),10,1)
+        //draw_rectangle(x+lengthdir_x(min(150,owner.aimDistance),owner.aimDirection)-5,y+lengthdir_y(min(150,owner.aimDistance),owner.aimDirection)-5,x+lengthdir_x(min(150,owner.aimDistance),owner.aimDirection)+5,y+lengthdir_y(min(150,owner.aimDistance),owner.aimDirection)+5,1)
+        //draw_set_color(c_white)
+        draw_set_alpha(0.4)
+        draw_sprite_ext(OldBubbleS,0,x+lengthdir_x(min(150,owner.aimDistance),mouseDir),y+lengthdir_y(min(150,owner.aimDistance),mouseDir),1,1,0,c_white,0.5)
+        draw_set_alpha(1)
+    }
+    
+    draw_sprite_ext(sprite_index, imageOffset, round(x+xoffset*image_xscale), round(y+yoffset) + owner.equipmentOffset, image_xscale, image_yscale, image_angle, _color /*c_white*/, image_alpha);
+    if (owner.ubered){
+        if (owner.team == TEAM_RED){
             ubercolour = c_red;
-        else if (owner.team == TEAM_BLUE)
+        }else if (owner.team == TEAM_BLUE){
             ubercolour = c_blue;
+        }
+        draw_sprite_ext(sprite_index, imageOffset, round(x+xoffset*image_xscale), round(y+yoffset) + owner.equipmentOffset, image_xscale, image_yscale, image_angle, ubercolour, 0.7*image_alpha);
+    }
+    if owner.graceAnimation==2{
+        if (owner.team == TEAM_RED){
+            ubercolour = c_red;
+        }else if (owner.team == TEAM_BLUE){
+            ubercolour = c_blue;
+        }
         draw_sprite_ext(sprite_index, imageOffset, round(x+xoffset*image_xscale), round(y+yoffset) + owner.equipmentOffset, image_xscale, image_yscale, image_angle, ubercolour, 0.7*image_alpha);
     }
 }

@@ -7,6 +7,7 @@
   <resource name="menu_background" type="RESOURCE"/>
   <resource name="menu_addedit_num" type="RESOURCE"/>
   <resource name="menu_addedit_text" type="RESOURCE"/>
+  <resource name="menu_addedit_text_rgb" type="RESOURCE"/>
   <resource name="menu_addedit_text2" type="RESOURCE"/>
   <resource name="menu_addedit_select" type="RESOURCE"/>
   <resource name="menu_add_option" type="RESOURCE"/>

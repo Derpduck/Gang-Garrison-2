@@ -157,25 +157,27 @@ global.GoldenAttireOverlay[8] = PyroGoldAttireS;
 global.GoldenAttireTaunt[8] = PyroGoldAttireTauntS;
 // None for CLASS_QUOTE
 // fill in empty sprites
-for (i = CLASS_SCOUT; i <= CLASS_PYRO; i+= 1)
-{
-    if (global.GoldenAttireRunOverlay[i] == -1)
+for (i = CLASS_SCOUT; i <= CLASS_PYRO; i+= 1){
+    if (global.GoldenAttireRunOverlay[i] == -1){
         global.GoldenAttireRunOverlay[i] = global.GoldenAttireOverlay[i];
+    }
         
-    if (global.GoldenAttireJumpOverlay[i] == -1)
+    if (global.GoldenAttireJumpOverlay[i] == -1){
         global.GoldenAttireJumpOverlay[i] = global.GoldenAttireOverlay[i];
+    }
         
-    if (global.GoldenAttireLeanROverlay[i] == -1)
+    if (global.GoldenAttireLeanROverlay[i] == -1){
         global.GoldenAttireLeanROverlay[i] = global.GoldenAttireOverlay[i];
+    }
         
-    if (global.GoldenAttireLeanLOverlay[i] == -1)
+    if (global.GoldenAttireLeanLOverlay[i] == -1){
         global.GoldenAttireLeanLOverlay[i] = global.GoldenAttireOverlay[i];
+    }
 }
 
 // Array of Canadium accessories
 // Pre-initialize array to detect if sprites should be reused
-for (i = CLASS_SCOUT; i <= CLASS_PYRO; i+= 1)
-{
+for (i = CLASS_SCOUT; i <= CLASS_PYRO; i+= 1){
     global.SilverAttireOverlay[i] = -1;
     global.SilverAttireRunOverlay[i] = -1;
     global.SilverAttireJumpOverlay[i] = -1;
@@ -224,19 +226,22 @@ global.SilverAttireOverlay[8] = PyroSilverAttireS;
 global.SilverAttireTaunt[8] = PyroSilverAttireTauntS;
 // None for CLASS_QUOTE
 // fill in empty sprites
-for (i = CLASS_SCOUT; i <= CLASS_PYRO; i+= 1)
-{
-    if (global.SilverAttireRunOverlay[i] == -1)
+for (i = CLASS_SCOUT; i <= CLASS_PYRO; i+= 1){
+    if (global.SilverAttireRunOverlay[i] == -1){
         global.SilverAttireRunOverlay[i] = global.SilverAttireOverlay[i];
+    }
         
-    if (global.SilverAttireJumpOverlay[i] == -1)
+    if (global.SilverAttireJumpOverlay[i] == -1){
         global.SilverAttireJumpOverlay[i] = global.SilverAttireOverlay[i];
+    }
         
-    if (global.SilverAttireLeanROverlay[i] == -1)
+    if (global.SilverAttireLeanROverlay[i] == -1){
         global.SilverAttireLeanROverlay[i] = global.SilverAttireOverlay[i];
+    }
         
-    if (global.SilverAttireLeanLOverlay[i] == -1)
+    if (global.SilverAttireLeanLOverlay[i] == -1){
         global.SilverAttireLeanLOverlay[i] = global.SilverAttireOverlay[i];
+    }
 }
 
 // Array of Top Hat + Monocle Package Deals

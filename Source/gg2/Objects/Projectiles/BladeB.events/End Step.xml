@@ -17,6 +17,13 @@
     owner.currentWeapon.ammoCount -= 1 * global.delta_factor;
     ammoDrained += 1 * global.delta_factor;
 }
+
+/*if (global.run_virtual_ticks){
+    image_index+=1
+    image_angle=0
+}else{
+    image_angle=-45
+}
 </argument>
       </arguments>
     </action>

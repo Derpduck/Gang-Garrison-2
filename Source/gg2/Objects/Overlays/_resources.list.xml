@@ -6,12 +6,12 @@
   <resource name="ScoreTableController" type="RESOURCE"/>
   <resource name="HUD" type="RESOURCE"/>
   <resource name="KillLog" type="RESOURCE"/>
-  <resource name="RespawnTimer" type="RESOURCE"/>
   <resource name="SentryHealthHud" type="RESOURCE"/>
   <resource name="NutsNBoltsHud" type="RESOURCE"/>
   <resource name="SandwichHud" type="RESOURCE"/>
   <resource name="UberHud" type="RESOURCE"/>
   <resource name="StickyCounter" type="RESOURCE"/>
+  <resource name="SuperBubbleHud" type="RESOURCE"/>
   <resource name="AmmoCounter" type="RESOURCE"/>
   <resource name="DeathCam" type="RESOURCE"/>
   <resource name="HealthHud" type="RESOURCE"/>

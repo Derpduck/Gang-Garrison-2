@@ -19,9 +19,7 @@ if (bubble.alarm[0] &gt; 0)
 
 if (global.myself != -1) if (global.myself.object != -1)
 {
-    if (team != global.myself.object.team
-        and sign(x - global.myself.object.x) == -sign(global.myself.object.image_xscale)
-        and !intel and cloakAlpha &gt; 0)
+    if ((team != global.myself.object.team and sign(x - global.myself.object.x) == -sign(global.myself.object.image_xscale) and !intel and cloakAlpha &gt; 0) and global.myself.team!=TEAM_SPECTATOR)
     {
         // trigger spy ghost copy if appropriate
         if (!invisible)

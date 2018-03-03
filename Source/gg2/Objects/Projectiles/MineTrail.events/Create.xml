@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">image_speed = 0.5 * global.delta_factor;
+        <argument kind="STRING">if global.yellowMineTrails==1{
+    sprite_index=YellowMineTrailS
+}
+image_speed = 0.5 * global.delta_factor;
 alarm[0] = 5/image_speed;
 </argument>
       </arguments>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="calculateHealingFactor" type="RESOURCE"/>
+  <resource name="ServerBalanceTeams" type="RESOURCE"/>
+  <resource name="calculateTeamBalance" type="RESOURCE"/>
+  <resource name="isBetaVersion" type="RESOURCE"/>
+  <resource name="crop1" type="RESOURCE"/>
+</resources>

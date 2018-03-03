@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="draw_roundtimer" type="RESOURCE"/>
+  <resource name="draw_generictimer" type="RESOURCE"/>
+  <resource name="draw_boxGenericTimer" type="RESOURCE"/>
+  <resource name="draw_kothtimer" type="RESOURCE"/>
+  <resource name="draw_dkothtimer" type="RESOURCE"/>
+  <resource name="draw_intel_timer" type="RESOURCE"/>
+  <resource name="draw_pinched_blackrect" type="RESOURCE"/>
+  <resource name="draw_sprite_ext_overlay" type="RESOURCE"/>
+  <resource name="draw_name_badges" type="RESOURCE"/>
+  <resource name="name_width_badges" type="RESOURCE"/>
+  <resource name="drawProgressBar" type="RESOURCE"/>
+  <resource name="drawHealth" type="RESOURCE"/>
+  <resource name="drawBoxHealth" type="RESOURCE"/>
+  <resource name="draw_menu_bg_map" type="RESOURCE"/>
+</resources>

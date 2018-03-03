@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Console" type="GROUP"/>
+  <resource name="Chat" type="GROUP"/>
+  <resource name="Ready-Up" type="GROUP"/>
+  <resource name="Configs" type="GROUP"/>
+  <resource name="Votes" type="GROUP"/>
+  <resource name="Colors" type="GROUP"/>
+  <resource name="Functions" type="GROUP"/>
+  <resource name="Bots" type="GROUP"/>
+  <resource name="ES_init" type="RESOURCE"/>
+  <resource name="es_write_ini" type="RESOURCE"/>
+</resources>

@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">playsound(x,y,ExplosionSnd);
-playsound(x,y,RevolverSnd);
+//playsound(x,y,RevolverSnd);
 playsound(x,y,CPBeginCapSnd);
 effect_create_above(ef_explosion,x+30-random(60),y+30-random(60),2,c_gray);
 effect_create_above(ef_explosion,x,y,2,c_red);
@@ -65,7 +65,7 @@ with (Gib) {
         rotspeed=random(151)-75;
     }
 }
-with(Bubble) {
+with(SuperBubble) {
     if (distance_to_object(other) &lt; other.blastRadius){
         alarm[0]-=200;
     }    

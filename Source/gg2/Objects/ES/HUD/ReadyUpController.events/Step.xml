@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//refill game timers
+if global.readyTotal!=global.readyMax /*and global.forceReady==0*/{
+        if global.readyMax&gt;0{
+            global.rupTime=5*30/global.delta_factor
+        }
+}
+if global.readyMax==0{
+    global.rupTime=5*30/global.delta_factor
+}
+
+//reset timers until round is starting
+if global.isLive==0{
+    event_user(2)
+    //visible=1
+}
+
+//round is live, perform cleanup
+if global.isLive{
+    event_user(0)
+}
+
+//match is starting check, dont proceed until it is
+if startingMatch!=1 /*and global.forceReady==0*/ exit;
+
+{
+    if global.rupTime&gt;0{
+        global.rupTime-=1
+    }
+    
+    with(Player){
+        if object==-1{
+            canSpawn=1
+            alarm[5]=1
+        }
+    }
+    //announce countdown to players
+    if global.rupTime&gt;0 and global.rupTime mod (30/global.delta_factor)=0{
+        ServerMessageString("RUP: Round will begin in: "+string(round(global.rupTime/(30/global.delta_factor))),global.sendBuffer)
+        if global.isHost==1{
+            with (NoticeO){
+                instance_destroy()
+            }
+            notice=instance_create(0,0,NoticeO)
+            notice.notice=NOTICE_CUSTOM
+            notice.message="RUP: Round will begin in: "+string(round(global.rupTime/(30/global.delta_factor)))
+        }
+    }else if global.rupTime=1{
+        ServerMessageString("RUP: Round is live!",global.sendBuffer)
+        if global.isHost==1{
+            with (NoticeO){
+                instance_destroy()
+            }
+            notice=instance_create(0,0,NoticeO)
+            notice.notice=NOTICE_CUSTOM
+            notice.message = "RUP: Round is live!"
+            ServerRUPStatus()
+            var message;
+            message = global.chatPrintPrefix+C_WHITE+"Round is live!"
+            write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+            write_ushort(global.publicChatBuffer, string_length(message));
+            write_string(global.publicChatBuffer, message);
+            write_byte(global.publicChatBuffer,-1)
+            print_to_chat(message);// For the host
+            alarm[1]=1
+        }
+        
+        if instance_exists(Character) or !ds_list_empty(global.players){
+            global.isLive=1
+        }
+        global.rupTime=-2
+        
+        if global.isHost{
+            //reset character things
+            with(Character){
+                x=xstart
+                y=ystart
+                hp=maxHp
+                ubered=0
+                hspeed=0
+                vspeed=0
+                speed=0
+                moveStatus=0
+                nutsNBolts=maxNutsNBolts
+                //also need to reset stats
+            }
+            with(Player){
+                if object==-1{
+                    canSpawn=1
+                    alarm[5]=1
+                }
+                
+                stats[KILLS] = 0;
+                stats[DEATHS] = 0;
+                stats[CAPS] = 0;
+                stats[ASSISTS] = 0;
+                stats[DESTRUCTION] = 0;
+                stats[STABS] = 0;
+                stats[HEALING] = 0;
+                stats[DEFENSES] = 0;
+                stats[INVULNS] = 0;
+                stats[BONUS] = 0;
+                stats[DOMINATIONS] = 0;
+                stats[REVENGE] = 0;
+                stats[POINTS] = 0;
+                stats[DAMAGE] = 0;
+                roundStats[KILLS] = 0;
+                roundStats[DEATHS] = 0;
+                roundStats[CAPS] = 0;
+                roundStats[ASSISTS] = 0;
+                roundStats[DESTRUCTION] = 0;
+                roundStats[STABS] = 0;
+                roundStats[HEALING] = 0;
+                roundStats[DEFENSES] = 0;
+                roundStats[INVULNS] = 0;
+                roundStats[BONUS] = 0;
+                roundStats[DOMINATIONS] = 0;
+                roundStats[REVENGE] = 0;
+                roundStats[POINTS] = 0;
+                roundStats[DAMAGE] = 0;
+            }
+            with(Sentry){
+                hp -= 999;
+                lastDamageDealer = noone;
+            }
+            with(Medigun){
+                ubering=false
+                uberCharge=0
+                uberReady=false
+            }
+        
+            //reset timers
+            event_user(2)
+            if instance_exists(ArenaHUD){
+                serverArenaRestart()
+            }
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

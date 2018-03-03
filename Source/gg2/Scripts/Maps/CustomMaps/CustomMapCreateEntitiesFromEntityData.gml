@@ -78,8 +78,8 @@ if (firstChar == "{" or firstChar == "[")
         {
             resourceString = ds_map_find_value(metadata, obj.resource);
             if (is_string(resourceString))
-            {                
-                sprite = stringToResource(resourceString);  // Load an embedded sprite
+            {
+                sprite = stringToResource(resourceString); // Load an embedded sprite
                 obj.sprite_index = sprite;
                 ds_map_add(global.resources, obj.resource, sprite);
             }

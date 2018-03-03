@@ -13,37 +13,58 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">    if (global.myself.object = -1 or global.myself.class != CLASS_MEDIC)
-    {
-        instance_destroy();
-        exit;
-    }
-    xoffset = view_xview[0];
-    yoffset = view_yview[0];
-    xsize = view_wview[0];
-    ysize = view_hview[0];
-    if (global.myself.team == TEAM_BLUE)
-        uberoffset=1;
-    else
-        uberoffset = 0;
-    
-    draw_set_valign(fa_center);
-    draw_set_halign(fa_center);
-    draw_set_alpha(1);
+        <argument kind="STRING">if (global.myself.object = -1 or global.myself.class != CLASS_MEDIC){
+    instance_destroy();
+    exit;
+}
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0];
+ysize = view_hview[0];
 
-    var myMedigun;
-    myMedigun = -1;
-    with(Medigun)
-    {
-        if(ownerPlayer == global.myself)
-            myMedigun = id;
+draw_set_valign(fa_center);
+draw_set_halign(fa_right);
+draw_set_alpha(1);
+
+var myMedigun;
+myMedigun = -1;
+with(Medigun){
+    if(ownerPlayer == global.myself){
+        myMedigun = id;
     }
-    if(myMedigun != -1)
-    {
-        draw_healthbar(xoffset+xsize-135, yoffset+ysize-100, xoffset+xsize-15, yoffset+ysize-68,myMedigun.uberCharge*100/2000,c_black,c_white,c_white,0,true,true);
-        draw_sprite_ext(UberHudS,uberoffset,xoffset+xsize-80,yoffset+ysize-85,2,2,0,c_white,1);
-        draw_text_color(xoffset+xsize-70,yoffset+ysize-90,"SUPERBURST",c_white,c_white,c_white,c_white,1);
+}
+if(myMedigun != -1){
+    if global.boxHUD==0{
+        draw_sprite_ext(UberHudS,0,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
+        if myMedigun.uberCharge/2000&gt;=1{
+            barcolour=c_aqua
+        }else{
+            barcolour=make_color_rgb(217,217,183)
+        }
+        draw_healthbar(xoffset+xsize-109,yoffset+ysize-69+11,xoffset+xsize-52,yoffset+ysize-61+11,myMedigun.uberCharge*100/2000,c_black,barcolour,barcolour,0,true,false);
+        draw_set_color(make_color_rgb(217,217,183))
+        draw_text(xoffset+xsize-20,yoffset+ysize-64+11,string(round(myMedigun.uberCharge*100/2000))+"%")
+        draw_set_color(c_white);
+    }else{
+        if myMedigun.uberCharge/2000&gt;=1{
+            barcolour=c_aqua
+            barcolour2=c_aqua
+        }else{
+            barcolour=c_white
+            barcolour2=c_gray
+        }
+        draw_set_color(c_black)
+        draw_set_alpha(global.boxBgAlpha/100)
+        
+        draw_rectangle((xoffset+xsize-90),(yoffset+ysize)-57,(xoffset+xsize-23),(yoffset+ysize)-57+16,0)
+        
+        draw_set_alpha(global.boxElementAlpha/100)
+        draw_set_color(make_color_rgb(50,200,50))
+        
+        draw_text((xoffset+xsize-25),(yoffset+ysize)-57+9,string(floor(myMedigun.uberCharge*100/2000)))
+        draw_healthbar((xoffset+xsize-86),(yoffset+ysize)-57+4,(xoffset+xsize-52),(yoffset+ysize)-57+12,myMedigun.uberCharge*100/2000,c_black,barcolour2,barcolour,0,1,0)
     }
+}
 </argument>
       </arguments>
     </action>

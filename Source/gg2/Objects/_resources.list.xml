@@ -15,4 +15,5 @@
   <resource name="Updater" type="RESOURCE"/>
   <resource name="RateController" type="RESOURCE"/>
   <resource name="PluginEnvironment" type="RESOURCE"/>
+  <resource name="ES" type="GROUP"/>
 </resources>

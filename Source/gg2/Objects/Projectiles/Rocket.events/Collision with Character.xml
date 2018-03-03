@@ -14,21 +14,12 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    if (other.team != team)
-    {
-        with(other)
-        {
-            cloakAlpha = max(cloakAlpha, 0.3); 
-            cloakFlicker = true;
-            alarm[7] = 3;
+    if (other.team != team) and (global.jumpMode==0 or (global.jumpMode==1 and global.jumpPlayerAttack=1)){
+        with(other){
+            dealFlicker(id)
         }
-        characterHit = other;
+        characterHit = other.id;
         event_user(5);
-    }
-    else if (ds_list_find_index(playersPassed, other.player) == -1 and other.player != ownerPlayer)
-    {
-        ds_list_add(playersPassed, other.player);
-        distanceToTravel -= 100;
     }
 }
 </argument>

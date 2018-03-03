@@ -19,9 +19,11 @@ newteam = -1;
 door = -1;
 redteam=0;
 blueteam=0;
+specteam=0
 y=-120;
-afk=false;
-balance = calculateTeamBalance();</argument>
+//afk=false;
+balance = -1 //calculateTeamBalance();
+</argument>
       </arguments>
     </action>
   </actions>

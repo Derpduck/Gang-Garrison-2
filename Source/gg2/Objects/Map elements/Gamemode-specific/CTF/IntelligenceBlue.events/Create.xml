@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">team = TEAM_BLUE;
+resetTimer=-1
 </argument>
       </arguments>
     </action>

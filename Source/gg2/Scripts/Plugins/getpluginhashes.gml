@@ -41,7 +41,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
         pluginhash = GG2DLL_compute_MD5(working_directory + "\ServerPluginsDebug\" + pluginname + ".zip");
     }
     else
-    {   
+    {
         // construct the URL
         // (http://www.ganggarrison.com/plugins/$PLUGINNAME$.md5)
         url = PLUGIN_SOURCE + pluginname + ".md5";

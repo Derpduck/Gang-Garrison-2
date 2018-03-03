@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Commands" type="GROUP"/>
+  <resource name="chat_init" type="RESOURCE"/>
+  <resource name="getPlayerColor" type="RESOURCE"/>
+  <resource name="insertNewline" type="RESOURCE"/>
+  <resource name="print_to_chat" type="RESOURCE"/>
+  <resource name="chat_go_idle" type="RESOURCE"/>
+  <resource name="parse_custom_color" type="RESOURCE"/>
+</resources>

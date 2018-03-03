@@ -15,9 +15,9 @@
       <arguments>
         <argument kind="STRING">{
     // prevent sputtering
-    if (ammoCount &lt; 1.8)
-        ammoCount -= 1.8;
-    if (readyToShoot and ammoCount &gt;= 1.8
+    //if (ammoCount &lt; 1.8)
+        //ammoCount -= 1.8;
+    if (readyToShoot and ammoCount &gt;= ammoCost
         and !collision_line(x,y,x+lengthdir_x(25,owner.aimDirection),y+lengthdir_y(25,owner.aimDirection),Obstacle,1,0)
         and !collision_line(x,y,x+lengthdir_x(25,owner.aimDirection),y+lengthdir_y(25,owner.aimDirection),BulletWall,1,0)
         and !collision_line(x,y,x+lengthdir_x(25,owner.aimDirection),y+lengthdir_y(25,owner.aimDirection),IntelGate,1,0)
@@ -41,7 +41,7 @@
         justShot=true;
         readyToShoot=false;
         isRefilling = false;
-        ammoCount -= 1.8;
+        ammoCount -= ammoCost;
         
         if (ammoCount &gt; 0)
             alarm[0] = refireTime / global.delta_factor;

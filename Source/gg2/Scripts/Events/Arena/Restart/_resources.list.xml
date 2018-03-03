@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="sendEventArenaRestart" type="RESOURCE"/>
+  <resource name="serverArenaRestart" type="RESOURCE"/>
+  <resource name="doEventArenaRestart" type="RESOURCE"/>
+</resources>

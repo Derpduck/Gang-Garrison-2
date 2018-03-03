@@ -11,7 +11,7 @@ MAX_I = 8; // subpixel precision (MAX_I = 8 means 1/8th of a pixel)
 i = 8;
 
 maxDistance = argument1; // max distance alotted
-hvec = cos(degtorad(argument0))*maxDistance;  // h vector of direction
+hvec = cos(degtorad(argument0))*maxDistance; // h vector of direction
 vvec = -sin(degtorad(argument0))*maxDistance; // v '''
 sfac = max(abs(hvec), abs(vvec)); // Used to get pixel chunks from the movement vector
 

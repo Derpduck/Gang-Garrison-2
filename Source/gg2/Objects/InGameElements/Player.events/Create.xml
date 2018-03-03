@@ -16,10 +16,22 @@
         <argument kind="STRING">{
     object = -1;
     team = TEAM_SPECTATOR;
-    class = CLASS_SCOUT;
+    class = CLASS_DEMOMAN//CLASS_SCOUT;
     socket = -1;
     name = "";
     kicked = false;
+    banned = false;
+    lastChatTime = current_time-798;
+    permID=-1
+    dcReason=-1
+    hrID=-1
+    isDerpduck=0
+    oldPing=-1
+    MGE_currentArena=-1
+    
+    //Bots
+    isBot=0
+    botSocket=-1
     
     // client setting stuff; set to defaults
     queueJump = false;
@@ -38,6 +50,7 @@
     stats[DOMINATIONS] = 0;
     stats[REVENGE] = 0;
     stats[POINTS] = 0;
+    stats[DAMAGE] = 0;
     
     //statistic array for single life/arena
     roundStats[KILLS] = 0;
@@ -53,6 +66,7 @@
     roundStats[DOMINATIONS] = 0;
     roundStats[REVENGE] = 0;
     roundStats[POINTS] = 0;
+    roundStats[DAMAGE] = 0;
     
     timesChangedCapLimit = 0;
     
@@ -64,7 +78,9 @@
     //Arena mode - used by server to check if the player can spawn
     canSpawn = 1;
     if instance_exists(ArenaHUD) {
-        if ArenaHUD.roundStart == 0 canSpawn = 0;
+        if global.isLive==1{
+            if ArenaHUD.roundStart == 0 canSpawn = 0;
+        }
     }
     
     //Sentries for Engies

@@ -13,28 +13,33 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">var redIsCapping, blueIsCapping;
-
-redIsCapping = !instance_exists(IntelligenceBlue);
-blueIsCapping = !instance_exists(IntelligenceRed);
-if (!redIsCapping)
-    redIsCapping = (IntelligenceBlue.x != IntelligenceBaseBlue.x or IntelligenceBlue.y != IntelligenceBaseBlue.y);
-if (!blueIsCapping)
-    blueIsCapping = (IntelligenceRed.x != IntelligenceBaseRed.x or IntelligenceRed.y != IntelligenceBaseRed.y);
-
-if (timer &gt; 0)
-    timer -= 1 * global.delta_factor;
-if ((global.redCaps &gt;= global.caplimit) or (global.blueCaps &gt;= global.caplimit) or timer&lt;=0) {
-    if (global.redCaps &gt; global.blueCaps)
+        <argument kind="STRING">if timer &gt; 0{
+    timer -=1 * global.delta_factor;
+    if global.redCaps == global.caplimit{
         global.winners = TEAM_RED;
-    else if (global.blueCaps &gt; global.redCaps)
+    }else if global.blueCaps == global.caplimit{
         global.winners = TEAM_BLUE;
-    else if (!redIsCapping and !blueIsCapping and global.blueCaps == global.redCaps)
-        global.winners = TEAM_SPECTATOR;
+    }
+}else if timer == 0{
+    if instance_exists(IntelligenceRed) &amp;&amp; instance_exists(IntelligenceBlue){
+        if (IntelligenceRed.x == IntelligenceBaseRed.x
+        and IntelligenceRed.y == IntelligenceBaseRed.y
+        and IntelligenceBlue.x == IntelligenceBaseBlue.x
+        and IntelligenceBlue.y == IntelligenceBaseBlue.y){
+            if global.redCaps &gt; global.blueCaps{
+                global.winners = TEAM_RED;
+            }else if global.blueCaps &gt; global.redCaps{
+                global.winners = TEAM_BLUE;
+            }else{
+                global.winners = TEAM_SPECTATOR;
+            }
+        }else{
+            overtime = 1;
+        }
+    }else{
+        overtime = 1;
+    }
 }
-    
-if (timer &lt;= 0 and global.winners == -1)
-    overtime = true;
 </argument>
       </arguments>
     </action>

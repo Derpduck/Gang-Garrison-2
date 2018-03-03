@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ControlPointHUDS" type="RESOURCE"/>
+  <resource name="ArenaRoundCounterS" type="RESOURCE"/>
+  <resource name="ArenaMVPBannerS" type="RESOURCE"/>
+  <resource name="SmallTeamSelectS" type="RESOURCE"/>
+  <resource name="SmallClassSelectS" type="RESOURCE"/>
+  <resource name="CasterHUD_PlayersS" type="RESOURCE"/>
+  <resource name="CasterHUD_StatsS" type="RESOURCE"/>
+  <resource name="MoveCursorS" type="RESOURCE"/>
+  <resource name="StatsBoardS" type="RESOURCE"/>
+  <resource name="IntelStatusESS" type="RESOURCE"/>
+  <resource name="MGE_HUDS" type="RESOURCE"/>
+  <resource name="ScrollButtonUpS" type="RESOURCE"/>
+  <resource name="ScrollButtonDownS" type="RESOURCE"/>
+</resources>

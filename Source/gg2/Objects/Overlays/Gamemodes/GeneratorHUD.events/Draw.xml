@@ -21,20 +21,32 @@ xshift = -320*global.timerPos;
 yshift = 5*global.timerPos;
 
 barcolor=make_color_rgb(217,217,183);
-draw_set_alpha(1);
+draw_set_alpha(1)
 
-draw_sprite_ext(GeneratorHUDS,0,xoffset+xsize/2,yoffset+ysize-50,2,2,0,c_white,1);
-if instance_exists(GeneratorRed) {
-    draw_sprite_ext(GeneratorRedS,GeneratorRed.image_index,xoffset+xsize/2-50,yoffset+ysize-50,1,1,0,c_white,1);
-    draw_sprite_ext(GeneratorShieldS,floor(GeneratorRed.shieldIndex),xoffset+xsize/2-50,yoffset+ysize-50,1,1,0,c_white, GeneratorRed.shieldResistance);
-    draw_healthbar(xoffset+xsize/2-77, yoffset+ysize-75, xoffset+xsize/2-25, yoffset+ysize-68,GeneratorRed.hp*100/GeneratorRed.maxHp,c_black,barcolor,barcolor,0,true,true);
-    draw_healthbar(xoffset+xsize/2-77, yoffset+ysize-30, xoffset+xsize/2-25, yoffset+ysize-23,GeneratorRed.shieldHp*100/GeneratorRed.maxShieldHp,c_black,barcolor,barcolor,0,true,true);
+draw_sprite_ext(GeneratorHUDS,0,xoffset+xsize/2,yoffset+ysize-50,2,2,0,c_white,1)
+if instance_exists(GeneratorRed){
+    draw_sprite_ext(GeneratorRedS,GeneratorRed.image_index,xoffset+xsize/2-46,yoffset+ysize-44,0.5,0.5,0,c_white,1)
+    draw_healthbar(xoffset+xsize/2-76, yoffset+ysize-31, xoffset+xsize/2-15, yoffset+ysize-24,GeneratorRed.hp*100/GeneratorRed.maxHp,c_black,barcolor,barcolor,0,true,true)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    draw_set_alpha(0.5)
+    draw_set_color(c_black)
+    draw_rectangle(xoffset+xsize/2-27,yoffset+ysize-57,xoffset+xsize/2-65,yoffset+ysize-68,0)
+    draw_set_alpha(1)
+    draw_set_color(c_white)
+    draw_text(xoffset+xsize/2-46,yoffset+ysize-62,ceil(GeneratorRed.hp))
 }
-if instance_exists(GeneratorBlue) {
-    draw_sprite_ext(GeneratorBlueS,GeneratorBlue.image_index,xoffset+xsize/2+50,yoffset+ysize-50,1,1,0,c_white,1);
-    draw_sprite_ext(GeneratorShieldS,floor(GeneratorBlue.shieldIndex),xoffset+xsize/2+50,yoffset+ysize-50,1,1,0,c_white, GeneratorBlue.shieldResistance);
-    draw_healthbar(xoffset+xsize/2+23, yoffset+ysize-75, xoffset+xsize/2+75, yoffset+ysize-68,GeneratorBlue.hp*100/GeneratorBlue.maxHp,c_black,barcolor,barcolor,0,true,true);
-    draw_healthbar(xoffset+xsize/2+23, yoffset+ysize-30, xoffset+xsize/2+75, yoffset+ysize-23,GeneratorBlue.shieldHp*100/GeneratorBlue.maxShieldHp,c_black,barcolor,barcolor,0,true,true);
+if instance_exists(GeneratorBlue){
+    draw_sprite_ext(GeneratorBlueS,GeneratorBlue.image_index,xoffset+xsize/2+46,yoffset+ysize-44,0.5,0.5,0,c_white,1)
+    draw_healthbar(xoffset+xsize/2+14, yoffset+ysize-31, xoffset+xsize/2+75, yoffset+ysize-24,GeneratorBlue.hp*100/GeneratorBlue.maxHp,c_black,barcolor,barcolor,0,true,true)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    draw_set_alpha(0.5)
+    draw_set_color(c_black)
+    draw_rectangle(xoffset+xsize/2+27,yoffset+ysize-57,xoffset+xsize/2+65,yoffset+ysize-68,0)
+    draw_set_alpha(1)
+    draw_set_color(c_white)
+    draw_text(xoffset+xsize/2+46,yoffset+ysize-62,ceil(GeneratorBlue.hp))
 }
 
 draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);

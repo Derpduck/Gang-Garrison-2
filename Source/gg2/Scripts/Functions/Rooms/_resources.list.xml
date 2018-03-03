@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="room_goto_fix" type="RESOURCE"/>
+  <resource name="rooms_fix_views" type="RESOURCE"/>
+  <resource name="rooms_menu_size" type="RESOURCE"/>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="RifleSM" type="RESOURCE"/>
+  <resource name="RifleFSM" type="RESOURCE"/>
+  <resource name="RifleFRSM" type="RESOURCE"/>
+</resources>

@@ -17,7 +17,6 @@
     gun.bubbleCount -= 1;
 
 instance_create(x,y,Pop);
-
 </argument>
       </arguments>
     </action>

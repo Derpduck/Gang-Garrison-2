@@ -18,7 +18,7 @@
     alarm[0] = 6 / global.delta_factor;
     playsound(x,y,KnifeSnd)
     numKills = 0;
-    maxKills = 2;
+    maxKills = 1;
 }
 </argument>
       </arguments>

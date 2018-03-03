@@ -14,18 +14,28 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    if(other.id != ownerPlayer.object and other.team != team)
+    if(other.id != ownerPlayer.object and other.team != team) and (global.jumpMode==0 or (global.jumpMode==1 and global.jumpPlayerAttack=1))
     {
         if(!other.ubered)
         { 
             damageCharacter(ownerPlayer, other.id, hitDamage);
+            
+            if ownerPlayer==global.myself{
+                var damageDone;
+                damageDone = instance_create(other.x,other.y,DamageIndicator)
+                damageDone.dmg = hitDamage
+                global.myself.stats[DAMAGE]+=hitDamage
+                global.myself.roundStats[DAMAGE]+=hitDamage
+                damageDone.owner = other.id
+            }
+    
             other.timeUnscathed = 0;
             if (other.lastDamageDealer != ownerPlayer and other.lastDamageDealer != other.player)
             {
                 other.secondToLastDamageDealer = other.lastDamageDealer;
                 other.alarm[4] = other.alarm[3]
             }
-            other.alarm[3] = ASSIST_TIME;
+            other.alarm[3] = ASSIST_TIME/global.delta_factor;
             other.lastDamageDealer = ownerPlayer;
             other.lastDamageSource = weapon;
             var blood;

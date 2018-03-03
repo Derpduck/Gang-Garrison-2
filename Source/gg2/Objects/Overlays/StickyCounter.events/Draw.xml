@@ -13,12 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if (global.myself.team == TEAM_RED)
-    image_index = 0;
-else
-    image_index=1;
-
-var xoffset, yoffset, xsize, ysize;
+        <argument kind="STRING">var xoffset, yoffset, xsize, ysize;
     
 xoffset = view_xview[0];
 yoffset = view_yview[0];
@@ -27,15 +22,34 @@ ysize = view_hview[0];
 draw_set_alpha(1);
 draw_set_color(c_black);
 draw_set_valign(fa_center);
-draw_set_halign(fa_left);
-    
-if (global.myself.object != -1 and global.myself.class==CLASS_DEMOMAN)
-{    
-    draw_sprite_ext(sprite_index, image_index, xoffset+xsize-65, yoffset+ysize-78, 3, 3, 0, c_white, 1);
-    if (instance_exists(global.myself.object.currentWeapon))
-    {
-        draw_text_transformed(xoffset+xsize-83,yoffset+ysize-76,global.myself.object.currentWeapon.lobbed,1.5,1.5,0);
-        draw_text_transformed(xoffset+xsize-70,yoffset+ysize-76,"/8",1.5,1.5,0);
+draw_set_halign(fa_left)
+
+if (global.myself.object != -1 and global.myself.class==CLASS_DEMOMAN){
+    if global.boxHUD==0{
+        draw_sprite_ext(sprite_index,0,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
+        if (instance_exists(global.myself.object.currentWeapon)){
+            draw_set_color(make_color_rgb(217,217,183))
+            draw_text(xoffset+xsize-47,yoffset+ysize-63+11,string(global.myself.object.currentWeapon.lobbed)+"/"+string(global.myself.object.currentWeapon.maxMines))
+            draw_set_color(c_white)
+        }
+    }else{
+        if (instance_exists(global.myself.object.currentWeapon)){
+            draw_set_color(c_black)
+            draw_set_alpha(global.boxBgAlpha/100)
+            
+            draw_rectangle((xoffset+xsize-90),(yoffset+ysize)-37-20,(xoffset+xsize-23),(yoffset+ysize)-37+16-20,0)
+            
+            draw_set_alpha(global.boxElementAlpha/100)
+            draw_set_color(make_color_rgb(50,200,50))
+            if global.myself.object.currentWeapon.lobbed==global.myself.object.currentWeapon.maxMines{
+                draw_set_color(make_color_rgb(200,50,50))
+            }
+            draw_set_halign(fa_right)
+            
+            draw_text((xoffset+xsize-25),(yoffset+ysize)-37+9-20,string(global.myself.object.currentWeapon.lobbed)+"/"+string(global.myself.object.currentWeapon.maxMines))
+            draw_healthbar((xoffset+xsize-86),(yoffset+ysize)-37+4-20,(xoffset+xsize-52),(yoffset+ysize)-37+12-20,
+            (global.myself.object.currentWeapon.lobbed/global.myself.object.currentWeapon.maxMines)*100,c_black,c_white,c_white,0,1,0)
+        }
     }
 }
 </argument>

@@ -13,20 +13,17 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
+        <argument kind="STRING">if inAir==1{
     hspeed /= 1.1;
     if(abs(hspeed)&lt;0.2)
         hspeed=0;
     
     wallSetSolid();
-    if(place_free(x, y+1))
-    {
+    if(place_free(x, y+1)){
         vspeed += 0.6 * global.delta_factor;
         if(vspeed &gt; 10)
             vspeed = 10;
-    }
-    else
-    {
+    }else{
         vspeed = 0;
         move_outside_solid(90, 10);
     }
@@ -36,6 +33,8 @@
     y += vspeed * global.delta_factor;
     x -= hspeed;
     y -= vspeed;
+}else{
+    vspeed=0
 }
 </argument>
       </arguments>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="SoldierRedSM" type="RESOURCE"/>
+  <resource name="SoldierRedRunSM" type="RESOURCE"/>
+  <resource name="SoldierRedStandSM" type="RESOURCE"/>
+  <resource name="SoldierRedJumpSM" type="RESOURCE"/>
+  <resource name="SoldierRedLeanLSM" type="RESOURCE"/>
+  <resource name="SoldierRedLeanRSM" type="RESOURCE"/>
+  <resource name="SoldierRedDeadSM" type="RESOURCE"/>
+  <resource name="SoldierRedTauntSM" type="RESOURCE"/>
+  <resource name="SoldierRedHSM" type="RESOURCE"/>
+  <resource name="SoldierRedIntelSM" type="RESOURCE"/>
+  <resource name="SoldierBlueSM" type="RESOURCE"/>
+  <resource name="SoldierBlueRunSM" type="RESOURCE"/>
+  <resource name="SoldierBlueStandSM" type="RESOURCE"/>
+  <resource name="SoldierBlueJumpSM" type="RESOURCE"/>
+  <resource name="SoldierBlueLeanLSM" type="RESOURCE"/>
+  <resource name="SoldierBlueLeanRSM" type="RESOURCE"/>
+  <resource name="SoldierBlueDeadSM" type="RESOURCE"/>
+  <resource name="SoldierBlueTauntSM" type="RESOURCE"/>
+  <resource name="SoldierBlueHSM" type="RESOURCE"/>
+  <resource name="SoldierBlueIntelSM" type="RESOURCE"/>
+</resources>

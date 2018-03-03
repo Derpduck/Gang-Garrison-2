@@ -15,14 +15,19 @@
       <arguments>
         <argument kind="STRING">xoffset = sprite_xoffset-17;
 yoffset = sprite_yoffset-10;
-refireTime=5;
+refireTime=4;
 readyToShoot=false;
 noticedTarget=true;
-hitDamage=8;
+hitDamage=7;
+genDamage=3;
 shooting=false;
 rotating=false;
 nearestTarget = noone;
 alarm[0] = refireTime / global.delta_factor;
+tracerAlpha=0
+justShot=0
+shotDrawX=random(25)-12
+shotDrawY=random(25)-12
 </argument>
       </arguments>
     </action>

@@ -18,8 +18,7 @@ if (other.solid)
 {
     really_move_contact_solid(direction, speed);
     characterHit=-1;
-    if fade==false event_user(5);
-    else instance_destroy();
+    event_user(5);
 }
 gunUnsetSolids();
 </argument>

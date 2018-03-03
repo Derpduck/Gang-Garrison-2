@@ -13,41 +13,43 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    xoffset = -11;
-    yoffset = 0;
-    refireTime = 2;
-    event_inherited();
+        <argument kind="STRING">xoffset = -11;
+yoffset = 0;
+refireTime = 2;
+event_inherited();
+
+sndlooping = false;
+maxAmmo = 200;
+ammoCount = maxAmmo;
+reloadBuffer = 10;
+isRefilling = false;
+ammoCost=3
+reloadTime=1
+
+if(golden){
+    normalSprite = MinigunGoldS;
+    recoilSprite = MinigunGoldFS;
+    reloadSprite = -1;
+}else{
+    normalSprite = MinigunS;
+    recoilSprite = MinigunFS;
     
-    sndlooping = false;
-    maxAmmo = 200;
-    ammoCount = maxAmmo;
-    reloadBuffer = 10;
-    isRefilling = false;
-    
-    if(golden)
-    {
-        normalSprite = MinigunGoldS;
-        recoilSprite = MinigunGoldFS;
-        reloadSprite = -1;
+    if global.dumbledankSprites==1{
+        normalSprite = MinigunSM;
+        recoilSprite = MinigunFSM;
     }
-    else
-    {
-        normalSprite = MinigunS;
-        recoilSprite = MinigunFS;
-        reloadSprite = -1;
-    }
-    sprite_index = normalSprite;
-    
-    //play at least 2 frames
-    recoilTime = 3;
-    recoilAnimLength = sprite_get_number(recoilSprite)/2;
-    recoilImageSpeed = recoilAnimLength/recoilTime;
-    
-    //Overlays for the overheat
-    overlaySprite = MinigunOverlayS;
-    overlayFiringSprite = MinigunOverlayFS;
+    reloadSprite = -1;
 }
+sprite_index = normalSprite;
+
+//play at least 2 frames
+recoilTime = 3;
+recoilAnimLength = sprite_get_number(recoilSprite)/2;
+recoilImageSpeed = recoilAnimLength/recoilTime;
+
+//Overlays for the overheat
+overlaySprite = MinigunOverlayS;
+overlayFiringSprite = MinigunOverlayFS;
 </argument>
       </arguments>
     </action>

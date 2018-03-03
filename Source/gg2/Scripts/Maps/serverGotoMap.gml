@@ -4,11 +4,13 @@ global.currentMap = argument0;
 if (findInternalMapName(global.currentMap) != "")
 {
     global.currentMapMD5 = "";
+    ds_list_clear(global.clientChatBanList)
     room_goto_fix(CustomMapRoom);
 }
 else if(file_exists("Maps/" + global.currentMap + ".png"))
 {
     global.currentMapMD5 = CustomMapGetMapMD5(global.currentMap);
+    ds_list_clear(global.clientChatBanList)
     room_goto_fix(CustomMapRoom);
 }
 else

@@ -19,8 +19,47 @@
     }
     hostSeenMOTD = false;
     global.players = ds_list_create();
+    global.playerListExists=1
     global.tcpListener = -1;
     global.serverSocket = -1;
+    
+    global.privChatRedBuffer = buffer_create();
+    global.privChatBlueBuffer = buffer_create();
+    global.privChatSpecBuffer = buffer_create();
+    global.publicChatBuffer = buffer_create();
+    global.chatBanList=ds_list_create()
+    global.clientChatBanList=ds_list_create()
+    ds_list_clear(global.clientChatBanList)
+    //if global.defaultConfig!="" and global.currentConfig==""{
+    //    config_load(argument0)
+    //}
+    //Bots
+    global.totalBots=0
+    
+    global.banned_ips = ds_list_create();
+    var text, str;
+    if (file_exists("Banned_IPs.txt")){
+        // If a list of banned ips exists, load them into the list
+        text = file_text_open_read("Banned_IPs.txt")
+        while not file_text_eof(text){
+            str = file_text_read_string(text)
+            file_text_readln(text)
+            ds_list_add(global.banned_ips, str)
+        }
+        file_text_close(text);
+    }
+    
+    global.rcon_ips = ds_list_create();
+    var rcon_text, rcon_str;
+    if (file_exists("RCON_IPs.txt")){
+        rcon_text = file_text_open_read("RCON_IPs.txt")
+        while not file_text_eof(rcon_text){
+            rcon_str = file_text_read_string(rcon_text)
+            file_text_readln(rcon_text)
+            ds_list_add(global.rcon_ips, rcon_str)
+        }
+        file_text_close(rcon_text);
+    }
     
     var i;
     serverId = buffer_create();
@@ -37,7 +76,10 @@
     // Player 0 is reserved for the Server.
     serverPlayer = instance_create(0,0,Player);
     serverPlayer.name = global.playerName;
+    serverPlayer.permID=global.permIDCounter
+    global.permIDCounter+=1
     ds_list_add(global.players, serverPlayer);
+    ds_map_add(rupPlayers,serverPlayer,0)
 
     for (a=0; a<10; a+=1)
     {
@@ -52,7 +94,7 @@
         instance_destroy();
         exit;
     }
-    global.serverSocket = tcp_connect("127.0.0.1", global.hostingPort);    
+    global.serverSocket = tcp_connect("127.0.0.1", global.hostingPort);
     if(socket_has_error(global.serverSocket))
     {
         show_message("Unable to connect to self. Epic fail, dude.");
@@ -88,21 +130,50 @@
 
     var map, i;
     if (global.shuffleRotation) {
-        ds_list_shuffle(global.map_rotation);
-        map = ds_list_find_value(global.map_rotation, 0);
-        // "Shuffle, don't make arena map first" chosen
-        if (global.shuffleRotation == 1) {
-            // if first map is arena
-            if (string_copy(map, 0, 6) == 'arena_') {
-                // try to find something else
-                for (i = 0; i < ds_list_size(global.map_rotation); i += 1) {
-                    map = ds_list_find_value(global.map_rotation, i);
-                    // swap with first map
-                    if (string_copy(map, 0, 6) != 'arena_') {
-                        ds_list_replace(global.map_rotation, i, ds_list_find_value(global.map_rotation, 0));
-                        ds_list_replace(global.map_rotation, 0, map);
+        if global.shuffleRotation==3{
+            with(ModController){
+                alarm[0]=20/global.delta_factor
+            }
+        }else{
+            ds_list_shuffle(global.map_rotation);
+            map = ds_list_find_value(global.map_rotation, 0);
+            // "Shuffle, don't make arena map first" chosen
+            if (global.shuffleRotation == 1) {
+                // if first map is arena
+                if (string_copy(map, 0, 6) == 'arena') {
+                    // try to find something else
+                    for (i = 0; i < ds_list_size(global.map_rotation); i += 1) {
+                        map = ds_list_find_value(global.map_rotation, i);
+                        // swap with first map
+                        if (string_copy(map, 0, 6) != 'arena') {
+                            ds_list_replace(global.map_rotation, i, ds_list_find_value(global.map_rotation, 0));
+                            ds_list_replace(global.map_rotation, 0, map);
+                        }
                     }
                 }
+            }
+        }
+    }
+    
+    var mapName
+    global.jumpMode=0
+    mapName = ds_list_find_value(global.map_rotation, 0);
+    if global.jumpMapMode==1{
+        global.jumpMode=1
+    }else if global.jumpMapMode==2{
+        prefixIndex[0]="rj"
+        prefixIndex[1]="dj"
+        prefixIndex[2]="rr"
+        prefixIndex[3]="sj"
+        prefixIndex[4]="ej"
+        prefixIndex[5]="qr"
+        prefixIndex[6]="pj"
+        prefixIndex[7]="jt"
+        prefixIndex[8]="surf"
+        prefixIndex[9]="jump"
+        for (i=0; i<10; i+=1){
+            if string_pos(prefixIndex[i],string_lower(mapName))==1{
+                global.jumpMode=1
             }
         }
     }
@@ -131,8 +202,8 @@
             game_end();
             exit;
         }
-        if (string_length(pluginList) > 65535)
-        {
+        
+        if (string_length(pluginList) > 65535){
             show_message("Error: you are requiring too many server-sent plugins.");
             game_end();
             exit;

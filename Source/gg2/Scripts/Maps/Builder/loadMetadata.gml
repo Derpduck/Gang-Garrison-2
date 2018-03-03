@@ -7,7 +7,7 @@
 var background, voidColor, i, controller, scale;
 controller = noone;
 with(ParallaxController)
-    controller = id;    // Use an existing parallax controller if possible.
+    controller = id; // Use an existing parallax controller if possible.
 
 // The map background color
 background = readProperty(argument0, "background", HEX, $000000);

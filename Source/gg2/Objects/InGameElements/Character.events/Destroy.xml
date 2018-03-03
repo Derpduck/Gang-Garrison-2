@@ -49,10 +49,63 @@
     }
     
     player.object=-1;
-    if (place_meeting(x,y,SpawnRoom))
+    if place_meeting(x,y,SpawnRoom) or tdmGrace==1{
         player.alarm[5] = 1;
-    else 
-        player.alarm[5] = global.Server_Respawntime / global.delta_factor;
+    }else{
+        if global.isLive{
+            if !instance_exists(MGE_HUD){
+                player.alarm[5] = global.Server_Respawntime / global.delta_factor;
+            }else{
+                player.alarm[5] = 30 / global.delta_factor;
+            }
+        }
+    }
+    
+    if instance_exists(MGE_HUD){
+        with(Shot) if(ownerPlayer == other.player) instance_destroy();
+        with(Rocket) if(ownerPlayer == other.player) instance_destroy();
+        with(BurningProjectile) if(ownerPlayer == other.player) instance_destroy();
+        with(Needle) if(ownerPlayer == other.player) instance_destroy();
+        with(Blade) if(ownerPlayer == other.player) instance_destroy();
+        with(Sentry) if(ownerPlayer == other.player) instance_destroy();
+        
+        if lastDamageDealer != -1 and instance_exists(lastDamageDealer){
+            if lastDamageDealer.object != -1 and instance_exists(lastDamageDealer.object){
+                if lastDamageDealer.MGE_currentArena=player.MGE_currentArena{
+                    with(lastDamageDealer.object){
+                        event_perform(ev_collision, HealingCabinet);
+                        
+                        if player.MGE_currentArena!=-1{
+                            if team==TEAM_RED{
+                                MGE_HUD.redScore[player.MGE_currentArena]+=1
+                            }else if team==TEAM_BLUE{
+                                MGE_HUD.blueScore[player.MGE_currentArena]+=1
+                            }
+                        }
+                        GameServer.syncTimer=1
+                    }
+                }
+            }
+        }
+    }
+
+    if global.isHost and global.killstreakPrints==1 and killstreak&gt;=5{
+        deadName=c_filter(player.name)
+        colorDead=getPlayerColor(player, true)
+        if killstreakEnder==-1{
+            killstreakString=" killstreak has ended!"
+        }else{
+            killstreakEnderName=c_filter(killstreakEnder.name)
+            colorEnder=getPlayerColor(killstreakEnder, true)
+            killstreakString=" killstreak was ended by"+colorEnder+" "+killstreakEnderName+C_WHITE+"!"
+        }
+        message = global.chatPrintPrefix+colorDead+deadName+C_WHITE+"'s "+C_GREEN+string(killstreak)+C_WHITE+killstreakString
+        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+        write_ushort(global.publicChatBuffer, string_length(message));
+        write_string(global.publicChatBuffer, message);
+        write_byte(global.publicChatBuffer,-1)
+        print_to_chat(message);// For the host
+    }
     
     //part type destroy
     if(variable_local_exists("jumpFlameParticleType"))
@@ -72,6 +125,20 @@
     ds_list_destroy(tauntOverlays);
     ds_list_destroy(omnomnomnomOverlays);
     ds_list_destroy(gearList);
+    
+    //Bots
+    with Player{
+        if isBot{
+            if target == other.id{
+                target = -1
+                ds_list_clear(directionList)
+            }
+        
+            if patient == other.id{
+                patient = -1
+            }
+        }
+    }
 }
 </argument>
       </arguments>

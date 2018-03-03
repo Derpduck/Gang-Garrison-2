@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//Picking captains
+global.pugMode=1
+
+//Move all players to spectator
+for (i=0; i&lt;ds_list_size(global.players); i+=1){
+    player=ds_list_find_value(global.players, i)
+    player.team=TEAM_SPECTATOR
+    
+    if player.object!=-1{
+        with(player.object){
+            if (!instance_exists(lastDamageDealer) || lastDamageDealer == player){
+                sendEventPlayerDeath(player, player, noone, DAMAGE_SOURCE_BID_FAREWELL);
+                doEventPlayerDeath(player, player, noone, DAMAGE_SOURCE_BID_FAREWELL);
+            }else{
+                var assistant;
+                assistant = secondToLastDamageDealer;
+                if (lastDamageDealer.object){
+                    if (lastDamageDealer.object.healer){
+                        assistant = lastDamageDealer.object.healer;
+                    }
+                }
+                sendEventPlayerDeath(player, lastDamageDealer, assistant, DAMAGE_SOURCE_FINISHED_OFF);
+                doEventPlayerDeath(player, lastDamageDealer, assistant, DAMAGE_SOURCE_FINISHED_OFF);
+            }
+        }
+    }
+    ServerPlayerChangeteam(ds_list_find_index(global.players,player),player.team,global.sendBuffer)
+}
+
+if mix==0{
+    var message;
+    message = global.chatPrintPrefix+C_PINK+"PUG "+C_WHITE+"started! Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_RED+"RED team's"+C_WHITE+" captain."
+    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+    write_ushort(global.publicChatBuffer, string_length(message))
+    write_string(global.publicChatBuffer, message)
+    write_byte(global.publicChatBuffer,-1)
+    print_to_chat(message);// For the host
+    stage=1 //red captain
+}else{
+    var message;
+    message = global.chatPrintPrefix+C_PINK+"MIX "+C_WHITE+"started! Team"+C_GREEN+" map "+C_WHITE+"picking will now begin!"
+    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+    write_ushort(global.publicChatBuffer, string_length(message))
+    write_string(global.publicChatBuffer, message)
+    write_byte(global.publicChatBuffer,-1)
+    print_to_chat(message);// For the host
+    alarm[2]=60/global.delta_factor
+    
+        event_user(4)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

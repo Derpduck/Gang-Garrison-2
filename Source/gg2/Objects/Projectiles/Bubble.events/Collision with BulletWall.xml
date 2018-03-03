@@ -14,7 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">    speed*=-0.8;
-    alarm[0]-=8;</argument>
+    alarm[0]-=8/global.delta_factor;
+</argument>
       </arguments>
     </action>
   </actions>

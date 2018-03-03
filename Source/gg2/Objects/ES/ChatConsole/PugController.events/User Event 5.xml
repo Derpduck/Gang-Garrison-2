@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="15">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//Print a list of teams
+for(i=0; i&lt;ds_list_size(global.players); i+=1){
+    player=ds_list_find_value(global.players,i)
+    if player.team==TEAM_RED{
+        ds_list_add(redPlayers,player)
+    }else if player.team==TEAM_BLUE{
+        ds_list_add(bluePlayers,player)
+    }
+
+}
+
+var redString,blueString;
+redString=""
+blueString=""
+
+for (i=0; i&lt;ds_list_size(redPlayers); i+=1){
+    redString+=string(ds_list_find_value(redPlayers,i).name)+", "
+}
+redString=string_delete(redString,string_length(redString)-1,2)
+
+for (i=0; i&lt;ds_list_size(bluePlayers); i+=1){
+    blueString+=string(ds_list_find_value(bluePlayers,i).name)+", "
+}
+blueString=string_delete(blueString,string_length(blueString)-1,2)
+
+var message;
+message = global.chatPrintPrefix+P_RED+"RED team: "+redString
+write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+write_ushort(global.publicChatBuffer, string_length(message))
+write_string(global.publicChatBuffer, message)
+write_byte(global.publicChatBuffer,-1)
+print_to_chat(message);// For the host
+
+var message;
+message = global.chatPrintPrefix+P_BLUE+"BLUE team: "+blueString
+write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+write_ushort(global.publicChatBuffer, string_length(message))
+write_string(global.publicChatBuffer, message)
+write_byte(global.publicChatBuffer,-1)
+print_to_chat(message);// For the host
+
+ds_list_destroy(redPlayers)
+ds_list_destroy(bluePlayers)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

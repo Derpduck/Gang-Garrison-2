@@ -16,9 +16,9 @@
         <argument kind="STRING">if (done and !global.fadeScoreboard)
     instance_destroy();
 else if (!done and alpha &lt; 1)
-    alpha = min(1, power(alpha,power(0.5, global.delta_factor))+0.05);
+    alpha = 1//min(1, power(alpha,power(0.5, global.delta_factor))+0.05);
 else if (done and alpha &gt; 0)
-    alpha = max(0, power(alpha,power(2, global.delta_factor))-0.05);
+    alpha = 0//max(0, power(alpha,power(2, global.delta_factor))-0.05);
 else if (done and alpha &lt; 1/256)
     instance_destroy();
 

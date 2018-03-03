@@ -13,18 +13,24 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(owner.zoomed and readyToShoot)
-{
+        <argument kind="STRING">if(owner.zoomed and readyToShoot){
     t += 1 * global.delta_factor;
     if (t &gt; chargeTime)
         t = chargeTime;
-}
-else
+}else{
     t = 0;
-if(!owner.zoomed)
+}
+if(!owner.zoomed){
     hitDamage = unscopedDamage;
-else
+}else{
     hitDamage = baseDamage + floor(sqrt(t/chargeTime)*(maxDamage-baseDamage));
+}
+
+if owner.ubered==1{
+    reloadTime=30
+}else{
+    reloadTime=40
+}
 </argument>
       </arguments>
     </action>

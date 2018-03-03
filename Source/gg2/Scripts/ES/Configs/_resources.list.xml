@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="config_init" type="RESOURCE"/>
+  <resource name="config_new" type="RESOURCE"/>
+  <resource name="config_new_classlimits" type="RESOURCE"/>
+  <resource name="config_load" type="RESOURCE"/>
+  <resource name="config_print_load" type="RESOURCE"/>
+</resources>

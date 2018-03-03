@@ -13,9 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">    x=37;
-    animationState = 1;
-    alarm[1] = 29;</argument>
+        <argument kind="STRING">x=37;
+animationState = 1;
+alarm[1] = 29;
+</argument>
       </arguments>
     </action>
   </actions>

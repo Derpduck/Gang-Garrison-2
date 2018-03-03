@@ -1,5 +1,5 @@
-if(socket_has_error(socket) or (current_time-lastContact > 30000))
-{   // Connection closed unexpectedly or timed out, remove client
+if(socket_has_error(socket) or (current_time-lastContact > 30000)){
+    // Connection closed unexpectedly or timed out, remove client
     socket_destroy(socket);
     instance_destroy();
     exit;
@@ -43,8 +43,16 @@ case STATE_EXPECT_HELLO:
     sameProtocol = (read_ubyte(socket) == HELLO);
     buffer_set_readpos(global.protocolUuid, 0)
     for(i=0; i<4; i+=1)
-        if(read_uint(socket) != read_uint(global.protocolUuid))
+        if(read_uint(socket) != read_uint(global.protocolUuid)){
             sameProtocol = false;
+        }
+        if ds_list_find_index(global.banned_ips, socket_remote_ip(socket)) >= 0{
+            // This person is banned, kill the socket (->kick them)
+            write_ubyte(socket, KICK);
+            write_ubyte(socket, KICK_BANNED);
+            socket_destroy_abortive(socket)
+            exit;
+        }
             
     if(!sameProtocol)
         write_ubyte(socket, INCOMPATIBLE_PROTOCOL);
@@ -112,8 +120,8 @@ case STATE_EXPECT_COMMAND:
         break;
         
     case DOWNLOAD_MAP:
-        if(advertisedMapMd5 != "" and file_exists("Maps/" + advertisedMap + ".png"))
-        {   // If the md5 was empty, we advertised an internal map, which obviously can't be downloaded.
+        if(advertisedMapMd5 != "" and file_exists("Maps/" + advertisedMap + ".png")){
+            // If the md5 was empty, we advertised an internal map, which obviously can't be downloaded.
             buffer_destroy(mapDownloadBuffer);
             mapDownloadBuffer = buffer_create();
             if(!append_file_to_buffer(mapDownloadBuffer, "Maps/" + advertisedMap + ".png")) {
@@ -141,6 +149,18 @@ case STATE_EXPECT_NAME:
         break;
     }
     
+    //Bots
+    // Mixed VS Mixed: Fill Server
+    if global.botMode == 3{
+        //Destroy one bot
+        with Player{
+            if isBot{
+                remove_bot(botSocket)
+                break;
+            }
+        }
+    }
+    
     ServerJoinUpdate(socket);
     
     player = instance_create(0,0,Player);
@@ -150,8 +170,52 @@ case STATE_EXPECT_NAME:
     player.name = read_string(player.socket, expectedBytes);
     player.name = string_copy(player.name, 0, MAX_PLAYERNAME_LENGTH);
     
+    //Bots
+    if ds_map_exists(global.botNameSocketMap, player.name)!=0{
+        player.isBot = 1
+        player.botSocket = ds_map_find_value(global.botNameSocketMap, player.name)
+        ds_map_delete(global.botNameSocketMap, player.name)
+        player.name = generate_bot_names()
+        
+        with player{
+            bot_init()
+        }
+    }
+    
     ds_list_add(global.players, player);
     ServerPlayerJoin(player.name, global.sendBuffer);
+    
+    with(ModController){
+        event_user(0)
+    }
+    if global.chatPBF_1==1{
+        var message;
+        message = global.chatPrintPrefix+C_GREEN+c_filter(player.name)+C_WHITE+" has joined the server."
+        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+        write_ushort(global.publicChatBuffer, string_length(message));
+        write_string(global.publicChatBuffer, message);
+        write_byte(global.publicChatBuffer,-1)
+        print_to_chat(message);// For the hostconsole_sendmsg
+    }
+    
+    if (ds_list_find_index(global.rcon_ips, socket_remote_ip(player.socket)) != -1) and global.autoRCON==1{
+        write_ubyte(player.socket,RCON_LOGIN)
+        write_ubyte(player.socket,RCON_LOGIN_SUCCESSFUL)
+        ds_list_add(global.RCONList,player)
+        
+        console_print(C_PINK+'RCON: '+player.name+' given RCON access.')
+        var message, color;
+        color=getPlayerColor(player, true);
+        message = global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' given '+C_PINK+'RCON'+C_WHITE+' access.'
+        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+        write_ushort(global.publicChatBuffer, string_length(message));
+        write_string(global.publicChatBuffer, message);
+        write_byte(global.publicChatBuffer,-1)
+        print_to_chat(message);// For the hostconsole_sendmsg
+    }
+    
+    //RUP
+    ds_map_add(rupPlayers,player,0)
     
     // message lobby to update playercount if we became full
     if(noOfPlayers+1 == global.playerLimit)
@@ -165,8 +229,8 @@ case STATE_EXPECT_NAME:
 
 socket_send(socket);
 state = newState;
-if(state==-1)
-{   // We're done, either because of a protocol error or because the client finished joining.
+if(state==-1){
+    // We're done, either because of a protocol error or because the client finished joining.
     instance_destroy();
     exit;
 }

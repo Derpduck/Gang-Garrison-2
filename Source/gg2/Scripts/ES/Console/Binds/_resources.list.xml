@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="read_binds_from_file" type="RESOURCE"/>
+  <resource name="write_binds_to_file" type="RESOURCE"/>
+  <resource name="read_binds_from_file_special" type="RESOURCE"/>
+  <resource name="write_binds_to_file_special" type="RESOURCE"/>
+  <resource name="define_special_binds" type="RESOURCE"/>
+</resources>

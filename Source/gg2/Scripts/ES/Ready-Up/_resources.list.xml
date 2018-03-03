@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="RUP" type="RESOURCE"/>
+  <resource name="RUP_ready" type="RESOURCE"/>
+  <resource name="RUP_unready" type="RESOURCE"/>
+  <resource name="RUP_toggleready" type="RESOURCE"/>
+  <resource name="CheckRUPStatus" type="RESOURCE"/>
+  <resource name="ServerRUPStatus" type="RESOURCE"/>
+</resources>

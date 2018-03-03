@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
+    menumode = true;
+    virnum=0
+    setVirNum=0
+    
+    if (room != ModOptions){
+        menu_setdimmed();
+    }
+    
+    menu_background(512, 24, 8, 12, 4);
+    bgtabs = true;
+    
+    menu_addlink("Enabled Chat Prints:",'
+        var newvalue;
+        global.chatPBF=get_integer("Chat Prints Bit Field (Add the numbers you want to use)#-1 = All#1 = Player Join#2 = Player Leave#4 = Name Change#8 = Airshot#16 = Kick/Ban/RCON/Kill/Mute#32 = Next Map#64 = Misc. Console Commands/Admin Actions#128 = Ready-Up"
+        ,global.chatPBF)
+        with(ModController){
+            event_user(0)
+        }
+        es_write_ini("s","ChatPBF",global.chatPBF)
+    ')setVirNum+=1
+    
+    menu_addedit_text("Map Rotation:","global.mapRotationFile",'
+        gg2_write_ini("Server","MapRotation",argument0)
+        ds_list_clear(global.map_rotation)
+        load_map_rotation()
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Killstreak Chat Prints:","global.killstreakPrints",'
+        es_write_ini("s","KillstreakPrints",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Player Chat Color Codes:","global.chatColorCodes",'
+        es_write_ini("s","ChatColorCodes",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Specators Can See Team Chat:","global.specReadChat",'
+        es_write_ini("s","SpecReadChat",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Disable Ready-up:","global.autoStart",'
+        es_write_ini("s","AutoStart",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_text("RCON Password:","global.RCONPassword",'
+        es_write_ini("s","RCONPassword",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("RCON Enabled:","global.RCONAllowed",'
+        es_write_ini("s","RCONAllowed",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Automatic RCON Login:","global.autoRCON",'
+        es_write_ini("s","AutoRCON",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_text("VIP Password:","global.vipPassword",'
+        es_write_ini("s","VIPPassword",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("VIP Threshold:","global.vipThreshold",'
+        es_write_ini("s","VIPThreshold",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("Vote Timer:","global.voteTimer",'
+        es_write_ini("s","VoteTimer",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Config Voting:","global.configVoteAllowed",'
+        es_write_ini("s","ConfigVoteAllowed",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("AFK Timeout:","global.serverAfkTimeout",'
+        es_write_ini("s","ServerAfkTimeout",argument0)
+        
+        if room==CustomMapRoom{
+            with(Character){
+                sAfkTimeout=argument0*30/global.delta_factor
+                sAfkTimer=sAfkTimeout
+            }
+        }
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("ADCP Stop-watch Mode:","global.adcpStopwatch",'
+        es_write_ini("s","ADCPStopwatch",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("Arena Win Limit:","global.arenaRoundsToWin",'
+        es_write_ini("s","ArenaRoundsToWin",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_select("Jump Map Mode:","global.jumpMapMode",'
+        if room==CustomMapRoom{
+            global.jumpMode=0
+            if global.jumpMapMode==1{
+                global.jumpMode=1
+            }else if global.jumpMapMode==2{
+                prefixIndex[0]="rj"
+                prefixIndex[1]="dj"
+                prefixIndex[2]="rr"
+                prefixIndex[3]="sj"
+                prefixIndex[4]="ej"
+                prefixIndex[5]="qr"
+                prefixIndex[6]="pj"
+                prefixIndex[7]="jt"
+                prefixIndex[8]="surf"
+                prefixIndex[9]="jump"
+                for (i=0; i&lt;10; i+=1){
+                    if string_pos(prefixIndex[i],string_lower(global.currentMap))==1{
+                        global.jumpMode=1
+                    }
+                }
+            }
+        }
+        es_write_ini("s","JumpMapMode",argument0)
+    ')setVirNum+=1
+    menu_add_option(0,"Off")
+    menu_add_option(1,"On")
+    menu_add_option(2,"On, by map name")
+    
+    menu_addedit_boolean("Jump Mode Player Attack:","global.jumpPlayerAttack",'
+        es_write_ini("s","JumpPlayerAttack",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("MGE Score Limit:","global.mgeScoreLimit",'
+        es_write_ini("s","MGEScoreLimit",argument0)
+    ')setVirNum+=1
+    
+    
+    //TABS
+    menu_addtablink("Host", '
+        instance_destroy()
+        instance_create(x,y,ModHostOptionsController)
+    ');
+    menu_addtablink("Bots", '
+        instance_destroy()
+        instance_create(x,y,ModBotOptionsController)
+    ');
+    menu_addtablink("GFX Basic", '
+        instance_destroy()
+        instance_create(x,y,ModOptGFXBasic)
+    ');
+    menu_addtablink("GFX Adv", '
+        instance_destroy()
+        instance_create(x,y,ModOptGFXAdv)
+    ');
+    menu_addtablink("Misc.", '
+        instance_destroy()
+        instance_create(x,y,ModOptMisc)
+    ');
+    menu_addtablink("Controls", '
+        instance_destroy()
+        instance_create(x,y,ModControlsOptionsController)
+    ');
+    menu_addtablink("Configs", '
+        instance_destroy()
+        instance_create(x,y,ModConfigsController)
+    ');
+    
+    menu_addback("[0] Back", '
+        instance_destroy()
+        if(room == ModOptions){
+            room_goto_fix(Menu)
+        }else{
+            instance_create(0,0,InGameMenuController)
+        }
+    ');
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

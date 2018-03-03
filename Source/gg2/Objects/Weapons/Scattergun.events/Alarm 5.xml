@@ -29,7 +29,7 @@
         <argument kind="STRING">if ammoCount &lt; maxAmmo {
     ammoCount += 1;
     
-    if (global.particles == PARTICLES_NORMAL)
+    if (global.particles == PARTICLES_NORMAL) and global.noShells==0
     {
         var shell;
         shell = instance_create(x, y, Shell);

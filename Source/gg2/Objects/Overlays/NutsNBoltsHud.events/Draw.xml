@@ -19,22 +19,33 @@ yoffset = view_yview[0];
 xsize = view_wview[0];
 ysize = view_hview[0];
 
-if (global.myself.team == TEAM_BLUE)
-    offset = 1;
-else
-    offset = 0;
-if (global.myself.object == -1 or global.myself.class != CLASS_ENGINEER)
-{
+if (global.myself.object == -1 or global.myself.class != CLASS_ENGINEER){
     instance_destroy();
     exit;
 }
 draw_set_valign(fa_center);
 draw_set_halign(fa_right);
-draw_set_alpha(1);
-draw_set_color(c_white);
 
-draw_sprite_ext(sprite_index,offset,xoffset+xsize-70,yoffset+ysize-85,2,2,0,c_white,1);
-draw_text_transformed_color(xoffset+xsize-66,yoffset+ysize-81,string(floor(global.myself.object.nutsNBolts)),1.5,1.5,0,c_white,c_white,c_white,c_white,1);
+if global.boxHUD==0{
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    
+    draw_sprite_ext(sprite_index,0,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
+    draw_set_color(make_color_rgb(217,217,183))
+    draw_text(xoffset+xsize-28,yoffset+ysize-63+11,string(floor(global.myself.object.nutsNBolts))+" N&amp;B")
+    draw_set_color(c_white);
+}else{
+    draw_set_color(c_black)
+    draw_set_alpha(global.boxBgAlpha/100)
+    
+    draw_rectangle((xoffset+xsize-90),(yoffset+ysize)-57,(xoffset+xsize-23),(yoffset+ysize)-57+16,0)
+    
+    draw_set_alpha(global.boxElementAlpha/100)
+    draw_set_color(make_color_rgb(50,200,50))
+    
+    draw_text((xoffset+xsize-25),(yoffset+ysize)-57+9,string(floor(global.myself.object.nutsNBolts)))
+    draw_healthbar((xoffset+xsize-86),(yoffset+ysize)-57+4,(xoffset+xsize-52),(yoffset+ysize)-57+12,round(global.myself.object.nutsNBolts),c_black,c_gray,c_white,0,1,0)
+}
 </argument>
       </arguments>
     </action>

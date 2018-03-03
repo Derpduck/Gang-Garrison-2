@@ -13,8 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">afktimeout=9000;
-afktimer=afktimeout;
+        <argument kind="STRING">//afktimeout=9000;
+//afktimer=afktimeout;
 //checkpoint system for each keypad #
 //2 arrays keeps track of the x, y locations that each keypad # has saved.
 for (i=0; i&lt;=9; i+=1;) {
@@ -39,27 +39,33 @@ numpadKeys[9] = vk_numpad9;
 
 // deals with problem of global.myself not existing prior to deserialisation
 myTeam = TEAM_SPECTATOR;
-if (global.myself != -1)
-{
+if (global.myself != -1){
     myTeam = global.myself.team;
 } 
 
 // only auto-track if not on a team
-if (myTeam == TEAM_SPECTATOR)
-{
+if (myTeam == TEAM_SPECTATOR){
     event_user(7);
-}
-else
-{
-    tracking=true;
+}else{
+    //tracking=true;
     player = global.myself;
 }
-// so you can actually see the initial tracking
+
 // back up keyboard string because io_clear clears it
 var _keyboard_string;
 _keyboard_string = keyboard_string;
 io_clear();
 keyboard_string = _keyboard_string;
+
+specMoveSpeed=15 //was 20
+
+if global.isCasting==1{
+    castHUD=instance_create(0,0,CasterHUD)
+}
+
+global.isChatting=0
+
+global.isReady=0
 </argument>
       </arguments>
     </action>

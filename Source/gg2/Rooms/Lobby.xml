@@ -8,14 +8,15 @@
   </grid>
   <speed>100</speed>
   <persistent>false</persistent>
-  <creationCode/>
-  <backgroundColor>C0C0C0</backgroundColor>
+  <creationCode>draw_menu_bg_map()
+</creationCode>
+  <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>
       <visibleOnRoomStart>true</visibleOnRoomStart>
       <isForeground>false</isForeground>
-      <backgroundImage>MenuBackground1</backgroundImage>
+      <backgroundImage/>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
       <tileHorizontally>false</tileHorizontally>

@@ -5,6 +5,6 @@
   <resource name="basicRoomSetup" type="RESOURCE"/>
   <resource name="findInternalMapName" type="RESOURCE"/>
   <resource name="nextMapInRotation" type="RESOURCE"/>
-  <resource name="rooms_fix_views" type="RESOURCE"/>
   <resource name="serverGotoMap" type="RESOURCE"/>
+  <resource name="mapEnd" type="RESOURCE"/>
 </resources>

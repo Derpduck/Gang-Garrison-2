@@ -22,15 +22,25 @@
     }
     gunUnsetSolids();
 
-    if(other.id != ownerPlayer.object and other.team != team  &amp;&amp; other.hp &gt; 0 &amp;&amp; other.ubered == 0)
+    if(other.id != ownerPlayer.object and other.team != team  &amp;&amp; other.hp &gt; 0 &amp;&amp; other.ubered == 0) and (global.jumpMode==0 or (global.jumpMode==1 and global.jumpPlayerAttack=1))
     {
         damageCharacter(ownerPlayer, other.id, hitDamage);
+        
+        if ownerPlayer==global.myself{
+            var damageDone;
+            damageDone = instance_create(other.x,other.y,DamageIndicator)
+            damageDone.dmg = hitDamage
+            global.myself.stats[DAMAGE]+=hitDamage
+            global.myself.roundStats[DAMAGE]+=hitDamage
+            damageDone.owner = other.id
+        }
+        
         if (other.lastDamageDealer != ownerPlayer and other.lastDamageDealer != other.player)
         {
             other.secondToLastDamageDealer = other.lastDamageDealer;
             other.alarm[4] = other.alarm[3]
         }
-        other.alarm[3] = ASSIST_TIME;
+        other.alarm[3] = ASSIST_TIME/global.delta_factor;
         other.lastDamageDealer = ownerPlayer;
         other.lastDamageSource = weapon;
         

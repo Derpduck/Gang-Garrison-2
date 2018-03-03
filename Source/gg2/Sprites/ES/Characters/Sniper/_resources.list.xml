@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="SniperRedSM" type="RESOURCE"/>
+  <resource name="SniperRedRunSM" type="RESOURCE"/>
+  <resource name="SniperRedStandSM" type="RESOURCE"/>
+  <resource name="SniperRedJumpSM" type="RESOURCE"/>
+  <resource name="SniperRedLeanLSM" type="RESOURCE"/>
+  <resource name="SniperRedLeanRSM" type="RESOURCE"/>
+  <resource name="SniperRedDeadSM" type="RESOURCE"/>
+  <resource name="SniperRedTauntSM" type="RESOURCE"/>
+  <resource name="SniperRedHSM" type="RESOURCE"/>
+  <resource name="SniperRedIntelSM" type="RESOURCE"/>
+  <resource name="SniperRedCrouchSM" type="RESOURCE"/>
+  <resource name="SniperBlueSM" type="RESOURCE"/>
+  <resource name="SniperBlueRunSM" type="RESOURCE"/>
+  <resource name="SniperBlueStandSM" type="RESOURCE"/>
+  <resource name="SniperBlueJumpSM" type="RESOURCE"/>
+  <resource name="SniperBlueLeanLSM" type="RESOURCE"/>
+  <resource name="SniperBlueLeanRSM" type="RESOURCE"/>
+  <resource name="SniperBlueDeadSM" type="RESOURCE"/>
+  <resource name="SniperBlueTauntSM" type="RESOURCE"/>
+  <resource name="SniperBlueHSM" type="RESOURCE"/>
+  <resource name="SniperBlueIntelSM" type="RESOURCE"/>
+  <resource name="SniperBlueCrouchSM" type="RESOURCE"/>
+</resources>

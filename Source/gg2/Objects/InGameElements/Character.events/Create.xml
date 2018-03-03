@@ -38,6 +38,45 @@
     timeUnscathed = 0;
     syncWrongness = 0;
     
+    //Mod stuff
+    playerPing=0
+    alarm[8]=30/global.delta_factor
+    
+    //Bots, Node stuff
+    lastNode = -1
+    distanceTraveledSinceNode = 0
+    lastNodeCommand = 0
+    if !instance_exists(Node) and global.botDebugMode{
+        generate_nodes()
+        global.botChangeMap = 1
+    }
+    
+    //server side afk timeout
+    //sAfkTimeout=2*60*30/global.delta_factor //2 mins
+    sAfkTimeout=global.serverAfkTimeout*30/global.delta_factor
+    sAfkTimer=sAfkTimeout
+    oldAimDirection=0
+    
+    //TDM grace period
+    if instance_exists(TeamDeathmatchHUD){
+        tdmGrace=1
+        tdmGraceTimer=5*30
+    }else{
+        tdmGrace=0
+        tdmGraceTimer=0
+    }
+    graceAnimation=-1
+    
+    hopCounter=0
+    
+    killstreak=0
+    killstreakEnder=-1
+    
+    jOldHspeed=0
+    jOldVspeed=0
+
+    //
+    
     // animation state
     equipmentOffset = 0;
     onground = true;
@@ -73,11 +112,11 @@
     burnIntensity = 0; // "heat"
     legIntensity = 7; // afterburn intensity after which additional intsity additions are halved.
                       // it's called a "leg" becauase of a similar concept in dynamic range compression.
-    maxIntensity = 13; //maximum afterburn intensity in DPS
+    maxIntensity = 12//13; //maximum afterburn intensity in DPS
     burnDuration = 0; // "fuel"
-    maxDuration = 210; //maximum afterburn length in duration ticks (see durationDecay)
+    maxDuration = 170//210; //maximum afterburn length in duration ticks (see durationDecay)
     decayDelay = 90; //time between last ignition and intensity lowering
-    decayDuration = 90; //time between intensity lowering and zeroing out
+    decayDuration = 70; //time between intensity lowering and zeroing out
     durationDecay = 1; //amount that duration lowers per step
     intensityDecay = burnIntensity / decayDuration;
     burnedBy = -1;
@@ -120,7 +159,7 @@
     bubble = instance_create(0,0,SpeechBubbleO);
     bubble.owner = id;
 
-    afk=false;
+    //afk=false;
     
     // Cloak for Spies
     cloak = false;
@@ -141,10 +180,15 @@
     //sandvich
     omnomnomnom = false;
     canEat = true;
-    eatCooldown = 1350; //45 sec cooldown
+    eatCooldown = 45*30; //45 sec cooldown
+    eatingDamage=0
     
     //sniper zoom
     zoomed = 0;
+    
+    //bubble
+    canBubble=1
+    bubbleCooldown=1200
     
     //nuts n bolts for contructor
     nutsNBolts = 100;
@@ -197,42 +241,38 @@
     
     // THIS IS A TRUCK LOAD OF GARBAGE CODE THAT SHOULD BE REPLACED ASAP
     
-    if(hasClassReward(player, 'Grey_Accessories_') and player.class != CLASS_QUOTE)
-    {
+    if(hasClassReward(player, 'Grey_Accessories_') and player.class != CLASS_QUOTE){
         ds_list_add(stillOverlays, global.SilverAttireOverlay[player.class]);
         ds_list_add(leanROverlays, global.SilverAttireLeanROverlay[player.class]);
         ds_list_add(leanLOverlays, global.SilverAttireLeanLOverlay[player.class]);
         ds_list_add(jumpOverlays, global.SilverAttireJumpOverlay[player.class]);
         ds_list_add(runOverlays, global.SilverAttireRunOverlay[player.class]);
         ds_list_add(tauntOverlays, global.SilverAttireTaunt[player.class]);
-        if (player.class == CLASS_HEAVY)
-        {
+        if (player.class == CLASS_HEAVY){
             ds_list_add(omnomnomnomOverlays, global.SilverSandwichOverlay[player.class]);
             ds_list_add(walkOverlays, global.SilverAttireOverlay[player.class]);
         }
-        if (player.class == CLASS_SNIPER)
+        if (player.class == CLASS_SNIPER){
             ds_list_add(crouchOverlays, global.SilverAttireOverlay[player.class]);
-    }
-    else if(hasClassReward(player, 'Gold_Accessories_') and player.class != CLASS_QUOTE)
-    {
+        }
+    }else if(hasClassReward(player, 'Gold_Accessories_') and player.class != CLASS_QUOTE){
         ds_list_add(stillOverlays, global.GoldenAttireOverlay[player.class]);
         ds_list_add(leanROverlays, global.GoldenAttireLeanROverlay[player.class]);
         ds_list_add(leanLOverlays, global.GoldenAttireLeanLOverlay[player.class]);
         ds_list_add(jumpOverlays, global.GoldenAttireJumpOverlay[player.class]);
         ds_list_add(runOverlays, global.GoldenAttireRunOverlay[player.class]);
         ds_list_add(tauntOverlays, global.GoldenAttireTaunt[player.class]);
-        if (player.class == CLASS_HEAVY)
-        {
+        if (player.class == CLASS_HEAVY){
             ds_list_add(omnomnomnomOverlays, global.GoldenSandwichOverlay[player.class]);
             ds_list_add(walkOverlays, global.GoldenAttireOverlay[player.class]);
         }
-        if (player.class == CLASS_SNIPER)
+        if (player.class == CLASS_SNIPER){
             ds_list_add(crouchOverlays, global.GoldenAttireOverlay[player.class]);
+        }
     }
     // You cannot wear more than one hat at once you dingdong
     // 'BH' reward - *B*obble *H*ead - not available for quote
-    if(hasClassReward(player, 'BH') and player.class != CLASS_QUOTE)
-    {
+    if(hasClassReward(player, 'BH') and player.class != CLASS_QUOTE){
         // hats use the same sprite for most animations 
         ds_list_add(stillOverlays, global.HatBobbleClassOverlay[player.class]);
         ds_list_add(leanROverlays, global.HatBobbleClassOverlay[player.class]);
@@ -246,7 +286,9 @@
             ds_list_add(omnomnomnomOverlays, global.HatBobbleSandwich[player.class]);
         }
         if (player.class == CLASS_SNIPER)
+        {
             ds_list_add(crouchOverlays, global.HatBobbleClassOverlay[player.class]);
+        }
             
         if (player.class == CLASS_SPY and player.team == TEAM_BLUE)
         {
@@ -271,7 +313,9 @@
             ds_list_add(omnomnomnomOverlays, global.TopHatMonocleSandwich[player.class]);
         }
         if (player.class == CLASS_SNIPER)
+        {
             ds_list_add(crouchOverlays, global.TopHatMonocleOverlay[player.class]);
+        }
             
         if (player.class == CLASS_QUOTE and player.team == TEAM_BLUE)
         {
@@ -296,7 +340,9 @@
             ds_list_add(omnomnomnomOverlays, global.TopHatSandwich[player.class]);
         }
         if (player.class == CLASS_SNIPER)
+        {
             ds_list_add(crouchOverlays, global.TopHatOverlay[player.class]);
+        }
             
         if (player.class == CLASS_QUOTE and player.team == TEAM_BLUE)
         {

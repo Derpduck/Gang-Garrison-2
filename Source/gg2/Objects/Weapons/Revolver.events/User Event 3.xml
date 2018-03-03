@@ -18,7 +18,8 @@ playsound(x,y,RevolverSnd);
 var shot;
 
 shot = createShot(x,y + yoffset + 1,Shot, DAMAGE_SOURCE_REVOLVER, owner.aimDirection, 21);
-shot.hitDamage = 28;
+shot.hitDamage = 30;
+
 if(golden)
     shot.sprite_index = ShotGoldS;
 with(shot)

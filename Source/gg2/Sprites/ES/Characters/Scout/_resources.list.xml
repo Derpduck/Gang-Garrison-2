@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ScoutRedSM" type="RESOURCE"/>
+  <resource name="ScoutRedRunSM" type="RESOURCE"/>
+  <resource name="ScoutRedStandSM" type="RESOURCE"/>
+  <resource name="ScoutRedJumpSM" type="RESOURCE"/>
+  <resource name="ScoutRedLeanLSM" type="RESOURCE"/>
+  <resource name="ScoutRedLeanRSM" type="RESOURCE"/>
+  <resource name="ScoutRedDeadSM" type="RESOURCE"/>
+  <resource name="ScoutRedTauntSM" type="RESOURCE"/>
+  <resource name="ScoutRedHSM" type="RESOURCE"/>
+  <resource name="ScoutRedIntelSM" type="RESOURCE"/>
+  <resource name="ScoutBlueSM" type="RESOURCE"/>
+  <resource name="ScoutBlueRunSM" type="RESOURCE"/>
+  <resource name="ScoutBlueStandSM" type="RESOURCE"/>
+  <resource name="ScoutBlueJumpSM" type="RESOURCE"/>
+  <resource name="ScoutBlueLeanLSM" type="RESOURCE"/>
+  <resource name="ScoutBlueLeanRSM" type="RESOURCE"/>
+  <resource name="ScoutBlueDeadSM" type="RESOURCE"/>
+  <resource name="ScoutBlueTauntSM" type="RESOURCE"/>
+  <resource name="ScoutBlueHSM" type="RESOURCE"/>
+  <resource name="ScoutBlueIntelSM" type="RESOURCE"/>
+</resources>

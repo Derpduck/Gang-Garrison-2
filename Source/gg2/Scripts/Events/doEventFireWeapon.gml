@@ -6,6 +6,11 @@
 var old_seed;
 old_seed = random_get_seed();
 random_set_seed(argument1);
-with(argument0.object.currentWeapon)
-    event_user(3);
+with(argument0.object.currentWeapon){
+    if argument0.object.currentWeapon==Blade{
+        event_user(2);
+    }else{
+        event_user(3);
+    }
+}
 random_set_seed(old_seed);

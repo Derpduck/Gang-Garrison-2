@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ConsoleS" type="RESOURCE"/>
+  <resource name="ConsoleFontS" type="RESOURCE"/>
+  <resource name="ChatFontS" type="RESOURCE"/>
+  <resource name="ChatFontBoldS" type="RESOURCE"/>
+  <resource name="ChatS" type="RESOURCE"/>
+  <resource name="Chat2S" type="RESOURCE"/>
+</resources>

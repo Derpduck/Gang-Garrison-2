@@ -14,10 +14,11 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    receiveCompleteMessage(global.serverSocket,4,global.deserializeBuffer);
+    receiveCompleteMessage(global.serverSocket,6,global.deserializeBuffer);
     keyState = read_ubyte(global.deserializeBuffer);
     aimDirection = read_ushort(global.deserializeBuffer)*360/65536;
     aimDistance = read_ubyte(global.deserializeBuffer)*2;
+    playerPing=read_ushort(global.deserializeBuffer)
     
     var temp, newIntel;
     if(global.updateType == QUICK_UPDATE) or (global.updateType == FULL_UPDATE) {
@@ -54,12 +55,17 @@ if(global.updateType == FULL_UPDATE){
             break;
         case CLASS_SNIPER:
             currentWeapon.t = read_ubyte(global.deserializeBuffer);
+            if(currentWeapon.t) zoomed = true; // Quick hack
+            break;
+        case CLASS_QUOTE:
+            canBubble = read_ubyte(global.deserializeBuffer);
             break;
         default:
             read_ubyte(global.deserializeBuffer)
         }
-        alarm[1]=read_short(global.deserializeBuffer)/global.delta_factor; 
-        if alarm[1] != 0 canGrabIntel = false;
+        alarm[1] = read_short(global.deserializeBuffer)/global.delta_factor; 
+        if (alarm[1] != 0)
+            canGrabIntel = false;
         intel = read_ubyte(global.deserializeBuffer);
         intelRecharge = read_short(global.deserializeBuffer);
         with(currentWeapon) {

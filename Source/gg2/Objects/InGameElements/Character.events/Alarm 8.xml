@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="8">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.isLive==0{
+    if global.myself!=-1 and instance_exists(global.myself.object){
+        if id==global.myself.object{
+            //repeat constantly to sync with newly joining players
+            if global.isReady==0{
+                write_ubyte(global.serverSocket,CHAT_BUBBLE)
+                write_ubyte(global.serverSocket,62)
+            }else{
+                write_ubyte(global.serverSocket,CHAT_BUBBLE)
+                write_ubyte(global.serverSocket,61)
+            }
+        }
+    }
+}
+
+alarm[8]=90/global.delta_factor
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

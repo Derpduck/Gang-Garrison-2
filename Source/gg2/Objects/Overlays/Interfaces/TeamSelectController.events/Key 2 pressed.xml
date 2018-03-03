@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">team=TEAM_SPECTATOR;
+        <argument kind="STRING">if instance_exists(Console) exit;
+if ChatBox.isTyping!=false exit;
+
+team=TEAM_SPECTATOR;
 event_user(1);
 </argument>
       </arguments>

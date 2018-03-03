@@ -16,13 +16,16 @@
         <argument kind="STRING">ammoCount = max(0, ammoCount-1);
 playsound(x,y,ShotgunSnd);
 var shot;
-repeat(6) {
+//repeat(6) {
+for (i=0; i&lt;6; i+=1){
     shot = createShot(x, y, Shot, DAMAGE_SOURCE_SCATTERGUN, owner.aimDirection, 13);
     if(golden)
         shot.sprite_index = ShotGoldS;
     shot.hspeed += owner.hspeed;
-    shot.speed += random(4)-2;
-    shot.direction += random(15)-7.5;
+    shot.speed += random(2)-1
+    //shot.direction += random(15)-7.5;
+    
+    shot.direction += (3*i)-7.5 //+= random(6)-3 //random(11)-5.5
     
     shot.alarm[0] = 35 * ((min(1, abs(cos(degtorad(owner.aimDirection)))*13
                           /abs(cos(degtorad(owner.aimDirection))*13+owner.hspeed))-1)/2+1)

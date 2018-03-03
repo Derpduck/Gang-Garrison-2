@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Aiming" type="GROUP"/>
+  <resource name="Fighting" type="GROUP"/>
+  <resource name="Gamemodes" type="GROUP"/>
+  <resource name="Movement" type="GROUP"/>
+  <resource name="Nodes" type="GROUP"/>
+  <resource name="bot_main" type="RESOURCE"/>
+</resources>

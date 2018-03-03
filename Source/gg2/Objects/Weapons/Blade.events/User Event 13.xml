@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="23">
+  <actions>
+    <action id="604" library="1">
+      <!--action name: Inherited-->
+      <kind>NORMAL</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>false</canApplyTo>
+      <actionType>FUNCTION</actionType>
+      <functionName>action_inherited</functionName>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments/>
+    </action>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">/*{
+    var i, bub;
+    receiveCompleteMessage(global.serverSocket, 1, global.deserializeBuffer);
+    bubbleCount = read_ubyte(global.deserializeBuffer);
+    
+    with(SuperBubble) {
+        if(ownerPlayer == other.ownerPlayer) {
+            instance_destroy();
+        }
+    }
+    
+    for(i=0; i&lt;bubbleCount; i+=1) {
+        bub = instance_create(0,0,SuperBubble);
+        bub.owner = owner;
+        bub.ownerPlayer = ownerPlayer;
+        bub.team = owner.team;
+        with(bub) {
+            event_user(13);
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

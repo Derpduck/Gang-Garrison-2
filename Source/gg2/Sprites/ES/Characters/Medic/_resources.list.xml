@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="MedicRedSM" type="RESOURCE"/>
+  <resource name="MedicRedRunSM" type="RESOURCE"/>
+  <resource name="MedicRedStandSM" type="RESOURCE"/>
+  <resource name="MedicRedJumpSM" type="RESOURCE"/>
+  <resource name="MedicRedLeanLSM" type="RESOURCE"/>
+  <resource name="MedicRedLeanRSM" type="RESOURCE"/>
+  <resource name="MedicRedDeadSM" type="RESOURCE"/>
+  <resource name="MedicRedTauntSM" type="RESOURCE"/>
+  <resource name="MedicRedHSM" type="RESOURCE"/>
+  <resource name="MedicRedIntelSM" type="RESOURCE"/>
+  <resource name="MedicBlueSM" type="RESOURCE"/>
+  <resource name="MedicBlueRunSM" type="RESOURCE"/>
+  <resource name="MedicBlueStandSM" type="RESOURCE"/>
+  <resource name="MedicBlueJumpSM" type="RESOURCE"/>
+  <resource name="MedicBlueLeanLSM" type="RESOURCE"/>
+  <resource name="MedicBlueLeanRSM" type="RESOURCE"/>
+  <resource name="MedicBlueDeadSM" type="RESOURCE"/>
+  <resource name="MedicBlueTauntSM" type="RESOURCE"/>
+  <resource name="MedicBlueHSM" type="RESOURCE"/>
+  <resource name="MedicBlueIntelSM" type="RESOURCE"/>
+</resources>

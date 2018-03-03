@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ScattergunBlankFRS" type="RESOURCE"/>
+  <resource name="RocketlauncherBlankFRS" type="RESOURCE"/>
+  <resource name="MinegunBlankFRS" type="RESOURCE"/>
+  <resource name="MedigunBlankFRS" type="RESOURCE"/>
+  <resource name="ShotgunBlankFRS" type="RESOURCE"/>
+  <resource name="RevolverBlankFRS" type="RESOURCE"/>
+  <resource name="RifleBlankFRS" type="RESOURCE"/>
+</resources>

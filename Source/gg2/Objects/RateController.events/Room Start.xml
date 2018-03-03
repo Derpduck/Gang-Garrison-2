@@ -13,11 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(global.frameratekind == 1)
+        <argument kind="STRING">if(global.frameratekind == 1){
     global.game_fps = 60;
-else
+}else if global.frameratekind == 2{ 
+    global.game_fps = 90;
+}else{
     global.game_fps = 30;
-
+}
 </argument>
       </arguments>
     </action>

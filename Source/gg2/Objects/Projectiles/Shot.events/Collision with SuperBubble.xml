@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="COLLISION" with="SuperBubble">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if other.team != team{
+    damageAuto(ownerPlayer, other.id, hitDamage)
+    
+    if ownerPlayer==global.myself{
+        var damageDone;
+        damageDone = instance_create(other.x,other.y,DamageIndicator)
+        damageDone.dmg = hitDamage
+        global.myself.stats[DAMAGE]+=hitDamage
+        global.myself.roundStats[DAMAGE]+=hitDamage
+        damageDone.owner = other.id
+    }
+        
+    other.lastDamageDealer = ownerPlayer;
+    other.lastDamageSource = weapon;
+    instance_destroy()
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

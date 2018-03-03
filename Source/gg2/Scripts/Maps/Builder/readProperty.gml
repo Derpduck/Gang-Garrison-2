@@ -1,4 +1,4 @@
-/** 
+/**
  * Reads a property with error checking
  * Argument0: A map of properties
  * Argument1: The property name
@@ -38,7 +38,7 @@ switch(argument2) {
                 return $0;
             h = (h|j)*16;
         }
-        return h/16;        
+        return h/16;
     break;
     default: 
         show_error("Unknown property type in readProperty script for '" + string(argument1) + "'.", false);

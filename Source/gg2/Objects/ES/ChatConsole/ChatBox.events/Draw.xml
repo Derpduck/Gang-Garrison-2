@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var xoffset, yoffset, xsize, ysize, index, sprite_xsize, sprite_ysize;
+xoffset=view_xview[0]
+yoffset=view_yview[0]
+xsize = view_wview[0];
+ysize = view_hview[0];
+sprite_xsize=sprite_width
+sprite_ysize=sprite_height
+
+draw_set_halign(fa_left)
+draw_set_valign(fa_top)
+draw_set_color(c_white)
+draw_set_alpha(1)
+if global.chatFontType==0{
+    draw_set_font(global.chatFont)
+}else{
+    draw_set_font(global.gg2Font)
+}
+
+if !hidden{
+    draw_sprite_ext(sprite_index,image_index,xoffset+5,(yoffset+ysize-265),1,1,0,c_white,global.chatBoxAlpha/100)
+    maxVisibleLines=_maxVisibleLines
+}else{
+    maxVisibleLines=global.chatDisplayLines
+}
+
+if isTyping==false{
+    sprite_index=Chat2S
+}else{
+    sprite_index=ChatS
+}
+
+if isTyping!=false{
+    pendingMsg=string_copy(keyboard_string,0,CHAT_MAX_STRING_LENGTH-1)
+    //make that the text doesnt go outside the chatwindow
+    if string_length(keyboard_string)-typedMsgDisplayLength&gt;0{
+        index=string_length(keyboard_string)-(typedMsgDisplayLength-1)
+    }else{
+        index=0
+    }
+    pendingMsg=string_copy(pendingMsg,index,typedMsgDisplayLength)
+    
+    if isTyping==CHAT_PRIV_MESSAGE{
+        if global.myself.team==TEAM_RED{
+            draw_set_color(make_color_rgb(237,061,061))
+        }else if global.myself.team==TEAM_BLUE{
+            draw_set_color(make_color_rgb(061,135,218))
+        }else{
+            draw_set_color(make_color_rgb(010,200,010))
+        }
+    }
+    draw_text(xoffset + 18, (yoffset+ysize-271)+sprite_ysize-15, sanitiseNewlines(pendingMsg))
+    draw_set_color(c_ltgray)
+    if keyboard_string==""{
+        draw_text(xoffset + 18, (yoffset+ysize-271)+sprite_ysize-15, placeholderMsg);
+    }
+    draw_set_color(c_white)
+}
+draw_set_color(c_white)   
+// The drawing of the text
+var amount;
+if idle and hidden{
+    amount = 0;
+}else{
+    amount = min(ds_list_size(chatLog),maxVisibleLines)
+}
+for(i=0;i&lt;amount;i+=1){
+    message = ds_list_find_value(chatLog, ds_list_size(chatLog)-amount+i-offset)
+    message_offset=0
+    
+    while string_count("/:/", message) &gt; 0{
+        var nextpos, text, color;
+        // Get the color from the prefix
+        color = getColorCode(string_copy(message, 4, COLOR_RGB_LENGTH))
+        // Check if there's another prefix in this message
+        nextpos = string_pos("/:/", string_copy(message, 4, string_length(message))) + 3
+        
+        if nextpos == 3{
+            // There isn't a color code in the future, we can draw everything
+            text = string_copy(message, 4+COLOR_RGB_LENGTH, string_length(message))
+            message = ""
+        }else{
+            // There is another, crop to it
+            // What we'll draw this time
+            text = string_copy(message, 4+COLOR_RGB_LENGTH, nextpos-COLOR_RGB_LENGTH-4)
+            // What we need to set with a new color
+            message = string_copy(message, nextpos, string_length(message))
+        }
+        draw_text_color(xoffset+20+message_offset, (yoffset+ysize-258)+sprite_ysize-40-12*(amount-i), text, color, color, color, color, global.chatTextAlpha)
+        // Offset the draw pos of the next strip of text, so that it doesn't overwrite the old one
+        message_offset += string_width(text);
+    }
+}
+
+//reset vars
+draw_set_font(global.gg2Font)
+draw_set_alpha(1)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

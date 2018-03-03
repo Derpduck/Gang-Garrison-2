@@ -37,14 +37,42 @@ if (alarm[6] &lt;= 0){
     imageOffset = floor(image_index mod recoilAnimLength) + recoilAnimLength*owner.team
 }
 
+    if golden==1{
+        if global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+            _color=make_color_rgb(global.myHaxxyColorR,global.myHaxxyColorG,global.myHaxxyColorB)
+        }else{
+            _color=c_white
+        }
+    }else{
+        _color=c_white
+    }
+    
+    if global.weaponDraw==1 and !owner.cloak{
+        if owner==global.myself.object{
+            if keyboard_check(global.attack) or mouse_check_button(mb_left) or keyboard_check(global.special) or mouse_check_button(mb_right){
+                image_alpha=1
+            }else{
+                image_alpha=0
+            }
+        }
+    }
 
-if !owner.player.humiliated draw_sprite_ext(sprite_index,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, c_white, 1);
+
+if !owner.player.humiliated draw_sprite_ext(sprite_index,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, _color, image_alpha);
 if (owner.ubered) {
     if owner.team == TEAM_RED
         ubercolour = c_red;
     else if owner.team == TEAM_BLUE
         ubercolour = c_blue;
     draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,ubercolour,0.7*image_alpha);
+}
+
+if golden==1 and global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+    normalSprite=FlamethrowerBlankS
+    recoilSprite=FlamethrowerBlankFS
+    blastSprite=FlamethrowerBlankBlastS
+    dropSprite=FlamethrowerBlankDropS
+    reloadsprite=-1
 }
 </argument>
       </arguments>

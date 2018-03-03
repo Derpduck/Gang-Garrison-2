@@ -23,129 +23,177 @@ yshift = 5*global.timerPos;
 if instance_exists(WinBanner) with WinBanner instance_destroy();
 
 draw_set_color(c_white);
+draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_alpha(1);
+redC=make_color_rgb(147,50,44)
+blueC=make_color_rgb(52,71,82)
+greyC=make_color_rgb(125,125,125)
+drawx = xoffset+xsize/2
         
 //CP
-if (ArenaControlPoint.team == TEAM_RED)
-    teamoffset = 60;
-else if (ArenaControlPoint.team == TEAM_BLUE)
-    teamoffset = 90;
-if (ArenaControlPoint.cappingTeam == TEAM_RED &amp;&amp; ArenaControlPoint.team == -1)
-    teamoffset = 30;
-else if (ArenaControlPoint.cappingTeam != TEAM_RED &amp;&amp; ArenaControlPoint.team == -1)
-    teamoffset = 0;    
-if (ArenaControlPoint.capping != 0)
-    draw_sprite_ext(ControlPointStatusS, teamoffset+floor(ArenaControlPoint.capping/ArenaControlPoint.capTime*30),
-                    xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-else if (ArenaControlPoint.capping == 0)
-    draw_sprite_ext(ControlPointStatusS, teamoffset, xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-if (ArenaControlPoint.locked)
-{
-    draw_set_halign(fa_center);
-    if cpUnlock &gt;= 150 draw_sprite_ext(ControlPointLockS, 0, xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    else if cpUnlock &gt;= 30 draw_text_transformed(xoffset+xsize/2+2, yoffset+ysize-38, ceil(cpUnlock/30), 3,3, 0);
+if (ArenaControlPoint.team == TEAM_RED){
+    teamoffset = 1;
+}else if (ArenaControlPoint.team == TEAM_BLUE){
+    teamoffset = 2;
+}else if ArenaControlPoint.team == -1{
+    teamoffset = 0
 }
-else if (ArenaControlPoint.cappers &gt; 0 and !ArenaControlPoint.locked)
-{
-    draw_sprite_ext(ControlPointCappersS, 0, xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    draw_set_halign(fa_center);
+
+draw_sprite_ext(ControlPointHUDS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+draw_sprite_ext(ArenaRoundCounterS, 0,drawx, yoffset+ysize-36,3,3,0,c_white,1)
+draw_set_color(c_black)
+draw_text_transformed(drawx-42,yoffset+ysize-35,redWins,2,2,0)
+draw_text_transformed(drawx+45,yoffset+ysize-35,blueWins,2,2,0)
+draw_set_color(c_white)
+    
+if (ArenaControlPoint.capping != 0){
+    if ArenaControlPoint.cappingTeam==TEAM_RED{
+        draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),ArenaControlPoint.capping/ArenaControlPoint.capTime*100,c_black,redC,redC,2,0,0)
+    }else if ArenaControlPoint.cappingTeam==TEAM_BLUE{
+        draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),ArenaControlPoint.capping/ArenaControlPoint.capTime*100,c_black,blueC,blueC,2,0,0)
+    }
+}
+
+if (ArenaControlPoint.locked) and ArenaControlPoint.team == -1{
+    draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-45, 2, 2, 0, c_white, 1);
     draw_set_color(c_black);
-    draw_text_transformed(xoffset+xsize/2+13, yoffset+ysize-37, string(ArenaControlPoint.cappers),1.5,1.5,0);
+    draw_text_transformed(xoffset+xsize/2+1, yoffset+ysize-25, ceil(cpUnlock/30), 1, 1, 0);
+}else if (ArenaControlPoint.cappers &gt; 0 and !ArenaControlPoint.locked){
+    draw_sprite_ext(ControlPointCappersS, 0, drawx+3, yoffset+ysize-30, 2, 2, 0, c_white, 1);
+    draw_set_color(c_black);
+    draw_text_transformed(drawx+10, yoffset+ysize-28, string(ArenaControlPoint.cappers),1,1,0);
+
+    //cap %
+    draw_text_transformed(drawx+2, yoffset+ysize-49, string(floor(ArenaControlPoint.capping/ArenaControlPoint.capTime*100))+"%",1,1,0);
+    draw_text_transformed(drawx+2, yoffset+ysize-39, string(floor((ArenaControlPoint.capTime-ArenaControlPoint.capping)/(30*ArenaControlPoint.cappers)))+"s",1,1,0);
 }
 
 draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
 
 draw_set_halign(fa_center); 
-if (roundStart &gt; 0)
-{
+
+draw_set_color(c_white)
+if (roundStart &gt; 0){
     draw_text(xoffset+xsize/2,yoffset+ysize/2,"Game will start in "+string(ceil(roundStart/30))+" seconds")
 }
 
-if (global.myself != -1)
-{
-    if (global.myself.object == -1 and !roundStart and winners == TEAM_SPECTATOR
-        and global.winners == -1 and endCount == 0 and !instance_exists(DeathCam)
-        and global.myself.team != TEAM_SPECTATOR)
+if (global.myself != -1){
+    if (global.myself.object == -1 and !roundStart and winners == TEAM_SPECTATOR and global.winners == -1 and endCount == 0 and !instance_exists(DeathCam) and global.myself.team != TEAM_SPECTATOR){
         draw_text(xoffset+xsize/2,yoffset+ysize/2,"You can spawn when the next round starts")
-    
-    //Alive players remaining 
-    draw_set_color(c_black);
-    draw_sprite_ext(ArenaPlayerCountS,0,xoffset+xsize/2,yoffset+71,2,2,0,c_white,1);
-    draw_text(xoffset+xsize/2+15,yoffset+73,redteamCharacters);
-    draw_sprite_ext(ArenaPlayerCountS,1,xoffset+xsize/2,yoffset+104,2,2,0,c_white,1);
-    draw_text(xoffset+xsize/2+15,yoffset+106,blueteamCharacters);
+    }
 }
+
+//Alive players remaining 
+draw_set_color(c_black)
+draw_sprite_ext(ArenaPlayerCountS,0,xoffset+xsize/2-35,yoffset+71,2,2,0,c_white,1);
+draw_text(xoffset+xsize/2-20,yoffset+73,redteamCharacters);
+draw_sprite_ext(ArenaPlayerCountS,1,xoffset+xsize/2+35,yoffset+71,2,2,0,c_white,1);
+draw_text(xoffset+xsize/2+50,yoffset+73,blueteamCharacters);
+//}
  
+
 //MVPs
-if (endCount &gt; 0 and global.winners == -1 and !instance_exists(ScoreTableController))
-{
-    if instance_exists(DeathCam)
-        with (DeathCam) instance_destroy();
+if endCount&gt;0 and global.winners==-1 and !instance_exists(ScoreTableController){
+    draw_set_alpha(1)
+    draw_set_halign(fa_left)
+    draw_set_color(c_white)
+    redteamcolor=make_color_rgb(217,217,183)
+    blueteamcolor=make_color_rgb(227,226,225)
+    textYOffset=98*1.5
+    offset=15//25
     
-    draw_set_alpha(1);    
-    draw_set_halign(fa_left);
-    draw_set_color(c_white);
-
-    offset = 15;
-    if (winners == TEAM_RED)
-    {
-        if (endCount &lt; 150)
-        {
-            draw_sprite_ext(MVPBannerS,0,xoffset+xsize/2,yoffset+ysize/2,2,2,0,c_white,0.8);
-            for (i=0; i&lt;redMVPs; i+=1)
-            {
-                draw_text(xoffset+xsize/2-250,yoffset+ysize/2+76+offset*i,redMVPName[i]);
-                draw_text(xoffset+xsize/2-30,yoffset+ysize/2+76+offset*i,redMVPKills[i]);
-                draw_text(xoffset+xsize/2+122,yoffset+ysize/2+76+offset*i,redMVPHealed[i]);
-                draw_text(xoffset+xsize/2+248,yoffset+ysize/2+76+offset*i,redMVPPoints[i]);
+    if winners==TEAM_RED{
+        if endCount&lt;150{
+            draw_set_color(redteamcolor)
+            draw_sprite_ext(ArenaMVPBannerS,0,xoffset+xsize/2,yoffset+ysize/2+150,1.5,1.5,0,c_white,0.8)
+            for (i=0; i&lt;redMVPs; i+=1){
+                draw_set_halign(fa_left)
+                //name
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+170-textYOffset,"RED Team MVPs",1,1,0)
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPName[i],1,1,0)
+                
+                draw_set_halign(fa_right)
+                //kills
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+170-textYOffset,"Kills",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPKills[i],1,1,0)
+                //assists
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+170-textYOffset,"Assists",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPAssists[i],1,1,0)
+                //points
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+170-textYOffset,"Score",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPPoints[i],1,1,0)
+            }
+        }else if endCount&gt;=150{
+            draw_set_color(blueteamcolor)
+            draw_sprite_ext(ArenaMVPBannerS,1,xoffset+xsize/2,yoffset+ysize/2+150,1.5,1.5,0,c_white,0.8)
+            for (i=0; i&lt;blueMVPs; i+=1){
+                draw_set_halign(fa_left)
+                //name
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+170-textYOffset,"BLU Team MVPs",1,1,0)
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPName[i],1,1,0)
+                
+                draw_set_halign(fa_right)
+                //kills
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+170-textYOffset,"Kills",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPKills[i],1,1,0)
+                //assists
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+170-textYOffset,"Assists",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPAssists[i],1,1,0)
+                //points
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+170-textYOffset,"Score",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPPoints[i],1,1,0)
             }
         }
-        else if (endCount &gt;= 150)
-        {
-            draw_sprite_ext(MVPBannerS,1,xoffset+xsize/2,yoffset+ysize/2,2,2,0,c_white,0.8);
-            for (i=0; i&lt;blueMVPs; i+=1)
-            {
-                draw_text(xoffset+xsize/2-250,yoffset+ysize/2+76+offset*i,blueMVPName[i]);
-                draw_text(xoffset+xsize/2-30,yoffset+ysize/2+76+offset*i,blueMVPKills[i]);
-                draw_text(xoffset+xsize/2+122,yoffset+ysize/2+76+offset*i,blueMVPHealed[i]);
-                draw_text(xoffset+xsize/2+248,yoffset+ysize/2+76+offset*i,blueMVPPoints[i]);
+    }else if winners == TEAM_BLUE{
+        if endCount&lt;150{
+            draw_set_color(blueteamcolor)
+            draw_sprite_ext(ArenaMVPBannerS,2,xoffset+xsize/2,yoffset+ysize/2+150,1.5,1.5,0,c_white,0.8)
+            for (i=0; i&lt;blueMVPs; i+=1){
+                draw_set_halign(fa_left)
+                //name
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+170-textYOffset,"BLU Team MVPs",1,1,0)
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPName[i],1,1,0)
+                
+                draw_set_halign(fa_right)
+                //kills
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+170-textYOffset,"Kills",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPKills[i],1,1,0)
+                //assists
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+170-textYOffset,"Assists",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPAssists[i],1,1,0)
+                //points
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+170-textYOffset,"Score",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+65+125+offset*i-textYOffset,blueMVPPoints[i],1,1,0)
+            }
+        }else if endCount&gt;=150{
+            draw_set_color(redteamcolor)
+            draw_sprite_ext(ArenaMVPBannerS,3,xoffset+xsize/2,yoffset+ysize/2+150,1.5,1.5,0,c_white,0.8)
+            for (i=0; i&lt;redMVPs; i+=1){
+                draw_set_halign(fa_left)
+                //name
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+170-textYOffset,"RED Team MVPs",1,1,0)
+                draw_text_transformed(xoffset+xsize/2-240,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPName[i],1,1,0)
+                
+                draw_set_halign(fa_right)
+                //kills
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+170-textYOffset,"Kills",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+40,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPKills[i],1,1,0)
+                //assists
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+170-textYOffset,"Assists",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+160,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPAssists[i],1,1,0)
+                //points
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+170-textYOffset,"Score",1,1,0)
+                draw_text_transformed(xoffset+xsize/2+240,yoffset+ysize/2+65+125+offset*i-textYOffset,redMVPPoints[i],1,1,0)
             }
         }
     }
-    else if (winners == TEAM_BLUE)
-    {
-        if (endCount &lt; 150)
-        {
-            draw_sprite_ext(MVPBannerS,2,xoffset+xsize/2,yoffset+ysize/2,2,2,0,c_white,0.8);
-            for (i=0; i&lt;blueMVPs; i+=1)
-            {
-                draw_text(xoffset+xsize/2-250,yoffset+ysize/2+76+offset*i,blueMVPName[i]);
-                draw_text(xoffset+xsize/2-30,yoffset+ysize/2+76+offset*i,blueMVPKills[i]);
-                draw_text(xoffset+xsize/2+122,yoffset+ysize/2+76+offset*i,blueMVPHealed[i]);
-                draw_text(xoffset+xsize/2+248,yoffset+ysize/2+76+offset*i,blueMVPPoints[i]);
-            }
-        }
-        else if (endCount &gt;= 150)
-        {
-            draw_sprite_ext(MVPBannerS,3,xoffset+xsize/2,yoffset+ysize/2,2,2,0,c_white,0.8);
-            for (i=0; i&lt;redMVPs; i+=1)
-            {
-                draw_text(xoffset+xsize/2-250,yoffset+ysize/2+76+offset*i,redMVPName[i]);
-                draw_text(xoffset+xsize/2-30,yoffset+ysize/2+76+offset*i,redMVPKills[i]);
-                draw_text(xoffset+xsize/2+122,yoffset+ysize/2+76+offset*i,redMVPHealed[i]);
-                draw_text(xoffset+xsize/2+248,yoffset+ysize/2+76+offset*i,redMVPPoints[i]);
-            }
-        }
-    }
-    draw_set_color(make_color_rgb(227,226,225));
-    draw_set_halign(fa_right);
-    draw_text_transformed(xoffset+384,yoffset+210,redWins,3.5,3.5,0);
-    draw_set_halign(fa_left);
-    draw_text_transformed(xoffset+415,yoffset+210,blueWins,3.5,3.5,0);
-
+    draw_set_color(make_color_rgb(227,226,225))
+    draw_set_halign(fa_right)
+    draw_text_transformed(xoffset+384,yoffset+209+180-textYOffset,redWins,3.5,3.5,0)
+    draw_set_halign(fa_left)
+    draw_text_transformed(xoffset+415,yoffset+209+180-textYOffset,blueWins,3.5,3.5,0)
 }
- 
 </argument>
       </arguments>
     </action>

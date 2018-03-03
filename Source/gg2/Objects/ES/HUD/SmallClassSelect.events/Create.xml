@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">done=false
+
+drawx[0]=-200 //24;
+drawx[1]=-160 //64;
+drawx[2]=-120 //104;
+drawx[3]=-80 //156;
+drawx[4]=-40 //196;
+drawx[5]=0 //236;
+drawx[6]=40 //288;
+drawx[7]=80 //328;
+drawx[8]=120 //368;
+drawx[10]=200 //420;
+
+drawx[9]=-1600//420; //unused
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

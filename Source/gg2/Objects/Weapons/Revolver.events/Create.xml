@@ -13,44 +13,45 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    xoffset = -3;
-    yoffset = -6;
-    refireTime = 18;
-    event_inherited();
-    
-    StabreloadTime = 32;
-    readyToStab = true;
+        <argument kind="STRING">xoffset = -3;
+yoffset = -6;
+refireTime = 20//18;
+event_inherited();
 
-    stabdirection=0;
-    maxAmmo = 6;
-    ammoCount = maxAmmo;
-    ejected = 0;
-    reloadTime = 45;
-    reloadBuffer = refireTime;
-    idle=true;
+StabreloadTime = 32;
+readyToStab = true;
+
+stabdirection=0;
+maxAmmo = 6;
+ammoCount = maxAmmo;
+ejected = 0;
+reloadTime = 40//45;
+reloadBuffer = refireTime;
+idle=true;
+
+if(golden){
+    normalSprite = RevolverGoldS;
+    recoilSprite = RevolverGoldFS;
+    reloadSprite = RevolverGoldFRS;
+}else{
+    normalSprite = RevolverS;
+    recoilSprite = RevolverFS;
+    reloadSprite = RevolverFRS;
     
-    if(golden)
-    {
-        normalSprite = RevolverGoldS;
-        recoilSprite = RevolverGoldFS;
-        reloadSprite = RevolverGoldFRS;
+    if global.dumbledankSprites==1{
+        normalSprite = RevolverSM;
+        recoilSprite = RevolverFSM;
+        reloadSprite = RevolverFRSM;
     }
-    else
-    {
-        normalSprite = RevolverS;
-        recoilSprite = RevolverFS;
-        reloadSprite = RevolverFRS;
-    }
-    sprite_index = normalSprite;
-    
-    recoilTime = refireTime;
-    recoilAnimLength = sprite_get_number(recoilSprite)/2;
-    recoilImageSpeed = recoilAnimLength/recoilTime;
-    
-    reloadAnimLength = sprite_get_number(reloadSprite)/2;
-    reloadImageSpeed = reloadAnimLength/reloadTime;
 }
+sprite_index = normalSprite;
+
+recoilTime = refireTime;
+recoilAnimLength = sprite_get_number(recoilSprite)/2;
+recoilImageSpeed = recoilAnimLength/recoilTime;
+
+reloadAnimLength = sprite_get_number(reloadSprite)/2;
+reloadImageSpeed = reloadAnimLength/reloadTime;
 </argument>
       </arguments>
     </action>

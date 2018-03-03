@@ -23,5 +23,5 @@ if(instance_exists(healer)) {
     write_ubyte(global.sendBuffer, ds_list_find_index(global.players, healer));
 } else {
     write_ubyte(global.sendBuffer, 255);
-}  
+}
 write_ubyte(global.sendBuffer, damageSource);

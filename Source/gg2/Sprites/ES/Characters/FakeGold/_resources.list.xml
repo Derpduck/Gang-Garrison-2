@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ScoutRedGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="ScoutBlueGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="PyroRedGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="PyroBlueGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="SoldierRedGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="SoldierBlueGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="HeavyRedGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="HeavyBlueGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="DemomanRedGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="DemomanBlueGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="SniperRedGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="SniperBlueGoldWeaponTauntSM" type="RESOURCE"/>
+  <resource name="HeavyRedOmnomnomnomGoldWeaponSM" type="RESOURCE"/>
+  <resource name="HeavyBlueOmnomnomnomGoldWeaponSM" type="RESOURCE"/>
+</resources>

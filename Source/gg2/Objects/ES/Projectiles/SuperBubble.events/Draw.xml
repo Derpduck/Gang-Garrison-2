@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">draw_sprite_ext(sprite_index,team,x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+
+if global.myself.team==team or global.myself.team==TEAM_SPECTATOR{
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    draw_set_color(c_black)
+    draw_text(x+1,y+1,hp)
+    draw_set_color(c_white)
+    draw_text(x,y,hp)
+    
+    draw_healthbar(x-10, y+13, x+10, y+8,alarm[0]*100/(lifetime/global.delta_factor),c_black,c_gray,c_white,0,true,true)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

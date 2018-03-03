@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="cc_help" type="RESOURCE"/>
+  <resource name="cc_execute" type="RESOURCE"/>
+  <resource name="cc_rcon" type="RESOURCE"/>
+  <resource name="cc_quit" type="RESOURCE"/>
+  <resource name="cc_clear" type="RESOURCE"/>
+  <resource name="cc_players" type="RESOURCE"/>
+  <resource name="cc_bind" type="RESOURCE"/>
+  <resource name="cc_unbind" type="RESOURCE"/>
+  <resource name="cc_binds" type="RESOURCE"/>
+  <resource name="cc_log" type="RESOURCE"/>
+  <resource name="cc_cast" type="RESOURCE"/>
+  <resource name="cc_disconnect" type="RESOURCE"/>
+  <resource name="cc_smute" type="RESOURCE"/>
+  <resource name="cc_say" type="RESOURCE"/>
+  <resource name="cc_status" type="RESOURCE"/>
+</resources>

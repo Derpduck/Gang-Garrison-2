@@ -14,6 +14,10 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
+    xoffset=view_xview[0]
+    yoffset=view_yview[0]
+    xsize=view_wview[0]
+    ysize=view_hview[0]
     var size, namelength, server;
     
     if(lobbysocket != -1) {
@@ -102,8 +106,8 @@
         }                    
     }
     
-    if(mouse_x &gt; xbegin and mouse_x &lt; xbegin+width) {
-        virtualitem = round((mouse_y-ybegin+12)/spacing-0.5);
+    if(mouse_x &gt; xbegin+xoffset and mouse_x &lt; xbegin+width+xoffset) {
+        virtualitem = round((mouse_y-(ybegin+yoffset)+12)/spacing-0.5);
         if(virtualitem&lt;0 or virtualitem&gt;items) {
             virtualitem = -1;
         } else {
@@ -120,6 +124,8 @@
                 {   // We can't _actually_ destroy and recreate the Client here, because destroying it will cause a room change and that will cause the Create event not to run... Yay, GM!
                     with(Client)
                     {
+                        write_ubyte(global.serverSocket, DC_REASON_LOBBY)
+                        socket_send(global.serverSocket)
                         event_perform(ev_destroy,0);
                         ClientCreate();
                     }
@@ -147,9 +153,7 @@
                     if(show_question(question))
                         if(show_question("Warning: The website link is provided by the game server you selected and could lead anywhere.#Really visit '"+gameurl+"'?"))
                             action_splash_web(ds_map_find_value(server.infos, "game_url"), 1);
-                }
-                else
-                {
+                }else{
                     show_message(question);
                 }
             }

@@ -13,18 +13,18 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">maxHp = 2100;
+        <argument kind="STRING">maxHp = 4000;
 hp = maxHp;
-maxShieldHp = 300;
-shieldHp = maxShieldHp;
+maxShieldHp = 0;
+shieldHp = 0;
 shieldResistance = 0.5;
 isShieldRegenerating = false;
 regenerationBuffer = 3 * 30;
 smokeCount = 0;
 image_speed = 0.3 * global.delta_factor;
-blastRadius = 400;
+blastRadius = 200;
 shieldIndex = 0;
-
+ubered=0;
 </argument>
       </arguments>
     </action>

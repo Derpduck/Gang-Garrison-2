@@ -18,7 +18,7 @@ timer=timeLimit;
 teamoffset=0;
 killLimit = global.killLimit;
 overtime = false;
-
+global.rupTime=5*30/global.delta_factor
 </argument>
       </arguments>
     </action>

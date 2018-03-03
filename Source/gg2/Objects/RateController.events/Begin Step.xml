@@ -13,23 +13,25 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(global.game_fps == 60)
-{
+        <argument kind="STRING">if(global.game_fps == 60){
     global.delta_factor = 1/2;
     global.skip_delta_factor = 1/2;
     global.ticks_per_virtual = 2;
     global.frameskip = 1;
     room_speed = 60;
-}
-else // 30fps
-{
+}else if(global.game_fps == 90){
+   global.delta_factor = 1/3;
+    global.skip_delta_factor = 1/3;
+    global.ticks_per_virtual = 3;
+    global.frameskip = 1
+    room_speed = 90; 
+}else{ //30 fps
     global.delta_factor = 1;
     global.skip_delta_factor = 1/2;
     global.ticks_per_virtual = 1;
     global.frameskip = 2;
     room_speed = 30;
 }
-
 </argument>
       </arguments>
     </action>

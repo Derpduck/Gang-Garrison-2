@@ -17,39 +17,43 @@
 yoffset = view_yview[0];
 xsize = view_wview[0];
 ysize = view_hview[0];
-
-if (distance_to_point(xoffset+xsize/2,yoffset+ysize/2) &gt; 800)
-    exit;
-
-if(intel and intelRecharge &lt; 900)
-    draw_intel_timer(intelRecharge/900, team == TEAM_RED, -8);
-
 var xr, yr;
 xr = round(x);
 yr = round(y);
 
+if (distance_to_point(xoffset+xsize/2,yoffset+ysize/2) &gt; 1000){
+    exit;
+}
+
+if(intel and intelRecharge &lt; 900){
+    draw_intel_timer(intelRecharge/900, team == TEAM_RED, -8);
+}
+
 image_alpha = cloakAlpha;
 
-if (global.myself.team == team and canCloak)
+if ((global.myself.team == team and canCloak) or global.myself.team==TEAM_SPECTATOR){
     image_alpha = cloakAlpha/2 + 0.5;
+}
 
-if (invisible)
+if (invisible){
     exit;
+}
 
-if(stabbing)
+if(stabbing){
     image_alpha -= power(currentWeapon.stab.alpha, 2);
+}
 
-if (team == global.myself.team and (player != global.myself or global.showHealthBar))
-{
+if team == global.myself.team and (player != global.myself or global.showHealthBar) or global.myself.team==TEAM_SPECTATOR{
     draw_set_alpha(1);
     draw_healthbar(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
 }
 
 draw_set_alpha(1);
-if (team == TEAM_RED)
+if (team == TEAM_RED){
     ubercolour = c_red;
-else
+}else{
     ubercolour = c_blue;
+}
 
 // sprite resource selection
 var sprite, overlayList, noNewAnim, sprite_tilt_left, sprite_tilt_right, overlays_tilt_left, overlays_tilt_right;
@@ -57,36 +61,34 @@ noNewAnim = player.class == CLASS_QUOTE or sprite_special or player.humiliated;
 
 if (zoomed)
 {
-    if (team == TEAM_RED)
+    if (team == TEAM_RED){
         sprite = SniperRedCrouchS;
-    else
+        if global.dumbledankSprites==1{
+            sprite = SniperRedCrouchSM;
+        }
+    }else{
         sprite = SniperBlueCrouchS;
+        if global.dumbledankSprites==1{
+            sprite = SniperBlueCrouchSM;
+        }
+    }
     overlayList = crouchOverlays;
     animationImage = animationImage mod 2; // sniper crouch only has two frames, avoid overflow
-}
+}else if (!noNewAnim){
 // most classes, check for running jumping and standing
-else if (!noNewAnim)
-{
-    if(!onground)
-    {
+    if(!onground){
         sprite = spriteJump;
         overlayList = jumpOverlays;
-    }
-    else
-    {
-        if(still)
-        {
+    }else{
+        if(still){
             // set up vars for slope detection
             charSetSolids();
-            if(image_xscale &gt; 0)
-            {
+            if(image_xscale &gt; 0){
                 sprite_tilt_left = spriteLeanL;
                 sprite_tilt_right = spriteLeanR;
                 overlays_tilt_left = leanLOverlays;
                 overlays_tilt_right = leanROverlays;
-            }
-            else
-            {
+            }else{
                 sprite_tilt_left = spriteLeanR;
                 sprite_tilt_right = spriteLeanL;
                 overlays_tilt_left = leanROverlays;
@@ -101,27 +103,22 @@ else if (!noNewAnim)
                 var openright, openleft;
                 openright = !collision_point_solid(x+6, bbox_bottom+2) and !collision_point_solid(x+2, bbox_bottom+2);
                 openleft = !collision_point_solid(x-7, bbox_bottom+2) and !collision_point_solid(x-3, bbox_bottom+2);
-                if (openright)
-                {
+                if (openright){
                     sprite = sprite_tilt_right;
                     overlayList = overlays_tilt_right;
                 }
-                if (openleft)
-                {
+                if (openleft){
                     sprite = sprite_tilt_left;
                     overlayList = overlays_tilt_left;
                 }
-                if (openright and openleft)
-                {
+                if (openright and openleft){
                     openright = !collision_point_solid(bbox_right, bbox_bottom+2);
                     openleft = !collision_point_solid(bbox_left, bbox_bottom+2);
-                    if (openright)
-                    {
+                    if (openright){
                         sprite = sprite_tilt_right;
                         overlayList = overlays_tilt_right;
                     }
-                    if (openleft)
-                    {
+                    if (openleft){
                         sprite = sprite_tilt_left;
                         overlayList = overlays_tilt_left;
                     }
@@ -129,64 +126,56 @@ else if (!noNewAnim)
             }
                 
             charUnsetSolids();
-        }
-        else
-        {
+        }else{
             sprite = spriteRun;
             overlayList = runOverlays;
-            if (player.class == CLASS_HEAVY and abs(hspeed) &lt; 3) // alternative sprite for extremely slow moving heavies
-            {
-                if (team == TEAM_RED)
-                {
+            if (player.class == CLASS_HEAVY and abs(hspeed) &lt; 3){ // alternative sprite for extremely slow moving heavies
+                if (team == TEAM_RED){
                     sprite = HeavyRedWalkS;
+                    if global.dumbledankSprites==1{
+                        sprite = HeavyRedWalkSM;
+                    }
                     overlayList = walkOverlays;
-                }
-                else
-                {
+                }else{
                     sprite = HeavyBlueWalkS;
+                    if global.dumbledankSprites==1{
+                        sprite = HeavyBlueWalkSM;
+                    }
                     overlayList = walkOverlays;
                 }
             }
         }
     }
-}
-else
-{
+}else{
     sprite = sprite_index;
     overlayList = stillOverlays;
 }
 
-if (sprite != sprite_index and (sprite == spriteLeanR or sprite == spriteLeanL)
-    and !taunting and !omnomnomnom and !stabbing // These override "sprite"
-    and !noNewAnim)
+if (sprite != sprite_index and (sprite == spriteLeanR or sprite == spriteLeanL) and !taunting and !omnomnomnom and !stabbing and !noNewAnim){
     yoffset = 6;
-else
+}else{
     yoffset = 0;
+}
 
-equipmentOffset = ((sprite == spriteRun) and
-                (floor(animationImage) mod 2) == 0)
-               and onground;
+equipmentOffset = ((sprite == spriteRun) and (floor(animationImage) mod 2) == 0) and onground;
 equipmentOffset *= -2; // two pixels up for whether the sprite is bobbing(above expression gives one down)
 
 overlayOffset = equipmentOffset;
 
-if ((player.class == CLASS_HEAVY and abs(hspeed) &lt; 3) or player.class == CLASS_SOLDIER or noNewAnim or taunting)
-{
+if ((player.class == CLASS_HEAVY and abs(hspeed) &lt; 3) or player.class == CLASS_SOLDIER or noNewAnim or taunting){
     equipmentOffset = 0; // override run bob for classes with no run bob
     overlayOffset = 0;
-}
-else if (abs(hspeed) &lt; 3 and equipmentOffset = -2 and !taunting)
-{
+}else if (abs(hspeed) &lt; 3 and equipmentOffset = -2 and !taunting){
     equipmentOffset += 2;
     yr += 2;
     overlayOffset = equipmentOffset-2; // mad because overlays use yr
-}
-else
+}else{
     overlayOffset = equipmentOffset;
+}
 
-if(!noNewAnim) // quote and sniper zoom still use the old anim system so animationOffset is still set, override it here for everything else
+if(!noNewAnim){ // quote and sniper zoom still use the old anim system so animationOffset is still set, override it here for everything else
     animationOffset = 0;
-
+}
 
 equipmentOffset += yoffset;
 
@@ -203,15 +192,15 @@ else if (taunting)
     draw_sprite_ext_overlay(tauntsprite,tauntOverlays,gearList,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
     if (ubered)
         draw_sprite_ext_overlay(tauntsprite,tauntOverlays,gearList,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
-}
-else if (player.humiliated)
+}else if (player.humiliated){
     draw_sprite_ext(humiliationPoses,floor(animationImage)+humiliationOffset,xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha);
-else if (!taunting)
-{
-    if (intel and player.class != CLASS_QUOTE and !zoomed)
+}else if (!taunting){
+    if (intel and player.class != CLASS_QUOTE and !zoomed){
         draw_sprite_ext(spriteIntel,0,xr,round(y)+equipmentOffset, image_xscale, image_yscale, 0, c_white, image_alpha);
-    if (zoomed)
+    }
+    if (zoomed){
         overlayOffset += 4;
+    }
     if (cloak)
     {
         if (!ubered)
@@ -234,68 +223,166 @@ else if (!taunting)
     }
 }
 
-if (burnDuration &gt; 0 or burnIntensity &gt; 0)
-{
-    for(i = 0; i &lt; realnumflames; i += 1)
-    {
+if graceAnimation==2{
+    draw_sprite_ext_overlay(sprite,overlayList,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7,overlayOffset);
+}
+if instance_exists(global.myself.object){
+    if global.myself.object!=-1{
+        if global.myself.class==CLASS_MEDIC{
+            _target=noone
+            if instance_exists(global.myself.object.currentWeapon){
+                if instance_exists(global.myself.object.currentWeapon.healTarget){
+                    _target=global.myself.object.currentWeapon.healTarget.object
+                    if _target==id and !ubered{
+                        draw_sprite_ext_overlay(sprite,overlayList,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.4,overlayOffset);
+                    }
+                }
+            }
+        }
+    }
+}
+
+if (burnDuration &gt; 0 or burnIntensity &gt; 0){
+    for(i = 0; i &lt; realnumflames; i += 1){
         draw_sprite_ext(FlameS, alarm[5] + i + random(2), x + flameArray_x[i], y + flameArray_y[i], 1, 1, 0, c_white, burnIntensity / maxIntensity * 0.5 + 0.25);
     }  
 }
 
-if (distance_to_point(mouse_x, mouse_y) &lt; 25)
-{
-    if (cloak and team != global.myself.team)
+// Copied from Lorgan's itemserver "angels" with slight modifications
+// All credit be upon him
+if (demon != -1){
+    demonX = median(x-40,demonX,x+40);
+    demonY = median(y-40,demonY,y);
+    demonOffset += demonDir;
+    if (abs(demonOffset) &gt; 15){
+        demonDir *= -1;
+    }
+
+    var dir;
+    if (demonX &gt; x){
+        dir = -1;
+    }else{
+        dir = 1;
+    }
+
+    if (demonFrame &gt; sprite_get_number(demon)){
+        demonFrame = 0;
+    }
+
+    if (stabbing || ubered){
+        draw_sprite_ext(demon,demonFrame+floor(animationImage)+7*player.team,demonX,demonY+demonOffset,dir*1,1,0,c_white,1);
+    }else{
+        draw_sprite_ext(demon,demonFrame+floor(animationImage)+7*player.team,demonX,demonY+demonOffset,dir*1,1,0,c_white,image_alpha);
+    }
+
+    demonFrame += 1;
+}
+
+//
+if (((team == global.myself.team) and (player != global.myself or global.showHealthBar) or global.myself.team==TEAM_SPECTATOR)){
+    var xr, yr;
+    xr = round(x)
+    yr = round(y)
+    //0=no text
+    if global.hpTextPos==1{
+        //centre, top
+        draw_set_halign(fa_center)
+        draw_set_valign(fa_middle)
+        draw_text_color(xr+1,yr-19,ceil(hp),c_black,c_black,c_black,c_black,1)
+        draw_text_color(xr,yr-20,ceil(hp),c_white,c_white,c_white,c_white,1)
+    }else if global.hpTextPos==2{
+        //left side
+        draw_set_halign(fa_right)
+        draw_set_valign(fa_middle)
+        draw_text_color(xr-10,yr-29,ceil(hp),c_black,c_black,c_black,c_black,1)
+        draw_text_color(xr-11,yr-30,ceil(hp),c_white,c_white,c_white,c_white,1)
+    }else if global.hpTextPos==3{
+        //right side
+        draw_set_halign(fa_left)
+        draw_set_valign(fa_middle)
+        draw_text_color(xr+11,yr-29,ceil(hp),c_black,c_black,c_black,c_black,1)
+        draw_text_color(xr+12,yr-30,ceil(hp),c_white,c_white,c_white,c_white,1)
+    }else if global.hpTextPos==4{
+        //centre, bottom
+        draw_set_halign(fa_center)
+        draw_set_valign(fa_middle)
+        draw_text_color(xr+1,yr+34,ceil(hp),c_black,c_black,c_black,c_black,1)
+        draw_text_color(xr,yr+35,ceil(hp),c_white,c_white,c_white,c_white,1)
+    }
+    
+    
+    if player.class != CLASS_SNIPER{
+        draw_healthbar(xr-10, yr-35, xr+10, yr-30,currentWeapon.ammoCount*100/currentWeapon.maxAmmo,c_black,c_gray,c_white,0,true,true)
+    }else{
+        draw_healthbar(xr-10, yr-35, xr+10, yr-30,currentWeapon.readyToShoot*100,c_black,c_gray,c_white,0,true,true)
+    }
+    
+    if player.class==CLASS_MEDIC{
+        draw_healthbar(xr-10, yr-40, xr+10, yr-35,(currentWeapon.uberCharge/2000)*100,c_black,c_teal,c_aqua,0,true,true)
+    } 
+}
+
+/*
+if burnDuration&gt;0 and player==global.myself{
+    if team==TEAM_RED{
+        draw_set_color(c_red)
+    }else{
+        draw_set_color(c_blue)
+    }
+    draw_text(xr,round(y)+60,"Afterburn: "+string_format(burnDuration/30,round(burnDuration/30),1))
+}
+*/
+//draw_text(xr,round(y)+40,sAfkTimer)
+
+if (distance_to_point(mouse_x, mouse_y) &lt; 25){
+    if ((cloak and team != global.myself.team)){
         exit;
+    }
     draw_set_alpha(1);
-    if(team == TEAM_RED)
+    if team == TEAM_RED{
         draw_set_color(c_red);
-    else
+    }else{
         draw_set_color(c_blue);
+    }
+    if player==global.myself{
+        //if team == TEAM_RED{
+            //draw_set_color(make_color_rgb(255,101,0))
+        //    draw_set_color(make_color_rgb(255,150,40))
+        //}else{
+        //    draw_set_color(make_color_rgb(40,172,251))
+        //}
+    }else{
+        if team == TEAM_RED{
+            draw_set_color(make_color_rgb(249,57,57))
+        }else{
+            draw_set_color(make_color_rgb(0,113,255))
+        }
+    }
     
     var width, height;
     width = name_width_badges(player);
     height = string_height(sanitiseNewlines(player.name));
     
+    if /*global.botDebugMode and*/ player.isBot draw_text(xr, yr-80, string(player.task)+"#"+string(team)+"#"+string(player.team));
     draw_name_badges(round(xr - width / 2), round(y) - 35 - height, player, 1);
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
     
-    if(team == global.myself.team &amp;&amp; global.showTeammateStats)
-    {
-        if(weapons[0] == Medigun)
-            draw_text(xr,round(y)+50, "Superburst: " + string(currentWeapon.uberCharge/20) + "%");
-        else if(weapons[0] == Shotgun)
-            draw_text(xr,round(y)+50, "Nuts 'N' Bolts: " + string(nutsNBolts));
-        else if(weapons[0] == Minegun)
-            draw_text(xr,round(y)+50, "Lobbed Mines: " + string(currentWeapon.lobbed));
+    if team == TEAM_RED{
+        draw_set_color(c_red);
+    }else{
+        draw_set_color(c_blue);
     }
-}
-
-// Copied from Lorgan's itemserver "angels" with slight modifications
-// All credit be upon him
-if (demon != -1)
-{
-    demonX = median(x-40,demonX,x+40);
-    demonY = median(y-40,demonY,y);
-    demonOffset += demonDir;
-    if (abs(demonOffset) &gt; 15)
-        demonDir *= -1;
-
-    var dir;
-    if (demonX &gt; x)
-        dir = -1;
-    else
-        dir = 1;
-
-    if (demonFrame &gt; sprite_get_number(demon))
-        demonFrame = 0;
-
-    if (stabbing || ubered)
-        draw_sprite_ext(demon,demonFrame+floor(animationImage)+7*player.team,demonX,demonY+demonOffset,dir*1,1,0,c_white,1);
-    else
-        draw_sprite_ext(demon,demonFrame+floor(animationImage)+7*player.team,demonX,demonY+demonOffset,dir*1,1,0,c_white,image_alpha);
-
-    demonFrame += 1;
+    
+    if((team == global.myself.team &amp;&amp; global.showTeammateStats) or global.myself.team==TEAM_SPECTATOR){
+        if(weapons[0] == Medigun){
+            draw_text(xr,round(y)+50, "Superburst: " + string(round(currentWeapon.uberCharge/20)) + "%");
+        }else if(weapons[0] == Shotgun){
+            draw_text(xr,round(y)+50, "Nuts 'N' Bolts: " + string(round(nutsNBolts)));
+        }else if(weapons[0] == Minegun){
+            draw_text(xr,round(y)+50, "Mines: " + string(currentWeapon.lobbed));
+        }
+    }
 }
 </argument>
       </arguments>

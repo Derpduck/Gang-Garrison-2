@@ -13,17 +13,27 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(other.id != ownerPlayer.object and other.team != team  and other.hp &gt; 0 and !other.ubered)
+        <argument kind="STRING">if(other.id != ownerPlayer.object and other.team != team  and other.hp &gt; 0 and !other.ubered) and (global.jumpMode==0 or (global.jumpMode==1 and global.jumpPlayerAttack=1))
 {
     if(!collision_line(x,y-12,other.x,other.y,Obstacle,true,true)) and (!collision_line(x,y-12,other.x,other.y,TeamGate,true,true) and (!collision_line(x,y-12,other.x,other.y,BulletWall,true,true)))
     {
         damageCharacter(ownerPlayer, other.id, hitDamage);
+        
+        if ownerPlayer==global.myself{
+            var damageDone;
+            damageDone = instance_create(other.x,other.y,DamageIndicator)
+            damageDone.dmg = hitDamage
+            global.myself.stats[DAMAGE]+=hitDamage
+            global.myself.roundStats[DAMAGE]+=hitDamage
+            damageDone.owner = other.id
+        }
+        
         if (other.lastDamageDealer != ownerPlayer &amp;&amp; other.lastDamageDealer != other.player)
         {
             other.secondToLastDamageDealer = other.lastDamageDealer;
             other.alarm[4] = other.alarm[3]
         }
-        other.alarm[3] = ASSIST_TIME;
+        other.alarm[3] = ASSIST_TIME/global.delta_factor;
         other.lastDamageDealer = ownerPlayer;
         if sign(other.image_xscale) == sign(image_xscale)
             other.lastDamageSource = DAMAGE_SOURCE_BACKSTAB;
@@ -40,11 +50,15 @@
         }
         
         numKills += 1;
-        if (numKills &gt;= maxKills)
+        if (numKills &gt;= maxKills){
+            with(owner.currentWeapon){
+                event_user(10)
+            }
             instance_destroy();
-    }
-    else
+        }
+    }else{
         alarm[0] = 1;
+    }
 }
 </argument>
       </arguments>

@@ -11,6 +11,14 @@ with(JoiningPlayer)
     if(state==STATE_CLIENT_DOWNLOADING)
         global.runningMapDownloads += 1;
 
-acceptJoiningPlayer();        
-with(JoiningPlayer)
+acceptJoiningPlayer();
+with(JoiningPlayer){
     serviceJoiningPlayer();
+}
+
+if(global.run_virtual_ticks){
+    if !global.isLive{
+        CheckRUPStatus()
+        ServerRUPStatus()
+    }
+}

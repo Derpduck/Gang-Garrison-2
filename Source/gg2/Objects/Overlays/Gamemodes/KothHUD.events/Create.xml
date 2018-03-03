@@ -17,6 +17,7 @@
 blueTimer = 180*30;
 cpUnlock = 900;
 hostTimer = global.timeLimitMins*30*60;
+global.rupTime=5*30/global.delta_factor
 </argument>
       </arguments>
     </action>

@@ -21,38 +21,56 @@ xshift = -320*global.timerPos;
 yshift = 5*global.timerPos;
 
 drawx = xoffset+xsize/2 - floor(global.totalControlPoints-1)/2*60;
+redC=make_color_rgb(147,50,44)
+blueC=make_color_rgb(52,71,82)
+greyC=make_color_rgb(125,125,125)
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
 
 draw_set_alpha(1);
 
-for (i=1; i&lt;= global.totalControlPoints; i+=1)
-{
-    if (global.cp[i].team == TEAM_RED)
-        teamoffset = 60;
-    else if (global.cp[i].team == TEAM_BLUE)
-        teamoffset = 90;
-    if (global.cp[i].cappingTeam == TEAM_RED and global.cp[i].team == -1)
-        teamoffset = 30;
-    else if (global.cp[i].cappingTeam != TEAM_RED and global.cp[i].team == -1)
-        teamoffset = 0;    
+for (i=1; i&lt;= global.totalControlPoints; i+=1){
+    if (global.cp[i].team == TEAM_RED){
+        teamoffset = 1;
+    }else if (global.cp[i].team == TEAM_BLUE){
+        teamoffset = 2;
+    }else if global.cp[i].team == -1{
+        teamoffset = 0
+    }
+
+    draw_sprite_ext(ControlPointHUDS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
     
-    if (global.cp[i].capping != 0)
-        draw_sprite_ext(ControlPointStatusS, teamoffset+floor(global.cp[i].capping/global.cp[i].capTime*30), drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    else if global.cp[i].capping == 0
-        draw_sprite_ext(ControlPointStatusS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    if global.cp[i].locked
-        draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    if global.cp[i].cappers &gt; 0 &amp;&amp; not global.cp[i].locked
-    {
-        draw_sprite_ext(ControlPointCappersS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-        draw_set_halign(fa_center);
-        draw_set_valign(fa_center);
+    if (global.cp[i].capping != 0){
+        if global.cp[i].cappingTeam==TEAM_RED{
+            draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),global.cp[i].capping/global.cp[i].capTime*100,c_black,redC,redC,2,0,0)
+        }else if global.cp[i].cappingTeam==TEAM_BLUE{
+            draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),global.cp[i].capping/global.cp[i].capTime*100,c_black,blueC,blueC,2,0,0)
+        }
+    }
+    
+    if global.cp[i].locked{
+        draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-40, 2, 2, 0, c_white, 1);
+    }
+    if global.cp[i].cappers &gt; 0 &amp;&amp; not global.cp[i].locked{
+        draw_sprite_ext(ControlPointCappersS, 0, drawx+3, yoffset+ysize-30, 2, 2, 0, c_white, 1);
         draw_set_color(c_black);
-        draw_text_transformed(drawx+13, yoffset+ysize-38, string(global.cp[i].cappers),1.5,1.5,0);
+        draw_text_transformed(drawx+10, yoffset+ysize-28, string(global.cp[i].cappers),1,1,0);
+        
+        //cap %
+        draw_text_transformed(drawx+2, yoffset+ysize-49, string(floor(global.cp[i].capping/global.cp[i].capTime*100))+"%",1,1,0);
+        draw_text_transformed(drawx+2, yoffset+ysize-39, string(floor((global.cp[i].capTime-global.cp[i].capping)/(30*global.cp[i].cappers)))+"s",1,1,0);
     }
     drawx += 60;
 }
 
 draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
+
+if global.adcpWinner!=""{
+    draw_text_transformed_color(xoffset+xsize/2,yoffset+ysize/2,"Winner: "+string(global.adcpWinner)+
+    "#"+"You are: "+string(global.myAdcpTeam)+
+    "#"+string(global.adcpRound1CapTimestamp/30)+"s : "+string(global.adcpRound2CapTimestamp/30)+"s"+
+    "#"+string(global.adcpRound1Caps)+" caps : "+string(global.adcpRound2Caps)+" caps",3,3,0,c_white,c_white,c_white,c_white,1)
+}
 </argument>
       </arguments>
     </action>

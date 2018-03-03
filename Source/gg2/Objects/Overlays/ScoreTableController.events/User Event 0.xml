@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//Box HUD draw code
+var xoffset, yoffset, xsize, ysize, i, player, redteam, blueteam, spec;
+xoffset = view_xview[0]
+yoffset = view_yview[0]
+xsize = view_wview[0]
+ysize = view_hview[0]
+
+draw_set_valign(fa_top)
+c_nuwhite=make_color_rgb(227,226,225)
+
+//Board Base/Background
+draw_set_alpha(global.boxScoreboardBGAlpha/100)
+draw_set_color(c_black)
+draw_rectangle((xoffset+xsize/2)-290,(yoffset+ysize/2)-170,(xoffset+xsize/2)+290,(yoffset+ysize/2)+180,0)
+//Team Headers
+draw_set_alpha(0.7*(min(1,global.boxScoreboardBGAlpha/50))) //Alpha is scaled with the base, but maxes at 70%
+draw_set_color(make_color_rgb(165,70,64))
+draw_rectangle((xoffset+xsize/2)-290,(yoffset+ysize/2)-200,(xoffset+xsize/2)-1,(yoffset+ysize/2)-171,0)
+draw_set_color(make_color_rgb(73,93,104))
+draw_rectangle((xoffset+xsize/2)+1,(yoffset+ysize/2)-200,(xoffset+xsize/2)+290,(yoffset+ysize/2)-171,0)
+draw_set_alpha(1)
+draw_set_color(c_white)
+
+//Sorted list of players
+redteam=ds_priority_create()
+blueteam=ds_priority_create()
+spec=ds_priority_create()
+for(i=0; i&lt;ds_list_size(global.players); i+=1){
+    player=ds_list_find_value(global.players,i)
+    
+    if player.team==TEAM_RED{
+        ds_priority_add(redteam,player,player.stats[POINTS])
+    }else if player.team==TEAM_BLUE{
+        ds_priority_add(blueteam,player,player.stats[POINTS])
+    }else if player.team==TEAM_SPECTATOR{
+        ds_priority_add(spec,player,0)
+    }
+}
+
+//Header Text
+draw_set_halign(fa_center)
+draw_set_alpha(1)
+draw_set_color(make_color_rgb(239,226,207))
+draw_text_transformed((xoffset+xsize/2)-278,(yoffset+ysize/2)-194,"R",2,2,0)
+draw_set_color(make_color_rgb(227,226,225))
+draw_text_transformed((xoffset+xsize/2)+278+1,(yoffset+ysize/2)-194,"B",2,2,0)
+//Player Count
+spaceStrR=" "
+spaceStrB=" "
+if ds_priority_size(redteam)&gt;=10 spaceStrR=""
+if ds_priority_size(blueteam)&gt;=10 spaceStrB=""
+draw_set_halign(fa_left)
+draw_set_color(make_color_rgb(239,226,207))
+draw_text_transformed((xoffset+xsize/2)-257,(yoffset+ysize/2)-185,"Players: "+spaceStrR+string(ds_priority_size(redteam)),1,1,0)
+draw_set_halign(fa_right)
+draw_set_color(make_color_rgb(227,226,225))
+draw_text_transformed((xoffset+xsize/2)+257+1,(yoffset+ysize/2)-185,"Players: "+spaceStrB+string(ds_priority_size(blueteam)),1,1,0)
+//Server Info
+draw_set_color(c_nuwhite)
+draw_set_halign(fa_right)
+draw_text((xoffset+xsize/2)-6,(yoffset+ysize/2)-197,"Server: "+sanitiseNewlines(string_copy(global.joinedServerName,1,25)))
+draw_set_halign(fa_left)
+draw_text((xoffset+xsize/2)+6+1,(yoffset+ysize/2)-197,"Map: "+sanitiseNewlines(string_copy(global.currentMap,1,27)))
+
+//draw scores for all gamemodes
+/*if instance_exists(CTFHUD){
+    draw_text_transformed(xcenter-(400-384),yoffset,global.redCaps,4,4,0);
+    draw_set_halign(fa_left);
+    draw_text_transformed(xcenter-(400-412),yoffset,global.blueCaps,4,4,0);
+}else if instance_exists(ArenaHUD){
+    draw_text_transformed(xcenter-(400-384),yoffset,ArenaHUD.redWins,4,4,0);
+    draw_set_halign(fa_left);
+    draw_text_transformed(xcenter-(400-412),yoffset,ArenaHUD.blueWins,4,4,0);
+}*/
+
+//Body Headers
+draw_set_color(c_nuwhite)
+draw_set_halign(fa_center)
+//Red Side
+draw_text((xoffset+xsize/2)-264,(yoffset+ysize/2)-166,"Class")
+draw_text((xoffset+xsize/2)-166,(yoffset+ysize/2)-166,"Name")
+draw_text((xoffset+xsize/2)-68,(yoffset+ysize/2)-166,"Score")
+draw_text((xoffset+xsize/2)-22,(yoffset+ysize/2)-166,"Ping")
+//Blue Side
+draw_text((xoffset+xsize/2)+(290-264)+1,(yoffset+ysize/2)-166,"Class")
+draw_text((xoffset+xsize/2)+(290-166)+1,(yoffset+ysize/2)-166,"Name")
+draw_text((xoffset+xsize/2)+(290-68)+1,(yoffset+ysize/2)-166,"Score")
+draw_text((xoffset+xsize/2)+(290-22)+1,(yoffset+ysize/2)-166,"Ping")
+//Dividers
+draw_set_color(c_white)
+draw_line((xoffset+xsize/2)-284,(yoffset+ysize/2)-152,(xoffset+xsize/2)-6,(yoffset+ysize/2)-152)
+draw_line((xoffset+xsize/2)+284,(yoffset+ysize/2)-152,(xoffset+xsize/2)+6,(yoffset+ysize/2)-152)
+
+//Red Team Players
+for(i=0;ds_priority_size(redteam)&gt;0;i+=1){
+    player=ds_priority_delete_max(redteam)
+    if i&lt;12{
+        //Class
+        if global.myself.team==player.team or global.mapchanging{
+            draw_sprite_ext(Icon,player.class,(xoffset+xsize/2)-284,(yoffset+ysize/2)-165+(20*(i+1)),1,1,0,c_white,1)
+            draw_sprite_ext(Icon,player.class,(xoffset+xsize/2)-284,(yoffset+ysize/2)-165+(20*(i+1)),1,1,0,c_red,0.2)
+        }
+        //Name
+        if player==global.myself{
+            draw_set_color(make_color_rgb(255,150,40))
+        }else{
+            draw_set_color(make_color_rgb(249,57,57))
+        }
+        draw_set_halign(fa_left)
+        draw_name_badges((xoffset+xsize/2)-266, (yoffset+ysize/2)-165+(20*(i+1)),player,1)
+        //Score
+        draw_set_halign(fa_right)
+        draw_text((xoffset+xsize/2)-48,(yoffset+ysize/2)-165+(20*(i+1)),string_replace_all(string(player.stats[POINTS]),".50",".5"))
+        //Ping
+        displayPing=0
+        if player.object!=-1 and player!=-1{
+            displayPing=floor(player.object.playerPing)
+            player.oldPing=displayPing
+        }else{
+            displayPing=floor(player.oldPing)
+        }
+        if player.isBot==1{
+            displayPing="BOT"
+        }
+        draw_set_color(get_ping_color(displayPing))
+        draw_text((xoffset+xsize/2)-6,(yoffset+ysize/2)-165+(20*(i+1)), string(displayPing))
+        //Dead
+        if player.object==-1{
+            draw_sprite_ext(DeadS,0,(xoffset+xsize/2)-270,(yoffset+ysize/2)-160+(20*(i+1)),1,1,0,c_white,1)
+        }
+    } 
+}
+
+//Blue Team Players
+for(i=0;ds_priority_size(blueteam)&gt;0;i+=1){
+    player=ds_priority_delete_max(blueteam)
+    if i&lt;12{
+        //Class
+        if global.myself.team==player.team or global.mapchanging{
+            draw_sprite_ext(Icon,player.class,(xoffset+xsize/2)+(290-284)+1,(yoffset+ysize/2)-165+(20*(i+1)),1,1,0,c_white,1)
+            draw_sprite_ext(Icon,player.class,(xoffset+xsize/2)+(290-284)+1,(yoffset+ysize/2)-165+(20*(i+1)),1,1,0,c_blue,0.2)
+        }
+        //Name
+        if player==global.myself{
+            draw_set_color(make_color_rgb(40,172,251))
+        }else{
+            draw_set_color(make_color_rgb(0,113,255))
+        }
+        draw_set_halign(fa_left)
+        draw_name_badges((xoffset+xsize/2)+(290-266)+1, (yoffset+ysize/2)-165+(20*(i+1)),player,1)
+        //Score
+        draw_set_halign(fa_right)
+        draw_text((xoffset+xsize/2)+(290-48)+1,(yoffset+ysize/2)-165+(20*(i+1)),string_replace_all(string(player.stats[POINTS]),".50",".5"))
+        //Ping
+        displayPing=0
+        if player.object!=-1{
+            displayPing=floor(player.object.playerPing)
+            player.oldPing=displayPing
+        }else{
+            displayPing=floor(player.oldPing)
+        }
+        if player.isBot==1{
+            displayPing="BOT"
+        }
+        draw_set_color(get_ping_color(displayPing))
+        draw_text((xoffset+xsize/2)+(290-6)+1,(yoffset+ysize/2)-165+(20*(i+1)), string(displayPing))
+        //Dead
+        if player.object==-1{
+            draw_sprite_ext(DeadS,0,(xoffset+xsize/2)+(290-270)+1,(yoffset+ysize/2)-160+(20*(i+1)),1,1,0,c_white,1)
+        }
+    } 
+}
+
+//Stats Board, 2=Right, 1=Left, 3=Bottom
+if global.boxStatsScorePos!=0{
+    //Background
+    draw_set_alpha(global.boxScoreboardBGAlpha/100)
+    draw_set_color(c_black)
+    if global.boxStatsScorePos==2{
+        draw_rectangle((xoffset+xsize/2)+291,(yoffset+ysize/2)-200,(xoffset+xsize/2)+380,(yoffset+ysize/2)-30,0)
+    }else if global.boxStatsScorePos==1{
+        draw_rectangle((xoffset+xsize/2)-291,(yoffset+ysize/2)-200,(xoffset+xsize/2)-380,(yoffset+ysize/2)-30,0)
+    }else{
+        draw_rectangle((xoffset+xsize/2)-290,(yoffset+ysize/2)+181,(xoffset+xsize/2)+290,(yoffset+ysize/2)+252,0)
+    }
+    //Divider
+    draw_set_alpha(1)
+    draw_set_color(c_white)
+    if global.boxStatsScorePos==2{
+        draw_line((xoffset+xsize/2)+291,(yoffset+ysize/2)-200,(xoffset+xsize/2)+291,(yoffset+ysize/2)-29)
+    }else if global.boxStatsScorePos==1{
+        draw_line((xoffset+xsize/2)-291,(yoffset+ysize/2)-200,(xoffset+xsize/2)-291,(yoffset+ysize/2)-29)
+    }else{
+        draw_line((xoffset+xsize/2)-290,(yoffset+ysize/2)+181,(xoffset+xsize/2)+291,(yoffset+ysize/2)+181)
+    }
+    
+    draw_set_color(c_nuwhite)
+    if global.boxStatsScorePos==2{
+        draw_set_halign(fa_left)
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196,"K: "+string(floor(global.myself.stats[KILLS])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+17,"D: "+string(floor(global.myself.stats[DEATHS])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+34,"A: "+string(floor(global.myself.stats[ASSISTS])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+51,"Sentry: "+string(floor(global.myself.stats[DESTRUCTION])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+68,"Caps: "+string(floor(global.myself.stats[CAPS])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+85,"Defs: "+string(floor(global.myself.stats[DEFENSES])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+102,"Ubers: "+string(floor(global.myself.stats[INVULNS])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+119,"Heal: "+string(floor(global.myself.stats[HEALING])))
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+136,"Stabs: "+string(floor(global.myself.stats[STABS]))) 
+        draw_text((xoffset+xsize/2)+296,(yoffset+ysize/2)-196+153,"Dmg: "+string(floor(global.myself.stats[DAMAGE]))) 
+    }else if global.boxStatsScorePos==1{
+        draw_set_halign(fa_right)
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196,"K: "+string(floor(global.myself.stats[KILLS])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+17,"D: "+string(floor(global.myself.stats[DEATHS])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+34,"A: "+string(floor(global.myself.stats[ASSISTS])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+51,"Sentry: "+string(floor(global.myself.stats[DESTRUCTION])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+68,"Caps: "+string(floor(global.myself.stats[CAPS])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+85,"Defs: "+string(floor(global.myself.stats[DEFENSES])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+102,"Ubers: "+string(floor(global.myself.stats[INVULNS])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+119,"Heal: "+string(floor(global.myself.stats[HEALING])))
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+136,"Stabs: "+string(floor(global.myself.stats[STABS]))) 
+        draw_text((xoffset+xsize/2)-296,(yoffset+ysize/2)-196+153,"Dmg: "+string(floor(global.myself.stats[DAMAGE]))) 
+    }else{
+        draw_set_halign(fa_center)
+        draw_text((xoffset+xsize/2)-200,(yoffset+ysize/2)+187,"Kills: "+string(floor(global.myself.stats[KILLS])))
+        draw_text((xoffset+xsize/2)-200,(yoffset+ysize/2)+187+17,"Deaths: "+string(floor(global.myself.stats[DEATHS])))
+        draw_text((xoffset+xsize/2)-200,(yoffset+ysize/2)+187+34,"Assists: "+string(floor(global.myself.stats[ASSISTS])))
+        draw_text((xoffset+xsize/2),(yoffset+ysize/2)+187,"Sentries: "+string(floor(global.myself.stats[DESTRUCTION])))
+        draw_text((xoffset+xsize/2),(yoffset+ysize/2)+187+17,"Captures: "+string(floor(global.myself.stats[CAPS])))
+        draw_text((xoffset+xsize/2),(yoffset+ysize/2)+187+34,"Defences: "+string(floor(global.myself.stats[DEFENSES])))
+        draw_text((xoffset+xsize/2),(yoffset+ysize/2)+187+51,"Damage: "+string(floor(global.myself.stats[DAMAGE])))
+        draw_text((xoffset+xsize/2)+195,(yoffset+ysize/2)+187,"Ubers: "+string(floor(global.myself.stats[INVULNS])))
+        draw_text((xoffset+xsize/2)+195,(yoffset+ysize/2)+187+17,"Healing: "+string(floor(global.myself.stats[HEALING])))
+        draw_text((xoffset+xsize/2)+195,(yoffset+ysize/2)+187+34,"Stabs: "+string(floor(global.myself.stats[STABS])))
+    }
+}
+
+//Spectator printing code
+var specDividerAdjust;
+specDividerAdjust=0
+if ds_priority_size(spec)&gt;0{
+    var specX,specY,specMinX,specMaxX,specXStart,specStr;
+    draw_set_halign(fa_left)
+    draw_set_color(c_nuwhite)
+    draw_text((xoffset+xsize/2)-285,(yoffset+ysize/2)+165,"Spectators ("+string(ds_priority_size(spec))+"): ")
+    
+    specY=(yoffset+ysize/2)+165
+    specXStart=(xoffset+xsize/2)-160
+    specMinX=(xoffset+xsize/2)-285
+    specMaxX=(xoffset+xsize/2)+285
+    specX=specXStart
+    
+    for(i=0;ds_priority_size(spec)&gt;0;i+=1){
+        player=ds_priority_delete_max(spec)
+        
+        if ds_list_find_index(global.players, player.id)==0{
+            draw_set_color(make_color_rgb(252,217,023))
+        }else if ds_list_find_index(global.RCONList, player.id)!=-1{
+            draw_set_color(make_color_rgb(230,0,230))
+        }else{
+            draw_set_color(make_color_rgb(050,190,050))
+        }
+        
+        if ds_priority_size(spec)==0{
+            specStr=''
+        }else{
+            specStr=', '
+        }
+        
+        if specX+name_width_badges(player)+string_length(specStr)&gt;specMaxX{
+            specX=specMinX
+            specY-=14
+            specDividerAdjust+=14
+        }
+        draw_name_badges(specX,specY,player,1)
+        specX+=name_width_badges(player)
+        draw_text(specX,specY,specStr)
+        specX+=string_width(specStr)
+    }
+}
+
+//Divider
+draw_set_alpha(1)
+draw_set_color(c_white)
+draw_line((xoffset+xsize/2),(yoffset+ysize/2)-200,(xoffset+xsize/2),(yoffset+ysize/2)+155-specDividerAdjust)
+//draw_line((xoffset+xsize/2),(yoffset+ysize/2)-200,(xoffset+xsize/2),(yoffset+ysize/2)+145) //+181 old divider
+
+//Clean-up
+ds_priority_destroy(redteam)
+ds_priority_destroy(blueteam)
+ds_priority_destroy(spec)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

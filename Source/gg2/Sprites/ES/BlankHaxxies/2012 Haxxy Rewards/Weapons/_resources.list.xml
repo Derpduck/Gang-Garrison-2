@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Firing" type="GROUP"/>
+  <resource name="Reloading" type="GROUP"/>
+  <resource name="Other" type="GROUP"/>
+  <resource name="ScattergunBlankS" type="RESOURCE"/>
+  <resource name="FlamethrowerBlankS" type="RESOURCE"/>
+  <resource name="RocketlauncherBlankS" type="RESOURCE"/>
+  <resource name="MinigunBlankS" type="RESOURCE"/>
+  <resource name="MinegunBlankS" type="RESOURCE"/>
+  <resource name="MedigunBlankS" type="RESOURCE"/>
+  <resource name="ShotgunBlankS" type="RESOURCE"/>
+  <resource name="RevolverBlankS" type="RESOURCE"/>
+  <resource name="RifleBlankS" type="RESOURCE"/>
+</resources>

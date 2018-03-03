@@ -13,7 +13,20 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">game_end();
+        <argument kind="STRING">write_ubyte(global.serverSocket, DC_REASON_USER)
+socket_send(global.serverSocket)
+
+with(Console){
+    event_user(0)
+    instance_destroy()
+}
+    
+with(ChatBox){
+    event_user(15)
+    instance_destroy()
+}
+
+game_end();
 </argument>
       </arguments>
     </action>

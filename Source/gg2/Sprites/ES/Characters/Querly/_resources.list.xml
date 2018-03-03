@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Death" type="GROUP"/>
+  <resource name="QuerlyRedSM" type="RESOURCE"/>
+  <resource name="QuerlyRedDeadSM" type="RESOURCE"/>
+  <resource name="QuerlyRedTauntSM" type="RESOURCE"/>
+  <resource name="QuerlyRedHSM" type="RESOURCE"/>
+  <resource name="QuerlyBlueSM" type="RESOURCE"/>
+  <resource name="QuerlyBlueDeadSM" type="RESOURCE"/>
+  <resource name="QuerlyBlueTauntSM" type="RESOURCE"/>
+  <resource name="QuerlyBlueHSM" type="RESOURCE"/>
+</resources>

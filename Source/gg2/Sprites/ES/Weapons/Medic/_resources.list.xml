@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="MedigunSM" type="RESOURCE"/>
+  <resource name="MedigunFSM" type="RESOURCE"/>
+  <resource name="MedigunFRSM" type="RESOURCE"/>
+</resources>

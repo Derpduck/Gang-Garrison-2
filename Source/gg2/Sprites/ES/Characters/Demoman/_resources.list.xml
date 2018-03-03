@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="DemomanRedSM" type="RESOURCE"/>
+  <resource name="DemomanRedRunSM" type="RESOURCE"/>
+  <resource name="DemomanRedStandSM" type="RESOURCE"/>
+  <resource name="DemomanRedJumpSM" type="RESOURCE"/>
+  <resource name="DemomanRedLeanLSM" type="RESOURCE"/>
+  <resource name="DemomanRedLeanRSM" type="RESOURCE"/>
+  <resource name="DemomanRedDeadSM" type="RESOURCE"/>
+  <resource name="DemomanRedTauntSM" type="RESOURCE"/>
+  <resource name="DemomanRedHSM" type="RESOURCE"/>
+  <resource name="DemomanRedIntelSM" type="RESOURCE"/>
+  <resource name="DemomanBlueSM" type="RESOURCE"/>
+  <resource name="DemomanBlueRunSM" type="RESOURCE"/>
+  <resource name="DemomanBlueStandSM" type="RESOURCE"/>
+  <resource name="DemomanBlueJumpSM" type="RESOURCE"/>
+  <resource name="DemomanBlueLeanLSM" type="RESOURCE"/>
+  <resource name="DemomanBlueLeanRSM" type="RESOURCE"/>
+  <resource name="DemomanBlueDeadSM" type="RESOURCE"/>
+  <resource name="DemomanBlueTauntSM" type="RESOURCE"/>
+  <resource name="DemomanBlueHSM" type="RESOURCE"/>
+  <resource name="DemomanBlueIntelSM" type="RESOURCE"/>
+</resources>

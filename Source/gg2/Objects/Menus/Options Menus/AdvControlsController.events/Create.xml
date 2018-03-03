@@ -14,8 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    menu_create(48, 172, 500, 260, 32, 40, 104, 6);
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
     menumode = true;
+    virnum=0
     
     if (room != Options)
         menu_setdimmed();

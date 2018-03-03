@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="MinegunSM" type="RESOURCE"/>
+  <resource name="MinegunFSM" type="RESOURCE"/>
+  <resource name="MinegunFRSM" type="RESOURCE"/>
+</resources>

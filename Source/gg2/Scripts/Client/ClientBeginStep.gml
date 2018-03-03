@@ -5,10 +5,16 @@ move_all_gore();
 var i, playerObject, playerID, player, otherPlayerID, otherPlayer, sameVersion, buffer, plugins, pluginsRequired, usePlugins;
 
 if(tcp_eof(global.serverSocket)) {
-    if(gotServerHello)
+    if(gotServerHello){
         show_message("You have been disconnected from the server.");
-    else
+        if instance_exists(ReadyUpController){
+            with ReadyUpController{
+                event_user(0)
+            }
+        }
+    }else{
         show_message("Unable to connect to the server.");
+    }
     instance_destroy();
     exit;
 }
@@ -194,16 +200,19 @@ do {
                   
         case INPUTSTATE:
             deserializeState(INPUTSTATE);
-            break;             
+            break;
         
         case PLAYER_JOIN:
             player = instance_create(0,0,Player);
             player.name = receivestring(global.serverSocket, 1);
+            player.permID=global.permIDCounter
+            global.permIDCounter+=1
                   
             ds_list_add(global.players, player);
             if(ds_list_size(global.players)-1 == global.playerID) {
                 global.myself = player;
                 instance_create(0,0,PlayerControl);
+                print_to_chat(global.chatPrintPrefix+C_WHITE+"Welcome to"+C_CYAN2+" "+string(global.joinedServerName)+C_WHITE+".") // Current config: "+C_GREEN+global.currentConfig+C_WHITE+".")
             }
             break;
             
@@ -286,7 +295,7 @@ do {
                 player.object = -1;
             }
             player.class = read_ubyte(global.tempBuffer);
-            break;             
+            break;
         
         case PLAYER_CHANGENAME:
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
@@ -376,7 +385,7 @@ do {
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
             doEventUber(player);
-            break;    
+            break;
   
         case OMNOMNOMNOM:
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
@@ -384,14 +393,15 @@ do {
             if(player.object != -1) {
                 with(player.object) {
                     omnomnomnom=true;
-                    if(hp < 200)
-                    {
+                    if(hp < 200){
                         canEat = false;
-                        alarm[6] = eatCooldown; //10 second cooldown
+                        alarm[6] = eatCooldown/global.delta_factor
                     }
                     omnomnomnomindex=0;
                     omnomnomnomend=32;
-                    xscale=image_xscale; 
+                    xscale=image_xscale;
+                    jOldHspeed=hspeed
+                    jOldVspeed=vspeed
                 } 
             }
             break;
@@ -412,7 +422,7 @@ do {
             socket_send(global.serverSocket);
             break;
        
-        case PASSWORD_WRONG:                                    
+        case PASSWORD_WRONG:
             show_message("Incorrect Password.");
             instance_destroy();
             exit;
@@ -428,6 +438,9 @@ do {
             if reason == KICK_NAME kickReason = "Name Exploit";
             else if reason == KICK_BAD_PLUGIN_PACKET kickReason = "Invalid plugin packet ID";
             else if reason == KICK_MULTI_CLIENT kickReason = "There are too many connections from your IP";
+            else if reason == KICK_RCON kickReason = "RCON command exceeds maximum limit.";
+            else if reason == KICK_ADMIN_KICK kickReason = "Kicked by admin.";
+            else if reason == KICK_BANNED kickReason = "You are banned from this server.";
             else kickReason = "";
             show_message("You have been kicked from the server. "+kickReason+".");
             instance_destroy();
@@ -439,7 +452,7 @@ do {
             
         case ARENA_ENDROUND:
             with ArenaHUD clientArenaEndRound();
-            break;   
+            break;
         
         case ARENA_RESTART:
             doEventArenaRestart();
@@ -465,8 +478,10 @@ do {
             global.currentMap = receivestring(global.serverSocket, 1);
             global.currentMapMD5 = receivestring(global.serverSocket, 1);
             if(global.currentMapMD5 == "") { // if this is an internal map (signified by the lack of an md5)
-                if(findInternalMapName(global.currentMap) != "")
+                if(findInternalMapName(global.currentMap) != ""){
+                    ds_list_clear(global.clientChatBanList)
                     room_goto_fix(CustomMapRoom);
+                }
                 else
                 {
                     show_message("Error:#Server went to invalid internal map: " + global.currentMap + "#Exiting.");
@@ -480,8 +495,8 @@ do {
                     instance_destroy();
                     exit;
                 }
-                if(!file_exists("Maps/" + global.currentMap + ".png") or CustomMapGetMapMD5(global.currentMap) != global.currentMapMD5)
-                {   // Reconnect to the server to download the map
+                if(!file_exists("Maps/" + global.currentMap + ".png") or CustomMapGetMapMD5(global.currentMap) != global.currentMapMD5){
+                    // Reconnect to the server to download the map
                     var oldReturnRoom;
                     oldReturnRoom = returnRoom;
                     returnRoom = DownloadRoom;
@@ -499,9 +514,14 @@ do {
                     usePreviousPwd = true;
                     exit;
                 }
+                ds_list_clear(global.clientChatBanList)
                 room_goto_fix(CustomMapRoom);
             }
-                 
+            
+            with(ReadyUpController){
+                event_user(1)
+            }
+            
             for(i=0; i<ds_list_size(global.players); i+=1) {
                 player = ds_list_find_value(global.players, i);
                 if global.currentMapArea == 1 { 
@@ -518,6 +538,7 @@ do {
                     player.stats[DOMINATIONS] = 0;
                     player.stats[REVENGE] = 0;
                     player.stats[POINTS] = 0;
+                    player.stats[DAMAGE] = 0;
                     player.roundStats[KILLS] = 0;
                     player.roundStats[DEATHS] = 0;
                     player.roundStats[CAPS] = 0;
@@ -531,6 +552,7 @@ do {
                     player.roundStats[DOMINATIONS] = 0;
                     player.roundStats[REVENGE] = 0;
                     player.roundStats[POINTS] = 0;
+                    player.roundStats[DAMAGE] = 0;
                     player.team = TEAM_SPECTATOR;
                 }
             }
@@ -634,7 +656,96 @@ do {
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
             player.queueJump = read_ubyte(global.tempBuffer);
             break;
+        
+        case RCON_LOGIN:
+            receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
+            var loginStatus;
+            loginStatus=read_ubyte(global.tempBuffer)
+            
+            if loginStatus==RCON_LOGIN_SUCCESSFUL{
+                global.isRCON=1
+                console_print(C_PINK+"RCON login successful.")
+            }else if loginStatus==RCON_LOGIN_FAILED{
+                global.isRCON=0
+                console_print(C_PINK+"RCON login failed.")
+            }else{
+                console_print(C_PINK+"Unexpected reply from server.")
+            }
+            break;
+            
+        case RCON_COMMAND:
+            receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
+            var status;
+            status=read_ubyte(global.tempBuffer)
+            
+            if global.isRCON==0{
+                console_print(C_PINK+"You are not a RCON.")
+                break;
+            }
+            
+            if status==RCON_COMMAND_SUCESSFUL{
+                console_print(C_PINK+"RCON command successful.")
+                break;
+            }else if status==RCON_COMMAND_FAILED{
+                console_print(C_PINK+"RCON command failed.")
+                break;
+            }else{
+                console_print(C_PINK+"Unexpected reply from server.")
+                break;
+            }
+            break;
+            
+        case CHAT_PUBLIC_MESSAGE:
+            var message, length, playerListID,playerObj;
+            message = receivestring(global.serverSocket, 2);
+            receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
+            playerListID=read_byte(global.tempBuffer)
+            
+            //SMute
+            if playerListID!=-1{
+                playerObj=ds_list_find_value(global.players,playerListID)
+                if ds_list_find_index(global.clientChatBanList,playerObj.permID)!=-1{
+                    break;
+                }
+            }
+            print_to_chat(message);
+            break;
 
+        case CHAT_PRIV_MESSAGE:
+            var message, length, playerListID,playerObj;
+            message = receivestring(global.serverSocket, 2);
+            receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
+            playerListID=read_byte(global.tempBuffer)
+            
+            //SMute
+            if playerListID!=-1{
+                playerObj=ds_list_find_value(global.players,playerListID)
+                if ds_list_find_index(global.clientChatBanList,playerObj.permID)!=-1{
+                    break;
+                }
+            }
+            print_to_chat(message);
+            break;
+            
+        case RUP_UPDATE:
+            receiveCompleteMessage(global.serverSocket,7,global.tempBuffer);
+            global.readyTotal=read_ubyte(global.tempBuffer)
+            global.readyMax=read_ubyte(global.tempBuffer)
+            global.isLive=read_ubyte(global.tempBuffer)
+            global.minPlayers=read_byte(global.tempBuffer)
+            global.maxPlayers=read_byte(global.tempBuffer)
+            global.rupTimeMin=read_ubyte(global.tempBuffer)
+            global.rupTimeSec=read_ubyte(global.tempBuffer)
+            break;
+            
+        //case DESTROY_BUBBLE:
+            //var causeOfDeath, assistantPlayerID, assistantPlayer;
+            //receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
+            //playerID = read_ubyte(global.tempBuffer);
+            //player = ds_list_find_value(global.players, playerID);
+            //doEventBubblePop(player)//player, otherPlayer, assistantPlayer, causeOfDeath);
+            //break;
+            
         default:
             promptRestartOrQuit("The Server sent unexpected data.");
             exit;

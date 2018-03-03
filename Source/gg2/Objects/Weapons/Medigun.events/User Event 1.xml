@@ -16,6 +16,30 @@
         <argument kind="STRING">{
     if(!instance_exists(healTarget) and readyToShoot)
     {
+        if global.medicTargeting==0{ //Original targeting
+        
+        var bestTarget, bestTargetDist;
+        bestTarget=noone;
+        bestTargetDist=maxHealDistance;
+
+        with(Character) {
+            if(id != other.owner and team == other.owner.team) {
+                if(point_distance(x,y,other.x,other.y)&lt;=bestTargetDist) {
+                    if(collision_line(other.x, other.y,
+                                      other.x+lengthdir_x(other.maxHealDistance, other.owner.aimDirection),
+                                      other.y+lengthdir_y(other.maxHealDistance, other.owner.aimDirection), id, true, false))
+                    {
+                        if(!collision_line(other.x, other.y, x, y, Obstacle, true, true)) {
+                            bestTargetDist = point_distance(x,y,other.x,other.y);
+                            bestTarget = player;
+                        }
+                    }
+                }
+            }
+        }
+        
+        }else{ //New (vanilla) targeting
+        
         var bestTarget, bestScore, mouseX, mouseY, aimRayEndX, aimRayEndY;
         bestTarget = noone;
         bestScore = 0;
@@ -29,44 +53,46 @@
         aimRayEndX = owner.x + lengthdir_x(maxHealDistance, owner.aimDirection);
         aimRayEndY = owner.y + lengthdir_y(maxHealDistance, owner.aimDirection);
 
-        with(Character)
-        {
-            if(id == other.owner or team != other.owner.team)
+        with(Character){
+            if(id == other.owner or team != other.owner.team){
                 continue;
+            }
                 
             var healDistance, mouseDistance, targetScore;
             healDistance = point_distance(x, y, other.x, other.y);
             mouseDistance = point_distance(x, y, mouseX, mouseY);
             
-            if(healDistance &gt; other.maxHealDistance)
+            if(healDistance &gt; other.maxHealDistance){
                 continue;
+            }
                 
-            if(mouseDistance &lt;= other.maxMouseSelectDistance)
-            {
+            if(mouseDistance &lt;= other.maxMouseSelectDistance){
                 // Character is in mouse range, so we give it a high score (between 2 and 3). Closer to mouse -&gt; higher score.
                 targetScore = 3 - mouseDistance / other.maxMouseSelectDistance; // Mouse distance 0: score 3. Max mouse distance: score 2.
-            }
-            else
-            {
+            }else{
                 // Character is not in mouse range, so we give it a low score (between 0 and 1). Closer to healer -&gt; higher score.
                 targetScore = 1 - healDistance / other.maxHealDistance; // Heal distance 0: score 1. Heal distance maxHealDistance: score 0.
             }
             
-            if(targetScore &lt; bestScore)
+            if(targetScore &lt; bestScore){
                 continue;   // We already found a better match
+            }
             
-            if(!collision_line(other.x, other.y, aimRayEndX, aimRayEndY, id, true, false))
+            if(!collision_line(other.x, other.y, aimRayEndX, aimRayEndY, id, true, false)){
                 continue;   // We are not aiming at this character
+            }
             
-            if(collision_line(other.x, other.y, x, y, Obstacle, true, true))
+            if(collision_line(other.x, other.y, x, y, Obstacle, true, true)){
                 continue;   // There is something in the way
+            }
             
             bestTarget = player;
             bestScore = targetScore;
         }
+        }
 
         healTarget = bestTarget;
-        readyToShoot = false;
+        readyToShoot=false;
         alarm[0] = 1 / global.delta_factor;
     }
     
@@ -80,27 +106,23 @@
                         healTarget.object.healer = ownerPlayer;
                     if (healTarget.object.burnDuration &gt; 0)
                         healTarget.object.burnDuration -= 1 * global.delta_factor;
-                    var healthGained;
-                    healthGained = healAmount * calculateHealingFactor(healTarget.object.timeUnscathed);
-                    if(healTarget.object.hp &gt; healTierHealth)
-                        healthGained *= healTierAmount;
-                    healTarget.object.hp = min(healTarget.object.hp + healthGained * global.delta_factor, healTarget.object.maxHp);
-                    hphealed += healthGained * global.delta_factor;
-                    ownerPlayer.stats[HEALING] += healthGained * global.delta_factor;
-                    ownerPlayer.roundStats[HEALING] += healthGained * global.delta_factor;
+                    
+                    
+                    if(healTarget.object.hp &lt; healRampBaseHealth+(healTarget.object.maxHp/healRampStartFactor)){
+                        healTarget.object.hp+=healAmount * global.delta_factor
+                        hphealed+=healAmount * global.delta_factor
+                    }else if(healTarget.object.hp &lt; healTarget.object.maxHp){
+                        healTarget.object.hp+=(healAmount/healRampReductionFactor) * global.delta_factor
+                        hphealed+=(healAmount/healRampReductionFactor) * global.delta_factor
+                    }
+                    healTarget.object.lasthp=healTarget.object.hp
+
+                    //ownerPlayer.stats[HEALING] += healthGained * global.delta_factor;
+                    //ownerPlayer.roundStats[HEALING] += healthGained * global.delta_factor;
                     
                     
                     if(ubering == false &amp;&amp; uberCharge&lt;2000){
-                        var setup;
-                        setup = false;
-                        if instance_exists(ControlPointSetupGate) {
-                            if (ControlPointSetupGate.solid)
-                                setup = true;
-                        }
-                        if(healTarget.object.hp &lt; healTarget.object.maxHp or setup)
-                            uberCharge += 2.5 * global.delta_factor;
-                        else
-                            uberCharge += 1.75 * global.delta_factor;
+                        uberCharge += uberChargeRate * global.delta_factor;
                         if(uberCharge &gt;= 2000) 
                         {
                             uberCharge = 2000;

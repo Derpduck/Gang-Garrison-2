@@ -13,61 +13,71 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">xoffset = view_xview[0];
+        <argument kind="STRING">//move this back to top
+xoffset = view_xview[0];
 yoffset = view_yview[0];
 xsize = view_wview[0];
 ysize = view_hview[0];
 
-if (global.kothHudPos)
-{
+if (global.kothHudPos){
     coffset = 0;
     xshift = -323*global.timerPos;
     yshift = 35;
-}
-else
-{
+}else{
     coffset = 43*1.15;
     xshift = -290*global.timerPos;
     yshift = 0;
 }
 
 drawx = xoffset+xsize/2 - 30;
+redC=make_color_rgb(147,50,44)
+blueC=make_color_rgb(52,71,82)
+greyC=make_color_rgb(125,125,125)
 
 draw_set_alpha(1);
 draw_set_color(c_white);
-
-for (i=1; i&lt;= global.totalControlPoints; i+=1)
-{
-    if (global.cp[i].team == TEAM_RED)
-        teamoffset = 60;
-    else if (global.cp[i].team == TEAM_BLUE)
-        teamoffset = 90;
-    if (global.cp[i].cappingTeam == TEAM_RED &amp;&amp; global.cp[i].team == -1)
-        teamoffset = 30;
-    else if (global.cp[i].cappingTeam != TEAM_RED &amp;&amp; global.cp[i].team == -1)
-        teamoffset = 0;    
-    if (global.cp[i].capping != 0)
-        draw_sprite_ext(ControlPointStatusS, teamoffset+floor(global.cp[i].capping/global.cp[i].capTime*30),
-                        drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    else if (global.cp[i].capping == 0)
-        draw_sprite_ext(ControlPointStatusS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    if (global.cp[i].locked)
-    {
-        draw_set_halign(fa_center);
-        draw_set_valign(fa_center);
-        if (cpUnlock &gt;= 150 or cpUnlock == 0)
-            draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-        else if (cpUnlock &gt; 0)
-            draw_text_transformed(drawx+2, yoffset+ysize-38, ceil(cpUnlock/30), 3, 3, 0);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+        
+for (i=1; i&lt;= global.totalControlPoints; i+=1){
+    if (global.cp[i].team == TEAM_RED){
+        teamoffset = 1;
+    }else if (global.cp[i].team == TEAM_BLUE){
+        teamoffset = 2;
+    }else if global.cp[i].team == -1{
+        teamoffset = 0
     }
     
-    if (global.cp[i].cappers &gt; 0 and !global.cp[i].locked)
-    {
-        draw_sprite_ext(ControlPointCappersS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+    draw_sprite_ext(ControlPointHUDS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+    
+    if (global.cp[i].capping != 0){
+        if global.cp[i].cappingTeam==TEAM_RED{
+            draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),global.cp[i].capping/global.cp[i].capTime*100,c_black,redC,redC,2,0,0)
+        }else if global.cp[i].cappingTeam==TEAM_BLUE{
+            draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),global.cp[i].capping/global.cp[i].capTime*100,c_black,blueC,blueC,2,0,0)
+        }
+    }
+    
+    if (global.cp[i].locked){
+        if cpUnlock&gt;0{
+            draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-45, 2, 2, 0, c_white, 1);
+            draw_set_color(c_black);
+            draw_text_transformed(drawx, yoffset+ysize-25, ceil(cpUnlock/30), 1, 1, 0);
+        }else{
+            draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-40, 2, 2, 0, c_white, 1);
+        }
+    }
+    
+    if (global.cp[i].cappers &gt; 0 and !global.cp[i].locked){
+        draw_sprite_ext(ControlPointCappersS, 0, drawx+3, yoffset+ysize-30, 2, 2, 0, c_white, 1);
         draw_set_halign(fa_center);
         draw_set_valign(fa_center);
         draw_set_color(c_black);
-        draw_text_transformed(drawx+13, yoffset+ysize-38, string(global.cp[i].cappers),1.5,1.5,0);
+        draw_text_transformed(drawx+10, yoffset+ysize-28, string(global.cp[i].cappers),1,1,0);
+        
+        //cap %
+        draw_text_transformed(drawx+2, yoffset+ysize-49, string(floor(global.cp[i].capping/global.cp[i].capTime*100))+"%",1,1,0);
+        draw_text_transformed(drawx+2, yoffset+ysize-39, string(floor((global.cp[i].capTime-global.cp[i].capping)/(30*global.cp[i].cappers)))+"s",1,1,0);
     }
     drawx += 60;
 }

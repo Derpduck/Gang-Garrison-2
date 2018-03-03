@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{  
+        <argument kind="STRING">{
+    var dmgIndicatorDirect;
+    dmgIndicatorDirect=0
+    
     if(characterHit.id != ownerPlayer.object)
     {
         if(exploded)
@@ -24,6 +27,7 @@
             if(characterHit.team != team || characterHit.id == ownerPlayer.object and !characterHit.ubered )
             {
                 damageAuto( ownerPlayer, characterHit, hitDamage );
+                dmgIndicatorDirect+=hitDamage
                 if object_is_ancestor(characterHit.object_index, Character)
                 {
                     if (characterHit.lastDamageDealer != ownerPlayer and characterHit.lastDamageDealer != characterHit.player)
@@ -31,28 +35,51 @@
                         characterHit.secondToLastDamageDealer = characterHit.lastDamageDealer;
                         characterHit.alarm[4] = characterHit.alarm[3]
                     }
-                    characterHit.alarm[3] = ASSIST_TIME;
+                    characterHit.alarm[3] = ASSIST_TIME/global.delta_factor;
                 }
                 characterHit.lastDamageDealer = ownerPlayer;
                 characterHit.lastDamageSource = weapon;
             }
         }
-        instance_create(x,y,Explosion);
+        explo=instance_create(x,y,Explosion);
+        explo.blastSize=blastRadius
         playsound(x,y,ExplosionSnd);
         
         with (Character) {
-            if (distance_to_object(other) &lt; other.blastRadius and !(team == other.team and id != other.ownerPlayer.object and place_meeting(x, y+1, Obstacle))){
+            if (distance_to_object(other) &lt; other.blastRadius and !(team == other.team and id != other.ownerPlayer.object and place_meeting(x, y+1, Obstacle))) and (global.jumpMode==0 or ((global.jumpMode==1 and global.jumpPlayerAttack=1) or id==other.ownerPlayer.object)){
                 var rdir, vectorfactor;
                 rdir = point_direction(other.x ,other.y, (bbox_left+bbox_right)/2, (bbox_top+bbox_bottom)/2);
                 vectorfactor = point_distance(0, 0, power(sin(degtorad(rdir)), 2), power(cos(degtorad(rdir)), 2));
                 if (1 - distance_to_object(other)/other.blastRadius &lt;= 0.25)
                     continue;
                 motion_add(rdir, min(15, other.knockback-other.knockback*(distance_to_object(other)/other.blastRadius)) * vectorfactor);
-                if(!ubered and hp &gt; 0)
-                {
+                if ubered{
+                    if id==other.ownerPlayer.object and other.team == team {
+                        moveStatus = 1;
+                        speed*=1.06;
+                    }
+                }
+                
+                if(!ubered and hp &gt; 0){
                     if (other.team != team) or (id==other.ownerPlayer.object)
                     {
-                        damageCharacter( other.ownerPlayer, id, other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius)) );
+                        var dmg;
+                        //dmg=other.explosionDamage
+                        dmg=other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius))
+                        if id == other.ownerPlayer.object{// self damage resistance
+                            dmg *= 25/30;
+                        }
+                        
+                        damageCharacter( other.ownerPlayer, id, dmg );
+                        
+                        if other.ownerPlayer==global.myself{
+                            var damageDone;
+                            damageDone = instance_create(x,y,DamageIndicator)
+                            damageDone.dmg = dmg+dmgIndicatorDirect
+                            global.myself.stats[DAMAGE]+=dmg+dmgIndicatorDirect
+                            global.myself.roundStats[DAMAGE]+=dmg+dmgIndicatorDirect
+                            damageDone.owner = id
+                        }
                         
                         if(id == other.ownerPlayer.object and instance_exists(lastDamageDealer) and lastDamageDealer != other.ownerPlayer)
                             lastDamageSource = DAMAGE_SOURCE_FINISHED_OFF_GIB;
@@ -63,13 +90,11 @@
                                 alarm[4] = alarm[3]
                             }
                             if (other.ownerPlayer != id)
-                                alarm[3] = ASSIST_TIME;
+                                alarm[3] = ASSIST_TIME/global.delta_factor;
                             lastDamageDealer = other.ownerPlayer;
                             lastDamageSource = other.weapon;
                         }
-                        cloakAlpha = max(cloakAlpha, 0.3);
-                        cloakFlicker = true;
-                        alarm[7] = 3;
+                        dealFlicker(id)
                     }
                     if id==other.ownerPlayer.object and other.team == team {
                         moveStatus = 1;
@@ -104,7 +129,18 @@
             if (distance_to_object(other) &lt; other.blastRadius){
                 if(other.team != team)
                 {
-                    damageSentry( other.ownerPlayer, id, other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius)) );
+                    var dmg;
+                    dmg=other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius))
+                    damageSentry( other.ownerPlayer, id, dmg);
+                    
+                    if other.ownerPlayer==global.myself{
+                        var damageDone;
+                        damageDone = instance_create(x,y,DamageIndicator)
+                        damageDone.dmg = dmg+dmgIndicatorDirect
+                        global.myself.stats[DAMAGE]+=dmg+dmgIndicatorDirect
+                        global.myself.roundStats[DAMAGE]+=dmg+dmgIndicatorDirect
+                        damageDone.owner = id
+                    }
                     
                     lastDamageDealer = other.ownerPlayer;
                     lastDamageSource = other.weapon;
@@ -116,7 +152,18 @@
             if (distance_to_object(other) &lt; other.blastRadius){
                 if(other.team != team)
                 {
-                    damageGenerator( other.ownerPlayer, id, other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius)) );
+                    var dmg;
+                    dmg=other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius))
+                    damageGenerator( other.ownerPlayer, id, dmg);
+                    
+                    if other.ownerPlayer==global.myself{
+                        var damageDone;
+                        damageDone = instance_create(x,y,DamageIndicator)
+                        damageDone.dmg = dmg+dmgIndicatorDirect
+                        global.myself.stats[DAMAGE]+=dmg+dmgIndicatorDirect
+                        global.myself.roundStats[DAMAGE]+=dmg+dmgIndicatorDirect
+                        damageDone.owner = id
+                    }
                 }
             }
         }
@@ -146,10 +193,21 @@
             }
         }
         
-        with(Bubble) {
-            if (distance_to_object(other) &lt; other.blastRadius*0.66){
-                alarm[0]-=200;
-            }    
+        with(SuperBubble) {
+            if (distance_to_object(other) &lt; other.blastRadius) and (other.team != team){
+                var dmg;
+                dmg=other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius))
+                damageAuto(other.ownerPlayer, id, dmg)
+                
+                if other.ownerPlayer==global.myself{
+                    var damageDone;
+                    damageDone = instance_create(x,y,DamageIndicator)
+                    damageDone.dmg = dmg+dmgIndicatorDirect
+                    global.myself.stats[DAMAGE]+=dmg+dmgIndicatorDirect
+                    global.myself.roundStats[DAMAGE]+=dmg+dmgIndicatorDirect
+                    damageDone.owner = id
+                }
+            }
         }
 
         instance_destroy();

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="RevolverSM" type="RESOURCE"/>
+  <resource name="RevolverFSM" type="RESOURCE"/>
+  <resource name="RevolverFRSM" type="RESOURCE"/>
+  <resource name="BackstabLegsSM" type="RESOURCE"/>
+  <resource name="SpyRedBackstabTorsoSM" type="RESOURCE"/>
+  <resource name="SpyBlueBackstabTorsoSM" type="RESOURCE"/>
+</resources>

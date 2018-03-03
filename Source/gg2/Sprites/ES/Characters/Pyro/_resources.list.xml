@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="PyroRedSM" type="RESOURCE"/>
+  <resource name="PyroRedRunSM" type="RESOURCE"/>
+  <resource name="PyroRedStandSM" type="RESOURCE"/>
+  <resource name="PyroRedJumpSM" type="RESOURCE"/>
+  <resource name="PyroRedLeanLSM" type="RESOURCE"/>
+  <resource name="PyroRedLeanRSM" type="RESOURCE"/>
+  <resource name="PyroRedDeadSM" type="RESOURCE"/>
+  <resource name="PyroRedTauntSM" type="RESOURCE"/>
+  <resource name="PyroRedHSM" type="RESOURCE"/>
+  <resource name="PyroRedIntelSM" type="RESOURCE"/>
+  <resource name="PyroBlueSM" type="RESOURCE"/>
+  <resource name="PyroBlueRunSM" type="RESOURCE"/>
+  <resource name="PyroBlueStandSM" type="RESOURCE"/>
+  <resource name="PyroBlueJumpSM" type="RESOURCE"/>
+  <resource name="PyroBlueLeanLSM" type="RESOURCE"/>
+  <resource name="PyroBlueLeanRSM" type="RESOURCE"/>
+  <resource name="PyroBlueDeadSM" type="RESOURCE"/>
+  <resource name="PyroBlueTauntSM" type="RESOURCE"/>
+  <resource name="PyroBlueHSM" type="RESOURCE"/>
+  <resource name="PyroBlueIntelSM" type="RESOURCE"/>
+</resources>

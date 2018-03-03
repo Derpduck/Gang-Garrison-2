@@ -18,10 +18,17 @@
 else
     image_xscale = 1;
 
-if (team == TEAM_RED)
+if (team == TEAM_RED){
     sprite_index = SpyRedBackstabTorsoS;
-else
+    if global.dumbledankSprites==1{
+        sprite_index=SpyRedBackstabTorsoSM;
+    }
+}else{
     sprite_index = SpyBlueBackstabTorsoS;
+    if global.dumbledankSprites==1{
+        sprite_index=SpyBlueBackstabTorsoSM;
+    }
+}
 
 if (image_index == 32)
 {
@@ -29,17 +36,21 @@ if (image_index == 32)
     image_speed = 0;
 }
 
-if(!done)
-    if(alpha &lt; 1)
+if(!done){
+    if(alpha &lt; 1){
         alpha += 0.1 * global.delta_factor;
-    else
+    }else{
         alpha = 1;
-else
-{
-    if(alpha &gt; 0)
-        alpha -= 0.1 * global.delta_factor;
-    else
+    }
+}else{
+    if(alpha &gt; 0){
+        alpha -= ((0.02*decayFactor)*(2/alpha))*global.delta_factor //0.1 * global.delta_factor;
+    }else{
+        if decayFactor!=1{
+            owner.currentWeapon.alarm[2]=4/global.delta_factor
+        }
         instance_destroy();
+    }
 }
 </argument>
       </arguments>

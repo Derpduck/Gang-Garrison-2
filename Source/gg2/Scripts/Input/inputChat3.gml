@@ -17,10 +17,10 @@ if (player.team != TEAM_SPECTATOR)
     }
     if (existed == 0)
     {
-        instance_create(x,y,BubbleMenuC);             
+        instance_create(x,y,BubbleMenuC);
     }
     else
     {
-        BubbleMenuC.done = true;       
+        BubbleMenuC.done = true;
     }
 }

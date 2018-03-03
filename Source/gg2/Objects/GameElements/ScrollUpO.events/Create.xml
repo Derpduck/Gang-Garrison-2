@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">image_speed=0;
+        <argument kind="STRING">start_x=564
+start_y=152
 </argument>
       </arguments>
     </action>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">xoffset=view_xview[0]
+yoffset=view_yview[0]
+xsize=view_wview[0]
+ysize=view_hview[0]
+draw_set_valign(fa_center)
+draw_set_halign(fa_middle)
+draw_set_color(c_black)
+
+if global.showPing==1{
+    displayPing=string(round(ping))
+    if ping==-1{
+        if !global.isHost{
+            displayPing="?"
+        }else{
+            displayPing=0
+        }
+    }
+    
+    draw_set_color(c_black)
+    draw_set_alpha(global.boxBgAlpha/100)
+    draw_rectangle(xoffset,yoffset,xoffset+25,yoffset+15,false)
+    draw_set_color(get_ping_color(ping))
+    draw_set_alpha(global.boxElementAlpha/100)
+    draw_text(xoffset[0]+12.5, yoffset[0]+7.5,displayPing)
+}
+
+if !global.isHost{
+    if global.pingGraph==1 or (global.pingGraph==2 and instance_exists(ScoreTableController)){
+        for (i=0; i&lt;ds_list_size(pingGraphList); i+=1){
+            //if ds_list_find_value(pingGraphList,i)&lt;240 linecol=c_yellow
+            //if ds_list_find_value(pingGraphList,i)&lt;135 linecol=c_green
+            //if ds_list_find_value(pingGraphList,i)&lt;75 linecol=c_aqua
+            //if ds_list_find_value(pingGraphList,i)==-1 linecol=c_gray
+            //if ds_list_find_value(pingGraphList,i)&gt;=240 linecol=c_red
+            linecol=get_ping_color(ds_list_find_value(pingGraphList,i))
+            if ds_list_find_value(pingGraphList,i)&gt;cooldownTime*(30/global.delta_factor) linecol=c_black
+            
+            draw_set_alpha(0.5)
+            if global.pingGraph==2{
+                depth=-115001
+                posAdjustGraph=95
+            }else{
+                depth=-114000
+                posAdjustGraph=0
+            }
+            draw_line_color(view_xview+130+i+posAdjustGraph,(yoffset+ysize-15),view_xview+130+i+posAdjustGraph,(yoffset+ysize-15)-(min(400,ds_list_find_value(pingGraphList,i)))/6,linecol,linecol)
+        }
+    }
+}
+
+if global.showFPS==1{
+    if fps==30/global.delta_factor{
+        fpsColor=c_green
+    }else if fps&lt;30/global.delta_factor{
+        fpsColor=c_yellow
+    }else if fps&lt;20/global.delta_factor{
+        fpsColor=c_orange
+    }else if fps&lt;10/global.delta_factor{
+        fpsColor=c_red
+    }
+    
+    if global.showPing==0{
+        posAdjustFPS=16
+    }else{
+        posAdjustFPS=0
+    }
+    draw_set_color(c_black)
+    draw_set_alpha(global.boxBgAlpha/100)
+    draw_rectangle(xoffset,yoffset+16-posAdjustFPS,xoffset+25,yoffset+31-posAdjustFPS,false)
+    draw_set_color(fpsColor)
+    draw_set_alpha(global.boxElementAlpha/100)
+    draw_text(xoffset[0]+12.5, yoffset[0]+22.5-posAdjustFPS,fps)
+}
+
+draw_set_color(c_white)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

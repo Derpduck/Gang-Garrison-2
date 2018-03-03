@@ -1,8 +1,9 @@
 room_caption = global.currentMap;
 global.startedGame = true;
 
-if(!global.fullscreen)
-    window_set_position(previous_window_x+previous_window_w/2-global.ingamewidth/2, previous_window_y);
+if(!global.fullscreen){
+    window_set_position((display_get_width()/2)-(window_get_width()/2), (display_get_height()/2)-(window_get_height()/2))
+}
 
 global.totalMapAreas = 1+instance_number(NextAreaO);
 
@@ -34,50 +35,81 @@ with(Player) {
     humiliated = 0;
 }
 
-if(instance_exists(IntelligenceBase) or instance_exists(Intelligence))
-{
-    if (instance_exists(ControlPointSetupGate))
+if(instance_exists(IntelligenceBase) or instance_exists(Intelligence)){
+    if (instance_exists(ControlPointSetupGate)){
         instance_create(0, 0, InvasionHUD);
-    else
+    }else{
         instance_create(0, 0, CTFHUD);
-}
-else if(instance_exists(Generator))
-{
-    instance_create(0,0,GeneratorHUD);
-}
-else if(instance_exists(ArenaControlPoint))
-{
-    instance_create(0, 0, ArenaHUD);
-    if (ArenaHUD.roundStart == 0)
-    {
-        with (Player)
-            canSpawn = 0;
     }
-}
-else if(instance_exists(KothControlPoint))
-{
+}else if(instance_exists(Generator)){
+    instance_create(0,0,GeneratorHUD);
+}else if(instance_exists(ArenaControlPoint)){
+    instance_create(0, 0, ArenaHUD);
+    if (ArenaHUD.roundStart==0){
+        if global.isLive==1{
+            with (Player){
+                canSpawn = 0;
+            }
+        }
+    }
+}else if(instance_exists(KothControlPoint)){
     instance_create(0,0,KothHUD);
-}
-else if(instance_exists(KothRedControlPoint) and instance_exists(KothBlueControlPoint))
-{
-    with(ControlPoint)
+}else if(instance_exists(KothRedControlPoint) and instance_exists(KothBlueControlPoint)){
+    with(ControlPoint){
         event_user(0);
+    }
     instance_create(0,0,DKothHUD);
-}
-else if instance_exists(ControlPoint)
-{
-    with(ControlPoint)
+}else if instance_exists(ControlPoint){
+    with(ControlPoint){
         event_user(0);
+    }
     instance_create(0,0,ControlPointHUD);
-}
-else
-{
+}else if instance_exists(MGEController){
+    instance_create(0,0,MGE_HUD)
+}else{
     instance_create(0, 0, TeamDeathmatchHUD);
 }
 
-instance_create(0,0,TeamSelectController);
-if (!instance_exists(KillLog))
-    instance_create(0,0,KillLog);
+if global.smallSelectMenu==0{
+    instance_create(0,0,TeamSelectController)
+}else{
+    instance_create(0,0,SmallTeamSelect)
+}
+
+//first time start
+if !instance_exists(ReadyUpController){
+    instance_create(0,0,ReadyUpController)
+    with(ReadyUpController){
+        event_user(1)
+    }
+}else{
+    //subsequent rounds
+    with(ReadyUpController){
+        event_user(1)
+    }
+    
+    if instance_exists(ArenaHUD){
+        with (Player){
+            canSpawn=1
+        }
+        with(ArenaHUD){
+            endCount = 0;
+            roundStart = 0;
+            gameStarted = 0;
+        }
+    }
+}
+
+if global.currentConfig!=""{
+    config_load(global.currentConfig)
+}
+
+if !instance_exists(KillLog){
+    instance_create(0,0,KillLog)
+    with (KillLog) {
+        map = ds_map_create();
+    }
+}
 
 sound_stop_all();
 
@@ -86,9 +118,32 @@ if(global.music == MUSIC_BOTH || global.music == MUSIC_INGAME_ONLY) {
 }
 instance_create(map_width()/2,map_height()/2,Spectator);
 
+//Bots
+//load_bot_nodes()
+//global.mesh=initialize_mesh("Maps\"+global.currentMap+".png")
+
 global.redCaps = 0;
 global.blueCaps = 0;
 global.winners = -1;
+global.adcpWinner=""
+
+if global.currentConfig==""{
+    if global.autoStart==1{
+        global.forceReady=1
+    }else if global.autoStart==0{
+        global.forceReady=0
+    }
+}/*else{
+    if global.cfgrup==1{
+        global.forceReady=0
+    }else if global.cfgrup==0{
+        global.forceReady=1
+    }
+}*/
+
+if instance_exists(MGE_HUD){
+    global.forceReady=1
+}
 
 if(instance_exists(GameServer))
 {

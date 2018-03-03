@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Sent" type="GROUP"/>
+  <resource name="Local" type="GROUP"/>
+  <resource name="chat_addCommandSent" type="RESOURCE"/>
+  <resource name="chat_addCommandLocal" type="RESOURCE"/>
+  <resource name="chat_parseInputCommandSent" type="RESOURCE"/>
+  <resource name="chat_parseInputCommandLocal" type="RESOURCE"/>
+  <resource name="chat_defineCommands" type="RESOURCE"/>
+</resources>

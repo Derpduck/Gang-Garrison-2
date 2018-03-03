@@ -13,15 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    if (global.fadeScoreboard)
-        alpha = 0.02;
-    else
-        alpha = 1;
-    done = false;
-    nameLen = 0;
-    showadmin = false;
-}
+        <argument kind="STRING">alpha = 1;
+done = false;
+nameLen = 0;
+showadmin = false;
+displayPing=0
 </argument>
       </arguments>
     </action>

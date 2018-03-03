@@ -14,15 +14,16 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    menu_create(48, 172, 500, 260, 32, 40, 104, 6);
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
+    
     menumode = true;
+    virnum=0
     
     if (room != Options)
         menu_setdimmed();
     
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
-    
     oldPlayerName = global.playerName;
     menu_addedit_text2("Player name:", "global.playerName", '
         var newName;
@@ -53,9 +54,9 @@
     menu_addedit_boolean("Additional Teammate Stats:", "global.showTeammateStats", '
         gg2_write_ini("Settings", "Show Extra Teammate Stats", argument0);
     ');
-    menu_addedit_boolean("Kill Cam:", "global.killCam", '
-        gg2_write_ini("Settings", "Kill Cam", argument0);
-    ');
+    //menu_addedit_boolean("Kill Cam:", "global.killCam", '
+        //gg2_write_ini("Settings", "Kill Cam", argument0);
+    //');
     menu_addedit_boolean("Queued Jumping (Bunnyhopping):", "global.queueJumping", '
         gg2_write_ini("Settings", "Queued Jumping", argument0);
     ');
@@ -81,7 +82,7 @@
         instance_create(x,y,HUDOptionsController);
     ');
     
-    menu_addback("Back", '
+    menu_addback("[0] Back", '
         instance_destroy();
         if(room == Options)
             room_goto_fix(Menu);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="get_ping_color" type="RESOURCE"/>
+  <resource name="get_team_numbers" type="RESOURCE"/>
+  <resource name="color_code_split" type="RESOURCE"/>
+  <resource name="load_map_rotation" type="RESOURCE"/>
+  <resource name="load_map_rotation_custom" type="RESOURCE"/>
+</resources>

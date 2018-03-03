@@ -16,6 +16,16 @@
         <argument kind="STRING">if (other.team != team)
 {
     damageGenerator(ownerPlayer, other.id, hitDamage);
+    
+    if ownerPlayer==global.myself{
+        var damageDone;
+        damageDone = instance_create(other.x,other.y,DamageIndicator)
+        damageDone.dmg = hitDamage
+        global.myself.stats[DAMAGE]+=hitDamage
+        global.myself.roundStats[DAMAGE]+=hitDamage
+        damageDone.owner = other.id
+    }
+    
     instance_destroy()
 }
 </argument>

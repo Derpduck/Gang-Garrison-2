@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Console" type="RESOURCE"/>
+  <resource name="ChatBox" type="RESOURCE"/>
+  <resource name="VoteHandler" type="RESOURCE"/>
+  <resource name="PugController" type="RESOURCE"/>
+</resources>

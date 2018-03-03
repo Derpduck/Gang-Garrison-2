@@ -13,19 +13,31 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">    if(object != -1) with(object) instance_destroy();
-    ds_map_destroy(rewards);
-    ds_list_destroy(badges);
-    with (ghost)
-        instance_destroy();
-    socket_destroy(socket);
+        <argument kind="STRING">if(object != -1) with(object) instance_destroy();
+ds_map_destroy(rewards);
+ds_list_destroy(badges);
+with (ghost){
+    instance_destroy();
+}
+socket_destroy(socket);
     
-    with(Rocket) if(ownerPlayer == other.id) instance_destroy();
-    with(BurningProjectile) if(ownerPlayer == other.id) instance_destroy();
-    with(Shot) if(ownerPlayer == other.id) instance_destroy();
-    with(Needle) if(ownerPlayer == other.id) instance_destroy();
-    with(Sentry) if(ownerPlayer == other.id) instance_destroy();
-    with(DeathCam) if(killedby == other.id) instance_destroy();
+with(Rocket) if(ownerPlayer == other.id) instance_destroy();
+with(BurningProjectile) if(ownerPlayer == other.id) instance_destroy();
+with(Shot) if(ownerPlayer == other.id) instance_destroy();
+with(Needle) if(ownerPlayer == other.id) instance_destroy();
+with(Sentry) if(ownerPlayer == other.id) instance_destroy();
+with(DeathCam) if(killedby == other.id) instance_destroy();
+
+if instance_exists(global.myself){
+    if Player==global.myself{
+        if instance_exists(ReadyUpController){
+            with(ReadyUpController){
+                event_user(0) //instance_destroy()
+                global.isLive=0
+            }
+        }
+    }
+}
 </argument>
       </arguments>
     </action>

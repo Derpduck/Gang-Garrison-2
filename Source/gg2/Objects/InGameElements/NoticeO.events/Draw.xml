@@ -17,7 +17,7 @@
 
     if instance_exists(DeathCam) exit;
 
-    var xoffset, yoffset, xsize, ysize, i, player, redteam, blueteam;
+    var xoffset, yoffset, xsize, ysize, i, player, redteam, blueteam, textx;
     
     xoffset = view_xview[0];
     yoffset = view_yview[0];
@@ -26,23 +26,34 @@
     
     draw_set_alpha(alpha);
       
-    draw_rectangle_color(xoffset, (yoffset+ysize)-110, (xoffset+xsize), (yoffset+ysize)-92, c_black,c_black,c_black,c_black,0);
+    draw_rectangle_color((xoffset+xsize)-60-string_length(message)*8 + 4, (yoffset+ysize)-110, (xoffset+xsize), (yoffset+ysize)-92, c_black,c_black,c_black,c_black,0);
      
-    draw_sprite_ext(GameNoticeS, 0, xoffset+25, yoffset+ysize-100, 2, 2, 0, c_white, alpha);
+    draw_sprite_ext(GameNoticeS, 0, (xoffset+xsize)-25, yoffset+ysize-100, 2, 2, 0, c_white, alpha);
     
     draw_set_color(c_white);
     draw_set_valign(fa_center);
     draw_set_halign(fa_left);
     
-    if notice == NOTICE_NUTSNBOLTS draw_text_ext_color(xoffset+50, (yoffset+ysize)-100,"Not enough Nuts 'N' Bolts to build!",-1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_TOOCLOSE draw_text_ext_color(xoffset+50, (yoffset+ysize)-100,"Cannot build this close to another building!",-1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_AUTOGUNSCRAPPED draw_text_ext_color(xoffset+50, (yoffset+ysize)-100,"Autogun scrapped!",-1,-1,c_white,c_white,c_white,c_white,alpha);    
-    else if notice == NOTICE_HAVEINTEL draw_text_ext_color(xoffset+50, (yoffset+ysize)-100,"You have the intelligence!",-1,-1,c_white,c_white,c_white,c_white,alpha);    
-    else if notice == NOTICE_SETCHECKPOINT draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, "Checkpoint set at this location!", -1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_DESTROYCHECKPOINT draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, "Checkpoint destroyed at this location!", -1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_PLAYERTRACKENABLE draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, "Player tracking enabled!", -1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_PLAYERTRACKDISABLE draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, "Player tracking disabled!!", -1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_CUSTOM draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, message, -1,-1,c_white,c_white,c_white,c_white,alpha);
+    //console kick
+    message=string_replace_all(message,'·',' ')
+    //if !global.isHost and string_copy(message,0, string_length("RUP: Game is live!"))=="RUP: Game is live!"{
+        //global.rupTime=2
+        //ReadyUpController.startingMatch=1
+    //}
+        
+    textx=xoffset+50
+    
+    if notice == NOTICE_NUTSNBOLTS message="Not enough Nuts 'N' Bolts to build!"
+    else if notice == NOTICE_TOOCLOSE message="Cannot build this close to another building!"
+    else if notice == NOTICE_AUTOGUNSCRAPPED message="Autogun scrapped!"
+    else if notice == NOTICE_HAVEINTEL message="You have the intelligence!"  
+    else if notice == NOTICE_SETCHECKPOINT message="Checkpoint set at this location!"
+    else if notice == NOTICE_DESTROYCHECKPOINT message="Checkpoint destroyed at this location!"
+    else if notice == NOTICE_PLAYERTRACKENABLE message="Player tracking enabled!"
+    else if notice == NOTICE_PLAYERTRACKDISABLE message="Player tracking disabled!"
+    //else if notice == NOTICE_CUSTOM draw_text_ext_color(textx, (yoffset+ysize)-100, message, -1,-1,c_white,c_white,c_white,c_white,alpha);
+    
+    draw_text_ext_color((xoffset+xsize-50)-string_length(message)*8, (yoffset+ysize)-100, message, -1,-1,c_white,c_white,c_white,c_white,alpha)
 }
 </argument>
       </arguments>

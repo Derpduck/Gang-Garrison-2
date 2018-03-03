@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="console_sendmsg" type="RESOURCE"/>
+  <resource name="console_miscmsg" type="RESOURCE"/>
+  <resource name="console_localmsg" type="RESOURCE"/>
+</resources>

@@ -17,7 +17,6 @@
 
 var downloadHandle, url, tmpfile, window_oldshowborder, window_oldfullscreen;
 timeLeft = 0;
-counter = 0;
 AudioControlPlaySong(-1, false);
 window_oldshowborder = window_get_showborder();
 window_oldfullscreen = window_get_fullscreen();
@@ -35,7 +34,7 @@ downloadHandle = http_new_get(url);
 
 while(!http_step(downloadHandle)) 
 { // while download isn't finished
-    sleep(floor(1000/30)); // sleep for the equivalent of one frame
+    sleep(floor((1000/30) / global.delta_factor)); // sleep for the equivalent of one frame
     io_handle(); // this prevents GameMaker from appearing locked-up
     
     // check if the user cancelled the download with the esc key
@@ -47,30 +46,20 @@ while(!http_step(downloadHandle))
         room_goto_fix(Menu);
         exit;
     }
-     
-    if(counter == 0 || counter mod 60 == 0)
-        timer = random(359)+1;
+    
+    //Gutter fake time prediction
     draw_sprite(UpdaterBackgroundS,0,0,0);
     draw_set_color(c_white);
     draw_set_halign(fa_left);
     draw_set_valign(fa_center);
-    minutes=floor(timer/60);
-    seconds=floor(timer-minutes*60);
-    draw_text(x,y-20,string(minutes) + " minutes " + string(seconds) + " seconds Remaining...");
-    counter+=1;
     var progress, size;
     progress = http_response_body_progress(downloadHandle);
     size = http_response_body_size(downloadHandle);
     // If the URL we fetch is a redirect with no body, size might briefly be 0
     // Also, Faucet HTTP reports an unknown size as -1
-    if (size &gt; 0)
-    {
-        progressBar = floor((progress/size) * 20);
-        offset = 3;
-        for(i=0;i&lt;progressBar;i+=1){
-            draw_sprite(UpdaterProgressS,0,x+offset,y);
-            offset+=12;
-        }
+    if (size &gt; 0){
+        draw_text(x,y-20,string(progress/1024) + "KB / " + string(size/1024) + "KB - " + string((progress/size)*100)+'% done...')
+        draw_sprite_part(UpdaterProgressBarS,0,0,0,(progress/size)*240,20,x,y-11)
     }
     screen_refresh();
 }
@@ -98,7 +87,7 @@ if(!file_exists(tmpfile))
 }
 
 // rename existing "Gang Garrison 2.exe" to avoid conflict when extracting
-if (file_exists("Gang Garrison 2.exe"))
+if (file_exists("ES.exe"))
 {
     var newName, n;
     n = 1;
@@ -111,7 +100,7 @@ if (file_exists("Gang Garrison 2.exe"))
     }
     until(!file_exists(newName));
 
-    file_rename("Gang Garrison 2.exe", newName);
+    file_rename("ES.exe", newName);
 }
 
 
@@ -120,7 +109,7 @@ if (file_exists("Gang Garrison 2.exe"))
 extractzip(tmpfile, working_directory);
 
 // run new version    
-execute_program("Gang Garrison 2.exe", "", false);
+execute_program("ES.exe", "", false);
 
 // exit
 game_end();

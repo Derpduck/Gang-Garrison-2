@@ -15,25 +15,10 @@
       <arguments>
         <argument kind="STRING">alpha=0.1;
 done=false;
-playsound(view_xview[0]+400,view_yview[0]+300,NoticeSnd);
+playsound(view_xview[0]+view_wview[0]/2,view_yview[0]+view_hview[0]/2,NoticeSnd);
 message = "";
+alarm[0]=90/global.delta_factor
 </argument>
-      </arguments>
-    </action>
-    <action id="301" library="1">
-      <!--action name: Set_Alarm-->
-      <kind>NORMAL</kind>
-      <allowRelative>true</allowRelative>
-      <question>false</question>
-      <canApplyTo>true</canApplyTo>
-      <actionType>FUNCTION</actionType>
-      <functionName>action_set_alarm</functionName>
-      <relative>false</relative>
-      <not>false</not>
-      <appliesTo>.self</appliesTo>
-      <arguments>
-        <argument kind="EXPRESSION">200</argument>
-        <argument kind="MENU">0</argument>
       </arguments>
     </action>
   </actions>

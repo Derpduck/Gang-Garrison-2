@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">xoffset=view_xview[0]
+yoffset=view_yview[0]
+xsize=view_wview[0]
+ysize=view_hview[0]
+orangeTitle=make_color_rgb(255,102,000)
+//rectHeightAddition=(1+ds_list_size(global.players)*11)+44 //1+number of names, line takes up 11px; 33 is for the titles
+rectHeightAddition=11*2
+readyNameDisplay=""
+unreadyNameDisplay=""
+specNameDisplay=""
+selfRupString=""
+selfRupString2=""
+minRupString=""
+maxRupString=""
+midRupString=""
+firstString=""
+if global.minPlayers!=-1 or global.maxPlayers!=-1{
+    configLine=1
+    configYOffset=11
+}else{
+    configLine=0
+    configYOffset=0
+}
+
+//EXTRA INFORMATION
+draw_set_halign(fa_center)
+draw_set_valign(fa_top)
+//rectLinesNumber=1
+
+//rectangle
+draw_set_color(c_black)
+draw_set_alpha(0.6)
+infoX1=(xoffset+xsize/2)-175
+infoY1=(yoffset+ysize/2)+50
+infoX2=(xoffset+xsize/2)+177
+infoY2=(yoffset+ysize/2)+59+(rectLinesNumber*11)
+draw_rectangle(infoX1,infoY1,infoX2,infoY2,false)
+
+//lines
+draw_set_color(c_white)
+draw_line(infoX1,infoY1,infoX1,infoY2) //left side, downwards
+draw_line(infoX1+1,infoY1,infoX2,infoY1) //top side, right
+draw_line(infoX2,infoY1,infoX2,infoY2) //right side, downwards
+draw_line(infoX1,infoY2,infoX2+1,infoY2) //bottom side, right
+
+//text
+draw_set_alpha(1)
+
+//READY UP TOTAL
+draw_set_color(orangeTitle)
+firstString=("Ready: "+string(global.readyTotal)+"/"+string(global.readyMax)
++" -- "+string(global.rupTimeMin)+":"+string_replace(string_format(global.rupTimeSec,2,0)," ","0")
++" -- "+global.currentMap)//string_copy(global.currentMap,0,21))
+
+draw_text((xoffset+xsize/2),(yoffset+ysize/2)+55,string_copy(firstString,0,43))
+
+//TEAM MIN/MAX
+if global.minPlayers!=-1{
+    minRupString="Team Minimum: "+string(global.minPlayers)
+}
+if global.maxPlayers!=-1{
+    maxRupString="Team Maximum: "+string(global.maxPlayers)
+}
+if global.minPlayers!=-1 and global.maxPlayers!=-1{
+    midRupString=", "
+}
+draw_set_color(make_color_rgb(000,204,255))
+draw_text((xoffset+xsize/2),(yoffset+ysize/2)+55+11,minRupString+midRupString+maxRupString)
+
+//YOUR RUP STATUS
+draw_set_color(c_green)
+if global.isReady==0{
+    draw_set_color(c_red)
+    selfRupString=" not"
+    selfRupString2="Press '"+chr(global.drop)+"' or type /ready to ready up."
+}else{
+    draw_set_color(make_color_rgb(060,200,070))
+    selfRupString=""
+    selfRupString2="Press '"+chr(global.drop)+"' or type /unready to unready."
+}
+
+if instance_exists(Player){
+    if global.myself.team==TEAM_SPECTATOR{
+        draw_set_color(c_aqua)
+        draw_text((xoffset+xsize/2),(yoffset+ysize/2)+55+11+configYOffset,"You are spectating.")
+    }else{
+        draw_text((xoffset+xsize/2),(yoffset+ysize/2)+55+11+configYOffset,"You are"+selfRupString+" ready.")
+    }
+
+    //HOW TO RUP
+    draw_set_color(c_white)
+    if global.myself.team==TEAM_SPECTATOR{
+        draw_text_transformed((xoffset+xsize/2),(yoffset+ysize/2)+55+22+configYOffset,"Join a team to play.",1,1,0)
+    }else{
+        draw_text_transformed((xoffset+xsize/2),(yoffset+ysize/2)+55+22+configYOffset,selfRupString2,1,1,0)
+    }
+}
+
+//ADCP STOPWATCH
+if instance_exists(ControlPointHUD){
+    if global.adcpStopwatch==1 and ControlPointHUD.mode==1{
+        rectLinesNumber=5+configLine
+        draw_text_transformed((xoffset+xsize/2),(yoffset+ysize/2)+55+33+configYOffset,"ADCP stopwatch mode is on.",1,1,0)
+        draw_text_transformed((xoffset+xsize/2),(yoffset+ysize/2)+55+44+configYOffset,"You are: "+string(global.myAdcpTeam),1,1,0)
+    }
+//ARENA ROUNDS
+}else if instance_exists(ArenaHUD){
+    rectLinesNumber=4+configLine
+    draw_text_transformed((xoffset+xsize/2),(yoffset+ysize/2)+55+33+configYOffset,"Rounds needed to win: "+string(global.arenaRoundsToWin),1,1,0)
+//MGE
+}else if instance_exists(MGE_HUD){
+    rectLinesNumber=4+configLine
+    draw_text_transformed((xoffset+xsize/2),(yoffset+ysize/2)+55+33+configYOffset,"Type /arena &lt;1-5&gt; to join.",1,1,0)
+//NO SPECIAL TEXT
+}else{
+    rectLinesNumber=3+configLine
+}
+
+//draw_set_color(c_white)
+//draw_set_halign(fa_right)
+//draw_text((xoffset+xsize/2),(yoffset+ysize/2)-200,global.configSuperString)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

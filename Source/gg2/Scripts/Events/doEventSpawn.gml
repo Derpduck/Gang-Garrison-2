@@ -38,10 +38,4 @@ global.paramPlayer = spawner;
 spawner.object = instance_create(spawnX,spawnY,character);
 global.paramPlayer = noone;
 
-if (instance_exists(RespawnTimer)) {
-    with(RespawnTimer) {
-        done = true;
-    }
-}
-
 playsound(spawnX, spawnY, RespawnSnd);

@@ -7,8 +7,8 @@
   <resource name="Bubble" type="RESOURCE"/>
   <resource name="Pop" type="RESOURCE"/>
   <resource name="BladeB" type="RESOURCE"/>
-  <resource name="Flame" type="RESOURCE"/>
   <resource name="BurningProjectile" type="RESOURCE"/>
+  <resource name="Flame" type="RESOURCE"/>
   <resource name="Flare" type="RESOURCE"/>
   <resource name="MineTrail" type="RESOURCE"/>
   <resource name="Mine" type="RESOURCE"/>

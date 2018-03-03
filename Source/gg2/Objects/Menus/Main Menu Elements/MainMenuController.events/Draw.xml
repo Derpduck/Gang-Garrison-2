@@ -13,42 +13,24 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    draw_background(menuimage, 0, 0);
-
-    // display background info, if downloaded
-    if (global.backgroundHash != "default")
-    {
-        draw_set_halign(fa_right);
-        draw_set_valign(fa_bottom);
-        
-        // hovering over title
-        if (mouse_x &gt;= 595 - string_width(global.backgroundTitle)
-            &amp;&amp; mouse_x &lt; 595
-            &amp;&amp; mouse_y &gt;= 595 - string_height(global.backgroundTitle)
-            &amp;&amp; mouse_y &lt; 595
-            &amp;&amp; global.backgroundURL != "")
-        {
-            draw_set_color(c_orange);
-        }
-        else
-        {
-            draw_set_color(c_white);
-        }
-        draw_text(595, 595, global.backgroundTitle);
-    }
-
-    // fade out old background
-    if (fade &gt; 0)
-    {
-        draw_background_ext(oldBackground, 0, 0, 1, 1, 0, c_white, fade);
-    }
-
-    if (!(global.backgroundHash != "default" &amp;&amp; !global.backgroundShowVersion))
-    {
-        draw_sprite(MenuBackgroundVersionS,0,300,300);
-    }
-}
+        <argument kind="STRING">xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0];
+ysize = view_hview[0];
+draw_set_halign(fa_center)
+draw_set_valign(fa_middle)
+//Grey box
+draw_set_color(make_color_hsv(213,10,33))
+//draw_set_color(make_color_rgb(36,34,35))
+draw_set_alpha(0.5)
+draw_rectangle(xoffset,yoffset,xsize,40,0)
+//Icons
+draw_set_alpha(1)
+draw_set_color(c_white)
+draw_sprite(MenuIconS,0,xoffset+37,(yoffset+40)/2)
+draw_sprite(MenuIconS,0,xsize-37,(yoffset+40)/2)
+//Text
+draw_text_transformed(xsize/2,yoffset+20,GAME_NAME_STRING+" "+GAME_VERSION_STRING,2,2,0)
 </argument>
       </arguments>
     </action>

@@ -14,17 +14,15 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    if(other.team != team and !other.stickied and !other.bubbled)
-    {
-        with(other)
-        {
+    if(other.team != team and !other.stickied and !other.bubbled){
+        with(other){
             hspeed *= -1;
             vspeed *= -1;
             bubbled = true;
             reflector = other.ownerPlayer;
         }
     }
-    alarm[0] -= 60;
+    alarm[0] -= 60/global.delta_factor;
 }
 </argument>
       </arguments>

@@ -15,21 +15,45 @@
       <arguments>
         <argument kind="STRING">if (distance_to_point(view_xview + view_wview/2, view_yview + view_hview/2) &gt; 800)
     exit;
-    
+
 var imageOffset;
 if(shooting)
 {
+    var shotRandX, shotRandY;
+    shotRandX=random(25)-12
+    shotRandY=random(25)-12
+    shotDrawX=shotRandX
+    shotDrawY=shotRandY
+    justShot=1
     shooting=false;
     imageOffset=2;
     if(instance_exists(nearestTarget))
     {
         xshootoffset=4*image_xscale;
-        draw_set_alpha(0.6);
-        draw_line_width_color(x+lengthdir_x(10,direction)-xshootoffset,y+lengthdir_y(10,direction)-2,nearestTarget.x+random(25)-12,nearestTarget.y+random(25)-12,2,c_yellow,c_black);
+        draw_set_alpha(tracerAlpha);
+        draw_line_width_color(x+lengthdir_x(10,direction)-xshootoffset,y+lengthdir_y(10,direction)-2,nearestTarget.x+shotRandX,nearestTarget.y+shotRandY,2,c_yellow,c_black);
+        tracerAlpha /= delta_mult(1.65)
     }
-}
-else
+}else{
     imageOffset=0;
+}
+
+if shooting==0 and justShot==1{
+    if readyToShoot==1{
+        justShot=0
+    }
+    if (tracerAlpha &gt; 0.05){
+        if(instance_exists(nearestTarget)){
+            xshootoffset=4*image_xscale;
+            tracerAlpha /= delta_mult(1.65)
+            draw_set_alpha(tracerAlpha);
+            draw_line_width_color(x+lengthdir_x(10,direction)-xshootoffset,y+lengthdir_y(10,direction)-2,nearestTarget.x+shotDrawX,nearestTarget.y+shotDrawY,2,c_yellow,c_black);
+        }
+    }else{
+        tracerAlpha = 0;
+    }  
+}
+draw_set_alpha(1);
     
 if(ownerPlayer.sentry)
 {

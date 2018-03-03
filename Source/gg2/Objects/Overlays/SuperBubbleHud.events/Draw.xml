@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var xoffset, yoffset, xsize, ysize;    
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0];
+ysize = view_hview[0];
+
+if (global.myself.object == -1 or global.myself.class != CLASS_QUOTE){
+    instance_destroy();
+    exit;
+}
+draw_set_valign(fa_center);
+draw_set_halign(fa_right);
+
+var bubbleScalar;
+if !(global.myself.object.canBubble){
+    bubbleScalar = (1-(global.myself.object.alarm[10]/(global.myself.object.bubbleCooldown / global.delta_factor))) * 100
+}else{
+    bubbleScalar = 100
+}
+    
+if global.boxHUD==0{
+    draw_set_alpha(1);
+    barcolor = make_color_rgb(217,217,183);
+    
+    draw_sprite_ext(sprite_index,0,xoffset+xsize-47,yoffset+ysize-55+11,2,2,0,c_white,1);
+    draw_healthbar(xoffset+xsize-63,yoffset+ysize-66+11,xoffset+xsize-28,yoffset+ysize-61+11,bubbleScalar,c_black,barcolor,barcolor,0,true,false);
+}else{
+    draw_set_color(c_black)
+    draw_set_alpha(global.boxBgAlpha/100)
+    
+    draw_rectangle((xoffset+xsize-90),(yoffset+ysize)-57,(xoffset+xsize-23),(yoffset+ysize)-57+16,0)
+    
+    draw_set_alpha(global.boxElementAlpha/100)
+    draw_set_color(make_color_rgb(50,200,50))
+    
+    draw_text((xoffset+xsize-25),(yoffset+ysize)-57+9,floor(bubbleScalar))
+    draw_healthbar((xoffset+xsize-86),(yoffset+ysize)-57+4,(xoffset+xsize-52),(yoffset+ysize)-57+12,bubbleScalar,c_black,c_gray,c_white,0,1,0)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

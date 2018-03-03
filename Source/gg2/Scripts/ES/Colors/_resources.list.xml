@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="color_index" type="RESOURCE"/>
+  <resource name="getColorCodeHex" type="RESOURCE"/>
+  <resource name="getColorCode" type="RESOURCE"/>
+  <resource name="c_filter" type="RESOURCE"/>
+</resources>

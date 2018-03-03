@@ -13,68 +13,28 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    hitDamage = 25;
-    explosionDamage = 30;
-    blastRadius = 65;
-    characterHit = -1;
-    exploded = false;
-    knockback = 8;
-    bubbled = false;
-    
-    fade = false;
-    distanceToTravel = 800;
-    playersPassed = ds_list_create();
+        <argument kind="STRING">sprite_index=RocketS
+if global.dumbledankSprites==1{
+    sprite_index=RocketSM
 }
+
+hitDamage = 25;
+explosionDamage = 30;
+blastRadius = 65;
+characterHit = -1;
+exploded = false;
+knockback = 8;
+bubbled = false;
+
+//new life time system
+lifetime=75
+alarm[3]=lifetime / global.delta_factor
+alarm[4]=lifetime-5 / global.delta_factor
+
+//other alarms
+alarm[1]=20/global.delta_factor
+alarm[2]=30/global.delta_factor
 </argument>
-      </arguments>
-    </action>
-    <action id="301" library="1">
-      <!--action name: Set_Alarm-->
-      <kind>NORMAL</kind>
-      <allowRelative>true</allowRelative>
-      <question>false</question>
-      <canApplyTo>true</canApplyTo>
-      <actionType>FUNCTION</actionType>
-      <functionName>action_set_alarm</functionName>
-      <relative>false</relative>
-      <not>false</not>
-      <appliesTo>.self</appliesTo>
-      <arguments>
-        <argument kind="EXPRESSION">55</argument>
-        <argument kind="MENU">0</argument>
-      </arguments>
-    </action>
-    <action id="301" library="1">
-      <!--action name: Set_Alarm-->
-      <kind>NORMAL</kind>
-      <allowRelative>true</allowRelative>
-      <question>false</question>
-      <canApplyTo>true</canApplyTo>
-      <actionType>FUNCTION</actionType>
-      <functionName>action_set_alarm</functionName>
-      <relative>false</relative>
-      <not>false</not>
-      <appliesTo>.self</appliesTo>
-      <arguments>
-        <argument kind="EXPRESSION">20</argument>
-        <argument kind="MENU">1</argument>
-      </arguments>
-    </action>
-    <action id="301" library="1">
-      <!--action name: Set_Alarm-->
-      <kind>NORMAL</kind>
-      <allowRelative>true</allowRelative>
-      <question>false</question>
-      <canApplyTo>true</canApplyTo>
-      <actionType>FUNCTION</actionType>
-      <functionName>action_set_alarm</functionName>
-      <relative>false</relative>
-      <not>false</not>
-      <appliesTo>.self</appliesTo>
-      <arguments>
-        <argument kind="EXPRESSION">30</argument>
-        <argument kind="MENU">2</argument>
       </arguments>
     </action>
   </actions>

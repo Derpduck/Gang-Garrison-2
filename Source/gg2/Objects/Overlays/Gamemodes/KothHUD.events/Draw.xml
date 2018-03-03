@@ -17,52 +17,56 @@
 yoffset = view_yview[0];
 xsize = view_wview[0];
 ysize = view_hview[0];
-if (global.kothHudPos)
-{
+if (global.kothHudPos){
     coffset = 0;
     xshift = -323*global.timerPos;
     yshift = 35;
-}
-else
-{
+}else{
     coffset = 43*1.15;
     xshift = -290*global.timerPos;
     yshift = 0;
 }
 
 draw_set_color(c_white);
+draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_alpha(1);
+drawx = xoffset+xsize/2
+redC=make_color_rgb(147,50,44)
+blueC=make_color_rgb(52,71,82)
+greyC=make_color_rgb(125,125,125)
         
 //CP
-if (KothControlPoint.team == TEAM_RED)
-    teamoffset = 60;
-else if (KothControlPoint.team == TEAM_BLUE)
-    teamoffset = 90;
-if (KothControlPoint.cappingTeam == TEAM_RED and KothControlPoint.team == -1)
-    teamoffset = 30;
-else if (KothControlPoint.cappingTeam != TEAM_RED &amp;&amp; KothControlPoint.team == -1)
-    teamoffset = 0;
-
-if (KothControlPoint.capping != 0)
-    draw_sprite_ext(ControlPointStatusS, teamoffset+floor(KothControlPoint.capping/KothControlPoint.capTime*30),
-                    xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-else if (KothControlPoint.capping == 0)
-    draw_sprite_ext(ControlPointStatusS, teamoffset, xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-if (KothControlPoint.locked)
-{
-    draw_set_halign(fa_center);
-    if (cpUnlock &gt;= 150)
-        draw_sprite_ext(ControlPointLockS, 0, xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    else if (cpUnlock &gt;= 30)
-        draw_text_transformed(xoffset+xsize/2+2, yoffset+ysize-38, ceil(cpUnlock/30), 3,3, 0);
+if (KothControlPoint.team == TEAM_RED){
+    teamoffset = 1;
+}else if (KothControlPoint.team == TEAM_BLUE){
+    teamoffset = 2;
+}else if KothControlPoint.team == -1{
+    teamoffset = 0
 }
-else if (KothControlPoint.cappers &gt; 0 and !KothControlPoint.locked)
-{
-    draw_sprite_ext(ControlPointCappersS, 0, xoffset+xsize/2, yoffset+ysize-40, 3, 3, 0, c_white, 1);
-    draw_set_halign(fa_center);
+
+draw_sprite_ext(ControlPointHUDS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+
+if (KothControlPoint.capping != 0){
+    if KothControlPoint.cappingTeam==TEAM_RED{
+        draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),KothControlPoint.capping/KothControlPoint.capTime*100,c_black,redC,redC,2,0,0)
+    }else if KothControlPoint.cappingTeam==TEAM_BLUE{
+        draw_healthbar(drawx+(20),(yoffset+ysize-40)+(20),drawx-(18),(yoffset+ysize-40)-(19),KothControlPoint.capping/KothControlPoint.capTime*100,c_black,blueC,blueC,2,0,0)
+    }
+}
+
+if (KothControlPoint.locked){
+    draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-45, 2, 2, 0, c_white, 1);
     draw_set_color(c_black);
-    draw_text_transformed(xoffset+xsize/2+13, yoffset+ysize-37, string(KothControlPoint.cappers),1.5,1.5,0);
+    draw_text_transformed(xoffset+xsize/2+1, yoffset+ysize-25, ceil(cpUnlock/30), 1, 1, 0);
+}else if (KothControlPoint.cappers &gt; 0 and !KothControlPoint.locked){
+    draw_sprite_ext(ControlPointCappersS, 0, drawx+3, yoffset+ysize-30, 2, 2, 0, c_white, 1);
+    draw_set_color(c_black);
+    draw_text_transformed(drawx+10, yoffset+ysize-28, string(KothControlPoint.cappers),1,1,0);
+    
+    //cap %
+    draw_text_transformed(drawx+2, yoffset+ysize-49, string(floor(KothControlPoint.capping/KothControlPoint.capTime*100))+"%",1,1,0);
+    draw_text_transformed(drawx+2, yoffset+ysize-39, string(floor((KothControlPoint.capTime-KothControlPoint.capping)/(30*KothControlPoint.cappers)))+"s",1,1,0);
 }
 
 draw_kothtimer();

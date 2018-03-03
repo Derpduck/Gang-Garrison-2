@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="chatc_forceload" type="RESOURCE"/>
+  <resource name="chatc_load" type="RESOURCE"/>
+  <resource name="chatc_vote_yes" type="RESOURCE"/>
+  <resource name="chatc_vote_no" type="RESOURCE"/>
+  <resource name="chatc_vote_cancel" type="RESOURCE"/>
+  <resource name="chatc_pug" type="RESOURCE"/>
+  <resource name="chatc_shuffle" type="RESOURCE"/>
+</resources>

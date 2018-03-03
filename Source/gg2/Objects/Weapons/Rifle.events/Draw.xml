@@ -14,41 +14,42 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">event_inherited();
-if (tracerAlpha &gt; 0.05)
-{
+if (tracerAlpha &gt; 0.05){
     shot = false;
     var origdepth;
     origdepth = depth;
     depth = -2;
     
     draw_set_alpha(tracerAlpha);
-    if(owner.team == TEAM_RED)
+    if(owner.team == TEAM_RED){
         draw_line_width_color(shotx,shoty,x2,y2,2,c_red,c_red);
-    else
+    }else{
         draw_line_width_color(shotx,shoty,x2,y2,2,c_blue,c_blue);
-    if(global.particles != PARTICLES_OFF)
-        tracerAlpha /= delta_mult(1.75);
-    else tracerAlpha = 0;
+    }
+    tracerAlpha /= delta_mult(1.25)//delta_mult(1.75);
         
     draw_set_alpha(1);
     depth = origdepth;
-}
-else
+}else{
     tracerAlpha = 0;
+}
 
-if (owner.zoomed &amp;&amp; owner == global.myself.object)
-{
-    if (hitDamage &lt; maxDamage)
-    {
+if (owner.zoomed &amp;&amp; owner == global.myself.object){
+    if (hitDamage &lt; maxDamage){
         draw_set_alpha(0.25);
         draw_sprite_ext(ChargeS, 0, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, 0, c_white, image_alpha);
         draw_set_alpha(0.8);
+    }else{
+        draw_sprite_ext(FullChargeS, 0, mouse_x + 65*-image_xscale, mouse_y-7, 1, 1, 0, c_white, image_alpha);
     }
-    else
-        draw_sprite_ext(FullChargeS, 0, mouse_x + 65*-image_xscale, mouse_y, 1, 1, 0, c_white, image_alpha);
-        draw_sprite_part_ext(ChargeS, 1, 0, 0, ceil((hitDamage)*40/maxDamage), 20, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, c_white, image_alpha);
+    draw_sprite_part_ext(ChargeS, 1, 0, 0, ceil((hitDamage-baseDamage)*40/(maxDamage-baseDamage)), 20, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, c_white, image_alpha);
 }
 
+if golden==1 and global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+    normalSprite=RifleBlankS
+    recoilSprite=RifleBlankFS
+    reloadSprite=RifleBlankFRS
+}
 </argument>
       </arguments>
     </action>

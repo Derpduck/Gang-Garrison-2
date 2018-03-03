@@ -16,77 +16,108 @@
         <argument kind="STRING">charSetSolids();
 // Handle dropdown platforms
 dropdownrectify = false;
-with(DropdownPlatform)
-{
-    if(place_meeting(x, y, other) and !(other.keyState &amp; $02)
-       and (other.bbox_bottom - (other.y - other.yprevious) - 1)
-           &lt; (bbox_top - (y - yprevious)))
-    {
+with(DropdownPlatform){
+    if(place_meeting(x, y, other) and !(other.keyState &amp; $02) and (other.bbox_bottom - (other.y - other.yprevious) - 1) &lt; (bbox_top - (y - yprevious))){
         // Move with the platform if we're standing on one.
-        if (object_index == MovingPlatform)
-        {
-            if (trigger == 1 || (trigger == 2 &amp;&amp; other.intel))
-            {
-                alarm[0] = 3;
+        if (object_index == MovingPlatform){
+            if (trigger == 1 || (trigger == 2 &amp;&amp; other.intel)){
+                alarm[0] = 3/global.delta_factor;
                 moving = true;
             }
             
-            if (moving || trigger == 0)
-            {
+            if (moving || trigger == 0){
                 other.x += hspeed * global.delta_factor;
                 other.y += vspeed * global.delta_factor;
             }
         }
     
-        while(place_meeting(x, y, other))
+        while(place_meeting(x, y, other)){
             other.y -= 0.1;
+        }
         other.vspeed = 0;
         dropdownrectify = true;
     }
 }
 // Climbing down stairs
 // if we aren't falling this frame, and we're not on a dropdown platform
-if(vspeed == 0 and (!place_meeting(x, y+1, DropdownPlatform) or place_meeting(x, y, DropdownPlatform)))
-{ 
-    if(place_free(x,y+6))
-        if(!place_free(x,y+7))
+if(vspeed == 0 and (!place_meeting(x, y+1, DropdownPlatform) or place_meeting(x, y, DropdownPlatform))){ 
+    if(place_free(x,y+6)){
+        if(!place_free(x,y+7)){
             y += 6;
-        else if(speed &gt; 6) if(place_free(x,y+12)) if(!place_free(x,y+13))
+        }else if(speed &gt; 6) if(place_free(x,y+12)) if(!place_free(x,y+13)){
             y += 12;
+        }
+    }
 }
 xprevious = x;
 yprevious = y;
 
-if(!place_free(x,y+1) and vspeed &gt;= 0)
-    moveStatus = 0;
+//Bhop
+if vspeed &gt;= 0{
+    if !place_free(x,y+1){
+        if wantToJump==false {
+            moveStatus=0
+        }else{
+            if intel{
+                moveStatus=0
+            }else{
+                if hopCounter==0{
+                    hspeed-=max(0,(abs(hspeed)-basemaxspeed)/2.5)*sign(hspeed)
+                    hopCounter+=1
+                }else{
+                    moveStatus=0
+                }
+            }
+        }
+    }
+}//else
+//if(!place_free(x,y+1) and vspeed &gt;= 0) //keep
+//    moveStatus = 0; //keep
+
+/* old
+//Bhopping from rocketjumps
+if(!place_free(x,y+1) and vspeed &gt;= 0){
+        if wantToJump==false{
+            moveStatus = 0;
+        }else{
+            hspeed-=max(0,(abs(hspeed)-basemaxspeed)/2)*sign(hspeed) * global.delta_factor
+        }
+}*/
+
+if moveStatus==0{
+    hopCounter=0
+}
 
 charUnsetSolids();
 
-if(global.isHost &amp;&amp; hp&lt;=0) {
+if(global.isHost &amp;&amp; hp&lt;=0){
     var assistant;
     assistant = secondToLastDamageDealer;
-    with(lastDamageDealer)
-        if (object)
-            if (object.healer)
+    with(lastDamageDealer){
+        if (object!=-1){
+            if (object.healer){
                 assistant = object.healer;
+            }
+        }
+    }
                 
     sendEventPlayerDeath(player, lastDamageDealer, assistant, lastDamageSource);
     doEventPlayerDeath(player, lastDamageDealer, assistant, lastDamageSource);
-    with(GameServer) {
+    with(GameServer){
         ServerBalanceTeams();
     }
     exit;
 }
     
-if(hp&gt;maxHp) {
+if(hp&gt;maxHp){
     hp=maxHp;
 }
     
-if(((aimDirection+270) mod 360)&gt;180) {
+if(((aimDirection+270) mod 360)&gt;180){
     image_xscale=1;
     currentWeapon.image_xscale=1;
     currentWeapon.image_angle = aimDirection;
-} else {
+}else{
     image_xscale=-1;
     currentWeapon.image_xscale=-1;
     currentWeapon.image_angle = aimDirection+180;
@@ -97,13 +128,13 @@ currentWeapon.y=round(y);
     
 // Limit people to the area of the room to prevent the
 // "Falling through the floors" issue.
-if(x&lt;0) {
+if(x&lt;0){
     x=0;
 }
 if(x&gt;map_width()){
     x = map_width();
 }
-if(y&lt;0) {
+if(y&lt;0){
     y = 0;
 }
 if(y&gt;map_height()){
@@ -112,38 +143,50 @@ if(y&gt;map_height()){
 
     
 // Cloak
-if (cloak and cloakAlpha &gt; 0 and !cloakFlicker)
-    cloakAlpha = max(cloakAlpha - 0.05, 0);
-else if (!cloak and cloakAlpha &lt; 1)
-    cloakAlpha = min(cloakAlpha + 0.05, 1);
+if (cloak and cloakAlpha &gt; 0 and !cloakFlicker){
+    cloakAlpha = max(cloakAlpha - (0.05*global.delta_factor), 0);
+}else if (!cloak and cloakAlpha &lt; 1){
+    cloakAlpha = min(cloakAlpha + (0.05*global.delta_factor), 1);
+}
     
 // Taunts
-if (taunting)
-{
+if (taunting){
     tauntindex += tauntspeed*0.1 * global.delta_factor;
     if (tauntindex &gt;= sprite_get_number(tauntsprite))
         taunting = false;
     if (hasClassReward(player, "TauntMoney_"))
     {
-        if (tauntindex == 0.30)
+        if (tauntindex == 0.30){
             instance_create(x, y, Money);
+        }
     }
 }
     
 //sandvich
-if (omnomnomnom)
-{
+if (omnomnomnom){
     omnomnomnomindex += 0.25 * global.delta_factor;
+    lasthp = hp
     image_xscale=xscale;
-    if(hp &lt; maxHp) // This should prevent the "ate and got hit but didn't refresh cooldown" bug
-    { // Also, cooldown is now reset continually until fully healed or finished eating.
+    if(hp &lt; maxHp){ // This should prevent the "ate and got hit but didn't refresh cooldown" bug
+    // Also, cooldown is now reset continually until fully healed or finished eating.
         canEat = false;
         alarm[6] = eatCooldown / global.delta_factor;
     }
-    if (hp &lt;= maxHp)
-        hp += 1.6 * global.delta_factor;
-    if (omnomnomnomindex &gt;= omnomnomnomend)
+    if (hp &lt;= maxHp){
+        if omnomnomnomindex&gt;21/4{
+            hp += ((150+4)/(128-21)) * global.delta_factor;
+            eatingDamage-=(((150+4)/(128-21)) * global.delta_factor)/4
+        }
+    }
+    if (omnomnomnomindex &gt;= omnomnomnomend){
         omnomnomnom=false;
+        eatingDamage=0
+    }
+    
+    if global.jumpMode{
+        hspeed=jOldHspeed
+        vspeed=jOldVspeed
+    }
 }
 
 //for things polling whether the character is on a medcabinet
@@ -164,9 +207,7 @@ if (player == global.myself)
         
         view_xview[0] = x+relxmouse-view_wview[0];
         view_yview[0] = y+relymouse-view_hview[0];
-    }
-    else
-    {
+    }else{
         view_xview[0] = x-view_wview[0]/2;
         view_yview[0] = y-view_hview[0]/2;
     }
@@ -174,6 +215,46 @@ if (player == global.myself)
 
 realnumflames = numFlames * burnDuration / maxDuration;
 
+//AFK
+if global.isHost{
+    if aimDirection==oldAimDirection and keyState==0{
+        sAfkTimer-=1
+    }else if keyState!=0 or aimDirection!=oldAimDirection{
+        sAfkTimer=sAfkTimeout
+    }
+    
+    if player.object.sAfkTimer&lt;=0 and global.serverAfkTimeout!=0{
+        var message, color;
+        color = getPlayerColor(player, true);
+        message = global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+" has been moved to "+C_GREEN+"Spectators"+C_WHITE+" for being AFK."
+        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+        write_ushort(global.publicChatBuffer, string_length(message));
+        write_string(global.publicChatBuffer, message);
+        write_byte(global.publicChatBuffer,-1)
+        print_to_chat(message);// For the host
+                    
+        player.team=TEAM_SPECTATOR
+        with(player.object){
+            if (!instance_exists(lastDamageDealer) || lastDamageDealer == player){
+                sendEventPlayerDeath(player, player, noone, DAMAGE_SOURCE_BID_FAREWELL);
+                doEventPlayerDeath(player, player, noone, DAMAGE_SOURCE_BID_FAREWELL);
+            }else{
+                var assistant;
+                assistant = secondToLastDamageDealer;
+                if (lastDamageDealer.object){
+                    if (lastDamageDealer.object.healer){
+                        assistant = lastDamageDealer.object.healer;
+                    }
+                }
+                sendEventPlayerDeath(player, lastDamageDealer, assistant, DAMAGE_SOURCE_FINISHED_OFF);
+                doEventPlayerDeath(player, lastDamageDealer, assistant, DAMAGE_SOURCE_FINISHED_OFF);
+            }
+        }
+        ServerPlayerChangeteam(ds_list_find_index(global.players,player),TEAM_SPECTATOR,global.sendBuffer)
+    }
+    
+    oldAimDirection=aimDirection
+}
 </argument>
       </arguments>
     </action>

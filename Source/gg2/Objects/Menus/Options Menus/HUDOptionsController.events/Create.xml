@@ -14,8 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    menu_create(48, 172, 500, 260, 32, 40, 104, 6);
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
     menumode = true;
+    virnum=0
     
     if(room != Options)
         menu_setdimmed();
@@ -41,10 +42,6 @@
     menu_add_option(0, "Default");
     menu_add_option(1, "Stacked");
     
-    menu_addedit_boolean("Fade Scoreboard:", "global.fadeScoreboard", '
-        gg2_write_ini("Settings", "Fade Scoreboard", argument0);
-    ');
-    
     menu_addtablink("Ingame", '
         instance_destroy();
         instance_create(x,y,OptionsController);
@@ -61,13 +58,12 @@
         instance_destroy();
         instance_create(x,y,AdvControlsController);
     ');
-
     menu_addtablink("HUD", '
         instance_destroy();
         instance_create(x,y,HUDOptionsController);
     ');
     
-    menu_addback("Back", '
+    menu_addback("[0] Back", '
         instance_destroy();
         if(room == Options)
             room_goto_fix(Menu);

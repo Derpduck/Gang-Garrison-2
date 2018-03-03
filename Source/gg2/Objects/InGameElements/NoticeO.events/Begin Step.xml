@@ -13,21 +13,18 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(not done)
-{
-    if(alpha &lt; 0.8)
-        alpha = power(alpha,
-                      power(0.7, global.delta_factor));
-    else
-        alpha = 0.8;
-}
-else
-{
-    if(alpha &gt; 0.01)
-        alpha = power(alpha,
-                      power(1/0.7, global.delta_factor));
-    else
+        <argument kind="STRING">if(not done){
+    if(alpha &lt; 0.6){
+        alpha = power(alpha,power(0.4, global.delta_factor));
+    }else{
+        alpha = 0.6;
+    }
+}else{
+    if(alpha &gt; 0.1){
+        alpha = power(alpha,power(1/0.4, global.delta_factor));
+    }else{
         instance_destroy();
+    }
 }
 </argument>
       </arguments>

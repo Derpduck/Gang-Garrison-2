@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Commands" type="GROUP"/>
+  <resource name="Binds" type="GROUP"/>
+  <resource name="console_init" type="RESOURCE"/>
+  <resource name="console_print" type="RESOURCE"/>
+  <resource name="console_addCommand" type="RESOURCE"/>
+  <resource name="console_defineCommands" type="RESOURCE"/>
+  <resource name="console_rulesCheck" type="RESOURCE"/>
+  <resource name="console_parseInput" type="RESOURCE"/>
+  <resource name="console_parseInput_RCON" type="RESOURCE"/>
+</resources>

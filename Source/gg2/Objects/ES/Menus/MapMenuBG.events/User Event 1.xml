@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="11">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">randomXStart=random_range(room_width/scaleFactor,sprite_get_width(sprite_index)-(room_width/scaleFactor))
+randomYStart=random_range(room_height/scaleFactor-20,sprite_get_height(sprite_index)-(room_height/scaleFactor)+20)
+randomDir=irandom_range(0,359)
+randomSpeed=random_range(0.7,2.5)*global.delta_factor//*(60/room_speed)
+randomTime=random_range(10,20)
+
+x=room_width - ((randomXStart*scaleFactor))*1.2
+y=room_height - ((randomYStart*scaleFactor))*1.2
+startx=x
+starty=y
+direction=randomDir
+speed=randomSpeed
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -23,6 +23,10 @@ if (shieldHp &gt; 0) {
     shieldIndex += 4/30 * global.delta_factor;
     if shieldIndex &gt; 4 shieldIndex = 0;
 }
+
+if global.isLive==0{
+    hp=maxHp
+}
 </argument>
       </arguments>
     </action>

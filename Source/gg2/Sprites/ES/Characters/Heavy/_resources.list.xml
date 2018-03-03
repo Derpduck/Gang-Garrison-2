@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="HeavyRedSM" type="RESOURCE"/>
+  <resource name="HeavyRedRunSM" type="RESOURCE"/>
+  <resource name="HeavyRedStandSM" type="RESOURCE"/>
+  <resource name="HeavyRedJumpSM" type="RESOURCE"/>
+  <resource name="HeavyRedLeanLSM" type="RESOURCE"/>
+  <resource name="HeavyRedLeanRSM" type="RESOURCE"/>
+  <resource name="HeavyRedDeadSM" type="RESOURCE"/>
+  <resource name="HeavyRedTauntSM" type="RESOURCE"/>
+  <resource name="HeavyRedHSM" type="RESOURCE"/>
+  <resource name="HeavyRedIntelSM" type="RESOURCE"/>
+  <resource name="HeavyRedWalkSM" type="RESOURCE"/>
+  <resource name="HeavyRedOmnomnomnomSM" type="RESOURCE"/>
+  <resource name="HeavyBlueSM" type="RESOURCE"/>
+  <resource name="HeavyBlueRunSM" type="RESOURCE"/>
+  <resource name="HeavyBlueStandSM" type="RESOURCE"/>
+  <resource name="HeavyBlueJumpSM" type="RESOURCE"/>
+  <resource name="HeavyBlueLeanLSM" type="RESOURCE"/>
+  <resource name="HeavyBlueLeanRSM" type="RESOURCE"/>
+  <resource name="HeavyBlueDeadSM" type="RESOURCE"/>
+  <resource name="HeavyBlueTauntSM" type="RESOURCE"/>
+  <resource name="HeavyBlueHSM" type="RESOURCE"/>
+  <resource name="HeavyBlueIntelSM" type="RESOURCE"/>
+  <resource name="HeavyBlueWalkSM" type="RESOURCE"/>
+  <resource name="HeavyBlueOmnomnomnomSM" type="RESOURCE"/>
+</resources>

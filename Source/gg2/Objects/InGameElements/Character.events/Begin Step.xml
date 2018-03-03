@@ -14,12 +14,10 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">// Apply afterburn
-if (burnDuration &gt; 0)
-{
-    if(hp &gt; 0)
-    {   // Don't count if someone else already finished him off, to prevent afterburn from "stealing" sticky kills (Bug #1021989)
-        if (lastDamageDealer != burnedBy and lastDamageDealer != player)
-        {
+if (burnDuration &gt; 0){
+    if(hp &gt; 0){
+    // Don't count if someone else already finished him off, to prevent afterburn from "stealing" sticky kills (Bug #1021989)
+        if (lastDamageDealer != burnedBy and lastDamageDealer != player){
             secondToLastDamageDealer = lastDamageDealer;
             alarm[4] = alarm[3] / global.delta_factor;
         }
@@ -27,55 +25,69 @@ if (burnDuration &gt; 0)
         lastDamageDealer = burnedBy;
         lastDamageSource = afterburnSource;
         dealDamage(lastDamageDealer, id, burnIntensity / 30);
+        
+        if burnedBy==global.myself{
+            var damageDone;
+            damageDone = instance_create(x,y,DamageIndicator)
+            damageDone.dmg = burnIntensity / 30
+            global.myself.stats[DAMAGE]+=burnIntensity / 30
+            global.myself.roundStats[DAMAGE]+=burnIntensity / 30
+            damageDone.owner = id
+        }
+    
     }
     burnDuration -= durationDecay * global.delta_factor;
     timeUnscathed = 0;
 }
-if (alarm[0] == -1 &amp;&amp; burnIntensity &gt; 0) burnIntensity -= intensityDecay;
-if (burnDuration &lt;= 0 || burnIntensity &lt;= 0)
-{
+if (alarm[0] == -1 &amp;&amp; burnIntensity &gt; 0){
+    burnIntensity -= intensityDecay;
+}
+if (burnDuration &lt;= 0 || burnIntensity &lt;= 0){
     burnDuration = 0;
     burnIntensity = 0;
     burnedBy = -1;
     afterburnSource = -1;
 }
-// Handle input
-if(player.queueJump)
-{
-    if (pressedKeys &amp; $80)
-        wantToJump = true;
-    else if (releasedKeys &amp; $80)
-        wantToJump = false;
+
+//Bots
+if lastNode != -1{
+    distanceTraveled += hspeed
 }
 
-if(!taunting and !omnomnomnom)
-{
-    if(!player.humiliated and (keyState | pressedKeys) &amp; $10)
-        with(currentWeapon) event_user(1);
-    if(!player.humiliated and pressedKeys &amp; $01)  {
-        if (!invisible &amp;&amp; cloakAlpha == 1)
+// Handle input
+if(player.queueJump){
+    if (pressedKeys &amp; $80){
+        wantToJump = true;
+    }else if (releasedKeys &amp; $80){
+        wantToJump = false;
+    }
+}
+
+if(!taunting and !omnomnomnom){
+    if(!player.humiliated and (keyState | pressedKeys) &amp; $10){
+        with(currentWeapon){
+            event_user(1);
+        }
+    }
+    if(!player.humiliated and pressedKeys &amp; $01){
+        if (!invisible &amp;&amp; cloakAlpha == 1){
             taunting=true;
-        tauntindex=0;
-        image_speed=tauntspeed;
-    } 
+            tauntindex=0;
+            image_speed=tauntspeed;
+        } 
+    }
     
-    if(pressedKeys &amp; $80 or (player.queueJump and wantToJump))
-    {
+    if(pressedKeys &amp; $80 or (player.queueJump and wantToJump)){
         charSetSolids();
-        if ((!place_free(x, y+1) and place_free(x, y))
-            or (place_meeting(x, y+1, DropdownPlatform) and !place_meeting(x, y, DropdownPlatform)))
-        {
-            if(not stabbing)
-            {
+        if ((!place_free(x, y+1) and place_free(x, y)) or (place_meeting(x, y+1, DropdownPlatform) and !place_meeting(x, y, DropdownPlatform))){
+            if(not stabbing){
                 doublejumpUsed = 0;
                 wantToJump = false;
                 playsound(x,y,JumpSnd);
                 vspeed = min(vspeed, -jumpStrength);
                 onground = false;
             }
-        }
-        else if(canDoublejump and !doublejumpUsed and vspeed &gt; -jumpStrength)
-        {
+        }else if(canDoublejump and !doublejumpUsed and vspeed &gt; -jumpStrength){
             wantToJump = false;
             vspeed = -jumpStrength;
             playsound(x,y,JumpSnd);
@@ -87,59 +99,59 @@ if(!taunting and !omnomnomnom)
 }
 
 // Right click
-if (!player.humiliated and ((keyState | pressedKeys) &amp; $08)
-    and (!taunting or player.class == CLASS_DEMOMAN) and !omnomnomnom)
-{
-    with(currentWeapon)
+if (!player.humiliated and ((keyState | pressedKeys) &amp; $08) and (!taunting or player.class == CLASS_DEMOMAN) and !omnomnomnom) and tdmGrace==0{
+    with(currentWeapon){
         event_user(2);
+    }
 }
 
 // Cloak
-if (!player.humiliated &amp;&amp; (pressedKeys &amp; $08)
-    &amp;&amp; canCloak &amp;&amp; ((cloakAlpha == 1 and !cloak) or cloak)
-    &amp;&amp; !intel  &amp;&amp; !taunting)
-{
-    if(currentWeapon.readyToStab) {
-        if (cloak) { // stop spies immediately picking up intel after uncloaking
+if (!player.humiliated and (pressedKeys &amp; $08)
+    and canCloak and ((cloakAlpha == 1 and !cloak) or cloak)
+    and !intel  and !taunting){
+    if(currentWeapon.readyToStab) and tdmGrace==0{
+        if (cloak){ // stop spies immediately picking up intel after uncloaking
             canGrabIntel = false;
-            alarm[1] = max(alarm[1], 25 / global.delta_factor); // avoid decreasing the alarm on accident
+            alarm[1] = max(alarm[1], 15 / global.delta_factor); // avoid decreasing the alarm on accident
         }
         cloak = !cloak;
     }
 }
 
-switch(moveStatus) // moveStatus is reset in collision with ceilings (including doors if they reject you)
-{
+switch(moveStatus){ // moveStatus is reset in collision with ceilings (including doors if they reject you)
 case 1: //If I am rocketing/mining myself
-    controlFactor = 0.65;
-    frictionFactor = 1;
+    //if (intel){
+    //    controlFactor = 0.65 - 0.01
+    //}else{
+        controlFactor = 0.65;
+    //}
+    frictionFactor = 1 //+ 0.65 - controlFactor
     break;
 case 2: //If I am rocketing/mining an enemy
     controlFactor = 0.45;
     frictionFactor = 1.05;
     break;
 case 3: //Airblast
-    controlFactor = 0.35;
-    frictionFactor = 1.05;
+    controlFactor = 0.15//0.35;
+    frictionFactor = 1.03
     break;
 case 4: //If I am rocketing/mining a teamate
     controlFactor = baseControl;
     frictionFactor = 1;
     break;
 default:
-    if (player.humiliated)
+    if (player.humiliated){
         controlFactor = baseControl-0.2;
-    else if (intel)
-        controlFactor = baseControl-0.1;
-    else
+    }else if (intel) and player.class==CLASS_SCOUT{
+        controlFactor = baseControl-0.1; //intel slowdown
+    }else{
         controlFactor = baseControl;
+    }
     frictionFactor = baseFriction;
 }
 
-if(moveStatus == 1 or moveStatus == 2 or moveStatus == 4 and global.run_virtual_ticks)
-{
-    if !variable_local_exists("jumpFlameParticleType")
-    {
+if(moveStatus == 1 or moveStatus == 2 or moveStatus == 4 and global.run_virtual_ticks){
+    if !variable_local_exists("jumpFlameParticleType"){
         jumpFlameParticleType = part_type_create();
         part_type_sprite(jumpFlameParticleType,FlameS,true,false,true);
         part_type_alpha2(jumpFlameParticleType,1,0.3);
@@ -148,32 +160,24 @@ if(moveStatus == 1 or moveStatus == 2 or moveStatus == 4 and global.run_virtual_
     }
     vspeed -= 0.06 * global.delta_factor;
     
-    if !variable_global_exists("jumpFlameParticleSystem")
-    {
+    if !variable_global_exists("jumpFlameParticleSystem"){
         global.jumpFlameParticleSystem = part_system_create();
         part_system_depth(global.jumpFlameParticleSystem, 10);
     }
     
-    if(global.particles == PARTICLES_NORMAL)
-    {
-        if(random(1) &gt; (controlFactor+frictionFactor)/2)
-        {
+    if(global.particles == PARTICLES_NORMAL){
+        if(random(1) &gt; (controlFactor+frictionFactor)/2){
             effect_create_below(ef_smoke,x-hspeed*1.2,y-vspeed*1.2+20,0,c_gray);
         }
     }
-    if(global.particles == PARTICLES_NORMAL or global.particles == PARTICLES_ALTERNATIVE)
-    {
-        if(random(7) &lt; 5)
-        {
+    //if(global.particles == PARTICLES_NORMAL or global.particles == PARTICLES_ALTERNATIVE){
+        if(random(7) &lt; 5){
             part_particles_create(global.jumpFlameParticleSystem,x,y+19,jumpFlameParticleType,1);
         }
-    }
+    //}
 }
-if(spinjumping)
-{
-    
-    if !variable_local_exists("jumpDustParticleType")
-    {
+if(spinjumping){
+    if !variable_local_exists("jumpDustParticleType"){
         jumpDustParticleType = part_type_create();
         part_type_sprite(jumpDustParticleType,SpeedBoostS,false,false,true);
         part_type_alpha3(jumpDustParticleType,0.7,0.5,0);
@@ -181,114 +185,96 @@ if(spinjumping)
         part_type_scale(jumpDustParticleType,1,1);
         part_type_orientation(jumpDustParticleType, -90, -90, 0, 0, 0);
     }
-    if !variable_global_exists("jumpDustParticleSystem")
-    {
+    if !variable_global_exists("jumpDustParticleSystem"){
         global.jumpDustParticleSystem = part_system_create();
         part_system_depth(global.jumpDustParticleSystem, 10);
     }
     
-    if(global.particles == PARTICLES_NORMAL or global.particles == PARTICLES_ALTERNATIVE)
-    {
-        if(random(4) &lt; 4)
-        {
-            if(sign(_last_hspeed) &gt; 0)
+    //if(global.particles == PARTICLES_NORMAL or global.particles == PARTICLES_ALTERNATIVE){
+        if(random(4) &lt; 4){
+            if(sign(_last_hspeed) &gt; 0){
                 part_particles_create(global.jumpDustParticleSystem,bbox_right+1,bbox_bottom-4,jumpDustParticleType,1);
-            else
+            }else{
                 part_particles_create(global.jumpDustParticleSystem,bbox_left +2,bbox_bottom-4,jumpDustParticleType,1);
+            }
         }
-    }
+    //}
 }
 
 controlling = false;
-repeat(global.frameskip)
-{
+repeat(global.frameskip){
     // Do movement
-    if(!taunting &amp;&amp; !omnomnomnom)
-    {
-        if((keyState|pressedKeys) &amp; $40 and hspeed &gt;= -basemaxspeed)
-        {
+    if(!taunting &amp;&amp; !omnomnomnom){
+        if((keyState|pressedKeys) &amp; $40 and hspeed &gt;= -basemaxspeed){
             hspeed -= runPower*controlFactor * global.skip_delta_factor;
             controlling = true;
         }
-        if((keyState|pressedKeys) &amp; $20 and hspeed &lt;= basemaxspeed)
-        {
+        if((keyState|pressedKeys) &amp; $20 and hspeed &lt;= basemaxspeed){
             hspeed += runPower*controlFactor * global.skip_delta_factor;
             controlling = !controlling; // cancel out 'controlling' if both buttons are pressed
         }
     }
     // divide friction as normal if going way too fast
-    if(abs(hspeed) &gt; basemaxspeed * 2 or
-       ((keyState|pressedKeys) &amp; $60 and abs(hspeed) &lt; basemaxspeed))
+    if(abs(hspeed) &gt; basemaxspeed * 2 or ((keyState|pressedKeys) &amp; $60 and abs(hspeed) &lt; basemaxspeed)){
         hspeed /= delta_mult_skip(baseFriction);
-    else //otherwise divide by the moveStatus's friction
+    }else{ //otherwise divide by the moveStatus's friction
         hspeed /= delta_mult_skip(frictionFactor);
+    }
 }
     
 pressedKeys = 0;
 releasedKeys = 0;
 
 // flame bubble
-if burnDuration&gt;0 &amp;&amp; player.class != CLASS_PYRO and random(80) &lt;= 1 {
+if burnDuration&gt;0 &amp;&amp; player.class != CLASS_PYRO and random(80) &lt;= 1{
     setChatBubble(player, 49);
 }
 
 // stop players who are moving too slowly (avoid "ice skating")
-if (abs(hspeed) &lt; 0.195 * global.delta_factor and !controlling)
+if (abs(hspeed) &lt; 0.195 and !controlling)
 {
     hspeed=0;
     animationImage=0;
     still = true;
-}
-else
+}else{
     still = false;
+}
 
 charSetSolids();
 
-if(place_free(x,y+1)) // no obstacle ground below us
-{
+if(place_free(x,y+1)){ // no obstacle ground below us
     vspeed += 0.6 * global.delta_factor;
-    if(vspeed &gt; 10)
+    if(vspeed &gt; 10){
         vspeed = 10;
+    }
     
     // standing on a dropdown platform
-    if (place_meeting(x, y+1, DropdownPlatform) and !place_meeting(x, y, DropdownPlatform) and vspeed &gt;= 0)
-    {
+    if (place_meeting(x, y+1, DropdownPlatform) and !place_meeting(x, y, DropdownPlatform) and vspeed &gt;= 0){
         onground = true;
         moveStatus = 0;
-    }
-    else // NOT standing on one
-    {
+    }else{ // NOT standing on one
         animationImage = 1;
         onground = false;
     }
-}
-else // obstacle ground below us
-{
-    if(place_free(x, y) or (place_meeting(x, y+1, DropdownPlatform) and !place_meeting(x, y, DropdownPlatform)) and vspeed &gt;= 0)
-    {
+}else{ // obstacle ground below us
+    if(place_free(x, y) or (place_meeting(x, y+1, DropdownPlatform) and !place_meeting(x, y, DropdownPlatform)) and vspeed &gt;= 0){
         onground = true;
         doublejumpUsed = 0;
         moveStatus = 0;
     }
 }
 
-if (intel)
-{ 
-    if (global.run_virtual_ticks)
-    {
-        if (speed &gt; 0.195)
-        {
-            if (random(1) &gt; 0.90)
-            {
+if (intel){ 
+    if (global.run_virtual_ticks){
+        if (speed &gt; 0.195){
+            if (random(1) &gt; 0.90){
                 var sheet;
                 sheet = instance_create(x,y-11+random(9),LooseSheet);
                 sheet.hspeed = hspeed;
                 if (hasReward(player, "GoldTrail"))
                     sheet.sprite_index = choose(SheetFallingGold1, SheetFallingGold2, SheetFallingGold3);
             }
-        }
-        else if (random(1) &gt; 0.975)
-        {
+        }else if (random(1) &gt; 0.975){
             var sheet;
             sheet = instance_create(x,y-11+random(9),LooseSheet);
             sheet.hspeed = hspeed;
@@ -296,47 +282,44 @@ if (intel)
                 sheet.sprite_index = choose(SheetFallingGold1, SheetFallingGold2, SheetFallingGold3);
         }
     }
-    if (cloak)
-    {
+    if (cloak){
         cloak=false;
-        cloakAplha=1;
+        cloakAlpha=1;
     }
-    if (!omnomnomnom) // Do not recharge intel timer if eating
-        intelRecharge = min(INTEL_MAX_TIMER, // Cap timer charge at the intel timer's length (bandwidth)
-                            intelRecharge + global.delta_factor * // ...After adding some value to it 
-                            INTEL_MAX_TIMER/((3+abs(min(hspeed, 7))/3.5)*30)); // ...Which starts at a rate of full charge per three seconds, and reduces linearly with speed, down to full charge per five seconds with a scout's max speed
+    //if (!omnomnomnom){ // Do not recharge intel timer if eating
+        //intelRecharge = min(INTEL_MAX_TIMER, // Cap timer charge at the intel timer's length (bandwidth)
+                            //intelRecharge + global.delta_factor * // ...After adding some value to it 
+                            //INTEL_MAX_TIMER/((3+abs(min(hspeed, 7))/3.5)*30)); // ...Which starts at a rate of full charge per three seconds, and reduces linearly with speed, down to full charge per five seconds with a scout's max speed
+    //}
+    if (global.run_virtual_ticks){
+        intelRecharge+=3.75
+        intelRecharge=min(INTEL_MAX_TIMER,intelRecharge)
+        //if intelRecharge&gt;INTEL_MAX_TIMER{
+            //intelRecharge=INTEL_MAX_TIMER
+        //}
+    }
 }
 var sprite_length;
-if(player.class == CLASS_QUOTE or sprite_special or zoomed)
+if(player.class == CLASS_QUOTE or sprite_special or zoomed){
     sprite_length = 2;
-else
+}else{
     sprite_length = CHARACTER_ANIMATION_LEN;
-
-if (player.humiliated)
-{
-    if (!place_free(x,y+1) &amp;&amp; hspeed == 0)
-        animationImage = 0;
-    else if place_free(x,y+1)
-        animationImage = 2;
-    if (!place_free(x,y+1) &amp;&amp; hspeed != 0)
-        animationImage = 1+
-        ((animationImage-1+
-          min(abs(hspeed), 8)
-          *global.delta_factor/20) mod 
-         2);
 }
-else
-{
-    if (place_free(x,y+1) and hspeed != 0 and player.class == CLASS_QUOTE)
-    {
-        animationImage = 1;
+
+if (player.humiliated){
+    if (!place_free(x,y+1) &amp;&amp; hspeed == 0){
+        animationImage = 0;
+    }else if place_free(x,y+1){
+        animationImage = 2;
     }
-    else
-    {
-        animationImage = (animationImage+
-         min(abs(hspeed)*sign(hspeed), 8)
-         *image_xscale*global.delta_factor/20)
-        mod sprite_length;
+    if (!place_free(x,y+1) &amp;&amp; hspeed != 0){
+        animationImage = 1+((animationImage-1+min(abs(hspeed), 8)*global.delta_factor/20) mod 2);
+    }
+}else{
+    if (place_free(x,y+1) and hspeed != 0 and player.class == CLASS_QUOTE){
+        animationImage = 1;
+    }else{
+        animationImage = (animationImage+min(abs(hspeed)*sign(hspeed), 8)*image_xscale*global.delta_factor/20) mod sprite_length;
     }
     // ensure positive animationImage
     animationImage = (animationImage+sprite_length) mod sprite_length;
@@ -345,29 +328,27 @@ else
 charUnsetSolids();
 
 // drop intel if ubered or round is over
-if (intel and (ubered or global.mapchanging) and global.isHost) {
+if (intel and (ubered or global.mapchanging) and global.isHost){
     sendEventDropIntel(player);
     doEventDropIntel(player);
 }
 
 //gotta regenerate some nuts
-nutsNBolts = min(nutsNBolts+(0.1 * global.delta_factor), maxNutsNBolts);
+nutsNBolts = min(nutsNBolts+(0.12 * global.delta_factor), maxNutsNBolts);
 
 //ubered max out ammo and extinguish flames
-if ubered {
-    if (burnIntensity &gt; 0 || burnDuration &gt; 0)
-    {
+if ubered{
+    if (burnIntensity &gt; 0 || burnDuration &gt; 0){
         burnIntensity = 0;
         burnDuration = 0;
         burnedBy = -1;
     }
-    if instance_exists(currentWeapon) {
-        with(currentWeapon) {
-            if(variable_local_exists("maxAmmo")) {
+    if instance_exists(currentWeapon){
+        with(currentWeapon){
+            if(variable_local_exists("maxAmmo")){
                 ammoCount = maxAmmo;
             }
-            if (alarm[5] &gt; 0)
-            {
+            if (alarm[5] &gt; 0){
                 // Stop the animation
                 event_perform(ev_alarm, 5);
             }
@@ -379,20 +360,21 @@ if ubered {
 //give max ammo for players on the winning team
 var arenaRoundEnd;
 arenaRoundEnd = true;
-if instance_exists(ArenaHUD) { 
-    if(ArenaHUD.endCount!=0) 
+if instance_exists(ArenaHUD){ 
+    if(ArenaHUD.endCount!=0){ 
         arenaRoundEnd=true;
-    else arenaRoundEnd=false;
+    }else{
+        arenaRoundEnd=false;
+    }
 }
 
-if (arenaRoundEnd and global.mapchanging and !player.humiliated) {
-    if instance_exists(currentWeapon) {
+if (arenaRoundEnd and global.mapchanging and !player.humiliated){
+    if instance_exists(currentWeapon){
         with(currentWeapon){
-            if(variable_local_exists("maxAmmo")) {
+            if(variable_local_exists("maxAmmo")){
                 ammoCount = maxAmmo;
             }
-            if (alarm[5] &gt; 0)
-            {
+            if (alarm[5] &gt; 0){
                 // Stop the animation
                 event_perform(ev_alarm, 5);
             }
@@ -402,23 +384,52 @@ if (arenaRoundEnd and global.mapchanging and !player.humiliated) {
 }
 
 //drop cloak and unscope if on losing team or stalemate
-if (player.humiliated)
-{
-    if (zoomed)
+if (player.humiliated){
+    if (zoomed){
         toggleZoom(id);
-    if (!stabbing)
+    }
+    if (!stabbing){
         cloak = false;
+    }
 }
 
 // Determine if the character is capturing a CP, and which
 var zone;
 zone = collision_point(x,y,CaptureZone,0,0);
 
-if(zone &gt;= 0 and !cloak and cloakAlpha == 1)
+if(zone &gt;= 0 and !cloak and cloakAlpha == 1){
     cappingPoint = zone.cp;
-else
+}else{
     cappingPoint = noone;
+}
 
+//TDM grace period
+if tdmGrace==1 and global.isLive==1{
+    tdmGraceTimer-=1*global.delta_factor
+    hp=maxHp
+    flamecount=0
+    burnIntensity=0
+    burnDuration=0
+    burnedBy=-1
+    lastDamageDealer=noone
+    lastDamageSource=-1
+    secondToLastDamageDealer=noone
+    with(currentWeapon){
+        readyToShoot=0
+    }
+    if graceAnimation==-1{
+        graceAnimation=1
+        alarm[9]=5/global.delta_factor
+    }
+}
+
+if tdmGraceTimer&lt;=0 and tdmGrace==1 and global.isLive==1{
+    tdmGrace=0
+    with(currentWeapon){
+        readyToShoot=1
+    }
+    graceAnimation=-1
+}
 </argument>
       </arguments>
     </action>

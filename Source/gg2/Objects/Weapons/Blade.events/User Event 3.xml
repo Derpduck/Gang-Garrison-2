@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="13">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if(bubbleCount &lt; maxBubbles and owner.canBubble==1){
+    var sBubble;
+    sBubble = createShot(x+lengthdir_x(min(150,owner.aimDistance),owner.aimDirection), y+lengthdir_y(min(150,owner.aimDistance),owner.aimDirection), SuperBubble, DAMAGE_SOURCE_BUBBLE, 0, 0);
+    sBubble.gun = id;
+    //justShot = true;
+    //readyToShoot = false;
+    owner.canBubble=0
+    owner.alarm[10] = owner.bubbleCooldown / global.delta_factor;
+    bubbleCount += 1;
+}
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

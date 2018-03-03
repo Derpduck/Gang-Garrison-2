@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="KEYBOARD" id="17">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if keyboard_check_pressed(ord('V')){
+    if clipboard_has_text(){
+        keyboard_string += clipboard_get_text();
+    }
+}
+
+if keyboard_check_pressed(ord(string(1))){
+    keyboard_string+=string(chr(94+33))
+}else if keyboard_check_pressed(ord(string(2))){
+    keyboard_string+=string(chr(96+33))
+}else if keyboard_check_pressed(ord(string(3))){
+    keyboard_string+=string(chr(97+33))
+}else if keyboard_check_pressed(ord(string(4))){
+    keyboard_string+=string(chr(104+33))
+}else if keyboard_check_pressed(ord(string(5))){
+    keyboard_string+=string(chr(108+33))
+}else if keyboard_check_pressed(ord(string(6))){
+    keyboard_string+=string(chr(110+33))
+}else if keyboard_check_pressed(ord(string(7))){
+    keyboard_string+=string(chr(111+33))
+}else if keyboard_check_pressed(ord(string(8))){
+    keyboard_string+=string(chr(124+33))
+}else if keyboard_check_pressed(ord(string(9))){
+    keyboard_string+=string(chr(127+33))
+}else if keyboard_check_pressed(ord(string(0))){
+    keyboard_string+=string(chr(197+33))
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

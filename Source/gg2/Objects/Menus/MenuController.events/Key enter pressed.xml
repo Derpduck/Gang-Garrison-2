@@ -16,6 +16,7 @@
         <argument kind="STRING">if(editing != -1) { 
     switch (item_type[editing]) {
         case "edittext":
+        case "edittext_rgb":
             menu_set_var(editing, item_value[editing]);
             execute_string(item_script[editing], item_value[editing]);
             break;

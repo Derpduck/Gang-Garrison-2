@@ -26,7 +26,28 @@ if (alarm[6] &lt;= 0){
     //We are shooting, loop the shoot animation
     imageOffset = floor(image_index mod recoilAnimLength) + recoilAnimLength*owner.team
 }
-    draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,c_white,image_alpha);
+
+    if golden==1{
+        if global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+            _color=make_color_rgb(global.myHaxxyColorR,global.myHaxxyColorG,global.myHaxxyColorB)
+        }else{
+            _color=c_white
+        }
+    }else{
+        _color=c_white
+    }
+    
+    if global.weaponDraw==1 and !owner.cloak{
+        if owner==global.myself.object{
+            if keyboard_check(global.attack) or mouse_check_button(mb_left) or keyboard_check(global.special) or mouse_check_button(mb_right){
+                image_alpha=1
+            }else{
+                image_alpha=0
+            }
+        }
+    }
+
+    draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,_color,image_alpha);
     /*if (sprite_index == normalSprite) {
          draw_sprite_ext(overlaySprite,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, c_red,0.5*(1-(ammoCount/maxAmmo)));
     }else if (sprite_index == recoilSprite) {
@@ -39,6 +60,12 @@ if (owner.ubered) {
     else if owner.team == TEAM_BLUE
         ubercolour = c_blue;
     draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,ubercolour,0.7*image_alpha);
+}
+
+if golden==1 and global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+    normalSprite=MinigunBlankS
+    recoilSprite=MinigunBlankFS
+    reloadSprite=-1
 }
 </argument>
       </arguments>

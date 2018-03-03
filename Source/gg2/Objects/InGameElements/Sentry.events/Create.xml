@@ -29,8 +29,8 @@ humiliated = 0;
 buildrate = 1.2;
 
 // For self-knockback when destroyed
-blastRadius = 65;
-knockback = 4;
+blastRadius = 70;
+knockback = 5;
        
 lastDamageDealer = noone;
 lastDamageSource = -1;

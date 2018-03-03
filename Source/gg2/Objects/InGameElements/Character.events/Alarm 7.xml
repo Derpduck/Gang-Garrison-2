@@ -28,11 +28,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(player.class == CLASS_SPY)
-{
+        <argument kind="STRING">if(player.class == CLASS_SPY){
     cloakFlicker = false;
-    if(cloak)
+    if(cloak){
         cloakAlpha = 0;
+    }
 }
 </argument>
       </arguments>

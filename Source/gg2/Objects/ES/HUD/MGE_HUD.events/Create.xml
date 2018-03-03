@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">timeLimit=global.timeLimitMins*30*60;
+timer=timeLimit;
+teamoffset=0;
+overtime = 0;
+global.rupTime=5*30/global.delta_factor
+
+maxScore=global.mgeScoreLimit
+totalArenas=5 //0-4
+
+redScore[0]=0
+redScore[1]=0
+redScore[2]=0
+redScore[3]=0
+redScore[4]=0
+
+blueScore[0]=0
+blueScore[1]=0
+blueScore[2]=0
+blueScore[3]=0
+blueScore[4]=0
+
+arenaPlayers[0]=0
+arenaPlayers[1]=0
+arenaPlayers[2]=0
+arenaPlayers[3]=0
+arenaPlayers[4]=0
+
+redPlayer[0]=-1
+redPlayer[1]=-1
+redPlayer[2]=-1
+redPlayer[3]=-1
+redPlayer[4]=-1
+
+bluePlayer[0]=-1
+bluePlayer[1]=-1
+bluePlayer[2]=-1
+bluePlayer[3]=-1
+bluePlayer[4]=-1
+
+sendWinner=-1
+sendLoser=-1
+sendI=-1
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

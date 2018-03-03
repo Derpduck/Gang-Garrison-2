@@ -19,6 +19,7 @@ global.caplimit = ini_read_real("Server", "CapLimit", 5);
 global.Server_RespawntimeSec = ini_read_real("Server", "Respawn Time", 5);
 readClasslimitsFromIni();
 ini_close();
+virnum=0
 
 //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
 if (global.Server_RespawntimeSec == 0)
@@ -26,7 +27,7 @@ if (global.Server_RespawntimeSec == 0)
 else
     global.Server_Respawntime = global.Server_RespawntimeSec * 30;
 
-menu_create(48, 172, 500, 260, 32, 40, 112, 128);
+menu_create(48, 110, 500, 300, 32, 40, 112, 6)
 menumode = true;
 
 menu_background(512, 24, 8, 12, 4);
@@ -78,7 +79,8 @@ menu_addtablink("Classlimits", '
     instance_destroy();
 ');
 
-menu_addlink("Start Game", '
+menu_addlink("[1] Start Game", '
+    global.myself = -1;
     //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
     if (global.Server_RespawntimeSec == 0)
         global.Server_Respawntime = 1;
@@ -87,7 +89,7 @@ menu_addlink("Start Game", '
     
     global.gameServer = instance_create(0,0,GameServer);
 ');
-menu_addback("Back", '
+menu_addback("[0] Back", '
     instance_create(x,y,MainMenuController);
     instance_destroy();
 ');

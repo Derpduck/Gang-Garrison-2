@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">image_index = 0
+image_speed = 0.5*global.delta_factor
+image_xscale = 2
+image_yscale = 2
+hspeed = random_range(7, 25)*global.delta_factor
+vspeed = random_range(4, 16)*global.delta_factor
+depth = random(1)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

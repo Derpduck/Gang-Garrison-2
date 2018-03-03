@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="RocketFizzleS" type="RESOURCE"/>
+  <resource name="YellowMineTrailS" type="RESOURCE"/>
+  <resource name="RedExplosionS" type="RESOURCE"/>
+  <resource name="BlueExplosionS" type="RESOURCE"/>
+  <resource name="SuperBubbleS" type="RESOURCE"/>
+  <resource name="BubbleRangeS" type="RESOURCE"/>
+  <resource name="StabShowS" type="RESOURCE"/>
+  <resource name="sprite999" type="RESOURCE"/>
+  <resource name="BladeProjectileGoldS" type="RESOURCE"/>
+  <resource name="OldBubbleS" type="RESOURCE"/>
+  <resource name="RocketSM" type="RESOURCE"/>
+  <resource name="RedRocketSM" type="RESOURCE"/>
+  <resource name="BlueRocketSM" type="RESOURCE"/>
+  <resource name="MineSM" type="RESOURCE"/>
+  <resource name="BladeProjectileSM" type="RESOURCE"/>
+</resources>

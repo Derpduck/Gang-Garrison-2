@@ -16,15 +16,16 @@
         <argument kind="STRING">ammoCount = max(0, ammoCount-1);
 playsound(x,y,ShotgunSnd);
 var shot;
-repeat(5) {
+//repeat(5) {
+for (i=0; i&lt;5; i+=1){
     shot = createShot(x, y, Shot, DAMAGE_SOURCE_SHOTGUN, owner.aimDirection, 13);
-    shot.hitDamage = 7;
+    shot.hitDamage = 8;
     if(golden)
         shot.sprite_index = ShotGoldS;
     
     shot.hspeed += owner.hspeed;
-    shot.speed += random(4)-2;
-    shot.direction += random(11)-5.5;
+    shot.speed += random(2)-1 //random(3)-1.5
+    shot.direction += (1.5*i)-3 //+= random(6)-3 //random(11)-5.5
 }
 justShot=true;
 readyToShoot=false;

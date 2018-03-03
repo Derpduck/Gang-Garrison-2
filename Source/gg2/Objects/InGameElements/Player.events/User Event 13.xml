@@ -27,8 +27,14 @@
         stats[BONUS] = read_ubyte(global.deserializeBuffer);
         stats[POINTS] = read_ubyte(global.deserializeBuffer);
         queueJump = read_ubyte(global.deserializeBuffer);
+        
         parseRewards(receivestring(global.serverSocket, 2), rewards);
         parseBadges(rewards, badges);
+    }
+    
+    if(global.updateType == QUICK_UPDATE){
+        receiveCompleteMessage(global.serverSocket,1,global.deserializeBuffer);
+        MGE_currentArena = read_byte(global.deserializeBuffer);
     }
  
     var charObj, subobjects;

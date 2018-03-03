@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
+    menumode = true;
+    virnum=0
+    setVirNum=0
+    
+    if (room != ModOptions){
+        menu_setdimmed();
+    }
+    
+    menu_background(512, 24, 8, 12, 4);
+    bgtabs = true;
+    
+    menu_addedit_boolean("Borderless Window:","global.borderless",'
+        es_write_ini("s","Borderless",argument0)
+        if argument0==1{
+            window_set_showborder(0)
+            window_set_showicons(0)
+        }else if argument0==0{
+            window_set_showborder(1)
+            window_set_showicons(1)
+        }
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Faster Corpse Fade:","global.fastBodyFade",'
+        es_write_ini("s","FastBodyFade",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Hide Gun Shells:","global.noShells",'
+        es_write_ini("s","NoShells",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Yellow Mine Trails:","global.yellowMineTrails",'
+        es_write_ini("s","YellowMineTrails",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Show Weapon Only When Shooting:","global.weaponDraw",'
+        es_write_ini("s","WeaponDraw",argument0)
+    ')setVirNum+=1 
+    
+    menu_addedit_select("Text Highlight Color:","global.textSelectCol",'
+        es_write_ini("s","TextSelectCol",argument0)
+    ')setVirNum+=1
+    menu_add_option(0,"Red")
+    menu_add_option(1,"Cyan")
+    
+    //TABS
+    menu_addtablink("General", '
+        instance_destroy()
+        instance_create(x,y,ModOptionsController)
+    ');
+    menu_addtablink("Host", '
+        instance_destroy()
+        instance_create(x,y,ModHostOptionsController)
+    ');
+    menu_addtablink("GFX", '
+        instance_destroy()
+        instance_create(x,y,ModGraphicalOptionsController)
+    ');
+    menu_addtablink("HUD", '
+        instance_destroy()
+        instance_create(x,y,ModHUDOptionsController)
+    ');
+    menu_addtablink("HUD 2", '
+        instance_destroy()
+        instance_create(x,y,ModHUD2OptionsController)
+    ');
+    menu_addtablink("Controls", '
+        instance_destroy()
+        instance_create(x,y,ModControlsOptionsController)
+    ');
+    menu_addtablink("Configs", '
+        instance_destroy()
+        instance_create(x,y,ModConfigsController)
+    ');
+    
+    menu_addback("[0] Back", '
+        instance_destroy()
+        if(room == ModOptions){
+            room_goto_fix(Menu)
+        }else{
+            instance_create(0,0,InGameMenuController)
+        }
+    ');
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

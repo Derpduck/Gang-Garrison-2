@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var a, i;
+for (a=0; a&lt;ds_list_size(global.players); a+=1){
+    redPlayer[a]=-1
+    bluePlayer[a]=-1
+    player=ds_list_find_value(global.players,a)
+    if player.MGE_currentArena!=-1{
+        if player.team==TEAM_RED{
+            redPlayer[player.MGE_currentArena]=player
+        }else if player.team==TEAM_BLUE{
+            bluePlayer[player.MGE_currentArena]=player
+        }
+    }
+}
+
+for (i=0; i&lt;totalArenas; i+=1){
+    var winner, loser;
+    if redScore[i]&gt;=maxScore{
+        winner=redPlayer[i]
+        loser=bluePlayer[i]
+        
+        sendWinner=winner
+        sendLoser=loser
+        sendI=i
+        if sendWinner!=-1{
+            if sendLoser!=-1{
+                event_user(0)
+            }
+        }
+    }else if blueScore[i]&gt;=maxScore{
+        winner=bluePlayer[i]
+        loser=redPlayer[i]
+        
+        sendWinner=winner
+        sendLoser=loser
+        sendI=i
+        if sendWinner!=-1{
+            if sendLoser!=-1{
+                event_user(0)
+            }
+        }
+    }
+    
+    //If arena does not have at least 1 player on each team, reset scores
+    if redPlayer[i]==-1 or bluePlayer[i]==-1{
+        if redScore[i]!=0 or blueScore[i]!=0{
+            redScore[i]=0
+            blueScore[i]=0
+            GameServer.syncTimer=1
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

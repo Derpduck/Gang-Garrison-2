@@ -14,9 +14,11 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">alarm[0] = 30;
-alarm[1] = 240;
+//alarm[1] = 240;
 image_speed=0;
 
+//instant skip
+alarm[1]=1
 </argument>
       </arguments>
     </action>

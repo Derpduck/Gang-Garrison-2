@@ -14,14 +14,14 @@ if (player.team != TEAM_SPECTATOR)
     if (instance_exists(BubbleMenuX))
     {
         BubbleMenuX.done = true;
-        existed = 1;        
+        existed = 1;
     }
     if (existed == 0)
     {
-        instance_create(x,y,BubbleMenuX);    
-    }         
+        instance_create(x,y,BubbleMenuX);
+    }
     else
     {
-        BubbleMenuX.done = true;    
+        BubbleMenuX.done = true;
     }
 }

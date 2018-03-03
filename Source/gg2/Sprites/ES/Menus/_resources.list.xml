@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="MenuIconS" type="RESOURCE"/>
+  <resource name="UpdaterProgressBarS" type="RESOURCE"/>
+  <resource name="MapMenuBGS" type="RESOURCE"/>
+  <resource name="ctf_conflictS" type="RESOURCE"/>
+</resources>

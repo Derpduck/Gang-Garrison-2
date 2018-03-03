@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="11">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//Captain selects a player and moves them to a team
+player=pickedPlayer
+
+player.team=pickedPlayerTeam
+if player.object!=-1{
+    with(player.object){
+        if (!instance_exists(lastDamageDealer) || lastDamageDealer == player){
+            sendEventPlayerDeath(player, player, noone, DAMAGE_SOURCE_BID_FAREWELL);
+            doEventPlayerDeath(player, player, noone, DAMAGE_SOURCE_BID_FAREWELL);
+        }else{
+            var assistant;
+            assistant = secondToLastDamageDealer;
+            if (lastDamageDealer.object){
+                if (lastDamageDealer.object.healer){
+                    assistant = lastDamageDealer.object.healer;
+                }
+            }
+            sendEventPlayerDeath(player, lastDamageDealer, assistant, DAMAGE_SOURCE_FINISHED_OFF);
+            doEventPlayerDeath(player, lastDamageDealer, assistant, DAMAGE_SOURCE_FINISHED_OFF);
+        }
+    }
+}
+ServerPlayerChangeteam(ds_list_find_index(global.players,player),player.team,global.sendBuffer)
+
+var message;
+message = global.chatPrintPrefix+pickedColour+redCaptain.name+C_WHITE+" picked "+pickedColour+pickedPlayer.name+C_WHITE+"."
+write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+write_ushort(global.publicChatBuffer, string_length(message))
+write_string(global.publicChatBuffer, message)
+write_byte(global.publicChatBuffer,-1)
+print_to_chat(message);// For the host
+
+if pickNumber&gt;maxPicks{
+    event_user(5)
+    stage=4
+    alarm[2]=30/global.delta_factor
+}
+
+if stage==3{
+    event_user(0)
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

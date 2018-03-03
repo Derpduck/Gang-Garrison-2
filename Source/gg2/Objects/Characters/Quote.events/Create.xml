@@ -49,11 +49,17 @@ weapons[0] = Blade;
 if (player.team == TEAM_RED)
 {
     sprite_index = QuerlyRedS;
+    if global.dumbledankSprites==1{
+        sprite_index = QuerlyRedSM;
+    }
     haxxyStatue = QuoteHaxxyStatueS;
 }
 else if (player.team == TEAM_BLUE)
 {
     sprite_index = QuerlyBlueS;
+    if global.dumbledankSprites==1{
+        sprite_index = QuerlyBlueSM;
+    }
     haxxyStatue = CurlyHaxxyStatueS;
 }
 </argument>

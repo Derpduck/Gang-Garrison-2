@@ -313,6 +313,7 @@ if (canClick) {
         erasing = true;
         scaleX = round(mouse_x/6)*6;
         scaleY = round(mouse_y/6)*6;
+        oldSelected = selected
         selected = -1;
         mirrored = -1;
     }
@@ -345,6 +346,7 @@ if ((mouse_check_button_released(mb_left) || !scale) &amp;&amp; scaling) {
     }
 } else if ((mouse_check_button_released(mb_right)) &amp;&amp; erasing) {
     erasing = false;
+    selected = oldSelected
 
     with(LevelEntity)
         if (collision_rectangle(other.scaleX, other.scaleY, mouse_x, mouse_y, id, false, false))

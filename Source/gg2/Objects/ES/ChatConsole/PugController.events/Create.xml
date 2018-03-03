@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">/*Stages:
+0: Setup/Initial
+1: Red captain
+2: Blue captain
+3: Pick teams
+4: Map picking
+5: pug started
+*/
+
+stage=0 //setup
+alarm[0]=30/global.delta_factor
+mix=0
+
+redCaptain=-1
+blueCaptain=-1
+
+pickingPlayers=ds_list_create()
+pickingList=""
+
+pickedPlayer=-1
+pickedPlayerTeam=-1
+pickedColour=C_GREEN
+
+teamToPick=0 //0=red, 1=blue, 2=spec, 3=any
+pickNumber=1
+maxPicks=(global.pugVotePicks*2)-2
+
+mapsPickedCount=0
+mapPickerTeam=1
+mapList=ds_list_create()
+
+event_user(2)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

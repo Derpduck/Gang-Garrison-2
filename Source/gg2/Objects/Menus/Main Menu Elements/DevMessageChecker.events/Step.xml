@@ -58,7 +58,7 @@ if (http_step(handle)) {
                 popup.updating = true;
             }
             break;
-        case "Background":
+        /*case "Background":
             var text, list, hash, title, url, showVersion;
             text = ds_list_find_value(data, c + 1);
             list = ds_list_create();
@@ -134,6 +134,7 @@ if (http_step(handle)) {
                 ini_close();
             }
             break;
+            */
         }
     }
 

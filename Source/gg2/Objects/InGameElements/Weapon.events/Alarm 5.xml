@@ -15,7 +15,8 @@
       <arguments>
         <argument kind="STRING">sprite_index = normalSprite;
 image_speed = 0;
-alarm[6] = -1;
+image_index = floor(image_index mod (image_number/2)) + (image_number/2)*owner.team;
+//alarm[6] = -1;
 </argument>
       </arguments>
     </action>

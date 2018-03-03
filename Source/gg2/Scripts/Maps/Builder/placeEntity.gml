@@ -1,4 +1,4 @@
-/** 
+/**
  * Places an entity at the given x/y position with given x/y scales
  * Argument0: X position
  * Argument1: Y position
@@ -9,7 +9,7 @@
 
 with(Builder)
 {
-    var entity;  
+    var entity;
     entity = instance_create(argument0, argument1, LevelEntity);
     if (argument4)
     {

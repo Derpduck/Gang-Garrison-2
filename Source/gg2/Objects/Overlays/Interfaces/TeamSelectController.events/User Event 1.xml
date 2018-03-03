@@ -24,11 +24,9 @@
         instance_create(map_width()/2,map_height()/2,Spectator);
     }
 
-    if (global.startedGame == true) 
-    {
-        alarm[1] = 5;
-    }
-    
+if (global.startedGame == true) {
+    alarm[1] = 5;
+}
 </argument>
       </arguments>
     </action>

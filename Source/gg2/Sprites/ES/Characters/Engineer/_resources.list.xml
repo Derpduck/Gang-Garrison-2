@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="EngineerRedSM" type="RESOURCE"/>
+  <resource name="EngineerRedRunSM" type="RESOURCE"/>
+  <resource name="EngineerRedStandSM" type="RESOURCE"/>
+  <resource name="EngineerRedJumpSM" type="RESOURCE"/>
+  <resource name="EngineerRedLeanLSM" type="RESOURCE"/>
+  <resource name="EngineerRedLeanRSM" type="RESOURCE"/>
+  <resource name="EngineerRedDeadSM" type="RESOURCE"/>
+  <resource name="EngineerRedTauntSM" type="RESOURCE"/>
+  <resource name="EngineerRedHSM" type="RESOURCE"/>
+  <resource name="EngineerRedIntelSM" type="RESOURCE"/>
+  <resource name="EngineerBlueSM" type="RESOURCE"/>
+  <resource name="EngineerBlueRunSM" type="RESOURCE"/>
+  <resource name="EngineerBlueStandSM" type="RESOURCE"/>
+  <resource name="EngineerBlueJumpSM" type="RESOURCE"/>
+  <resource name="EngineerBlueLeanLSM" type="RESOURCE"/>
+  <resource name="EngineerBlueLeanRSM" type="RESOURCE"/>
+  <resource name="EngineerBlueDeadSM" type="RESOURCE"/>
+  <resource name="EngineerBlueTauntSM" type="RESOURCE"/>
+  <resource name="EngineerBlueHSM" type="RESOURCE"/>
+  <resource name="EngineerBlueIntelSM" type="RESOURCE"/>
+</resources>

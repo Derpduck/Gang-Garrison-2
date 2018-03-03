@@ -13,9 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">afktimeout = 60*30;
-afktimer = afktimeout;
-oldScoreKeyDown = false;
+        <argument kind="STRING">oldScoreKeyDown = false;
+
+instance_create(0,0,Ping_FPS_Indicator)
+
+global.isChatting=0
+instance_create(0,0,ChatBox)
 </argument>
       </arguments>
     </action>

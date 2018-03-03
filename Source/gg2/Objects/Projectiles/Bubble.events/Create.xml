@@ -17,7 +17,7 @@
     gun = noone;
     owner = noone;
     ownerPlayer = noone;
-    hitDamage = 0.75;
+    hitDamage = 1;
     lifetime = 155;
     alarm[0] = lifetime / global.delta_factor;
     

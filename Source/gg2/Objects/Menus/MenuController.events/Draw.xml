@@ -18,21 +18,53 @@
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
 }
-if(view_hview[0] &lt; 600)
-{
-    ds_list_add(mouse_samples, window_mouse_get_y());
-    while(ds_list_size(mouse_samples) &gt; 10)
-        ds_list_delete(mouse_samples, 0);
-    var des_y;
-    des_y = 0;
-    for(i = 0; i &lt; ds_list_size(mouse_samples); i += 1)
-        des_y += ds_list_find_value(mouse_samples, i);
-    des_y /= ds_list_size(mouse_samples);
-    
-    ybegin = round(baseybegin
-                   - min(1, max(0, des_y/view_hview[0]))
-                     *(600-view_hview[0]));
+
+if room==CustomMapRoom{
+    if(view_hview[0] &lt; 600){
+        ds_list_add(mouse_samples, window_mouse_get_y());
+        while(ds_list_size(mouse_samples) &gt; 10)
+            ds_list_delete(mouse_samples, 0);
+        var des_y;
+        des_y = 0;
+        for(i = 0; i &lt; ds_list_size(mouse_samples); i += 1)
+            des_y += ds_list_find_value(mouse_samples, i);
+        des_y /= ds_list_size(mouse_samples);
+        
+        ybegin = round(baseybegin - min(1, max(0, des_y/view_hview[0]))*(600-view_hview[0]));
+    }
+}else{
+    if(view_hview[0] &lt; 720){
+        ds_list_add(mouse_samples, window_mouse_get_y());
+        while(ds_list_size(mouse_samples) &gt; 10)
+            ds_list_delete(mouse_samples, 0);
+        var des_y;
+        des_y = 0;
+        for(i = 0; i &lt; ds_list_size(mouse_samples); i += 1)
+            des_y += ds_list_find_value(mouse_samples, i);
+        des_y /= ds_list_size(mouse_samples);
+        
+        ybegin = round(baseybegin - min(1, max(0, des_y/view_hview[0]))*(720-view_hview[0]));
+    }
 }
+
+if instance_exists(ModOptGFXBasic) or instance_exists(ModOptGFXAdv) or instance_exists(ModHostOptionsController){
+    hPlus=MenuController.setVirNum*32 - (18*32)
+    if(view_hview[0] &lt; 720+hPlus){
+        ds_list_add(mouse_samples, window_mouse_get_y());
+        while(ds_list_size(mouse_samples) &gt; 10)
+            ds_list_delete(mouse_samples, 0);
+        var des_y;
+        des_y = 0;
+        for(i = 0; i &lt; ds_list_size(mouse_samples); i += 1)
+            des_y += ds_list_find_value(mouse_samples, i);
+        des_y /= ds_list_size(mouse_samples);
+        
+        ybegin = round(baseybegin - min(1, max(0, des_y/view_hview[0]))*(720+hPlus-view_hview[0]));
+        global.menuYBegin=ybegin
+    }
+}
+
+
 {
     var i, val, itemx, itemy, itemcount;
     menu_hack_backbutton();
@@ -79,10 +111,15 @@ if(view_hview[0] &lt; 600)
             draw_set_alpha(1);
         }
         
-        if(i == -2-virtualitem and !editing)
-            draw_set_color(c_red);
-        else
+        if(i == -2-virtualitem and !editing){
+            if global.textSelectCol==0{
+                draw_set_color(c_red);
+            }else if global.textSelectCol==1{
+                draw_set_color(c_aqua)
+            }
+        }else{
             draw_set_color(c_white);
+        }
         
         draw_text(itemx, itemy, tab_name[i]);
     }
@@ -101,15 +138,21 @@ if(view_hview[0] &lt; 600)
             draw_set_alpha(1);
         }
     
-        if (editing == i)
-            draw_set_color(c_orange);
-        else if(i == virtualitem and getsHighlight)
-            draw_set_color(c_red);
-        else
+        if (editing == i){
+                draw_set_color(c_orange);
+        }else if(i == virtualitem and getsHighlight){
+            if global.textSelectCol==0{
+                draw_set_color(c_red);
+            }else if global.textSelectCol==1{
+                draw_set_color(c_aqua)
+            }
+        }else{
             draw_set_color(c_white);
+        }
 
         draw_text(view_xview[0]+xbegin,view_yview[0]+ybegin+i*spacing,item_name[i]);
         
+        val_rgb=-1
         switch (item_type[i])
         {
         case "script":
@@ -119,7 +162,16 @@ if(view_hview[0] &lt; 600)
         case "edittext2":
         case "edittext":
         case "editnum":
-            val = item_value[i];
+            if (instance_exists(OptionsController) or instance_exists(LobbyController)) and (editing==i){
+                val = item_value[i] + " ("+string((MAX_PLAYERNAME_LENGTH)-string_length(item_value[i]))+")"
+            }else{
+                val = item_value[i]
+            }
+            break;
+        
+        case "edittext_rgb":
+            val = item_value[i]
+            val_rgb = color_code_split(val)
             break;
         
         case "editselect":
@@ -176,11 +228,53 @@ if(view_hview[0] &lt; 600)
             case MOUSE_RIGHT:
                 val = "Right Mouse Button";
                 break;
+            case MOUSE_MIDDLE:
+                val = "Middle Mouse Button";
+                break;
+            case vk_f1:
+                val = "F1"
+                break;
+            case vk_f2:
+                val = "F2"
+                break;
+            case vk_f3:
+                val = "F3"
+                break;
+            case vk_f4:
+                val = "F4"
+                break;
+            case vk_f5:
+                val = "F5"
+                break;
+            case vk_f6:
+                val = "F6"
+                break;
+            case vk_f7:
+                val = "F7"
+                break;
+            case vk_f8:
+                val = "F8"
+                break;
+            case vk_f9:
+                val = "F9"
+                break;
+            case vk_f10:
+                val = "F10"
+                break;
+            case vk_f11:
+                val = "F11"
+                break;
+            case vk_f12:
+                val = "F12"
+                break;
             default:
                 val = chr(menu_get_var(i));
                 break;
             }
             break;
+        }
+        if val_rgb!=-1{
+            draw_set_color(val_rgb)
         }
         draw_text(view_xview[0]+xbegin+valueoffset,view_yview[0]+ybegin+i*spacing,sanitiseNewlines(val));
     }

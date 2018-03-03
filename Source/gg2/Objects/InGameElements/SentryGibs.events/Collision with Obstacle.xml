@@ -19,6 +19,7 @@
     oldy=y;
     oldhspeed=hspeed;
     oldvspeed=vspeed;
+    inAir=0
     
     move_outside_solid(0, 8);
     move_outside_solid(180, 16);
@@ -70,7 +71,8 @@
     
     x -= hspeed;
     y -= vspeed;
-}</argument>
+}
+</argument>
       </arguments>
     </action>
   </actions>

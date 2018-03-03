@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="scout_ai" type="RESOURCE"/>
+  <resource name="pyro_ai" type="RESOURCE"/>
+  <resource name="soldier_ai" type="RESOURCE"/>
+  <resource name="heavy_ai" type="RESOURCE"/>
+  <resource name="demoman_ai" type="RESOURCE"/>
+  <resource name="medic_ai" type="RESOURCE"/>
+  <resource name="engineer_ai" type="RESOURCE"/>
+  <resource name="spy_ai" type="RESOURCE"/>
+  <resource name="sniper_ai" type="RESOURCE"/>
+  <resource name="quote_ai" type="RESOURCE"/>
+</resources>

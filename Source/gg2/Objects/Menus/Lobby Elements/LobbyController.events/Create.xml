@@ -20,6 +20,13 @@ spacing = 40;
 width = 440; 
 items = 12;
 offset = 0;
+if room==Lobby{
+if instance_exists(ReadyUpController){
+    with(ReadyUpController){
+        event_user(0)
+    }
+}
+}
 
 servers = ds_list_create();
 

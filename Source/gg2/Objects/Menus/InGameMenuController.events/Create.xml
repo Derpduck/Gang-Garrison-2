@@ -16,36 +16,43 @@
         <argument kind="STRING">{
     cursor_sprite = CrosshairS;
     global.levelchoice = 1
+    virnum=0
 
-    menu_create(40, 300, 200, 200, 32);
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
     menu_background(212, 24, 8, 12, 4);
     menu_setdimmed();
     
-    menu_addlink("Return to Game", '
+    menu_addlink("[0] Return to Game", '
         instance_destroy();
     ');
-    menu_addback("", '
-        instance_destroy();
+    menu_addlink("[1] Lobby", '
+        instance_destroy()
+        instance_create(0,0,LobbyController)
+        instance_create(0,0,LobbySideController)
+        instance_create(0,0,LobbyNameController)
+        instance_create(0,0,ScrollUpO)
+        instance_create(0,0,ScrollDownO)
     ');
-    if (global.isHost) {
-        menu_addlink("Kick players", '
-            if(!instance_exists(ScoreTableController)) instance_create(0,0,ScoreTableController);
-            ScoreTableController.showadmin = true;
-            instance_destroy();
-        ');
-    }
-    menu_addlink("Options", '
+    menu_addlink("[2] Options", '
         instance_destroy();
         instance_create(0,0,OptionsController);
     ');
-    menu_addlink("Disconnect", '
-        // Force dedicated mode to off so you can go to main menu instead of just restarting server
-        if (global.serverPluginsInUse)
-        {
-            pluginscleanup(true);
+    menu_addlink("[3] Mod Options", '
+        instance_destroy();
+        instance_create(0,0,ModHostOptionsController);
+    ');
+    menu_addlink("[4] Disconnect", '
+        if instance_exists(ReadyUpController){
+            with ReadyUpController{
+                event_user(0)
+            }
         }
-        else
-        {
+        write_ubyte(global.serverSocket, DC_REASON_USER)
+        socket_send(global.serverSocket)
+        // Force dedicated mode to off so you can go to main menu instead of just restarting server
+        if (global.serverPluginsInUse){
+            pluginscleanup(true);
+        }else{
             global.dedicatedMode = 0;
             with(Client)
                 instance_destroy();
@@ -54,8 +61,21 @@
                 instance_destroy();
         }
     ');
-    menu_addlink("Quit Game", '
+    menu_addlink("[5] Quit Game", '
+        write_ubyte(global.serverSocket, DC_REASON_USER)
+        socket_send(global.serverSocket)
+        with(Console){
+            event_user(0)
+        }
+        
+        with(ChatBox){
+            event_user(15)
+        }
         game_end();
+    ');
+    
+    menu_addback("", '
+        instance_destroy();
     ');
 }
 </argument>

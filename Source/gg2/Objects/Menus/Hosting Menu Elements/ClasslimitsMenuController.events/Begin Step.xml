@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if editing!=-1 exit;
+
+if keyboard_check_released(ord(string(1))){
+    virnum=10
+    alarm[0]=1
+}
+if keyboard_check_released(ord(string(0))){
+    virnum=11
+    alarm[0]=1
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

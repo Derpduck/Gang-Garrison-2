@@ -20,6 +20,7 @@ var imageOffset, xdrawpos, ydrawpos;
 imageOffset = owner.team;
 xdrawpos = round(x+xoffset*image_xscale);
 ydrawpos = round(y+yoffset);
+
 if(instance_exists(healTarget))
 {
     if(healTarget.object != -1)
@@ -32,6 +33,11 @@ if(instance_exists(healTarget))
             
         draw_set_alpha(0.3);
         draw_line_width_color(xdrawpos+lengthdir_x(24,owner.aimDirection),ydrawpos+lengthdir_y(24,owner.aimDirection),healTarget.object.x, healTarget.object.y, 5, color, color);
+        if global.healTargetArrow==1{
+            if global.myself.team==healTarget.team{
+                draw_triangle_color(healTarget.object.x,healTarget.object.y-40,healTarget.object.x-8,healTarget.object.y-50,healTarget.object.x+8,healTarget.object.y-50,color,color,color,0);
+            }
+        }
         if (sprite_index != normalSprite) {
             //cancel the fire animation
             sprite_index = normalSprite;
@@ -52,14 +58,40 @@ if(instance_exists(healTarget))
     }
 }
 
+    if golden==1{
+        if global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+            _color=make_color_rgb(global.myHaxxyColorR,global.myHaxxyColorG,global.myHaxxyColorB)
+        }else{
+            _color=c_white
+        }
+    }else{
+        _color=c_white
+    }
+    
+    if global.weaponDraw==1 and !owner.cloak{
+        if owner==global.myself.object{
+            if keyboard_check(global.attack) or mouse_check_button(mb_left) or keyboard_check(global.special) or mouse_check_button(mb_right){
+                image_alpha=1
+            }else{
+                image_alpha=0
+            }
+        }
+    }
 
-if !owner.player.humiliated draw_sprite_ext(sprite_index,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, c_white, 1);
+
+if !owner.player.humiliated draw_sprite_ext(sprite_index,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, _color, image_alpha);
 if (owner.ubered) {
     if owner.team == TEAM_RED
         ubercolour = c_red;
     else if owner.team == TEAM_BLUE
         ubercolour = c_blue;
     draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,ubercolour,0.7*image_alpha);
+}
+
+if golden==1 and global.useCustomHaxxyColor==1 and owner==global.myself.object and global.haxxyColorSelection!=2{
+    normalSprite=MedigunBlankS
+    recoilSprite=MedigunBlankFS
+    reloadSprite=MedigunBlankFRS
 }
 </argument>
       </arguments>

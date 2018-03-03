@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">timeLimit=global.timeLimitMins*30*60;
+        <argument kind="STRING">timeLimit=2*30*60//global.timeLimitMins*30*60;
 timer=timeLimit;
 teamoffset=0;
 winners = TEAM_SPECTATOR;
@@ -22,11 +22,11 @@ blueWins = 0;
 endCount = 0;
 roundStart = 0;
 gameStarted = 0;
-cpUnlock = 1800;
+cpUnlock = 45*30//1800;
 overtime = 0;
 redteamCharacters = 0;
 blueteamCharacters = 0;
-
+global.rupTime=5*30/global.delta_factor
 </argument>
       </arguments>
     </action>

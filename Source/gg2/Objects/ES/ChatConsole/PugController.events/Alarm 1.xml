@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//Skip the picking stage when irrelevant
+if maxPicks==0{
+    stage=4
+    alarm[2]=30/global.delta_factor
+}
+
+//Start picking teams
+var message;
+message = global.chatPrintPrefix+P_RED+"RED"+C_WHITE+" captain picks first! Type"+C_GREEN+" /pick "+C_PINK+"&lt;number&gt;"
+write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+write_ushort(global.publicChatBuffer, string_length(message))
+write_string(global.publicChatBuffer, message)
+write_byte(global.publicChatBuffer,-1)
+print_to_chat(message);// For the host
+
+event_user(0)
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

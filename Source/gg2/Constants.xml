@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <constants>
-  <constant name="VERSION" value="28300"/>
-  <constant name="GAME_VERSION_STRING" value="&quot;v2.8.3&quot;"/>
-  <constant name="GAME_NAME_STRING" value="&quot;Gang Garrison 2&quot;"/>
+  <constant name="VERSION" value="0030"/>
+  <constant name="GAME_VERSION_STRING" value="&quot;v3&quot;"/>
+  <constant name="GAME_NAME_STRING" value="&quot;E-Sports Mod&quot;"/>
   <constant name="GAME_URL_STRING" value="&quot;http://www.ganggarrison.com&quot;"/>
   <constant name="PLUGIN_SOURCE" value="&quot;http://www.ganggarrison.com/plugins/&quot;"/>
   <constant name="PLUGIN_SOURCE_NOTICE" value="&quot;While these plugins have been screened by the Gang Garrison 2 community, they cannot guarantee they are safe.&quot;"/>
   <constant name="BACKGROUND_SOURCE" value="&quot;http://www.ganggarrison.com/background.png&quot;"/>
-  <constant name="DEVMESSAGES_SOURCE" value="&quot;http://www.ganggarrison.com/devmessages.txt&quot;"/>
+  <constant name="DEVMESSAGES_SOURCE" value="&quot;http://derpduck.github.io/files/E-Sports_Mod/devmessages.txt&quot;"/>
   <constant name="DEVMESSAGES_SOURCE_BETA" value="&quot;http://www.ganggarrison.com/devmessages_beta.txt&quot;"/>
-  <constant name="UPDATE_SOURCE" value="&quot;http://www.ganggarrison.com/gg2update.zip&quot;"/>
+  <constant name="UPDATE_SOURCE" value="&quot;http://derpduck.github.io/files/E-Sports_Mod/ES_Mod.zip&quot;"/>
   <constant name="UPDATE_SOURCE_BETA" value="&quot;http://www.ganggarrison.com/gg2update_beta.zip&quot;"/>
   <constant name="LOBBY_SERVER_HOST" value="&quot;ganggarrison.com&quot;"/>
   <constant name="LOBBY_SERVER_PORT" value="29944"/>
   <constant name="AUTH_SERVER_HOST" value="&quot;ganggarrison.com&quot;"/>
   <constant name="AUTH_SERVER_PORT" value="45022"/>
-  <constant name="PROTOCOL_UUID" value="&quot;afbe5e94-4db9-a97e-3a26-63ab3cb2a618&quot;"/>
+  <constant name="PROTOCOL_UUID" value="&quot;08d3c68f-4500-885d-2074-d69ededf79ef&quot;"/>
   <constant name="GG2_LOBBY_UUID" value="&quot;1ccf16b1-436d-856f-504d-cc1af306aaa7&quot;"/>
   <constant name="HELLO" value="0"/>
   <constant name="PLAYER_JOIN" value="1"/>
@@ -104,7 +104,8 @@
   <constant name="DOMINATIONS" value="10"/>
   <constant name="REVENGE" value="11"/>
   <constant name="POINTS" value="12"/>
-  <constant name="ASSIST_TIME" value="120"/>
+  <constant name="DAMAGE" value="13"/>
+  <constant name="ASSIST_TIME" value="210"/>
   <constant name="NOTICE_NUTSNBOLTS" value="0"/>
   <constant name="NOTICE_TOOCLOSE" value="1"/>
   <constant name="NOTICE_AUTOGUNSCRAPPED" value="2"/>
@@ -135,4 +136,37 @@
   <constant name="GEAR_PARTY_HAT" value="&quot;PartyHat&quot;"/>
   <constant name="GEAR_CROWN" value="&quot;Crown&quot;"/>
   <constant name="GEAR_NAVIGATORHAT" value="&quot;NavigatorHat&quot;"/>
+  <constant name="COLOR_WHITE" value="&quot;255-255-255&quot;"/>
+  <constant name="COLOR_RGB_LENGTH" value="11"/>
+  <constant name="MAX_COMMAND_LOG_SIZE" value="100"/>
+  <constant name="RCON_LOGIN" value="60"/>
+  <constant name="RCON_COMMAND" value="61"/>
+  <constant name="KICK_RCON" value="62"/>
+  <constant name="MAX_RCON_COMMAND_LENGTH" value="88"/>
+  <constant name="RCON_LOGIN_SUCCESSFUL" value="1"/>
+  <constant name="RCON_LOGIN_FAILED" value="2"/>
+  <constant name="MOUSE_MIDDLE" value="3"/>
+  <constant name="RCON_COMMAND_SUCESSFUL" value="4"/>
+  <constant name="RCON_COMMAND_FAILED" value="5"/>
+  <constant name="RCON_COMMAND_CUSTOM_MESSAGE" value="6"/>
+  <constant name="REPLAY_END" value="255"/>
+  <constant name="CHAT_PUBLIC_MESSAGE" value="63"/>
+  <constant name="CHAT_PRIV_MESSAGE" value="64"/>
+  <constant name="CHAT_MAX_STRING_LENGTH" value="200"/>
+  <constant name="MAX_COMMAND_LOG_SIZE" value="100"/>
+  <constant name="CHAT_MAX_LINE_LENGTH" value="45"/>
+  <constant name="CHATLOG_SIZE" value="100"/>
+  <constant name="RUP_READY" value="65"/>
+  <constant name="RUP_UNREADY" value="66"/>
+  <constant name="RUP_UPDATE" value="67"/>
+  <constant name="KICK_BANNED" value="68"/>
+  <constant name="KICK_ADMIN_KICK" value="69"/>
+  <constant name="DC_REASON_USER" value="70"/>
+  <constant name="PLAYER_PING" value="71"/>
+  <constant name="KICK_TEMP_BANNED" value="72"/>
+  <constant name="MGE_CHANGE_ARENA" value="73"/>
+  <constant name="DC_REASON_LOBBY" value="74"/>
+  <constant name="PUG_CAPTAIN" value="75"/>
+  <constant name="PUG_PICK" value="76"/>
+  <constant name="PUG_MAP" value="77"/>
 </constants>

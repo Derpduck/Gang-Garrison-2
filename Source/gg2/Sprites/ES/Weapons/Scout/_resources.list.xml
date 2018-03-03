@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ScattergunSM" type="RESOURCE"/>
+  <resource name="ScattergunFSM" type="RESOURCE"/>
+  <resource name="ScattergunFRSM" type="RESOURCE"/>
+</resources>

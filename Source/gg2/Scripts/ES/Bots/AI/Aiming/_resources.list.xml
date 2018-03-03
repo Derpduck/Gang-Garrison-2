@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="bot_get_nearest_enemy" type="RESOURCE"/>
+  <resource name="bot_aim" type="RESOURCE"/>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Classlimits" type="GROUP"/>
+  <resource name="Damage API" type="GROUP"/>
+  <resource name="Drawing" type="GROUP"/>
+  <resource name="Faucet HTTP" type="GROUP"/>
+  <resource name="Gameplay" type="GROUP"/>
+  <resource name="Kill Log" type="GROUP"/>
+  <resource name="Restart" type="GROUP"/>
+  <resource name="Rooms" type="GROUP"/>
+  <resource name="Strings" type="GROUP"/>
+  <resource name="Unit tests" type="GROUP"/>
+  <resource name="delta_mult" type="RESOURCE"/>
+  <resource name="delta_mult_skip" type="RESOURCE"/>
+  <resource name="ds_list_turn" type="RESOURCE"/>
+  <resource name="ds_list_sorted_insert" type="RESOURCE"/>
+  <resource name="takeScreenshot" type="RESOURCE"/>
+</resources>

@@ -14,6 +14,10 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
+    sprite_index=MineS
+    if global.dumbledankSprites==1{
+        sprite_index=MineSM
+    }
     explosionDamage = 45;
     animationState = 1;
     alarm[1] = 29 / global.delta_factor;

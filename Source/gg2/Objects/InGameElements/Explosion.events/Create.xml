@@ -15,25 +15,8 @@
       <arguments>
         <argument kind="STRING">alarm[0]=13/global.delta_factor;
 image_speed = global.delta_factor;
+//blastSize=20//65
 </argument>
-      </arguments>
-    </action>
-    <action id="542" library="1">
-      <!--action name: Transform_Sprite-->
-      <kind>NORMAL</kind>
-      <allowRelative>false</allowRelative>
-      <question>false</question>
-      <canApplyTo>true</canApplyTo>
-      <actionType>FUNCTION</actionType>
-      <functionName>action_sprite_transform</functionName>
-      <relative>false</relative>
-      <not>false</not>
-      <appliesTo>.self</appliesTo>
-      <arguments>
-        <argument kind="EXPRESSION">2.2</argument>
-        <argument kind="EXPRESSION">2.2</argument>
-        <argument kind="EXPRESSION">0</argument>
-        <argument kind="MENU">0</argument>
       </arguments>
     </action>
   </actions>

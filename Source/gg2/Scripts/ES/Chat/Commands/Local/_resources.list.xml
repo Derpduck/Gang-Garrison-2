@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="chatc_ready" type="RESOURCE"/>
+  <resource name="chatc_unready" type="RESOURCE"/>
+  <resource name="chatc_toggleready" type="RESOURCE"/>
+  <resource name="chatc_arena" type="RESOURCE"/>
+  <resource name="chatc_captain" type="RESOURCE"/>
+  <resource name="chatc_pick" type="RESOURCE"/>
+  <resource name="chatc_map" type="RESOURCE"/>
+</resources>

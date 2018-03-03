@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ReadyUpController" type="RESOURCE"/>
+  <resource name="DamageIndicator" type="RESOURCE"/>
+  <resource name="Ping_FPS_Indicator" type="RESOURCE"/>
+  <resource name="CasterHUD" type="RESOURCE"/>
+  <resource name="SmallTeamSelect" type="RESOURCE"/>
+  <resource name="SmallClassSelect" type="RESOURCE"/>
+  <resource name="MGE_HUD" type="RESOURCE"/>
+  <resource name="QuerlySmoke" type="RESOURCE"/>
+  <resource name="QuerlyExplosion" type="RESOURCE"/>
+</resources>

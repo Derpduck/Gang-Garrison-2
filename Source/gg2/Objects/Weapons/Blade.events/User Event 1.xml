@@ -13,22 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    if(readyToShoot and bubbleCount &lt; maxBubbles)
-    {
-        var shot;
-        randomize();
-        shot = createShot(x+lengthdir_x(8, owner.aimDirection), y+lengthdir_y(8, owner.aimDirection), Bubble, DAMAGE_SOURCE_BUBBLE, owner.aimDirection, 10);
-        shot.gun = id;
-        with(shot)
-        {
-            motion_add(owner.direction, owner.speed);
-        }
-        justShot = true;
-        readyToShoot = false;
-        alarm[0] = bubbleRefireTime / global.delta_factor;
-        bubbleCount += 1;
-    }
+        <argument kind="STRING">//if(readyToShoot and owner.canBubble==1 and global.isHost)
+if(readyToShoot and bladesOut &lt; maxBlades and global.isHost)
+{
+    var seed;
+    seed = irandom(65535);
+    sendEventFireWeapon(ownerPlayer, seed);
+    doEventFireWeapon(ownerPlayer, seed);
 }
 </argument>
       </arguments>

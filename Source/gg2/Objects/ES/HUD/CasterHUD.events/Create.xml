@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">with(CasterHUD){
+    if (id != other.id){
+        instance_destroy()
+    }
+}
+
+parent=self
+visible=true
+
+specBar=0
+
+//0 = nothing
+//1 = pen mode
+//2 = move mode
+mouseMode=0
+
+cursorUpdate=true
+
+//mouse variables
+_px = mouse_x;
+_py = mouse_y;
+_x = mouse_x;
+_y = mouse_y;
+_dx = 0;
+_dy = 0;
+
+cursor_sprite=cr_none
+cursorShow=0
+
+//create surface for drawing
+//page = surface_create(map_width(), map_height());
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

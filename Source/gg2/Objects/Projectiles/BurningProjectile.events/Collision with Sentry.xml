@@ -14,7 +14,17 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if(other.team != team) {
-    damageSentry(ownerPlayer, other.id, hitDamage);
+    damageSentry(ownerPlayer, other.id, sentryHitDmg);
+    
+    if ownerPlayer==global.myself{
+        var damageDone;
+        damageDone = instance_create(other.x,other.y,DamageIndicator)
+        damageDone.dmg = sentryHitDmg
+        global.myself.stats[DAMAGE]+=sentryHitDmg
+        global.myself.roundStats[DAMAGE]+=sentryHitDmg
+        damageDone.owner = other.id
+    }
+    
     other.lastDamageDealer = ownerPlayer;
     other.lastDamageSource = weapon;
     instance_destroy();

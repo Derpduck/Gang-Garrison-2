@@ -13,11 +13,15 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    hitDamage = 5;
-    alarm[0] = 15;
-    ammoDrained = 0;
+        <argument kind="STRING">sprite_index=BladeProjectileS
+if global.dumbledankSprites==1{
+    sprite_index=BladeProjectileSM
 }
+hitDamage = 5;
+alarm[0] = 15/global.delta_factor;
+ammoDrained = 0;
+image_speed = global.delta_factor;
+image_angle=0
 </argument>
       </arguments>
     </action>

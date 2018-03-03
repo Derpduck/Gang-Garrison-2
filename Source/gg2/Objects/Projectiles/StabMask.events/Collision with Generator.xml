@@ -17,6 +17,15 @@
 {
     damageGenerator(ownerPlayer, other.id, hitDamage*0.36);
     
+    if ownerPlayer==global.myself{
+        var damageDone;
+        damageDone = instance_create(other.x,other.y,DamageIndicator)
+        damageDone.dmg = hitDamage*0.36
+        global.myself.stats[DAMAGE]+=hitDamage
+        global.myself.roundStats[DAMAGE]+=hitDamage*0.36
+        damageDone.owner = other.id
+    }
+    
     instance_destroy();
 }
 </argument>

@@ -38,6 +38,14 @@ else if(readyToStab &amp;&amp; owner.cloak)
     stab.team = owner.team;
     stab.hitDamage = 0;
     stab.weapon = DAMAGE_SOURCE_KNIFE;
+    
+    //stabShow=instance_create(x,y,StabShow)
+    //stabShow.owner=owner
+    //stabShow.speed=0
+    //stabShow.direction=stabdirection
+    //stabShow.alarm[1]=StabreloadTime/global.delta_factor
+    //stabShow.time=StabreloadTime/global.delta_factor
+    
     // 'BH' reward - *B*obble *H*ead
     if(hasClassReward(ownerPlayer, 'BH'))
     {
@@ -45,6 +53,7 @@ else if(readyToStab &amp;&amp; owner.cloak)
     }
     readyToStab = false;
     alarm[1] = StabreloadTime / global.delta_factor;
+    alarm[2]=68/global.delta_factor
 }
 </argument>
       </arguments>

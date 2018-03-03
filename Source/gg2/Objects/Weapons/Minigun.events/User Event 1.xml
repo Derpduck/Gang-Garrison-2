@@ -15,9 +15,9 @@
       <arguments>
         <argument kind="STRING">{
     // prevent sputtering
-    if (ammoCount &lt; 2)
-        ammoCount -= 2;
-    if(readyToShoot and ammoCount &gt;= 2)
+    //if (ammoCount &lt; 2)
+        //ammoCount -= 2;
+    if(readyToShoot and ammoCount &gt;= ammoCost*(2/3))
     {
         playsound(x,y,ChaingunSnd);
         var shot, shotx, shoty;
@@ -34,10 +34,16 @@
         justShot=true;
         readyToShoot=false;
         isRefilling = false;
-        ammoCount -= 3;
+        ammoCount -= ammoCost;
+        
+        if global.jumpMode==1{
+            with(owner){
+                motion_add(aimDirection,-3)
+            }
+        }
         
         var reloadBufferFactor;
-        if(ammoCount &lt; 3)
+        if(ammoCount &lt; ammoCost)
             reloadBufferFactor = 2.5;
         else
             //reloadBufferFactor = 1+(cos((ammoCount+2.2)/maxAmmo*pi)+1)/2; // spline from (full ammo = 1*) to (empty ammo = 2*)
@@ -46,8 +52,7 @@
         alarm[0] = refireTime / global.delta_factor;
         alarm[5] = reloadBuffer*reloadBufferFactor / global.delta_factor;
         
-        if (global.particles == PARTICLES_NORMAL)
-        {
+        if (global.particles == PARTICLES_NORMAL) and global.noShells==1{
             var shell;
             shell = instance_create(x, y+4, Shell);
             shell.direction = owner.aimDirection + (140 - random(40)) * image_xscale;
