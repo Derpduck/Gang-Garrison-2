@@ -75,14 +75,12 @@ for(i=0; i < ds_list_size(global.players); i+=1)
                     player.team=TEAM_BLUE
                     write_ubyte(player.socket, PLAYER_CHANGETEAM)
                     write_ubyte(player.socket, TEAM_BLUE)
-                    //show_message("red has more, team switched")
                 }
             }else if calculate_bot_balance()==TEAM_BLUE{
                 if player.team==TEAM_BLUE{
                     player.team=TEAM_RED
                     write_ubyte(player.socket, PLAYER_CHANGETEAM)
                     write_ubyte(player.socket, TEAM_RED)
-                    //show_message("blue has more, team switched")
                 }
             }
         }
@@ -200,6 +198,25 @@ if(global.winners != -1 and !global.mapchanging)
     if(!instance_exists(ScoreTableController))
         instance_create(0,0,ScoreTableController);
     instance_create(0,0,WinBanner);
+    
+    if global.pugMode==1{
+        if instance_exists(PugController){
+            if PugController.stage>=5{
+                if global.winners==0{
+                    PugController.redScore+=1
+                }else if global.winners==1{
+                    PugController.blueScore+=1
+                }else{
+                    PugController.drawScore+=1
+                }
+                PugController.gamesPlayed+=1
+                
+                with(PugController){
+                    event_user(6)
+                }
+            }
+        }
+    }
 }
 
 //VIP password

@@ -13,9 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(!instance_exists(HostWarningsController))
-    instance_create(0, 0, HostWarningsController);
-    
+        <argument kind="STRING">if room==Menu{
+    if(!instance_exists(HostWarningsController)){
+        instance_create(0, 0, HostWarningsController)
+    }
+}
 </argument>
       </arguments>
     </action>

@@ -3,5 +3,3 @@
 socket_destroy(argument0)
 
 global.totalBots-=1
-
-show_message("removed a bot")

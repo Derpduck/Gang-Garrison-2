@@ -25,6 +25,8 @@
 stage=0 //setup
 alarm[0]=30/global.delta_factor
 mix=0
+war=0
+pug=0
 
 redCaptain=-1
 blueCaptain=-1
@@ -45,6 +47,14 @@ mapPickerTeam=1
 mapList=ds_list_create()
 
 event_user(2)
+
+redScore=0
+blueScore=0
+drawScore=0
+gamesPlayed=0
+
+warRedOk=0
+warBlueOk=0
 </argument>
       </arguments>
     </action>

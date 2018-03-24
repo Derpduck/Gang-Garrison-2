@@ -329,6 +329,7 @@ global.jumpMode=0
 global.menuYBegin=0
 global.pugMode=0
 global.pugVotePicks=0
+global.pugVoteMaps=0
 
 //ADCP stopwatch mode
 global.adcpRound1Score=-1

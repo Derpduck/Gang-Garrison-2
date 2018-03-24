@@ -19,12 +19,6 @@ global.votedList=ds_list_create()
 ds_list_add(global.votedList,player)
 vote=instance_create(0,0,VoteHandler)
 vote.type="shuffle"
-vote.voteMix=argument2
-if vote.voteMix==1{
-    typeString=" MIX"
-}else{
-    typeString=" PUG"
-}
 
 var message;
 message = global.chatPrintPrefix+C_WHITE+'Voting to start a '+C_GREEN+"team shuffle"+C_WHITE+'...'

@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">//Map picking start
 var message;
-message = global.chatPrintPrefix+C_GREEN+"Map"+C_WHITE+" picking stage: Type"+C_GREEN+" /map "+C_PINK+"&lt;map name&gt;"
+message = global.chatPrintPrefix+C_GREEN+string(global.pugVoteMaps)+C_WHITE+" maps to pick: Type"+C_GREEN+" /map "+C_PINK+"&lt;map name&gt;"
 write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
 write_ushort(global.publicChatBuffer, string_length(message))
 write_string(global.publicChatBuffer, message)

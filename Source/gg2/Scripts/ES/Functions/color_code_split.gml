@@ -5,7 +5,6 @@ oldCode=string(argument0)
 
 //Incorrect number of values
 if string_count(",",oldCode)!=2{
-    //show_message("Incorrect number of values for color code:#"+oldCode)
     return make_color_rgb(255,255,255)
     exit;
 }

@@ -28,11 +28,6 @@ ds_priority_delete_min(targetQueue) //Remove yourself
 nearestEnemy = -1
 closestEnemy = ds_priority_find_min(targetQueue)
 
-//show_message(object.x)
-//show_message(object.y)
-//show_message(object.closestEnemy.x)
-//show_message(object.closestEnemy.y)
-
 while(nearestEnemy == -1 && !ds_priority_empty(targetQueue)) {
     playercheck = ds_priority_delete_min(targetQueue);
     if (playercheck.team != team && playercheck.ubered==0
@@ -57,8 +52,6 @@ ds_priority_destroy(targetQueue);
 
 target_in_sight = 1
 
-//show_message("-2")
 //global.path=plan_path(global.mesh,object.x,object.y,nearestEnemy.x,nearestEnemy.y)
-//show_message("-1")
 
 return nearestEnemy

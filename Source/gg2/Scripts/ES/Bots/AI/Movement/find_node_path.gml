@@ -40,8 +40,6 @@ while true{
         newNode = ds_list_find_value(node.connections, i)
 
         if node.dist+ds_list_find_value(node.distance, i) < newNode.dist or newNode.dist < 0{
-//            show_message(node.dist)
-//            show_message(ds_list_size(node.history))
             ds_list_clear(newNode.history)
             ds_list_copy(newNode.history, node.history)
 
@@ -50,8 +48,6 @@ while true{
         }
     }
     
-//    if ds_priority_size(unvisited) mod 10 == 0 show_message(string(ds_priority_size(unvisited))+"; x="+string(node.x)+"; y="+string(node.y)+"; dist="+string(node.dist)+"; size of list="+string(ds_list_size(node.history)))
-
     if ds_priority_size(unvisited) <= 0{
         return ds_list_create();
     }

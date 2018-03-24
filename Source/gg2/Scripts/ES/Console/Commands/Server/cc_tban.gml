@@ -41,8 +41,7 @@ if string_letters(input[1])==''{
             dcReason=KICK_BANNED
             write_ubyte(socket, KICK)
             write_ubyte(socket, KICK_TEMP_BANNED)
-            socket_destroy_abortive(socket)
-            socket=-1
+            alarm[6]=30/global.delta_factor
         }
         
         console_print(c_filter(player.name)+' has been temporarily banned from the server.')
@@ -71,12 +70,11 @@ with Player{
         dcReason=KICK_BANNED
         write_ubyte(socket, KICK)
         write_ubyte(socket, KICK_BANNED)
-        socket_destroy_abortive(socket)
-        socket=-1
+        alarm[6]=30/global.delta_factor
         
         console_print(c_filter(name)+' has been temporarily banned from the server.')
         var color;
-        color=getPlayerColor(player, true)
+        color=getPlayerColor(self, true)
         global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been'+P_RED+' temporarily banned '+C_WHITE+'from the server.'
         console_sendmsg()
         exit;

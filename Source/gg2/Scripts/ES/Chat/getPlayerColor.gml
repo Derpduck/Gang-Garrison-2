@@ -1,4 +1,4 @@
-// Decides what chat color a player should have depending team
+// Decides what chat color a player should have depending on team
 // argument0 == player, argument1 = public chat (boolean)
 player=argument0
 publicChat=argument1

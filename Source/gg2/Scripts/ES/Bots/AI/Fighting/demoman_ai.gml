@@ -89,10 +89,6 @@ with(Mine){
         }
     }
 }
-//show_message(nearestEnemy.id)
-//show_message(object.id)
-
-
 
 target_x=enemyX
 target_y=enemyY

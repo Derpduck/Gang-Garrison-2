@@ -28,7 +28,22 @@ if global.pugVoteAllowed==1{
             with(PugController){
                 mix=1
             }
+        }else if voteMix==2{
+            with(PugController){
+                war=1
+            }
+        }else{
+            with(PugController){
+                pug=1
+            }
         }
+        
+        if global.pugVoteMaps<=0{
+            global.pugVoteMaps=5
+        }else if global.pugVoteMaps>13{
+            global.pugVoteMaps=13
+        }
+            
         var message;
         message = global.chatPrintPrefix+C_WHITE+'Vote '+C_GREEN+'successful'+C_WHITE+', starting a'+C_GREEN+typeString+'!'
         write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)

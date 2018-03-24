@@ -7,4 +7,6 @@
   <resource name="chatc_vote_cancel" type="RESOURCE"/>
   <resource name="chatc_pug" type="RESOURCE"/>
   <resource name="chatc_shuffle" type="RESOURCE"/>
+  <resource name="chatc_skip" type="RESOURCE"/>
+  <resource name="chatc_vmap" type="RESOURCE"/>
 </resources>

@@ -64,6 +64,8 @@ if instance_exists(ModOptGFXBasic) or instance_exists(ModOptGFXAdv) or instance_
 }
 stepHasRun = true;
 
+if instance_exists(DisconnectMessage) exit;
+
 var itemcount;
 menu_hack_backbutton();
 itemcount = menu_get_itemcount();

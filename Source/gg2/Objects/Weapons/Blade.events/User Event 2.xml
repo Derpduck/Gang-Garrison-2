@@ -35,8 +35,10 @@
         shot.alarm[0] = bladeLife / global.delta_factor;
         alarm[5] = bladeLife / global.delta_factor; //this isn't for when the blade actually dies, but the longest it could live
         bladesOut += 1;
-        with(shot)
+        with(shot){
             hspeed += owner.hspeed;
+            if sign(hspeed)==-1 image_xscale=-1
+        }
         justShot = true;
         readyToShoot = false;
     }

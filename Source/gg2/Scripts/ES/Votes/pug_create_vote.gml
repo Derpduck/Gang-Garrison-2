@@ -2,6 +2,7 @@
 player=argument0
 picks=argument1
 mix=argument2
+maps=argument3
 
 if global.pugVoteAllowed==0{
     var message;
@@ -35,6 +36,8 @@ vote.type="pug"
 vote.voteMix=argument2
 if vote.voteMix==1{
     typeString=" MIX"
+}else if vote.voteMix==2{
+    typeString=" WAR"
 }else{
     typeString=" PUG"
 }
@@ -56,3 +59,4 @@ write_byte(global.publicChatBuffer,-1)
 print_to_chat(message);// For the host
 
 global.pugVotePicks=picks
+global.pugVoteMaps=maps

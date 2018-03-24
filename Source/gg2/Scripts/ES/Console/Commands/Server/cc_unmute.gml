@@ -58,7 +58,7 @@ with Player{
         
         console_print(c_filter(name)+' has been unmuted.')
         var color;
-        color=getPlayerColor(Player, true)
+        color=getPlayerColor(self, true)
         global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been unmuted.'
         console_sendmsg()
         exit;

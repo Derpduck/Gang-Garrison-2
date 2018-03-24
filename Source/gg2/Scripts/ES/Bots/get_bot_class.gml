@@ -42,7 +42,6 @@ if global.botClasses[CLASS_QUOTE]{
 
 if ds_list_empty(classList){
     class = choose(CLASS_SCOUT, CLASS_PYRO, CLASS_SOLDIER, CLASS_HEAVY, CLASS_DEMOMAN, CLASS_MEDIC, CLASS_ENGINEER, CLASS_SPY, CLASS_SNIPER, CLASS_QUOTE)
-    //if global.botNameCounter == 1 show_message("No Class Free.#Choosing randomly.")
     return class
 }
 

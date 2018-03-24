@@ -128,14 +128,16 @@ for(i=0;ds_priority_size(redteam)&gt;0;i+=1){
         draw_text((xoffset+xsize/2)-48,(yoffset+ysize/2)-165+(20*(i+1)),string_replace_all(string(player.stats[POINTS]),".50",".5"))
         //Ping
         displayPing=0
-        if player.object!=-1 and player!=-1{
-            displayPing=floor(player.object.playerPing)
-            player.oldPing=displayPing
-        }else{
-            displayPing=floor(player.oldPing)
-        }
-        if player.isBot==1{
-            displayPing="BOT"
+        if player!=-1{
+            if player.object!=-1{
+                displayPing=floor(player.object.playerPing)
+                player.oldPing=displayPing
+            }else{
+                displayPing=floor(player.oldPing)
+            }
+            if player.isBot==1{
+                displayPing="BOT"
+            }
         }
         draw_set_color(get_ping_color(displayPing))
         draw_text((xoffset+xsize/2)-6,(yoffset+ysize/2)-165+(20*(i+1)), string(displayPing))
@@ -168,14 +170,16 @@ for(i=0;ds_priority_size(blueteam)&gt;0;i+=1){
         draw_text((xoffset+xsize/2)+(290-48)+1,(yoffset+ysize/2)-165+(20*(i+1)),string_replace_all(string(player.stats[POINTS]),".50",".5"))
         //Ping
         displayPing=0
-        if player.object!=-1{
-            displayPing=floor(player.object.playerPing)
-            player.oldPing=displayPing
-        }else{
-            displayPing=floor(player.oldPing)
-        }
-        if player.isBot==1{
-            displayPing="BOT"
+        if player!=-1{
+            if player.object!=-1{
+                displayPing=floor(player.object.playerPing)
+                player.oldPing=displayPing
+            }else{
+                displayPing=floor(player.oldPing)
+            }
+            if player.isBot==1{
+                displayPing="BOT"
+            }
         }
         draw_set_color(get_ping_color(displayPing))
         draw_text((xoffset+xsize/2)+(290-6)+1,(yoffset+ysize/2)-165+(20*(i+1)), string(displayPing))

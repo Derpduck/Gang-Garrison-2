@@ -58,7 +58,7 @@ with Player{
             object.hp-=dmgAmount
             console_print(c_filter(name)+' has been hurt for '+string(dmgAmount)+' by admin.')
             var color;
-            color=getPlayerColor(player, true);
+            color=getPlayerColor(self, true);
             global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' hurt for'+P_RED+' '+string(dmgAmount)+C_WHITE+' damage.'
             console_sendmsg()
             exit;

@@ -9,6 +9,10 @@ if global.RCONSentCommand=1{
 }
 var bind, command,number;
 command=string(input[2])
+if command==''{
+    console_print('Binding failed. No command specified.')
+    exit;
+}
 
 /*
 if input[3]!=''{

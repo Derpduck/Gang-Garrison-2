@@ -29,8 +29,17 @@ if !global.isHost{
 }
 
 global.winners=TEAM_SPECTATOR
+
+if input[1]==string_lower('red') or input[1]=='1'{
+    global.winners=TEAM_RED
+}
+
+if input[1]==string_lower('blue') or input[1]=='2'{
+    global.winners=TEAM_BLUE
+}
+
 console_print('Round ended.')
 ", "
 console_print('Syntax: end')
-console_print('End the round in a stalemate.')
+console_print('End the round. Specify <red> or <blue> to make it a win for that team, otherwise, round will count as a stalemate.')
 ")

@@ -1,5 +1,3 @@
-//make a shit fix that changes max line length in certain cases
-
 // Takes a string as argument and prints it in the chat, breaking up at lines when necessary
 // argument0 = input string
 var rawInput, partString, pos, tmpString, colorKey, partStringCheck, splitAmount, strLength;
@@ -8,24 +6,14 @@ rawInput = sanitiseNewlines(argument0)
 // While the input string minus the color codes is too long for the chat (line)
 while string_length(rawInput) - string_count("/:/", rawInput)*(3+COLOR_RGB_LENGTH) > CHAT_MAX_LINE_LENGTH{
     // Break it up
-    partString = string_copy(rawInput, 0, CHAT_MAX_LINE_LENGTH + (string_count("/:/", rawInput))*(3+COLOR_RGB_LENGTH)); //original
-    //show_message(partString)
-        
+    partString = string_copy(rawInput, 0, CHAT_MAX_LINE_LENGTH + (string_count("/:/", rawInput))*(3+COLOR_RGB_LENGTH));
+    
     strLength=CHAT_MAX_LINE_LENGTH+(string_count("/:/", rawInput))*(3+COLOR_RGB_LENGTH)
     partStringCheck = string_copy(partString, strLength-(2*(3+COLOR_RGB_LENGTH)), 1+(2*(3+COLOR_RGB_LENGTH)))
-    //show_message(partStringCheck)
-        
-    //while string_count("/:/",partStringCheck)>1{
-    //    partStringCheck=string_copy(partStringCheck,string_pos("/:/",partStringCheck)+3+COLOR_RGB_LENGTH,string_length(partStringCheck))
-    //    show_message(partStringCheck)
-    //}
     
     if string_pos("/:/",partStringCheck)!=0{
-        //splitAmount = strLength-(2*(3+COLOR_RGB_LENGTH)) - string_pos("/:/",partStringCheck)
         partStringCheck=string_copy(partStringCheck,string_pos("/:/",partStringCheck),string_length(partStringCheck))
-        //show_message(partStringCheck)
         partString=string_copy(partString,0,strLength-string_length(partStringCheck))
-        //show_message(partString)
     }
     
     tmpString = partString;

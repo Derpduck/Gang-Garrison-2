@@ -17,6 +17,42 @@
     loopsoundstop(UberIdleSnd);
     
     var map;
+    
+    //Killstreaks
+    if global.isHost and global.killstreakPrints==1{
+        if killstreak&gt;=5{
+            deadName=c_filter(player.name)
+            //colorDead=getPlayerColor(player, true)
+            if player.team==TEAM_RED{
+                colorDead=P_RED
+            }else if player.team==TEAM_BLUE{
+                colorDead=P_BLUE
+            }else{
+                colorDead=C_GREEN
+            }
+            if killstreakEnder==-1{
+                killstreakString=" killstreak has ended!"
+            }else{
+                killstreakEnderName=c_filter(killstreakEnder.name)
+                //colorEnder=getPlayerColor(killstreakEnder, true)
+                if killstreakEnder.team==TEAM_RED{
+                    colorEnder=P_RED
+                }else if killstreakEnder.team==TEAM_BLUE{
+                    colorEnder=P_BLUE
+                }else{
+                    colorEnder=C_GREEN
+                }
+                killstreakString=" killstreak was ended by"+colorEnder+" "+killstreakEnderName+C_WHITE+"!"
+            }
+            message = global.chatPrintPrefix+colorDead+deadName+C_WHITE+"'s "+C_GREEN+string(killstreak)+C_WHITE+killstreakString
+            write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+            write_ushort(global.publicChatBuffer, string_length(message));
+            write_string(global.publicChatBuffer, message);
+            write_byte(global.publicChatBuffer,-1)
+            print_to_chat(message);// For the host
+        }
+    }
+    
     with(currentWeapon) {
         instance_destroy();
     }
@@ -49,6 +85,7 @@
     }
     
     player.object=-1;
+    
     if place_meeting(x,y,SpawnRoom) or tdmGrace==1{
         player.alarm[5] = 1;
     }else{
@@ -87,24 +124,6 @@
                 }
             }
         }
-    }
-
-    if global.isHost and global.killstreakPrints==1 and killstreak&gt;=5{
-        deadName=c_filter(player.name)
-        colorDead=getPlayerColor(player, true)
-        if killstreakEnder==-1{
-            killstreakString=" killstreak has ended!"
-        }else{
-            killstreakEnderName=c_filter(killstreakEnder.name)
-            colorEnder=getPlayerColor(killstreakEnder, true)
-            killstreakString=" killstreak was ended by"+colorEnder+" "+killstreakEnderName+C_WHITE+"!"
-        }
-        message = global.chatPrintPrefix+colorDead+deadName+C_WHITE+"'s "+C_GREEN+string(killstreak)+C_WHITE+killstreakString
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-        write_ushort(global.publicChatBuffer, string_length(message));
-        write_string(global.publicChatBuffer, message);
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(message);// For the host
     }
     
     //part type destroy

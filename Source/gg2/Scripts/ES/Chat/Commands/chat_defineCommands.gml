@@ -6,6 +6,8 @@ chatc_vote_no()
 chatc_vote_cancel()
 chatc_pug()
 chatc_shuffle()
+chatc_skip()
+chatc_vmap()
 
 //local
 chatc_ready()

@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
+    menu_create(48, 110, 500, 300, 32, 40, 94, 6)
     menumode = true;
     virnum=0
     setVirNum=0
@@ -124,29 +124,14 @@
         es_write_ini("s","AmmoColourRGB",argument0)
     ')setVirNum+=1
     
-    /*menu_addedit_select("Custom Color Type:","global.haxxyColorSelection",'
-        es_write_ini("s","HaxxyColorSelection",argument0)
-    ')setVirNum+=1
-    menu_add_option(0,"All Haxxies")
-    menu_add_option(1,"Weapons Only")
-    menu_add_option(2,"Accessories Only")
-    
-    menu_addedit_num("Haxxy Color, Red:","global.myHaxxyColorR",'
-        es_write_ini("s","MyHaxxyColorR",argument0)
-    ')setVirNum+=1
-    
-    menu_addedit_num("Haxxy Color, Green:","global.myHaxxyColorG",'
-        es_write_ini("s","MyHaxxyColorG",argument0)
-    ')setVirNum+=1
-    
-    menu_addedit_num("Haxxy Color, Blue:","global.myHaxxyColorB",'
-        es_write_ini("s","MyHaxxyColorB",argument0)
-    ')setVirNum+=1*/
-    
     //TABS
     menu_addtablink("Host", '
         instance_destroy()
         instance_create(x,y,ModHostOptionsController)
+    ');
+    menu_addtablink("C-Limits", '
+        instance_destroy()
+        instance_create(x,y,ClasslimitsMenuController)
     ');
     menu_addtablink("Bots", '
         instance_destroy()

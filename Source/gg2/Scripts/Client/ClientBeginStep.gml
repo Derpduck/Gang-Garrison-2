@@ -6,14 +6,19 @@ var i, playerObject, playerID, player, otherPlayerID, otherPlayer, sameVersion, 
 
 if(tcp_eof(global.serverSocket)) {
     if(gotServerHello){
-        show_message("You have been disconnected from the server.");
+        var dcMsgBox;
+        dcMsgBox=instance_create(0,0,DisconnectMessage)
+        dcMsgBox.msg="You have been disconnected from the server.#Reason: Connection error."
+        
         if instance_exists(ReadyUpController){
             with ReadyUpController{
                 event_user(0)
             }
         }
     }else{
-        show_message("Unable to connect to the server.");
+        var dcMsgBox;
+        dcMsgBox=instance_create(0,0,DisconnectMessage)
+        dcMsgBox.msg="You have been disconnected from the server.#Reason: Unable to connect to the server"
     }
     instance_destroy();
     exit;
@@ -56,7 +61,9 @@ do {
             plugins = receivestring(global.serverSocket, 2);
             if(string_pos("/", downloadMapName) != 0 or string_pos("\", downloadMapName) != 0)
             {
-                show_message("Server sent illegal map name: "+downloadMapName);
+                var dcMsgBox;
+                dcMsgBox=instance_create(0,0,DisconnectMessage)
+                dcMsgBox.msg="You have been disconnected from the server.#Reason: Server sent illegal map name: "+downloadMapName
                 instance_destroy();
                 exit;
             }
@@ -128,7 +135,9 @@ do {
                 {
                     if (!loadserverplugins(plugins))
                     {
-                        show_message("Error ocurred loading server-sent plugins.");
+                        var dcMsgBox;
+                        dcMsgBox=instance_create(0,0,DisconnectMessage)
+                        dcMsgBox.msg="You have been disconnected from the server.#Reason: Error ocurred loading server-sent plugins."
                         instance_destroy();
                         exit;
                     }
@@ -423,26 +432,34 @@ do {
             break;
        
         case PASSWORD_WRONG:
-            show_message("Incorrect Password.");
+            var dcMsgBox;
+            dcMsgBox=instance_create(0,0,DisconnectMessage)
+            dcMsgBox.msg="You have been disconnected from the server.#Reason: Incorrect Password."
             instance_destroy();
             exit;
         
         case INCOMPATIBLE_PROTOCOL:
-            show_message("Incompatible server protocol version.");
+            var dcMsgBox;
+            dcMsgBox=instance_create(0,0,DisconnectMessage)
+            dcMsgBox.msg="You have been disconnected from the server.#Reason: Incompatible server protocol version."
             instance_destroy();
             exit;
             
         case KICK:
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
             reason = read_ubyte(global.tempBuffer);
-            if reason == KICK_NAME kickReason = "Name Exploit";
-            else if reason == KICK_BAD_PLUGIN_PACKET kickReason = "Invalid plugin packet ID";
-            else if reason == KICK_MULTI_CLIENT kickReason = "There are too many connections from your IP";
-            else if reason == KICK_RCON kickReason = "RCON command exceeds maximum limit.";
+            if reason == KICK_NAME kickReason = "Name Exploit.";
+            else if reason == KICK_BAD_PLUGIN_PACKET kickReason = "Invalid plugin packet ID.";
+            else if reason == KICK_MULTI_CLIENT kickReason = "There are too many connections from your IP.";
+            else if reason == KICK_RCON kickReason = "RCON command length too long.";
             else if reason == KICK_ADMIN_KICK kickReason = "Kicked by admin.";
             else if reason == KICK_BANNED kickReason = "You are banned from this server.";
+            else if reason == KICK_CHAT_LENGTH kickReason = "Chat message length too long.";
             else kickReason = "";
-            show_message("You have been kicked from the server. "+kickReason+".");
+            
+            var dcMsgBox;
+            dcMsgBox=instance_create(0,0,DisconnectMessage)
+            dcMsgBox.msg="You have been disconnected from the server.#Reason: "+kickReason
             instance_destroy();
             exit;
               
@@ -491,7 +508,9 @@ do {
             } else { // it's an external map
                 if(string_pos("/", global.currentMap) != 0 or string_pos("\", global.currentMap) != 0)
                 {
-                    show_message("Server sent illegal map name: "+global.currentMap);
+                    var dcMsgBox;
+                    dcMsgBox=instance_create(0,0,DisconnectMessage)
+                    dcMsgBox.msg="You have been disconnected from the server.#Reason: Server sent illegal map name: "+global.currentMap
                     instance_destroy();
                     exit;
                 }
@@ -559,7 +578,9 @@ do {
             break;
         
         case SERVER_FULL:
-            show_message("The server is full.");
+            var dcMsgBox;
+            dcMsgBox=instance_create(0,0,DisconnectMessage)
+            dcMsgBox.msg="You have been disconnected from the server.#Reason: The server is full."
             instance_destroy();
             exit;
         

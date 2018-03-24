@@ -15,13 +15,20 @@
       <arguments>
         <argument kind="STRING">if editing!=-1 exit;
 
-if keyboard_check_released(ord(string(1))){
-    virnum=10
-    alarm[0]=1
-}
-if keyboard_check_released(ord(string(0))){
-    virnum=11
-    alarm[0]=1
+if room==Menu{
+    if keyboard_check_released(ord(string(1))){
+        virnum=10
+        alarm[0]=1
+    }
+    if keyboard_check_released(ord(string(0))){
+        virnum=11
+        alarm[0]=1
+    }
+}else{
+    if keyboard_check_released(ord(string(0))){
+        virnum=10
+        alarm[0]=1
+    }
 }
 </argument>
       </arguments>

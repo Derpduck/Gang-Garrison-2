@@ -17,6 +17,7 @@
 ds_list_destroy(mapList)
 event_user(3)
 global.pugMode=0
+load_map_rotation()
 </argument>
       </arguments>
     </action>

@@ -17,8 +17,20 @@
 global.winners=2 //end the map
 load_map_rotation_custom(mapList,0)
 
+alarm[4]=10/global.delta_factor
+
+var typeString;
+typeString=""
+if pug==1{
+    typeString="PUG"
+}else if mix==1{
+    typeString="MIX"
+}else if war==1{
+    typeString="WAR"
+}
+
 var message;
-message = global.chatPrintPrefix+C_WHITE+"Teams and maps have been selected, PUG will now begin!"
+message = global.chatPrintPrefix+C_WHITE+"Teams and maps have been selected, "+typeString+" will now begin!"
 write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
 write_ushort(global.publicChatBuffer, string_length(message))
 write_string(global.publicChatBuffer, message)

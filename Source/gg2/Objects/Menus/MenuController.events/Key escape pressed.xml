@@ -13,9 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(stepHasRun)
-    execute_string(menu_script_back);
-
+        <argument kind="STRING">if !instance_exists(DisconnectMessage){
+    if(stepHasRun){
+        execute_string(menu_script_back);
+    }
+}
 </argument>
       </arguments>
     </action>

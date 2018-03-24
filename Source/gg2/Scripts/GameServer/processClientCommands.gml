@@ -121,8 +121,18 @@ while(commandLimitRemaining > 0) {
             var newTeam, balance, redSuperiority;
             newTeam = read_ubyte(socket);
             
-            if global.lockedTeams==1 or (global.pugMode==1 and PugController.stage<5){
+            if global.lockedTeams==1{
                 break;
+            }
+            
+            if instance_exists(PugController){
+                if (global.pugMode==1 and PugController.stage<5) and PugController.war==0{
+                    break;
+                }
+                
+                if PugController.war==1 and (PugController.stage!=3 and PugController.stage<5){
+                    break;
+                }
             }
             
             if global.maxPlayers!=-1{
@@ -329,8 +339,10 @@ while(commandLimitRemaining > 0) {
             {
                 write_ubyte(player.socket, KICK);
                 write_ubyte(player.socket, KICK_NAME);
-                socket_destroy(player.socket);
-                player.socket = -1;
+                with(player){
+                    alarm[7]=30/global.delta_factor
+                }
+                break;
             }
             else
             {
@@ -418,8 +430,9 @@ while(commandLimitRemaining > 0) {
                 // kick player
                 write_ubyte(player.socket, KICK);
                 write_ubyte(player.socket, KICK_BAD_PLUGIN_PACKET);
-                socket_destroy(player.socket);
-                player.socket = -1;
+                with(player){
+                    alarm[7]=30/global.delta_factor
+                }
             }
             break;
             
@@ -486,8 +499,9 @@ while(commandLimitRemaining > 0) {
                 write_ubyte(player.socket, KICK)
                 write_ubyte(player.socket, KICK_RCON)
                 console_print(C_PINK+'RCON: '+player.name+' sent a command with a length over the maximum limit; kicking.')
-                socket_destroy(player.socket);
-                player.socket = -1;
+                with(player){
+                    alarm[7]=30/global.delta_factor
+                }
                 break;
             }
             
@@ -501,9 +515,11 @@ while(commandLimitRemaining > 0) {
             messageLength = socket_receivebuffer_size(socket);
             if(messageLength > CHAT_MAX_STRING_LENGTH){
                 write_ubyte(player.socket, KICK);
-                write_ubyte(player.socket, KICK_NAME);
-                socket_destroy(player.socket);
-                player.socket = -1;
+                write_ubyte(player.socket, KICK_CHAT_LENGTH);
+                with(player){
+                    alarm[7]=30/global.delta_factor
+                    break;
+                }
             }else{
                 with(player){
                     //dont send messgaes from muted players
@@ -577,9 +593,11 @@ while(commandLimitRemaining > 0) {
             messageLength = socket_receivebuffer_size(socket);
             if(messageLength > CHAT_MAX_STRING_LENGTH){
                 write_ubyte(player.socket, KICK);
-                write_ubyte(player.socket, KICK_NAME);
-                socket_destroy(player.socket);
-                player.socket = -1;
+                write_ubyte(player.socket, KICK_CHAT_LENGTH);
+                with(player){
+                    alarm[7]=30/global.delta_factor
+                    break;
+                }
             }else{
                 with(player){
                     //dont send muted players messages
@@ -816,7 +834,76 @@ while(commandLimitRemaining > 0) {
                 break;
             }
             
-            if PugController.stage<1 or PugController.stage>2{ //or PugController.stage!=2{
+            //Alternate behaviour for war mode
+            if PugController.war==1 and PugController.stage==3{
+                if player==PugController.redCaptain{
+                    if PugController.warRedOk==0{
+                        PugController.warRedOk=1
+                        
+                        var message;
+                        message = global.chatPrintPrefix+P_RED+"RED "+C_WHITE+"team is ready!"
+                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+                        write_ushort(global.publicChatBuffer, string_length(message))
+                        write_string(global.publicChatBuffer, message)
+                        write_byte(global.publicChatBuffer,-1)
+                        print_to_chat(message);// For the host
+                    }else if PugController.warRedOk==1{
+                        PugController.warRedOk=0
+                        var message;
+                        message = global.chatPrintPrefix+P_RED+"RED "+C_WHITE+"team is no longer ready!"
+                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+                        write_ushort(global.publicChatBuffer, string_length(message))
+                        write_string(global.publicChatBuffer, message)
+                        write_byte(global.publicChatBuffer,-1)
+                        print_to_chat(message);// For the host
+                    }
+                }
+                
+                if player==PugController.blueCaptain{
+                    if PugController.warBlueOk==0{
+                        PugController.warBlueOk=1
+                        var message;
+                        message = global.chatPrintPrefix+P_BLUE+"BLUE "+C_WHITE+"team is ready!"
+                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+                        write_ushort(global.publicChatBuffer, string_length(message))
+                        write_string(global.publicChatBuffer, message)
+                        write_byte(global.publicChatBuffer,-1)
+                        print_to_chat(message);// For the host
+                    }else if PugController.warBlueOk==1{
+                        PugController.warBlueOk=0
+                        var message;
+                        message = global.chatPrintPrefix+P_BLUE+"BLUE "+C_WHITE+"team is no longer ready!"
+                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+                        write_ushort(global.publicChatBuffer, string_length(message))
+                        write_string(global.publicChatBuffer, message)
+                        write_byte(global.publicChatBuffer,-1)
+                        print_to_chat(message);// For the host
+                    }
+                }
+                
+                if PugController.warRedOk==1 and PugController.warBlueOk==1{
+                    PugController.stage=4
+                    PugController.alarm[2]=30/global.delta_factor
+                    
+                    var message;
+                    message = global.chatPrintPrefix+C_WHITE+"Teams have been confirmed and locked!"
+                    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+                    write_ushort(global.publicChatBuffer, string_length(message))
+                    write_string(global.publicChatBuffer, message)
+                    write_byte(global.publicChatBuffer,-1)
+                    print_to_chat(message);// For the host
+                    
+                    with(PugController){
+                        event_user(5)
+                    }
+                }
+                break;
+            }
+            
+            
+            
+            
+            if PugController.stage<1 or PugController.stage>2{
                 break;
             }
             
@@ -972,7 +1059,7 @@ while(commandLimitRemaining > 0) {
             }
             
             //Do this until we have picked 5 maps in total
-            if PugController.mapsPickedCount<5{
+            if PugController.mapsPickedCount<global.pugVoteMaps{
                 //Map is valid, add to list
                 if PugController.mapPickerTeam==0{
                     ds_list_add(PugController.mapList,mapName)
@@ -986,7 +1073,7 @@ while(commandLimitRemaining > 0) {
                     write_string(global.publicChatBuffer, message)
                     write_byte(global.publicChatBuffer,-1)
                     print_to_chat(message);// For the host
-                    if PugController.mapsPickedCount<5{
+                    if PugController.mapsPickedCount<global.pugVoteMaps{
                         break;
                     }
                 }else if PugController.mapPickerTeam==1{
@@ -1006,7 +1093,7 @@ while(commandLimitRemaining > 0) {
                     write_string(global.publicChatBuffer, message)
                     write_byte(global.publicChatBuffer,-1)
                     print_to_chat(message);// For the host
-                    if PugController.mapsPickedCount<5{
+                    if PugController.mapsPickedCount<global.pugVoteMaps{
                         break;
                     }
                 }
@@ -1019,7 +1106,7 @@ while(commandLimitRemaining > 0) {
             var mapString;
             mapString=""
             
-            for (i=1; i<6; i+=1){
+            for (i=1; i<ds_list_size(PugController.mapList); i+=1){
                 
                 mapString+=string(ds_list_find_value(PugController.mapList,i))+", "
                 //if i mod 2 == 0{
@@ -1039,8 +1126,6 @@ while(commandLimitRemaining > 0) {
             
             //Everything is done, start the PUG
             PugController.alarm[3]=150/global.delta_factor
-            
-            stage=5 //start pug
             break;
             
         //   

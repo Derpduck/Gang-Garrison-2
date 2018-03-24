@@ -50,7 +50,7 @@ case STATE_EXPECT_HELLO:
             // This person is banned, kill the socket (->kick them)
             write_ubyte(socket, KICK);
             write_ubyte(socket, KICK_BANNED);
-            socket_destroy_abortive(socket)
+            alarm[6]=30/global.delta_factor
             exit;
         }
             

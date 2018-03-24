@@ -16,7 +16,7 @@
         <argument kind="STRING">// Makes a small '|' blink after the user-given text, makes the whole thing look more professional.
 
 blink = not blink
-alarm[0] = 10/global.delta_factor
+alarm[0] = 15/global.delta_factor
 </argument>
       </arguments>
     </action>

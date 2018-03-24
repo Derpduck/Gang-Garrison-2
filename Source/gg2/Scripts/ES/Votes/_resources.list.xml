@@ -6,4 +6,8 @@
   <resource name="pug_end_vote" type="RESOURCE"/>
   <resource name="shuffle_create_vote" type="RESOURCE"/>
   <resource name="shuffle_end_vote" type="RESOURCE"/>
+  <resource name="skip_create_vote" type="RESOURCE"/>
+  <resource name="skip_end_vote" type="RESOURCE"/>
+  <resource name="map_create_vote" type="RESOURCE"/>
+  <resource name="map_end_vote" type="RESOURCE"/>
 </resources>

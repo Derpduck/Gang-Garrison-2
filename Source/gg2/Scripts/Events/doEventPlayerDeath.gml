@@ -27,22 +27,16 @@ if(!instance_exists(assistant))
 recordKillInLog(victim, killer, assistant, damageSource);
 
 victim.stats[DEATHS] += 1;
-victim.object.killstreakEnder=killer
-if(killer)
-{
-    if(damageSource == DAMAGE_SOURCE_KNIFE or damageSource == DAMAGE_SOURCE_BACKSTAB)
-    {
+if(killer){
+    if(damageSource == DAMAGE_SOURCE_KNIFE or damageSource == DAMAGE_SOURCE_BACKSTAB){
         killer.stats[STABS] += 1;
         killer.roundStats[STABS] += 1;
         killer.stats[POINTS] += 1;
         killer.roundStats[POINTS] +=1;
-        killer.object.killstreak+=1
     }
     
-    if (victim.object.currentWeapon.object_index == Medigun)
-    {
-        if (victim.object.currentWeapon.uberReady)
-        {
+    if (victim.object.currentWeapon.object_index == Medigun){
+        if (victim.object.currentWeapon.uberReady){
             killer.stats[BONUS] += 1;
             killer.roundStats[BONUS] += 1;
             killer.stats[POINTS] += 1;
@@ -50,15 +44,12 @@ if(killer)
         }
     }
         
-    if (killer != victim)
-    {
+    if (killer != victim){
         killer.stats[KILLS] += 1;
         killer.roundStats[KILLS] += 1;
         killer.stats[POINTS] += 1;
         killer.roundStats[POINTS] += 1;
-        killer.object.killstreak+=1
-        if(victim.object.intel)
-        {
+        if(victim.object.intel){
             killer.stats[DEFENSES] += 1;
             killer.roundStats[DEFENSES] += 1;
             killer.stats[POINTS] += 1;
@@ -66,19 +57,35 @@ if(killer)
             recordEventInLog(4, killer.team, killer.name, global.myself == killer);
         }
     }
-}
-
-if (killer != victim){
-    if (killer.object.killstreak mod 5)==0{
-        if global.isHost and global.killstreakPrints==1{
-            colorKiller = getPlayerColor(killer, true);
-            message = global.chatPrintPrefix+colorKiller+c_filter(killer.name)+" "+C_WHITE+"is on a "+C_GREEN+string(killer.object.killstreak)+C_WHITE+" killstreak!"
-            write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-            write_ushort(global.publicChatBuffer, string_length(message));
-            write_string(global.publicChatBuffer, message);
-            write_byte(global.publicChatBuffer,-1)
-            print_to_chat(message);// For the host
-        }    
+    
+    //Killstreaks
+    if global.isHost and global.killstreakPrints==1{
+        if (victim){
+            if victim.object.killstreak>=5{
+                victim.object.killstreakEnder=killer
+            }
+        }
+        if (killer != victim){
+            killer.object.killstreak+=1
+            
+            if (killer.object.killstreak mod 5)==0{
+                if killer.team==TEAM_RED{
+                    colorKiller=P_RED
+                }else if killer.team==TEAM_BLUE{
+                    colorKiller=P_BLUE
+                }else{
+                    colorKiller=C_GREEN
+                }
+                //colorKiller = getPlayerColor(killer, true);
+                var message;
+                message = global.chatPrintPrefix+colorKiller+c_filter(killer.name)+" "+C_WHITE+"is on a "+C_GREEN+string(killer.object.killstreak)+C_WHITE+" killstreak!"
+                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
+                write_ushort(global.publicChatBuffer, string_length(message));
+                write_string(global.publicChatBuffer, message);
+                write_byte(global.publicChatBuffer,-1)
+                print_to_chat(message);// For the host
+            }
+        }
     }
 }
 

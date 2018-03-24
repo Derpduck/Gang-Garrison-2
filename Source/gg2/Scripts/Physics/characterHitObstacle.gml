@@ -34,10 +34,6 @@
     while((abs(hleft) > 0.1 || abs(vleft) > 0.1) && stuck = 0){ // while we still have distance to travel
         loopCounter += 1;
         if(loopCounter > 10) {
-            // debugging stuff.
-            //show_message("x = " + string(x) + "#y = " + string(y) + "#oldx = " + string(oldx) + "#oldy = " + string(oldy) + "#hspeed = " + string(hspeed) + "#vspeed = " + string(vspeed) + "#hleft = " + string(hleft) + "#vleft = " + string(vleft) + "#hdirection = " + string(hdirection) + "#vdirection = " + string(vdirection));
-            //game_end();
-
             // After 10 loops, it's assumed we're stuck.  Will eliminating vertical movement fix the problem?
             //vspeed = 0;
             //vleft = 0;

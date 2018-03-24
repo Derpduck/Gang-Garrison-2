@@ -17,7 +17,7 @@
 speed=0
 hspeed=0
 vspeed=0
-alarm[0]=5/global.delta_factor
+alarm[0]=1/global.delta_factor
 </argument>
       </arguments>
     </action>

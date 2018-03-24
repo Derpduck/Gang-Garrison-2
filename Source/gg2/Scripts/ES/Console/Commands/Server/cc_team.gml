@@ -130,7 +130,7 @@ with Player{
         ServerPlayerChangeteam(ds_list_find_index(global.players,id),team,global.sendBuffer)
         console_print(c_filter(name)+' has been moved to team: '+other.newTString+'.')
         
-        color=getPlayerColor(Player, true)
+        color=getPlayerColor(self, true)
         global.srvMsgChatPrint=global.chatPrintPrefix+oldColor+c_filter(name)+C_WHITE+' was moved to team: '+color+other.newTString+C_WHITE+'.'
         console_miscmsg()
         exit;

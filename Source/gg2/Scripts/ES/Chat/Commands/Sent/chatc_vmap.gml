@@ -1,4 +1,4 @@
-chat_addCommandSent("load", "
+chat_addCommandSent("vmap", "
 /*
 //HOST ONLY
 */
@@ -12,10 +12,11 @@ if !global.isHost{
     console_print('Only the host can use this command.')
     exit;
 }
+var newMap;
+newMap=string_lower(input[1])
 
-cfgName=string(input[1])
-config_create_vote(global.chatCommandPlayerID,cfgName)
+map_create_vote(global.chatCommandPlayerID,newMap)
 ", "
-console_print('Syntax: load <config name>')
-console_print('Requests the server to load the config.')
+console_print('Syntax: vmap <map name>')
+console_print('Creates a vote for the next map.')
 ")

@@ -169,4 +169,5 @@
   <constant name="PUG_CAPTAIN" value="75"/>
   <constant name="PUG_PICK" value="76"/>
   <constant name="PUG_MAP" value="77"/>
+  <constant name="KICK_CHAT_LENGTH" value="78"/>
 </constants>

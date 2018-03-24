@@ -20,6 +20,12 @@ if type=="config"{
     pug_end_vote(voteMix)
 }else if type=="shuffle"{
     shuffle_end_vote()
+}else if type=="skip"{
+    skip_end_vote()
+}else if type=="map"{
+    map_end_vote(mapName)
+}else{
+    console_print('Not a valid vote?')
 }
 
 instance_destroy()

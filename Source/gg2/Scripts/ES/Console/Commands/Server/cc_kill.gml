@@ -87,7 +87,7 @@ with Player{
             }
             console_print(c_filter(name)+' has been killed by admin.')
             var color;
-            color=getPlayerColor(player, true);
+            color=getPlayerColor(self, true);
             global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been killed by admin.'
             console_sendmsg()
             exit;

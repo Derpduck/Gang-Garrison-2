@@ -22,6 +22,7 @@ if instance_exists(PugController){
     if global.pugMode==1{
         if PugController.stage&lt;5{
             startingMatch=0
+            global.forceReady=0
         }
     }
 }

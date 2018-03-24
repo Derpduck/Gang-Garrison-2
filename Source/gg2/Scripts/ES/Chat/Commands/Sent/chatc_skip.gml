@@ -1,4 +1,4 @@
-chat_addCommandSent("load", "
+chat_addCommandSent("skip", "
 /*
 //HOST ONLY
 */
@@ -13,9 +13,8 @@ if !global.isHost{
     exit;
 }
 
-cfgName=string(input[1])
-config_create_vote(global.chatCommandPlayerID,cfgName)
+skip_create_vote(global.chatCommandPlayerID)
 ", "
-console_print('Syntax: load <config name>')
-console_print('Requests the server to load the config.')
+console_print('Syntax: skip')
+console_print('Creates a map skip vote.')
 ")

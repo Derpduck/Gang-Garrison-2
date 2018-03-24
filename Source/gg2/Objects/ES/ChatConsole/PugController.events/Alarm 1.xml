@@ -13,10 +13,22 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//Skip the picking stage when irrelevant
-if maxPicks==0{
+        <argument kind="STRING">if war==1{
+    var message;
+    message = global.chatPrintPrefix+C_WHITE+"Join your teams! Captains confirm or unconfirm the final teams with "+C_GREEN+"/captain"+C_WHITE+"."
+    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
+    write_ushort(global.publicChatBuffer, string_length(message))
+    write_string(global.publicChatBuffer, message)
+    write_byte(global.publicChatBuffer,-1)
+    print_to_chat(message);// For the host
+    break;
+}
+
+//Skip the picking stage when irrelevant
+if maxPicks&lt;=2{
     stage=4
     alarm[2]=30/global.delta_factor
+    exit;
 }
 
 //Start picking teams

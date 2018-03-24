@@ -47,7 +47,7 @@ with Player{
         
         console_print(c_filter(name)+' has been self muted.')
         var color;
-        color=getPlayerColor(player, true)
+        color=getPlayerColor(self, true)
         global.clientMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been self muted.'
         console_localmsg()
         exit;

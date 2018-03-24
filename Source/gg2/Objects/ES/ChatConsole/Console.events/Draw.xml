@@ -52,7 +52,8 @@ if cursor_moving or blink{
     draw_set_valign(fa_middle)
     offset = string_width(string_copy(current_text, 0, cursor_position))
     draw_set_color(make_color_rgb(010,200,010))
-    draw_text(console_x1 + textOffset + offset - 2, console_y2-20, cursor_character)
+    draw_text(console_x1 + textOffset + offset - 4, console_y2-20, cursor_character)
+    draw_text(console_x1 + textOffset + offset - 5, console_y2-20, cursor_character)
     draw_set_color(c_white)
 }
 

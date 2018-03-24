@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="STEP" id="1">
+<event category="CREATE" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,12 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if editing!=-1 exit;
+        <argument kind="STRING">msg = "";
+width = 300;
 
-if keyboard_check_released(ord(string(0))){
-    virnum=setVirNum
-    alarm[0]=1
-}
+button_label = "Close";
+button_padding = 5;
 </argument>
       </arguments>
     </action>

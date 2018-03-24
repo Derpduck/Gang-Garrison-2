@@ -98,7 +98,7 @@ if input[1]='add'{
             
             console_print(C_PINK+'RCON: '+name+' given RCON access.')
             var color;
-            color=getPlayerColor(player, true);
+            color=getPlayerColor(self, true);
             global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' given '+C_PINK+'RCON'+C_WHITE+' access.'
             console_sendmsg()
             exit;
@@ -187,7 +187,7 @@ if input[1]='remove'{
                 
                 console_print(C_PINK+'RCON: '+name+chr(39)+'s RCON access removed.')
                 var color;
-                color=getPlayerColor(player, true);
+                color=getPlayerColor(self, true);
                 global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+chr(39)+'s '+C_PINK+'RCON'+C_WHITE+' access'+P_RED+' removed'+C_WHITE+'.'
                 console_sendmsg()
                 exit;

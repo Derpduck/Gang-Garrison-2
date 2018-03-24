@@ -209,18 +209,13 @@ bot_avoid_obstacle()
 
 
 if global.path==-2{
-    //show_message("a")
 //    global.path=plan_path(global.mesh,object.x,object.y,nearestEnemy.x,nearestEnemy.y)
-    //show_message("b")
 }
 
 //if update_position(global.mesh,global.path,object.x,object.y,(bbox_right-bbox_left)/2)==-2{
-//    show_message("c")
 //    global.path=plan_path(global.mesh,object.x,object.y,nearestEnemy.x,nearestEnemy.y)
-//    show_message("d")
 //}
 //dir=get_input(global.path,object.x,object.y,object.hspeed,object.vspeed)
-//show_message("e")
 
 
 if dir == -1{
