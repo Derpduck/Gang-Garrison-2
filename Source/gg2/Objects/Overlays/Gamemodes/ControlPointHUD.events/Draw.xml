@@ -64,13 +64,6 @@ for (i=1; i&lt;= global.totalControlPoints; i+=1){
 }
 
 draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
-
-if global.adcpWinner!=""{
-    draw_text_transformed_color(xoffset+xsize/2,yoffset+ysize/2,"Winner: "+string(global.adcpWinner)+
-    "#"+"You are: "+string(global.myAdcpTeam)+
-    "#"+string(global.adcpRound1CapTimestamp/30)+"s : "+string(global.adcpRound2CapTimestamp/30)+"s"+
-    "#"+string(global.adcpRound1Caps)+" caps : "+string(global.adcpRound2Caps)+" caps",3,3,0,c_white,c_white,c_white,c_white,1)
-}
 </argument>
       </arguments>
     </action>

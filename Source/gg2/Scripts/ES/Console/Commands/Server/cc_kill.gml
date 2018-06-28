@@ -55,8 +55,7 @@ if string_letters(input[1])==''{
             console_print(c_filter(player.name)+' has been killed by admin.')
             var color;
             color=getPlayerColor(player, true);
-            global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been killed by admin.'
-            console_sendmsg()
+            chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been killed by admin.',global.printAdminCC)
             exit;
         }else{
             console_print(c_filter(player.name)+' is not alive.')
@@ -67,7 +66,7 @@ if string_letters(input[1])==''{
 
 //ID failed, check names
 with Player{
-    if name == other.input[1]{
+    if name == string_lower(other.input[1]){
         if(object!=-1){
             with(player.object){
                 if (!instance_exists(lastDamageDealer) || lastDamageDealer == Player){
@@ -88,8 +87,7 @@ with Player{
             console_print(c_filter(name)+' has been killed by admin.')
             var color;
             color=getPlayerColor(self, true);
-            global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been killed by admin.'
-            console_sendmsg()
+            chat_sendmsg(global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been killed by admin.',global.printAdminCC)
             exit;
         }else{
             console_print(c_filter(name)+' is not alive.')

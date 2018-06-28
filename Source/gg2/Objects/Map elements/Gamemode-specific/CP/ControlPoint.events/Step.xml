@@ -267,13 +267,13 @@ if(capping &lt;= 0){
                 
                 //stopwatch mode, record the last capped time
                 if global.currentStopwatchRound==1{ //and global.isHost{
-                    global.adcpRound1CapTimestamp=global.adcpRound1Score
+                    //global.adcpRound1CapTimestamp=global.adcpRound1Score
                     if global.adcpRound1Caps==-1{
                         global.adcpRound1Caps+=1
                     }
                     global.adcpRound1Caps+=1
                 }else if global.currentStopwatchRound==2{ //and global.isHost{
-                    global.adcpRound2CapTimestamp=global.adcpRound2Score
+                    //global.adcpRound2CapTimestamp=global.adcpRound2Score
                     if global.adcpRound2Caps==-1{
                         global.adcpRound2Caps+=1
                     }

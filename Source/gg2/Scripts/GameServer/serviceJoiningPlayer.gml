@@ -184,18 +184,10 @@ case STATE_EXPECT_NAME:
     
     ds_list_add(global.players, player);
     ServerPlayerJoin(player.name, global.sendBuffer);
-    
-    with(ModController){
-        event_user(0)
-    }
-    if global.chatPBF_1==1{
-        var message;
-        message = global.chatPrintPrefix+C_GREEN+c_filter(player.name)+C_WHITE+" has joined the server."
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-        write_ushort(global.publicChatBuffer, string_length(message));
-        write_string(global.publicChatBuffer, message);
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(message);// For the hostconsole_sendmsg
+    if player.isBot{
+        chat_sendmsg(global.chatPrintPrefix+C_TEAL+"[BOT] "+c_filter(player.name)+C_WHITE+" has joined the server.",global.printJoins)
+    }else{
+        chat_sendmsg(global.chatPrintPrefix+C_GREEN+c_filter(player.name)+C_WHITE+" has joined the server.",global.printJoins)
     }
     
     if (ds_list_find_index(global.rcon_ips, socket_remote_ip(player.socket)) != -1) and global.autoRCON==1{
@@ -204,14 +196,9 @@ case STATE_EXPECT_NAME:
         ds_list_add(global.RCONList,player)
         
         console_print(C_PINK+'RCON: '+player.name+' given RCON access.')
-        var message, color;
-        color=getPlayerColor(player, true);
-        message = global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' given '+C_PINK+'RCON'+C_WHITE+' access.'
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-        write_ushort(global.publicChatBuffer, string_length(message));
-        write_string(global.publicChatBuffer, message);
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(message);// For the hostconsole_sendmsg
+        var color;
+        color=getPlayerColor(player, true)
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' given '+C_PINK+'RCON'+C_WHITE+' access.',global.printRCONStatus)
     }
     
     //RUP

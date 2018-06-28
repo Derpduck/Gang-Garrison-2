@@ -30,4 +30,5 @@
   <resource name="cc_medcabs" type="RESOURCE"/>
   <resource name="cc_spawndoors" type="RESOURCE"/>
   <resource name="cc_jump" type="RESOURCE"/>
+  <resource name="cc_spinjump" type="RESOURCE"/>
 </resources>

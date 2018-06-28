@@ -83,6 +83,7 @@ with(MGE_HUD){
 }
 
 console_print('Round time limit changed to: '+string(time/(30*60))+' minutes.')
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Round time limit changed to: '+C_GREEN+string(time/(30*60))+C_WHITE+' minutes.',global.printAdminCC)
 exit;
 
 console_print('No time specified.')

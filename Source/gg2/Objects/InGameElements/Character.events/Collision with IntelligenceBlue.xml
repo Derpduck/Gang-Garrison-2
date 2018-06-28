@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">// Intelligence grabbing is synced now, so it's only tested on the server
+if other.grabbable==0 exit;
 if(global.isHost and !global.mapchanging)
 {
     if(team == TEAM_RED and !place_meeting(x,y,TeamGate) and (canGrabIntel or other.resetTimer &lt;= 1) and !ubered and !cloak)

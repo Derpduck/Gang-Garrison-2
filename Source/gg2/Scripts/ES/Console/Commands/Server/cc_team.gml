@@ -87,15 +87,14 @@ if string_letters(input[1])==''{
         console_print(c_filter(player.name)+' has been moved to team: '+newTString+'.')
         
         color=getPlayerColor(player, true)
-        global.srvMsgChatPrint=global.chatPrintPrefix+oldColor+c_filter(player.name)+C_WHITE+' was moved to team: '+color+newTString+C_WHITE+'.'
-        console_miscmsg()
+        chat_sendmsg(global.chatPrintPrefix+oldColor+c_filter(player.name)+C_WHITE+' was moved to team: '+color+newTString+C_WHITE+'.',global.printAdminCC)
         exit;
     }
 }
 
 //ID failed, check names
 with Player{
-    if name == other.input[1]{
+    if name == string_lower(other.input[1]){
         if team==other.newT{
             console_print('Player is already on this team.')
             exit;
@@ -131,8 +130,7 @@ with Player{
         console_print(c_filter(name)+' has been moved to team: '+other.newTString+'.')
         
         color=getPlayerColor(self, true)
-        global.srvMsgChatPrint=global.chatPrintPrefix+oldColor+c_filter(name)+C_WHITE+' was moved to team: '+color+other.newTString+C_WHITE+'.'
-        console_miscmsg()
+        chat_sendmsg(global.chatPrintPrefix+oldColor+c_filter(name)+C_WHITE+' was moved to team: '+color+other.newTString+C_WHITE+'.',global.printAdminCC)
         exit;
     }
 }

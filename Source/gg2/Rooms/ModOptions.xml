@@ -147,8 +147,8 @@
   </views>
   <instances>
     <instance>
-      <object>ModHostOptionsController</object>
-      <position x="96" y="208"/>
+      <object>ModOptionsParent</object>
+      <position x="112" y="208"/>
       <creationCode/>
       <locked>false</locked>
     </instance>

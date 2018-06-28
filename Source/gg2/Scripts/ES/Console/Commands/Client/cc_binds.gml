@@ -11,7 +11,7 @@ if global.RCONSentCommand=1{
 special=string(input[1])
 
 if special!=''{
-    if special=='list'
+    if special=='help'
     splash_set_main(false)
     splash_set_border(false)
     splash_set_interrupt(false)

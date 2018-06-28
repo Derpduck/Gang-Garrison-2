@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="Spawning" type="GROUP"/>
   <resource name="AI" type="GROUP"/>
   <resource name="bot_init" type="RESOURCE"/>
-  <resource name="create_bot" type="RESOURCE"/>
-  <resource name="remove_bot" type="RESOURCE"/>
-  <resource name="get_bot_team" type="RESOURCE"/>
-  <resource name="get_bot_class" type="RESOURCE"/>
   <resource name="get_bot_input" type="RESOURCE"/>
-  <resource name="generate_bot_names" type="RESOURCE"/>
-  <resource name="calculate_bot_balance" type="RESOURCE"/>
 </resources>

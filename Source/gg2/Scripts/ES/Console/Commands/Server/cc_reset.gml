@@ -40,6 +40,7 @@ global.nextMap=_nextMap
 global.consoleMapChange=1
 
 console_print('Restarting round.')
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Round has been restarted by admin.',global.printAdminCC)
 ", "
 console_print('Syntax: reset')
 console_print('Restarts the round on the same map.')

@@ -170,4 +170,6 @@
   <constant name="PUG_PICK" value="76"/>
   <constant name="PUG_MAP" value="77"/>
   <constant name="KICK_CHAT_LENGTH" value="78"/>
+  <constant name="PLAYER_TELEPORT" value="79"/>
+  <constant name="MAP_RESET" value="80"/>
 </constants>

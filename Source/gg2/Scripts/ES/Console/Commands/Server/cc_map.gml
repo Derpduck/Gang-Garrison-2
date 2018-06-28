@@ -47,18 +47,7 @@ if endNow=='end'{
     exit;
 }
 
-with(ModController){
-    event_user(0)
-}
-if global.chatPBF_32==1 or global.chatPBF_64==1{
-    var message, color;
-    message = global.chatPrintPrefix+C_WHITE+'Next map set to '+C_GREEN+_nextMap+C_WHITE+'.'
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-    write_ushort(global.publicChatBuffer, string_length(message));
-    write_string(global.publicChatBuffer, message);
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
-}
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Next map set to '+C_GREEN+_nextMap+C_WHITE+'.',global.printAdminCC)
 
 ", "
 console_print('Syntax: map <map name>')

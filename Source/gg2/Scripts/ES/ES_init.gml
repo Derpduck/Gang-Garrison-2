@@ -67,21 +67,6 @@ ini_open("ES.ini")
     global.damageIndicator=ini_read_real("s","DamageIndicator",1)
     ini_write_real("s","DamageIndicator",global.damageIndicator)
     
-    global.useCustomHaxxyColor=0//ini_read_real("s","UseCustomHaxxyColor",0)
-    //ini_write_real("s","UseCustomHaxxyColor",global.useCustomHaxxyColor)
-    
-    global.haxxyColorSelection=0//ini_read_real("s","HaxxyColorSelection",0)
-    //ini_write_real("s","HaxxyColorSelection",global.haxxyColorSelection)
-    
-    global.myHaxxyColorR=255//ini_read_real("s","MyHaxxyColorR",255)
-    //ini_write_real("s","MyHaxxyColorR",global.myHaxxyColorR)
-    
-    global.myHaxxyColorG=255//ini_read_real("s","MyHaxxyColorG",255)
-    //ini_write_real("s","MyHaxxyColorG",global.myHaxxyColorG)
-    
-    global.myHaxxyColorB=255//ini_read_real("s","MyHaxxyColorB",255)
-    //ini_write_real("s","MyHaxxyColorB",global.myHaxxyColorB)
-    
     global.autoCast=ini_read_real("s","AutoCast",0)
     if global.autoCast==1{
         global.isCasting=1
@@ -110,9 +95,6 @@ ini_open("ES.ini")
     
     global.chatTextAlpha=ini_read_real("s","ChatTextAlpha",100)
     ini_write_real("s","ChatTextAlpha",global.chatTextAlpha)
-    
-    global.chatPBF=ini_read_real("s","ChatPBF",-1)
-    ini_write_real("s","ChatPBF",global.chatPBF)
     
     global.weaponDraw=ini_read_real("s","WeaponDraw",0)
     ini_write_real("s","WeaponDraw",global.weaponDraw)
@@ -156,15 +138,6 @@ ini_open("ES.ini")
     global.configVoteAllowed=ini_read_real("s","ConfigVoteAllowed",1)
     ini_write_real("s","ConfigVoteAllowed",global.configVoteAllowed)
     
-    /*global.damageColourR=ini_read_real("s","DamageColourR","244")
-    ini_write_real("s","DamageColourR",global.damageColourR)
-    
-    global.damageColourG=ini_read_real("s","DamageColourG","244")
-    ini_write_real("s","DamageColourG",global.damageColourG)
-    
-    global.damageColourB=ini_read_real("s","DamageColourB","11")
-    ini_write_real("s","DamageColourB",global.damageColourB)*/
-    
     global.damageColourRGB=ini_read_string("s","DamageColourRGB","244,244,11")
     ini_read_string("s","DamageColourRGB",global.damageColourRGB)
     
@@ -182,15 +155,6 @@ ini_open("ES.ini")
     
     global.bigHpNumbers=ini_read_real("s","BigHpNumbers",0)
     ini_write_real("s","BigHpNumbers",global.bigHpNumbers)
-    
-    /*global.hpColourR=ini_read_real("s","HpColourR",244)
-    ini_write_real("s","HpColourR",global.hpColourR)
-    
-    global.hpColourG=ini_read_real("s","HpColourG",244)
-    ini_write_real("s","HpColourG",global.hpColourG)
-    
-    global.hpColourB=ini_read_real("s","HpColourB",11)
-    ini_write_real("s","HpColourB",global.hpColourB)*/
     
     global.hpColourRGB=ini_read_string("s","HpColourRGB","244,244,11")
     ini_read_string("s","HpColourRGB",global.hpColourRGB)
@@ -246,6 +210,45 @@ ini_open("ES.ini")
     global.pugVoteAllowed=ini_read_real("s","PugVoteAllowed",1)
     ini_write_real("s","PugVoteAllowed",global.pugVoteAllowed)
     
+    global.teleportAllowed=ini_read_real("s","TeleportAllowed",0)
+    ini_write_real("s","TeleportAllowed",global.teleportAllowed)
+    
+    global.teamProjectiles=ini_read_real("s","TeamProjectiles",1)
+    ini_write_real("s","TeamProjectiles",global.teamProjectiles)
+    
+    global.printJoins=ini_read_real("s","PrintJoins",1)
+    ini_write_real("s","PrintJoins",global.printJoins)
+    
+    global.printLeaves=ini_read_real("s","PrintLeaves",1)
+    ini_write_real("s","PrintLeaves",global.printLeaves)
+    
+    global.printNames=ini_read_real("s","PrintNames",1)
+    ini_write_real("s","PrintNames",global.printNames)
+    
+    global.printRUP=ini_read_real("s","PrintRUP",1)
+    ini_write_real("s","PrintRUP",global.printRUP)
+    
+    global.printKBM=ini_read_real("s","PrintKBM",1)
+    ini_write_real("s","PrintKBM",global.printKBM)
+    
+    global.printAdminCC=ini_read_real("s","PrintAdminCC",1)
+    ini_write_real("s","PrintAdminCC",global.printAdminCC)
+    
+    global.printRCONStatus=ini_read_real("s","PrintRCONStatus",1)
+    ini_write_real("s","PrintRCONStatus",global.printRCONStatus)
+    
+    global.printMap=ini_read_real("s","PrintMap",1)
+    ini_write_real("s","PrintMap",global.printMap)
+    
+    global.printAirshot=ini_read_real("s","PrintAirshot",1)
+    ini_write_real("s","PrintAirshot",global.printAirshot)
+    
+    global.printPassword=ini_read_real("s","PrintPassword",0)
+    ini_write_real("s","PrintPassword",global.printPassword)
+    
+    global.printClasslimits=ini_read_real("s","PrintClasslimits",1)
+    ini_write_real("s","PrintClasslimits",global.printClasslimits)
+    
     //Bots    
     global.botMode=ini_read_real("bots","BotSpawnMode",0)
     ini_write_real("bots","BotSpawnMode",global.botMode)
@@ -274,16 +277,16 @@ ini_open("ES.ini")
     global.botClasses[CLASS_SCOUT]=ini_read_real("bots","BotScouts",1)
     ini_write_real("bots", "BotScouts", global.botClasses[CLASS_SCOUT])
     
-    global.botClasses[CLASS_PYRO]=ini_read_real("bots","BotPyros",1)
+    global.botClasses[CLASS_PYRO]=ini_read_real("bots","BotPyros",0)
     ini_write_real("bots","BotPyros",global.botClasses[CLASS_PYRO])
     
-    global.botClasses[CLASS_SOLDIER]=ini_read_real("bots","BotSoldiers",1)
+    global.botClasses[CLASS_SOLDIER]=ini_read_real("bots","BotSoldiers",0)
     ini_write_real("bots","BotSoldiers",global.botClasses[CLASS_SOLDIER])
     
-    global.botClasses[CLASS_HEAVY]=ini_read_real("bots","BotHeavies",1)
+    global.botClasses[CLASS_HEAVY]=ini_read_real("bots","BotHeavies",0)
     ini_write_real("bots","BotHeavies",global.botClasses[CLASS_HEAVY])
     
-    global.botClasses[CLASS_DEMOMAN]=ini_read_real("bots","BotDemomen",1)
+    global.botClasses[CLASS_DEMOMAN]=ini_read_real("bots","BotDemomen",0)
     ini_write_real("bots","BotDemomen",global.botClasses[CLASS_DEMOMAN])
     
     global.botClasses[CLASS_MEDIC]=ini_read_real("bots","BotMedics",0)
@@ -292,13 +295,13 @@ ini_open("ES.ini")
     global.botClasses[CLASS_ENGINEER]=ini_read_real("bots","BotEngineers",0)
     ini_write_real("bots","BotEngineers",global.botClasses[CLASS_ENGINEER])
     
-    global.botClasses[CLASS_SPY]=ini_read_real("bots","BotSpies",1)
+    global.botClasses[CLASS_SPY]=ini_read_real("bots","BotSpies",0)
     ini_write_real("bots","BotSpies",global.botClasses[CLASS_SPY])
     
-    global.botClasses[CLASS_SNIPER]=ini_read_real("bots","BotSnipers",1)
+    global.botClasses[CLASS_SNIPER]=ini_read_real("bots","BotSnipers",0)
     ini_write_real("bots","BotSnipers",global.botClasses[CLASS_SNIPER])
      
-    global.botClasses[CLASS_QUOTE]=ini_read_real("bots","BotQuotes",1)
+    global.botClasses[CLASS_QUOTE]=ini_read_real("bots","BotQuotes",0)
     ini_write_real("bots","BotQuotes",global.botClasses[CLASS_QUOTE])
     
     global.botDebugMode=ini_read_real("bots","BotDebug",0)
@@ -313,6 +316,7 @@ ini_open("controls.gg2")
     global.chatGlobalCtrl=ini_read_real("Controls","ChatGlobalCtrl",ord("Y"))
     global.chatTeamCtrl=ini_read_real("Controls","ChatTeamCtrl",ord("U"))
     global.consoleKey=ini_read_real("Controls","ConsoleKey",vk_f3)
+    global.castStats=ini_read_real("Controls","CastStats",ord("Z"))
 ini_close()
 
 global.myPing=0
@@ -326,10 +330,14 @@ global.healCabs=1
 global.spawnDoors=1
 global.configSuperString=""
 global.jumpMode=0
-global.menuYBegin=0
 global.pugMode=0
 global.pugVotePicks=0
 global.pugVoteMaps=0
+global.useCustomHaxxyColor=0 //Legacy haxxy colour changing variables
+global.haxxyColorSelection=0
+global.myHaxxyColorR=255
+global.myHaxxyColorG=255
+global.myHaxxyColorB=255
 
 //ADCP stopwatch mode
 global.adcpRound1Score=-1

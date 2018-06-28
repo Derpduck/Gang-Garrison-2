@@ -37,19 +37,11 @@
     wantToJump = false;
     timeUnscathed = 0;
     syncWrongness = 0;
+    who=1
     
     //Mod stuff
     playerPing=0
     alarm[8]=30/global.delta_factor
-    
-    //Bots, Node stuff
-    lastNode = -1
-    distanceTraveledSinceNode = 0
-    lastNodeCommand = 0
-    if !instance_exists(Node) and global.botDebugMode{
-        generate_nodes()
-        global.botChangeMap = 1
-    }
     
     //server side afk timeout
     //sAfkTimeout=2*60*30/global.delta_factor //2 mins
@@ -66,14 +58,12 @@
         tdmGraceTimer=0
     }
     graceAnimation=-1
-    
     hopCounter=0
-    
     killstreak=0
     killstreakEnder=-1
-    
     jOldHspeed=0
     jOldVspeed=0
+    touchingMedcab=0
 
     //
     

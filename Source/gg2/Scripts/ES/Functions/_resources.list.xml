@@ -5,4 +5,5 @@
   <resource name="color_code_split" type="RESOURCE"/>
   <resource name="load_map_rotation" type="RESOURCE"/>
   <resource name="load_map_rotation_custom" type="RESOURCE"/>
+  <resource name="chat_sendmsg" type="RESOURCE"/>
 </resources>

@@ -7,6 +7,5 @@
   <resource name="Weapons" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
   <resource name="Characters" type="GROUP"/>
-  <resource name="Bots" type="GROUP"/>
   <resource name="IconS" type="RESOURCE"/>
 </resources>

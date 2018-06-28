@@ -35,7 +35,7 @@ with(Medigun){
 }
 if(myMedigun != -1){
     if global.boxHUD==0{
-        draw_sprite_ext(UberHudS,0,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
+        draw_sprite_ext(UberHudS,global.myself.team,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
         if myMedigun.uberCharge/2000&gt;=1{
             barcolour=c_aqua
         }else{

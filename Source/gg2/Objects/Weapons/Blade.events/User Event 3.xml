@@ -13,17 +13,28 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(bubbleCount &lt; maxBubbles and owner.canBubble==1){
+        <argument kind="STRING">if (bubbleCount &gt;= maxBubbles and owner.canBubble==1) and canRebubble==1{
+    //We already have a bubble, so lets destroy it
+    with(SuperBubble){
+        if owner=other.owner{
+            instance_destroy()
+        }
+    }
+}
+
+//Then we can check to make a new one
+if(bubbleCount &lt; maxBubbles and owner.canBubble==1) and canRebubble==1{
     var sBubble;
     sBubble = createShot(x+lengthdir_x(min(150,owner.aimDistance),owner.aimDirection), y+lengthdir_y(min(150,owner.aimDistance),owner.aimDirection), SuperBubble, DAMAGE_SOURCE_BUBBLE, 0, 0);
     sBubble.gun = id;
     //justShot = true;
     //readyToShoot = false;
     owner.canBubble=0
+    canRebubble=0
+    alarm[7]=rebubbleTime / global.delta_factor
     owner.alarm[10] = owner.bubbleCooldown / global.delta_factor;
     bubbleCount += 1;
 }
-
 </argument>
       </arguments>
     </action>

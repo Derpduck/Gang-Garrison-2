@@ -36,3 +36,4 @@ commandBytes[MGE_CHANGE_ARENA]=1
 commandBytes[PUG_CAPTAIN]=0
 commandBytes[PUG_PICK]=1
 commandBytes[PUG_MAP]=commandBytesPrefixLength1
+commandBytes[PLAYER_TELEPORT]=4

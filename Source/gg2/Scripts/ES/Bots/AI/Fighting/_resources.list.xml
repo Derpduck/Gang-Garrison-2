@@ -2,6 +2,7 @@
 <resources>
   <resource name="scout_ai" type="RESOURCE"/>
   <resource name="pyro_ai" type="RESOURCE"/>
+  <resource name="reflect_ai" type="RESOURCE"/>
   <resource name="soldier_ai" type="RESOURCE"/>
   <resource name="heavy_ai" type="RESOURCE"/>
   <resource name="demoman_ai" type="RESOURCE"/>

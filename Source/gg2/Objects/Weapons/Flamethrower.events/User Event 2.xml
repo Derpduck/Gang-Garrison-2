@@ -35,6 +35,12 @@
             if !collision_line(x,y,x+lengthdir_x(28,owner.aimDirection),y+lengthdir_y(28,owner.aimDirection),Obstacle,1,0)
                 and !place_meeting(x+lengthdir_x(25,owner.aimDirection),y+lengthdir_y(25,owner.aimDirection),TeamGate){
                 shot = createShot(x+lengthdir_x(25,owner.aimDirection),y+lengthdir_y(25,owner.aimDirection),Flare, DAMAGE_SOURCE_FLARE, owner.aimDirection, 15);
+                shot.team=owner.team
+                if global.teamProjectiles==1{
+                    if owner.team==TEAM_BLUE{
+                        shot.sprite_index = Team_BlueFlareS
+                    }
+                }
                 justShot=true;
                 readyToFlare=false;
                 ammoCount -= flareCost;

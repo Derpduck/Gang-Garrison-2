@@ -13,12 +13,26 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">receiveCompleteMessage(global.serverSocket,8,global.deserializeBuffer);
+        <argument kind="STRING">receiveCompleteMessage(global.serverSocket,7,global.deserializeBuffer);
 global.timeLimitMins = read_ubyte(global.deserializeBuffer);
 timeLimit=global.timeLimitMins*30*60;
 timer=read_uint(global.deserializeBuffer);
 global.setupTimer=read_ushort(global.deserializeBuffer);
-global.adcpStopwatch=read_ubyte(global.deserializeBuffer)
+if mode==1{
+    receiveCompleteMessage(global.serverSocket,3,global.deserializeBuffer);
+    global.adcpStopwatch=read_ubyte(global.deserializeBuffer)
+    
+    //Convert this back after
+    global.adcpWinner=read_ubyte(global.deserializeBuffer)
+    if global.adcpWinner==1{
+        global.adcpWinner="Team A"
+    }else if global.adcpWinner==2{
+        global.adcpWinner="Team B"
+    }else if global.adcpWinner==3{
+        global.adcpWinner=""
+    }
+    global.currentStopwatchRound=read_ubyte(global.deserializeBuffer)
+}
 for(i=1; i&lt;=global.totalControlPoints; i+=1) {
     with global.cp[i] event_user(13);
 }

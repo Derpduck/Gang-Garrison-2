@@ -30,7 +30,7 @@ if global.boxHUD==0{
     draw_set_alpha(1);
     draw_set_color(c_white);
     
-    draw_sprite_ext(sprite_index,0,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
+    draw_sprite_ext(sprite_index,global.myself.team,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
     draw_set_color(make_color_rgb(217,217,183))
     draw_text(xoffset+xsize-28,yoffset+ysize-63+11,string(floor(global.myself.object.nutsNBolts))+" N&amp;B")
     draw_set_color(c_white);

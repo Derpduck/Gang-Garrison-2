@@ -13,10 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">eventCalled=0
+        <argument kind="STRING">//Timer for changing pattern
+eventCalled=0
 
 event_user(1)
-alarm[0]=randomTime*30/global.delta_factor
+alarm[0]=(randomTime*30)/global.delta_factor
 </argument>
       </arguments>
     </action>

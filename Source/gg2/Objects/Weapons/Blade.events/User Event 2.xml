@@ -28,8 +28,26 @@
         }else{
             shot.hitDamage = midBladeDamage//(ammoCount-lowAmmoThreshold)/(highAmmoThreshold-lowAmmoThreshold)*(bladeDamage-depletedBladeDamage)+depletedBladeDamage;
         }
-        if(golden)
+        
+        if global.teamProjectiles==1{
+            if owner.team==TEAM_RED{
+                shot.sprite_index=Team_RedBladeProjectileS
+                if global.dumbledankSprites==1{
+                    shot.sprite_index=Team_RedBladeProjectileSM
+                }
+            }else if owner.team==TEAM_BLUE{
+                shot.sprite_index=Team_BlueBladeProjectileS
+                if global.dumbledankSprites==1{
+                    shot.sprite_index=Team_BlueBladeProjectileSM
+                }
+            }
+        }
+        if(golden){
             shot.sprite_index = BladeProjectileGoldS;
+            if global.dumbledankSprites==1{
+              shot.sprite_index = BladeProjectileGoldSM;
+            }
+        }
         
         alarm[0] = refireTime / global.delta_factor;
         shot.alarm[0] = bladeLife / global.delta_factor;

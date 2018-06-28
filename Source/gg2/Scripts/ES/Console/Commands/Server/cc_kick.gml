@@ -44,12 +44,9 @@ if string_letters(input[1])==''{
         }
         
         console_print(c_filter(player.name)+' has been kicked from the server.')
-        if global.chatPBF_2!=1 and global.srvMsgChatPrint==''{
-            var color;
-            color=getPlayerColor(player, true);
-            global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been'+C_ORNGE+' kicked '+C_WHITE+'from the server.'
-            console_sendmsg()
-        }
+        var color;
+        color=getPlayerColor(player, true);
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been'+C_ORNGE+' kicked '+C_WHITE+'from the server.',global.printKBM)
         exit;
     }else if trueID==0{
         console_print('The host cannot be kicked.')
@@ -73,8 +70,7 @@ with Player{
         console_print(c_filter(name)+' has been kicked from the server.')
         var color;
         color=getPlayerColor(self, true)
-        global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been'+C_ORNGE+' kicked '+C_WHITE+'from the server.'
-        console_sendmsg()
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been'+C_ORNGE+' kicked '+C_WHITE+'from the server.',global.printKBM)
         exit;
     }
 }

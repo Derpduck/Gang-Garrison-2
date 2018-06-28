@@ -45,22 +45,20 @@ if string_letters(input[1])==''{
         console_print(c_filter(player.name)+' has been unmuted.')
         var color;
         color=getPlayerColor(player, true);
-        global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been unmuted.'
-        console_sendmsg()
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been unmuted.',global.printKBM)
         exit;
     }
 }
 
 //ID failed, check names
 with Player{
-    if name == other.input[1]{
+    if name == string_lower(other.input[1]){
         ds_list_delete(global.chatBanList,ds_list_find_index(global.chatBanList,id))
         
         console_print(c_filter(name)+' has been unmuted.')
         var color;
         color=getPlayerColor(self, true)
-        global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been unmuted.'
-        console_sendmsg()
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been unmuted.',global.printKBM)
         exit;
     }
 }

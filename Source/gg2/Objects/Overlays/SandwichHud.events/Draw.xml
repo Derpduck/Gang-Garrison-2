@@ -37,7 +37,7 @@ if global.boxHUD==0{
     draw_set_alpha(1);
     barcolor = make_color_rgb(217,217,183);
     
-    draw_sprite_ext(sprite_index,0,xoffset+xsize-47,yoffset+ysize-55+11,2,2,0,c_white,1);
+    draw_sprite_ext(sprite_index,global.myself.team,xoffset+xsize-47,yoffset+ysize-55+11,2,2,0,c_white,1);
     draw_healthbar(xoffset+xsize-63,yoffset+ysize-66+11,xoffset+xsize-28,yoffset+ysize-61+11,sandwichScalar,c_black,barcolor,barcolor,0,true,false);
 }else{
     draw_set_color(c_black)

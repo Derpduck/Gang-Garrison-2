@@ -35,6 +35,8 @@ lowAmmoThreshold = (1/3) * maxAmmo;
 highAmmoThreshold = (91/100) * maxAmmo //2/3 * maxAmmo;
 reloadTime = 55;
 reloadBuffer = 0;
+rebubbleTime=150
+canRebubble=1
 
 if(golden){
     normalSprite = BladeGoldS;

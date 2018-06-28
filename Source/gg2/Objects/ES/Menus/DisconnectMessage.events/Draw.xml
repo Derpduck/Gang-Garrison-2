@@ -39,11 +39,11 @@ draw_set_valign(fa_top);
 draw_text_ext(x, y - height, msg, -1, width);
 
 var textCol;
-            if global.textSelectCol==0{
-                draw_set_color(c_red);
-            }else if global.textSelectCol==1{
-                draw_set_color(c_aqua)
-            }
+if global.textSelectCol==0{
+    draw_set_color(c_red);
+}else if global.textSelectCol==1{
+    draw_set_color(c_aqua)
+}
 if (button_x1 &lt;= mouse_x and mouse_x &lt;= button_x2 and button_y1 &lt;= mouse_y and mouse_y &lt;= button_y2){
     draw_set_alpha(0.71);
     if global.textSelectCol==0{

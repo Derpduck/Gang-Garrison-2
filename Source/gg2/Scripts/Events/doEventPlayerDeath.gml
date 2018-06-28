@@ -97,10 +97,7 @@ if (assistant)
     assistant.roundStats[POINTS] += .5;
 }
 
-with(ModController){
-    event_user(0)
-}
-if global.chatPBF_8==1 and global.isHost{
+if global.isHost{
     allSetSolids();
     if (place_free(x,y+1) and place_free(x,y+55) and place_free(x,y+100))
     or (victim.object.moveStatus!=0 and place_free(x,y+1) and place_free(x,y+55)){
@@ -125,13 +122,7 @@ if global.chatPBF_8==1 and global.isHost{
                 if damageSource==DAMAGE_SOURCE_REFLECTED_ROCKET or DAMAGE_SOURCE_REFLECTED_STICKY or DAMAGE_SOURCE_REFLECTED_FLARE{
                     reflectString=""//" reflect"
                 }
-                
-                message = global.chatPrintPrefix+colorKiller+killerString+C_WHITE+reflectString+" airshot"+colorVictim+" "+victimString+C_WHITE+"!"
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-                write_ushort(global.publicChatBuffer, string_length(message));
-                write_string(global.publicChatBuffer, message);
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
+                chat_sendmsg(global.chatPrintPrefix+colorKiller+killerString+C_WHITE+reflectString+" airshot"+colorVictim+" "+victimString+C_WHITE+"!",global.printAirshot)
             }
         }
     }

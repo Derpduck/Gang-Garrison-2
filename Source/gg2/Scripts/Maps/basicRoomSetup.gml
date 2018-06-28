@@ -119,13 +119,13 @@ if(global.music == MUSIC_BOTH || global.music == MUSIC_INGAME_ONLY) {
 instance_create(map_width()/2,map_height()/2,Spectator);
 
 //Bots
-//load_bot_nodes()
-//global.mesh=initialize_mesh("Maps\"+global.currentMap+".png")
+global.mesh=initialize_mesh("Maps\"+global.currentMap+".png")
 
 global.redCaps = 0;
 global.blueCaps = 0;
 global.winners = -1;
 global.adcpWinner=""
+global.myAdcpTeam=""
 
 if global.currentConfig==""{
     if global.autoStart==1{
@@ -133,7 +133,8 @@ if global.currentConfig==""{
     }else if global.autoStart==0{
         global.forceReady=0
     }
-}/*else{
+}
+/*else{
     if global.cfgrup==1{
         global.forceReady=0
     }else if global.cfgrup==0{

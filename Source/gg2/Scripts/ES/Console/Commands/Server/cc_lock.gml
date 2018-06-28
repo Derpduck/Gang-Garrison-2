@@ -31,14 +31,12 @@ if !global.isHost{
 if global.lockedTeams==0{
     global.lockedTeams=1
     console_print('Teams locked.')
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_WHITE+'Teams locked!'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Teams locked!',global.printAdminCC)
     exit;
 }else{
     global.lockedTeams=0
     console_print('Unlocked teams.')
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_WHITE+'Teams unlocked!'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Teams unlocked!',global.printAdminCC)
     exit;
 }
 ", "

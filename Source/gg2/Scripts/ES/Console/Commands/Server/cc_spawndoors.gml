@@ -31,9 +31,11 @@ if !global.isHost{
 if global.spawnDoors==0{
     global.spawnDoors=1
     console_print('Spawn doors enabled.')
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Spawn doors enabled by admin.',global.printAdminCC)
 }else if global.spawnDoors==1{
     global.spawnDoors=0
     console_print('Spawn doors disabled.')
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Spawn doors disabled by admin.',global.printAdminCC)
 }
 
 ", "

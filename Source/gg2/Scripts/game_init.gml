@@ -220,8 +220,6 @@ global.backgroundHash = "default"
 global.backgroundTitle = ""
 global.backgroundURL = ""
 global.backgroundShowVersion = true
-//global.frameratekind = 0
-//global.game_fps = 30
 global.mapchanging = false    
 global.currentMapArea=1
 global.totalMapAreas=1
@@ -324,8 +322,8 @@ calculateMonthAndDay()
 builder_init()
 character_init()
 
-//if(!directory_exists(working_directory + "\Plugins")) directory_create(working_directory + "\Plugins")
-//loadplugins()
+if(!directory_exists(working_directory + "\Plugins")) directory_create(working_directory + "\Plugins")
+loadplugins()
 
 //Windows 8 is known to crash GM when more than three (?) sounds play at once
 //We'll store the kernel version (Win8 is 6.2, Win7 is 6.1) and check it there.

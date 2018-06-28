@@ -14,11 +14,11 @@ if (mode == 0){
         draw_set_halign(fa_center);
         if instance_exists(CTFHUD){
             if global.smallTimer==0{
-                draw_sprite_ext(TimerHudS,4,xoffset+xsize/2,yoffset+30,3,3,0,c_white,1);
+                draw_sprite_ext(TimerHudS,3+teamoffset,xoffset+xsize/2,yoffset+30,3,3,0,c_white,1);
             }
         }else{
             if global.smallTimer==0{
-            draw_sprite_ext(TimerHudS,2+teamoffset,xoffset+xsize/2,yoffset+30,3,3,0,c_white,1);
+            draw_sprite_ext(TimerHudS,3+teamoffset,xoffset+xsize/2,yoffset+30,3,3,0,c_white,1);
             }
         }
         draw_text((xoffset+xsize/2)+xshift,yoffset+30+yshift,"OVERTIME");
@@ -73,11 +73,11 @@ if (mode == 0){
 }else{
     if (mode == 2){
         if global.smallTimer==0{
-            draw_sprite_ext(TimerOutlineS, 0, xoffset+xsize/2, yoffset, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(TimerOutlineS, 3+teamoffset, xoffset+xsize/2, yoffset, 2, 2, 0, c_white, 1);
         }
     }
     if global.smallTimer==0{
-        draw_sprite_ext(TimerHudS, 2+teamoffset, xoffset+xsize/2+xshift, yoffset, 2,2,0,c_white,1);
+        draw_sprite_ext(TimerHudS, 3+teamoffset, xoffset+xsize/2+xshift, yoffset, 2,2,0,c_white,1);
     }
     if (countdown <= 0){
         draw_set_halign(fa_center);

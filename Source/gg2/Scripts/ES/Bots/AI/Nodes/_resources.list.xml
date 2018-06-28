@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<resources>
-  <resource name="generate_nodes" type="RESOURCE"/>
-  <resource name="load_bot_nodes" type="RESOURCE"/>
-  <resource name="write_nodes_to_file" type="RESOURCE"/>
-</resources>

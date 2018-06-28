@@ -30,6 +30,7 @@ cc_reset()
 cc_medcabs()
 cc_spawndoors()
 cc_jump()
+cc_spinjump()
 
 //Client
 cc_help()
@@ -46,3 +47,4 @@ cc_disconnect()
 cc_smute()
 cc_say()
 //cc_status()
+cc_teleport()

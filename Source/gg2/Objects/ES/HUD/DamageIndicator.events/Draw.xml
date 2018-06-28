@@ -24,11 +24,11 @@ if alpha&gt;=1{
 }
 
 var dmgStr;
-if round(dmg)==dmg{
+//if round(dmg)==dmg{
     dmgStr=string_format(dmg,round(dmg),0)
-}else{
-    dmgStr=string_format(dmg,round(dmg),1)
-}
+//}else{
+//    dmgStr=string_format(dmg,round(dmg),1)
+//}
 
 draw_text_ext_transformed_color(x+1,round(y+1),dmgStr,0,0,factor,factor,image_angle,c_black,c_black,c_black,c_black,alpha)
 draw_text_ext_transformed_color(x,round(y),dmgStr,0,0,factor,factor,image_angle,colour,colour,colour,colour,alpha)

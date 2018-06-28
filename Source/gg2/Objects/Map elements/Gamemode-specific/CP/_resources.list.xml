@@ -7,4 +7,5 @@
   <resource name="ControlPoint3" type="RESOURCE"/>
   <resource name="ControlPoint4" type="RESOURCE"/>
   <resource name="ControlPoint5" type="RESOURCE"/>
+  <resource name="ControlPointSetupGate" type="RESOURCE"/>
 </resources>

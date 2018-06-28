@@ -39,11 +39,10 @@ if global.serverPassword==input[1]{
     exit;
 }
 
-global.serverPassword=input[1]
+global.serverPassword=string(input[1])
 console_print('Password set to: '+global.serverPassword)
 
-global.srvMsgChatPrint=global.chatPrintPrefix+C_WHITE+'Password set to: '+C_GREEN+global.serverPassword+C_WHITE+'.'
-console_miscmsg()
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Password set to: '+C_GREEN+global.serverPassword+C_WHITE+'.',global.printPassword)
 exit;
 
 //Write the new password to the ini

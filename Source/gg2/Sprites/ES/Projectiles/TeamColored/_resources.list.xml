@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Team_RocketS" type="RESOURCE"/>
+  <resource name="Team_RedRocketS" type="RESOURCE"/>
+  <resource name="Team_BlueRocketS" type="RESOURCE"/>
+  <resource name="Team_ShotS" type="RESOURCE"/>
+  <resource name="Team_BlueFlameS" type="RESOURCE"/>
+  <resource name="Team_BlueFlareS" type="RESOURCE"/>
+  <resource name="Team_NeedleS" type="RESOURCE"/>
+  <resource name="Team_RedBladeProjectileS" type="RESOURCE"/>
+  <resource name="Team_BlueBladeProjectileS" type="RESOURCE"/>
+  <resource name="Team_RedBladeProjectileSM" type="RESOURCE"/>
+  <resource name="Team_BlueBladeProjectileSM" type="RESOURCE"/>
+  <resource name="Team_RedExplosionS" type="RESOURCE"/>
+  <resource name="Team_BlueExplosionS" type="RESOURCE"/>
+  <resource name="Team_RedMineTrailS" type="RESOURCE"/>
+  <resource name="Team_BlueMineTrailS" type="RESOURCE"/>
+</resources>

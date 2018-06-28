@@ -767,6 +767,11 @@ do {
             //doEventBubblePop(player)//player, otherPlayer, assistantPlayer, causeOfDeath);
             //break;
             
+        case MAP_RESET:
+            global.mapchanging = false;
+            doEventMapReset()
+            break;
+            
         default:
             promptRestartOrQuit("The Server sent unexpected data.");
             exit;

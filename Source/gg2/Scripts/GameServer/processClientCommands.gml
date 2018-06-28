@@ -354,20 +354,9 @@ while(commandLimitRemaining > 0) {
                     lastNamechange = current_time;
                     oldname=name
                     name = read_string(socket, nameLength);
-                    
-                    with(ModController){
-                        event_user(0)
-                    }
-                    if global.chatPBF_4==1{
-                        var message, color;
-                        color = getPlayerColor(player, true);
-                        message = global.chatPrintPrefix+color+c_filter(oldname)+" "+C_WHITE+"has changed their name to"+color+" "+c_filter(name)+C_WHITE+"."
-                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-                        write_ushort(global.publicChatBuffer, string_length(message));
-                        write_string(global.publicChatBuffer, message);
-                        write_byte(global.publicChatBuffer,-1)
-                        print_to_chat(message);// For the host
-                    }
+                    var color;
+                    color=getPlayerColor(player, true)
+                    chat_sendmsg(global.chatPrintPrefix+color+c_filter(oldname)+" "+C_WHITE+"has changed their name to"+color+" "+c_filter(name)+C_WHITE+".",global.printNames)
                     
                     write_ubyte(global.sendBuffer, PLAYER_CHANGENAME);
                     write_ubyte(global.sendBuffer, playerId);
@@ -382,7 +371,19 @@ while(commandLimitRemaining > 0) {
                 with(player.object){
                     keyState = read_ubyte(socket);
                     netAimDirection = read_ushort(socket);
-                    aimDirection = netAimDirection*360/65536;
+                    if player.autoSpinjump==1 and (!((keyState | pressedKeys) & $10) and !((keyState | pressedKeys) & $08)){
+                        if global.run_virtual_ticks{
+                            if aimDirection>=180{
+                                aimDirection=0
+                                netAimDirection=0*65536/360
+                            }else{
+                                aimDirection=180
+                                netAimDirection=180*65536/360
+                            }
+                        }
+                    }else{
+                        aimDirection = netAimDirection*360/65536;
+                    }
                     aimDistance = read_ubyte(socket)*2;
 
                     event_user(1);
@@ -476,8 +477,7 @@ while(commandLimitRemaining > 0) {
                 console_print(C_PINK+'RCON: '+player.name+' given RCON access.')
                 var color;
                 color=getPlayerColor(player, true);
-                global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' given '+C_PINK+'RCON'+C_WHITE+' access.'
-                console_sendmsg()
+                chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' given '+C_PINK+'RCON'+C_WHITE+' access.',global.printRCONStatus)
             }else{
                 write_ubyte(player.socket,RCON_LOGIN)
                 write_ubyte(player.socket,RCON_LOGIN_FAILED) //invalid password
@@ -682,20 +682,9 @@ while(commandLimitRemaining > 0) {
             
             if ds_map_find_value(rupPlayers,player)==0{
                 ds_map_replace(rupPlayers,player,1)
-                
-                with(ModController){
-                    event_user(0)
-                }
-                if global.chatPBF_128==1{
-                    var message,color;
-                    color = getPlayerColor(player, true);
-                    message = global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+" is ready."
-                    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-                    write_ushort(global.publicChatBuffer, string_length(message));
-                    write_string(global.publicChatBuffer, message);
-                    write_byte(global.publicChatBuffer,-1)
-                    print_to_chat(message);// For the host
-                }
+                var color;
+                color=getPlayerColor(player, true)
+                chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+" is ready.",global.printRUP)
             }
             break;
             
@@ -722,20 +711,9 @@ while(commandLimitRemaining > 0) {
             
             if ds_map_find_value(rupPlayers,player)==1{
                 ds_map_replace(rupPlayers,player,0)
-                
-                with(ModController){
-                    event_user(0)
-                }
-                if global.chatPBF_128==1{
-                    var message,color;
-                    color = getPlayerColor(player, true);
-                    message = global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+" is no longer ready."
-                    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-                    write_ushort(global.publicChatBuffer, string_length(message));
-                    write_string(global.publicChatBuffer, message);
-                    write_byte(global.publicChatBuffer,-1)
-                    print_to_chat(message);// For the host
-                }
+                var color;
+                color=getPlayerColor(player, true)
+                chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+" is no longer ready.",global.printRUP)
             }
             break;
             
@@ -1109,11 +1087,6 @@ while(commandLimitRemaining > 0) {
             for (i=1; i<ds_list_size(PugController.mapList); i+=1){
                 
                 mapString+=string(ds_list_find_value(PugController.mapList,i))+", "
-                //if i mod 2 == 0{
-                //    mapString+=C_GREEN
-                //}else{
-                //    mapString+=C_TEAL
-                //}
             }
             mapString=string_delete(mapString,string_length(mapString)-1,2)
             
@@ -1126,6 +1099,24 @@ while(commandLimitRemaining > 0) {
             
             //Everything is done, start the PUG
             PugController.alarm[3]=150/global.delta_factor
+            break;
+            
+        case PLAYER_TELEPORT:
+            var xTele, yTele;
+            xTele = read_ushort(socket)*5
+            yTele = read_ushort(socket)*5
+            
+            if player.object!=-1{
+                if instance_exists(player.object){
+                    with(player.object){
+                        if ((global.teleportAllowed==1) or (global.teleportAllowed==2 and global.jumpMode==1) or (player=ds_list_find_value(global.players,0))
+                            or (global.teleportAllowed==3 and player=ds_list_find_value(global.RCONList,ds_list_find_index(global.players,player)))){
+                            x=xTele
+                            y=yTele
+                        }
+                    }
+                }
+            }
             break;
             
         //   

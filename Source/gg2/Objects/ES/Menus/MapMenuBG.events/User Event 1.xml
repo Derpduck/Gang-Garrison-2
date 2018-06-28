@@ -16,14 +16,14 @@
         <argument kind="STRING">randomXStart=random_range(room_width/scaleFactor,sprite_get_width(sprite_index)-(room_width/scaleFactor))
 randomYStart=random_range(room_height/scaleFactor-20,sprite_get_height(sprite_index)-(room_height/scaleFactor)+20)
 randomDir=irandom_range(0,359)
-randomSpeed=random_range(0.7,2.4)*global.delta_factor
+randomSpeed=random_range(0.7,maxSpeed)*global.delta_factor
 randomTime=random_range(10,20)
 
-x=room_width - ((randomXStart*scaleFactor))*1.2
-y=room_height - ((randomYStart*scaleFactor))*1.2
+x=room_width-((randomXStart*scaleFactor))*1.2
+y=room_height-((randomYStart*scaleFactor))*1.2
 startx=x
 starty=y
-direction=randomDir
+direction=round(randomDir)
 speed=randomSpeed
 </argument>
       </arguments>

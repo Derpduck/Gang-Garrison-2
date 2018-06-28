@@ -60,7 +60,6 @@ if instance_exists(ModOptGFXBasic) or instance_exists(ModOptGFXAdv) or instance_
         des_y /= ds_list_size(mouse_samples);
         
         ybegin = round(baseybegin - min(1, max(0, des_y/view_hview[0]))*(720+hPlus-view_hview[0]));
-        global.menuYBegin=ybegin
     }
 }
 

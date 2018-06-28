@@ -43,6 +43,13 @@
         }
         explo=instance_create(x,y,Explosion);
         explo.blastSize=blastRadius
+        if global.teamProjectiles==1{
+            if team==TEAM_RED{
+                explo.sprite_index=Team_RedExplosionS
+            }else if team==TEAM_BLUE{
+                explo.sprite_index=Team_BlueExplosionS
+            }
+        }
         playsound(x,y,ExplosionSnd);
         
         with (Character) {

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="Movement" type="GROUP"/>
   <resource name="Aiming" type="GROUP"/>
   <resource name="Fighting" type="GROUP"/>
   <resource name="Gamemodes" type="GROUP"/>
-  <resource name="Movement" type="GROUP"/>
-  <resource name="Nodes" type="GROUP"/>
   <resource name="bot_main" type="RESOURCE"/>
+  <resource name="bot_task" type="RESOURCE"/>
+  <resource name="bot_task_behaviour" type="RESOURCE"/>
+  <resource name="bot_fighting" type="RESOURCE"/>
+  <resource name="bot_navigate" type="RESOURCE"/>
 </resources>

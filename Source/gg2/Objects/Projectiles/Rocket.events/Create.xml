@@ -17,6 +17,9 @@
 if global.dumbledankSprites==1{
     sprite_index=RocketSM
 }
+if global.teamProjectiles==1{
+    sprite_index=Team_RocketS
+}
 
 hitDamage = 25;
 explosionDamage = 30;

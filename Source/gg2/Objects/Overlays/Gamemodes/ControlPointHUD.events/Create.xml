@@ -23,8 +23,9 @@ global.rupTime=5*30/global.delta_factor
 if instance_exists(ControlPointSetupGate){
     //ADCP
     mode=1
+    global.setupTimer=40*30
     if global.adcpStopwatch==1 and global.isHost and global.adcpRound1Score==-1 and global.currentStopwatchRound==0{
-        ds_list_insert(global.map_rotation,ds_list_find_index(global.map_rotation,global.currentMap)+1,global.currentMap)
+        //ds_list_insert(global.map_rotation,ds_list_find_index(global.map_rotation,global.currentMap)+1,global.currentMap)
         global.currentStopwatchRound=1
         //reset vars
         global.adcpRound1Score=-1
@@ -32,15 +33,14 @@ if instance_exists(ControlPointSetupGate){
         global.adcpRound1Caps=-1
         global.adcpRound2Caps=-1
         //global.currentStopwatchRound=0
-        global.adcpWinner=""
+        //global.adcpWinner=""
+        //global.myAdcpTeam=""
         global.adcpRound1CapTimestamp=-1
         global.adcpRound2CapTimestamp=-1
-        global.myAdcpTeam=""
     }
-    if global.adcpStopwatch==1 and global.isHost and global.adcpRound1Score!=-1{
-        global.currentStopwatchRound=2
-    }
-    global.setupTimer=40*30
+    //if global.adcpStopwatch==1 and global.isHost and global.adcpRound1Score!=-1{
+    //    global.currentStopwatchRound=2
+    //}
     if global.jumpMode==0{
         timeLimit=min(2*30*60,global.timeLimitMins*30*60)
     }else{

@@ -41,8 +41,7 @@ if string_letters(input[1])==''{
         console_print(c_filter(player.name)+' has been muted by admin.')
         var color;
         color=getPlayerColor(player, true);
-        global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been muted by admin.'
-        console_sendmsg()
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been muted by admin.',global.printKBM)
         exit;
     }else if trueID==0{
         console_print('The host cannot be muted.')
@@ -52,7 +51,7 @@ if string_letters(input[1])==''{
 
 //ID failed, check names
 with Player{
-    if name == other.input[1]{
+    if name == string_lower(other.input[1]){
         if id==global.myself{
             console_print('The host cannot be muted.')
             exit;
@@ -63,8 +62,7 @@ with Player{
         console_print(c_filter(name)+' has been muted by admin.')
         var color;
         color=getPlayerColor(self, true)
-        global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been muted by admin.'
-        console_sendmsg()
+        chat_sendmsg(global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been muted by admin.',global.printKBM)
         exit;
     }
 }

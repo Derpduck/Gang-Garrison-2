@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">var targetQueue, testDist, playercheck, targetAngle, obscured, rotateoffset;
+        <argument kind="STRING">
+var targetQueue, testDist, playercheck, targetAngle, obscured, rotateoffset;
 
 if(ownerPlayer.sentry)
 {

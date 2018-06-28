@@ -1,9 +1,8 @@
+
 // Predicts the movements of the nearest enemy and aims
 
-// TODO: FIX SCOUT AND ENGIE MOMENTUM COMPENSATION
-
 if class == CLASS_SCOUT{
-    weapon_speed = 13+object.hspeed
+    weapon_speed = 13+botPlayer.object.hspeed
 }else if class == CLASS_SOLDIER{
     weapon_speed = 13
 }else if class == CLASS_HEAVY{
@@ -11,7 +10,7 @@ if class == CLASS_SCOUT{
 }else if class == CLASS_PYRO{
     weapon_speed = 8
 }else if class == CLASS_ENGINEER{
-    weapon_speed = 13+object.hspeed
+    weapon_speed = 13+botPlayer.object.hspeed
 }else if class == CLASS_MEDIC{
     weapon_speed = 9
 }else if class != CLASS_SNIPER{
@@ -28,8 +27,8 @@ if class == CLASS_SNIPER{
         predictedEnemy_x = nearestEnemy.x
         time = 0
     }else{
-        time = (nearestEnemy.x-object.x)/(weapon_velocity-nearestEnemy.hspeed)
-        predictedEnemy_x = object.x+(weapon_velocity*time)
+        time = (nearestEnemy.x-botPlayer.object.x)/(weapon_velocity-nearestEnemy.hspeed)
+        predictedEnemy_x = botPlayer.object.x+(weapon_velocity*time)
     }
     
     if time < 0{
@@ -65,7 +64,7 @@ if class == CLASS_SNIPER{
     }
 }
 
-aimDirection = point_direction(object.x, object.y, predictedEnemy_x, predictedEnemy_y)
+aimDirection = point_direction(botPlayer.object.x, botPlayer.object.y, predictedEnemy_x, predictedEnemy_y)
 
 /*if (class == CLASS_SCOUT or class == CLASS_ENGINEER) and object.speed != 0// Bullets are modified by your momentum, compensate for that
 {

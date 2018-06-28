@@ -50,6 +50,13 @@
         room_goto_fix(ModOptions);
     ');
     
+    //splash_set_main(false)
+    //splash_set_border(false)
+    //splash_set_interrupt(false)
+    //splash_set_size(1024,600)
+    //splash_set_interrupt(0)
+    //splash_show_web('https://github.com/Derpduck/Gang-Garrison-2/wiki/',0)
+    
     if (global.rewardId != ''){
         menu_addlink("[7] Manage Haxxy Rewards", '
             splash_set_main(false)

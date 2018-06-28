@@ -31,9 +31,11 @@ if !global.isHost{
 if global.healCabs==0{
     global.healCabs=1
     console_print('Med cabinets enabled.')
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Med cabinets enabled by admin.',global.printAdminCC)
 }else if global.healCabs==1{
     global.healCabs=0
     console_print('Med cabinets disabled.')
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Med cabinets disabled by admin.',global.printAdminCC)
 }
 
 ", "

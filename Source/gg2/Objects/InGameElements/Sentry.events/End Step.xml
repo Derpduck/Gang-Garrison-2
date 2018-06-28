@@ -33,6 +33,14 @@ if (built == 1) {
         alarm[5] = 90 / global.delta_factor;    
     }    
     idleTimer = false;
+    
+    if(global.run_virtual_ticks){
+        lastDamageTimer+=1
+    }
+    
+    if lastDamageTimer=lastDamageThreshold{
+        alarm[2]=1
+    }
 }
 </argument>
       </arguments>

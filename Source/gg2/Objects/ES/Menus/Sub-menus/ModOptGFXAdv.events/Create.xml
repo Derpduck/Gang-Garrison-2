@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
+    menumode = true;
+    virnum=0
+    setVirNum=0
+        
+    if (room != ModOptions){
+        menu_setdimmed();
+    }
+    
+    menu_background(512, 24, 8, 12, 4);
+    bgtabs = true;
+    
+    menu_addedit_num("Box HUD Background Alpha %:","global.boxBgAlpha",'
+        es_write_ini("s","BoxBgAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_num("Box HUD Text/Bar Alpha %:","global.boxElementAlpha",'
+        es_write_ini("s","BoxElementAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_num("Box Scoreboard Background Alpha %:","global.boxScoreboardBGAlpha",'
+        es_write_ini("s","BoxScoreboardBGAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_select("Box Stats Board Position:","global.boxStatsScorePos",'
+        es_write_ini("s","BoxStatsScorePos",argument0)
+    ')setVirNum+=1
+    menu_add_option(0,"Off")
+    menu_add_option(1,"Left")
+    menu_add_option(2,"Right")
+    menu_add_option(3,"Bottom")
+    
+    menu_addlink("")setVirNum+=1
+    
+    menu_addedit_num("Chat Box Alpha %:","global.chatBoxAlpha",'
+        es_write_ini("s","ChatBoxAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_num("Chat Text Alpha %:","global.chatTextAlpha",'
+        es_write_ini("s","ChatTextAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_num("Chat Idle Lines:","global.chatDisplayLines",'
+        es_write_ini("s","ChatDisplayLines",argument0)
+    ',12)setVirNum+=1
+    
+    menu_addedit_num("Chat Expiry Time:","global.chatExpiryTime",'
+        es_write_ini("s","ChatExpiryTime",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_select("Chat Font Style:","global.chatFontType",'
+        es_write_ini("s","ChatFontType",argument0)
+    ')setVirNum+=1
+    menu_add_option(0,"Standard")
+    menu_add_option(1,"Bold")
+    
+    menu_addlink("")setVirNum+=1
+    
+    menu_addedit_text_rgb("Damage Indicator Color, RGB:","global.damageColourRGB",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
+        es_write_ini("s","DamageColourRGB",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("Damage Indicator Scale %:","global.damageIndicatorScale",'
+        es_write_ini("s","DamageIndicatorScale",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Combine Damage Numbers:","global.damageIndicatorCombine",'
+        es_write_ini("s","DamageIndicatorCombine",argument0)
+    ')setVirNum+=1
+    
+    menu_addlink("")setVirNum+=1
+    
+    menu_addedit_text_rgb("Big HP Color, RGB:","global.hpColourRGB",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
+        es_write_ini("s","HpColourRGB",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_text_rgb("Big Ammo Color, RGB:","global.ammoColourRGB",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
+        es_write_ini("s","AmmoColourRGB",argument0)
+    ')setVirNum+=1
+    
+    menu_addlink("")setVirNum+=1
+    
+    menu_addedit_num("Kill-Log Background Alpha %:","global.killLogBGAlpha",'
+        es_write_ini("s","KillLogBGAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_num("Kill-Log Text Alpha %:","global.killLogTextAlpha",'
+        es_write_ini("s","KillLogTextAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_num("Kill-Log Max Items:","global.killLogItems",'
+        es_write_ini("s","KillLogItems",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_num("Kill-Log Display Time:","global.killLogTime",'
+        es_write_ini("s","KillLogTime",argument0)
+    ')setVirNum+=1
+    
+    menu_addlink("")setVirNum+=1
+    
+    menu_addedit_num("Respawn Timer Alpha %:","global.respawnTimerAlpha",'
+        es_write_ini("s","RespawnTimerAlpha",argument0)
+    ',100)setVirNum+=1
+    
+    menu_addedit_select("Respawn Timer Position:","global.respawnTimerPos",'
+        es_write_ini("s","RespawnTimerPos",argument0)
+    ')setVirNum+=1
+    menu_add_option(0,"Top")
+    menu_add_option(1,"Middle")
+    menu_add_option(2,"Bottom")
+    
+    
+    //TABS
+    menu_addtablink("HUDs", '
+        instance_destroy();
+        instance_create(x,y,ModOptGFXBasic);
+    ');
+    
+    menu_addtablink("HUDs Adv.", '
+        instance_destroy();
+        instance_create(x,y,ModOptGFXAdv);
+    ');
+    
+    menu_addtablink("Graphics", '
+        instance_destroy();
+        instance_create(x,y,ModOptGFXBasic2);
+    ');
+    
+    menu_addback("[0] Back", '
+        instance_destroy()
+        instance_create(0,0,ModOptionsParent)
+    ');
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

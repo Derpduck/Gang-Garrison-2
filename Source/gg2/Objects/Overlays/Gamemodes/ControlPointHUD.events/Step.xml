@@ -66,51 +66,19 @@ if (mode == 0){
         global.winners = TEAM_BLUE;
     }
 }
-
-if global.adcpStopwatch==1 /*and global.isHost*/ and mode==1 and global.isLive==1 and global.jumpMode==0{
-    if global.currentStopwatchRound==1{
-        //accumulate timer score for first team
-        global.adcpRound1Score+=1*global.delta_factor
-    }else if global.currentStopwatchRound==2{
-        //and for the second team
-        global.adcpRound2Score+=1*global.delta_factor
-    }
     
-    //determining the overall winner
-    if global.winners!=-1 and global.currentStopwatchRound==2{
-        //same number of caps
-        if global.adcpRound1Caps==global.adcpRound2Caps{
-            //lower time=better score (less time spent on the map, won faster)
-            if global.adcpRound1CapTimestamp&lt;global.adcpRound2CapTimestamp{
-                global.adcpWinner="Team 1"
-            }else if global.adcpRound1CapTimestamp&gt;global.adcpRound2CapTimestamp{
-                global.adcpWinner="Team 2"
-            }
-        }else if global.adcpRound1Caps&gt;global.adcpRound2Caps{
-            //team 1 got more caps
-            global.adcpWinner="Team 1"
-        }else if global.adcpRound1Caps&lt;global.adcpRound2Caps{
-            //team 2 got more caps
-            global.adcpWinner="Team 2"
-        }
-        //console_print(global.adcpWinner)
-        global.currentStopwatchRound=1
-    }
-}
-    
-
 if overtime==1 and mode==0{
 //if team controls more than global.totalControlPoints/2 cp, they win
 //otherwise if team has even number of cps, overtime until a cap
 }
 
-//am i team 1 or team 2
+//Assign a team
 if global.currentStopwatchRound!=1 exit;
-if global.adcpStopwatch==1 and mode==1 and global.isLive==0 and global.currentStopwatchRound==1/*global.myAdcpTeam==""*/{
+if global.adcpStopwatch==1 and mode==1 and global.isLive==0 and global.currentStopwatchRound==1{
     if global.myself.team==TEAM_RED{
-        global.myAdcpTeam="[TEAM 1]"
+        global.myAdcpTeam="Team A"
     }else if global.myself.team==TEAM_BLUE{
-        global.myAdcpTeam="[TEAM 2]"
+        global.myAdcpTeam="Team B"
     }
 }
 </argument>

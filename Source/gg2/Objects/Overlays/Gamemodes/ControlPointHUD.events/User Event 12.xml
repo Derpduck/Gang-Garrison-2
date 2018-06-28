@@ -16,7 +16,19 @@
         <argument kind="STRING">write_ubyte(global.serializeBuffer, global.timeLimitMins);
 write_uint(global.serializeBuffer, timer);
 write_ushort(global.serializeBuffer, global.setupTimer);
-write_ubyte(global.serializeBuffer, global.adcpStopwatch)
+if mode==1{
+    write_ubyte(global.serializeBuffer, global.adcpStopwatch)
+    
+    //Convert this back after
+    if global.adcpWinner=="Team A"{
+        write_ubyte(global.serializeBuffer, 1)
+    }else if global.adcpWinner=="Team B"{
+        write_ubyte(global.serializeBuffer, 2)
+    }else if global.adcpWinner==""{
+        write_ubyte(global.serializeBuffer, 3)
+    }
+    write_ubyte(global.serializeBuffer,global.currentStopwatchRound)
+}
 for(i=1; i&lt;=global.totalControlPoints; i+=1) {
     with global.cp[i] event_user(12);
 }

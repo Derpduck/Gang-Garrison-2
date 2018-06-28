@@ -123,9 +123,8 @@ if newReds-1>newBlues{
 
 console_print('Teams have been scrambled.')
 
-global.srvMsgChatPrint=global.chatPrintPrefix+C_WHITE+'Teams have been scrambled!'
-console_miscmsg()
-//", "
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Teams have been scrambled!',global.printAdminCC)
+", "
 console_print('Syntax: scramble')
 console_print('Randomly re-orders the teams. All players will be killed on doing this.')
-//")
+")

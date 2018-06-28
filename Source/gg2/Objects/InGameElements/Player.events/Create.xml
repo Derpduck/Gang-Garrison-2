@@ -28,10 +28,14 @@
     isDerpduck=0
     oldPing=-1
     MGE_currentArena=-1
+    autoSpinjump=0
+    who=2
     
     //Bots
     isBot=0
     botSocket=-1
+    botDet=0
+    nearestEnemy=-1
     
     // client setting stuff; set to defaults
     queueJump = false;

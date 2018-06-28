@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="bot_avoid_obstacle" type="RESOURCE"/>
-  <resource name="find_nearest_node" type="RESOURCE"/>
-  <resource name="find_node_path" type="RESOURCE"/>
-  <resource name="get_node_list" type="RESOURCE"/>
 </resources>

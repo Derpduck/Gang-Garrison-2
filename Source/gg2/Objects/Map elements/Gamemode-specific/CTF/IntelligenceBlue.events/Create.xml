@@ -15,6 +15,8 @@
       <arguments>
         <argument kind="STRING">team = TEAM_BLUE;
 resetTimer=-1
+grabbable=0
+alarm[0]=2
 </argument>
       </arguments>
     </action>

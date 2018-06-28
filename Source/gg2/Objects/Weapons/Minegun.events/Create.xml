@@ -25,6 +25,7 @@ reloadBuffer = 26;
 maxAmmo = 8;
 ammoCount = maxAmmo;
 idle=true;
+botTarget=8
 
 if(golden){
     normalSprite = MinegunGoldS;

@@ -8,6 +8,7 @@
   <resource name="Colors" type="GROUP"/>
   <resource name="Functions" type="GROUP"/>
   <resource name="Bots" type="GROUP"/>
+  <resource name="Events" type="GROUP"/>
   <resource name="ES_init" type="RESOURCE"/>
   <resource name="es_write_ini" type="RESOURCE"/>
 </resources>

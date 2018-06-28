@@ -2,5 +2,4 @@
 <resources>
   <resource name="Server" type="GROUP"/>
   <resource name="Client" type="GROUP"/>
-  <resource name="Messages" type="GROUP"/>
 </resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    global.levelchoice = 1
+    virnum=0
+
+    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
+    menu_background(212, 24, 8, 12, 4);
+    if (room != ModOptions){
+        menu_setdimmed();
+    }
+    
+    menu_addlink("[1] General", '
+        instance_destroy();
+        instance_create(0,0,ModOptMisc);
+    ');
+    
+    menu_addlink("[2] In-Game Graphics", '
+        instance_destroy();
+        instance_create(0,0,ModOptGFXBasic);
+    ');
+    
+    menu_addlink("[3] Hosting", '
+        instance_destroy();
+        instance_create(0,0,ModHostOptionsController);
+    ');
+    
+    menu_addlink("[4] Controls", '
+        instance_destroy();
+        instance_create(0,0,ModControlsOptionsController);
+    ');
+    
+    menu_addback("[0] Back", '
+        instance_destroy()
+        if(room == ModOptions){
+            room_goto_fix(Menu)
+        }else{
+            instance_create(0,0,InGameMenuController)
+        }
+    ');
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

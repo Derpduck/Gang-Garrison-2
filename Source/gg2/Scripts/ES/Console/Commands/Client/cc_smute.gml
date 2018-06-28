@@ -26,8 +26,7 @@ if string_letters(input[1])==''{
         console_print(c_filter(player.name)+' has been self muted.')
         var color;
         color=getPlayerColor(player, true);
-        global.clientMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been self muted.'
-        console_localmsg()
+        print_to_chat(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has been self muted.')
         exit;
     }//else if trueID==0{
      //   console_print('The host cannot be muted.')
@@ -48,8 +47,7 @@ with Player{
         console_print(c_filter(name)+' has been self muted.')
         var color;
         color=getPlayerColor(self, true)
-        global.clientMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been self muted.'
-        console_localmsg()
+        print_to_chat(global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' has been self muted.')
         exit;
     }
 }

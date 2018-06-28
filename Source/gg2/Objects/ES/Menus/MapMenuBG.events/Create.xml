@@ -15,9 +15,10 @@
       <arguments>
         <argument kind="STRING">scaleFactor=8
 eventCalled=0
+maxSpeed=2.2
 
 event_user(1)
-alarm[0]=randomTime*30/global.delta_factor
+alarm[0]=(randomTime*30)/global.delta_factor
 </argument>
       </arguments>
     </action>

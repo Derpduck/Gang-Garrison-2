@@ -41,8 +41,7 @@ if string_letters(input[1])==''{
             console_print(c_filter(player.name)+' has been hurt for '+string(dmgAmount)+' by admin.')
             var color;
             color=getPlayerColor(player, true);
-            global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' hurt for'+P_RED+' '+string(dmgAmount)+C_WHITE+' damage.'
-            console_sendmsg()
+            chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' hurt for'+P_RED+' '+string(dmgAmount)+C_WHITE+' damage.',global.printAdminCC)
             exit;
         }else{
             console_print(c_filter(player.name)+' is not alive.')
@@ -53,14 +52,13 @@ if string_letters(input[1])==''{
 
 //ID failed, check names
 with Player{
-    if name == other.input[1]{
+    if name == string_lower(other.input[1]){
         if(object!=-1){
             object.hp-=dmgAmount
             console_print(c_filter(name)+' has been hurt for '+string(dmgAmount)+' by admin.')
             var color;
             color=getPlayerColor(self, true);
-            global.srvMsgChatPrint=global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' hurt for'+P_RED+' '+string(dmgAmount)+C_WHITE+' damage.'
-            console_sendmsg()
+            chat_sendmsg(global.chatPrintPrefix+color+c_filter(name)+C_WHITE+' hurt for'+P_RED+' '+string(dmgAmount)+C_WHITE+' damage.',global.printAdminCC)
             exit;
         }else{
             console_print(c_filter(name)+' is not alive.')

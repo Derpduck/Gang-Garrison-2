@@ -14,6 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
+    if global.teamProjectiles==1{
+        sprite_index=Team_NeedleS
+    }
     hitDamage = 4;
     lifetime = 40;
     alarm[0] = lifetime / global.delta_factor;

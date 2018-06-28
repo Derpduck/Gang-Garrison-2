@@ -15,4 +15,5 @@
   <resource name="cc_smute" type="RESOURCE"/>
   <resource name="cc_say" type="RESOURCE"/>
   <resource name="cc_status" type="RESOURCE"/>
+  <resource name="cc_teleport" type="RESOURCE"/>
 </resources>

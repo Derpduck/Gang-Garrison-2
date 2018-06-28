@@ -36,7 +36,7 @@ number=-1
 //Check the inputs
 if input[1]!=''{
     class=input[1]
-    class=string(class)
+    class=string_lower((class)
 }
 if input[2]!=''{
     number=input[2]
@@ -47,62 +47,52 @@ if input[2]!=''{
 if class=='scout' or class=='runner' or class=='1'{
     global.classlimits[CLASS_SCOUT]=number
     console_print(C_LBLUE+'Scout limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Runner '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Runner '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='pyro' or class=='firebug' or class=='2'{
     global.classlimits[CLASS_PYRO]=number
     console_print(C_LBLUE+'Pyro limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Firebug '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Firebug '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='soldier' or class=='rocketman' or class=='3'{
     global.classlimits[CLASS_SOLDIER]=number
     console_print(C_LBLUE+'Soldier limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Rocketman '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Rocketman '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='heavy' or class=='overweight' or class=='4'{
     global.classlimits[CLASS_HEAVY]=number
     console_print(C_LBLUE+'Heavy limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Overweight '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Overweight '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='demoman' or class=='detonator' or class=='5'{
     global.classlimits[CLASS_DEMOMAN]=number
     console_print(C_LBLUE+'Demoman limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Detonator '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Detonator '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='medic' or class=='healer' or class=='6'{
     global.classlimits[CLASS_MEDIC]=number
     console_print(C_LBLUE+'Medic limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Healer '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Healer '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='engineer' or class=='constructor' or class=='7'{
     global.classlimits[CLASS_ENGINEER]=number
      console_print(C_LBLUE+'Engineer limit changed to: '+string(number))
-     global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Constructor '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+     chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Constructor '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='spy' or class=='infiltrator' or class=='8'{
     global.classlimits[CLASS_SPY]=number
     console_print(C_LBLUE+'Spy limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Infiltrator '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Infiltrator '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit
 }else if class=='sniper' or class=='rifleman' or class=='9'{
     global.classlimits[CLASS_SNIPER]=number
     console_print(C_LBLUE+'Sniper limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Rifleman '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Rifleman '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='quote' or class=='curly' or class=='qc' or class=='q/c' or class=='0'{
     global.classlimits[CLASS_QUOTE]=number
     console_print(C_LBLUE+'Quote/Curly limit changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'Quote/Curly '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'Quote/Curly '+C_WHITE+'classlimit set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else if class=='all' or class==string(-1){
     global.classlimits[CLASS_SCOUT]=number
@@ -116,8 +106,7 @@ if class=='scout' or class=='runner' or class=='1'{
     global.classlimits[CLASS_SNIPER]=number
     global.classlimits[CLASS_QUOTE]=number
     console_print(C_LBLUE+'All classlimits changed to: '+string(number))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_LBLUE+'All '+C_WHITE+'classlimits set to: '+C_GREEN+string(number)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_LBLUE+'All '+C_WHITE+'classlimits set to: '+C_GREEN+string(number)+C_WHITE+'.',global.printClasslimits)
     exit;
 }else{
     console_print(class+' is not a valid class. For a list of possible class names type <help classlimits>.')

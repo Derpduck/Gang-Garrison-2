@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<include>
+  <filename>libpng3.dll</filename>
+  <filepath>C:\Documents\Gang Garrison\E-Sports Mod\Extensions\libpng3.dll</filepath>
+  <original>true</original>
+  <originalSize>260096</originalSize>
+  <hasContent>true</hasContent>
+  <exportTo>WORKING_DIRECTORY</exportTo>
+  <otherExportDirectory/>
+  <overwriteExisting>true</overwriteExisting>
+  <freeMemAfterExport>true</freeMemAfterExport>
+  <removeAtGameEnd>false</removeAtGameEnd>
+</include>

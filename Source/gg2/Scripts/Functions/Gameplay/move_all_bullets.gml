@@ -46,36 +46,52 @@ with(Rocket){
     speed *= delta_mult(0.92);
     image_angle = direction;
     
+    var colour;
+    if global.teamProjectiles==1{
+        if team==TEAM_RED{
+            colour=c_red
+        }else{
+            colour=c_blue
+        }
+    }else{
+        colour=c_gray
+    }
     if (global.run_virtual_ticks){
-            if(global.particles = PARTICLES_NORMAL){
-                effect_create_below(ef_smoke,x-hspeed*1.3,y-vspeed*1.3,0,c_gray);
-            }else if(global.particles == PARTICLES_ALTERNATIVE){
-                if (!variable_local_exists("rocketblurParticleType")){
-                    rocketblurParticleType = part_type_create();
-                    if team == TEAM_RED rocketParticleSprite = RedRocketS;
-                    else rocketParticleSprite = BlueRocketS;
-                    
-                    if global.dumbledankSprites==1{
-                        if team == TEAM_RED rocketParticleSprite = RedRocketSM;
-                        else rocketParticleSprite = BlueRocketSM;
-                    }
-                    part_type_sprite(rocketblurParticleType,rocketParticleSprite,false,true,false);
-                    part_type_alpha2(rocketblurParticleType,0.7,0.1);
-                                        
-                    var rocketpartlife;
-                    rocketpartlife = 5 / global.delta_factor;
-                    part_type_life(rocketblurParticleType, rocketpartlife, rocketpartlife);
+        if(global.particles = PARTICLES_NORMAL){
+            effect_create_below(ef_smoke,x-hspeed*1.3,y-vspeed*1.3,0,c_gray);
+        }else if(global.particles == PARTICLES_ALTERNATIVE){
+            if (!variable_local_exists("rocketblurParticleType")){
+                rocketblurParticleType = part_type_create();
+                if team == TEAM_RED rocketParticleSprite = RedRocketS;
+                else rocketParticleSprite = BlueRocketS;
+                
+                if global.dumbledankSprites==1{
+                    if team == TEAM_RED rocketParticleSprite = RedRocketSM;
+                    else rocketParticleSprite = BlueRocketSM;
                 }
                 
-                if (!variable_global_exists("rocketblurParticleSystem")){
-                    global.rocketblurParticleSystem = part_system_create();
-                    part_system_depth(global.rocketblurParticleSystem, 10);
+                if global.teamProjectiles==1{
+                    if team == TEAM_RED rocketParticleSprite = Team_RedRocketS;
+                    else rocketParticleSprite = Team_BlueRocketS;
                 }
                 
-                part_type_orientation(rocketblurParticleType,direction,direction,0,0,0);
+                part_type_sprite(rocketblurParticleType,rocketParticleSprite,false,true,false);
+                part_type_alpha2(rocketblurParticleType,0.7,0.1);
                 
-                part_particles_create(global.rocketblurParticleSystem, x, y, rocketblurParticleType, 1);
+                var rocketpartlife;
+                rocketpartlife = 5 / global.delta_factor;
+                part_type_life(rocketblurParticleType, rocketpartlife, rocketpartlife);
             }
+            
+            if (!variable_global_exists("rocketblurParticleSystem")){
+                global.rocketblurParticleSystem = part_system_create();
+                part_system_depth(global.rocketblurParticleSystem, 10);
+            }
+            
+            part_type_orientation(rocketblurParticleType,direction,direction,0,0,0);
+            
+            part_particles_create(global.rocketblurParticleSystem, x, y, rocketblurParticleType, 1);
+        }
     }
     if(!firststep and global.delta_factor != 1){
         x += hspeed * global.delta_factor;
@@ -132,6 +148,17 @@ with(BurningProjectile){
         vspeed += 0.15 * global.delta_factor;
     }
     
+    var colour;
+    if global.teamProjectiles==1{
+        if team==TEAM_RED{
+            colour=c_red
+        }else{
+            colour=c_blue
+        }
+    }else{
+        colour=c_gray
+    }
+    
     if(global.particles == PARTICLES_NORMAL and global.run_virtual_ticks){
         if(random(5) < 1){
             effect_create_below(ef_smokeup, x, y-8, 0, c_gray);
@@ -140,13 +167,14 @@ with(BurningProjectile){
         if(not variable_global_exists("flameParticleType")){
             global.flameParticleType = part_type_create();
             var particleSprite;
-            //if object_index==Flame{
-                particleSprite=FlameS
-            //}else if object_index==Flare{
-            //    particleSprite=FlareS
-            //}else{
-            //    particleSprite=FlameS
-            //}
+            particleSprite=FlameS
+            
+            if global.teamProjectiles==1{
+                if team == TEAM_BLUE{
+                    particleSprite = Team_BlueFlameS;
+                }
+            }
+            
             part_type_sprite(global.flameParticleType, particleSprite, true, false, true);
             part_type_alpha2(global.flameParticleType, 1, 0.3);
             part_type_life(global.flameParticleType, 4/global.delta_factor, 7/global.delta_factor);
@@ -185,6 +213,26 @@ with(Mine){
         firststep = true;
     }
     
+    if owner.player.isBot==1{
+        if instance_exists(targetEnemy){
+            if targetEnemy.player.object!=-1{
+                var x1,y1,x2,y2;
+                x1=x
+                y1=y
+                x2=targetEnemy.x
+                y2=targetEnemy.y
+                if point_distance(x1,y1,x2,y2)<=blastRadius{
+                    if (point_distance(x1,y1,x2,y2)<point_distance(x1+hspeed,y1+vspeed,x2+targetEnemy.hspeed,y2+targetEnemy.vspeed)) and firststep==0{//point_distance(x1+hspeed,y1+min(vspeed+(0.2*global.delta_factor),8),x2+targetEnemy.hspeed,y2+targetEnemy.vspeed)){
+                        owner.player.botDet=1
+                    }
+                }
+            //if speed==0 and firststep==0{
+                //owner.player.botDet=1
+            //}
+            }
+        }
+    }
+    
     if(stickied){
         if (reflector != noone and alarm[0] < 0){
             alarm[0] = 30 / global.delta_factor;
@@ -197,7 +245,18 @@ with(Mine){
         if (global.run_virtual_ticks){
             particleCycle = (particleCycle + 1) mod 2;
             if(particleCycle){
-                instance_create(x, y, MineTrail);
+                var trail;
+                trail=instance_create(x, y, MineTrail);
+                trail.team=team
+                with(trail){
+                    if global.teamProjectiles==1 and global.yellowMineTrails==0{
+                        if team==TEAM_RED{
+                            sprite_index=Team_RedMineTrailS
+                        }else if team==TEAM_BLUE{
+                            sprite_index=Team_BlueMineTrailS
+                        }
+                    }
+                }
             }
         }
     }

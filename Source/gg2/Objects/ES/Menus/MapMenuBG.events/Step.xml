@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if eventCalled==1{
+        <argument kind="STRING">//Keep within the view boundaries
+if eventCalled==1{
     exit;
 }
 

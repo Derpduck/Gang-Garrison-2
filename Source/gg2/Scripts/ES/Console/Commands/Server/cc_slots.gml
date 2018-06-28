@@ -52,8 +52,7 @@ if classlimittotal<floor(global.playerLimit/2){
 if newLimit!=-1{
     global.playerLimit=min(48,newLimit)
     console_print('Slots set to: '+string(global.playerLimit))
-    global.srvMsgChatPrint=global.chatPrintPrefix+C_WHITE+'Slots set to: '+C_GREEN+string(global.playerLimit)+C_WHITE+'.'
-    console_miscmsg()
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Slots set to: '+C_GREEN+string(global.playerLimit)+C_WHITE+'.',global.printAdminCC)
     exit;
 }
 console_print('Invalid or no input.')

@@ -36,6 +36,8 @@ lastDamageDealer = noone;
 lastDamageSource = -1;
 
 idleTimer = true;
+lastDamageTimer=0
+lastDamageThreshold=20*30
 </argument>
       </arguments>
     </action>

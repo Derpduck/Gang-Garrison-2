@@ -168,7 +168,7 @@ if(global.myself.object != -1)
     }
     
     if(global.run_virtual_ticks){
-        ClientInputstate(global.serverSocket, keybyte);
+            ClientInputstate(global.serverSocket, keybyte);
     }
     socket_send(global.serverSocket);
 }else if (instance_exists(Spectator)){ // spectator controls

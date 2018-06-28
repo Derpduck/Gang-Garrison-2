@@ -18,11 +18,13 @@ if (global.myself != -1){
         teamoffset = 0;
     }else if (global.myself.team == TEAM_BLUE){
         teamoffset = 1;
+    }else{
+        teamoffset=2
     }
 }
 
 if global.boxHUD==0{
-    draw_generictimer(xoffset+xshift, yoffset+yshift, xsize, ysize, argument4, argument5, 0);
+    draw_generictimer(xoffset+xshift, yoffset+yshift, xsize, ysize, argument4, teamoffset, 0);
 }else{
     draw_boxGenericTimer(xoffset+xshift, yoffset+yshift, xsize, ysize, argument4, argument5, 0);
 }

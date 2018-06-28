@@ -35,8 +35,15 @@
         calculatedspread = sign(random(2)-1)*power(random(3), 1.8);
         calculatedspread *= 1 - hspeed/owner.basemaxspeed;
         shot = createShot(x+lengthdir_x(25,owner.aimDirection)+owner.equipmentOffset,y+lengthdir_y(25,owner.aimDirection),Flame, DAMAGE_SOURCE_FLAMETHROWER, owner.aimDirection+calculatedspread,6.5+random(3.5));
-        with(shot)
+        shot.team=owner.team
+        with(shot){
             motion_add(owner.direction, owner.speed);
+        }
+        if global.teamProjectiles==1{
+            if owner.team==TEAM_BLUE{
+                shot.sprite_index = Team_BlueFlameS
+            }
+        }
         
         justShot=true;
         readyToShoot=false;

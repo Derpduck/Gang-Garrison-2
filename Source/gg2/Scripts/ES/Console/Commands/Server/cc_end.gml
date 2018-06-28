@@ -39,6 +39,7 @@ if input[1]==string_lower('blue') or input[1]=='2'{
 }
 
 console_print('Round ended.')
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Round has been ended by admin.',global.printAdminCC)
 ", "
 console_print('Syntax: end')
 console_print('End the round. Specify <red> or <blue> to make it a win for that team, otherwise, round will count as a stalemate.')

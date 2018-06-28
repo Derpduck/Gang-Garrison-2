@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Apply afterburn
+        <argument kind="STRING">touchingMedcab=0
+// Apply afterburn
 if (burnDuration &gt; 0){
     if(hp &gt; 0){
     // Don't count if someone else already finished him off, to prevent afterburn from "stealing" sticky kills (Bug #1021989)
@@ -47,11 +48,6 @@ if (burnDuration &lt;= 0 || burnIntensity &lt;= 0){
     burnIntensity = 0;
     burnedBy = -1;
     afterburnSource = -1;
-}
-
-//Bots
-if lastNode != -1{
-    distanceTraveled += hspeed
 }
 
 // Handle input
@@ -334,7 +330,7 @@ if (intel and (ubered or global.mapchanging) and global.isHost){
 }
 
 //gotta regenerate some nuts
-nutsNBolts = min(nutsNBolts+(0.12 * global.delta_factor), maxNutsNBolts);
+nutsNBolts = min(nutsNBolts+(0.16 * global.delta_factor), maxNutsNBolts);
 
 //ubered max out ammo and extinguish flames
 if ubered{
