@@ -1,21 +1,9 @@
-var message, color;
-message = global.chatPrintPrefix+C_WHITE+'Results: '+C_GREEN+string(global.yesVotes)+' yes vote(s), '+P_RED+string(global.noVotes)+' no vote(s)'
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-write_ushort(global.publicChatBuffer, string_length(message));
-write_string(global.publicChatBuffer, message);
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Results: '+C_GREEN+string(global.yesVotes)+' yes vote(s), '+P_RED+string(global.noVotes)+' no vote(s)')
 
 //check who won
 if global.yesVotes>global.noVotes{
     //yes wins
-    var message;
-    message = global.chatPrintPrefix+C_WHITE+'Vote '+C_GREEN+'successful'+C_WHITE+', shuffling teams!'
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Vote '+C_GREEN+'successful'+C_WHITE+', shuffling teams!')
     
     //pug mode
     if global.pugMode==1 and PugController.stage<5{
@@ -100,13 +88,7 @@ if global.yesVotes>global.noVotes{
     }
 }else if global.yesVotes<global.noVotes or global.yesVotes==global.noVotes{
     //no wins/tie
-    var message, color;
-    message = global.chatPrintPrefix+C_WHITE+'Vote '+C_RED+'failed'+C_WHITE+', not shuffling teams.'
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-    write_ushort(global.publicChatBuffer, string_length(message));
-    write_string(global.publicChatBuffer, message);
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Vote '+C_RED+'failed'+C_WHITE+', not shuffling teams.')
 }
 
 //reset vars

@@ -36,13 +36,7 @@ if teamToPick==1{
     teamString="BLUE"
 }
 
-var message;
-message = global.chatPrintPrefix+colour+teamString+"'s pick: "+ pickingList
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+colour+teamString+"'s pick: "+ pickingList)
 </argument>
       </arguments>
     </action>

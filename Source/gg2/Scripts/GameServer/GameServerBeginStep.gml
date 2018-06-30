@@ -221,27 +221,9 @@ if(global.winners != -1 and !global.mapchanging){
         timeStr2=string(max(0,minutes2))+":"+string(secstring2)
         
         //Chat messages
-        msg1=global.chatPrintPrefix+C_GREEN+"ADCP Stopwatch: "+winCol+string(global.adcpWinner)+" "+winningTeam+C_WHITE+" wins!"
-        msg2=global.chatPrintPrefix+C_GREEN+"Time: "+P_RED+timeStr2+C_WHITE+" : "+P_BLUE+timeStr1
-        msg3=global.chatPrintPrefix+C_GREEN+"Caps: "+P_RED+string(global.adcpRound1Caps)+C_WHITE+" : "+P_BLUE+string(global.adcpRound2Caps)
-        
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-        write_ushort(global.publicChatBuffer, string_length(msg1))
-        write_string(global.publicChatBuffer, msg1)
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(msg1);// For the host
-        
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-        write_ushort(global.publicChatBuffer, string_length(msg2))
-        write_string(global.publicChatBuffer, msg2)
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(msg2);// For the host
-        
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-        write_ushort(global.publicChatBuffer, string_length(msg3))
-        write_string(global.publicChatBuffer, msg3)
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(msg3);// For the host
+        chat_sendmsg(global.chatPrintPrefix+C_GREEN+"ADCP Stopwatch: "+winCol+string(global.adcpWinner)+" "+winningTeam+C_WHITE+" wins!")
+        chat_sendmsg(global.chatPrintPrefix+C_GREEN+"Time: "+P_RED+timeStr2+C_WHITE+" : "+P_BLUE+timeStr1)
+        chat_sendmsg(global.chatPrintPrefix+C_GREEN+"Caps: "+P_RED+string(global.adcpRound1Caps)+C_WHITE+" : "+P_BLUE+string(global.adcpRound2Caps))
     }
     
     if global.adcpStopwatch==1 and global.currentStopwatchRound!=0{

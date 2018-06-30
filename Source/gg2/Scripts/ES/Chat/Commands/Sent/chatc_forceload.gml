@@ -26,13 +26,7 @@ for (i=0; i<ds_list_size(global.players); i+=1){
 
 if rconCheck==0{
     if hostCheck!=0{
-        var message;
-        message = global.chatPrintPrefix+C_WHITE+'Only admins can use this command.'
-        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-        write_ushort(global.publicChatBuffer, string_length(message));
-        write_string(global.publicChatBuffer, message);
-        write_byte(global.publicChatBuffer,-1)
-        print_to_chat(message);// For the host
+        chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Only admins can use this command.')
         exit;
     }
 }

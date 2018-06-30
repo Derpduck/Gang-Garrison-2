@@ -38,21 +38,9 @@ for (i=0; i&lt;ds_list_size(bluePlayers); i+=1){
 }
 blueString=string_delete(blueString,string_length(blueString)-1,2)
 
-var message;
-message = global.chatPrintPrefix+P_RED+"RED team: "+redString
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+P_RED+"RED team: "+redString)
 
-var message;
-message = global.chatPrintPrefix+P_BLUE+"BLUE team: "+blueString
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+P_BLUE+"BLUE team: "+blueString)
 
 ds_list_destroy(redPlayers)
 ds_list_destroy(bluePlayers)

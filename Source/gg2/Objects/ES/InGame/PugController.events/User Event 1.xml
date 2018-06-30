@@ -37,13 +37,7 @@ if player.object!=-1{
 }
 ServerPlayerChangeteam(ds_list_find_index(global.players,player),player.team,global.sendBuffer)
 
-var message;
-message = global.chatPrintPrefix+pickedColour+redCaptain.name+C_WHITE+" picked "+pickedColour+pickedPlayer.name+C_WHITE+"."
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+pickedColour+redCaptain.name+C_WHITE+" picked "+pickedColour+pickedPlayer.name+C_WHITE+".")
 
 if pickNumber&gt;maxPicks{
     event_user(5)

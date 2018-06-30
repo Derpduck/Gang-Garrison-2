@@ -43,33 +43,15 @@ for (i=0; i&lt;ds_list_size(global.players); i+=1){
 }
 
 if pug==1{
-    var message;
-    message = global.chatPrintPrefix+C_PINK+"PUG "+C_WHITE+"started! Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_RED+"RED team's"+C_WHITE+" captain."
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_PINK+"PUG "+C_WHITE+"started! Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_RED+"RED team's"+C_WHITE+" captain.")
     stage=1 //red captain
 }else if mix==1{
-    var message;
-    message = global.chatPrintPrefix+C_PINK+"MIX "+C_WHITE+"started! Team"+C_GREEN+" map "+C_WHITE+"picking will now begin!"
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_PINK+"MIX "+C_WHITE+"started! Team"+C_GREEN+" map "+C_WHITE+"picking will now begin!")
     alarm[2]=60/global.delta_factor
     
     event_user(4)
 }else if war==1{
-    var message;
-    message = global.chatPrintPrefix+C_PINK+"WAR "+C_WHITE+"started! Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_RED+"RED team's"+C_WHITE+" captain."
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_PINK+"WAR "+C_WHITE+"started! Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_RED+"RED team's"+C_WHITE+" captain.")
     stage=1 //red captain
 }
 </argument>

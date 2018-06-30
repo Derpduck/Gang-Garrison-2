@@ -14,13 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if war==1{
-    var message;
-    message = global.chatPrintPrefix+C_WHITE+"Join your teams! Captains confirm or unconfirm the final teams with "+C_GREEN+"/captain"+C_WHITE+"."
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+"Join your teams! Captains confirm or unconfirm the final teams with "+C_GREEN+"/captain"+C_WHITE+".")
     break;
 }
 
@@ -32,13 +26,7 @@ if maxPicks&lt;=2{
 }
 
 //Start picking teams
-var message;
-message = global.chatPrintPrefix+P_RED+"RED"+C_WHITE+" captain picks first! Type"+C_GREEN+" /pick "+C_PINK+"&lt;number&gt;"
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+P_RED+"RED"+C_WHITE+" captain picks first! Type"+C_GREEN+" /pick "+C_PINK+"&lt;number&gt;")
 
 event_user(0)
 </argument>

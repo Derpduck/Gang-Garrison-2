@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ModOptGFXBasic" type="RESOURCE"/>
+  <resource name="ModOptGFXAdv" type="RESOURCE"/>
+  <resource name="ModOptGFXBasic2" type="RESOURCE"/>
+</resources>

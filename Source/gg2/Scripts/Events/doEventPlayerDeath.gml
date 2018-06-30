@@ -77,13 +77,7 @@ if(killer){
                     colorKiller=C_GREEN
                 }
                 //colorKiller = getPlayerColor(killer, true);
-                var message;
-                message = global.chatPrintPrefix+colorKiller+c_filter(killer.name)+" "+C_WHITE+"is on a "+C_GREEN+string(killer.object.killstreak)+C_WHITE+" killstreak!"
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-                write_ushort(global.publicChatBuffer, string_length(message));
-                write_string(global.publicChatBuffer, message);
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
+                chat_sendmsg(global.chatPrintPrefix+colorKiller+c_filter(killer.name)+" "+C_WHITE+"is on a "+C_GREEN+string(killer.object.killstreak)+C_WHITE+" killstreak!",global.killstreakPrints)
             }
         }
     }
@@ -110,7 +104,6 @@ if global.isHost{
         or damageSource==DAMAGE_SOURCE_FLARE
         or damageSource==DAMAGE_SOURCE_REFLECTED_FLARE){
             if victim!=killer{
-                var message;
                 colorKiller = getPlayerColor(killer, true);
                 colorVictim = getPlayerColor(victim, true);
                 classKiller = classname(killer.class)

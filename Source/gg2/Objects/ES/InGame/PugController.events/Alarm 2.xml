@@ -14,21 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">//Map picking start
-var message;
-message = global.chatPrintPrefix+C_GREEN+string(global.pugVoteMaps)+C_WHITE+" maps to pick: Type"+C_GREEN+" /map "+C_PINK+"&lt;map name&gt;"
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+C_GREEN+string(global.pugVoteMaps)+C_WHITE+" maps to pick: Type"+C_GREEN+" /map "+C_PINK+"&lt;map name&gt;")
 
-var message;
-message = global.chatPrintPrefix+P_BLUE+"BLUE's pick:"
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+P_BLUE+"BLUE's pick:")
 
 stage=4 //map picking
 </argument>

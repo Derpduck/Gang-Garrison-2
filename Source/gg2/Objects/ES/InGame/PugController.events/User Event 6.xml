@@ -19,13 +19,7 @@ drawString=""
 if drawScore!=0{
     drawString=C_WHITE+" : "+C_GREEN+"DRAW - "+string(drawScore)
 }
-var message;
-message = global.chatPrintPrefix+C_GREEN+"Scores: "+P_RED+"RED - "+string(redScore)+C_WHITE+" : "+P_BLUE+"BLUE - "+string(blueScore)+drawString
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+C_GREEN+"Scores: "+P_RED+"RED - "+string(redScore)+C_WHITE+" : "+P_BLUE+"BLUE - "+string(blueScore)+drawString)
 
 if gamesPlayed==5{
     var endString;
@@ -39,13 +33,7 @@ if gamesPlayed==5{
     
     }
 
-    var message;
-    message = global.chatPrintPrefix+endString
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+endString)
     
     instance_destroy()
 }

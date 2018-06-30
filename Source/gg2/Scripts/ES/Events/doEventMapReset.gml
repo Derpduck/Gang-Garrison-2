@@ -12,13 +12,7 @@ with(ReadyUpController){
 }
 
 if global.isHost{
-    var message;
-    message=global.chatPrintPrefix+C_GREEN+"ADCP Stopwatch: "+C_WHITE+"Switching sides!"
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_GREEN+"ADCP Stopwatch: "+C_WHITE+"Switching sides!")
     
     if global.currentConfig==""{
         if global.autoStart==1{

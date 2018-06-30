@@ -28,12 +28,7 @@ if ds_list_find_index(global.votedList,player)!=-1{
     
     var message, color;
     color = getPlayerColor(player, true);
-    message = global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has voted '+C_GREEN+'yes'+C_WHITE+'!'
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-    write_ushort(global.publicChatBuffer, string_length(message));
-    write_string(global.publicChatBuffer, message);
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has voted '+C_GREEN+'yes'+C_WHITE+'!')
     
     exit;
 }

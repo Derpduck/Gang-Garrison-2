@@ -29,13 +29,7 @@ if pug==1{
     typeString="WAR"
 }
 
-var message;
-message = global.chatPrintPrefix+C_WHITE+"Teams and maps have been selected, "+typeString+" will now begin!"
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+"Teams and maps have been selected, "+typeString+" will now begin!")
 
 event_user(3)
 </argument>

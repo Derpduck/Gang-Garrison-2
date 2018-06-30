@@ -44,12 +44,7 @@
                 }
                 killstreakString=" killstreak was ended by"+colorEnder+" "+killstreakEnderName+C_WHITE+"!"
             }
-            message = global.chatPrintPrefix+colorDead+deadName+C_WHITE+"'s "+C_GREEN+string(killstreak)+C_WHITE+killstreakString
-            write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-            write_ushort(global.publicChatBuffer, string_length(message));
-            write_string(global.publicChatBuffer, message);
-            write_byte(global.publicChatBuffer,-1)
-            print_to_chat(message);// For the host
+            chat_sendmsg(global.chatPrintPrefix+colorDead+deadName+C_WHITE+"'s "+C_GREEN+string(killstreak)+C_WHITE+killstreakString,global.killstreakPrints)
         }
     }
     

@@ -4,24 +4,12 @@ player=argument0
 configName=argument1
 
 if global.configVoteAllowed==0{
-    var message;
-    message = global.chatPrintPrefix+C_WHITE+'Config voting is'+P_RED+' disabled'+C_WHITE+'.'
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Config voting is'+P_RED+' disabled'+C_WHITE+'.')
     exit;
 }
 
 if global.isVoting==1{
-    var message;
-    message = global.chatPrintPrefix+C_WHITE+'Cannot start a new vote while one is already in progress.'
-    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-    write_ushort(global.publicChatBuffer, string_length(message))
-    write_string(global.publicChatBuffer, message)
-    write_byte(global.publicChatBuffer,-1)
-    print_to_chat(message);// For the host
+    chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Cannot start a new vote while one is already in progress.')
     exit;
 }
 
@@ -45,18 +33,5 @@ vote=instance_create(0,0,VoteHandler)
 vote.type="config"
 vote.cfgName=configName
 
-var message;
-message = global.chatPrintPrefix+C_WHITE+'Voting to load config: '+C_GREEN+configName+C_WHITE+'...'
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
-
-var message;
-message = global.chatPrintPrefix+C_WHITE+string(global.voteTimer)+' seconds to vote '+C_GREEN+'!y'+C_WHITE+'/'+P_RED+'!n'
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-write_ushort(global.publicChatBuffer, string_length(message))
-write_string(global.publicChatBuffer, message)
-write_byte(global.publicChatBuffer,-1)
-print_to_chat(message);// For the host
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+'Voting to load config: '+C_GREEN+configName+C_WHITE+'...')
+chat_sendmsg(global.chatPrintPrefix+C_WHITE+string(global.voteTimer)+' seconds to vote '+C_GREEN+'!y'+C_WHITE+'/'+P_RED+'!n')

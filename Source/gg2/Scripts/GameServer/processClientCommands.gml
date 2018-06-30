@@ -164,14 +164,7 @@ while(commandLimitRemaining > 0) {
                 if player.MGE_currentArena==-1{
                     newTeam=TEAM_SPECTATOR
                     
-                    message = global.chatPrintPrefix+C_WHITE+"Type "+C_GREEN+"/arena <1-5> "+C_WHITE+"to join."
-                    write_ubyte(player.socket, CHAT_PUBLIC_MESSAGE);
-                    write_ushort(player.socket, string_length(message));
-                    write_string(player.socket, message);
-                    write_byte(player.socket,-1)
-                    if player==global.myself{
-                        print_to_chat(message);
-                    }
+                    chat_sendmsg(global.chatPrintPrefix+C_WHITE+"Type "+C_GREEN+"/arena <1-5> "+C_WHITE+"to join.",-1,player.socket)
                 }else{
                     exit;
                 }
@@ -818,44 +811,20 @@ while(commandLimitRemaining > 0) {
                     if PugController.warRedOk==0{
                         PugController.warRedOk=1
                         
-                        var message;
-                        message = global.chatPrintPrefix+P_RED+"RED "+C_WHITE+"team is ready!"
-                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                        write_ushort(global.publicChatBuffer, string_length(message))
-                        write_string(global.publicChatBuffer, message)
-                        write_byte(global.publicChatBuffer,-1)
-                        print_to_chat(message);// For the host
+                        chat_sendmsg(global.chatPrintPrefix+P_RED+"RED "+C_WHITE+"team is ready!")
                     }else if PugController.warRedOk==1{
                         PugController.warRedOk=0
-                        var message;
-                        message = global.chatPrintPrefix+P_RED+"RED "+C_WHITE+"team is no longer ready!"
-                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                        write_ushort(global.publicChatBuffer, string_length(message))
-                        write_string(global.publicChatBuffer, message)
-                        write_byte(global.publicChatBuffer,-1)
-                        print_to_chat(message);// For the host
+                        chat_sendmsg(global.chatPrintPrefix+P_RED+"RED "+C_WHITE+"team is no longer ready!")
                     }
                 }
                 
                 if player==PugController.blueCaptain{
                     if PugController.warBlueOk==0{
                         PugController.warBlueOk=1
-                        var message;
-                        message = global.chatPrintPrefix+P_BLUE+"BLUE "+C_WHITE+"team is ready!"
-                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                        write_ushort(global.publicChatBuffer, string_length(message))
-                        write_string(global.publicChatBuffer, message)
-                        write_byte(global.publicChatBuffer,-1)
-                        print_to_chat(message);// For the host
+                        chat_sendmsg(global.chatPrintPrefix+P_BLUE+"BLUE "+C_WHITE+"team is ready!")
                     }else if PugController.warBlueOk==1{
                         PugController.warBlueOk=0
-                        var message;
-                        message = global.chatPrintPrefix+P_BLUE+"BLUE "+C_WHITE+"team is no longer ready!"
-                        write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                        write_ushort(global.publicChatBuffer, string_length(message))
-                        write_string(global.publicChatBuffer, message)
-                        write_byte(global.publicChatBuffer,-1)
-                        print_to_chat(message);// For the host
+                        chat_sendmsg(global.chatPrintPrefix+P_BLUE+"BLUE "+C_WHITE+"team is no longer ready!")
                     }
                 }
                 
@@ -863,13 +832,7 @@ while(commandLimitRemaining > 0) {
                     PugController.stage=4
                     PugController.alarm[2]=30/global.delta_factor
                     
-                    var message;
-                    message = global.chatPrintPrefix+C_WHITE+"Teams have been confirmed and locked!"
-                    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                    write_ushort(global.publicChatBuffer, string_length(message))
-                    write_string(global.publicChatBuffer, message)
-                    write_byte(global.publicChatBuffer,-1)
-                    print_to_chat(message);// For the host
+                    chat_sendmsg(global.chatPrintPrefix+C_WHITE+"Teams have been confirmed and locked!")
                     
                     with(PugController){
                         event_user(5)
@@ -894,34 +857,15 @@ while(commandLimitRemaining > 0) {
                 PugController.redCaptain=player
                 PugController.stage=2 //blue captain
                 
-                var message;
-                message = global.chatPrintPrefix+P_RED+player.name+C_WHITE+" selected as "+P_RED+"RED team's"+C_WHITE+" captain!"
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                write_ushort(global.publicChatBuffer, string_length(message))
-                write_string(global.publicChatBuffer, message)
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
-                
-                var message;
-                message = global.chatPrintPrefix+C_WHITE+"Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_BLUE+"BLUE team's"+C_WHITE+" captain."
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                write_ushort(global.publicChatBuffer, string_length(message))
-                write_string(global.publicChatBuffer, message)
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
+                chat_sendmsg(global.chatPrintPrefix+P_RED+player.name+C_WHITE+" selected as "+P_RED+"RED team's"+C_WHITE+" captain!")
+                chat_sendmsg(global.chatPrintPrefix+C_WHITE+"Type "+C_GREEN+"/captain"+C_WHITE+" to become "+P_BLUE+"BLUE team's"+C_WHITE+" captain.")
             }else if PugController.stage==2{
                 player.team=TEAM_BLUE
                 PugController.blueCaptain=player
                 PugController.stage=3 //picking teams
                 PugController.alarm[1]=30/global.delta_factor
                 
-                var message;
-                message = global.chatPrintPrefix+P_BLUE+player.name+C_WHITE+" selected as "+P_BLUE+"BLUE team's"+C_WHITE+" captain!"
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                write_ushort(global.publicChatBuffer, string_length(message))
-                write_string(global.publicChatBuffer, message)
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
+                chat_sendmsg(global.chatPrintPrefix+P_BLUE+player.name+C_WHITE+" selected as "+P_BLUE+"BLUE team's"+C_WHITE+" captain!")
             }
             ServerPlayerChangeteam(ds_list_find_index(global.players,player),player.team,global.sendBuffer)
             break;
@@ -1014,25 +958,13 @@ while(commandLimitRemaining > 0) {
             
             //Invalid map check
             if(!file_exists('Maps/' + mapName + '.png')){
-                var message;
-                message = global.chatPrintPrefix+C_GREEN+string(mapName)+C_WHITE+" is not a valid map name; pick another map or ensure you have typed it correctly."
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                write_ushort(global.publicChatBuffer, string_length(message))
-                write_string(global.publicChatBuffer, message)
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
+                chat_sendmsg(global.chatPrintPrefix+C_GREEN+string(mapName)+C_WHITE+" is not a valid map name; pick another map or ensure you have typed it correctly.")
                 break;
             }
             
             //Map is already in the list
             if ds_list_find_index(PugController.mapList,mapName)!=-1{
-                var message;
-                message = global.chatPrintPrefix+C_GREEN+string(mapName)+C_WHITE+" has already been selected, please choose another map."
-                write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                write_ushort(global.publicChatBuffer, string_length(message))
-                write_string(global.publicChatBuffer, message)
-                write_byte(global.publicChatBuffer,-1)
-                print_to_chat(message);// For the host
+                chat_sendmsg(global.chatPrintPrefix+C_GREEN+string(mapName)+C_WHITE+" has already been selected, please choose another map.")
                 break;
             }
             
@@ -1044,13 +976,7 @@ while(commandLimitRemaining > 0) {
                     PugController.mapPickerTeam=1 //switch to blue team
                     PugController.mapsPickedCount+=1
                 
-                    var message;
-                    message = global.chatPrintPrefix+P_RED+"RED team"+C_WHITE+" picked: "+C_GREEN+mapName+C_WHITE+"! "+P_BLUE+"BLUE's"+C_WHITE+" turn to pick."
-                    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                    write_ushort(global.publicChatBuffer, string_length(message))
-                    write_string(global.publicChatBuffer, message)
-                    write_byte(global.publicChatBuffer,-1)
-                    print_to_chat(message);// For the host
+                    chat_sendmsg(global.chatPrintPrefix+P_RED+"RED team"+C_WHITE+" picked: "+C_GREEN+mapName+C_WHITE+"! "+P_BLUE+"BLUE's"+C_WHITE+" turn to pick.")
                     if PugController.mapsPickedCount<global.pugVoteMaps{
                         break;
                     }
@@ -1065,12 +991,7 @@ while(commandLimitRemaining > 0) {
                         switchString="Maps shuffled!"
                     }
                     
-                    message = global.chatPrintPrefix+P_BLUE+"BLUE team"+C_WHITE+" picked: "+C_GREEN+mapName+C_WHITE+"! "+switchString
-                    write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-                    write_ushort(global.publicChatBuffer, string_length(message))
-                    write_string(global.publicChatBuffer, message)
-                    write_byte(global.publicChatBuffer,-1)
-                    print_to_chat(message);// For the host
+                    chat_sendmsg(global.chatPrintPrefix+P_BLUE+"BLUE team"+C_WHITE+" picked: "+C_GREEN+mapName+C_WHITE+"! "+switchString)
                     if PugController.mapsPickedCount<global.pugVoteMaps{
                         break;
                     }
@@ -1090,12 +1011,7 @@ while(commandLimitRemaining > 0) {
             }
             mapString=string_delete(mapString,string_length(mapString)-1,2)
             
-            message = global.chatPrintPrefix+C_WHITE+"The rotation is: "+C_GREEN+mapString
-            write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE)
-            write_ushort(global.publicChatBuffer, string_length(message))
-            write_string(global.publicChatBuffer, message)
-            write_byte(global.publicChatBuffer,-1)
-            print_to_chat(message);// For the host
+            chat_sendmsg(global.chatPrintPrefix+C_WHITE+"The rotation is: "+C_GREEN+mapString)
             
             //Everything is done, start the PUG
             PugController.alarm[3]=150/global.delta_factor

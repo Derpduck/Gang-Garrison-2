@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="Sub-menus" type="GROUP"/>
+  <resource name="General" type="GROUP"/>
+  <resource name="InGameGraphics" type="GROUP"/>
+  <resource name="Hosting" type="GROUP"/>
+  <resource name="Controls" type="GROUP"/>
   <resource name="ModOptionsParent" type="RESOURCE"/>
   <resource name="MapMenuBG" type="RESOURCE"/>
   <resource name="DisconnectMessage" type="RESOURCE"/>

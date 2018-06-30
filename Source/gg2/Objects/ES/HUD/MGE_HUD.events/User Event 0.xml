@@ -22,15 +22,10 @@ if sendWinner.team==TEAM_RED{
 }else if sendWinner.team==TEAM_BLUE{
     scoreOrder = string(blueScore[sendI])+" - "+string(redScore[sendI])
 }
-message = (global.chatPrintPrefix
+chat_sendmsg((global.chatPrintPrefix
     +wincolor+c_filter(sendWinner.name)+C_WHITE+" &gt; "+losecolor+c_filter(sendLoser.name)
     +" "+C_GREEN+"("+string(scoreOrder)
-    +", Arena "+string(sendI+1)+")")
-write_ubyte(global.publicChatBuffer, CHAT_PUBLIC_MESSAGE);
-write_ushort(global.publicChatBuffer, string_length(message));
-write_string(global.publicChatBuffer, message);
-write_byte(global.publicChatBuffer,-1);
-print_to_chat(message);
+    +", Arena "+string(sendI+1)+")"))
 
 if(sendLoser.object != -1){
     with(sendLoser.object){
