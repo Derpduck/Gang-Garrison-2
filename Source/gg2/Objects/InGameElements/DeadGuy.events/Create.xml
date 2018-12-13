@@ -15,10 +15,9 @@
       <arguments>
         <argument kind="STRING">image_speed = 0;
 if global.fastBodyFade==0{
-    alarm[0] = 300/global.delta_factor;
-}else{
-    alarm[0] = 30/global.delta_factor;
+    global.fastBodyFade=1/30
 }
+alarm[0] = (global.fastBodyFade*30)/global.delta_factor;
 hitground = false;
 hasMoney = false;
 </argument>

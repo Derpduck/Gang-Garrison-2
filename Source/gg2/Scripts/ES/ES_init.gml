@@ -37,7 +37,7 @@ ini_open("ES.ini")
     sound_global_volume(global.volume/100)
     ini_write_real("s","Volume",global.volume)
     
-    global.fastBodyFade=ini_read_real("s","FastBodyFade",0)
+    global.fastBodyFade=ini_read_real("s","FastBodyFade",10)
     ini_write_real("s","FastBodyFade",global.fastBodyFade)
     
     global.healTargetArrow=ini_read_real("s","HealTargetArrow",1)
@@ -55,7 +55,7 @@ ini_open("ES.ini")
     global.drawAmmoHUD=ini_read_real("s","DrawAmmoHUD",1)
     ini_write_real("s","DrawAmmoHUD",global.drawAmmoHUD)
     
-    global.adcpStopwatch=ini_read_real("s","ADCPStopwatch",1)
+    global.adcpStopwatch=ini_read_real("s","ADCPStopwatch",0)
     ini_write_real("s","ADCPStopwatch",global.adcpStopwatch)
     
     global.arenaRoundsToWin=max(1, min(255,ini_read_real("s","ArenaRoundsToWin",5)))
@@ -111,8 +111,8 @@ ini_open("ES.ini")
     global.boxElementAlpha=ini_read_real("s","BoxElementAlpha",100)
     ini_write_real("s","BoxElementAlpha",global.boxElementAlpha)
     
-    global.textSelectCol=ini_read_real("s","TextSelectCol",0)
-    ini_write_real("s","TextSelectCol",global.textSelectCol)
+    global.textSelectCol=ini_read_string("s","TextSelectCol","255,0,0")
+    ini_write_string("s","TextSelectCol",global.textSelectCol)
     
     global.killLogBGAlpha=ini_read_real("s","KillLogBGAlpha",100)
     ini_write_real("s","KillLogBGAlpha",global.killLogBGAlpha)
@@ -138,9 +138,6 @@ ini_open("ES.ini")
     global.configVoteAllowed=ini_read_real("s","ConfigVoteAllowed",1)
     ini_write_real("s","ConfigVoteAllowed",global.configVoteAllowed)
     
-    global.damageColourRGB=ini_read_string("s","DamageColourRGB","244,244,11")
-    ini_read_string("s","DamageColourRGB",global.damageColourRGB)
-    
     global.defaultConfig=ini_read_string("s","DefaultConfig","")
     ini_write_string("s","DefaultConfig",global.defaultConfig)
     
@@ -152,12 +149,6 @@ ini_open("ES.ini")
     
     global.specReadChat=ini_read_real("s","SpecReadChat",0)
     ini_write_real("s","SpecReadChat",global.specReadChat)
-    
-    global.bigHpNumbers=ini_read_real("s","BigHpNumbers",0)
-    ini_write_real("s","BigHpNumbers",global.bigHpNumbers)
-    
-    global.hpColourRGB=ini_read_string("s","HpColourRGB","244,244,11")
-    ini_read_string("s","HpColourRGB",global.hpColourRGB)
     
     global.serverAfkTimeout=ini_read_real("s","ServerAfkTimeout",120)
     ini_write_real("s","ServerAfkTimeout",global.serverAfkTimeout)
@@ -186,17 +177,41 @@ ini_open("ES.ini")
     global.vipThreshold=ini_read_real("s","VIPThreshold","")
     ini_write_real("s","VIPThreshold",global.vipThreshold)
     
+    global.bigHpNumbers=ini_read_real("s","BigHpNumbers",0)
+    ini_write_real("s","BigHpNumbers",global.bigHpNumbers)
+    
+    global.hpColourRGB=ini_read_string("s","HpColourRGB","244,244,11")
+    ini_read_string("s","HpColourRGB",global.hpColourRGB)
+    
+    global.bigSentryHpNumbers=ini_read_real("s","BigSentryHpNumbers",0)
+    ini_write_real("s","BigSentryHpNumbers",global.bigSentryHpNumbers)
+    
+    global.hpSentryColourRGB=ini_read_string("s","HpSentryColourRGB","244,244,11")
+    ini_read_string("s","HpSentryColourRGB",global.hpSentryColourRGB)
+    
     global.bigAmmoNumbers=ini_read_real("s","BigAmmoNumbers",0)
     ini_write_real("s","BigAmmoNumbers",global.bigAmmoNumbers)
     
     global.ammoColourRGB=ini_read_string("s","AmmoColourRGB","11,244,244")
     ini_write_string("s","AmmoColourRGB",global.ammoColourRGB)
     
+    global.bigUberNumbers=ini_read_real("s","BigUberNumbers",0)
+    ini_write_real("s","BigUberNumbers",global.bigUberNumbers)
+    
+    global.uberColourRGB=ini_read_string("s","UberColourRGB","11,244,244")
+    ini_read_string("s","UberColourRGB",global.uberColourRGB)
+    
+    global.damageColourRGB=ini_read_string("s","DamageColourRGB","244,244,11")
+    ini_read_string("s","DamageColourRGB",global.damageColourRGB)
+    
     global.damageIndicatorScale=ini_read_real("s","DamageIndicatorScale",100)
     ini_write_real("s","DamageIndicatorScale",global.damageIndicatorScale)
     
     global.damageIndicatorCombine=ini_read_real("s","DamageIndicatorCombine",1)
     ini_write_real("s","DamageIndicatorCombine",global.damageIndicatorCombine)
+    
+    global.selfDamageColourRGB=ini_read_string("s","SelfDamageColourRGB","60,200,70")
+    ini_read_string("s","SelfDamageColourRGB",global.selfDamageColourRGB)
     
     global.autoRCON=ini_read_real("s","AutoRCON",1)
     ini_write_real("s","AutoRCON",global.autoRCON)
@@ -243,11 +258,11 @@ ini_open("ES.ini")
     global.printAirshot=ini_read_real("s","PrintAirshot",1)
     ini_write_real("s","PrintAirshot",global.printAirshot)
     
-    global.printPassword=ini_read_real("s","PrintPassword",0)
-    ini_write_real("s","PrintPassword",global.printPassword)
-    
     global.printClasslimits=ini_read_real("s","PrintClasslimits",1)
     ini_write_real("s","PrintClasslimits",global.printClasslimits)
+    
+    global.printPassword=ini_read_real("s","PrintPassword",2)
+    ini_write_real("s","PrintPassword",global.printPassword)
     
     //Bots    
     global.botMode=ini_read_real("bots","BotSpawnMode",0)
@@ -271,7 +286,6 @@ ini_open("ES.ini")
     ini_write_real("bots","BotNumber",global.botNumber)
     
     //make bots ignore normal classlimits
-    
     
     //change this so the value represents the max number of each class that can exist, and will fill randomly up to the max li
     global.botClasses[CLASS_SCOUT]=ini_read_real("bots","BotScouts",1)

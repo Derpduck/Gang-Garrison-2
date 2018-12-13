@@ -7,6 +7,4 @@
   <resource name="ModOptionsParent" type="RESOURCE"/>
   <resource name="MapMenuBG" type="RESOURCE"/>
   <resource name="DisconnectMessage" type="RESOURCE"/>
-  <resource name="TabScrollLeft" type="RESOURCE"/>
-  <resource name="TabScrollRight" type="RESOURCE"/>
 </resources>

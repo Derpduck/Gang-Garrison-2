@@ -34,53 +34,78 @@
         es_write_ini("s","SpecReadChat",argument0)
     ')setVirNum+=1
     
-    menu_addedit_boolean("Player Join Prints:","global.printJoins",'
+    //These need to be set to 2 when false, as an undefined argument becomes 0 because game maker
+    menu_addedit_select("PRINT: Player Joins:","global.printJoins",'
         es_write_ini("s","PrintJoins",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Player Leave Prints:","global.printLeaves",'
+    menu_addedit_select("PRINT: Player Leaves:","global.printLeaves",'
         es_write_ini("s","PrintLeaves",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Name Change Prints:","global.printNames",'
+    menu_addedit_select("PRINT: Name Changes:","global.printNames",'
         es_write_ini("s","PrintNames",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Ready-Up Prints:","global.printRUP",'
+    menu_addedit_select("PRINT: Ready-Up:","global.printRUP",'
         es_write_ini("s","PrintRUP",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Kick/Ban/Mute Prints:","global.printKBM",'
+    menu_addedit_select("PRINT: Kick/Ban/Mute:","global.printKBM",'
         es_write_ini("s","PrintKBM",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Admin/Console Command Prints:","global.printAdminCC",'
+    menu_addedit_select("PRINT: Admin/Console Commands:","global.printAdminCC",'
         es_write_ini("s","PrintAdminCC",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("RCON Status Prints:","global.printRCONStatus",'
+    menu_addedit_select("PRINT: RCON Status:","global.printRCONStatus",'
         es_write_ini("s","PrintRCONStatus",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Map Change Prints:","global.printMap",'
+    menu_addedit_select("PRINT: Map Changes:","global.printMap",'
         es_write_ini("s","PrintMap",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Classlimits Prints:","global.printClasslimits",'
+    menu_addedit_select("PRINT: Classlimits:","global.printClasslimits",'
         es_write_ini("s","PrintClasslimits",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Airshot Prints:","global.printAirshot",'
+    menu_addedit_select("PRINT: Airshots:","global.printAirshot",'
         es_write_ini("s","PrintAirshot",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Killstreak Prints:","global.killstreakPrints",'
+    menu_addedit_select("PRINT: Killstreaks:","global.killstreakPrints",'
         es_write_ini("s","KillstreakPrints",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
-    menu_addedit_boolean("Password Change Prints:","global.printPassword",'
+    menu_addedit_select("PRINT: Password Changes:","global.printPassword",'
         es_write_ini("s","PrintPassword",argument0)
     ')setVirNum+=1
+    menu_add_option(1,"Yes")
+    menu_add_option(2,"No")
     
     //TABS
     menu_addtablink("Hosting", '

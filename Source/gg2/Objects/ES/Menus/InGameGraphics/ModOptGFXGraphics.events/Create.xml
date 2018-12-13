@@ -42,7 +42,7 @@
         es_write_ini("s","NoShells",argument0)
     ')setVirNum+=1
     
-    menu_addedit_boolean("Faster Corpse Fade:","global.fastBodyFade",'
+    menu_addedit_num("Corpse Fade Delay:","global.fastBodyFade",'
         es_write_ini("s","FastBodyFade",argument0)
     ')setVirNum+=1
     
@@ -63,7 +63,7 @@
     
     menu_addtablink("Graphics", '
         instance_destroy();
-        instance_create(x,y,ModOptGFXBasic2);
+        instance_create(x,y,ModOptGFXGraphics);
     ');
     
     menu_addback("[0] Back", '

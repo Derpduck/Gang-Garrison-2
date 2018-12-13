@@ -31,11 +31,12 @@
         sound_global_volume(argument0/100)
     ')setVirNum+=1
     
-    menu_addedit_select("Menu Text Color:","global.textSelectCol",'
+    menu_addedit_text_rgb("Menu Text Color:","global.textSelectCol",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
         es_write_ini("s","TextSelectCol",argument0)
     ')setVirNum+=1
-    menu_add_option(0,"Red")
-    menu_add_option(1,"Cyan")
     
     menu_addedit_boolean("Borderless Window:","global.borderless",'
         es_write_ini("s","Borderless",argument0)

@@ -37,26 +37,34 @@
     global.totalBots=0
     
     global.banned_ips = ds_list_create();
-    var text, str;
+    global.banned_names = ds_list_create();
+    var text, str, name_str;
     if (file_exists("Banned_IPs.txt")){
         // If a list of banned ips exists, load them into the list
         text = file_text_open_read("Banned_IPs.txt")
         while not file_text_eof(text){
             str = file_text_read_string(text)
+            name_str=string_copy(str,string_pos("@",str)+1,21)
+            str = string_delete(str,string_pos("@",str),string_length(name_str)+1)
             file_text_readln(text)
             ds_list_add(global.banned_ips, str)
+            ds_list_add(global.banned_names, name_str)
         }
         file_text_close(text);
     }
     
-    global.rcon_ips = ds_list_create();
-    var rcon_text, rcon_str;
+    global.rcon_ips = ds_list_create()
+    global.rcon_names = ds_list_create()
+    var rcon_text, rcon_str, rcon_name_str;
     if (file_exists("RCON_IPs.txt")){
         rcon_text = file_text_open_read("RCON_IPs.txt")
         while not file_text_eof(rcon_text){
             rcon_str = file_text_read_string(rcon_text)
+            rcon_name_str=string_copy(rcon_str,string_pos("@",rcon_str)+1,21)
+            rcon_str = string_delete(rcon_str,string_pos("@",rcon_str),string_length(rcon_name_str)+1)
             file_text_readln(rcon_text)
             ds_list_add(global.rcon_ips, rcon_str)
+            ds_list_add(global.rcon_names,rcon_name_str)
         }
         file_text_close(rcon_text);
     }

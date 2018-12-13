@@ -60,6 +60,14 @@
         es_write_ini("s","BigAmmoNumbers",argument0)
     ')setVirNum+=1
     
+    menu_addedit_boolean("Big Sentry HP Numbers","global.bigSentryHpNumbers",'
+        es_write_ini("s","BigSentryHpNumbers",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Big Uber Numbers","global.bigUberNumbers",'
+        es_write_ini("s","BigUberNumbers",argument0)
+    ')setVirNum+=1
+    
     menu_addedit_boolean("Show HP HUD:","global.drawHPHUD",'
         es_write_ini("s","DrawHPHUD",argument0)
     ')setVirNum+=1
@@ -108,7 +116,7 @@
     
     menu_addtablink("Graphics", '
         instance_destroy();
-        instance_create(x,y,ModOptGFXBasic2);
+        instance_create(x,y,ModOptGFXGraphics);
     ');
     
     menu_addback("[0] Back", '

@@ -79,6 +79,13 @@
         es_write_ini("s","DamageColourRGB",argument0)
     ')setVirNum+=1
     
+    menu_addedit_text_rgb("Self Damage Indicator Color, RGB:","global.selfDamageColourRGB",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
+        es_write_ini("s","SelfDamageColourRGB",argument0)
+    ')setVirNum+=1
+    
     menu_addedit_num("Damage Indicator Scale %:","global.damageIndicatorScale",'
         es_write_ini("s","DamageIndicatorScale",argument0)
     ')setVirNum+=1
@@ -101,6 +108,20 @@
             show_message("Incorrect number of values for color code")
         }
         es_write_ini("s","AmmoColourRGB",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_text_rgb("Big Sentry HP Color, RGB:","global.hpSentryColourRGB",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
+        es_write_ini("s","HpSentryColourRGB",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_text_rgb("Big Uber Color, RGB:","global.uberColourRGB",'
+        if string_count(",",argument0)!=2{
+            show_message("Incorrect number of values for color code")
+        }
+        es_write_ini("s","UberColourRGB",argument0)
     ')setVirNum+=1
     
     menu_addlink("")setVirNum+=1
@@ -148,7 +169,7 @@
     
     menu_addtablink("Graphics", '
         instance_destroy();
-        instance_create(x,y,ModOptGFXBasic2);
+        instance_create(x,y,ModOptGFXGraphics);
     ');
     
     menu_addback("[0] Back", '

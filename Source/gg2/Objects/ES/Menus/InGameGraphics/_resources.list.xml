@@ -2,5 +2,5 @@
 <resources>
   <resource name="ModOptGFXBasic" type="RESOURCE"/>
   <resource name="ModOptGFXAdv" type="RESOURCE"/>
-  <resource name="ModOptGFXBasic2" type="RESOURCE"/>
+  <resource name="ModOptGFXGraphics" type="RESOURCE"/>
 </resources>

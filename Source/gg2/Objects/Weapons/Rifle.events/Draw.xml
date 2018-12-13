@@ -20,14 +20,13 @@ if (tracerAlpha &gt; 0.05){
     origdepth = depth;
     depth = -2;
     
-    draw_set_alpha(tracerAlpha);
+    draw_set_alpha(tracerAlpha)
     if(owner.team == TEAM_RED){
-        draw_line_width_color(shotx,shoty,x2,y2,2,c_red,c_red);
+        draw_line_width_color(shotx,shoty,x2,y2,1,make_color_rgb(200,30,30),make_color_rgb(200,30,30))
     }else{
-        draw_line_width_color(shotx,shoty,x2,y2,2,c_blue,c_blue);
+        draw_line_width_color(shotx,shoty,x2,y2,2,make_color_rgb(30,30,200),make_color_rgb(30,30,200))
     }
     tracerAlpha /= delta_mult(1.25)//delta_mult(1.75);
-        
     draw_set_alpha(1);
     depth = origdepth;
 }else{
@@ -39,6 +38,8 @@ if (owner.zoomed &amp;&amp; owner == global.myself.object){
         draw_set_alpha(0.25);
         draw_sprite_ext(ChargeS, 0, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, 0, c_white, image_alpha);
         draw_set_alpha(0.8);
+        draw_set_color(c_white)
+        draw_text(mouse_x + 65*-image_xscale, mouse_y-7,ceil(hitDamage))
     }else{
         draw_sprite_ext(FullChargeS, 0, mouse_x + 65*-image_xscale, mouse_y-7, 1, 1, 0, c_white, image_alpha);
     }

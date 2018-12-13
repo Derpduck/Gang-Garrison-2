@@ -18,11 +18,27 @@
     exit; 
 }
 
-xsize = view_wview[0];
-ysize = view_hview[0];
+var xoffset, yoffset, xsize, ysize;
+xoffset = view_xview[0]
+yoffset = view_yview[0]
+xsize = view_wview[0]
+ysize = view_hview[0]
 
 if (global.myself.sentry){
-    if global.boxHUD==0{
+    if global.bigSentryHpNumbers==1{
+        var hp, maxHp, scale;
+        _hp = global.myself.sentry.hp
+        _maxHp = global.myself.sentry.maxHp
+        scale=3
+        draw_set_valign(fa_center)
+        draw_set_halign(fa_left)
+        hpText = string(ceil(min(max(_hp,0),_maxHp)))
+        
+        col_custom=color_code_split(global.hpSentryColourRGB)
+        
+        draw_text_transformed_color(xoffset+114+2, yoffset+ysize-100+2, hpText, scale, scale, 0, c_black, c_black, c_black, c_black, 1)
+        draw_text_transformed_color(xoffset+114, yoffset+ysize-100, hpText, scale, scale, 0, col_custom, col_custom, col_custom, col_custom, 1)
+    }else if global.boxHUD==0{
         drawHealth(15, ysize-53, global.myself.sentry.hp, global.myself.sentry.maxHp);
         draw_sprite_ext(sprite_index, image_index, view_xview[0]-25, view_yview[0]+ysize-75, 2, 2, 0, c_white, 1);
     }else{

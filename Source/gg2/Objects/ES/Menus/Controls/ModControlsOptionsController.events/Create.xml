@@ -37,7 +37,7 @@
     
     
     //TABS
-    menu_addback("[0] Back", '
+    menu_addback("Back", '
         instance_destroy()
         instance_create(0,0,ModOptionsParent)
     ');

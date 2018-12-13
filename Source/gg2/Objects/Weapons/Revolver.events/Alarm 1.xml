@@ -13,16 +13,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{ 
-        shot = instance_create(x,y,StabMask);
-        shot.direction=stabdirection;
-        shot.speed=0;
-        shot.owner=owner;
-        shot.ownerPlayer=ownerPlayer;
-        shot.team=owner.team;
-        shot.hitDamage = 200;
-        shot.weapon=DAMAGE_SOURCE_KNIFE;
-}
+        <argument kind="STRING">shot = instance_create(x,y,StabMask)
+shot.direction=stabdirection
+shot.speed=0
+shot.owner=owner
+shot.ownerPlayer=ownerPlayer
+shot.team=owner.team
+shot.hitDamage = 200
+shot.weapon=DAMAGE_SOURCE_KNIFE
 </argument>
       </arguments>
     </action>

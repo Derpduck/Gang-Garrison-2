@@ -24,7 +24,7 @@ alpha=1
 playsound(x,y,global.DingSound)
 
 col_custom=color_code_split(global.damageColourRGB)
-col_self=make_color_rgb(60,200,70)
+col_self=color_code_split(global.selfDamageColourRGB)
 colour=col_custom
 alarm[1]=1
 

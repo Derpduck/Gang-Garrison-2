@@ -43,9 +43,11 @@ if keyboard_check_released(ord(string(7))){
     virnum=6
     alarm[0]=1
 }
-if keyboard_check_released(ord(string(8))){
-    virnum=7
-    alarm[0]=1
+if (global.rewardId != ''){
+    if keyboard_check_released(ord(string(8))){
+        virnum=7
+        alarm[0]=1
+    }
 }
 if keyboard_check_released(ord(string(0))){
     virnum=8

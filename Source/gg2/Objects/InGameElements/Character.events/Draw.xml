@@ -43,7 +43,7 @@ if(stabbing){
     image_alpha -= power(currentWeapon.stab.alpha, 2);
 }
 
-if ((team == global.myself.team or (global.myself.class=CLASS_SPY and point_distance(x,y,global.myself.object.x,global.myself.object.y)&lt;=100)) and (player != global.myself or global.showHealthBar)) or global.myself.team==TEAM_SPECTATOR{
+if ((team == global.myself.team or (global.myself.class=CLASS_SPY and point_distance(x,y,global.myself.object.x,global.myself.object.y)&lt;=150)) and (player != global.myself or global.showHealthBar)) or global.myself.team==TEAM_SPECTATOR{
     draw_set_alpha(1);
     draw_healthbar(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
 }
@@ -279,7 +279,7 @@ if (demon != -1){
 }
 
 //
-if (((team == global.myself.team) and (player != global.myself or global.showHealthBar) or global.myself.team==TEAM_SPECTATOR)){
+if (((team == global.myself.team or (global.myself.class=CLASS_SPY and point_distance(x,y,global.myself.object.x,global.myself.object.y)&lt;=150)) and (player != global.myself or global.showHealthBar) or global.myself.team==TEAM_SPECTATOR)){
     var xr, yr;
     xr = round(x)
     yr = round(y)
@@ -311,13 +311,15 @@ if (((team == global.myself.team) and (player != global.myself or global.showHea
     }
     
     
-    if player.class != CLASS_SNIPER{
-        draw_healthbar(xr-10, yr-35, xr+10, yr-30,currentWeapon.ammoCount*100/currentWeapon.maxAmmo,c_black,c_gray,c_white,0,true,true)
-    }else{
-        draw_healthbar(xr-10, yr-35, xr+10, yr-30,currentWeapon.readyToShoot*100,c_black,c_gray,c_white,0,true,true)
+    if global.drawAmmoHUD==1{
+        if player.class != CLASS_SNIPER{
+            draw_healthbar(xr-10, yr-35, xr+10, yr-30,currentWeapon.ammoCount*100/currentWeapon.maxAmmo,c_black,c_gray,c_white,0,true,true)
+        }else{
+            draw_healthbar(xr-10, yr-35, xr+10, yr-30,currentWeapon.readyToShoot*100,c_black,c_gray,c_white,0,true,true)
+        }
     }
     
-    if player.class==CLASS_MEDIC or (global.myself.class=CLASS_SPY and point_distance(x,y,global.myself.object.x,global.myself.object.y)&lt;=100){
+    if player.class==CLASS_MEDIC{
         draw_healthbar(xr-10, yr-40, xr+10, yr-35,(currentWeapon.uberCharge/2000)*100,c_black,c_teal,c_aqua,0,true,true)
     } 
 }

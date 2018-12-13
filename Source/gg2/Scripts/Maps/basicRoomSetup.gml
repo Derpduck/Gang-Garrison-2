@@ -119,7 +119,7 @@ if(global.music == MUSIC_BOTH || global.music == MUSIC_INGAME_ONLY) {
 instance_create(map_width()/2,map_height()/2,Spectator);
 
 //Bots
-global.mesh=initialize_mesh("Maps\"+global.currentMap+".png")
+//global.mesh=initialize_mesh("Maps\"+global.currentMap+".png")
 
 global.redCaps = 0;
 global.blueCaps = 0;

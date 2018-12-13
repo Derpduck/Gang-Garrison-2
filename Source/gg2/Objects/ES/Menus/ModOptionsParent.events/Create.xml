@@ -43,6 +43,16 @@
         instance_create(0,0,ModControlsOptionsController);
     ');
     
+    menu_addlink("[5] Wiki", '
+        splash_set_main(false)
+        splash_set_border(false)
+        splash_set_interrupt(false)
+        splash_set_size(1024,720)
+        splash_set_position(50,50)
+        splash_set_interrupt(0)
+        splash_show_web("https://github.com/Derpduck/Gang-Garrison-2/wiki/",0)
+    ');
+    
     menu_addback("[0] Back", '
         instance_destroy()
         if(room == ModOptions){

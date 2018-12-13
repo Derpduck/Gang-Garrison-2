@@ -26,7 +26,7 @@ if ds_list_find_index(global.votedList,player)!=-1{
     ds_list_add(global.votedList,player)
     global.noVotes+=1
     
-    var message, color;
+    var color;
     color = getPlayerColor(player, true);
     chat_sendmsg(global.chatPrintPrefix+color+c_filter(player.name)+C_WHITE+' has voted '+P_RED+'no'+C_WHITE+'!')
     

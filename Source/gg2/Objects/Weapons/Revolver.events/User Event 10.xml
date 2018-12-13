@@ -22,6 +22,10 @@ if instance_exists(stab){
 }
 
 ammoCount = maxAmmo;
+
+owner.runPower = 1.08;
+owner.jumpStrength = 8;
+owner.stabbing = 0;
 </argument>
       </arguments>
     </action>

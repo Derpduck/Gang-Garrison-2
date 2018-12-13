@@ -26,8 +26,62 @@
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
     
+    menu_addedit_select("Spawning Mode:","global.botMode",'
+        es_write_ini("bots","BotSpawnMode",argument0)
+    ')setVirNum+=1
+    menu_add_option(0,"Fixed - Mixed")
+    menu_add_option(0,"Fixed - PvE")
+    menu_add_option(0,"Dynamic - Mixed")
+    menu_add_option(0,"Dynamic - PvE")
+    menu_add_option(0,"Fill - Mixed")
+    menu_add_option(0,"Fill - PvE")
+    
+    menu_addedit_boolean("Debug Mode:","global.botDebugMode",'
+        es_write_ini("bots","BotDebug",argument0)
+    ')setVirNum+=1
+    
     menu_addedit_num("Total Bots:","global.botNumber",'
         es_write_ini("bots","BotNumber",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Scout:","global.botClasses[CLASS_SCOUT]",'
+        es_write_ini("bots","BotScouts",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Pyro:","global.botClasses[CLASS_PYRO]",'
+        es_write_ini("bots","BotPyros",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Soldier:","global.botClasses[CLASS_SOLDIER]",'
+        es_write_ini("bots","BotSoldiers",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Heavy:","global.botClasses[CLASS_HEAVY]",'
+        es_write_ini("bots","BotHeavies",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Demoman:","global.botClasses[CLASS_DEMOMAN]",'
+        es_write_ini("bots","BotDemomen",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Medic:","global.botClasses[CLASS_MEDIC]",'
+        es_write_ini("bots","BotMedics",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Engineer:","global.botClasses[CLASS_ENGINEER]",'
+        es_write_ini("bots","BotEngineers",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Spy:","global.botClasses[CLASS_SPY]",'
+        es_write_ini("bots","BotSpies",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Sniper:","global.botClasses[CLASS_SNIPER]",'
+        es_write_ini("bots","BotSnipers",argument0)
+    ')setVirNum+=1
+    
+    menu_addedit_boolean("Quote:","global.botClasses[CLASS_QUOTE]",'
+        es_write_ini("bots","BotQuotes",argument0)
     ')setVirNum+=1
     
     

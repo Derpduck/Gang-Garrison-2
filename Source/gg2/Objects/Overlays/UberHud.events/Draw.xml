@@ -34,7 +34,20 @@ with(Medigun){
     }
 }
 if(myMedigun != -1){
-    if global.boxHUD==0{
+    if global.bigUberNumbers==1{
+        var hp, maxHp, scale;
+        _uber = myMedigun.uberCharge*100/2000
+        _maxUber = 2000
+        scale=3
+        draw_set_valign(fa_center)
+        draw_set_halign(fa_right)
+        uberText = string(ceil(min(max(_uber,0),_maxUber)))
+        
+        col_custom=color_code_split(global.uberColourRGB)
+        
+        draw_text_transformed_color(xoffset+xsize-114+2, yoffset+ysize-100+2, uberText, scale, scale, 0, c_black, c_black, c_black, c_black, 1)
+        draw_text_transformed_color(xoffset+xsize-114, yoffset+ysize-100, uberText, scale, scale, 0, col_custom, col_custom, col_custom, col_custom, 1)
+    }else if global.boxHUD==0{
         draw_sprite_ext(UberHudS,global.myself.team,xoffset+xsize-55,yoffset+ysize-65+11,2,2,0,c_white,1);
         if myMedigun.uberCharge/2000&gt;=1{
             barcolour=c_aqua

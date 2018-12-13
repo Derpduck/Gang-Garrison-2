@@ -40,9 +40,9 @@ for (i=0; i<ds_list_size(redteam); i+=1){
     }
     
     if player==RCONPlayer{
-        console_print(C_LRED+c_filter(player.name)+': '+spacesUsed+'ID: '+string(ds_list_find_index(global.players, player.id))+' | RCON');
+        console_print(C_LRED+c_filter(player.name)+spacesUsed+' | ID '+string(ds_list_find_index(global.players, player.id))+' | RCON');
     }else{
-        console_print(C_LRED+c_filter(player.name)+': '+spacesUsed+'ID: '+string(ds_list_find_index(global.players, player.id)));
+        console_print(C_LRED+c_filter(player.name)+spacesUsed+' | ID '+string(ds_list_find_index(global.players, player.id)));
     }
 }
 for (i=0; i<ds_list_size(blueteam); i+=1){
@@ -57,9 +57,9 @@ for (i=0; i<ds_list_size(blueteam); i+=1){
     }
     
     if player==RCONPlayer{
-        console_print(C_LBLUE+c_filter(player.name)+': '+spacesUsed+'ID: '+string(ds_list_find_index(global.players, player.id))+' | RCON');
+        console_print(C_LBLUE+c_filter(player.name)+spacesUsed+' | ID: '+string(ds_list_find_index(global.players, player.id))+' | RCON');
     }else{
-        console_print(C_LBLUE+c_filter(player.name)+': '+spacesUsed+'ID: '+string(ds_list_find_index(global.players, player.id)));
+        console_print(C_LBLUE+c_filter(player.name)+spacesUsed+' | ID: '+string(ds_list_find_index(global.players, player.id)));
     }
 }
 for (i=0; i<ds_list_size(specteam); i+=1){
@@ -74,9 +74,9 @@ for (i=0; i<ds_list_size(specteam); i+=1){
     }
     
     if player==RCONPlayer{
-        console_print(C_GREEN+c_filter(player.name)+': '+spacesUsed+'ID: '+string(ds_list_find_index(global.players, player.id))+' | RCON');
+        console_print(C_GREEN+c_filter(player.name)+spacesUsed+' | ID: '+string(ds_list_find_index(global.players, player.id))+' | RCON');
     }else{
-        console_print(C_GREEN+c_filter(player.name)+': '+spacesUsed+'ID: '+string(ds_list_find_index(global.players, player.id)));
+        console_print(C_GREEN+c_filter(player.name)+spacesUsed+' | ID: '+string(ds_list_find_index(global.players, player.id)));
     }
 }
 ds_list_destroy(redteam)

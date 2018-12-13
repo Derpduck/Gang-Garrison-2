@@ -111,11 +111,7 @@ if instance_exists(ModOptGFXBasic) or instance_exists(ModOptGFXAdv) or instance_
         }
         
         if(i == -2-virtualitem and !editing){
-            if global.textSelectCol==0{
-                draw_set_color(c_red);
-            }else if global.textSelectCol==1{
-                draw_set_color(c_aqua)
-            }
+            draw_set_color(color_code_split(global.textSelectCol));
         }else{
             draw_set_color(c_white);
         }
@@ -140,11 +136,7 @@ if instance_exists(ModOptGFXBasic) or instance_exists(ModOptGFXAdv) or instance_
         if (editing == i){
                 draw_set_color(c_orange);
         }else if(i == virtualitem and getsHighlight){
-            if global.textSelectCol==0{
-                draw_set_color(c_red);
-            }else if global.textSelectCol==1{
-                draw_set_color(c_aqua)
-            }
+            draw_set_color(color_code_split(global.textSelectCol));
         }else{
             draw_set_color(c_white);
         }

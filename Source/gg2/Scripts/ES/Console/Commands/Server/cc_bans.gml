@@ -12,8 +12,20 @@ if !global.isHost{
     console_print('Only the host can use this command.')
     exit;
 }
+
+var nameLength, spacesNumber, spacesUsed;
+nameLength=0
+spacesNumber=20
+spacesUsed=''
+
 for (i=0; i<ds_list_size(global.banned_ips); i+=1){
-    console_print(string(real(i+1))+': '+ds_list_find_value(global.banned_ips,i))
+    spacesUsed=''
+    nameLength=string_length(ds_list_find_value(global.banned_names,i))
+    spacesNumber=20-nameLength
+    repeat(spacesNumber){
+            spacesUsed=string_insert(' ',spacesUsed,0)
+        }
+    console_print(c_filter(ds_list_find_value(global.banned_names,i))+spacesUsed+' | IP: '+string(ds_list_find_value(global.banned_ips,i)))
     exit;
 }
 ", "

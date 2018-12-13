@@ -20,7 +20,7 @@ with(StabAnim)
 
 ds_list_destroy(overlays);
         
-owner.runPower = 1.07;
+owner.runPower = 1.08;
 owner.jumpStrength = 8;
 owner.stabbing = 0;
 //show_message(frames)

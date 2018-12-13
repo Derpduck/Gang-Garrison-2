@@ -14,10 +14,13 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">keyboard_string=""
+current_text=""
 alarm[0]=-1
-blinking_underscore=false
 isTyping=false;
 global.isChatting=0
+current_text = ""
+cursor_position = 0
+cursor_moving = 0
 </argument>
       </arguments>
     </action>

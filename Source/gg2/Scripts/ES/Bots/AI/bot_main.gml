@@ -13,10 +13,10 @@ bot_task_behaviour()
 // Aiming and Fighting
 if nearestEnemy != -1{
     if botPath==-2{
-        botPath=plan_path(global.mesh,botPlayer.object.x,botPlayer.object.y,nearestEnemy.x,nearestEnemy.y)
+//        botPath=plan_path(global.mesh,botPlayer.object.x,botPlayer.object.y,nearestEnemy.x,nearestEnemy.y)
     }
     
-    update_position(global.mesh,botPath,botPlayer.object.x,botPlayer.object.y,(bbox_right-bbox_left)/2)
+//    update_position(global.mesh,botPath,botPlayer.object.x,botPlayer.object.y,(bbox_right-bbox_left)/2)
     //if update_position(global.mesh,botPath,botPlayer.object.x,botPlayer.object.y,(bbox_right-bbox_left)/2)==-2{
         //free_path()
         //botPath=plan_path(global.mesh,botPlayer.object.x,botPlayer.object.y,nearestEnemy.x,nearestEnemy.y)

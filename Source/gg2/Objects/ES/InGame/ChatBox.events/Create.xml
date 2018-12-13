@@ -30,14 +30,17 @@ maxVisibleLines=12
 _maxVisibleLines=maxVisibleLines
 typedMsgDisplayLength=45
 
-blinking_underscore=false
-blink_speed=10
-
 placeholderMsg="Type your chat message..."
 placeholderMsgGlobal="(global)"
 placeholderMsgTeam="(team)"
 
 alpha=1
+
+keyboard_string = ""
+current_text = ""
+cursor_character = "|"
+cursor_position = 0
+cursor_moving = 0
 
 chat_go_idle()
 </argument>

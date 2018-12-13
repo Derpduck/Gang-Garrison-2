@@ -34,6 +34,8 @@ if input[1]='add'{
     
     
     trueID=floor(real(string_digits(input[2])))
+    var name_str;
+    name_str=string_copy(input[3],0,20)
     
     //Check ID
     var player;
@@ -43,15 +45,19 @@ if input[1]='add'{
             write_ubyte(player.socket,RCON_LOGIN)
             write_ubyte(player.socket,RCON_LOGIN_SUCCESSFUL)
             ds_list_add(global.RCONList,player)
+            if name_str=''{
+                name_str=string_copy(player.name,0,20)
+            }
             
             //Write to file
             if ds_list_find_index(global.rcon_ips,socket_remote_ip(player.socket))==-1{
                 ds_list_add(global.rcon_ips,socket_remote_ip(player.socket))
+                ds_list_add(global.rcon_names,name_str)
                 
                 var rcon_text, rcon_str, i;
                 rcon_str=''
                 for (i=0; i<ds_list_size(global.rcon_ips); i+=1){
-                    rcon_str+=ds_list_find_value(global.rcon_ips,i)+chr(10)
+                    rcon_str+=ds_list_find_value(global.rcon_ips,i)+'@'+ds_list_find_value(global.rcon_names,i)+chr(10)
                 }
                 rcon_text=file_text_open_write('RCON_IPs.txt')
                 file_text_write_string(rcon_text,rcon_str)
@@ -80,15 +86,19 @@ if input[1]='add'{
             write_ubyte(socket,RCON_LOGIN)
             write_ubyte(socket,RCON_LOGIN_SUCCESSFUL)
             ds_list_add(global.RCONList,Player)
+            if name_str=''{
+                name_str=string_copy(player.name,0,20)
+            }
             
             //Write to file
             if ds_list_find_index(global.rcon_ips,socket_remote_ip(socket))==-1{
                 ds_list_add(global.rcon_ips,socket_remote_ip(socket))
+                ds_list_add(global.rcon_names,name_str)
                 
                 var rcon_text, rcon_str, i;
                 rcon_str=''
                 for (i=0; i<ds_list_size(global.rcon_ips); i+=1){
-                    rcon_str+=ds_list_find_value(global.rcon_ips,i)+chr(10)
+                    rcon_str+=ds_list_find_value(global.rcon_ips,i)+'@'+ds_list_find_value(global.rcon_names,i)+chr(10)
                 }
                 rcon_text=file_text_open_write('RCON_IPs.txt')
                 file_text_write_string(rcon_text,rcon_str)
@@ -128,12 +138,13 @@ if input[1]='remove'{
                 
                 //Write to file
                 if ds_list_find_index(global.rcon_ips,socket_remote_ip(player.socket))!=-1{
+                    ds_list_delete(global.rcon_names,ds_list_find_index(global.rcon_ips,socket_remote_ip(player.socket)))
                     ds_list_delete(global.rcon_ips,ds_list_find_index(global.rcon_ips,socket_remote_ip(player.socket)))
                     
                     var rcon_text, rcon_str, i;
                     rcon_str=''
                     for (i=0; i<ds_list_size(global.rcon_ips); i+=1){
-                        rcon_str+=ds_list_find_value(global.rcon_ips,i)+chr(10)
+                        rcon_str+=ds_list_find_value(global.rcon_ips,i)+'@'+ds_list_find_value(global.rcon_names,i)+chr(10)
                     }
                     rcon_text=file_text_open_write('RCON_IPs.txt')
                     file_text_write_string(rcon_text,rcon_str)
@@ -170,12 +181,13 @@ if input[1]='remove'{
                 
                 //Write to file
                 if ds_list_find_index(global.rcon_ips,socket_remote_ip(socket))!=-1{
+                    ds_list_delete(global.rcon_names,ds_list_find_index(global.rcon_ips,socket_remote_ip(player.socket)))
                     ds_list_delete(global.rcon_ips,ds_list_find_index(global.rcon_ips,socket_remote_ip(socket)))
                     
                     var rcon_text, rcon_str, i;
                     rcon_str=''
                     for (i=0; i<ds_list_size(global.rcon_ips); i+=1){
-                        rcon_str+=ds_list_find_value(global.rcon_ips,i)+chr(10)
+                        rcon_str+=ds_list_find_value(global.rcon_ips,i)+'@'+ds_list_find_value(global.rcon_names,i)+chr(10)
                     }
                     rcon_text=file_text_open_write('RCON_IPs.txt')
                     file_text_write_string(rcon_text,rcon_str)
@@ -228,6 +240,29 @@ if input[1]='toggle'{
         console_print(C_PINK+'RCON disabled.')
     }
     
+    exit;
+}
+
+if input[1]='list'{
+    if !global.isHost{
+        console_print('Only the host can use this command.');
+        exit;
+    }
+    
+    var nameLength, spacesNumber, spacesUsed;
+    nameLength=0
+    spacesNumber=20
+    spacesUsed=''
+    
+    for (i=0; i<ds_list_size(global.rcon_ips); i+=1){
+        spacesUsed=''
+        nameLength=string_length(ds_list_find_value(global.rcon_names,i))
+        spacesNumber=20-nameLength
+        repeat(spacesNumber){
+            spacesUsed=string_insert(' ',spacesUsed,0)
+        }
+        console_print(C_PINK+c_filter(ds_list_find_value(global.rcon_names,i))+spacesUsed+' | IP: '+string(ds_list_find_value(global.rcon_ips,i)))
+    }
     exit;
 }
 

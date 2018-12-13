@@ -15,17 +15,6 @@
       <arguments>
         <argument kind="STRING">if room==Menu{
     menu_create(48, 110, 500, 300, 32, 40, 112, 6)
-}else{
-    menu_create(48, 110, 500, 300, 32, 40, 104, 6)
-    if (room != ModOptions){
-        menu_setdimmed();
-    }
-    depth=-140000
-    var left, right;
-    left=instance_create(0,0,TabScrollLeft)
-    left.owner=id
-    right=instance_create(0,0,TabScrollRight)
-    right.owner=id
 }
 menumode = true;
 virnum=0
@@ -64,80 +53,34 @@ menu_addedit_num("Quote:", "global.classlimits[CLASS_QUOTE]", '
     gg2_write_ini("Classlimits", "Quote", argument0);
 ', 255);
 
-if room==Menu{
-    menu_addlink("[1] Start Game", '
-        //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
-        if (global.Server_RespawntimeSec == 0)
-            global.Server_Respawntime = 1;
-        else
-            global.Server_Respawntime = global.Server_RespawntimeSec * 30;
-        
-        global.gameServer = instance_create(0,0,GameServer);
-    ');
+menu_addlink("[1] Start Game", '
+    //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
+    if (global.Server_RespawntimeSec == 0)
+        global.Server_Respawntime = 1;
+    else
+        global.Server_Respawntime = global.Server_RespawntimeSec * 30;
+    
+    global.gameServer = instance_create(0,0,GameServer);
+');
+    
+menu_addtablink("Main", '
+    instance_create(x,y,HostOptionsController);
+    instance_destroy();
+');
+menu_addtablink("Advanced", '
+    instance_create(x,y,AdvHostOptionsController);
+    instance_destroy();
+');
+menu_addtablink("Classlimits", '
+    instance_create(x,y,ClasslimitsMenuController);
+    instance_destroy();
+');
 
-    menu_addtablink("Main", '
-        instance_create(x,y,HostOptionsController);
-        instance_destroy();
-    ');
-    menu_addtablink("Advanced", '
-        instance_create(x,y,AdvHostOptionsController);
-        instance_destroy();
-    ');
-    menu_addtablink("Classlimits", '
-        instance_create(x,y,ClasslimitsMenuController);
-        instance_destroy();
-    ');
-    
-    
-    menu_addback("[0] Back", '
-        instance_create(x,y,MainMenuController);
-        instance_destroy();
-    ');
-}else{
-    //TABS
-    /*menu_addtablink("Host", '
-        instance_destroy()
-        instance_create(x,y,ModHostOptionsController)
-    ');
-    menu_addtablink("GFX Basic", '
-        instance_destroy()
-        instance_create(x,y,ModOptGFXBasic)
-    ');
-    menu_addtablink("GFX Adv", '
-        instance_destroy()
-        instance_create(x,y,ModOptGFXAdv)
-    ');*/
-    menu_addtablink("&lt;---------",'event_user(1)')
-    menu_addtablink("Misc.", '
-        instance_destroy()
-        instance_create(x,y,ModOptMisc)
-    ');
-    menu_addtablink("Controls", '
-        instance_destroy()
-        instance_create(x,y,ModControlsOptionsController)
-    ');
-    menu_addtablink("Configs", '
-        instance_destroy()
-        instance_create(x,y,ModConfigsController)
-    ');
-    menu_addtablink("C-Limits", '
-        instance_destroy()
-        instance_create(x,y,ClasslimitsMenuController)
-    ');
-    menu_addtablink("Bots", '
-        instance_destroy()
-        instance_create(x,y,ModBotOptionsController)
-    ');
-    
-    menu_addback("[0] Back", '
-        instance_destroy()
-        if(room == ModOptions){
-            room_goto_fix(Menu)
-        }else{
-            instance_create(0,0,InGameMenuController)
-        }
-    ');
-}
+
+menu_addback("[0] Back", '
+    instance_create(x,y,MainMenuController);
+    instance_destroy();
+');
 </argument>
       </arguments>
     </action>

@@ -45,10 +45,10 @@ if isTyping==false{
 }
 
 if isTyping!=false{
-    pendingMsg=string_copy(keyboard_string,0,CHAT_MAX_STRING_LENGTH-1)
+    pendingMsg=string_copy(current_text,0,CHAT_MAX_STRING_LENGTH-1)
     //make that the text doesnt go outside the chatwindow
-    if string_length(keyboard_string)-typedMsgDisplayLength&gt;0{
-        index=string_length(keyboard_string)-(typedMsgDisplayLength-1)
+    if string_length(current_text)-typedMsgDisplayLength&gt;0{
+        index=string_length(current_text)-(typedMsgDisplayLength-1)
     }else{
         index=0
     }
@@ -65,7 +65,7 @@ if isTyping!=false{
     }
     draw_text(xoffset + 18, (yoffset+ysize-271)+sprite_ysize-15, sanitiseNewlines(pendingMsg))
     draw_set_color(c_ltgray)
-    if keyboard_string==""{
+    if current_text==""{
         draw_text(xoffset + 18, (yoffset+ysize-271)+sprite_ysize-15, placeholderMsg);
     }
     draw_set_color(c_white)

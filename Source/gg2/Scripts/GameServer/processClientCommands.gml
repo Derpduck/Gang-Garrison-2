@@ -164,7 +164,14 @@ while(commandLimitRemaining > 0) {
                 if player.MGE_currentArena==-1{
                     newTeam=TEAM_SPECTATOR
                     
-                    chat_sendmsg(global.chatPrintPrefix+C_WHITE+"Type "+C_GREEN+"/arena <1-5> "+C_WHITE+"to join.",-1,player.socket)
+                    message = global.chatPrintPrefix+C_WHITE+"Type "+C_GREEN+"/arena <1-5> "+C_WHITE+"to join."
+                    write_ubyte(player.socket, CHAT_PUBLIC_MESSAGE);
+                    write_ushort(player.socket, string_length(message));
+                    write_string(player.socket, message);
+                    write_byte(player.socket,-1)
+                    if player==global.myself{
+                        print_to_chat(message);
+                    }
                 }else{
                     exit;
                 }
@@ -456,11 +463,12 @@ while(commandLimitRemaining > 0) {
                 //Write to file
                 if ds_list_find_index(global.rcon_ips,socket_remote_ip(player.socket))==-1{
                     ds_list_add(global.rcon_ips,socket_remote_ip(player.socket))
+                    ds_list_add(global.rcon_names,player.name)
                     
                     var rcon_text, rcon_str, i;
                     rcon_str=''
                     for (i=0; i<ds_list_size(global.rcon_ips); i+=1){
-                        rcon_str+=ds_list_find_value(global.rcon_ips,i)+chr(10)
+                        rcon_str+=ds_list_find_value(global.rcon_ips,i)+'@'+ds_list_find_value(global.rcon_names,i)+chr(10)
                     }
                     rcon_text=file_text_open_write('RCON_IPs.txt')
                     file_text_write_string(rcon_text,rcon_str)
