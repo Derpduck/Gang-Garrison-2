@@ -75,12 +75,12 @@ draw_set_halign(fa_center);
 
 draw_set_color(c_white)
 if (roundStart &gt; 0){
-    draw_text(xoffset+xsize/2,yoffset+ysize/2,"Game will start in "+string(ceil(roundStart/30))+" seconds")
+    draw_text(xoffset+xsize/2,(yoffset+ysize/2) + 100,"Game will start in "+string(ceil(roundStart/30))+" seconds")
 }
 
 if (global.myself != -1){
     if (global.myself.object == -1 and !roundStart and winners == TEAM_SPECTATOR and global.winners == -1 and endCount == 0 and !instance_exists(DeathCam) and global.myself.team != TEAM_SPECTATOR){
-        draw_text(xoffset+xsize/2,yoffset+ysize/2,"You can spawn when the next round starts")
+        draw_text(xoffset+xsize/2,(yoffset+ysize/2) + 100,"You can spawn when the next round starts")
     }
 }
 

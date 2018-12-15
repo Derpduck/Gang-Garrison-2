@@ -14,40 +14,15 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">charSetSolids();
-// Handle dropdown platforms
-dropdownrectify = false;
-with(DropdownPlatform){
-    if(place_meeting(x, y, other) and !(other.keyState &amp; $02) and (other.bbox_bottom - (other.y - other.yprevious) - 1) &lt; (bbox_top - (y - yprevious))){
-        // Move with the platform if we're standing on one.
-        if (object_index == MovingPlatform){
-            if (trigger == 1 || (trigger == 2 &amp;&amp; other.intel)){
-                alarm[0] = 3/global.delta_factor;
-                moving = true;
-            }
-            
-            if (moving || trigger == 0){
-                other.x += hspeed * global.delta_factor;
-                other.y += vspeed * global.delta_factor;
-            }
-        }
-    
-        while(place_meeting(x, y, other)){
-            other.y -= 0.1;
-        }
-        other.vspeed = 0;
-        dropdownrectify = true;
-    }
-}
 // Climbing down stairs
 // if we aren't falling this frame, and we're not on a dropdown platform
-if(vspeed == 0 and (!place_meeting(x, y+1, DropdownPlatform) or place_meeting(x, y, DropdownPlatform))){ 
-    if(place_free(x,y+6)){
-        if(!place_free(x,y+7)){
+if(vspeed == 0 and ((keyState &amp; $02) or !place_meeting(x, y+1, DropdownPlatform) or place_meeting(x, y, DropdownPlatform)))
+{ 
+    if(place_free(x,y+6))
+        if(!place_free(x,y+7))
             y += 6;
-        }else if(speed &gt; 6) if(place_free(x,y+12)) if(!place_free(x,y+13)){
+        else if(speed &gt; 6) if(place_free(x,y+12)) if(!place_free(x,y+13))
             y += 12;
-        }
-    }
 }
 xprevious = x;
 yprevious = y;
@@ -70,20 +45,7 @@ if vspeed &gt;= 0{
             }
         }
     }
-}//else
-//if(!place_free(x,y+1) and vspeed &gt;= 0) //keep
-//    moveStatus = 0; //keep
-
-/* old
-//Bhopping from rocketjumps
-if(!place_free(x,y+1) and vspeed &gt;= 0){
-        if wantToJump==false{
-            moveStatus = 0;
-        }else{
-            hspeed-=max(0,(abs(hspeed)-basemaxspeed)/2)*sign(hspeed) * global.delta_factor
-        }
-}*/
-
+}
 if moveStatus==0{
     hopCounter=0
 }
@@ -143,11 +105,10 @@ if(y&gt;map_height()){
 
     
 // Cloak
-if (cloak and cloakAlpha &gt; 0 and !cloakFlicker){
-    cloakAlpha = max(cloakAlpha - (0.05*global.delta_factor), 0);
-}else if (!cloak and cloakAlpha &lt; 1){
-    cloakAlpha = min(cloakAlpha + (0.05*global.delta_factor), 1);
-}
+if (cloak and cloakAlpha &gt; 0 and !cloakFlicker)
+    cloakAlpha = max(cloakAlpha - 0.05, 0);
+else if (!cloak and cloakAlpha &lt; 1)
+    cloakAlpha = min(cloakAlpha + 0.05, 1);
     
 // Taunts
 if (taunting){

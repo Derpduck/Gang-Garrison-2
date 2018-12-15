@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <event category="CREATE" id="0">
   <actions>
+    <action id="604" library="1">
+      <!--action name: Inherited-->
+      <kind>NORMAL</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>false</canApplyTo>
+      <actionType>FUNCTION</actionType>
+      <functionName>action_inherited</functionName>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments/>
+    </action>
     <action id="603" library="1">
       <!--action name: Code-->
       <kind>CODE</kind>
@@ -21,11 +34,14 @@ top = 60;
 left = 0;
 upSpeed = 3;
 downSpeed = 3;
-moving = false;
+movementState = 1; // 0=stopped, 1=up, 2=down
 
 startX = x;
 startY = y;
-checkdir = 1;
+x_ = x;
+y_ = y;
+x = round(x_);
+y = round(y_);
 </argument>
       </arguments>
     </action>

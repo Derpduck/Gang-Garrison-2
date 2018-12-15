@@ -11,10 +11,10 @@ with(TeamGate){
         solid = ((team != other.team or other.intel) and !global.mapchanging);
     }
 }
-with(ControlPointSetupGate){
-    solid = (global.setupTimer > 0);
-    if(instance_exists(FauxCPHUD))
-        solid = (FauxCPHUD.cpUnlock > 0);
+if(areSetupGatesClosed())
+{
+    with(ControlPointSetupGate)
+        solid = true;
 }
 with(PlayerWall){
     solid = true;

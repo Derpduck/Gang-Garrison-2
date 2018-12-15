@@ -6,23 +6,53 @@
     hspeed *= global.delta_factor;
     vspeed *= global.delta_factor;
     
-    var oldx, oldy, oldhspeed, oldvspeed, distleft, hleft, vleft;
+    var oldx, oldy, oldhspeed, oldvspeed, distleft, hleft, vleft, bboxheight, bboxwidth;
     oldx=x;
     oldy=y;
     oldhspeed=hspeed;
     oldvspeed=vspeed;
+    bboxheight = bottom_bound_offset-top_bound_offset;
+    bboxwidth = right_bound_offset-left_bound_offset;
     
     // slide in an appropriate direction to get outside of walls
     if(!place_free(x, y))
     {
-        if(place_free(x, bbox_top))
-            move_outside_solid(90, (bbox_bottom-bbox_top)/2);
-        else if(place_free(x, bbox_bottom))
-            move_outside_solid(270, (bbox_bottom-bbox_top)/2);
-        else if(place_free(bbox_right, y))
-            move_outside_solid(0, (bbox_right-bbox_left)/2);
-        else if(place_free(bbox_left, y))
-            move_outside_solid(180, (bbox_right-bbox_left)/2);
+        var uy, dy, lx, rx, distu, distd, distl, distr;
+        
+        move_outside_solid(90, bboxheight/2);
+        distu = oldy - y;
+        uy = y;
+        y = oldy;
+        
+        move_outside_solid(270, bboxheight/2);
+        distd = y - oldy;
+        dy = y;
+        y = oldy;
+        
+        move_outside_solid(0, bboxwidth/2);
+        distr = x - oldx;
+        rx = x;
+        x = oldx;
+        
+        move_outside_solid(180, bboxwidth/2);
+        distl = oldx - x;
+        lx = x;
+        x = oldx;
+        
+        if(distu < distd and distu < distr and distu < distl)
+            y = uy;
+        else if(distd < distr and distd < distl)
+            y = dy;
+        else if(distr < distl)
+            x = rx;
+        else
+            x = lx;
+        
+        if(!place_free(x, y))
+        {
+            x = oldx;
+            y = oldy;
+        }
     }
 
     hleft = hspeed;
@@ -34,6 +64,10 @@
     while((abs(hleft) > 0.1 || abs(vleft) > 0.1) && stuck = 0){ // while we still have distance to travel
         loopCounter += 1;
         if(loopCounter > 10) {
+            // debugging stuff.
+            //show_message("x = " + string(x) + "#y = " + string(y) + "#oldx = " + string(oldx) + "#oldy = " + string(oldy) + "#hspeed = " + string(hspeed) + "#vspeed = " + string(vspeed) + "#hleft = " + string(hleft) + "#vleft = " + string(vleft) + "#hdirection = " + string(hdirection) + "#vdirection = " + string(vdirection));
+            //game_end();
+
             // After 10 loops, it's assumed we're stuck.  Will eliminating vertical movement fix the problem?
             //vspeed = 0;
             //vleft = 0;
@@ -61,13 +95,7 @@
 
         if(vleft != 0 && !place_free(x, y + sign(vleft))) { // we hit a ceiling or floor
             if(vleft > 0) {
-                if wantToJump==false{
-                    moveStatus = 0; // floors, not ceilings, reset moveStatus
-                }else{
-                    if intel{
-                        moveStatus = 0; // floors, not ceilings, reset moveStatus
-                    }
-                }
+                moveStatus = 0; // floors, not ceilings, reset moveStatus
             }
             vleft = 0; // don't go up or down anymore
             vspeed = 0; // don't try it next frame, either
@@ -104,8 +132,4 @@
     
     hspeed /= global.delta_factor;
     vspeed /= global.delta_factor;
-    
-    // Set these backwards before the game runs step
-    x -= hspeed;
-    y -= vspeed;
 }

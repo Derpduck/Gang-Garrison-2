@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <event category="OTHER" id="11">
   <actions>
+    <action id="604" library="1">
+      <!--action name: Inherited-->
+      <kind>NORMAL</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>false</canApplyTo>
+      <actionType>FUNCTION</actionType>
+      <functionName>action_inherited</functionName>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments/>
+    </action>
     <action id="603" library="1">
       <!--action name: Code-->
       <kind>CODE</kind>
@@ -24,24 +37,17 @@ if (scale != 1)
     image_yscale = scale;
 }
 
-animationSpeed = readProperty(other.properties, "animationspeed", REAL, animationSpeed) * global.delta_factor;
+animationSpeed = readProperty(other.properties, "animationspeed", REAL, animationSpeed);
 trigger = readProperty(other.properties, "trigger", REAL, trigger);
+if(trigger != 0)
+    movementState = 0;
+else
+    movementState = 1;
+
 top = readProperty(other.properties, "top", REAL, top);
 left = readProperty(other.properties, "left", REAL, left);
 upSpeed = readProperty(other.properties, "upspeed", REAL, upSpeed);
 downSpeed = readProperty(other.properties, "downspeed", REAL, downSpeed);
-    
-if (abs(left) &gt; abs(top))
-    checkdir = 0;
-    
-if (top == 0)
-    direction = 90 - sign(left)*90;
-else if (left == 0)
-    direction = sign(top)*90;
-else
-    direction = arctan(top/left) * 180 / pi;
-    
-speed = upSpeed;
 </argument>
       </arguments>
     </action>

@@ -49,8 +49,6 @@
     else if notice == NOTICE_HAVEINTEL message="You have the intelligence!"  
     else if notice == NOTICE_SETCHECKPOINT message="Checkpoint set at this location!"
     else if notice == NOTICE_DESTROYCHECKPOINT message="Checkpoint destroyed at this location!"
-    else if notice == NOTICE_PLAYERTRACKENABLE message="Player tracking enabled!"
-    else if notice == NOTICE_PLAYERTRACKDISABLE message="Player tracking disabled!"
     //else if notice == NOTICE_CUSTOM draw_text_ext_color(textx, (yoffset+ysize)-100, message, -1,-1,c_white,c_white,c_white,c_white,alpha);
     
     draw_text_ext_color((xoffset+xsize-50)-string_length(message)*8, (yoffset+ysize)-100, message, -1,-1,c_white,c_white,c_white,c_white,alpha)

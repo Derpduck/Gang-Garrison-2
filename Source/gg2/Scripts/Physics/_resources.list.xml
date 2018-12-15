@@ -13,4 +13,8 @@
   <resource name="really_move_contact_solid" type="RESOURCE"/>
   <resource name="good_move_contact_solid" type="RESOURCE"/>
   <resource name="collision_point_solid" type="RESOURCE"/>
+  <resource name="areSetupGatesClosed" type="RESOURCE"/>
+  <resource name="collision_line_bulletblocking" type="RESOURCE"/>
+  <resource name="move_all_gore" type="RESOURCE"/>
+  <resource name="move_all_bullets" type="RESOURCE"/>
 </resources>

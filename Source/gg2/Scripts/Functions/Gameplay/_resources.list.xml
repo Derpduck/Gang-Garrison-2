@@ -2,8 +2,6 @@
 <resources>
   <resource name="createGib" type="RESOURCE"/>
   <resource name="createShot" type="RESOURCE"/>
-  <resource name="move_all_gore" type="RESOURCE"/>
-  <resource name="move_all_bullets" type="RESOURCE"/>
   <resource name="setChatBubble" type="RESOURCE"/>
   <resource name="pointCapture" type="RESOURCE"/>
   <resource name="buildSentry" type="RESOURCE"/>

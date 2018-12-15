@@ -27,7 +27,7 @@
         }
     }
 }
-if(!readyToShoot and alarm[5] &lt; 25 and !isRefilling){
+if(!readyToShoot and alarm[5] &lt; (25 / global.delta_factor) and !isRefilling){
     alarm[5] += 1;
 }
 
