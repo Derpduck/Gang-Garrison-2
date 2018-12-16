@@ -95,7 +95,14 @@
 
         if(vleft != 0 && !place_free(x, y + sign(vleft))) { // we hit a ceiling or floor
             if(vleft > 0) {
-                moveStatus = 0; // floors, not ceilings, reset moveStatus
+                if wantToJump==false{
+                    moveStatus = 0; // floors, not ceilings, reset moveStatus
+                }else{
+                    if intel{
+                        moveStatus = 0; // floors, not ceilings, reset moveStatus
+                    }
+                }
+                //moveStatus = 0; // floors, not ceilings, reset moveStatus
             }
             vleft = 0; // don't go up or down anymore
             vspeed = 0; // don't try it next frame, either

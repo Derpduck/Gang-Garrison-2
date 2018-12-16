@@ -49,7 +49,7 @@ if(vspeed &gt;= 0)
     }
 }
 
-if(onNonSurfingGround)
+if(onNonSurfingGround) and wantToJump==false
     moveStatus = 0;
     
 if(onground)
@@ -294,6 +294,10 @@ if burnDuration&gt;0 &amp;&amp; player.class != CLASS_PYRO and random(80) &lt;= 
 if (abs(hspeed) &lt; 0.195 and !controlling)
 {
     hspeed=0;
+    animationImage=0;
+    still = true;
+}else{
+    still = false;
 }
 
 // In order to make the gravity truly framerate-independent, we need to apply half of it before, and half of it after, each motion.
@@ -348,26 +352,29 @@ if (intel){
         //}
     }
 }
-var sprite_length;
-if(player.class == CLASS_QUOTE or sprite_special or zoomed or player.humiliated)
+
+if(player.class == CLASS_QUOTE or sprite_special or zoomed or player.humiliated){
     sprite_length = 2;
-else
+}else{
     sprite_length = CHARACTER_ANIMATION_LEN;
+}
 
-var jumpAnimationImage;
-if(player.humiliated)
-    jumpAnimationImage = 2;
-else
-    jumpAnimationImage = 1;
-
-if (onground and hspeed == 0)
-    animationImage = 0;
-else if(!onground)
-    animationImage = jumpAnimationImage;
-else
-{
-    // onground and not still
-    animationImage += min(abs(hspeed), 8)*sign(hspeed)*image_xscale*global.delta_factor/20;
+if (player.humiliated){
+    if (!place_free(x,y+1) &amp;&amp; hspeed == 0){
+        animationImage = 0;
+    }else if place_free(x,y+1){
+        animationImage = 2;
+    }
+    if (!place_free(x,y+1) &amp;&amp; hspeed != 0){
+        animationImage = 1+((animationImage-1+min(abs(hspeed), 8)*global.delta_factor/20) mod 2);
+    }
+}else{
+    if (place_free(x,y+1) and hspeed != 0 and player.class == CLASS_QUOTE){
+        animationImage = 1;
+    }else{
+        animationImage = (animationImage+min(abs(hspeed)*sign(hspeed), 8)*image_xscale*global.delta_factor/20) mod sprite_length;
+    }
+    // ensure positive animationImage
     animationImage = (animationImage+sprite_length) mod sprite_length;
 }
 

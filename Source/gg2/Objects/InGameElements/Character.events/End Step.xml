@@ -37,7 +37,7 @@ if vspeed &gt;= 0{
                 moveStatus=0
             }else{
                 if hopCounter==0{
-                    hspeed-=max(0,(abs(hspeed)-basemaxspeed)/2.5)*sign(hspeed)
+                    hspeed-=max(0,(abs(hspeed)-basemaxspeed)/2.2)*sign(hspeed)
                     hopCounter+=1
                 }else{
                     moveStatus=0
