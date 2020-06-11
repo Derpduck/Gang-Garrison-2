@@ -9,7 +9,7 @@ write_string(tempBuffer, global.currentMap);
 write_ubyte(tempBuffer, string_length(global.currentMapMD5));
 write_string(tempBuffer, global.currentMapMD5);
 write_ubyte(tempBuffer, global.serverPluginsRequired);
-write_ubyte(tempBuffer, string_length(GameServer.pluginList));
+write_ushort(tempBuffer, string_length(GameServer.pluginList));
 write_string(tempBuffer, GameServer.pluginList);
 socket = tempBuffer;
 ServerJoinUpdate(tempBuffer);
