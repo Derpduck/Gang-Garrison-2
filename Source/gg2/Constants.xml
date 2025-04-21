@@ -139,5 +139,6 @@
   <constant name="GEAR_NAVIGATORHAT" value="&quot;NavigatorHat&quot;"/>
   <constant name="GEAR_RAYBANN_CAPE" value="&quot;RaybannCape&quot;"/>
   <constant name="GEAR_HAXXY_CAPE" value="&quot;HaxxyCape&quot;"/>
-  <constant name="COLOR_RGB_LENGTH" value="11"/>
+  <constant name="COL_FLAG" value="&quot;&lt;!&gt;&quot;"/>
+  <constant name="COLOR_RGB_LENGTH" value="9"/>
 </constants>

@@ -17,10 +17,9 @@
 offsetY = view_yview[0];
 sizeX = view_wview[0] + offsetX;
 sizeY = view_hview[0] + offsetY;
-boxPaddingWidth = 4;
+boxPaddingWidth = 4
 boxPaddingHeight = 8;
 lineSpacing = 16;
-textPadding = 6;
 
 draw_set_alpha(global.consoleOpacity / 100);
 draw_set_color(c_black);
@@ -28,6 +27,7 @@ draw_set_color(c_black);
 // Background Boxes
 boxLeft = offsetX + boxPaddingWidth;
 boxRight = sizeX - boxPaddingWidth;
+global.consoleWidth = boxRight - boxLeft;
 
 // Input Box
 inputBoxBottom = sizeY - boxPaddingHeight;
@@ -36,11 +36,10 @@ draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, false);
 
 // Output Box
 outputBoxBottom = inputBoxTop - boxPaddingHeight;
-outputBoxTop = outputBoxBottom - (global.consoleLines * lineSpacing);
+outputBoxTop = outputBoxBottom - (global.consoleLines * lineSpacing) - boxPaddingHeight;
 draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, false);
 
 // Console Borders
-// TODO: Thin white box on outside
 draw_set_alpha(1);
 draw_set_color(c_white);
 draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, true);
@@ -52,34 +51,34 @@ draw_set_valign(fa_top);
 draw_set_font(global.consoleFont)
 // Input Box
 inputTextHeightOffset = 3;
-draw_text(boxLeft + textPadding, inputBoxTop + inputTextHeightOffset, currentText);
+draw_text(boxLeft + global.consoleTextPadding, inputBoxTop + inputTextHeightOffset, currentText);
 
 // Input Cursor
 if (cursorMoving or cursorBlink)
 {
     cursorNextPosition = string_width(string_copy(currentText, 0, cursorPosition));
     draw_set_color(make_color_rgb(0, 255, 0));
-    draw_text(boxLeft + textPadding + cursorNextPosition - 3, inputBoxTop + inputTextHeightOffset, "|");
+    draw_text(boxLeft + global.consoleTextPadding + cursorNextPosition - 3, inputBoxTop + inputTextHeightOffset, "|");
     draw_set_color(c_white);
 }
 
 // Output Box
-var outputLine;
-for(i=0; i&lt;ds_list_size(global.consoleOutputHistory); i+=1)
+var printLine;
+for(i=0; i&lt;global.consoleLines; i+=1)
 {
-    outputLine = ds_list_find_value(global.consoleOutputHistory, ds_list_size(global.consoleOutputHistory) - i - 1);
+    printLine = ds_list_find_value(global.consoleOutputHistory, ds_list_size(global.consoleOutputHistory) - i - 1);
     
     // Handle color codes per line
-    switch (string_copy(outputLine, 0, 3))
+    switch (string_copy(printLine, 0, 3))
     {
-    case "/:/":
-        draw_set_color(get_color_code(string_copy(outputLine, 4, COLOR_RGB_LENGTH)));
-        draw_text(boxLeft + textPadding, outputBoxBottom - (lineSpacing * (i + 1)), string_copy(outputLine, 4 + COLOR_RGB_LENGTH, string_length(outputLine) - (4 + COLOR_RGB_LENGTH - 1)));
+    case COL_FLAG:
+        draw_set_color(get_color_code_hex(string_copy(printLine, 1, COLOR_RGB_LENGTH)));
+        draw_text(boxLeft + global.consoleTextPadding, outputBoxBottom - (lineSpacing * (i + 1)), string_copy(printLine, 1 + COLOR_RGB_LENGTH, string_length(printLine) - (1 + COLOR_RGB_LENGTH - 1)));
         break;
 
     default:
         draw_set_color(c_white);
-        draw_text(boxLeft + textPadding, outputBoxBottom - (lineSpacing * (i + 1)), outputLine);
+        draw_text(boxLeft + global.consoleTextPadding, outputBoxBottom - (lineSpacing * (i + 1)), printLine);
         break;
     }
 }

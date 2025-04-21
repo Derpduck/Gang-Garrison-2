@@ -1,3 +1,5 @@
+global.consoleFont = font_add_sprite(ConsoleFontS, ord("!"), false, 0);
+
 // Console Options
 ini_open("Re-DSM.ini");
 global.saveConsoleLog = ini_read_real("Console", "SaveConsoleLog", 0);
@@ -15,21 +17,24 @@ global.consoleInputHistory = ds_list_create();
 global.consoleOutputHistory = ds_list_create();
 global.consoleCommands = ds_map_create();
 global.consoleCommandsHelp = ds_map_create();
-global.consoleInputMaxLength = -1; // TODO: For display purposes, doesn't need global
-global.consoleOutputMaxLength = 110; // TODO: Inherited from ESM - needs testing / doesn't need global
-global.consoleInputHistoryMax = 100;
+global.consoleInputHistoryMax = 8192; // Hard limit to prevent memory issues
+global.consoleOutputHistoryMax = 8192; // Hard limit to prevent memory issues
+
+// Console Size
+global.consoleWidth = 792; // Default value, updated live in Console draw event
+global.consoleTextPadding = 6;
 
 // Initialize Console
 console_print(COL_YELLOW + "Re-DSM: " + string(DSM_VERSION_STRING));
 console_print(COL_YELLOW + "GG2 Client: " + string(GAME_VERSION_STRING));
 var currentDateTime;
 currentDateTime = date_current_datetime();
-console_print(COL_YELLOW + string(date_get_year(currentDateTime)) + "-" + string(date_get_month(currentDateTime)) + "-" + string(date_get_day(currentDateTime)) +
-                           " " + string(date_get_hour(currentDateTime)) + ":" + string(date_get_minute(currentDateTime)));
+console_print(COL_YELLOW + "Game Launched: " + date_datetime_string(currentDateTime));
 console_print("________________");
 console_print("");
 
 
 // TODO: Print map changes in console
+// TODO: Expand console input box to accommodate new lines / longer inputs, automatically add line break when string gets too long
 
 console_init_commands();

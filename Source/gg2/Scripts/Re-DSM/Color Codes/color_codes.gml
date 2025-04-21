@@ -1,12 +1,22 @@
 // New colors
 // TODO: Add short names for use in chat like {w} = white
 
-globalvar COL_YELLOW, COL_GREEN;
-globalvar COL_TEAL, COL_TEAL_LIGHT;
+globalvar COL_WHITE, COL_BLACK, COL_GREY,
+COL_RED,
+COL_YELLOW, COL_GREEN, COL_TEAL, COL_CYAN;
 
+COL_WHITE   =   COL_FLAG + "ffffff"
+COL_BLACK   =   COL_FLAG + "000000"
+COL_GRAY    =   COL_FLAG + "808080"
 
+COL_RED     =   COL_FLAG + "ff0000"
 
-COL_YELLOW="/:/255-255-000"
+COL_YELLOW  =   COL_FLAG + "ffff00"
+COL_GREEN   =   COL_FLAG + "00ff00"
+COL_TEAL    =   COL_FLAG + "008080"
+COL_CYAN    =   COL_FLAG + "00ffff"
+
+/*COL_YELLOW="/:/255-255-000"
 COL_GREEN = "/:/000-255-000";
 
 

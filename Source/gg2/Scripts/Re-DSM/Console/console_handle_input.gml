@@ -7,8 +7,8 @@ numOfCommands = 0;
 input = 0;
 parseString = argument0;
 
-parseString = string_replace_all(parseString, chr(10), " ");
-parseString = string_replace_all(parseString, chr(13), " ");
+parseString = string_replace_all(parseString, chr(10), " "); // Line feed
+parseString = string_replace_all(parseString, chr(13), " "); //Carriage return
 
 while string_count(" ", parseString) > 0{
     pos = string_pos(" ", parseString)-1;
@@ -52,7 +52,7 @@ input[0]=string_lower(input[0])
 if ds_map_exists(global.consoleCommands, input[0]){
     execute_string(ds_map_find_value(global.consoleCommands, input[0]));
 }else{
-    console_print(C_RED+"Unknown command: "+input[0]);
+    console_print(COL_RED+"Unknown command: "+input[0]);
     //console_print('Type "help" for a list of available commands.');
 }
 //console_print('');
