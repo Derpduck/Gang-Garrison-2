@@ -41,13 +41,15 @@ draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, false);
 
 // Console Borders
 // TODO: Thin white box on outside
+draw_set_alpha(1);
+draw_set_color(c_white);
+draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, true);
+draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, true);
 
 // Text
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_set_color(c_white);
-draw_set_alpha(1);
-//draw_set_font(global.consoleFont) // TODO: Add font
+draw_set_font(global.consoleFont)
 // Input Box
 inputTextHeightOffset = 3;
 draw_text(boxLeft + textPadding, inputBoxTop + inputTextHeightOffset, currentText);
@@ -56,9 +58,8 @@ draw_text(boxLeft + textPadding, inputBoxTop + inputTextHeightOffset, currentTex
 if (cursorMoving or cursorBlink)
 {
     cursorNextPosition = string_width(string_copy(currentText, 0, cursorPosition));
-    draw_set_color(make_color_rgb(10, 200, 10));
-    draw_text(boxLeft + textPadding + cursorNextPosition, inputBoxTop + inputTextHeightOffset, cursorCharacter);
-    draw_text(boxLeft + textPadding + cursorNextPosition + 1, inputBoxTop + inputTextHeightOffset, cursorCharacter);
+    draw_set_color(make_color_rgb(0, 255, 0));
+    draw_text(boxLeft + textPadding + cursorNextPosition - 3, inputBoxTop + inputTextHeightOffset, "|");
     draw_set_color(c_white);
 }
 

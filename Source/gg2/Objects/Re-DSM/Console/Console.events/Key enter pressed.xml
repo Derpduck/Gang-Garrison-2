@@ -17,12 +17,12 @@
 if (currentText != "")
 {
     ds_list_add(global.consoleInputHistory, currentText);
-    while (ds_list_size(global.consoleInputHistory) &gt; global.consoleCommandHistorySize)
+    while (ds_list_size(global.consoleInputHistory) &gt; global.consoleInputHistoryMax)
     {
         ds_list_delete(global.consoleInputHistory, 0);
     }
     inputHistoryIndex = ds_list_size(global.consoleInputHistory);
-    console_print(C_GREEN + currentText);
+    console_print(COL_GREEN + currentText);
     console_handle_input(currentText);
 }
 

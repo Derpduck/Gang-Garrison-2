@@ -1,7 +1,5 @@
 // Returns true if the game is successfully initialized, false if there was an error and we should quit.
 {
-    DSM_init();
-    
     initCharacterSpritePrefixes();
     initAllHeadPoses();
     initGear();
@@ -362,6 +360,8 @@ global.launchMap = "";
     builder_init();
 
     character_init();
+    
+    DSM_init();
     
     if(!directory_exists(working_directory + "\Plugins")) directory_create(working_directory + "\Plugins");
     loadplugins();

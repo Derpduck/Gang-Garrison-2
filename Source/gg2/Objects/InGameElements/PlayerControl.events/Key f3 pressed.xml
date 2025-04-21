@@ -13,8 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !instance_exists(Console){
-    instance_create(0,0,Console)
+        <argument kind="STRING">if (!instance_exists(Console))
+{
+    instance_create(0,0,Console);
+}
+else
+{
+    with(Console)
+    {
+        instance_destroy();
+    }
 }
 </argument>
       </arguments>

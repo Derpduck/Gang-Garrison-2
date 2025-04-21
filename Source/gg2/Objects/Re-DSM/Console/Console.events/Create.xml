@@ -21,13 +21,13 @@ ctrlHeld = false;
 // Typing Cursor
 cursorPosition = 0;
 cursorMoving = 0;
-cursorCharacter = "|";
 cursorBlink = true;
 cursorBlinkTime = 15;
 alarm[0] = cursorBlinkTime / global.delta_factor;
 
 // Console History
 inputHistoryIndex = ds_list_size(global.consoleInputHistory);
+ds_list_add(global.consoleInputHistory, "");
 </argument>
       </arguments>
     </action>

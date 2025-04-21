@@ -17,12 +17,17 @@ global.consoleCommands = ds_map_create();
 global.consoleCommandsHelp = ds_map_create();
 global.consoleInputMaxLength = -1; // TODO: For display purposes, doesn't need global
 global.consoleOutputMaxLength = 110; // TODO: Inherited from ESM - needs testing / doesn't need global
-global.consoleCommandHistorySize = 100;
+global.consoleInputHistoryMax = 100;
 
 // Initialize Console
-console_print(C_YELLW + "Re-DSM: " + string(GAME_VERSION_STRING))
-// TODO: Print current date and time, server name, etc
-console_print("---------------------")
+console_print(COL_YELLOW + "Re-DSM: " + string(DSM_VERSION_STRING));
+console_print(COL_YELLOW + "GG2 Client: " + string(GAME_VERSION_STRING));
+var currentDateTime;
+currentDateTime = date_current_datetime();
+console_print(COL_YELLOW + string(date_get_year(currentDateTime)) + "-" + string(date_get_month(currentDateTime)) + "-" + string(date_get_day(currentDateTime)) +
+                           " " + string(date_get_hour(currentDateTime)) + ":" + string(date_get_minute(currentDateTime)));
+console_print("________________");
+console_print("");
 
 
 // TODO: Print map changes in console
