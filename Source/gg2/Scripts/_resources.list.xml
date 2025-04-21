@@ -32,4 +32,5 @@
   <resource name="Misc" type="GROUP"/>
   <resource name="ggon" type="GROUP"/>
   <resource name="Dominations" type="GROUP"/>
+  <resource name="Re-DSM" type="GROUP"/>
 </resources>

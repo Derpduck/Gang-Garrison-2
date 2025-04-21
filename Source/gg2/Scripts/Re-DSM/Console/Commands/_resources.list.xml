@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Server" type="GROUP"/>
+  <resource name="Client" type="GROUP"/>
+  <resource name="console_add_command" type="RESOURCE"/>
+  <resource name="console_addCommand" type="RESOURCE"/>
+  <resource name="console_get_rules" type="RESOURCE"/>
+</resources>

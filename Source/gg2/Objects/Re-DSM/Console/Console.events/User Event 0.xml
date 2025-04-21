@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// TODO
+/*
+if global.writeConsoleLog==0 and global.commandLogged==0 exit;
+
+var consoleLogFile,datetime;
+datetime=string(date_datetime_string(date_current_datetime())){
+    datetime=string_replace_all(datetime,"&lt;","_");datetime=string_replace_all(datetime,"&gt;","_");
+    datetime=string_replace_all(datetime,":","_");datetime=string_replace_all(datetime,'"',"_");
+    datetime=string_replace_all(datetime,"/","_");datetime=string_replace_all(datetime,"\","_");
+    datetime=string_replace_all(datetime,"|","_");datetime=string_replace_all(datetime,"?","_");
+    datetime=string_replace_all(datetime,"*","_")
+}
+consoleLogFile=file_text_open_write(working_directory+"\Logs\ConsoleLog__"+datetime+".txt")
+
+for(i=0; i&lt;ds_list_size(global.commandLog); i+=1){
+    file_text_write_string(consoleLogFile,ds_list_find_value(global.commandLog,i))
+    file_text_writeln(consoleLogFile)
+}
+
+file_text_close(consoleLogFile)
+
+console_print('Console log saved as: ConsoleLog__'+datetime+'.txt')
+*/
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="KEYPRESS" id="13">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Send a command
+if (currentText != "")
+{
+    ds_list_add(global.consoleInputHistory, currentText);
+    while (ds_list_size(global.consoleInputHistory) &gt; global.consoleCommandHistorySize)
+    {
+        ds_list_delete(global.consoleInputHistory, 0);
+    }
+    inputHistoryIndex = ds_list_size(global.consoleInputHistory);
+    console_print(C_GREEN + currentText);
+    console_handle_input(currentText);
+}
+
+currentText = "";
+cursorPosition = 0;
+cursorMoving = 0;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

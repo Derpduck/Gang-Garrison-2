@@ -1,5 +1,7 @@
 // Returns true if the game is successfully initialized, false if there was an error and we should quit.
 {
+    DSM_init();
+    
     initCharacterSpritePrefixes();
     initAllHeadPoses();
     initGear();
