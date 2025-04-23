@@ -2,7 +2,6 @@
 <resources>
   <resource name="Commands" type="GROUP"/>
   <resource name="console_init" type="RESOURCE"/>
-  <resource name="console_init_commands" type="RESOURCE"/>
   <resource name="console_handle_input" type="RESOURCE"/>
   <resource name="console_print" type="RESOURCE"/>
   <resource name="console_save_log" type="RESOURCE"/>

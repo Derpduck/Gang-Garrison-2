@@ -15,7 +15,8 @@ DSM_logs_directory();
 logFileName = "Console_" + datetime + ".txt"
 logFile = file_text_open_write(working_directory + "\Logs\" + logFileName);
 
-for(i=0; i<ds_list_size(global.consoleOutputHistory); i+=1){
+for(i=0; i<ds_list_size(global.consoleOutputHistory); i+=1)
+{
     file_text_write_string(logFile, ds_list_find_value(global.consoleOutputHistory, i));
     file_text_writeln(logFile);
 }

@@ -3,3 +3,4 @@
 // Server Side Commands
 
 // Client Side Commands
+cc_flag();

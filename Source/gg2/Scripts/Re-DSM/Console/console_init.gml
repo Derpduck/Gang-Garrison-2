@@ -25,12 +25,13 @@ global.consoleWidth = 792; // Default value, updated live in Console draw event
 global.consoleTextPadding = 6;
 
 // Initialize Console
-console_print(COL_YELLOW + "Re-DSM: " + string(DSM_VERSION_STRING));
-console_print(COL_YELLOW + "GG2 Client: " + string(GAME_VERSION_STRING));
+console_print(COL_YELLOW + "Re-DSM: " + COL_WHITE + string(DSM_VERSION_STRING));
+console_print(COL_YELLOW + "GG2 Client: " + COL_WHITE + string(GAME_VERSION_STRING));
 var currentDateTime;
 currentDateTime = date_current_datetime();
-console_print(COL_YELLOW + "Game Launched: " + date_datetime_string(currentDateTime));
-console_print("________________");
+console_print(COL_YELLOW + "Game Launched: " + COL_WHITE + date_datetime_string(currentDateTime));
+console_print("");
+console_print(COL_GRAY + "________________");
 console_print("");
 
 

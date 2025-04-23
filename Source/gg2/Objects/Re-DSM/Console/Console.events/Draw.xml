@@ -63,23 +63,58 @@ if (cursorMoving or cursorBlink)
 }
 
 // Output Box
-var printLine;
-for(i=0; i&lt;global.consoleLines; i+=1)
+var printLine, renderString, stringOffset, colorCode;
+
+for(i=0; i&lt;min(global.consoleLines, ds_list_size(global.consoleOutputHistory)); i+=1)
 {
     printLine = ds_list_find_value(global.consoleOutputHistory, ds_list_size(global.consoleOutputHistory) - i - 1);
     
-    // Handle color codes per line
-    switch (string_copy(printLine, 0, 3))
+    // Handle color codes
+    if (string_pos(COL_FLAG, printLine) == 0)
     {
-    case COL_FLAG:
-        draw_set_color(get_color_code_hex(string_copy(printLine, 1, COLOR_RGB_LENGTH)));
-        draw_text(boxLeft + global.consoleTextPadding, outputBoxBottom - (lineSpacing * (i + 1)), string_copy(printLine, 1 + COLOR_RGB_LENGTH, string_length(printLine) - (1 + COLOR_RGB_LENGTH - 1)));
-        break;
-
-    default:
+        // No code found; print line as normal
         draw_set_color(c_white);
         draw_text(boxLeft + global.consoleTextPadding, outputBoxBottom - (lineSpacing * (i + 1)), printLine);
-        break;
+    }
+    else
+    {
+        // Split string at each color code
+        stringOffset = 0;
+        renderString = printLine;
+        
+        while (string_count(COL_FLAG, renderString) &gt; 0)
+        {
+            // Get the first color code in the string, and apply the color
+            colorCode = string_copy(renderString, 1, COLOR_RGB_LENGTH);
+            draw_set_color(get_color_code_hex(colorCode));
+            
+            // Remove the color code from renderString
+            // Note: This assumes a color code is at the start of the string, if not it will delete the part of the string where it should be
+            renderString = string_copy(renderString, 1 + COLOR_RGB_LENGTH, string_length(renderString));
+            
+            // Render text up to the next color code
+            if (string_pos(COL_FLAG, renderString) != 0)
+            {
+                // Draw chunk of text in the given color, offset to the right by the previous string
+                var stringChunk;
+                stringChunk = string_copy(renderString, 1, string_pos(COL_FLAG, renderString) - 1);
+                draw_text(boxLeft + global.consoleTextPadding + stringOffset, outputBoxBottom - (lineSpacing * (i + 1)), stringChunk);
+                
+                // Remove the stored string from renderString and continue until string is empty
+                renderString = string_copy(renderString, string_pos(COL_FLAG, renderString), string_length(renderString));
+                
+                // Set starting position for next chunk of text and remove the already rendered text from the rest of the string
+                stringOffset += string_width(stringChunk);
+            }
+            else
+            {
+                // No more color codes; render the rest of the string
+                draw_text(boxLeft + global.consoleTextPadding + stringOffset, outputBoxBottom - (lineSpacing * (i + 1)), renderString);
+            }
+            
+            //stringOffset += string_width(renderString);
+            //printLine = string_copy(printLine, string_length(renderString), string_length(printLine) - string_length(renderString));
+        }
     }
 }
 

@@ -4,5 +4,6 @@
   <resource name="get_color_code" type="RESOURCE"/>
   <resource name="get_color_code_hex" type="RESOURCE"/>
   <resource name="hex_to_dec" type="RESOURCE"/>
+  <resource name="string_clean_color_code" type="RESOURCE"/>
   <resource name="c_filter" type="RESOURCE"/>
 </resources>

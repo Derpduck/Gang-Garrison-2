@@ -14,5 +14,5 @@ if (argument2 != "")
 }
 else
 {
-    ds_map_add(global.consoleCommandsHelp, commandName, "This command does not have a valid documentation.");
+    ds_map_add(global.consoleCommandsHelp, commandName, "This command does not have valid documentation.");
 }
