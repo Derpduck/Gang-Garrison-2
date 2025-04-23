@@ -5,4 +5,5 @@
   <resource name="Color Codes" type="GROUP"/>
   <resource name="DSM_logs_directory" type="RESOURCE"/>
   <resource name="string_reverse" type="RESOURCE"/>
+  <resource name="Legacy - Delete" type="GROUP"/>
 </resources>

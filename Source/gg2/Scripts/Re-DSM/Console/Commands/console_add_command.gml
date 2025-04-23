@@ -6,7 +6,7 @@ commandCode = argument1;
 commandHelp = argument2;
 commandRules = argument3;
 
-ds_map_add(global.consoleCommands, commandName, commandCode);
+ds_map_add(global.consoleCommands, commandName, console_get_rules(commandRules) + commandCode);
 
 if (argument2 != "")
 {

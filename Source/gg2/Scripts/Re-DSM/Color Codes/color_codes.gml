@@ -1,42 +1,41 @@
-// New colors
-// TODO: Add short names for use in chat like {w} = white
+// Color codes for console
 
 globalvar COL_WHITE, COL_BLACK, COL_GREY,
-COL_RED, COL_ORANGE, COL_YELLOW,
-COL_GREEN, COL_TEAL, COL_CYAN, COL_BLUE,
-COL_PINK, COL_PINK_LIGHT, COL_FUSCIA, COL_PURPLE, COL_PURPLE_LIGHT;
+COL_RED, COL_RED_LT, COL_ORANGE, COL_YELLOW, COL_GOLD,
+COL_GREEN, COL_GREEN_LT, COL_GREEN_DK,
+COL_CYAN, COL_TEAL,
+COL_BLUE, COL_BLUE_LT, COL_BLUE_DK,
+COL_PINK, COL_PINK_LT, COL_PINK_DK, COL_PURPLE, COL_PURPLE_LT;
 
-COL_WHITE   =   COL_FLAG + "ffffff"
-COL_BLACK   =   COL_FLAG + "000000"
-COL_GRAY    =   COL_FLAG + "808080"
+COL_WHITE       =   COL_FLAG + "ffffff"
+COL_BLACK       =   COL_FLAG + "000000"
+COL_GRAY        =   COL_FLAG + "808080"
 
-COL_RED     =   COL_FLAG + "ff0000"
-COL_ORANGE  =   COL_FLAG + "ff8000"
-COL_YELLOW  =   COL_FLAG + "ffff00"
+COL_RED         =   COL_FLAG + "ff0000" // Red team, Console errors
+COL_RED_LT      =   COL_FLAG + "ff4848"
+COL_RED_DK      =   COL_FLAG + "b40000" // Not used
+COL_ORANGE      =   COL_FLAG + "ff8000" // RCON
+COL_YELLOW      =   COL_FLAG + "ffff00" // System messages
+COL_GOLD        =   COL_FLAG + "ffd700"
 
-COL_GREEN   =   COL_FLAG + "00ff00"
-COL_TEAL    =   COL_FLAG + "00a5a5"
-COL_CYAN    =   COL_FLAG + "00ffff"
-COL_BLUE    =   COL_FLAG + "0000ff"
+COL_GREEN       =   COL_FLAG + "00ff00" //Spectator team
+COL_GREEN_LT    =   COL_FLAG + "80ff80" // Not used
+COL_GREEN_DK    =   COL_FLAG + "00c800" // Not used
 
-COL_PINK    =   COL_FLAG + "ff00ff"
-COL_PINK_LIGHT    =   COL_FLAG + "ff80ff"
-COL_FUSCIA  =   COL_FLAG + "c80080"
-COL_PURPLE  =   COL_FLAG + "800080"
-COL_PURPLE_LIGHT  =   COL_FLAG + "a064ff"
+COL_CYAN        =   COL_FLAG + "00ffff"
+COL_TEAL        =   COL_FLAG + "00a5a5" // Not used
+
+COL_BLUE        =   COL_FLAG + "0000ff"
+COL_BLUE_LT     =   COL_FLAG + "28acfb" // Blue team
+COL_BLUE_DK     =   COL_FLAG + "0000b4" // Not used
+
+COL_PINK        =   COL_FLAG + "ff00ff"
+COL_PINK_LT     =   COL_FLAG + "ff80ff"
+COL_PINK_DK     =   COL_FLAG + "c80080"
+COL_PURPLE      =   COL_FLAG + "8000ff" // Not used
+COL_PURPLE_LT   =   COL_FLAG + "bf80ff" // Not used
 
 
 
 
-
-// ESM CHAT COLOR CODES
-/*
-P_RED="/:/237-061-061" //COLOR_CHAT_RED
-P_BLUE="/:/061-135-218" //COLOR_CHAT_BLUE
-P_YELLW="/:/235-200-000" //COLOR_CHAT_YELLOW2
-P_DKRED="/:/165-000-000" //COLOR_DARK_RED
-P_ORNGE="/:/253-114-000" //COLOR_CHAT_ORANGE2
-P_DKPRP="/:/150-000-150" //COLOR_DARK_PURPLE
-P_DBLUE="/:/000-000-140" //COLOR_DARK_BLUE
-P_AQUA="/:/015-255-150" //COLOR_AQUA_GREEN
-P_DKGRN="/:/000-110-000" //COLOR_DARK_GREEN
+// Color codes for chat

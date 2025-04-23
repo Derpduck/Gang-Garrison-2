@@ -1,16 +1,6 @@
 global.consoleFont = font_add_sprite(ConsoleFontS, ord("!"), false, 0);
 
-// Console Options
-ini_open("Re-DSM.ini");
-global.saveConsoleLog = ini_read_real("Console", "SaveConsoleLog", 0);
-ini_write_real("Console", "SaveConsoleLog", global.saveConsoleLog);
-    
-global.consoleLines = ini_read_real("Console", "ConsoleLines", 14);
-ini_write_real("Console", "ConsoleLines", global.consoleLines);
-
-global.consoleOpacity = ini_read_real("Console", "ConsoleOpacity", 75);
-ini_write_real("Console", "ConsoleOpacity", global.consoleOpacity);
-ini_close();
+console_options();
 
 // Console Globals
 global.consoleInputHistory = ds_list_create();
@@ -34,8 +24,7 @@ console_print("");
 console_print(COL_GRAY + "________________");
 console_print("");
 
-
-// TODO: Print map changes in console
-// TODO: Expand console input box to accommodate new lines / longer inputs, automatically add line break when string gets too long
+// TODO: Legacy stuff
+global.RCONSentCommand=0
 
 console_init_commands();

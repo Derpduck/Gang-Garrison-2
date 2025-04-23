@@ -51,7 +51,7 @@ draw_set_valign(fa_top);
 draw_set_font(global.consoleFont)
 // Input Box
 inputTextHeightOffset = 3;
-draw_text(boxLeft + global.consoleTextPadding, inputBoxTop + inputTextHeightOffset, currentText);
+draw_text(boxLeft + global.consoleTextPadding, inputBoxTop + inputTextHeightOffset, sanitiseNewlines(currentText));
 
 // Input Cursor
 if (cursorMoving or cursorBlink)
@@ -111,9 +111,6 @@ for(i=0; i&lt;min(global.consoleLines, ds_list_size(global.consoleOutputHistory)
                 // No more color codes; render the rest of the string
                 draw_text(boxLeft + global.consoleTextPadding + stringOffset, outputBoxBottom - (lineSpacing * (i + 1)), renderString);
             }
-            
-            //stringOffset += string_width(renderString);
-            //printLine = string_copy(printLine, string_length(renderString), string_length(printLine) - string_length(renderString));
         }
     }
 }
