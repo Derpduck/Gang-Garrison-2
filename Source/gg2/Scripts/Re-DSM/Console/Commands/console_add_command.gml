@@ -1,7 +1,7 @@
 // Loads a console command
 // Can be used by plugins to add console commands
 var commandName, commandCode, commandHelp, commandRule;
-commandName = argument0;
+commandName = string_lower(argument0);
 commandCode = argument1;
 commandHelp = argument2;
 commandRules = argument3;

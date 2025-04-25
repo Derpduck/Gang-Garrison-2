@@ -27,15 +27,15 @@ while (string_length(input) > maxLineLength + (string_count(COL_FLAG, input) * C
         if (string_length(stringChunk) >= maxLineLength + (colorCodeCount * COLOR_RGB_LENGTH))
         {
             // Check if a color code is within COLOR_RGB_LENGTH of the end of the string + the next 2 characters after to capture a cut off COL_FLAG
-            var colorCodeChunk, colorCodePosition;
+            var colorCodeChunk, colorCodeIndex;
             colorCodeChunk = string_copy(input, string_length(stringChunk) - COLOR_RGB_LENGTH + 1, COLOR_RGB_LENGTH + 2);
-            colorCodePosition = string_pos(COL_FLAG, colorCodeChunk);
+            colorCodeIndex = string_pos(COL_FLAG, colorCodeChunk);
             
-            if (colorCodePosition != 0)
+            if (colorCodeIndex != 0)
             {
                 var colorCodeStart, colorCodeEnd, stringRemainder;
                 // Get the length of the cut off code included in the current stringChunk
-                colorCodeStart = string_copy(stringChunk, string_length(stringChunk) + colorCodePosition - COLOR_RGB_LENGTH, string_length(stringChunk));
+                colorCodeStart = string_copy(stringChunk, string_length(stringChunk) + colorCodeIndex - COLOR_RGB_LENGTH, string_length(stringChunk));
                 
                 // Copy the remainder of the code over, and the characters after it up to the number cut off
                 colorCodeEnd = string_copy(input, 1 + string_length(stringChunk), COLOR_RGB_LENGTH);

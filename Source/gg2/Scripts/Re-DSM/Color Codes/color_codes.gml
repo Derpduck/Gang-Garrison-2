@@ -18,7 +18,7 @@ COL_ORANGE      =   COL_FLAG + "ff8000" // RCON
 COL_YELLOW      =   COL_FLAG + "ffff00" // System messages
 COL_GOLD        =   COL_FLAG + "ffd700"
 
-COL_GREEN       =   COL_FLAG + "00ff00" //Spectator team
+COL_GREEN       =   COL_FLAG + "00ff00" // Spectator team
 COL_GREEN_LT    =   COL_FLAG + "80ff80" // Not used
 COL_GREEN_DK    =   COL_FLAG + "00c800" // Not used
 

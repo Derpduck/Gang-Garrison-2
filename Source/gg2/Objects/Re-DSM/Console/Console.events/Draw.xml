@@ -51,7 +51,7 @@ draw_set_valign(fa_top);
 draw_set_font(global.consoleFont)
 // Input Box
 inputTextHeightOffset = 3;
-draw_text(boxLeft + global.consoleTextPadding, inputBoxTop + inputTextHeightOffset, sanitiseNewlines(currentText));
+draw_text(boxLeft + global.consoleTextPadding, inputBoxTop + inputTextHeightOffset, currentText);
 
 // Input Cursor
 if (cursorMoving or cursorBlink)

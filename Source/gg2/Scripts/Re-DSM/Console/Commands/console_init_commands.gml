@@ -4,3 +4,4 @@
 
 // Client Side Commands
 cc_flag();
+cc_test();

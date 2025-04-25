@@ -1,3 +1,5 @@
+// TODO: Update code for new standards
+
 // Built-in checks for who can execute each console command, primarily to prevent malicious clients sending illegal commands
 // Used with console_add_command to prepend the checks to each command
 // argument0 = Which level of security to apply
