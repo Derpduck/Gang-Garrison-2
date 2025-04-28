@@ -5,5 +5,6 @@
   <resource name="console_add_command" type="RESOURCE"/>
   <resource name="console_addCommand" type="RESOURCE"/>
   <resource name="console_init_commands" type="RESOURCE"/>
+  <resource name="console_send_command" type="RESOURCE"/>
   <resource name="console_get_rules" type="RESOURCE"/>
 </resources>

@@ -22,8 +22,7 @@ if (currentText != "")
         ds_list_delete(global.consoleInputHistory, 0);
     }
     inputHistoryIndex = ds_list_size(global.consoleInputHistory);
-    console_print(currentText);
-    console_send_command(currentText);
+    console_send_command(currentText, -1);
 }
 
 currentText = "";

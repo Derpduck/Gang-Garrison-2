@@ -1,6 +1,8 @@
 // Execute user input from console, splitting input into arguments
+// argument1 is used for RCON sent commands
 var input;
 input = argument0 + " "; // Insert space on the end to run the splitting code on the last argument
+rconName = argument1;
 
 // Sanitize newlines
 input = string_replace_all(input, chr(10), " ");
@@ -9,7 +11,13 @@ input = string_replace_all(input, chr(13), " ");
 // Don't declare these so they can be used in the executed commands
 arg[0] = "";
 inputArguments = 0;
-originalInput = string_delete(input, string_length(input), 1); // For printing to console
+originalInput = string_delete(input, string_length(input), 1);
+
+// Print user input
+if (rconName == -1)
+{
+    console_print(originalInput);
+}
 
 // Split input into arguments at spaces until there are none left
 while (string_count(" ", input) > 0)
@@ -68,11 +76,18 @@ while (string_count(" ", input) > 0)
 }
 
 // Execute the command from the name given in the first argument
-if ds_map_exists(global.consoleCommands, string_lower(arg[0]))
+if ds_map_exists(global.consoleCommandMap, string_lower(arg[0]))
 {
-    execute_string(ds_map_find_value(global.consoleCommands, string_lower(arg[0])));
+    // Check command rules before executing
+    var execute;
+    execute = console_get_rules(ds_map_find_value(global.consoleCommandMapRules, string_lower(arg[0])), rconName, originalInput);
+    
+    if (execute)
+    {
+        execute_string(ds_map_find_value(global.consoleCommandMap, string_lower(arg[0])));
+    }
 }
 else
 {
-    console_print(COL_RED + "Unknown Command: " + arg[0]);
+    console_print(COL_RED + "[ERROR] Unknown command: " + arg[0]);
 }

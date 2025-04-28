@@ -4,15 +4,20 @@ var commandName, commandCode, commandHelp, commandRule;
 commandName = string_lower(argument0);
 commandCode = argument1;
 commandHelp = argument2;
-commandRules = argument3;
+commandRule = argument3;
 
-ds_map_add(global.consoleCommands, commandName, console_get_rules(commandRules) + commandCode);
+// Command Code
+ds_map_add(global.consoleCommandMap, commandName, commandCode);
 
-if (argument2 != "")
+// Command Help
+if (commandHelp != "")
 {
-    ds_map_add(global.consoleCommandsHelp, commandName, commandHelp);
+    ds_map_add(global.consoleCommandMapHelp, commandName, commandHelp);
 }
 else
 {
-    ds_map_add(global.consoleCommandsHelp, commandName, "This command does not have valid documentation.");
+    ds_map_add(global.consoleCommandMapHelp, commandName, "This command does not have valid documentation.");
 }
+
+// Command Rules
+ds_map_add(global.consoleCommandMapRules, commandName, commandRule);

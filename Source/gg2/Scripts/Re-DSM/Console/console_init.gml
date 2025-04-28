@@ -5,14 +5,20 @@ console_options();
 // Console Globals
 global.consoleInputHistory = ds_list_create();
 global.consoleOutputHistory = ds_list_create();
-global.consoleCommands = ds_map_create();
-global.consoleCommandsHelp = ds_map_create();
 global.consoleInputHistoryMax = 8192; // Hard limit to prevent memory issues
 global.consoleOutputHistoryMax = 8192; // Hard limit to prevent memory issues
+
+// Console Command Mapping
+global.consoleCommandMap = ds_map_create();
+global.consoleCommandMapHelp = ds_map_create();
+global.consoleCommandMapRules = ds_map_create();
 
 // Console Size
 global.consoleWidth = 792; // Default value, updated live in Console draw event
 global.consoleTextPadding = 6;
+
+// RCON
+global.isRCON = false;
 
 // Initialize Console
 console_print(COL_YELLOW + "Re-DSM: " + COL_WHITE + string(DSM_VERSION_STRING));
