@@ -22,7 +22,7 @@ COL_GREEN       =   COL_FLAG + "00ff00" // Spectator team
 COL_GREEN_LT    =   COL_FLAG + "80ff80" // Not used
 COL_GREEN_DK    =   COL_FLAG + "00c800" // Not used
 
-COL_CYAN        =   COL_FLAG + "00ffff"
+COL_CYAN        =   COL_FLAG + "00ffff" // Console command outputs
 COL_TEAL        =   COL_FLAG + "00a5a5" // Not used
 
 COL_BLUE        =   COL_FLAG + "0000ff"

@@ -16,6 +16,7 @@
     global.players = ds_list_create();
     global.deserializeBuffer = buffer_create();
     global.isHost = false;
+    global.isRCON = false;
 
     global.myself = -1;
     gotServerHello = false;  

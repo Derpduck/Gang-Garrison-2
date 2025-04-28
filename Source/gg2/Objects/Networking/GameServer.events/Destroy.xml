@@ -43,6 +43,9 @@ if (global.serverPluginsInUse)
     pluginscleanup();
     
 set_synchronization(global.monitorSync);
+
+ds_list_destroy(global.rconUsers);
+ds_map_destroy(global.rconSavedUsers);
 </argument>
       </arguments>
     </action>

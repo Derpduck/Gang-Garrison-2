@@ -154,6 +154,10 @@
         pluginList = '';
     }
     
+    global.isRCON = false;
+    global.rconUsers = ds_list_create();
+    rcon_get_users_from_file();
+    
     // Disable vsync to minimize framerate drops which would be noticed as lag issues by all players.
     // "vsync makes the server desync" --Arctic
     set_synchronization(false);

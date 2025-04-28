@@ -1,20 +1,22 @@
 // Execute user input from console, splitting input into arguments
-// argument1 is used for RCON sent commands
-var input;
+// argument0 = Input string
+// argument1 = RCON player sending the command, if applicable
+var input, inputArguments;
 input = argument0 + " "; // Insert space on the end to run the splitting code on the last argument
-rconName = argument1;
+inputArguments = 0;
+
+// Don't declare these so they can be used in the executed commands
+arg[0] = "";
+originalInput = "";
+rconPlayer = argument1;
 
 // Sanitize newlines
 input = string_replace_all(input, chr(10), " ");
 input = string_replace_all(input, chr(13), " ");
-
-// Don't declare these so they can be used in the executed commands
-arg[0] = "";
-inputArguments = 0;
 originalInput = string_delete(input, string_length(input), 1);
 
 // Print user input
-if (rconName == -1)
+if (rconPlayer == -1)
 {
     console_print(originalInput);
 }
@@ -75,19 +77,23 @@ while (string_count(" ", input) > 0)
     inputArguments += 1;
 }
 
+// Save the number of arguments to arg[0], excluding the command itself
+consoleCommand = string_lower(arg[0]);
+arg[0] = inputArguments - 1;
+
 // Execute the command from the name given in the first argument
-if ds_map_exists(global.consoleCommandMap, string_lower(arg[0]))
+if (ds_map_exists(global.consoleCommandMap, consoleCommand))
 {
     // Check command rules before executing
     var execute;
-    execute = console_get_rules(ds_map_find_value(global.consoleCommandMapRules, string_lower(arg[0])), rconName, originalInput);
+    execute = console_get_rules(ds_map_find_value(global.consoleCommandMapRules, consoleCommand), rconPlayer, originalInput);
     
     if (execute)
     {
-        execute_string(ds_map_find_value(global.consoleCommandMap, string_lower(arg[0])));
+        execute_string(ds_map_find_value(global.consoleCommandMap, consoleCommand));
     }
 }
 else
 {
-    console_print(COL_RED + "[ERROR] Unknown command: " + arg[0]);
+    console_print(COL_RED + "[ERROR] Unknown command: " + consoleCommand);
 }

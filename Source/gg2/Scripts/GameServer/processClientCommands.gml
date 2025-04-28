@@ -366,6 +366,60 @@ while(commandLimitRemaining > 0) {
             write_ubyte(global.sendBuffer, playerId);
             write_ubyte(global.sendBuffer, mirror);
             break;
+            
+        case DSM_RCON_LOGIN:
+            var rconPasswordLength, rconPassword;
+            rconPasswordLength = socket_receivebuffer_size(player.socket);
+            rconPassword = read_string(player.socket, rconPasswordLength);
+            
+            if (!global.rconEnabled or global.rconPassword == "")
+                break;
+            
+            if (rconPassword == global.rconPassword)
+            {
+                // Correct password
+                rcon_user_login(player);
+                rcon_write_to_file(player);
+                console_print(COL_ORANGE + "[RCON LOGIN] " + player.name + " was given RCON access");
+            }
+            else
+            {
+                // Wrong password
+                write_ubyte(player.socket, DSM_RCON_LOGIN);
+                write_ubyte(player.socket, 0);
+            }
+            break;
+        
+        case DSM_RCON_CMD:
+            var rconCommandLength, rconCommand;
+            rconCommandLength = socket_receivebuffer_size(player.socket);
+            rconCommand = read_string(player.socket, rconCommandLength);
+            
+            if (global.rconEnabled)
+            {
+                // Check if player has RCON access
+                if (ds_list_find_index(global.rconUsers, player) == -1)
+                {
+                    console_print(COL_ORANGE + "[RCON CMD] " + player.name + " attempted to send a command without RCON access by using a modified client");
+                    write_ubyte(player.socket, DSM_RCON_CMD);
+                    write_ubyte(player.socket, 0);
+                    break;
+                }
+                
+                // Let player know command was executed successfully
+                console_send_command(rconCommand, player);
+                write_ubyte(player.socket, DSM_RCON_CMD);
+                write_ubyte(player.socket, 1);
+            }
+            else
+            {
+                // RCON is disabled
+                write_ubyte(player.socket, DSM_RCON_CMD);
+                write_ubyte(player.socket, 2);
+                break
+            }
+            
+            break;
         
         }
         break;

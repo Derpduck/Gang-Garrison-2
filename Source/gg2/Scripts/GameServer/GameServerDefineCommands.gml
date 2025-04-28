@@ -24,3 +24,5 @@ commandBytes[REWARD_REQUEST] = commandBytesPrefixLength1;
 commandBytes[REWARD_CHALLENGE_RESPONSE] = 16;
 commandBytes[PLUGIN_PACKET] = commandBytesPrefixLength2;
 commandBytes[CLIENT_SETTINGS] = 1;
+commandBytes[DSM_RCON_LOGIN] = commandBytesPrefixLength1;
+commandBytes[DSM_RCON_CMD] = commandBytesPrefixLength1;

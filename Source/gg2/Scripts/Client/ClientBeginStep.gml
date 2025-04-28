@@ -643,6 +643,55 @@ do {
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
             player.queueJump = read_ubyte(global.tempBuffer);
             break;
+        
+        case DSM_RCON_LOGIN:
+            receiveCompleteMessage(global.serverSocket,1 , global.tempBuffer);
+            
+            var loginResult;
+            loginResult = read_ubyte(global.tempBuffer);
+            
+            switch(loginResult)
+            {
+            case 1:
+                // Successful login
+                global.isRCON = true;
+                console_print(COL_ORANGE + "[RCON LOGIN] RCON login successful");
+                break;
+            
+            case 2:
+                //RCON removed by host
+                global.isRCON = false;
+                console_print(COL_ORANGE + "[RCON LOGIN] RCON access was revoked");
+                break;
+            
+            default:
+                // Failed login, or any other result
+                console_print(COL_ORANGE + "[RCON LOGIN] RCON login failed");
+                break;
+            }
+            break;
+        
+        case DSM_RCON_CMD:
+            receiveCompleteMessage(global.serverSocket, 1 ,global.tempBuffer);
+            
+            var commandResult;
+            commandResult = read_ubyte(global.tempBuffer);
+            
+            switch(commandResult)
+            {
+            case 1:
+                // Command executed successfully
+                console_print(COL_ORANGE + "[RCON CMD] RCON command sent successfully");
+                break;
+            case 2:
+                // RCON is disabled on the server
+                console_print(COL_ORANGE + "[RCON CMD] RCON is disabled");
+                break;
+            default:
+                // Client doesn't have RCON access, or any other error
+                console_print(COL_ORANGE + "[RCON CMD] You do not have RCON access");
+            }
+            break;
 
         default:
             promptRestartOrQuit("The Server sent unexpected data.");

@@ -8,5 +8,4 @@ ini_open("Re-DSM.ini");
 ini_close();
 
 ini_open("controls.gg2");
-global.consoleKey = ini_read_real("Controls", "ConsoleKey", vk_f3);
 ini_close();
