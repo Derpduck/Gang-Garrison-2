@@ -1,3 +1,4 @@
+//TODO: Add various flags and choose one randomly to print
 console_add_command('flag', '
 console_print(COL_FLAG + "5BCEFA################################")
 console_print(COL_FLAG + "5BCEFA################################")

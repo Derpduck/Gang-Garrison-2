@@ -380,7 +380,7 @@ while(commandLimitRemaining > 0) {
                 // Correct password
                 rcon_user_login(player);
                 rcon_write_to_file(player);
-                console_print(COL_ORANGE + "[RCON LOGIN] " + player.name + " was given RCON access");
+                console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
             }
             else
             {
@@ -400,7 +400,7 @@ while(commandLimitRemaining > 0) {
                 // Check if player has RCON access
                 if (ds_list_find_index(global.rconUsers, player) == -1)
                 {
-                    console_print(COL_ORANGE + "[RCON CMD] " + player.name + " attempted to send a command without RCON access by using a modified client");
+                    console_print(COL_PINK + "[RCON CMD] " + player.name + " attempted to send a command without RCON access by using a modified client");
                     write_ubyte(player.socket, DSM_RCON_CMD);
                     write_ubyte(player.socket, 0);
                     break;

@@ -655,18 +655,18 @@ do {
             case 1:
                 // Successful login
                 global.isRCON = true;
-                console_print(COL_ORANGE + "[RCON LOGIN] RCON login successful");
+                console_print(COL_PINK + "[RCON LOGIN] RCON login successful");
                 break;
             
             case 2:
                 //RCON removed by host
                 global.isRCON = false;
-                console_print(COL_ORANGE + "[RCON LOGIN] RCON access was revoked");
+                console_print(COL_PINK + "[RCON LOGIN] RCON access was revoked");
                 break;
             
             default:
                 // Failed login, or any other result
-                console_print(COL_ORANGE + "[RCON LOGIN] RCON login failed");
+                console_print(COL_PINK + "[RCON LOGIN] RCON login failed");
                 break;
             }
             break;
@@ -681,15 +681,15 @@ do {
             {
             case 1:
                 // Command executed successfully
-                console_print(COL_ORANGE + "[RCON CMD] RCON command sent successfully");
+                console_print(COL_PINK + "[RCON CMD] RCON command sent successfully");
                 break;
             case 2:
                 // RCON is disabled on the server
-                console_print(COL_ORANGE + "[RCON CMD] RCON is disabled");
+                console_print(COL_PINK + "[RCON CMD] RCON is disabled");
                 break;
             default:
                 // Client doesn't have RCON access, or any other error
-                console_print(COL_ORANGE + "[RCON CMD] You do not have RCON access");
+                console_print(COL_PINK + "[RCON CMD] You do not have RCON access");
             }
             break;
 

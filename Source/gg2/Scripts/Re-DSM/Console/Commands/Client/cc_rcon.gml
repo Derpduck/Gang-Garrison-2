@@ -71,8 +71,8 @@ case "password":
     }
     
     global.rconPassword = string(arg[2]);
-    console_print(COL_CYAN + "RCON password changed to: " + global.rconPassword);
-    console_print(COL_CYAN + "New password saved to: " + chr(39) + "Re-DSM.ini" + chr(39));
+    console_print(COL_ORANGE + "RCON password changed to: " + global.rconPassword);
+    console_print(COL_ORANGE + "New password saved to: " + chr(39) + "Re-DSM.ini" + chr(39));
     
     DSM_write_ini("RCON", "RconPassword", global.rconPassword);
     break;
@@ -87,9 +87,9 @@ case "toggle":
     global.rconEnabled = !global.rconEnabled;
     
     if (global.rconEnabled)
-        console_print(COL_CYAN + "RCON access enabled");
+        console_print(COL_ORANGE + "RCON access enabled");
     else
-        console_print(COL_CYAN + "RCON access disabled");
+        console_print(COL_ORANGE + "RCON access disabled");
     break;
 
 case "save":
@@ -102,9 +102,9 @@ case "save":
     global.saveRconUsers = !global.saveRconUsers;
     
     if (global.saveRconUsers)
-        console_print(COL_CYAN + "New RCON users will now be saved to: " + chr(39) + "RCON_Users.txt" + chr(39));
+        console_print(COL_ORANGE + "New RCON users will now be saved to: " + chr(39) + "RCON_Users.txt" + chr(39));
     else
-        console_print(COL_CYAN + "New RCON users will no longer be saved");
+        console_print(COL_ORANGE + "New RCON users will no longer be saved");
     break;
 
 case "users":
@@ -125,7 +125,7 @@ case "users":
         player = ds_list_find_value(global.rconUsers, i);
         playerIP = socket_remote_ip(player.socket);
         
-        console_print(COL_CYAN + string(playerIP) + "  |  " + player.name);
+        console_print(COL_ORANGE + string(playerIP) + "  |  " + player.name);
     };
     
     

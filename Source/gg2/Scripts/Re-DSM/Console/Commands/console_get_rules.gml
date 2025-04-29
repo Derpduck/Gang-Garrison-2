@@ -23,7 +23,7 @@ case 1:
     // As client: Send command to host if client has RCON access
     if (global.isRCON and !global.isHost)
     {
-        console_print(COL_ORANGE + "[RCON CMD] Sent: " + chr(39) + originalInput + chr(39));
+        console_print(COL_PINK + "[RCON CMD] Sent: " + chr(39) + originalInput + chr(39));
         
         // Send command to server
         write_ubyte(global.serverSocket, DSM_RCON_CMD);
@@ -46,7 +46,7 @@ case 1:
     // As host: Print commands sent via RCON + sender name
     if (rconCommand)
     {
-        console_print(COL_ORANGE + "[RCON CMD: " + rconPlayer.name + "] " + originalInput);
+        console_print(COL_PINK + "[RCON CMD: " + rconPlayer.name + "] " + originalInput);
     }
     
     execute = true;
@@ -57,7 +57,7 @@ case 2:
     // As host: Reject command if it came from RCON client
     if (rconCommand)
     {
-        console_print(COL_ORANGE + "[RCON CMD: " + rconPlayer.name + "] Attempted to send a non-RCON enabled command: " + originalInput);
+        console_print(COL_PINK + "[RCON CMD: " + rconPlayer.name + "] Attempted to send a non-RCON enabled command: " + originalInput);
         execute = false;
         break;
     }
@@ -78,7 +78,7 @@ default:
     // As host: Reject command if it came from RCON client
     if (rconCommand)
     {
-        console_print(COL_ORANGE + "[RCON CMD: " + rconPlayer.name + "] Attempted to send a non-RCON enabled command: " + originalInput);
+        console_print(COL_PINK + "[RCON CMD: " + rconPlayer.name + "] Attempted to send a non-RCON enabled command: " + originalInput);
         execute = false;
         break;
     }
