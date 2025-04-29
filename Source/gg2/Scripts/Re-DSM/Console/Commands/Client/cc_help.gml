@@ -1,4 +1,4 @@
-console_addCommand('help', '
+console_add_command('help', '
 if (arg[0] == 0)
 {
     // List all available commands
@@ -42,4 +42,4 @@ else
 ', '
 console_print("Syntax: help <command>");
 console_print("Try entering help once, not twice.");
-');
+', 0);
