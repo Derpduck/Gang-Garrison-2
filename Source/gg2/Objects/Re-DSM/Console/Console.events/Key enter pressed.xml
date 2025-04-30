@@ -27,7 +27,7 @@ if (currentText != "")
 
 currentText = "";
 cursorPosition = 0;
-cursorMoving = 0;
+cursorScrollDelay = 0;
 </argument>
       </arguments>
     </action>

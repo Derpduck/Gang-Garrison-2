@@ -20,7 +20,7 @@ ctrlHeld = false;
 
 // Typing Cursor
 cursorPosition = 0;
-cursorMoving = 0;
+cursorScrollDelay = 0;
 cursorBlink = true;
 cursorBlinkTime = 15;
 alarm[0] = cursorBlinkTime / global.delta_factor;
@@ -37,6 +37,9 @@ displayedLines = global.consoleLines;
 boxPaddingWidth = 4;
 boxPaddingHeight = 8;
 lineSpacing = 16;
+
+// Autocomplete suggestion
+suggestedText = "";
 </argument>
       </arguments>
     </action>

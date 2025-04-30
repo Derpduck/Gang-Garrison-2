@@ -67,8 +67,12 @@ draw_set_font(global.consoleFont)
 inputTextHeightOffset = 3;
 draw_text(boxLeft + global.consoleTextPadding, inputBoxTop + inputTextHeightOffset, currentText);
 
+// Autocomplete Suggestion
+draw_set_color(c_gray);
+draw_text(boxLeft + global.consoleTextPadding + string_width(currentText), inputBoxTop + inputTextHeightOffset, suggestedText);
+
 // Input Cursor
-if (cursorMoving or cursorBlink)
+if (cursorScrollDelay or cursorBlink)
 {
     cursorNextPosition = string_width(string_copy(currentText, 0, cursorPosition));
     draw_set_color(make_color_rgb(0, 255, 0));
@@ -79,6 +83,7 @@ if (cursorMoving or cursorBlink)
 // Output Box
 var printLine, renderString, stringOffset, colorCode;
 
+var i;
 for(i=0; i&lt;min(displayedLines, ds_list_size(global.consoleOutputHistory)); i+=1)
 {
     printLine = ds_list_find_value(global.consoleOutputHistory, ds_list_size(global.consoleOutputHistory) - i - 1);

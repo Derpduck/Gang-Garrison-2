@@ -15,7 +15,6 @@
       <arguments>
         <argument kind="STRING">// Move cursor to end of input
 cursorPosition = string_length(currentText);
-cursorMoving = 0;
 </argument>
       </arguments>
     </action>

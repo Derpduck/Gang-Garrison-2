@@ -21,7 +21,7 @@ if (keyboard_string != "")
     keyboard_string = "";
 }
 
-// Handle navigation
+// Command history navigation
 if (keyboard_check_pressed(vk_up))
 {
     // Scroll to previous command in input history
@@ -30,7 +30,6 @@ if (keyboard_check_pressed(vk_up))
         inputHistoryIndex = max(0, inputHistoryIndex - 1);
         currentText = ds_list_find_value(global.consoleInputHistory, inputHistoryIndex);
         cursorPosition = string_length(currentText);
-        cursorMoving = 0;
     }
 }
 else if (keyboard_check_pressed(vk_down))
@@ -41,7 +40,6 @@ else if (keyboard_check_pressed(vk_down))
     {
         currentText = "";
         cursorPosition = 0;
-        cursorMoving = 0;
     }
     else
     {
@@ -49,18 +47,20 @@ else if (keyboard_check_pressed(vk_down))
         cursorPosition = string_length(currentText);
     }
 }
-else if (keyboard_check(vk_left) and !keyboard_check(vk_right))
+
+// Input text navigation
+if (keyboard_check(vk_left) and !keyboard_check(vk_right))
 {
     // Move cursor left
     if (global.run_virtual_ticks)
     {
-        if (cursorMoving == 0 or cursorMoving &gt;= 1)
+        if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
             cursorPosition = max(0, cursorPosition - 1);
         }
-        if (cursorMoving &lt; 1)
+        if (cursorScrollDelay &lt; 1)
         {
-            cursorMoving += 1 / 15;
+            cursorScrollDelay += 1 / 15;
         }
     }
 }
@@ -69,12 +69,13 @@ else if (keyboard_check(vk_right) and !keyboard_check(vk_left))
     // Move cursor right
     if(global.run_virtual_ticks)
     {
-        if (cursorMoving == 0 or cursorMoving &gt;= 1)
+        if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
             cursorPosition = min(string_length(currentText), cursorPosition + 1);
         }
-        if (cursorMoving &lt; 1){
-            cursorMoving += 1 / 15;
+        if (cursorScrollDelay &lt; 1)
+        {
+            cursorScrollDelay += 1 / 15;
         }
     }
 }
@@ -83,14 +84,14 @@ else if (keyboard_check(vk_backspace) and cursorPosition &gt; 0)
     // Backspace character
     if(global.run_virtual_ticks)
     {
-        if (cursorMoving == 0 or cursorMoving &gt;= 1)
+        if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
             currentText = string_copy(currentText, 0, cursorPosition-1) + string_copy(currentText, cursorPosition + 1, string_length(currentText));
             cursorPosition -= 1;
         }
-        if (cursorMoving &lt; 1)
+        if (cursorScrollDelay &lt; 1)
         {
-            cursorMoving += 1 / 15;
+            cursorScrollDelay += 1 / 15;
         }
     }
 }
@@ -99,19 +100,19 @@ else if (keyboard_check(vk_delete) and cursorPosition &lt; string_length(current
     // Delete character
     if(global.run_virtual_ticks)
     {
-        if (cursorMoving == 0 or cursorMoving &gt;= 1)
+        if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
             currentText = string_copy(currentText, 0, cursorPosition) + string_copy(currentText, cursorPosition + 2, string_length(currentText));
         }
-        if (cursorMoving &lt; 1)
+        if (cursorScrollDelay &lt; 1)
         {
-            cursorMoving += 1 / 15;
+            cursorScrollDelay += 1 / 15;
         }
     }
 }
 else
 {
-    cursorMoving = 0;
+    cursorScrollDelay = 0;
 }
 
 // CTRL modified commands
@@ -122,7 +123,6 @@ if (ctrlHeld)
         // Clear all typed input
         currentText = "";
         cursorPosition = 0;
-        cursorMoving = 0;
     }
     else if (keyboard_check_pressed(ord('V')))
     {
@@ -136,6 +136,53 @@ if (ctrlHeld)
             keyboard_clear(ord('V'));
         }
     }
+}
+
+// Autocomplete suggestion
+if (currentText != "")
+{
+    if (string_length(currentText) &gt;= 1 and string_count(" ", currentText) == 0)
+    {
+        // Compare currently typed text against all console commands
+        var i;
+        for (i=0; i&lt;ds_list_size(global.consoleCommandList); i+=1)
+        {
+            // Current text matches start of command
+            var command;
+            command = ds_list_find_value(global.consoleCommandList, i);
+            if (string_pos(currentText, command) == 1)
+            {
+                suggestedText = string_copy(command, string_length(currentText) + 1, string_length(command));
+                break;
+            }
+            else
+            {
+                suggestedText = "";
+            }
+        };
+    }
+    else
+    {
+        suggestedText = "";
+    }
+}
+else
+{
+    suggestedText = "";
+}
+
+// Replace current text with suggested text if tab is pressed
+if (keyboard_check_direct(vk_tab))
+{
+    if (suggestedText != "")
+    {
+        currentText += suggestedText;
+        suggestedText = "";
+        cursorPosition = string_length(currentText);
+    }
+    
+    // Handle tab key press
+    keyboard_lastkey = 0;
 }
 </argument>
       </arguments>
