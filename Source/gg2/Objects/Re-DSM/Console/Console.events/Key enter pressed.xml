@@ -13,21 +13,31 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Send a command
-if (currentText != "")
+        <argument kind="STRING">// Insert a new line if shift is held
+if (keyboard_check(vk_shift))
 {
-    ds_list_add(global.consoleInputHistory, currentText);
-    while (ds_list_size(global.consoleInputHistory) &gt; global.consoleInputHistoryMax)
-    {
-        ds_list_delete(global.consoleInputHistory, 0);
-    }
-    inputHistoryIndex = ds_list_size(global.consoleInputHistory);
-    console_send_command(currentText, -1);
+    currentText += chr(10);
+    cursorIndex += 1;
 }
-
-currentText = "";
-cursorPosition = 0;
-cursorScrollDelay = 0;
+else
+{
+    // Otherwise, send a command
+    if (currentText != "")
+    {
+        ds_list_add(global.consoleInputHistory, currentText);
+        while (ds_list_size(global.consoleInputHistory) &gt; global.consoleInputHistoryMax)
+        {
+            ds_list_delete(global.consoleInputHistory, 0);
+        }
+        inputHistoryIndex = ds_list_size(global.consoleInputHistory);
+        console_send_command(currentText, -1);
+    }
+    
+    currentText = "";
+    suggestedText = "";
+    cursorIndex = 0;
+    cursorScrollDelay = 0;
+}
 </argument>
       </arguments>
     </action>

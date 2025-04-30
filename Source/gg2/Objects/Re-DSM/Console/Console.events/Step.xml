@@ -16,8 +16,8 @@
         <argument kind="STRING">// Handle typed input
 if (keyboard_string != "")
 {
-    currentText = string_copy(currentText, 0, cursorPosition) + keyboard_string + string_copy(currentText, cursorPosition + 1, string_length(currentText));
-    cursorPosition += string_length(keyboard_string);
+    currentText = string_copy(currentText, 0, cursorIndex) + keyboard_string + string_copy(currentText, cursorIndex + 1, string_length(currentText));
+    cursorIndex += string_length(keyboard_string);
     keyboard_string = "";
     clearSuggestedText = false;
 }
@@ -30,7 +30,7 @@ if (keyboard_check_pressed(vk_up))
     {
         inputHistoryIndex = max(0, inputHistoryIndex - 1);
         currentText = ds_list_find_value(global.consoleInputHistory, inputHistoryIndex);
-        cursorPosition = string_length(currentText);
+        cursorIndex = string_length(currentText);
     }
     clearSuggestedText = false;
 }
@@ -41,12 +41,12 @@ else if (keyboard_check_pressed(vk_down))
     if (inputHistoryIndex == ds_list_size(global.consoleInputHistory))
     {
         currentText = "";
-        cursorPosition = 0;
+        cursorIndex = 0;
     }
     else
     {
         currentText = ds_list_find_value(global.consoleInputHistory, inputHistoryIndex);
-        cursorPosition = string_length(currentText);
+        cursorIndex = string_length(currentText);
     }
     clearSuggestedText = false;
 }
@@ -59,7 +59,7 @@ if (keyboard_check(vk_left) and !keyboard_check(vk_right))
     {
         if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
-            cursorPosition = max(0, cursorPosition - 1);
+            cursorIndex = max(0, cursorIndex - 1);
         }
         if (cursorScrollDelay &lt; 1)
         {
@@ -75,7 +75,7 @@ else if (keyboard_check(vk_right) and !keyboard_check(vk_left))
     {
         if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
-            cursorPosition = min(string_length(currentText), cursorPosition + 1);
+            cursorIndex = min(string_length(currentText), cursorIndex + 1);
         }
         if (cursorScrollDelay &lt; 1)
         {
@@ -87,14 +87,14 @@ else if (keyboard_check(vk_right) and !keyboard_check(vk_left))
 else if (keyboard_check(vk_backspace))
 {
     // Backspace character
-    if (cursorPosition &gt; 0)
+    if (cursorIndex &gt; 0)
     {
         if(global.run_virtual_ticks)
         {
             if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
             {
-                currentText = string_copy(currentText, 0, cursorPosition-1) + string_copy(currentText, cursorPosition + 1, string_length(currentText));
-                cursorPosition -= 1;
+                currentText = string_copy(currentText, 0, cursorIndex-1) + string_copy(currentText, cursorIndex + 1, string_length(currentText));
+                cursorIndex -= 1;
             }
             if (cursorScrollDelay &lt; 1)
             {
@@ -107,13 +107,13 @@ else if (keyboard_check(vk_backspace))
 else if (keyboard_check(vk_delete))
 {
     // Delete character
-    if (cursorPosition &lt; string_length(currentText))
+    if (cursorIndex &lt; string_length(currentText))
     {
         if(global.run_virtual_ticks)
         {
             if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
             {
-                currentText = string_copy(currentText, 0, cursorPosition) + string_copy(currentText, cursorPosition + 2, string_length(currentText));
+                currentText = string_copy(currentText, 0, cursorIndex) + string_copy(currentText, cursorIndex + 2, string_length(currentText));
             }
             if (cursorScrollDelay &lt; 1)
             {
@@ -135,7 +135,7 @@ if (ctrlHeld)
     {
         // Clear all typed input
         currentText = "";
-        cursorPosition = 0;
+        cursorIndex = 0;
         clearSuggestedText = false;
     }
     else if (keyboard_check_pressed(ord('V')))
@@ -145,8 +145,8 @@ if (ctrlHeld)
         {
             var str;
             str = clipboard_get_text();
-            currentText = string_copy(currentText, 0, cursorPosition) + str + string_copy(currentText, cursorPosition + 1, string_length(currentText));
-            cursorPosition += string_length(str);
+            currentText = string_copy(currentText, 0, cursorIndex) + str + string_copy(currentText, cursorIndex + 1, string_length(currentText));
+            cursorIndex += string_length(str);
             keyboard_clear(ord('V'));
             clearSuggestedText = false;
         }
@@ -154,62 +154,65 @@ if (ctrlHeld)
 }
 
 // Autocomplete suggestion
-if (currentText != "" and !clearSuggestedText)
+if (global.consoleAutocomplete)
 {
-    if (string_length(currentText) &gt;= 1 and string_count(" ", currentText) == 0)
+    if (currentText != "" and !clearSuggestedText)
     {
-        // Compare currently typed text against all console commands
-        var i;
-        for (i=0; i&lt;ds_list_size(global.consoleCommandList); i+=1)
+        if (string_length(currentText) &gt;= 1 and string_length(currentText) &lt;= 12 and string_count(" ", currentText) == 0)
         {
-            // Current text matches start of command
-            var command;
-            command = ds_list_find_value(global.consoleCommandList, i);
-            if (string_pos(currentText, command) == 1)
+            // Compare currently typed text against all console commands
+            var i;
+            for (i=0; i&lt;ds_list_size(global.consoleCommandList); i+=1)
             {
-                suggestedText = string_copy(command, string_length(currentText) + 1, string_length(command));
-                break;
-            }
-            else
-            {
-                suggestedText = "";
-            }
-        };
+                // Current text matches start of command
+                var command;
+                command = ds_list_find_value(global.consoleCommandList, i);
+                if (string_pos(currentText, command) == 1)
+                {
+                    suggestedText = string_copy(command, string_length(currentText) + 1, string_length(command));
+                    break;
+                }
+                else
+                {
+                    suggestedText = "";
+                }
+            };
+        }
+        else
+        {
+            suggestedText = "";
+        }
     }
     else
     {
         suggestedText = "";
     }
-}
-else
-{
-    suggestedText = "";
-}
-
-// Replace current text with suggested text if tab is pressed
-// Prevent autocompletion when pressing Alt + Tab
-if (keyboard_check_pressed(vk_alt))
-{
-    suggestedText = "";
-    clearSuggestedText = true;
-}
-
-if (keyboard_check_direct(vk_tab) and !clearSuggestedText)
-{
-    if (suggestedText != "")
+    
+    // Replace current text with suggested text if tab is pressed
+    // Prevent autocompletion when pressing Alt + Tab
+    if (keyboard_check_pressed(vk_alt))
     {
-        currentText += suggestedText;
         suggestedText = "";
-        cursorPosition = string_length(currentText);
-    }
-    else
-    {
-        // Keep suggested text clear until keyboard input is received again after alt tabbing
         clearSuggestedText = true;
     }
     
-    // Handle tab key press
-    keyboard_lastkey = 0;
+    if (keyboard_check_direct(vk_tab) and !clearSuggestedText)
+    {
+        if (suggestedText != "")
+        {
+            currentText += suggestedText;
+            suggestedText = "";
+            cursorIndex = string_length(currentText);
+        }
+        else
+        {
+            // Keep suggested text clear until keyboard input is received again after alt tabbing
+            clearSuggestedText = true;
+        }
+        
+        // Handle tab key press
+        keyboard_lastkey = 0;
+    }
 }
 </argument>
       </arguments>

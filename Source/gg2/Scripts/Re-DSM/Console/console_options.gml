@@ -9,6 +9,9 @@ ini_write_real("Console", "ConsoleLines", global.consoleLines);
 global.consoleOpacity = ini_read_real("Console", "ConsoleOpacity", 75);
 ini_write_real("Console", "ConsoleOpacity", global.consoleOpacity);
 
+global.consoleAutocomplete = ini_read_real("Console", "ConsoleAutocomplete", 1);
+ini_write_real("Console", "ConsoleAutocomplete", global.consoleAutocomplete);
+
 
 // RCON Options
 global.rconEnabled = ini_read_real("RCON", "RconEnabled", 1);

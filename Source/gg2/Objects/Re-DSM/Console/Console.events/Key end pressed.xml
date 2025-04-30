@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">// Move cursor to end of input
-cursorPosition = string_length(currentText);
+cursorIndex = string_length(currentText);
 </argument>
       </arguments>
     </action>

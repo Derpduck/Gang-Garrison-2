@@ -16,13 +16,19 @@
         <argument kind="STRING">// Input Box
 keyboard_string = "";
 currentText = "";
+displayText = "";
 ctrlHeld = false;
+inputBoxRows = 1;
+maxInputBoxRows = 8;
+cursorCurrentRow = 0;
 
 // Typing Cursor
-cursorPosition = 0;
+cursorIndex = 0;
 cursorScrollDelay = 0;
 cursorBlink = true;
 cursorBlinkTime = 15;
+cursorXOffset = 0;
+cursorYOffset = 0;
 alarm[0] = cursorBlinkTime / global.delta_factor;
 
 // Console History
@@ -36,7 +42,12 @@ displayedLines = global.consoleLines;
 // Drawing
 boxPaddingWidth = 4;
 boxPaddingHeight = 8;
+inputBoxPaddingHeight = 2;
 lineSpacing = 16;
+characterWidth = 8;
+characterHeight = 11;
+
+event_user(0);
 
 // Autocomplete suggestion
 suggestedText = "";

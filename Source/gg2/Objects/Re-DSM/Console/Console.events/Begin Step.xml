@@ -13,47 +13,87 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Expand / Collapse Button interaction
-var offsetX, offsetY, sizeX, sizeY;
-offsetX = view_xview[0];
-offsetY = view_yview[0];
-sizeX = view_wview[0] + offsetX;
-sizeY = view_hview[0] + offsetY;
-
-var boxRight, inputBoxBottom, inputBoxTop, outputBoxBottom, outputBoxTop;
-boxRight = sizeX - boxPaddingWidth;
-inputBoxBottom = sizeY - boxPaddingHeight;
-inputBoxTop = inputBoxBottom - lineSpacing;
-outputBoxBottom = inputBoxTop - boxPaddingHeight;
-outputBoxTop = outputBoxBottom - (displayedLines * lineSpacing) - boxPaddingHeight;
-
-var expandXLeft, expandXRight, expandYTop, expandYBottom;
-expandXLeft = boxRight - 23;
-expandXRight = boxRight;
-expandYTop = outputBoxTop - 24;
-expandYBottom = outputBoxTop - 3;
-
-// Clicked on the expand button
+        <argument kind="STRING">// Expand / Collapse Button
 if (mouse_check_button_pressed(mb_left))
 {
+    // Clicked on the expand button
     if (mouse_x &gt; expandXLeft and mouse_x &lt; expandXRight and mouse_y &gt; expandYTop and mouse_y &lt; expandYBottom)
     {
         expanded = !expanded
-        
-        if (expanded)
-        {
-            // Expand the console window to cover the whole screen
-            // Work out the maximum available size of the window including the expand button
-            var maxSize;
-            maxSize = (outputBoxBottom - offsetY) - (expandYBottom - expandYTop) - boxPaddingWidth;
-            displayedLines = maxSize div lineSpacing;
-        }
-        else
-        {
-            displayedLines = global.consoleLines;
-        }
     }
 }
+
+var maxOutputBoxSize;
+maxOutputBoxSize = (outputBoxBottom - offsetY) - (expandYBottom - expandYTop) - (boxPaddingHeight * 3);
+
+if (expanded)
+{
+    // Expand the console window to cover the whole screen
+    // Work out the maximum available size of the window including the expand button
+    displayedLines = max(2, maxOutputBoxSize div lineSpacing);
+}
+else
+{
+    displayedLines = max(2, min(maxOutputBoxSize div lineSpacing, global.consoleLines));
+}
+
+// Update console dimensions
+event_user(0);
+
+// Expand input box to fit new lines
+displayText = string_replace_all(currentText, chr(13), chr(10));
+
+// Insert line break character if text goes beyond input box limit
+var maxLineLength, insertedBreaks;
+maxLineLength = (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth;
+insertedBreaks = 0;
+
+// TODO: Fix inserted break throwing cursorIndex off and causing a crash when reaching 2 lines
+/*while(string_width(displayText) &gt; maxLineLength * characterWidth)
+{
+    displayText = string_insert(chr(10), displayText, maxLineLength);
+    insertedBreaks += 1;
+}*/
+
+// Typing cursor position based on cursorIndex
+var textBeforeCursor, lastNewLineIndex, currentLineToCursor, lastNewLineIndex, currentLineTextToCursor, textAfterCursor;
+// Get horizontal cursor poition on the current line
+textBeforeCursor = string_copy(displayText, 1, cursorIndex);
+if (string_count(chr(10), textBeforeCursor) &gt; 0)
+    lastNewLineIndex = 1 + string_length(textBeforeCursor) - string_pos(chr(10), string_reverse(textBeforeCursor));
+else
+    lastNewLineIndex = 1;
+currentLineToCursor = string_copy(textBeforeCursor, lastNewLineIndex, string_length(textBeforeCursor));
+
+cursorXOffset = string_width(currentLineToCursor);
+
+// Get line cursor is currently on
+textAfterCursor = string_copy(displayText, cursorIndex, string_length(displayText));
+
+if (displayText != "")
+    cursorYOffset = string_height(textAfterCursor) - string_height(" ");
+else
+    cursorYOffset = 0;
+
+// Set number of rows in input box
+var minOutputBoxSize, maxInputSize;
+//minOutputBoxSize = (2 * lineSpacing) - (boxPaddingHeight * 2);
+//maxInputSize = (inputBoxBottom - offsetY - boxPaddingHeight) - (expandYBottom - expandYTop) - minOutputBoxSize;
+
+// TODO: Fix all this shit
+minOutputBoxSize = (2 * lineSpacing);
+maxInputSize = inputBoxBottom - (boxPaddingHeight + minOutputBoxSize + boxPaddingHeight + (expandYBottom - expandYTop) + boxPaddingHeight);
+
+//maxInputSize = (inputBoxTop - offsetY) - (outputBoxBottom - outputBoxTop) - (expandYBottom - expandYTop) - boxPaddingWidth;
+inputBoxRows = max(1, min(1 + string_count(chr(10), displayText), maxInputSize div characterHeight, maxInputBoxRows));
+
+/*top of screen
+expand box padding
+expand box
+expand box padding
+output box - 2 lines
+output box padding
+input box bottom*/
 </argument>
       </arguments>
     </action>

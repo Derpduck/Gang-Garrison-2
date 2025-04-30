@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Set console dimensions for drawing
+// View Area
+offsetX = view_xview[0];
+offsetY = view_yview[0];
+sizeX = view_wview[0] + offsetX;
+sizeY = view_hview[0] + offsetY;
+
+// Horizontal Bounds
+boxLeft = offsetX + boxPaddingWidth;
+boxRight = sizeX - boxPaddingWidth;
+global.consoleWidth = boxRight - boxLeft;
+
+// Input Box
+inputBoxBottom = sizeY - boxPaddingHeight;
+inputBoxTop = inputBoxBottom - 2 - (inputBoxPaddingHeight * 2) - (inputBoxRows * characterHeight);
+
+// Output Box
+outputBoxBottom = inputBoxTop - boxPaddingHeight;
+outputBoxTop = outputBoxBottom - (displayedLines * lineSpacing) - boxPaddingHeight;
+
+// Expand / Collapse Button
+// TODO: Fix expand box not being padded from top of screen properly
+expandXRight = boxRight;
+expandXLeft = expandXRight - 23;
+expandYBottom = outputBoxTop - boxPaddingHeight;
+expandYTop = expandYBottom - 21;
+//expandYTop = offsetY - boxPaddingHeight;
+//expandYBottom = expandYTop + 21;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

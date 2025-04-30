@@ -3,7 +3,7 @@
 var input, characterWidth, maxLineLength;
 input = sanitiseNewlines(argument0);
 characterWidth = 8;
-maxLineLength = floor((global.consoleWidth - (global.consoleTextPadding * 2)) / characterWidth);
+maxLineLength = (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth;
 
 // If no color code is given at the start of the string, prepend white
 if (string_copy(input, 0, 3) != COL_FLAG)
