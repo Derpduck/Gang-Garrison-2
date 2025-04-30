@@ -13,16 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">offsetX = view_xview[0];
+        <argument kind="STRING">var offsetX, offsetY, sizeX, sizeY;
+offsetX = view_xview[0];
 offsetY = view_yview[0];
 sizeX = view_wview[0] + offsetX;
 sizeY = view_hview[0] + offsetY;
-boxPaddingWidth = 4
-boxPaddingHeight = 8;
-lineSpacing = 16;
 
 draw_set_alpha(global.consoleOpacity / 100);
 draw_set_color(c_black);
+
+var boxLeft, boxRight, inputBoxBottom, inputBoxTop, outputBoxBottom, outputBoxTop;
 
 // Background Boxes
 boxLeft = offsetX + boxPaddingWidth;
@@ -31,19 +31,33 @@ global.consoleWidth = boxRight - boxLeft;
 
 // Input Box
 inputBoxBottom = sizeY - boxPaddingHeight;
-inputBoxTop = sizeY - boxPaddingHeight - lineSpacing;
+inputBoxTop = inputBoxBottom - lineSpacing;
 draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, false);
 
 // Output Box
 outputBoxBottom = inputBoxTop - boxPaddingHeight;
-outputBoxTop = outputBoxBottom - (global.consoleLines * lineSpacing) - boxPaddingHeight;
+outputBoxTop = outputBoxBottom - (displayedLines * lineSpacing) - boxPaddingHeight;
 draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, false);
+
+// Expand / Collapse Button
+var expandXLeft, expandXRight, expandYTop, expandYBottom, spriteYOffset;
+expandXLeft = boxRight - 23;
+expandXRight = boxRight;
+expandYTop = outputBoxTop - 24;
+expandYBottom = outputBoxTop - 3;
+if (expanded)
+    spriteYOffset = 2;
+else
+    spriteYOffset = 0;
+draw_rectangle(expandXLeft, expandYTop, expandXRight, expandYBottom, false);
+draw_sprite_ext(ScrollButtonS, expanded, boxRight - 11, outputBoxTop - 11 - spriteYOffset, 1, 1, 0, c_white, 1);
 
 // Console Borders
 draw_set_alpha(1);
 draw_set_color(c_white);
 draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, true);
 draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, true);
+draw_rectangle(expandXLeft, expandYTop, expandXRight, expandYBottom, true);
 
 // Text
 draw_set_halign(fa_left);
@@ -65,7 +79,7 @@ if (cursorMoving or cursorBlink)
 // Output Box
 var printLine, renderString, stringOffset, colorCode;
 
-for(i=0; i&lt;min(global.consoleLines, ds_list_size(global.consoleOutputHistory)); i+=1)
+for(i=0; i&lt;min(displayedLines, ds_list_size(global.consoleOutputHistory)); i+=1)
 {
     printLine = ds_list_find_value(global.consoleOutputHistory, ds_list_size(global.consoleOutputHistory) - i - 1);
     

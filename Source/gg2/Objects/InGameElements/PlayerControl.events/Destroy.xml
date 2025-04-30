@@ -15,6 +15,9 @@
       <arguments>
         <argument kind="STRING">if (global.saveConsoleLog)
     console_save_log();
+
+with(Console)
+    instance_destroy();
 </argument>
       </arguments>
     </action>

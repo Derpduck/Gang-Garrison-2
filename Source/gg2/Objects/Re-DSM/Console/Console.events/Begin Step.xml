@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Expand / Collapse Button interaction
+var offsetX, offsetY, sizeX, sizeY;
+offsetX = view_xview[0];
+offsetY = view_yview[0];
+sizeX = view_wview[0] + offsetX;
+sizeY = view_hview[0] + offsetY;
+
+var boxRight, inputBoxBottom, inputBoxTop, outputBoxBottom, outputBoxTop;
+boxRight = sizeX - boxPaddingWidth;
+inputBoxBottom = sizeY - boxPaddingHeight;
+inputBoxTop = inputBoxBottom - lineSpacing;
+outputBoxBottom = inputBoxTop - boxPaddingHeight;
+outputBoxTop = outputBoxBottom - (displayedLines * lineSpacing) - boxPaddingHeight;
+
+var expandXLeft, expandXRight, expandYTop, expandYBottom;
+expandXLeft = boxRight - 23;
+expandXRight = boxRight;
+expandYTop = outputBoxTop - 24;
+expandYBottom = outputBoxTop - 3;
+
+// Clicked on the expand button
+if (mouse_check_button_pressed(mb_left))
+{
+    if (mouse_x &gt; expandXLeft and mouse_x &lt; expandXRight and mouse_y &gt; expandYTop and mouse_y &lt; expandYBottom)
+    {
+        expanded = !expanded
+        
+        if (expanded)
+        {
+            // Expand the console window to cover the whole screen
+            // Work out the maximum available size of the window including the expand button
+            var maxSize;
+            maxSize = (outputBoxBottom - offsetY) - (expandYBottom - expandYTop) - boxPaddingWidth;
+            displayedLines = maxSize div lineSpacing;
+        }
+        else
+        {
+            displayedLines = global.consoleLines;
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

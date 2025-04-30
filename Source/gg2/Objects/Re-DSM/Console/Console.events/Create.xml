@@ -28,6 +28,15 @@ alarm[0] = cursorBlinkTime / global.delta_factor;
 // Console History
 inputHistoryIndex = ds_list_size(global.consoleInputHistory);
 ds_list_add(global.consoleInputHistory, "");
+
+// Expand / Collapse Button
+expanded = false;
+displayedLines = global.consoleLines;
+
+// Drawing
+boxPaddingWidth = 4;
+boxPaddingHeight = 8;
+lineSpacing = 16;
 </argument>
       </arguments>
     </action>
