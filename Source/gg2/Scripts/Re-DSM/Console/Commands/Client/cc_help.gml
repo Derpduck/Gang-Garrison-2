@@ -2,23 +2,13 @@ console_add_command('help', '
 if (arg[0] == 0)
 {
     // List all available commands
-    var commandList, commandString, key;
-    commandList = ds_list_create();
+    var commandString;
     commandString = "";
-    key = ds_map_find_first(global.consoleCommandMap);
-    
-    // Put all commands in a list and sort them
-    for (iMap=0; iMap<ds_map_size(global.consoleCommandMap); iMap+=1)
-    {
-        ds_list_add(commandList, string(key));
-        key = ds_map_find_next(global.consoleCommandMap, key);
-    };
-    ds_list_sort(commandList, true);
     
     // Make list into a string
-    for (iList=0; iList<ds_list_size(commandList); iList+=1)
+    for (i=0; i<ds_list_size(global.consoleCommandList); i+=1)
     {
-        commandString += string(ds_list_find_value(commandList, iList)) + ", ";
+        commandString += string(ds_list_find_value(global.consoleCommandList, i)) + ", ";
     };
     
     console_print(COL_ORANGE + string_copy(commandString, 1, string_length(commandString) - 2));

@@ -6,4 +6,6 @@
   <resource name="console_options" type="RESOURCE"/>
   <resource name="console_print" type="RESOURCE"/>
   <resource name="console_save_log" type="RESOURCE"/>
+  <resource name="console_create" type="RESOURCE"/>
+  <resource name="console_destroy" type="RESOURCE"/>
 </resources>

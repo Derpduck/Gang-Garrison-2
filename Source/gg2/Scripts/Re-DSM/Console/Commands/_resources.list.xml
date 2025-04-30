@@ -7,4 +7,5 @@
   <resource name="console_init_commands" type="RESOURCE"/>
   <resource name="console_send_command" type="RESOURCE"/>
   <resource name="console_get_rules" type="RESOURCE"/>
+  <resource name="console_get_command_list" type="RESOURCE"/>
 </resources>

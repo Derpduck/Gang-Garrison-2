@@ -16,6 +16,8 @@
         <argument kind="STRING">afktimeout = 60*30;
 afktimer = afktimeout;
 oldScoreKeyDown = false;
+
+console_create();
 </argument>
       </arguments>
     </action>

@@ -38,6 +38,11 @@
     serverPlayer = instance_create(0,0,Player);
     serverPlayer.name = global.playerName;
     ds_list_add(global.players, serverPlayer);
+    
+    // RCON
+    global.isRCON = false;
+    global.rconUsers = ds_list_create();
+    rcon_get_users_from_file();
 
     for (a=0; a<10; a+=1)
     {
@@ -153,10 +158,6 @@
     {
         pluginList = '';
     }
-    
-    global.isRCON = false;
-    global.rconUsers = ds_list_create();
-    rcon_get_users_from_file();
     
     // Disable vsync to minimize framerate drops which would be noticed as lag issues by all players.
     // "vsync makes the server desync" --Arctic
