@@ -15,7 +15,7 @@ global.consoleCommandMapRules = ds_map_create();
 global.consoleCommandList = ds_list_create();
 
 // Console Size
-global.consoleWidth = 792; // Default value, updated live in Console draw event
+global.consoleWidth = 792; // Default value
 global.consoleTextPadding = 6;
 
 // RCON

@@ -19,6 +19,7 @@ if (keyboard_string != "")
     currentText = string_copy(currentText, 0, cursorPosition) + keyboard_string + string_copy(currentText, cursorPosition + 1, string_length(currentText));
     cursorPosition += string_length(keyboard_string);
     keyboard_string = "";
+    clearSuggestedText = false;
 }
 
 // Command history navigation
@@ -31,6 +32,7 @@ if (keyboard_check_pressed(vk_up))
         currentText = ds_list_find_value(global.consoleInputHistory, inputHistoryIndex);
         cursorPosition = string_length(currentText);
     }
+    clearSuggestedText = false;
 }
 else if (keyboard_check_pressed(vk_down))
 {
@@ -46,6 +48,7 @@ else if (keyboard_check_pressed(vk_down))
         currentText = ds_list_find_value(global.consoleInputHistory, inputHistoryIndex);
         cursorPosition = string_length(currentText);
     }
+    clearSuggestedText = false;
 }
 
 // Input text navigation
@@ -63,6 +66,7 @@ if (keyboard_check(vk_left) and !keyboard_check(vk_right))
             cursorScrollDelay += 1 / 15;
         }
     }
+    clearSuggestedText = false;
 }
 else if (keyboard_check(vk_right) and !keyboard_check(vk_left))
 {
@@ -78,37 +82,46 @@ else if (keyboard_check(vk_right) and !keyboard_check(vk_left))
             cursorScrollDelay += 1 / 15;
         }
     }
+    clearSuggestedText = false;
 }
-else if (keyboard_check(vk_backspace) and cursorPosition &gt; 0)
+else if (keyboard_check(vk_backspace))
 {
     // Backspace character
-    if(global.run_virtual_ticks)
+    if (cursorPosition &gt; 0)
     {
-        if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
+        if(global.run_virtual_ticks)
         {
-            currentText = string_copy(currentText, 0, cursorPosition-1) + string_copy(currentText, cursorPosition + 1, string_length(currentText));
-            cursorPosition -= 1;
-        }
-        if (cursorScrollDelay &lt; 1)
-        {
-            cursorScrollDelay += 1 / 15;
+            if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
+            {
+                currentText = string_copy(currentText, 0, cursorPosition-1) + string_copy(currentText, cursorPosition + 1, string_length(currentText));
+                cursorPosition -= 1;
+            }
+            if (cursorScrollDelay &lt; 1)
+            {
+                cursorScrollDelay += 1 / 15;
+            }
         }
     }
+    clearSuggestedText = false;
 }
-else if (keyboard_check(vk_delete) and cursorPosition &lt; string_length(currentText))
+else if (keyboard_check(vk_delete))
 {
     // Delete character
-    if(global.run_virtual_ticks)
+    if (cursorPosition &lt; string_length(currentText))
     {
-        if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
+        if(global.run_virtual_ticks)
         {
-            currentText = string_copy(currentText, 0, cursorPosition) + string_copy(currentText, cursorPosition + 2, string_length(currentText));
-        }
-        if (cursorScrollDelay &lt; 1)
-        {
-            cursorScrollDelay += 1 / 15;
+            if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
+            {
+                currentText = string_copy(currentText, 0, cursorPosition) + string_copy(currentText, cursorPosition + 2, string_length(currentText));
+            }
+            if (cursorScrollDelay &lt; 1)
+            {
+                cursorScrollDelay += 1 / 15;
+            }
         }
     }
+    clearSuggestedText = false;
 }
 else
 {
@@ -123,6 +136,7 @@ if (ctrlHeld)
         // Clear all typed input
         currentText = "";
         cursorPosition = 0;
+        clearSuggestedText = false;
     }
     else if (keyboard_check_pressed(ord('V')))
     {
@@ -134,12 +148,13 @@ if (ctrlHeld)
             currentText = string_copy(currentText, 0, cursorPosition) + str + string_copy(currentText, cursorPosition + 1, string_length(currentText));
             cursorPosition += string_length(str);
             keyboard_clear(ord('V'));
+            clearSuggestedText = false;
         }
     }
 }
 
 // Autocomplete suggestion
-if (currentText != "")
+if (currentText != "" and !clearSuggestedText)
 {
     if (string_length(currentText) &gt;= 1 and string_count(" ", currentText) == 0)
     {
@@ -172,13 +187,25 @@ else
 }
 
 // Replace current text with suggested text if tab is pressed
-if (keyboard_check_direct(vk_tab))
+// Prevent autocompletion when pressing Alt + Tab
+if (keyboard_check_pressed(vk_alt))
+{
+    suggestedText = "";
+    clearSuggestedText = true;
+}
+
+if (keyboard_check_direct(vk_tab) and !clearSuggestedText)
 {
     if (suggestedText != "")
     {
         currentText += suggestedText;
         suggestedText = "";
         cursorPosition = string_length(currentText);
+    }
+    else
+    {
+        // Keep suggested text clear until keyboard input is received again after alt tabbing
+        clearSuggestedText = true;
     }
     
     // Handle tab key press
