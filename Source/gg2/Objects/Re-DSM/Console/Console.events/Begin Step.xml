@@ -37,23 +37,8 @@ else
     displayedLines = max(2, min(maxOutputBoxSize div lineSpacing, global.consoleLines));
 }
 
-// Update console dimensions
-event_user(0);
-
-// Expand input box to fit new lines
-displayText = string_replace_all(currentText, chr(13), chr(10));
-
-// Insert line break character if text goes beyond input box limit
-var maxLineLength, insertedBreaks;
-maxLineLength = (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth;
-insertedBreaks = 0;
-
-// TODO: Fix inserted break throwing cursorIndex off and causing a crash when reaching 2 lines
-/*while(string_width(displayText) &gt; maxLineLength * characterWidth)
-{
-    displayText = string_insert(chr(10), displayText, maxLineLength);
-    insertedBreaks += 1;
-}*/
+// Split input text over multiple lines to prevent it running outside of the input window
+displayText = console_split_input(currentText, (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth);
 
 // Typing cursor position based on cursorIndex
 var textBeforeCursor, lastNewLineIndex, currentLineToCursor, lastNewLineIndex, currentLineTextToCursor, textAfterCursor;
@@ -75,7 +60,7 @@ if (displayText != "")
 else
     cursorYOffset = 0;
 
-// Set number of rows in input box
+// Set number of rows in input box to fit new lines
 var minOutputBoxSize, maxInputSize;
 //minOutputBoxSize = (2 * lineSpacing) - (boxPaddingHeight * 2);
 //maxInputSize = (inputBoxBottom - offsetY - boxPaddingHeight) - (expandYBottom - expandYTop) - minOutputBoxSize;

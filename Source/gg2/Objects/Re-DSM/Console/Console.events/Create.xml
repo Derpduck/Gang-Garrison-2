@@ -24,6 +24,7 @@ cursorCurrentRow = 0;
 
 // Typing Cursor
 cursorIndex = 0;
+displayCursorIndex = 0;
 cursorScrollDelay = 0;
 cursorBlink = true;
 cursorBlinkTime = 15;

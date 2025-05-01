@@ -1,4 +1,4 @@
-global.consoleFont = font_add_sprite(ConsoleFontS, ord("!"), false, 0); // image94/chr(127) = Carriage return symbol
+global.consoleFont = font_add_sprite(ConsoleFontS, ord("!"), false, 0); // chr(127) = Carriage return symbol
 
 console_options();
 
