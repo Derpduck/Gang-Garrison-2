@@ -1,7 +1,7 @@
 // Prints the given string to the console, handling line breaks automatically for longer strings
 // Plugins can use this to print info to the console
 var input, characterWidth, maxLineLength;
-input = sanitiseNewlines(argument0);
+input = argument0;
 input = string_replace_all(input, chr(10), " ");
 input = string_replace_all(input, chr(13), " ");
 input = string_replace_all(input, "\#", "#");

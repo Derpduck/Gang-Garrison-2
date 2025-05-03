@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Set console dimensions for drawing
+        <argument kind="STRING">// Set console dimensions and positions for drawing
 // View Area
 offsetX = view_xview[0];
 offsetY = view_yview[0];
@@ -39,6 +39,7 @@ expandXLeft = expandXRight - 23;
 
 if (expanded)
 {
+    // Pin to top when expanded
     expandYTop = offsetY + boxPaddingHeight;
     expandYBottom = expandYTop + 21;
 }

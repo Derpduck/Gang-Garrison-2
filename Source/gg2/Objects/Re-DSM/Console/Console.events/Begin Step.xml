@@ -81,24 +81,37 @@ if (string_char_at(displayText, string_length(displayText)) == chr(10))
 }
 
 // Input Box size based on number of rows
-var minOutputBoxSize, maxInputSize;
-//minOutputBoxSize = (2 * lineSpacing) - (boxPaddingHeight * 2);
-//maxInputSize = (inputBoxBottom - offsetY - boxPaddingHeight) - (expandYBottom - expandYTop) - minOutputBoxSize;
+var minOutputBoxSize, expandButtonSize, maxInputSize, maxRows;
 
-// TODO: Fix all this shit
-minOutputBoxSize = (2 * lineSpacing);
-maxInputSize = inputBoxBottom - (boxPaddingHeight + minOutputBoxSize + boxPaddingHeight + (expandYBottom - expandYTop) + boxPaddingHeight);
+// Always allow room for 2 lines of the output box + expand button
+minOutputBoxSize = (2 * lineSpacing) + boxPaddingHeight;
+expandButtonSize = (expandYBottom - expandYTop) + (boxPaddingHeight * 2);
+maxInputSize = (inputBoxBottom - (minOutputBoxSize + expandButtonSize)) - offsetY;
+maxRows = min(1 + string_count(chr(10), displayText), maxInputSize div characterHeight, maxInputBoxRows);
 
-//maxInputSize = (inputBoxTop - offsetY) - (outputBoxBottom - outputBoxTop) - (expandYBottom - expandYTop) - boxPaddingWidth;
-inputBoxRows = max(1, min(1 + string_count(chr(10), displayText), maxInputSize div characterHeight, maxInputBoxRows));
+inputBoxRows = max(1, maxRows);
 
-/*top of screen
-expand box padding
-expand box
-expand box padding
-output box - 2 lines
-output box padding
-input box bottom*/
+// If number of lines in text exceeds the input box, limit lines displayed
+if (string_count(chr(10), displayText) + 1 &gt; inputBoxRows)
+{
+    // Delete any text after the end of the line the cursor is on
+    // TODO: Fix scrolling back through the text not displaying the first line properly and the cursor not accounting for lines being removed (add onto cursorYOffset)
+    /*var lineBreakIndex;
+    textAfterCursor = string_copy(displayText, displayCursorIndex + 1, string_length(displayText) + (displayCursorIndex - cursorIndex));
+    
+    lineBreakIndex = string_pos(chr(10), textAfterCursor);
+    if (lineBreakIndex == 0)
+        lineBreakIndex = string_length(textAfterCursor)
+    
+    displayText = string_copy(displayText, 1, displayCursorIndex + lineBreakIndex);*/
+    
+    // Delete first line of text until number of rows
+    while (string_count(chr(10), displayText) + 1 &gt; inputBoxRows)
+    {
+        lineBreakIndex = string_pos(chr(10), displayText);
+        displayText = string_copy(displayText, lineBreakIndex + 1, string_length(displayText));
+    }
+}
 </argument>
       </arguments>
     </action>

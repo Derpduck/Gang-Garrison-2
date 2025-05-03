@@ -42,6 +42,12 @@ for (i=0; i<ds_list_size(inputList); i+=1)
     if (string_count(chr(10), inputListString) > 0)
     {
         output += inputListString;
+        
+        // Fix issues displaying line if it is only a line break
+        if (inputListString == chr(10))
+        {
+            output += " ";
+        }
     }
     else
     {
