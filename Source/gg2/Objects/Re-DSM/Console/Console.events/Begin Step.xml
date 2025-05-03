@@ -37,13 +37,16 @@ else
     displayedLines = max(2, min(maxOutputBoxSize div lineSpacing, global.consoleLines));
 }
 
+// Input Box
 // Split input text over multiple lines to prevent it running outside of the input window
-displayText = console_split_input(currentText, (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth);
+displayCursorIndex = cursorIndex;
+displayText = console_split_input_lines(currentText, (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth);
 
-// Typing cursor position based on cursorIndex
+// Typing cursor position
 var textBeforeCursor, lastNewLineIndex, currentLineToCursor, lastNewLineIndex, currentLineTextToCursor, textAfterCursor;
 // Get horizontal cursor poition on the current line
-textBeforeCursor = string_copy(displayText, 1, cursorIndex);
+textBeforeCursor = string_copy(displayText, 1, displayCursorIndex);
+
 if (string_count(chr(10), textBeforeCursor) &gt; 0)
     lastNewLineIndex = 1 + string_length(textBeforeCursor) - string_pos(chr(10), string_reverse(textBeforeCursor));
 else
@@ -53,14 +56,31 @@ currentLineToCursor = string_copy(textBeforeCursor, lastNewLineIndex, string_len
 cursorXOffset = string_width(currentLineToCursor);
 
 // Get line cursor is currently on
-textAfterCursor = string_copy(displayText, cursorIndex, string_length(displayText));
+textAfterCursor = string_copy(displayText, displayCursorIndex + 1, string_length(displayText) + (displayCursorIndex - cursorIndex));
 
 if (displayText != "")
-    cursorYOffset = string_height(textAfterCursor) - string_height(" ");
+{
+    if (textAfterCursor != "" and textAfterCursor != chr(10))
+    {
+        cursorYOffset = string_height(string_replace_all(textAfterCursor, "#", " ")) - string_height(" ");
+    }
+    else
+    {
+        cursorYOffset = string_height(string_replace_all(textAfterCursor, "#", " "));
+    }
+}
 else
+{
     cursorYOffset = 0;
+}
 
-// Set number of rows in input box to fit new lines
+// Make text move up when the last line is only a line break with no text
+if (string_char_at(displayText, string_length(displayText)) == chr(10))
+{
+    displayText += " ";
+}
+
+// Input Box size based on number of rows
 var minOutputBoxSize, maxInputSize;
 //minOutputBoxSize = (2 * lineSpacing) - (boxPaddingHeight * 2);
 //maxInputSize = (inputBoxBottom - offsetY - boxPaddingHeight) - (expandYBottom - expandYTop) - minOutputBoxSize;

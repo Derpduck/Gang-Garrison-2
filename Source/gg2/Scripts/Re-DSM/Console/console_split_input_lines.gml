@@ -3,10 +3,7 @@ input = argument0;
 maxLineLength = argument1;
 
 input = string_replace_all(input, chr(13), chr(10));
-input = string_replace_all(input, "#", "\#");
-
-// Turn all existing line breaks into an unused character
-//input = string_replace_all(input, chr(10), chr(127));
+input = string_replace_all(input, "\#", "#");
 
 inputList = ds_list_create();
 
@@ -19,7 +16,7 @@ while (string_length(input) > maxLineLength)
     if (string_count(chr(10), stringChunk) != 0)
     {
         // Get the last existing line break in the string chunk
-        stringChunk = string_copy(stringChunk, 0, 1 + string_length(stringChunk) - string_pos(chr(10), string_reverse(stringChunk)));
+        stringChunk = string_copy(stringChunk, 1, 1 + string_length(stringChunk) - string_pos(chr(10), string_reverse(stringChunk)));
     }
     
     // Add line to the input list
@@ -33,7 +30,7 @@ while (string_length(input) > maxLineLength)
 // Add any remaining text to the input list
 ds_list_add(inputList, input);
 
-
+// Combine lines into 1 string
 var output;
 output = "";
 
@@ -48,18 +45,28 @@ for (i=0; i<ds_list_size(inputList); i+=1)
     }
     else
     {
-        output += inputListString + chr(10);
+        // Don't add line break on for the last line
+        if (i + 1 == ds_list_size(inputList))
+        {
+            output += inputListString;
+        }
+        else
+        {
+            output += inputListString + chr(10);
+            
+            // Make cursor zccount for automatically inserted line breaks
+            if (string_length(output) <= Console.displayCursorIndex)
+            {
+                Console.displayCursorIndex += 1;
+            }
+        }
     }
 };
 
-output = string_copy(output, 1, string_length(output) - 1);
+output = string_replace_all(output, "#", "\#");
 
 ds_list_destroy(inputList);
 
 return output;
 
-// TODO: Not bug free but for now works well enough
-// TODO: Fix various bugs with cursor placement
-// TODO: Fix manually typed line breaks resulting in incorrect line length calculations
-// TODO: Fix manually typed line breaks not showing text until after a few characters have been typed
-// TODO: Fix text displaying more lines than can fit in the box causing it to overlap with the output
+// TODO: Fix text displaying more lines than can fit in the box causing it to overlap with the output - limit to max number of lines

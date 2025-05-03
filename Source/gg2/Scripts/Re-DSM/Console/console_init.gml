@@ -21,7 +21,4 @@ global.consoleTextPadding = 6;
 // RCON
 global.isRCON = false;
 
-// TODO: Legacy stuff
-global.RCONSentCommand=0
-
 console_init_commands();

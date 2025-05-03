@@ -16,6 +16,10 @@
         <argument kind="STRING">// Handle typed input
 if (keyboard_string != "")
 {
+    if (keyboard_string == "#")
+    {
+        keyboard_string = "\#";
+    }
     currentText = string_copy(currentText, 0, cursorIndex) + keyboard_string + string_copy(currentText, cursorIndex + 1, string_length(currentText));
     cursorIndex += string_length(keyboard_string);
     keyboard_string = "";
@@ -59,7 +63,14 @@ if (keyboard_check(vk_left) and !keyboard_check(vk_right))
     {
         if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
-            cursorIndex = max(0, cursorIndex - 1);
+            if (string_copy(currentText, cursorIndex - 1, 2) == "\#")
+            {
+                cursorIndex = max(0, cursorIndex - 2);
+            }
+            else
+            {
+                cursorIndex = max(0, cursorIndex - 1);
+            }
         }
         if (cursorScrollDelay &lt; 1)
         {
@@ -75,7 +86,14 @@ else if (keyboard_check(vk_right) and !keyboard_check(vk_left))
     {
         if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
         {
+            if (string_copy(currentText, cursorIndex + 1, 2) == "\#")
+            {
+                cursorIndex = min(string_length(currentText), cursorIndex + 2);
+            }
+            else
+            {
             cursorIndex = min(string_length(currentText), cursorIndex + 1);
+            }
         }
         if (cursorScrollDelay &lt; 1)
         {
@@ -93,8 +111,16 @@ else if (keyboard_check(vk_backspace))
         {
             if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
             {
-                currentText = string_copy(currentText, 0, cursorIndex-1) + string_copy(currentText, cursorIndex + 1, string_length(currentText));
-                cursorIndex -= 1;
+                if (string_copy(currentText, cursorIndex - 1, 2) == "\#")
+                {
+                    currentText = string_copy(currentText, 0, cursorIndex - 2) + string_copy(currentText, cursorIndex + 1, string_length(currentText));
+                    cursorIndex -= 2;
+                }
+                else
+                {
+                    currentText = string_copy(currentText, 0, cursorIndex - 1) + string_copy(currentText, cursorIndex + 1, string_length(currentText));
+                    cursorIndex -= 1;
+                }
             }
             if (cursorScrollDelay &lt; 1)
             {
@@ -113,7 +139,14 @@ else if (keyboard_check(vk_delete))
         {
             if (cursorScrollDelay == 0 or cursorScrollDelay &gt;= 1)
             {
-                currentText = string_copy(currentText, 0, cursorIndex) + string_copy(currentText, cursorIndex + 2, string_length(currentText));
+                if (string_copy(currentText, cursorIndex + 1, 2) == "\#")
+                {
+                    currentText = string_copy(currentText, 0, cursorIndex) + string_copy(currentText, cursorIndex + 3, string_length(currentText));
+                }
+                else
+                {
+                    currentText = string_copy(currentText, 0, cursorIndex) + string_copy(currentText, cursorIndex + 2, string_length(currentText));
+                }
             }
             if (cursorScrollDelay &lt; 1)
             {
@@ -143,11 +176,11 @@ if (ctrlHeld)
         // Paste clipboard
         if (clipboard_has_text())
         {
-            var str;
-            str = clipboard_get_text();
-            currentText = string_copy(currentText, 0, cursorIndex) + str + string_copy(currentText, cursorIndex + 1, string_length(currentText));
-            cursorIndex += string_length(str);
-            keyboard_clear(ord('V'));
+            var clipboard;
+            clipboard = string_replace_all(clipboard_get_text(), "#", "\#");
+            currentText = string_copy(currentText, 0, cursorIndex) + clipboard + string_copy(currentText, cursorIndex + 1, string_length(currentText));
+            cursorIndex += string_length(clipboard);
+            keyboard_clear(ord("V"));
             clearSuggestedText = false;
         }
     }

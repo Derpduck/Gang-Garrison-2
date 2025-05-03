@@ -2,6 +2,9 @@
 // Plugins can use this to print info to the console
 var input, characterWidth, maxLineLength;
 input = sanitiseNewlines(argument0);
+input = string_replace_all(input, chr(10), " ");
+input = string_replace_all(input, chr(13), " ");
+input = string_replace_all(input, "\#", "#");
 characterWidth = 8;
 maxLineLength = (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth;
 
@@ -53,7 +56,7 @@ while (string_length(input) > maxLineLength + (string_count(COL_FLAG, input) * C
     
     // Add line to the console history
     // If there were no spaces within character limit, insert line break at the end of the string
-    ds_list_add(global.consoleOutputHistory, stringChunk);
+    ds_list_add(global.consoleOutputHistory, string_replace_all(stringChunk, "#", "\#"));
     
     // Get the last color code in the processed line
     lastColorCode = string_copy(stringChunk, string_length(stringChunk) - string_pos(string_reverse(COL_FLAG), string_reverse(stringChunk)) - 1, COLOR_RGB_LENGTH)
@@ -70,7 +73,7 @@ while (string_length(input) > maxLineLength + (string_count(COL_FLAG, input) * C
 }
 
 // Add any remaining text to the console history
-ds_list_add(global.consoleOutputHistory, input);
+ds_list_add(global.consoleOutputHistory, string_replace_all(input, "#", "\#"));
 
 // Limit console log to max size
 while (ds_list_size(global.consoleOutputHistory) > global.consoleOutputHistoryMax)

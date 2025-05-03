@@ -34,13 +34,19 @@ outputBoxBottom = inputBoxTop - boxPaddingHeight;
 outputBoxTop = outputBoxBottom - (displayedLines * lineSpacing) - boxPaddingHeight;
 
 // Expand / Collapse Button
-// TODO: Fix expand box not being padded from top of screen properly
 expandXRight = boxRight;
 expandXLeft = expandXRight - 23;
-expandYBottom = outputBoxTop - boxPaddingHeight;
-expandYTop = expandYBottom - 21;
-//expandYTop = offsetY - boxPaddingHeight;
-//expandYBottom = expandYTop + 21;
+
+if (expanded)
+{
+    expandYTop = offsetY + boxPaddingHeight;
+    expandYBottom = expandYTop + 21;
+}
+else
+{
+    expandYBottom = outputBoxTop - boxPaddingHeight;
+    expandYTop = expandYBottom - 21;
+}
 </argument>
       </arguments>
     </action>
