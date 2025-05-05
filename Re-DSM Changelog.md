@@ -11,6 +11,7 @@
 - New input shortcuts
 	- Shift + Enter to type a new line
 	- CTRL + Backspace or CTRL + Delete to delete all typed text
+	- PGUP and PGDN to scroll through output history
 - RCON (Remote CONsole), allows clients to use admin protected commands
 	- Host can either set a password which players login with or manually add RCON users
 	- Commands:

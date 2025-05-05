@@ -33,12 +33,13 @@ cursorYOffset = 0;
 alarm[0] = cursorBlinkTime / global.delta_factor;
 
 // Console History
+displayedLines = global.consoleLines;
+outputHistoryOffset = 0;
 inputHistoryIndex = ds_list_size(global.consoleInputHistory);
 ds_list_add(global.consoleInputHistory, "");
 
 // Expand / Collapse Button
 expanded = false;
-displayedLines = global.consoleLines;
 
 // Drawing
 boxPaddingWidth = 4;
