@@ -15,3 +15,10 @@
 	- Improvements to info given to hosts about their RCON clients, and for clients about their RCON actions
 	- Multi-clienting hosts are automatically given RCON access
 - Fixed many bugs found in previous implementations
+
+
+
+
+
+### Bug Fixes
+- Fixed spectator checkpoints only being usable when a menu is open
