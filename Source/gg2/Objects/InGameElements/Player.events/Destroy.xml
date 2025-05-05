@@ -29,6 +29,15 @@
     with(Needle) if(ownerPlayer == other.id) instance_destroy();
     with(Sentry) if(ownerPlayer == other.id) instance_destroy();
     with(DeathCam) if(killedby == other.id) instance_destroy();
+    
+    // Remove RCON user
+    if (global.isHost)
+    {
+        if (ds_list_find_index(global.rconUsers, id) != -1)
+        {
+            ds_list_delete(global.rconUsers, ds_list_find_index(global.rconUsers, id));
+        }
+    }
 </argument>
       </arguments>
     </action>

@@ -6,5 +6,5 @@ write_ubyte(player.socket, 2);
 
 if (ds_list_find_index(global.rconUsers, player) != -1)
 {
-    ds_list_delete(global.rconUsers, player);
+    ds_list_delete(global.rconUsers, ds_list_find_index(global.rconUsers, player));
 }
