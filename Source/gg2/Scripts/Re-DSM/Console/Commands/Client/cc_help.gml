@@ -12,7 +12,7 @@ if (arg[0] == 0)
     };
     
     console_print(COL_ORANGE + string_copy(commandString, 1, string_length(commandString) - 2));
-    console_print(COL_ORANGE + "For help with a specific command, type " + chr(39) + "help <command name>" + chr(39));
+    console_print(COL_ORANGE + "For help with a specific command, type " + SINGLE_QUOTE + "help <command name>" + SINGLE_QUOTE);
 }
 else
 {

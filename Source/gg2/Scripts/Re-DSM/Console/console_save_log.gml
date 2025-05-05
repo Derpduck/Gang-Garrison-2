@@ -10,10 +10,8 @@ datetime=string(date_datetime_string(date_current_datetime()))
     datetime=string_replace_all(datetime, "*", "_");datetime=string_replace_all(datetime, ".", "_");
 }
 
-DSM_logs_directory();
-
 logFileName = "Console_" + datetime + ".txt"
-logFile = file_text_open_write(working_directory + "\Logs\" + logFileName);
+logFile = file_text_open_write(working_directory + "DSM\Logs\" + logFileName);
 
 for(i=0; i<ds_list_size(global.consoleOutputHistory); i+=1)
 {
@@ -23,4 +21,4 @@ for(i=0; i<ds_list_size(global.consoleOutputHistory); i+=1)
 
 file_text_close(logFile);
 
-console_print("Console log saved: /../Logs/" + logFileName);
+console_print("Console log saved: /../DSM/Logs/" + logFileName);

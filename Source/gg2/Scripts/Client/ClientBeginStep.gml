@@ -655,7 +655,7 @@ do {
             case 1:
                 // Successful login
                 global.isRCON = true;
-                console_print(COL_PINK + "[RCON LOGIN] RCON login successful");
+                console_print(COL_PINK + "[RCON LOGIN] RCON access was granted");
                 break;
             
             case 2:
@@ -663,6 +663,7 @@ do {
                 global.isRCON = false;
                 console_print(COL_PINK + "[RCON LOGIN] RCON access was revoked");
                 break;
+            
             
             default:
                 // Failed login, or any other result

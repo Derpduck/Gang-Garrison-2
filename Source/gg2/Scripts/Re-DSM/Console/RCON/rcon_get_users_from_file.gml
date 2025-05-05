@@ -3,10 +3,10 @@ global.rconSavedUsers = ds_map_create();
 
 if (global.rconEnabled)
 {
-    if (file_exists("RCON_Users.txt"))
+    if (file_exists(working_directory + "\DSM\RCON_Users.txt"))
     {
         var rconFile, rconLine, rconIP, rconName;
-        rconFile = file_text_open_read("RCON_Users.txt");
+        rconFile = file_text_open_read(working_directory + "\DSM\RCON_Users.txt");
         
         while !file_text_eof(rconFile)
         {

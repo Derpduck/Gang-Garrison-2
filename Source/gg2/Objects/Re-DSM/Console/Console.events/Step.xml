@@ -233,7 +233,7 @@ if (global.consoleAutocomplete)
     {
         if (suggestedText != "")
         {
-            currentText += suggestedText;
+            currentText += suggestedText + " ";
             suggestedText = "";
             cursorIndex = string_length(currentText);
         }

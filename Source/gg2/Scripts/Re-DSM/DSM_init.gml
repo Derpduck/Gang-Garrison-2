@@ -1,5 +1,6 @@
 AudioControlToggleMute(); // TODO: Remove, for testing
 
+create_DSM_folders();
 color_codes();
 console_init();
 

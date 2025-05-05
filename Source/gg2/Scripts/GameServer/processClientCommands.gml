@@ -378,7 +378,7 @@ while(commandLimitRemaining > 0) {
             if (rconPassword == global.rconPassword)
             {
                 // Correct password
-                rcon_user_login(player);
+                rcon_user_add(player);
                 rcon_write_to_file(player);
                 console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
             }

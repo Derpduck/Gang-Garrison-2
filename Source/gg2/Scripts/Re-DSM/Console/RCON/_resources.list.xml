@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="rcon_user_login" type="RESOURCE"/>
   <resource name="rcon_user_join" type="RESOURCE"/>
-  <resource name="rcon_get_users_from_file" type="RESOURCE"/>
+  <resource name="rcon_user_add" type="RESOURCE"/>
+  <resource name="rcon_user_remove" type="RESOURCE"/>
   <resource name="rcon_write_to_file" type="RESOURCE"/>
+  <resource name="rcon_remove_from_file" type="RESOURCE"/>
+  <resource name="rcon_get_users_from_file" type="RESOURCE"/>
 </resources>

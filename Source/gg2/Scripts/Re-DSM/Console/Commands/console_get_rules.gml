@@ -23,7 +23,7 @@ case 1:
     // As client: Send command to host if client has RCON access
     if (global.isRCON and !global.isHost)
     {
-        console_print(COL_PINK + "[RCON CMD] Sent: " + chr(39) + originalInput + chr(39));
+        console_print(COL_PINK + "[RCON CMD] Sent: " + SINGLE_QUOTE + originalInput + SINGLE_QUOTE);
         
         // Send command to server
         write_ubyte(global.serverSocket, DSM_RCON_CMD);

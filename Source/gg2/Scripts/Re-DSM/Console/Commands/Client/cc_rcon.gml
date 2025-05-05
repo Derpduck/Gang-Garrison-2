@@ -50,7 +50,17 @@ case "add":
         break;
     }
     
-    //TODO: Add functionality
+    var player;
+    player = console_get_player(arg[2]);
+    if (player == -1)
+    {
+        console_print(COL_RED + "[ERROR] Invalid player: " + arg[2]);
+        break
+    }
+    
+    rcon_user_add(player);
+    rcon_write_to_file(player);
+    console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
     break;
 
 case "remove":
@@ -60,7 +70,17 @@ case "remove":
         break;
     }
     
-    //TODO: Add functionality
+    var player;
+    player = console_get_player(arg[2]);
+    if (player == -1)
+    {
+        console_print(COL_RED + "[ERROR] Invalid player: " + arg[2]);
+        break
+    }
+    
+    rcon_user_remove(player);
+    rcon_remove_from_file(player);
+    console_print(COL_PINK + "[RCON LOGIN] " + player.name + SINGLE_QUOTE + "s RCON access was revoked");
     break;
 
 case "password":
@@ -72,7 +92,7 @@ case "password":
     
     global.rconPassword = string(arg[2]);
     console_print(COL_ORANGE + "RCON password changed to: " + global.rconPassword);
-    console_print(COL_ORANGE + "New password saved to: " + chr(39) + "Re-DSM.ini" + chr(39));
+    console_print(COL_ORANGE + "New password saved to: " + SINGLE_QUOTE + "Re-DSM.ini" + SINGLE_QUOTE);
     
     DSM_write_ini("RCON", "RconPassword", global.rconPassword);
     break;
@@ -102,7 +122,7 @@ case "save":
     global.saveRconUsers = !global.saveRconUsers;
     
     if (global.saveRconUsers)
-        console_print(COL_ORANGE + "New RCON users will now be saved to: " + chr(39) + "RCON_Users.txt" + chr(39));
+        console_print(COL_ORANGE + "New RCON users will now be saved to: " + SINGLE_QUOTE + "RCON_Users.txt" + SINGLE_QUOTE);
     else
         console_print(COL_ORANGE + "New RCON users will no longer be saved");
     break;
@@ -114,18 +134,22 @@ case "users":
         break;
     }
     
-    // TODO: Print player ID
-    // TODO: Validation check if player instance exists
-    // TODO: Print player name in team colour
-    // Print details for each currently active RCON user
     // ID  |  IP  |  Name
-    var player, playerIP;
+    console_print(COL_ORANGE + string(ds_list_size(global.rconUsers)) + " rcon user(s) currently active")
     for (i=0; i<ds_list_size(global.rconUsers); i+=1)
     {
+        var player, playerID, playerIP, idSpaces, ipSpaces;
         player = ds_list_find_value(global.rconUsers, i);
-        playerIP = socket_remote_ip(player.socket);
         
-        console_print(COL_ORANGE + string(playerIP) + "  |  " + player.name);
+        if (instance_exists(player))
+        {
+            playerID = string(ds_list_find_index(global.players, player));
+            idSpaces = string_repeat(" ", 2 - string_length(playerID));
+            playerIP = string(socket_remote_ip(player.socket));
+            ipSpaces = string_repeat(" ", 15 - string_length(playerIP));
+            
+            console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + COL_WHITE + playerIP + ipSpaces + COL_ORANGE + " | " + console_player_team_color(player) + player.name);
+        }
     };
     
     

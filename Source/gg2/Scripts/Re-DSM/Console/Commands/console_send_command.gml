@@ -19,7 +19,7 @@ originalInput = string_delete(input, string_length(input), 1);
 // Print user input
 if (rconPlayer == -1)
 {
-    console_print(originalInput);
+    console_print(COL_ORANGE + ">" + COL_WHITE + originalInput);
 }
 
 // Split input into arguments at spaces until there are none left

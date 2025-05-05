@@ -21,4 +21,9 @@ global.consoleTextPadding = 6;
 // RCON
 global.isRCON = false;
 
+// Strings within console commands
+globalvar SINGLE_QUOTE, DOUBLE_QUOTE;
+SINGLE_QUOTE = chr(39);
+DOUBLE_QUOTE = chr(34);
+
 console_init_commands();
