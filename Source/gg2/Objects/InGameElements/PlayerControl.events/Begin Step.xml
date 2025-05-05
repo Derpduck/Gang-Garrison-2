@@ -27,6 +27,24 @@ if(instance_exists(TeamSelectController) || instance_exists(ClassSelectControlle
 else
     menuOpen = false;
 
+if (!menuOpen)
+{
+    if (instance_exists(Console))
+    {
+        if (keyboard_check_pressed(global.consoleKey))
+        {
+            with(Console)
+                instance_destroy();
+        }
+        exit;
+    }
+    else
+    {
+        if (keyboard_check_pressed(global.consoleKey))
+            instance_create(0, 0, Console);
+    }
+}
+
 //Checking for input - Mapped Keys
 if(keyboard_check_pressed(global.changeTeam))
     inputChangeTeam();

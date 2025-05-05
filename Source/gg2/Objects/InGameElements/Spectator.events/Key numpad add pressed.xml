@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">event_user(7);
+        <argument kind="STRING">if (!instance_exists(Console))
+    event_user(7);
 </argument>
       </arguments>
     </action>

@@ -53,6 +53,20 @@ event_user(0);
 // Autocomplete suggestion
 suggestedText = "";
 clearSuggestedText = false;
+
+// Close other menus
+with (BubbleMenuZ)
+{
+    done = true;
+}
+with (BubbleMenuX)
+{
+    done = true;
+}
+with (BubbleMenuC)
+{
+    done = true;
+}
 </argument>
       </arguments>
     </action>

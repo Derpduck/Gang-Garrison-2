@@ -24,7 +24,7 @@ moved = false;
 stopTracking = false;
 
 //moving view - mapped keys
-if(!instance_exists(MenuController))
+if(!instance_exists(MenuController) and !instance_exists(Console))
 {
     if keyboard_check(global.left) || keyboard_check(global.left2)
     {
