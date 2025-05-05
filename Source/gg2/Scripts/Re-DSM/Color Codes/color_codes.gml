@@ -11,8 +11,8 @@ COL_WHITE       =   COL_FLAG + "ffffff"
 COL_BLACK       =   COL_FLAG + "000000"
 COL_GRAY        =   COL_FLAG + "808080"
 
-COL_RED         =   COL_FLAG + "ff0000" // Red team, Console errors
-COL_RED_LT      =   COL_FLAG + "ff4848"
+COL_RED         =   COL_FLAG + "ff0000" // Console errors
+COL_RED_LT      =   COL_FLAG + "ff4848" // Red team
 COL_RED_DK      =   COL_FLAG + "b40000" // Not used
 COL_ORANGE      =   COL_FLAG + "ff8000" // Console output
 COL_YELLOW      =   COL_FLAG + "ffff00" // System messages

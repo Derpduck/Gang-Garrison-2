@@ -8,6 +8,10 @@ input = string_replace_all(input, "\#", "#");
 characterWidth = 8;
 maxLineLength = (global.consoleWidth - (global.consoleTextPadding * 2)) div characterWidth;
 
+// Timestamps
+if (global.consoleTimestamps)
+    input = COL_YELLOW + "[" + date_time_string(date_current_time()) + "] " + COL_WHITE + input
+
 // If no color code is given at the start of the string, prepend white
 if (string_copy(input, 0, 3) != COL_FLAG)
     input = COL_WHITE + input;

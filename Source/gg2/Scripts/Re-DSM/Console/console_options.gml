@@ -12,6 +12,9 @@ ini_write_real("Console", "ConsoleOpacity", global.consoleOpacity);
 global.consoleAutocomplete = ini_read_real("Console", "ConsoleAutocomplete", 1);
 ini_write_real("Console", "ConsoleAutocomplete", global.consoleAutocomplete);
 
+global.consoleTimestamps = ini_read_real("Console", "ConsoleTimestamps", 0);
+ini_write_real("Console", "ConsoleTimestamps", global.consoleTimestamps);
+
 
 // RCON Options
 global.rconEnabled = ini_read_real("RCON", "RconEnabled", 1);
@@ -23,6 +26,7 @@ ini_write_real("RCON", "SaveRconUsers", global.saveRconUsers);
 global.rconPassword = ini_read_string("RCON", "RconPassword", "");
 ini_write_real("RCON", "RconPassword", global.rconPassword);
 ini_close();
+
 
 // Console Controls
 ini_open("controls.gg2");

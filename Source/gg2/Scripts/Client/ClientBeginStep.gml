@@ -664,7 +664,6 @@ do {
                 console_print(COL_PINK + "[RCON LOGIN] RCON access was revoked");
                 break;
             
-            
             default:
                 // Failed login, or any other result
                 console_print(COL_PINK + "[RCON LOGIN] RCON login failed");
