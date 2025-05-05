@@ -74,5 +74,3 @@ output = string_replace_all(output, "#", "\#");
 ds_list_destroy(inputList);
 
 return output;
-
-// TODO: Fix text displaying more lines than can fit in the box causing it to overlap with the output - limit to max number of lines

@@ -91,23 +91,49 @@ maxRows = min(1 + string_count(chr(10), displayText), maxInputSize div character
 
 inputBoxRows = max(1, maxRows);
 
+// Limit cursor to within the input box
+cursorYOffset = min(cursorYOffset div characterHeight, maxRows - 1) * characterHeight;
+
 // If number of lines in text exceeds the input box, limit lines displayed
-if (string_count(chr(10), displayText) + 1 &gt; inputBoxRows)
+// Delete first line of text until number of rows fits within the input box
+while (string_count(chr(10), displayText) + 1 &gt; inputBoxRows)
 {
-    // Delete any text after the end of the line the cursor is on
-    // TODO: Fix scrolling back through the text not displaying the first line properly and the cursor not accounting for lines being removed (add onto cursorYOffset)
-    /*var lineBreakIndex;
-    textAfterCursor = string_copy(displayText, displayCursorIndex + 1, string_length(displayText) + (displayCursorIndex - cursorIndex));
-    
-    lineBreakIndex = string_pos(chr(10), textAfterCursor);
-    if (lineBreakIndex == 0)
-        lineBreakIndex = string_length(textAfterCursor)
-    
-    displayText = string_copy(displayText, 1, displayCursorIndex + lineBreakIndex);*/
-    
-    // Delete first line of text until number of rows
-    while (string_count(chr(10), displayText) + 1 &gt; inputBoxRows)
+    var lineBreakIndex;
+    // Remove any lines after the cursor until text fits within input box
+    textAfterCursor = string_copy(displayText, displayCursorIndex, string_length(displayText) + (displayCursorIndex - cursorIndex));
+    // Get the last line break after the cursor
+    if (string_count(chr(10), textAfterCursor) != 0)
     {
+        lineBreakIndex = string_length(textAfterCursor) - string_pos(chr(10), string_reverse(textAfterCursor));
+    }
+    else
+    {
+        lineBreakIndex = 0;
+    }
+    
+    if (lineBreakIndex != 0)
+    {
+        // If any lines exist after the cursor, delete the last line
+        if (displayCursorIndex == 0)
+            displayText = string_copy(displayText, 1, displayCursorIndex + lineBreakIndex);
+        else
+            displayText = string_copy(displayText, 1, displayCursorIndex + lineBreakIndex - 1);
+        
+        // Correct cursor line
+        textAfterCursor = string_copy(displayText, displayCursorIndex + 1, string_length(displayText) + (displayCursorIndex - cursorIndex));
+        
+        if (textAfterCursor != "")
+        {
+            cursorYOffset = string_height(string_replace_all(textAfterCursor, "#", " ")) - string_height(" ");
+        }
+        else
+        {
+            cursorYOffset = string_height(string_replace_all(textAfterCursor, "#", " "));
+        }
+    }
+    else
+    {
+        // No more lines after the line break; delete first line of text until number of rows reaches the row limit
         lineBreakIndex = string_pos(chr(10), displayText);
         displayText = string_copy(displayText, lineBreakIndex + 1, string_length(displayText));
     }

@@ -19,7 +19,7 @@ currentText = "";
 displayText = "";
 ctrlHeld = false;
 inputBoxRows = 1;
-maxInputBoxRows = 8;
+maxInputBoxRows = 14;
 cursorCurrentRow = 0;
 
 // Typing Cursor
