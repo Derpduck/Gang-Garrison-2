@@ -1,0 +1,33 @@
+console_add_command('hurt', '
+if (console_validate_args(2, arg[0], "hurt <player> <damage>") == false) exit;
+
+var player;
+player = console_get_player(arg[1], true);
+if (player == -1)
+{
+    console_print(COL_RED + "[ERROR] Invalid player: " + arg[1]);
+    break;
+}
+else
+{
+    // Check if damage number given is valid
+    if (string_digits(arg[2]) != string_lettersdigits(arg[2]))
+    {
+        console_print(COL_ORANGE + arg[2] + " is not a valid number");
+        break;
+    }
+    
+    var damage;
+    damage = real(arg[2]);
+    
+    if (player.object != -1)
+    {
+        player.object.hp -= damage;
+        console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was dealt " + COL_YELLOW + string(damage) + COL_ORANGE + " damage");
+    }
+    else
+    {
+        console_print(get_team_color_code(player) + player.name + COL_ORANGE + " is not alive");
+    }
+}
+', '', CC_HOST_RCON);

@@ -3,4 +3,5 @@
   <resource name="cc_kick" type="RESOURCE"/>
   <resource name="cc_kill" type="RESOURCE"/>
   <resource name="cc_gib" type="RESOURCE"/>
+  <resource name="cc_hurt" type="RESOURCE"/>
 </resources>

@@ -47,7 +47,7 @@ case "add":
     if (player == -1)
     {
         console_print(COL_RED + "[ERROR] Invalid player: " + arg[2]);
-        break
+        break;
     }
     
     rcon_user_add(player);
@@ -67,7 +67,7 @@ case "remove":
     if (player == -1)
     {
         console_print(COL_RED + "[ERROR] Invalid player: " + arg[2]);
-        break
+        break;
     }
     
     rcon_user_remove(player);
@@ -126,7 +126,7 @@ case "users":
         break;
     }
     
-    // ID  |  IP  |  Name
+    // ID | IP | Name
     console_print(COL_ORANGE + string(ds_list_size(global.rconUsers)) + " rcon user(s) currently active")
     for (i=0; i<ds_list_size(global.rconUsers); i+=1)
     {
@@ -143,8 +143,6 @@ case "users":
             console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + COL_WHITE + playerIP + ipSpaces + COL_ORANGE + " | " + get_team_color_code(player) + player.name);
         }
     };
-    
-    
     break;
 
 default:

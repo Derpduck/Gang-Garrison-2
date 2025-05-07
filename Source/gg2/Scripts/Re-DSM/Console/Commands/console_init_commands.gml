@@ -4,6 +4,7 @@
 cc_kick();
 cc_kill();
 cc_gib();
+cc_hurt();
 
 // Client Side Commands
 cc_help();
@@ -13,3 +14,6 @@ cc_flag();
 cc_test();
 cc_quit();
 cc_disconnect();
+cc_clear();
+cc_players();
+cc_log();

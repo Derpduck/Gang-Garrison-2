@@ -6,7 +6,7 @@ player = console_get_player(arg[1]);
 if (player == -1)
 {
     console_print(COL_RED + "[ERROR] Invalid player: " + arg[1]);
-    break
+    break;
 }
 else
 {

@@ -7,4 +7,7 @@
   <resource name="cc_flag" type="RESOURCE"/>
   <resource name="cc_quit" type="RESOURCE"/>
   <resource name="cc_disconnect" type="RESOURCE"/>
+  <resource name="cc_clear" type="RESOURCE"/>
+  <resource name="cc_players" type="RESOURCE"/>
+  <resource name="cc_log" type="RESOURCE"/>
 </resources>
