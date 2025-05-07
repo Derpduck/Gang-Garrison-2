@@ -1,6 +1,7 @@
 // Load built in console commands
 
 // Server Side Commands
+cc_kick();
 
 // Client Side Commands
 cc_help();

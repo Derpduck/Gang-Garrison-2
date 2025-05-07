@@ -1,14 +1,12 @@
 console_add_command('execute', '
-if (arg[0] >= 1)
-{
-    execute_string(arg[1]);
-    console_print(COL_ORANGE + "Executed Code: " + arg[1]);
-}
-else
-{
-    console_print(COL_RED + "[ERROR] No code given to execute");
-}
+if (console_validate_args(1, arg[0], "execute <code>") == false) exit;
+
+var code;
+code = string_delete(originalInput, 1, string_length("execute "));
+
+execute_string(code);
+console_print(COL_ORANGE + "Executed Code: " + code);
 ', '
 console_print("Syntax: execute <code>);
 console_print("Executes the given code immediately. Use with caution.");
-', 0);
+', CC_CLIENT);

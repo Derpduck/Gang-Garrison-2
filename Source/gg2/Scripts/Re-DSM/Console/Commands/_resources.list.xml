@@ -5,9 +5,9 @@
   <resource name="console_add_command" type="RESOURCE"/>
   <resource name="console_addCommand" type="RESOURCE"/>
   <resource name="console_init_commands" type="RESOURCE"/>
+  <resource name="console_get_command_list" type="RESOURCE"/>
   <resource name="console_send_command" type="RESOURCE"/>
   <resource name="console_get_rules" type="RESOURCE"/>
-  <resource name="console_get_command_list" type="RESOURCE"/>
   <resource name="console_get_player" type="RESOURCE"/>
-  <resource name="console_player_team_color" type="RESOURCE"/>
+  <resource name="console_validate_args" type="RESOURCE"/>
 </resources>

@@ -3,4 +3,5 @@
   <resource name="color_codes" type="RESOURCE"/>
   <resource name="get_color_code_hex" type="RESOURCE"/>
   <resource name="hex_to_decimal" type="RESOURCE"/>
+  <resource name="get_team_color_code" type="RESOURCE"/>
 </resources>

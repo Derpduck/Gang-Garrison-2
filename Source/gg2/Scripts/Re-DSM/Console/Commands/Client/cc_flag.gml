@@ -14,4 +14,4 @@ console_print(COL_FLAG + "F5A9B8################################")
 
 console_print(COL_FLAG + "5BCEFA################################")
 console_print(COL_FLAG + "5BCEFA################################")
-', '', 0)
+', '', CC_CLIENT);

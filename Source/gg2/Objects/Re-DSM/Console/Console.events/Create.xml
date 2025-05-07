@@ -33,7 +33,7 @@ cursorYOffset = 0;
 alarm[0] = cursorBlinkTime / global.delta_factor;
 
 // Console History
-displayedLines = global.consoleLines;
+displayedLines = global.consoleOutputRows;
 outputHistoryOffset = 0;
 inputHistoryIndex = ds_list_size(global.consoleInputHistory);
 ds_list_add(global.consoleInputHistory, "");

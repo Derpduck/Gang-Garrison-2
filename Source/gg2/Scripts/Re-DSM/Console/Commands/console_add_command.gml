@@ -10,7 +10,7 @@ commandRule = argument3;
 ds_map_add(global.consoleCommandMap, commandName, commandCode);
 
 // Command Help
-if (commandHelp != "")
+if (string(commandHelp) != "" or string(commandHelp) != "0")
 {
     ds_map_add(global.consoleCommandMapHelp, commandName, commandHelp);
 }

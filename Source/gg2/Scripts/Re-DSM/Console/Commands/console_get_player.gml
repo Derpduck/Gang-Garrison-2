@@ -34,7 +34,11 @@ with (Player)
 {
     // Get the ID of a player with the give name
     if (name == other.input)
-       other.player = id; 
+        // Check for exact name case first
+       other.player = id;
+    else if (string_lower(name) == string_lower(other.input))
+        // Otherwise, ignore case
+        other.player = id;
 }
 
 // Couldn't find a player with that name

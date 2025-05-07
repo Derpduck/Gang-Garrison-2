@@ -34,7 +34,7 @@ if (expanded)
 }
 else
 {
-    displayedLines = max(2, min(maxOutputBoxSize div lineSpacing, global.consoleLines));
+    displayedLines = max(2, min(maxOutputBoxSize div lineSpacing, global.consoleOutputRows));
 }
 
 // Input Box

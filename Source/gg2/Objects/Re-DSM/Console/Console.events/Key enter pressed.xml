@@ -24,10 +24,15 @@ else
     // Otherwise, send a command
     if (currentText != "")
     {
-        ds_list_add(global.consoleInputHistory, currentText);
-        while (ds_list_size(global.consoleInputHistory) &gt; global.consoleInputHistoryMax)
+        // Don't add consecutive duplicate commands
+        if (ds_list_find_value(global.consoleInputHistory, ds_list_size(global.consoleInputHistory) - 1) != currentText)
         {
-            ds_list_delete(global.consoleInputHistory, 0);
+            ds_list_add(global.consoleInputHistory, currentText);
+            
+            while (ds_list_size(global.consoleInputHistory) &gt; global.consoleInputHistoryMax)
+            {
+                ds_list_delete(global.consoleInputHistory, 0);
+            }
         }
         inputHistoryIndex = ds_list_size(global.consoleInputHistory);
         console_send_command(string_replace_all(currentText, "\#", "#"), -1);

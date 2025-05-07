@@ -1,21 +1,13 @@
 // TODO: Add documentation
 console_add_command('rcon', '
-// Check for the correct number of arguments
-if (arg[0] == 0)
+if (console_validate_args(1, arg[0], "rcon <command> <optional: argument>") == false) exit;
+
+// Check for the correct number of arguments on specific commands
+if (arg[1] != "toggle" and arg[1] != "save" and arg[1] != "users")
 {
-    console_print(COL_RED + "[ERROR] Incorrect number of arguments, syntax: rcon <command> <argument>");
+    if (console_validate_args(2, arg[0], "rcon " + arg[1] + " <argument>") == false) exit;
     exit;
 }
-
-if (arg[0] < 2)
-{
-    if (arg[1] != "toggle" and arg[1] != "save" and arg[1] != "users")
-    {
-        console_print(COL_RED + "[ERROR] Incorrect number of arguments, syntax: rcon <command> <argument>");
-        exit;
-    }
-}
-
 
 switch(arg[1])
 {
@@ -148,7 +140,7 @@ case "users":
             playerIP = string(socket_remote_ip(player.socket));
             ipSpaces = string_repeat(" ", 15 - string_length(playerIP));
             
-            console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + COL_WHITE + playerIP + ipSpaces + COL_ORANGE + " | " + console_player_team_color(player) + player.name);
+            console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + COL_WHITE + playerIP + ipSpaces + COL_ORANGE + " | " + get_team_color_code(player) + player.name);
         }
     };
     
@@ -159,4 +151,4 @@ default:
     console_print(COL_RED + "[ERROR] Invalid RCON command: " + arg[1]);
     break;
 }
-', '', 0);
+', '', CC_CLIENT);

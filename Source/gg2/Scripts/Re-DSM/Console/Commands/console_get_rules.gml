@@ -1,5 +1,5 @@
 // Built-in checks for who can execute each console command, to prevent illegal commands
-// argument0 = Which level of security to apply: 0 / Default = Client, 1 = Host + RCON, 2 = Host Only
+// argument0 = Who can execute the command / where the command is executed
 // argument1 = Command received by the host from RCON client
 // argument2 = Command string
 var rconPlayer, rconCommand, originalInput, rconCommand, execute;
@@ -18,8 +18,7 @@ else
 
 switch(argument0)
 {
-// Host + RCON
-case 1:
+case CC_HOST_RCON:
     // As client: Send command to host if client has RCON access
     if (global.isRCON and !global.isHost)
     {
@@ -52,8 +51,7 @@ case 1:
     execute = true;
     break;
 
-// Host Only
-case 2:
+case CC_HOST:
     // As host: Reject command if it came from RCON client
     if (rconCommand)
     {

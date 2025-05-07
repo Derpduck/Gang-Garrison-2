@@ -1,19 +1,22 @@
 // Console Options
 ini_open("Re-DSM.ini");
-global.saveConsoleLog = ini_read_real("Console", "SaveConsoleLog", 0);
-ini_write_real("Console", "SaveConsoleLog", global.saveConsoleLog);
+global.saveConsoleLog = ini_read_real("Console", "SaveLog", 0);
+ini_write_real("Console", "SaveLog", global.saveConsoleLog);
     
-global.consoleLines = ini_read_real("Console", "ConsoleLines", 14);
-ini_write_real("Console", "ConsoleLines", global.consoleLines);
+global.consoleOutputRows = ini_read_real("Console", "OutputWindowRows", 14);
+ini_write_real("Console", "OutputWindowRows", global.consoleOutputRows);
 
-global.consoleOpacity = ini_read_real("Console", "ConsoleOpacity", 75);
-ini_write_real("Console", "ConsoleOpacity", global.consoleOpacity);
+global.consoleOpacity = ini_read_real("Console", "WindowOpacity", 75);
+ini_write_real("Console", "WindowOpacity", global.consoleOpacity);
 
-global.consoleAutocomplete = ini_read_real("Console", "ConsoleAutocomplete", 1);
-ini_write_real("Console", "ConsoleAutocomplete", global.consoleAutocomplete);
+global.consoleAutocomplete = ini_read_real("Console", "TabAutocomplete", 1);
+ini_write_real("Console", "TabAutocomplete", global.consoleAutocomplete);
 
-global.consoleTimestamps = ini_read_real("Console", "ConsoleTimestamps", 0);
-ini_write_real("Console", "ConsoleTimestamps", global.consoleTimestamps);
+global.consoleTimestamps = ini_read_real("Console", "ShowTimestamps", 0);
+ini_write_real("Console", "ShowTimestamps", global.consoleTimestamps);
+
+global.consoleBoldFont = ini_read_real("Console", "BoldFont", 0);
+ini_write_real("Console", "BoldFont", global.consoleBoldFont);
 
 
 // RCON Options

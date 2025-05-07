@@ -143,4 +143,7 @@
   <constant name="GEAR_HAXXY_CAPE" value="&quot;HaxxyCape&quot;"/>
   <constant name="COL_FLAG" value="&quot;&lt;!&gt;&quot;"/>
   <constant name="COLOR_RGB_LENGTH" value="9"/>
+  <constant name="CC_CLIENT" value="0"/>
+  <constant name="CC_HOST" value="1"/>
+  <constant name="CC_HOST_RCON" value="2"/>
 </constants>

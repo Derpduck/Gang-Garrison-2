@@ -7,14 +7,13 @@ inputArguments = 0;
 
 // Don't declare these so they can be used in the executed commands
 arg[0] = "";
-originalInput = "";
+originalInput = argument0;
 rconPlayer = argument1;
 
 // Sanitize newlines
 input = string_replace_all(input, chr(10), " ");
 input = string_replace_all(input, chr(13), " ");
 input = string_replace_all(input, "\#", "#");
-originalInput = string_delete(input, string_length(input), 1);
 
 // Print user input
 if (rconPlayer == -1)

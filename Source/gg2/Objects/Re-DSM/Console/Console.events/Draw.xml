@@ -43,7 +43,10 @@ draw_rectangle(expandXLeft, expandYTop, expandXRight, expandYBottom, true);
 // Text
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_set_font(global.consoleFont)
+if (global.consoleBoldFont)
+    draw_set_font(global.gg2Font);
+else
+    draw_set_font(global.consoleFont);
 // Input Box
 draw_text(boxLeft + global.consoleTextPadding, inputBoxBottom - inputBoxPaddingHeight, displayText);
 

@@ -26,10 +26,13 @@ else
     }
     else
     {
-        console_print(COL_RED + "[ERROR] Unknown command: " + command);
+        if (command == "me")
+            console_print(COL_ORANGE + "Won" + SINGLE_QUOTE + "t you please, please help me"
+        else
+            console_print(COL_RED + "[ERROR] Unknown command: " + command);
     }
 }
 ', '
 console_print("Syntax: help <command>");
-console_print("Try entering help once, not twice.");
-', 0);
+console_print(COL_ORANGE + "Try entering help once, not twice.");
+', CC_CLIENT);
