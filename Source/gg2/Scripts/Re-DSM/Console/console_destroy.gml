@@ -1,5 +1,4 @@
-if (global.saveConsoleLog)
-    console_save_log();
+console_save_log();
 
 // Empty the console log
 ds_list_clear(global.consoleOutputHistory);

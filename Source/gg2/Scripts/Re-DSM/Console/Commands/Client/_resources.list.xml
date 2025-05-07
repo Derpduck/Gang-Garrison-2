@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="cc_test" type="RESOURCE"/>
   <resource name="cc_help" type="RESOURCE"/>
   <resource name="cc_execute" type="RESOURCE"/>
   <resource name="cc_rcon" type="RESOURCE"/>
   <resource name="cc_flag" type="RESOURCE"/>
-  <resource name="cc_test" type="RESOURCE"/>
+  <resource name="cc_quit" type="RESOURCE"/>
+  <resource name="cc_disconnect" type="RESOURCE"/>
 </resources>

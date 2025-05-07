@@ -1,4 +1,6 @@
 // Save console log to file
+if (!global.saveConsoleLog) exit;
+
 var datetime, logFile, logFileName;
 
 datetime=string(date_datetime_string(date_current_datetime()))
