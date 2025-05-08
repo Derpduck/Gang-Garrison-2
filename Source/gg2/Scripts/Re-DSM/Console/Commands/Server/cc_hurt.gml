@@ -10,8 +10,8 @@ if (player == -1)
 }
 else
 {
-    // Check if damage number given is valid
-    if (string_digits(arg[2]) != string_lettersdigits(arg[2]))
+    // Check if damage number given is actually a number
+    if (!string_is_real(arg[2]))
     {
         console_print(COL_ORANGE + arg[2] + " is not a valid number");
         break;
@@ -23,7 +23,7 @@ else
     if (player.object != -1)
     {
         player.object.hp -= damage;
-        console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was dealt " + COL_YELLOW + string(damage) + COL_ORANGE + " damage");
+        console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was dealt " + COL_YELLOW + arg[2] + COL_ORANGE + " damage");
     }
     else
     {

@@ -9,24 +9,29 @@ var hostAllowed, playerID;
 input = argument0;
 hostAllowed = real(argument1);
 
+player = -1;
+
 if (input == "")
 {
     return -1;
 }
 
-playerID = real(string_digits(input));
-player = -1;
-
-// Check for player ID
-if (string_letters(input) == "" and string_digits(input) != "")
+if (string_is_real(input))
 {
-    // Check if player is host and is allowed
-    if (playerID == 0 and !hostAllowed)
-        return -1;
+    playerID = real(input);
     
-    // Otherwise, get player instance from ID
-    if (playerID < ds_list_size(global.players))
-        return ds_list_find_value(global.players, playerID);
+    // Check for player ID, if it's a valid ID
+    if (playerID >= 0 and real_is_int(playerID))
+    {
+        show_message("INT")
+        // Check if player is host and is allowed
+        if (playerID == 0 and !hostAllowed)
+            return -1;
+        
+        // Otherwise, get player instance from ID
+        if (playerID < ds_list_size(global.players))
+            return ds_list_find_value(global.players, playerID);
+    }
 }
 
 // Check for player name
