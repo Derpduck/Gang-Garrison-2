@@ -15,7 +15,7 @@ COL_RED         =   COL_FLAG + "ff0000" // Console errors
 COL_RED_LT      =   COL_FLAG + "ff4848" // Red team
 COL_RED_DK      =   COL_FLAG + "b40000" // Not used
 COL_ORANGE      =   COL_FLAG + "ff8000" // Console output
-COL_YELLOW      =   COL_FLAG + "ffff00" // System messages
+COL_YELLOW      =   COL_FLAG + "ffff00" // System messages, console output arguments
 COL_GOLD        =   COL_FLAG + "ffd700"
 
 COL_GREEN       =   COL_FLAG + "00ff00" // Spectator team

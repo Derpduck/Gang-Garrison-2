@@ -5,6 +5,11 @@ cc_kick();
 cc_kill();
 cc_gib();
 cc_hurt();
+cc_teleport();
+cc_message();
+cc_password();
+cc_end();
+cc_map();
 
 // Client Side Commands
 cc_help();

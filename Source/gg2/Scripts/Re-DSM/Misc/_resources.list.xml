@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="create_notice_message" type="RESOURCE"/>
+  <resource name="get_next_map" type="RESOURCE"/>
+</resources>

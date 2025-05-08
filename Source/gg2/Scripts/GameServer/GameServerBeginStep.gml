@@ -62,7 +62,10 @@ if(global.winners != -1 and !global.mapchanging)
     else
     {
         global.currentMapArea = 1;
-        global.nextMap = nextMapInRotation();
+        if (global.nextMap == global.currentMap)
+        {
+            global.nextMap = nextMapInRotation();
+        }
     }
     
     global.mapchanging = true;

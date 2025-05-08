@@ -122,6 +122,8 @@
     else
         serverGotoMap(global.launchMap);
     
+    global.nextMap = global.currentMap;
+    
     global.joinedServerName = global.serverName; // so no errors of unknown variable occur when you create a server
     global.mapchanging = false; 
     

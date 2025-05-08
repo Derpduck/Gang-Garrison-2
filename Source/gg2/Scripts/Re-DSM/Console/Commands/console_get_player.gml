@@ -23,7 +23,6 @@ if (string_is_real(input))
     // Check for player ID, if it's a valid ID
     if (playerID >= 0 and real_is_int(playerID))
     {
-        show_message("INT")
         // Check if player is host and is allowed
         if (playerID == 0 and !hostAllowed)
             return -1;

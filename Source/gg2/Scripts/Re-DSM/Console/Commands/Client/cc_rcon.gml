@@ -3,13 +3,12 @@ console_add_command('rcon', '
 if (console_validate_args(1, arg[0], "rcon <command> <optional: argument>") == false) exit;
 
 // Check for the correct number of arguments on specific commands
-if (arg[1] != "toggle" and arg[1] != "save" and arg[1] != "users")
+if (string_lower(arg[1]) != "toggle" and string_lower(arg[1]) != "save" and string_lower(arg[1]) != "users")
 {
     if (console_validate_args(2, arg[0], "rcon " + arg[1] + " <argument>") == false) exit;
-    exit;
 }
 
-switch(arg[1])
+switch(string_lower(arg[1]))
 {
 case "login":
     if (global.isHost)

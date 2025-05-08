@@ -1,5 +1,5 @@
 console_add_command('help', '
-if (arg[0] == 0)
+if (console_validate_args(1, arg[0], "help <command>", true) == false)
 {
     // List all available commands
     var commandString;
@@ -27,7 +27,7 @@ else
     else
     {
         if (command == "me")
-            console_print(COL_ORANGE + "Won" + SINGLE_QUOTE + "t you please, please help me"
+            console_print(COL_ORANGE + "Won" + SINGLE_QUOTE + "t you please, please help me")
         else
             console_print(COL_RED + "[ERROR] Unknown command: " + command);
     }

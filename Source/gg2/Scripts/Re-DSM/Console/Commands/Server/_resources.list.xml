@@ -4,4 +4,9 @@
   <resource name="cc_kill" type="RESOURCE"/>
   <resource name="cc_gib" type="RESOURCE"/>
   <resource name="cc_hurt" type="RESOURCE"/>
+  <resource name="cc_teleport" type="RESOURCE"/>
+  <resource name="cc_message" type="RESOURCE"/>
+  <resource name="cc_password" type="RESOURCE"/>
+  <resource name="cc_end" type="RESOURCE"/>
+  <resource name="cc_map" type="RESOURCE"/>
 </resources>

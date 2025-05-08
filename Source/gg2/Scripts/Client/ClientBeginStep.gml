@@ -572,10 +572,7 @@ do {
         case MESSAGE_STRING:
             var message, notice;
             message = receivestring(global.serverSocket, 1);
-            with NoticeO instance_destroy();
-            notice = instance_create(0, 0, NoticeO);
-            notice.notice = NOTICE_CUSTOM;
-            notice.message = message;
+            create_notice_message(message);
             break;
         
         case SENTRY_POSITION:
