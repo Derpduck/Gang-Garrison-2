@@ -146,7 +146,6 @@ default:
     break;
 }
 ', '
-// TODO
 console_print(COL_ORANGE + "Syntax: rcon <command> <optional: argument>");
 console_print(COL_ORANGE + "Commands:");
 console_print(COL_ORANGE + "Syntax: rcon login <password>");

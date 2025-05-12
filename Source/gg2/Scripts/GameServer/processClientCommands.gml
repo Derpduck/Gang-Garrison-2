@@ -386,7 +386,7 @@ while(commandLimitRemaining > 0) {
             {
                 // Wrong password
                 write_ubyte(player.socket, DSM_RCON_LOGIN);
-                write_ubyte(player.socket, 0);
+                write_ubyte(player.socket, RCON_LOGIN_FAILED);
             }
             break;
         
@@ -402,20 +402,20 @@ while(commandLimitRemaining > 0) {
                 {
                     console_print(COL_PINK + "[RCON CMD] " + player.name + " attempted to send a command without RCON access by using a modified client");
                     write_ubyte(player.socket, DSM_RCON_CMD);
-                    write_ubyte(player.socket, 0);
+                    write_ubyte(player.socket, RCON_CMD_FAILED);
                     break;
                 }
                 
                 // Let player know command was executed successfully
                 console_send_command(rconCommand, player);
                 write_ubyte(player.socket, DSM_RCON_CMD);
-                write_ubyte(player.socket, 1);
+                write_ubyte(player.socket, RCON_CMD_SUCCESS);
             }
             else
             {
                 // RCON is disabled
                 write_ubyte(player.socket, DSM_RCON_CMD);
-                write_ubyte(player.socket, 2);
+                write_ubyte(player.socket, RCON_CMD_DISABLED);
                 break
             }
             

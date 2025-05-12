@@ -649,21 +649,27 @@ do {
             
             switch(loginResult)
             {
-            case 1:
+            case RCON_LOGIN_SUCCESS:
                 // Successful login
                 global.isRCON = true;
                 console_print(COL_PINK + "[RCON LOGIN] RCON access was granted");
                 break;
             
-            case 2:
+            case RCON_LOGIN_FAILED:
+                // Failed login
+                global.isRCON = true;
+                console_print(COL_PINK + "[RCON LOGIN] RCON login failed");
+                break;
+            
+            case RCON_LOGIN_REMOVED:
                 //RCON removed by host
                 global.isRCON = false;
                 console_print(COL_PINK + "[RCON LOGIN] RCON access was revoked");
                 break;
             
             default:
-                // Failed login, or any other result
-                console_print(COL_PINK + "[RCON LOGIN] RCON login failed");
+                // Any other result
+                console_print(COL_PINK + "[RCON LOGIN] RCON login failed unexpectedly");
                 break;
             }
             break;
@@ -676,17 +682,24 @@ do {
             
             switch(commandResult)
             {
-            case 1:
+            case RCON_CMD_SUCCESS:
                 // Command executed successfully
                 console_print(COL_PINK + "[RCON CMD] RCON command sent successfully");
                 break;
-            case 2:
+            
+            case RCON_CMD_FAILED:
+                // Does not have RCON access
+                console_print(COL_PINK + "[RCON CMD] You do not have RCON access");
+                break;
+            
+            case RCON_CMD_DISABLED:
                 // RCON is disabled on the server
                 console_print(COL_PINK + "[RCON CMD] RCON is disabled");
                 break;
+            
             default:
-                // Client doesn't have RCON access, or any other error
-                console_print(COL_PINK + "[RCON CMD] You do not have RCON access");
+                // Any other error
+                console_print(COL_PINK + "[RCON CMD] RCON command failed unexpectedly");
             }
             break;
 

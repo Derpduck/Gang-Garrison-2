@@ -76,8 +76,8 @@
   <constant name="CLIENT_SETTINGS" value="58"/>
   <constant name="KICK_MULTI_CLIENT" value="59"/>
   <constant name="RESERVE_SLOT" value="60"/>
-  <constant name="DSM_RCON_LOGIN" value="61"/>
-  <constant name="DSM_RCON_CMD" value="62"/>
+  <constant name="DSM_RCON_LOGIN" value="70"/>
+  <constant name="DSM_RCON_CMD" value="71"/>
   <constant name="TEAM_RED" value="0"/>
   <constant name="TEAM_BLUE" value="1"/>
   <constant name="TEAM_SPECTATOR" value="2"/>
@@ -146,4 +146,10 @@
   <constant name="CC_CLIENT" value="0"/>
   <constant name="CC_HOST" value="1"/>
   <constant name="CC_HOST_RCON" value="2"/>
+  <constant name="RCON_LOGIN_SUCCESS" value="1"/>
+  <constant name="RCON_LOGIN_FAILED" value="2"/>
+  <constant name="RCON_LOGIN_REMOVED" value="3"/>
+  <constant name="RCON_CMD_SUCCESS" value="4"/>
+  <constant name="RCON_CMD_FAILED" value="5"/>
+  <constant name="RCON_CMD_DISABLED" value="6"/>
 </constants>
