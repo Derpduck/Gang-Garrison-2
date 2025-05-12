@@ -2,6 +2,9 @@
 
 // Server Side Commands
 cc_kick();
+cc_ban();
+cc_tempban();
+cc_unban();
 cc_kill();
 cc_gib();
 cc_hurt();

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ban_user" type="RESOURCE"/>
+  <resource name="unban_user" type="RESOURCE"/>
+  <resource name="ban_write_to_file" type="RESOURCE"/>
+  <resource name="ban_remove_from_file" type="RESOURCE"/>
+  <resource name="bans_get_users_from_file" type="RESOURCE"/>
+</resources>

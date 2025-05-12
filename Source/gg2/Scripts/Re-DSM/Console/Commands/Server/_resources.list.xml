@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="cc_kick" type="RESOURCE"/>
+  <resource name="cc_ban" type="RESOURCE"/>
+  <resource name="cc_tempban" type="RESOURCE"/>
+  <resource name="cc_unban" type="RESOURCE"/>
   <resource name="cc_kill" type="RESOURCE"/>
   <resource name="cc_gib" type="RESOURCE"/>
   <resource name="cc_hurt" type="RESOURCE"/>

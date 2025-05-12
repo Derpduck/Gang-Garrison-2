@@ -433,6 +433,10 @@ do {
             if reason == KICK_NAME kickReason = "Name Exploit";
             else if reason == KICK_BAD_PLUGIN_PACKET kickReason = "Invalid plugin packet ID";
             else if reason == KICK_MULTI_CLIENT kickReason = "There are too many connections from your IP";
+            else if reason == DSM_KICK_ADMIN kickReason = "Kicked by server admin";
+            else if reason == DSM_KICK_BAN kickReason = "You were banned from the server";
+            else if reason == DSM_KICK_TEMP_BAN kickReason = "You were temporarily banned from the server";
+            else if reason == DSM_KICK_BANNED kickReason = "You are banned from this server";
             else kickReason = "";
             show_message("You have been kicked from the server. "+kickReason+".");
             instance_destroy();

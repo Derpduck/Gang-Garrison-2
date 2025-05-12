@@ -26,9 +26,10 @@
 	- Multi-clienting hosts are automatically given RCON access
 - Fixed many bugs and QOL issues found in previous implementations of the Console in DSM and E-Sports Mod
 
-
+#### Console Commands
 
 
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open
+- Fixed multi-client limit disconnect message never being received by clients

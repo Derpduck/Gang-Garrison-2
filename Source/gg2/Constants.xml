@@ -152,4 +152,8 @@
   <constant name="RCON_CMD_SUCCESS" value="4"/>
   <constant name="RCON_CMD_FAILED" value="5"/>
   <constant name="RCON_CMD_DISABLED" value="6"/>
+  <constant name="DSM_KICK_ADMIN" value="1"/>
+  <constant name="DSM_KICK_BAN" value="2"/>
+  <constant name="DSM_KICK_TEMP_BAN" value="3"/>
+  <constant name="DSM_KICK_BANNED" value="4"/>
 </constants>

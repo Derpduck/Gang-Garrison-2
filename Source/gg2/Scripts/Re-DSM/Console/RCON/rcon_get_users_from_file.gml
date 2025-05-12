@@ -1,4 +1,4 @@
-// Get all saved RCON user from file, create a file if it doesn't exist
+// Get all saved RCON users from file, create a file if it doesn't exist
 global.rconSavedUsers = ds_map_create();
 
 if (global.rconEnabled)
@@ -12,7 +12,7 @@ if (global.rconEnabled)
         {
             rconLine = file_text_read_string(rconFile);
             rconIP = string_copy(rconLine, 1, string_pos("@", rconLine) - 1);
-            rconName = string_copy(rconLine, string_pos("@", rconLine) + 1, string_length(rconName));
+            rconName = string_copy(rconLine, string_pos("@", rconLine) + 1, string_length(rconLine));
             
             if (!ds_map_exists(global.rconSavedUsers, rconIP))
             {

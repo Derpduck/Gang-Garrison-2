@@ -46,9 +46,12 @@ case "add":
         break;
     }
     
-    rcon_user_add(player);
+    if (rcon_user_add(player))
+        console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
+    else
+        console_print(COL_PINK + "[RCON LOGIN] " + player.name + " already has RCON access");
+    
     rcon_write_to_file(player);
-    console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
     break;
 
 case "remove":
@@ -66,9 +69,13 @@ case "remove":
         break;
     }
     
-    rcon_user_remove(player);
+    if (rcon_user_remove(player))
+        console_print(COL_PINK + "[RCON LOGIN] " + player.name + SINGLE_QUOTE + "s RCON access was revoked");
+    else
+        console_print(COL_PINK + "[RCON LOGIN] " + player.name + " does not have RCON access");
+    
     rcon_remove_from_file(player);
-    console_print(COL_PINK + "[RCON LOGIN] " + player.name + SINGLE_QUOTE + "s RCON access was revoked");
+
     break;
 
 case "password":

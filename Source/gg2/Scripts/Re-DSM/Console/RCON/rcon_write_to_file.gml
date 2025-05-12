@@ -15,5 +15,4 @@ if (global.saveRconUsers)
     file_text_write_string(rconFile, string(playerIP) + "@" + player.name);
     file_text_writeln(rconFile);
     file_text_close(rconFile);
-
 }
