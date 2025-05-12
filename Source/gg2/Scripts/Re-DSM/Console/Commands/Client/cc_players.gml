@@ -21,4 +21,7 @@ for (i=0; i<ds_list_size(global.players); i+=1)
         console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + get_team_color_code(player) + player.name + isRCON);
     }
 };
-', '', CC_CLIENT);
+', '
+console_print(COL_ORANGE + "Syntax: players");
+console_print(COL_ORANGE + "Prints a list of all players on the server and their ID numbers");
+', CC_CLIENT);

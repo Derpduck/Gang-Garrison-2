@@ -13,4 +13,7 @@ else
     with(GameServer)
         instance_destroy();
 }
-', '', CC_CLIENT);
+', '
+console_print(COL_ORANGE + "Syntax: disconnect");
+console_print(COL_ORANGE + "Immediately leaves the server");
+', CC_CLIENT);

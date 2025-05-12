@@ -1,4 +1,7 @@
 console_add_command('reboot', '
 console_save_log();
 restartGG2();
-', '', CC_CLIENT);
+', '
+console_print(COL_ORANGE + "Syntax: reboot");
+console_print(COL_ORANGE + "Immediately re-launches the game");
+', CC_CLIENT);

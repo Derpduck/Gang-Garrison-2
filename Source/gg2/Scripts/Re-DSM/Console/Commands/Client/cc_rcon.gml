@@ -1,4 +1,3 @@
-// TODO: Add documentation
 console_add_command('rcon', '
 if (console_validate_args(1, arg[0], "rcon <command> <optional: argument>") == false) exit;
 
@@ -19,9 +18,7 @@ case "login":
     
     if (global.isRCON)
     {
-        // TODO: Remove check as it could cause issues if client desyncs, perform check at server side
-        console_print(COL_RED + "[ERROR] You already have RCON access");
-        break;
+        console_print(COL_ORANGE + "You already have RCON access");
     }
     
     var password;
@@ -148,4 +145,22 @@ default:
     console_print(COL_RED + "[ERROR] Invalid RCON command: " + arg[1]);
     break;
 }
-', '', CC_CLIENT);
+', '
+// TODO
+console_print(COL_ORANGE + "Syntax: rcon <command> <optional: argument>");
+console_print(COL_ORANGE + "Commands:");
+console_print(COL_ORANGE + "Syntax: rcon login <password>");
+console_print(COL_ORANGE + "[Client Only] Asks for RCON access using the given password");
+console_print(COL_ORANGE + "Syntax: rcon password <text>");
+console_print(COL_ORANGE + "[Host Only] Sets the RCON login password to the given text");
+console_print(COL_ORANGE + "Syntax: rcon add <player>");
+console_print(COL_ORANGE + "[Host Only] Grants RCON access to the given player");
+console_print(COL_ORANGE + "Syntax: rcon remove <player>");
+console_print(COL_ORANGE + "[Host Only] Removes RCON access from the given player");
+console_print(COL_ORANGE + "Syntax: rcon toggle");
+console_print(COL_ORANGE + "[Host Only] Toggles RCON access");
+console_print(COL_ORANGE + "Syntax: rcon save");
+console_print(COL_ORANGE + "[Host Only] Toggles saving of new RCON users");
+console_print(COL_ORANGE + "Syntax: rcon users");
+console_print(COL_ORANGE + "[Host Only] Prints a list of all active RCON users, their ID numbers and IP addresses");
+', CC_CLIENT);
