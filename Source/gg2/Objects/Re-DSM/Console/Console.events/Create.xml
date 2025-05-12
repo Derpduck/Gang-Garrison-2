@@ -36,10 +36,9 @@ alarm[0] = cursorBlinkTime / global.delta_factor;
 displayedLines = global.consoleOutputRows;
 outputHistoryOffset = 0;
 inputHistoryIndex = ds_list_size(global.consoleInputHistory);
-ds_list_add(global.consoleInputHistory, "");
 
-// Expand / Collapse Button
-expanded = false;
+// Fullscreen Button
+fullscreen = false;
 
 // Drawing
 boxPaddingWidth = 4;

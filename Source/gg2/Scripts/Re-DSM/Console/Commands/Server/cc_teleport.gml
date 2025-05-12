@@ -21,4 +21,7 @@ else
         console_print(get_team_color_code(player) + player.name + COL_ORANGE + " is not alive");
     }
 }
-', '', CC_HOST);
+', '
+console_print(COL_ORANGE + "Syntax: teleport <player>");
+console_print(COL_ORANGE + "Teleports the given player to the current cursor position");
+', CC_HOST);

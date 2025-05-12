@@ -6,8 +6,8 @@ message = string_delete(originalInput, 1, string_length("message "));
 
 ServerMessageString(global.sendBuffer, message);
 create_notice_message(message);
-console_print(COL_ORANGE + "Sent Notice Message: " + message);
+console_print(COL_ORANGE + "Sent pop-up message: " + message);
 ', '
-console_print("Syntax: message <text>);
-console_print("Sends all clients a notification bearing the message");
+console_print(COL_ORANGE + "Syntax: message <text>");
+console_print(COL_ORANGE + "Sents a custom pop-up message to all players");
 ', CC_HOST_RCON);

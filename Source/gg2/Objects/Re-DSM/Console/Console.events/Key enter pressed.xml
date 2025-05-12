@@ -42,6 +42,7 @@ else
     suggestedText = "";
     cursorIndex = 0;
     cursorScrollDelay = 0;
+    outputHistoryOffset = 0;
 }
 </argument>
       </arguments>

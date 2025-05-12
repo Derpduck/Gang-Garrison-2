@@ -7,6 +7,6 @@ code = string_delete(originalInput, 1, string_length("execute "));
 execute_string(code);
 console_print(COL_ORANGE + "Executed Code: " + code);
 ', '
-console_print("Syntax: execute <code>);
-console_print("Executes the given code immediately. Use with caution.");
+console_print(COL_ORANGE + "Syntax: execute <code>");
+console_print(COL_ORANGE + "Runs the given text as GML code, use with caution");
 ', CC_CLIENT);

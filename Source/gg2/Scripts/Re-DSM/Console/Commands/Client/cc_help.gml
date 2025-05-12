@@ -34,5 +34,5 @@ else
 }
 ', '
 console_print("Syntax: help <command>");
-console_print(COL_ORANGE + "Try entering help once, not twice.");
+console_print(COL_ORANGE + "Prints documentation for the given command");
 ', CC_CLIENT);

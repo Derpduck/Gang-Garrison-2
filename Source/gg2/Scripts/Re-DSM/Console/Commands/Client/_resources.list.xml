@@ -6,6 +6,7 @@
   <resource name="cc_execute" type="RESOURCE"/>
   <resource name="cc_rcon" type="RESOURCE"/>
   <resource name="cc_quit" type="RESOURCE"/>
+  <resource name="cc_reboot" type="RESOURCE"/>
   <resource name="cc_disconnect" type="RESOURCE"/>
   <resource name="cc_clear" type="RESOURCE"/>
   <resource name="cc_players" type="RESOURCE"/>

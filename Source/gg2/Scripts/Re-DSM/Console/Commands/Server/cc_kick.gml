@@ -13,4 +13,7 @@ else
     player.kicked = true;
     console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was kicked");
 }
-', '', CC_HOST_RCON);
+', '
+console_print(COL_ORANGE + "Syntax: kick <player>");
+console_print(COL_ORANGE + "Kicks the given player from the server");
+', CC_HOST_RCON);

@@ -33,20 +33,20 @@ inputBoxTop = inputBoxBottom - 2 - (inputBoxPaddingHeight * 2) - (inputBoxRows *
 outputBoxBottom = inputBoxTop - boxPaddingHeight;
 outputBoxTop = outputBoxBottom - (displayedLines * lineSpacing) - boxPaddingHeight;
 
-// Expand / Collapse Button
-expandXRight = boxRight;
-expandXLeft = expandXRight - 23;
+// Fullscreen Button
+fullscreenXRight = boxRight;
+fullscreenXLeft = fullscreenXRight - 23;
 
-if (expanded)
+if (fullscreen)
 {
-    // Pin to top when expanded
-    expandYTop = offsetY + boxPaddingHeight;
-    expandYBottom = expandYTop + 21;
+    // Pin to top when fullscreen
+    fullscreenYTop = offsetY + boxPaddingHeight;
+    fullscreenYBottom = fullscreenYTop + 21;
 }
 else
 {
-    expandYBottom = outputBoxTop - boxPaddingHeight;
-    expandYTop = expandYBottom - 21;
+    fullscreenYBottom = outputBoxTop - boxPaddingHeight;
+    fullscreenYTop = fullscreenYBottom - 21;
 }
 </argument>
       </arguments>

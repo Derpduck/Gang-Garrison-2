@@ -3,8 +3,9 @@
 ## Version 1 (WIP)
 ### Console
 > Implemented an improved version of the console from E-Sports Mod
+- New commands and improvements to old ones
 - Cleaner visual style that with improved display features
-	- Expand / collapse button can adjust the size of the console window
+	- Fullscreen button to adjust the size of the console window (or press F4)
 	- Input box expands to fit text longer than 1 line
 	- Multiple colors per line are now supported
 - Press Tab to auto-complete typed commands

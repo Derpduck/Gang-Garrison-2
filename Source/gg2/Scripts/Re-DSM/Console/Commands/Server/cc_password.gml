@@ -18,6 +18,7 @@ else
     }
 }
 ', '
-console_print("Syntax: message <text>);
-console_print("Sends all clients a notification bearing the message");
+console_print(COL_ORANGE + "Syntax: password <new password>");
+console_print(COL_ORANGE + "Changes the server password to the given text");
+console_print(COL_ORANGE + "Leave <new password> blank to remove the current password");
 ', CC_HOST_RCON);

@@ -10,6 +10,11 @@ cc_message();
 cc_password();
 cc_end();
 cc_map();
+cc_maps();
+cc_slots();
+cc_shuffle();
+cc_time();
+cc_restart();
 
 // Client Side Commands
 cc_help();
@@ -18,6 +23,7 @@ cc_rcon();
 cc_flag();
 cc_test();
 cc_quit();
+cc_reboot();
 cc_disconnect();
 cc_clear();
 cc_players();

@@ -13,7 +13,7 @@ else
     // Check if damage number given is actually a number
     if (!string_is_real(arg[2]))
     {
-        console_print(COL_ORANGE + arg[2] + " is not a valid number");
+        console_print(COL_RED + "[ERROR] " + arg[2] + " is not a valid number");
         break;
     }
     
@@ -30,4 +30,7 @@ else
         console_print(get_team_color_code(player) + player.name + COL_ORANGE + " is not alive");
     }
 }
-', '', CC_HOST_RCON);
+', '
+console_print(COL_ORANGE + "Syntax: hurt <player> <damage>");
+console_print(COL_ORANGE + "Deals damage to the given player");
+', CC_HOST_RCON);

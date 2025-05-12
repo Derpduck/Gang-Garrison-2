@@ -59,7 +59,7 @@ if(global.winners != -1 and !global.mapchanging)
         global.currentMapArea += 1;
         global.nextMap = global.currentMap;
     }
-    else
+    else if (!global.consoleMapChangeQueued)
     {
         global.currentMapArea = 1;
         if (global.nextMap == global.currentMap)
@@ -89,6 +89,7 @@ if(impendingMapChange == 0)
     serverGotoMap(global.nextMap);
     ServerChangeMap(global.currentMap, global.currentMapMD5, global.sendBuffer);
     impendingMapChange = -1;
+    global.consoleMapChangeQueued = false;
     
     with(Player)
     {

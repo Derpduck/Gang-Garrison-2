@@ -24,21 +24,21 @@ draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, false);
 // Output Box
 draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, false);
 
-// Expand / Collapse Button
+// Fullscreen Button
 var spriteYOffset;
-if (expanded)
+if (fullscreen)
     spriteYOffset = 2;
 else
     spriteYOffset = 0;
-draw_rectangle(expandXLeft, expandYTop, expandXRight, expandYBottom, false);
-draw_sprite_ext(ScrollButtonS, expanded, expandXRight - 11, expandYBottom - 9 - spriteYOffset, 1, 1, 0, c_white, 1);
+draw_rectangle(fullscreenXLeft, fullscreenYTop, fullscreenXRight, fullscreenYBottom, false);
+draw_sprite_ext(ScrollButtonS, fullscreen, fullscreenXRight - 11, fullscreenYBottom - 9 - spriteYOffset, 1, 1, 0, c_white, 1);
 
 // Console Borders
 draw_set_alpha(1);
 draw_set_color(c_white);
 draw_rectangle(boxLeft, inputBoxTop, boxRight, inputBoxBottom, true);
 draw_rectangle(boxLeft, outputBoxTop, boxRight, outputBoxBottom, true);
-draw_rectangle(expandXLeft, expandYTop, expandXRight, expandYBottom, true);
+draw_rectangle(fullscreenXLeft, fullscreenYTop, fullscreenXRight, fullscreenYBottom, true);
 
 // Text
 draw_set_halign(fa_left);

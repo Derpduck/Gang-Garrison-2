@@ -34,4 +34,5 @@ ini_close();
 // Console Controls
 ini_open("controls.gg2");
 global.consoleKey = ini_read_real("Controls", "ConsoleKey", vk_f3);
+global.consoleFullscreenKey = ini_read_real("Controls", "ConsoleFullscreenKey", vk_f4);
 ini_close();

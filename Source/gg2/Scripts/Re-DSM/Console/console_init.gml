@@ -4,9 +4,11 @@ console_options();
 
 // Console Globals
 global.consoleInputHistory = ds_list_create();
+ds_list_add(global.consoleInputHistory, "");
 global.consoleOutputHistory = ds_list_create();
 global.consoleInputHistoryMax = 8192; // Hard limit to prevent memory issues
 global.consoleOutputHistoryMax = 8192; // Hard limit to prevent memory issues
+global.consoleMapChangeQueued = false;
 
 // Console Command Mapping
 global.consoleCommandMap = ds_map_create();

@@ -14,4 +14,7 @@ else
     doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
     console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was killed");
 }
-', '', CC_HOST);
+', '
+console_print(COL_ORANGE + "Syntax: kill <player>");
+console_print(COL_ORANGE + "Kills the given player");
+', CC_HOST);

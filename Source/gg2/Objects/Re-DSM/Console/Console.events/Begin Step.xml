@@ -13,23 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Expand / Collapse Button
-if (mouse_check_button_pressed(mb_left))
-{
-    // Clicked on the expand button
-    if (mouse_x &gt; expandXLeft and mouse_x &lt; expandXRight and mouse_y &gt; expandYTop and mouse_y &lt; expandYBottom)
-    {
-        expanded = !expanded
-    }
-}
+        <argument kind="STRING">var maxOutputBoxSize;
+maxOutputBoxSize = (outputBoxBottom - offsetY) - (fullscreenYBottom - fullscreenYTop) - (boxPaddingHeight * 3);
 
-var maxOutputBoxSize;
-maxOutputBoxSize = (outputBoxBottom - offsetY) - (expandYBottom - expandYTop) - (boxPaddingHeight * 3);
-
-if (expanded)
+if (fullscreen)
 {
-    // Expand the console window to cover the whole screen
-    // Work out the maximum available size of the window including the expand button
+    // Fullscreen the console window to cover the whole screen
+    // Work out the maximum available size of the window including the fullscreen button
     displayedLines = max(2, maxOutputBoxSize div lineSpacing);
 }
 else
@@ -81,12 +71,12 @@ if (string_char_at(displayText, string_length(displayText)) == chr(10))
 }
 
 // Input Box size based on number of rows
-var minOutputBoxSize, expandButtonSize, maxInputSize, maxRows;
+var minOutputBoxSize, fullscreenButtonSize, maxInputSize, maxRows;
 
-// Always allow room for 2 lines of the output box + expand button
+// Always allow room for 2 lines of the output box + fullscreen button
 minOutputBoxSize = (2 * lineSpacing) + boxPaddingHeight;
-expandButtonSize = (expandYBottom - expandYTop) + (boxPaddingHeight * 2);
-maxInputSize = (inputBoxBottom - (minOutputBoxSize + expandButtonSize)) - offsetY;
+fullscreenButtonSize = (fullscreenYBottom - fullscreenYTop) + (boxPaddingHeight * 2);
+maxInputSize = (inputBoxBottom - (minOutputBoxSize + fullscreenButtonSize)) - offsetY;
 maxRows = min(1 + string_count(chr(10), displayText), maxInputSize div characterHeight, maxInputBoxRows);
 
 inputBoxRows = max(1, maxRows);

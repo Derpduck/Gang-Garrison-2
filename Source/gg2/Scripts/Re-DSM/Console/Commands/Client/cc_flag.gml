@@ -14,4 +14,7 @@ console_print(COL_FLAG + "F5A9B8################################")
 
 console_print(COL_FLAG + "5BCEFA################################")
 console_print(COL_FLAG + "5BCEFA################################")
-', '', CC_CLIENT);
+', '
+console_print(COL_ORANGE + "Syntax: flag");
+console_print(COL_ORANGE + "Prints a random flag");
+', CC_CLIENT);

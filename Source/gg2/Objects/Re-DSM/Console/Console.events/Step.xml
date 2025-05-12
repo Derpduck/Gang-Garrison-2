@@ -186,6 +186,21 @@ if (ctrlHeld)
     }
 }
 
+// Fullscreen Button
+if (mouse_check_button_pressed(mb_left))
+{
+    // Clicked on the fullscreen button
+    if (mouse_x &gt; fullscreenXLeft and mouse_x &lt; fullscreenXRight and mouse_y &gt; fullscreenYTop and mouse_y &lt; fullscreenYBottom)
+    {
+        fullscreen = !fullscreen;
+    }
+}
+
+if (keyboard_check_pressed(global.consoleFullscreenKey))
+{
+    fullscreen = !fullscreen;
+}
+
 // Autocomplete suggestion
 if (global.consoleAutocomplete)
 {
