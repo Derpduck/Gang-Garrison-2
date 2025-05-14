@@ -5,6 +5,7 @@ cc_kick();
 cc_ban();
 cc_tempban();
 cc_unban();
+cc_bans();
 cc_kill();
 cc_gib();
 cc_hurt();

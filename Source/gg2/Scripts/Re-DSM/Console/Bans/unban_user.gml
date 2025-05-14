@@ -2,9 +2,9 @@
 var playerIP;
 playerIP = argument0;
 
-if (ds_list_find_index(global.bannedUsers, playerIP) != -1)
+if (ds_map_exists(global.bannedUsers, playerIP))
 {
-    ds_list_delete(global.bannedUsers, ds_list_find_index(global.bannedUsers, playerIP));
+    ds_map_delete(global.bannedUsers, playerIP);
     return true;
 }
 else

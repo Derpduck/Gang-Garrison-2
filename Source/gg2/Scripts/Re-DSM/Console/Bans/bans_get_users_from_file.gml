@@ -17,9 +17,9 @@ if (file_exists(working_directory + "\DSM\Banned_Users.txt"))
             ds_map_add(global.bannedSavedUsers, banIP, banName);
         }
         
-        if (!ds_list_find_index(global.bannedUsers, banIP))
+        if (!ds_map_exists(global.bannedUsers, banIP))
         {
-            ds_list_add(global.bannedUsers, banIP);
+            ds_map_add(global.bannedUsers, banIP, banName);
         }
         
         file_text_readln(bansFile)

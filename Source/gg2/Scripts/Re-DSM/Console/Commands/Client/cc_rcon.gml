@@ -46,6 +46,7 @@ case "add":
         break;
     }
     
+    // TODO: Add team colors
     if (rcon_user_add(player))
         console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
     else
@@ -69,6 +70,7 @@ case "remove":
         break;
     }
     
+    // TODO: Add team colors
     if (rcon_user_remove(player))
         console_print(COL_PINK + "[RCON LOGIN] " + player.name + SINGLE_QUOTE + "s RCON access was revoked");
     else

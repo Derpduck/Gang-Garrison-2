@@ -32,4 +32,4 @@
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open
-- Fixed multi-client limit disconnect message never being received by clients
+- ~~Fixed multi-client limit disconnect message never being received by clients~~

@@ -12,9 +12,9 @@ if (banType == 0)
 else
     write_ubyte(player.socket, DSM_KICK_TEMP_BAN);
 
-if (ds_list_find_index(global.bannedUsers, playerIP) == -1)
+if (!ds_map_exists(global.bannedUsers, playerIP))
 {
-    ds_list_add(global.bannedUsers, playerIP);
+    ds_map_add(global.bannedUsers, playerIP, player.name);
     return true;
 }
 else

@@ -45,7 +45,7 @@
     rcon_get_users_from_file();
     
     // Bans
-    global.bannedUsers = ds_list_create();
+    global.bannedUsers = ds_map_create();
     bans_get_users_from_file();
 
     for (a=0; a<10; a+=1)
