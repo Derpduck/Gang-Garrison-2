@@ -18,4 +18,6 @@
   <resource name="cc_shuffle" type="RESOURCE"/>
   <resource name="cc_time" type="RESOURCE"/>
   <resource name="cc_restart" type="RESOURCE"/>
+  <resource name="cc_classlimit" type="RESOURCE"/>
+  <resource name="cc_rotation" type="RESOURCE"/>
 </resources>

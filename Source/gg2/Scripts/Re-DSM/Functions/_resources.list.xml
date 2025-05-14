@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="create_DSM_folders" type="RESOURCE"/>
   <resource name="create_notice_message" type="RESOURCE"/>
+  <resource name="string_reverse" type="RESOURCE"/>
   <resource name="get_next_map" type="RESOURCE"/>
+  <resource name="swap_map_rotation" type="RESOURCE"/>
 </resources>

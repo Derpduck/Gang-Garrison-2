@@ -3,9 +3,7 @@
   <resource name="Console" type="GROUP"/>
   <resource name="Color Codes" type="GROUP"/>
   <resource name="Unit Tests" type="GROUP"/>
-  <resource name="Misc" type="GROUP"/>
+  <resource name="Functions" type="GROUP"/>
   <resource name="DSM_init" type="RESOURCE"/>
-  <resource name="create_DSM_folders" type="RESOURCE"/>
-  <resource name="string_reverse" type="RESOURCE"/>
   <resource name="DSM_write_ini" type="RESOURCE"/>
 </resources>

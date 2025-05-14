@@ -46,11 +46,10 @@ case "add":
         break;
     }
     
-    // TODO: Add team colors
     if (rcon_user_add(player))
-        console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + COL_PINK + " was given RCON access");
     else
-        console_print(COL_PINK + "[RCON LOGIN] " + player.name + " already has RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + COL_PINK + " already has RCON access");
     
     rcon_write_to_file(player);
     break;
@@ -70,11 +69,10 @@ case "remove":
         break;
     }
     
-    // TODO: Add team colors
     if (rcon_user_remove(player))
-        console_print(COL_PINK + "[RCON LOGIN] " + player.name + SINGLE_QUOTE + "s RCON access was revoked");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + SINGLE_QUOTE + "s " + COL_PINK + "RCON access was revoked");
     else
-        console_print(COL_PINK + "[RCON LOGIN] " + player.name + " does not have RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + COL_PINK + " does not have RCON access");
     
     rcon_remove_from_file(player);
 

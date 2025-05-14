@@ -1,3 +1,4 @@
+// TODO: Fix erroneously displayed console maps when used during a map change
 console_add_command('maps', '
 for (i=0; i<ds_list_size(global.map_rotation); i+=1)
 {

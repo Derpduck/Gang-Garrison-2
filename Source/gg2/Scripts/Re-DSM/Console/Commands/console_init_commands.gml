@@ -19,6 +19,8 @@ cc_slots();
 cc_shuffle();
 cc_time();
 cc_restart();
+cc_classlimit();
+cc_rotation();
 
 // Client Side Commands
 cc_help();

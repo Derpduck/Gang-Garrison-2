@@ -3,7 +3,7 @@ if (console_validate_args(1, arg[0], "slots <player limit>") == false) exit;
 
 if (!string_is_real(arg[1]))
 {
-    console_print(COL_RED + "[ERROR] " + arg[1] + " is not a valid number");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number");
     break;
 }
 
@@ -41,7 +41,7 @@ if (newSlots >= 1 - global.dedicatedMode and real_is_int(newSlots))
 }
 else
 {
-    console_print(COL_ORANGE + arg[1] + " is not a valid number of slots");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number of slots");
 }
 ', '
 console_print(COL_ORANGE + "Syntax: slots <player limit>");

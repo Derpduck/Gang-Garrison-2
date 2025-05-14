@@ -7,7 +7,7 @@ mapName = arg[1];
 
 if (findInternalMapName(mapName) == "" and !file_exists("Maps/" + mapName + ".png"))
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + mapName + COL_ORANGE + " could not be found");
+    console_print(COL_RED + "[ERROR] Map: " + COL_YELLOW + mapName + COL_ORANGE + " could not be found");
 }
 else
 {
