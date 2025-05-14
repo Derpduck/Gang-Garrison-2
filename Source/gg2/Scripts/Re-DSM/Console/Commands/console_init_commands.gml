@@ -21,6 +21,7 @@ cc_time();
 cc_restart();
 cc_classlimit();
 cc_rotation();
+cc_team();
 
 // Client Side Commands
 cc_help();

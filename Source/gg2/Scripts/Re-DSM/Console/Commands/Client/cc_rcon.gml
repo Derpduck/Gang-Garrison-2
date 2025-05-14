@@ -47,9 +47,9 @@ case "add":
     }
     
     if (rcon_user_add(player))
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + COL_PINK + " was given RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " was given RCON access");
     else
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + COL_PINK + " already has RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " already has RCON access");
     
     rcon_write_to_file(player);
     break;
@@ -70,9 +70,9 @@ case "remove":
     }
     
     if (rcon_user_remove(player))
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + SINGLE_QUOTE + "s " + COL_PINK + "RCON access was revoked");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + SINGLE_QUOTE + "s " + COL_PINK + "RCON access was revoked");
     else
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player) + player.name + COL_PINK + " does not have RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " does not have RCON access");
     
     rcon_remove_from_file(player);
 
@@ -143,7 +143,7 @@ case "users":
             playerIP = string(socket_remote_ip(player.socket));
             ipSpaces = string_repeat(" ", 15 - string_length(playerIP));
             
-            console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + COL_WHITE + playerIP + ipSpaces + COL_ORANGE + " | " + get_team_color_code(player) + player.name);
+            console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + COL_WHITE + playerIP + ipSpaces + COL_ORANGE + " | " + get_team_color_code(player.team) + player.name);
         }
     };
     break;

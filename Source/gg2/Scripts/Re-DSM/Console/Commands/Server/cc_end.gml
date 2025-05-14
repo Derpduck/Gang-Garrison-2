@@ -6,16 +6,17 @@ if (console_validate_args(1, arg[0], "end <team>", true) == false)
 }
 else
 {
-    var winner;
-    winner = string_lower(arg[1]);
-    if (winner == "red" or winner == "r" or winner == "0")
+    var winningTeam;
+    winningTeam = get_team_from_string(arg[1]);
+    
+    if (winningTeam == TEAM_RED)
     {
-        global.winners = TEAM_RED;
+        global.winners = winningTeam;
         console_print(COL_ORANGE + "Round has been ended, " + COL_RED_LT + "RED Team" + COL_ORANGE + " wins, next map: " + COL_YELLOW + get_next_map());
     }
-    else if (winner == "blue" or winner == "b" or winner == "1")
+    else if (winningTeam == TEAM_BLUE)
     {
-        global.winners = TEAM_BLUE;
+        global.winners = winningTeam;
         console_print(COL_ORANGE + "Round has been ended, " + COL_BLUE_LT + "BLUE Team" + COL_ORANGE + " wins, next map: " + COL_YELLOW + get_next_map());
     }
     else
@@ -27,5 +28,5 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: end <optional: team>");
 console_print(COL_ORANGE + "Ends the current round");
-console_print(COL_ORANGE + "Use <team> to select the winning team: "r / red / 0 for RED Team, b / blue / 1 for BLU Team")
+console_print(COL_ORANGE + "Use <team> to select RED or BLUE as the winning team")
 ', CC_HOST_RCON);

@@ -1,5 +1,5 @@
 // Returns a console color code from a player's team
-switch(argument0.team)
+switch(argument0)
 {
 case TEAM_RED:
     return COL_RED_LT;
@@ -9,5 +9,5 @@ case TEAM_BLUE:
     break;
 default:
     return COL_GREEN;
-    break
+    break;
 }

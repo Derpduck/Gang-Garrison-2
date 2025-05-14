@@ -12,12 +12,12 @@ else
 {
     if (ban_user(player, 0))
     {
-        console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was banned");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was banned");
     }
     else
     {
         // This should never be possible
-        console_print(get_team_color_code(player) + player.name + COL_ORANGE + " is already banned");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is already banned");
     }
     
     ban_write_to_file(player);

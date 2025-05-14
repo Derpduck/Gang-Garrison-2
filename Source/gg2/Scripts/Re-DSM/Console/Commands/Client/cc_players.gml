@@ -17,7 +17,7 @@ for (i=0; i<ds_list_size(global.players); i+=1)
             if (ds_list_find_index(global.rconUsers, player) != -1)
                 isRCON = COL_PINK + " [RCON]"
         
-        console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + get_team_color_code(player) + player.name + isRCON);
+        console_print(COL_ORANGE + "ID: " + COL_WHITE + playerID + idSpaces + COL_ORANGE + " | " + get_team_color_code(player.team) + player.name + isRCON);
     }
 };
 ', '

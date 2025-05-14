@@ -12,7 +12,7 @@ else
 {
     sendEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF_GIB);
     doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF_GIB);
-    console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was gibbed");
+    console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was gibbed");
 }
 ', '
 console_print(COL_ORANGE + "Syntax: gib <player>");

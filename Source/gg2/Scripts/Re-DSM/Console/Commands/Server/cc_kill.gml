@@ -12,7 +12,7 @@ else
 {
     sendEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
     doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
-    console_print(get_team_color_code(player) + player.name + COL_ORANGE + " was killed");
+    console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was killed");
 }
 ', '
 console_print(COL_ORANGE + "Syntax: kill <player>");

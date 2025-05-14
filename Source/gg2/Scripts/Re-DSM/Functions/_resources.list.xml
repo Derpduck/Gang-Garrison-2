@@ -5,4 +5,7 @@
   <resource name="string_reverse" type="RESOURCE"/>
   <resource name="get_next_map" type="RESOURCE"/>
   <resource name="swap_map_rotation" type="RESOURCE"/>
+  <resource name="get_team_from_string" type="RESOURCE"/>
+  <resource name="get_team_string" type="RESOURCE"/>
+  <resource name="change_player_team" type="RESOURCE"/>
 </resources>

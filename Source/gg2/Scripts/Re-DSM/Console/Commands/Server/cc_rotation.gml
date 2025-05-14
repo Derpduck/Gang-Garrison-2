@@ -19,9 +19,8 @@ else
 {
     console_print(COL_RED + "[ERROR] Rotation: " + COL_YELLOW + arg[1] + COL_ORANGE + " could not be found");
 }
-
 ', '
-console_print(COL_ORANGE + "Syntax: classlimit <class> <new limit>");
-console_print(COL_ORANGE + "Changes the classlimit for the given class");
-console_print(COL_ORANGE + SINGLE_QUOTE + "All" + SINGLE_QUOTE + " changes all classlimits at once");
+console_print(COL_ORANGE + "Syntax: rotation <new rotation> <optional: shuffle>");
+console_print(COL_ORANGE + "Changes the current map rotation to the given rotation file");
+console_print(COL_ORANGE + "Add true or 1 to shuffle the rotation");
 ', CC_HOST);
