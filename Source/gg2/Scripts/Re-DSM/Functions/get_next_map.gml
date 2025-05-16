@@ -2,10 +2,12 @@
 if(global.winners == TEAM_RED and global.currentMapArea < global.totalMapAreas)
     return global.currentMap;
 
-
 var nextMap;
 if variable_global_exists("nextMap")
 {
+    if (global.consoleMapChangeQueued)
+        return global.nextMap;
+    
     if (global.nextMap == global.currentMap)
     {
         nextMap = nextMapInRotation();

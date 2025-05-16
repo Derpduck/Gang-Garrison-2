@@ -1,4 +1,3 @@
-// TODO: Fix using map command to add current map as the next map not working
 console_add_command('map', '
 if (console_validate_args(1, arg[0], "map <map name>") == false) exit;
 

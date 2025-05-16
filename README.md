@@ -68,10 +68,6 @@ binds || Prints all saved binds | Client
 	- `rcon users` - Prints a list of all users with RCON access
 - Multi-clienting hosts are automatically given RCON access
 
-#### Binds
-> Allows console commands to be bound to any key
-- 
-
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open

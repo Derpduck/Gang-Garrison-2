@@ -1,8 +1,17 @@
-// TODO: Fix erroneously displayed console maps when used during a map change
 console_add_command('maps', '
+var currentMapIndex;
+if (global.mapchanging and !global.consoleMapChangeQueued)
+{
+    currentMapIndex = GameServer.currentMapIndex - 1;
+}
+else
+{
+    currentMapIndex = GameServer.currentMapIndex;
+}
+
 for (i=0; i<ds_list_size(global.map_rotation); i+=1)
 {
-    if (i == GameServer.currentMapIndex)
+    if (i == currentMapIndex)
     {
         // Current map
         if (ds_list_find_value(global.map_rotation, i) != global.currentMap)
@@ -19,10 +28,10 @@ for (i=0; i<ds_list_size(global.map_rotation); i+=1)
     }
     else
     {
-        if (i == GameServer.currentMapIndex + 1)
+        if (i == currentMapIndex + 1)
         {
             // Next map
-            if (global.nextMap != global.currentMap or global.consoleMapChangeQueued)
+            if (global.nextMap != global.currentMap and global.consoleMapChangeQueued)
             {
                 // Next map has been manually set by console
                 console_print(COL_ORANGE + "CON: " + global.nextMap);
