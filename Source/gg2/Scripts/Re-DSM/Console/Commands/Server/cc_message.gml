@@ -6,7 +6,7 @@ message = string_delete(originalInput, 1, string_length("message "));
 
 ServerMessageString(global.sendBuffer, message);
 create_notice_message(message);
-console_print(COL_ORANGE + "Sent pop-up message: " + message);
+console_print(COL_ORANGE + "Sent pop-up message: " + COL_YELLOW + message);
 ', '
 console_print(COL_ORANGE + "Syntax: message <text>");
 console_print(COL_ORANGE + "Sents a custom pop-up message to all players");

@@ -5,7 +5,7 @@ var player;
 player = console_get_player(arg[1], true);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
     break;
 }
 else
@@ -13,7 +13,7 @@ else
     // Check if damage number given is actually a number
     if (!string_is_real(arg[2]))
     {
-        console_print(COL_RED + "[ERROR] " + arg[2] + " is not a valid number");
+        console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[2] + COL_RED + " is not a valid number");
         break;
     }
     

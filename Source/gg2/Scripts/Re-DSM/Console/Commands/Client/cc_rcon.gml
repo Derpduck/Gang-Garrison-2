@@ -12,7 +12,7 @@ switch(string_lower(arg[1]))
 case "login":
     if (global.isHost)
     {
-        console_print(COL_RED + "[ERROR] The host cannot use command: rcon login");
+        console_print(COL_RED + "[ERROR] The host cannot use command: " + COL_YELLOW + "rcon login");
         break;
     }
     
@@ -34,7 +34,7 @@ case "login":
 case "add":
     if (!global.isHost)
     {
-        console_print(COL_RED + "[ERROR] Only the host can use this command: rcon add");
+        console_print(COL_RED + "[ERROR] Only the host can use this command: " + COL_YELLOW + "rcon add");
         break;
     }
     
@@ -42,7 +42,7 @@ case "add":
     player = console_get_player(arg[2]);
     if (player == -1)
     {
-        console_print(COL_RED + "[ERROR] Invalid player: " + arg[2]);
+        console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[2]);
         break;
     }
     
@@ -57,7 +57,7 @@ case "add":
 case "remove":
     if (!global.isHost)
     {
-        console_print(COL_RED + "[ERROR] Only the host can use this command: rcon remove");
+        console_print(COL_RED + "[ERROR] Only the host can use this command: " + COL_YELLOW + "rcon remove");
         break;
     }
     
@@ -65,7 +65,7 @@ case "remove":
     player = console_get_player(arg[2]);
     if (player == -1)
     {
-        console_print(COL_RED + "[ERROR] Invalid player: " + arg[2]);
+        console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[2]);
         break;
     }
     
@@ -81,12 +81,12 @@ case "remove":
 case "password":
     if (!global.isHost)
     {
-        console_print(COL_RED + "[ERROR] Only the host can use this command: rcon password");
+        console_print(COL_RED + "[ERROR] Only the host can use this command: " + COL_YELLOW + "rcon password");
         break;
     }
     
     global.rconPassword = string(arg[2]);
-    console_print(COL_ORANGE + "RCON password changed to: " + global.rconPassword);
+    console_print(COL_ORANGE + "RCON password changed to: " + COL_YELLOW + global.rconPassword);
     console_print(COL_ORANGE + "New password saved to: " + SINGLE_QUOTE + "Re-DSM.ini" + SINGLE_QUOTE);
     
     DSM_write_ini("RCON", "RconPassword", global.rconPassword);
@@ -95,7 +95,7 @@ case "password":
 case "toggle":
     if (!global.isHost)
     {
-        console_print(COL_RED + "[ERROR] Only the host can use this command: rcon toggle");
+        console_print(COL_RED + "[ERROR] Only the host can use this command: " + COL_YELLOW + "rcon toggle");
         break;
     }
     
@@ -110,7 +110,7 @@ case "toggle":
 case "save":
     if (!global.isHost)
     {
-        console_print(COL_RED + "[ERROR] Only the host can use this command: rcon save");
+        console_print(COL_RED + "[ERROR] Only the host can use this command: " + COL_YELLOW + "rcon save");
         break;
     }
     
@@ -125,7 +125,7 @@ case "save":
 case "users":
     if (!global.isHost)
     {
-        console_print(COL_RED + "[ERROR] Only the host can use this command: rcon users");
+        console_print(COL_RED + "[ERROR] Only the host can use this command: " + COL_YELLOW + "rcon users");
         break;
     }
     
@@ -149,7 +149,7 @@ case "users":
     break;
 
 default:
-    console_print(COL_RED + "[ERROR] Invalid RCON command: " + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid RCON command: " + COL_YELLOW + arg[1]);
     break;
 }
 ', '

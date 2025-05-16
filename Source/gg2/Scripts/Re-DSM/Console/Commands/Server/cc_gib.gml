@@ -5,7 +5,7 @@ var player;
 player = console_get_player(arg[1], true);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
     break;
 }
 else

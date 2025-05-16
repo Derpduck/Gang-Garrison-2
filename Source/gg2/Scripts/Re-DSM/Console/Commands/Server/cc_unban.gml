@@ -5,12 +5,12 @@ var playerIP;
 playerIP = arg[1];
 
 if (unban_user(playerIP))
-    console_print(COL_ORANGE + playerIP + " was unbanned");
+    console_print(COL_YELLOW + playerIP + COL_ORANGE + " was unbanned");
 else
-    console_print(COL_ORANGE + playerIP + " is not banned");
+    console_print(COL_YELLOW + playerIP + COL_ORANGE + " is not banned");
 
 ban_remove_from_file(playerIP);
 ', '
 console_print(COL_ORANGE + "Syntax: unban <player IP>");
-console_print(COL_ORANGE + "Unbans the given player" + SINGLE_QUOTE + "s IP from the server");
+console_print(COL_ORANGE + "Unbans the given player IP from the server");
 ', CC_HOST);

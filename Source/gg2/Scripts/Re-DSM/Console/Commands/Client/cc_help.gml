@@ -29,7 +29,7 @@ else
         if (command == "me")
             console_print(COL_ORANGE + "Won" + SINGLE_QUOTE + "t you please, please help me")
         else
-            console_print(COL_RED + "[ERROR] Unknown command: " + command);
+            console_print(COL_RED + "[ERROR] Unknown command: " + COL_YELLOW + command);
     }
 }
 ', '

@@ -17,7 +17,7 @@ if (swap_map_rotation(arg[1], shuffle))
 }
 else
 {
-    console_print(COL_RED + "[ERROR] Rotation: " + COL_YELLOW + arg[1] + COL_ORANGE + " could not be found");
+    console_print(COL_RED + "[ERROR] Rotation: " + COL_YELLOW + arg[1] + COL_RED + " could not be found");
 }
 ', '
 console_print(COL_ORANGE + "Syntax: rotation <new rotation> <optional: shuffle>");

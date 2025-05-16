@@ -18,50 +18,58 @@
 - Fixed many bugs and QOL issues found in previous implementations of the Console in DSM and E-Sports Mod
 
 #### Console Commands
-- kick `player`
-- ban `player`
-- tempban `player`
-- unban `player IP`
-- bans
-- kill `player`
-- gib `player`
-- hurt `player` `damage`
-- teleport `player`
-- message `message text`
-- password `new password`
-- end `optional: winning team`
-- map `map name`
-- maps
-- rotation `new rotation`
-- shuffle
-- slots `number of slots`
-- time `time (in minutes)`
-- restart
-- classlimit `class` `new limit`
-- team `player` `new team`
-- help `optional: command name`
-- execute `code text`
-- rcon `command` `argument` - See RCON section
-- quit
-- reboot
-- disconnect
-- clear
-- players
-- log
+**Command** | **Arguments** | **Description** | **Usage**
+---------------------------------------------
+kick | `player` | Kicks the given player from the server | Host + RCON
+ban | `player` | Bans the given player from the server permanently | Host Only
+tempban | `player` | Bans the given player from the server for the current session | Host + RCOn
+unban | `player IP` | Unbans the given player from the server | Host Only
+bans || Prints a list of all banned players | Host Only
+kill | `player` | Kills the given player | Host + RCON
+gib | `player` | Kills the given player with a gib explosion | Host + RCON
+hurt | `player` `damage` | Deals damage to the given player | Host + RCON
+teleport | `player` | Teleports the given player to the current cursor position | Host Only
+message | `message text` | Sents a custom pop-up message to all players | Host + RCON
+password | `new password` | Changes the server password to the given text. Leave `new password` blank to remove the current password | Host + RCON
+end | `optional: winning team` | Ends the current round. Specify `team` to select RED or BLUE as the winning team | Host + RCON
+map | `map name` | Sets the next map to the given map | Host + RCON
+maps || Prints the current map rotation order | Host Only
+rotation | `new rotation` | Changes the current map rotation to the given rotation file. Specify true for `shuffle` to shuffle the rotation | Host Only
+shuffle || Shuffles the current map rotation | Host + RCON
+slots | `number of slots`| Sets the number of player slots allowed the server | Host + RCON
+time | `time (in minutes)` | Sets the current round timer to the given number of minutes. Decimal values are accepted, e.g. 0.5 = 30 seconds | Host + RCON
+restart || Restarts the current map | Host + RCON
+classlimit | `class` `new limit` | Changes the classlimit for the given class. 'All' changes all classlimits at once | Host + RCON
+team | `player` `new team`| Changes the given player's team to the given team, ignoring team balance | Host + RCON
+help | `optional: command name`| Prints documentation for the given command | Client
+execute | `code text` | Runs the given text as GML code, use with caution | Client
+rcon | `command` `argument` | See RCON section |
+quit || Immediately quits the game to desktop | Client
+reboot || Immediately re-launches the game | Client
+disconnect || Immediately leaves the server | Client
+clear || Removes all console output history | Client
+players || Prints a list of all players on the server and their ID numbers | Client
+log || Saves the current console log to `/../DSM/Logs/` | Client
+bind | `key` `command` | Binds the given console command to the key | Client
+unbind | `key` | Removes the bind assigned to the given key | Client
+binds || Prints all saved binds | Client
 
-### RCON (Remote CONsole)
+#### RCON (Remote CONsole)
 > Allows clients to use admin only commands
-	- Host can either set a password which players login with or manually add RCON users
-	- Commands:
-		- `rcon login <password>` - Client provides the correct password to gain RCON access
-		- `rcon add <player>` - Host grants RCON access to given player
-		- `rcon remove <player>` - Host removes RCON access to given player
-		- `rcon password <new password>` - Host sets a new RCON password
-		- `rcon toggle` - Host enables or disables RCON access
-		- `rcon save` - Host toggles saving RCON logins
-		- `rcon users` - Prints a list of all users with RCON access
-	- Multi-clienting hosts are automatically given RCON access
+- Host can either set a password which players login with or manually add RCON users
+- Commands:
+	- `rcon login <password>` - Client provides the correct password to gain RCON access
+	- `rcon add <player>` - Host grants RCON access to given player
+	- `rcon remove <player>` - Host removes RCON access to given player
+	- `rcon password <new password>` - Host sets a new RCON password
+	- `rcon toggle` - Host enables or disables RCON access
+	- `rcon save` - Host toggles saving RCON logins
+	- `rcon users` - Prints a list of all users with RCON access
+- Multi-clienting hosts are automatically given RCON access
 
+#### Binds
+> Allows console commands to be bound to any key
+- 
 
 
 ### Bug Fixes

@@ -4,7 +4,7 @@ if (console_validate_args(1, arg[0], "time <minutes>") == false) exit;
 // Check if number given is actually a number
 if (!string_is_real(arg[1]))
 {
-    console_print(COL_RED + "[ERROR] " + arg[1] + " is not a valid number");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number");
     break;
 }
 
@@ -14,7 +14,7 @@ newTime = real(arg[1]);
 // Check if time is valid
 if (newTime <= 0)
 {
-    console_print(COL_RED + "[ERROR] " + arg[1] + " is not a valid time");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid time");
     break;
 }
 

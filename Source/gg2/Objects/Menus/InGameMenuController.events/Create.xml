@@ -27,6 +27,14 @@
     menu_addback("", '
         instance_destroy();
     ');
+    
+    // Console
+    menu_addlink("Console", '
+        instance_destroy();
+        if !(instance_exists(Console))
+            instance_create(0, 0, Console);
+    ');
+    
     if (global.isHost) {
         menu_addlink("Kick players", '
             if(!instance_exists(ScoreTableController)) instance_create(0,0,ScoreTableController);
