@@ -46,7 +46,7 @@ draw_set_valign(fa_bottom);
 if (global.consoleBoldFont)
     draw_set_font(global.gg2Font);
 else
-    draw_set_font(global.consoleFont);
+    draw_set_font(global.consoleFontDSM);
 // Input Box
 draw_text(boxLeft + global.consoleTextPadding, inputBoxBottom - inputBoxPaddingHeight, displayText);
 

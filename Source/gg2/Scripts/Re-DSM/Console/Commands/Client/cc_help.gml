@@ -12,7 +12,7 @@ if (console_validate_args(1, arg[0], "help <command>", true) == false)
     };
     
     console_print(COL_ORANGE + string_copy(commandString, 1, string_length(commandString) - 2));
-    console_print(COL_ORANGE + "For help with a specific command, type " + SINGLE_QUOTE + "help <command name>" + SINGLE_QUOTE);
+    console_print(COL_ORANGE + "For help with a specific command, use: " + COL_YELLOW + "help <command name>");
 }
 else
 {

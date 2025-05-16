@@ -9,7 +9,7 @@ if (global.joinedServerName == "")
     serverName = global.serverName;
 else
     serverName = global.joinedServerName;
-console_print(COL_YELLOW + "Server: " + COL_WHITE + global.serverName);
+console_print(COL_YELLOW + "Server: " + COL_WHITE + serverName);
 console_print(COL_YELLOW + "Connected On: " + COL_WHITE + date_datetime_string(currentDateTime));
 console_print("");
 console_print(COL_GRAY + "________________");

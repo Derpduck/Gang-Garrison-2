@@ -1,4 +1,4 @@
-global.consoleFont = font_add_sprite(ConsoleFontS, ord("!"), false, 0);
+global.consoleFontDSM = font_add_sprite(ConsoleFontS, ord("!"), false, 0);
 
 console_options();
 

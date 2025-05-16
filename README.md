@@ -3,7 +3,7 @@
 ## Current Version: v1
 
 ### Console
-> Implemented an improved version of the console from E-Sports Mod
+> Implemented an improved version of the console from E-Sports Mod  
 > Press `F3` to open the console
 - New console commands, improvements and bug fixes for old commands
 - New visual style, features and improved UI:
