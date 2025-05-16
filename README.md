@@ -19,7 +19,7 @@
 
 #### Console Commands
 **Command** | **Arguments** | **Description** | **Usage**
----------------------------------------------
+----------- | ------------- | --------------- | -----------
 kick | `player` | Kicks the given player from the server | Host + RCON
 ban | `player` | Bans the given player from the server permanently | Host Only
 tempban | `player` | Bans the given player from the server for the current session | Host + RCOn
