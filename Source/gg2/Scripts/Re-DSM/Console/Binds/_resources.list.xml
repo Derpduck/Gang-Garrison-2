@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="binds_init" type="RESOURCE"/>
+  <resource name="bind_add" type="RESOURCE"/>
+  <resource name="bind_remove" type="RESOURCE"/>
+  <resource name="binds_get_from_file" type="RESOURCE"/>
+  <resource name="binds_init_virtual_keys" type="RESOURCE"/>
+</resources>

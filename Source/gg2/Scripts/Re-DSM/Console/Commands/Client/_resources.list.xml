@@ -11,4 +11,5 @@
   <resource name="cc_clear" type="RESOURCE"/>
   <resource name="cc_players" type="RESOURCE"/>
   <resource name="cc_log" type="RESOURCE"/>
+  <resource name="cc_bind" type="RESOURCE"/>
 </resources>

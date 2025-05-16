@@ -15,20 +15,20 @@ if (global.saveRconUsers)
         {
             file_delete(working_directory + "\DSM\RCON_Users.txt");
             
-            var rconFile, rconMapKey;
-            rconFile = file_text_open_write(working_directory + "\DSM\RCON_Users.txt");
+            var fileHandle, rconMapKey;
+            fileHandle = file_text_open_write(working_directory + "\DSM\RCON_Users.txt");
             rconMapKey = ds_map_find_first(global.rconSavedUsers);
             
             // Save all remaining users to the new file
             for (i=0; i<ds_map_size(global.rconSavedUsers); i+=1)
             {
-                file_text_write_string(rconFile, string(rconMapKey) + "@" + ds_map_find_value(global.rconSavedUsers, rconMapKey));
-                file_text_writeln(rconFile);
+                file_text_write_string(fileHandle, string(rconMapKey) + "@" + ds_map_find_value(global.rconSavedUsers, rconMapKey));
+                file_text_writeln(fileHandle);
                 
                 rconMapKey = ds_map_find_next(global.rconSavedUsers, rconMapKey);
             };
             
-            file_text_close(rconFile);
+            file_text_close(fileHandle);
         }
     }
 }

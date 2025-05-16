@@ -12,19 +12,9 @@
 - Press Tab to auto-complete typed commands
 - New input shortcuts
 	- Shift + Enter to type a new line
+		- New lines are treated as new arguments
 	- CTRL + Backspace or CTRL + Delete to delete all typed text
 	- PGUP and PGDN to scroll through output history
-- RCON (Remote CONsole), allows clients to use admin protected commands
-	- Host can either set a password which players login with or manually add RCON users
-	- Commands:
-		- `rcon login <password>` - Client provides the correct password to gain RCON access
-		- `rcon add <player>` - Host grants RCON access to given player
-		- `rcon remove <player>` - Host removes RCON access to given player
-		- `rcon password <new password>` - Host sets a new RCON password
-		- `rcon toggle` - Host enables or disables RCON access
-		- `rcon save` - Host toggles saving RCON logins
-		- `rcon users` - Prints a list of all users with RCON access
-	- Multi-clienting hosts are automatically given RCON access
 - Fixed many bugs and QOL issues found in previous implementations of the Console in DSM and E-Sports Mod
 
 #### Console Commands
@@ -40,24 +30,37 @@
 - message `message text`
 - password `new password`
 - end `optional: winning team`
-- map `map name
+- map `map name`
 - maps
-- rotation
+- rotation `new rotation`
 - shuffle
-- slots
-- time
+- slots `number of slots`
+- time `time (in minutes)`
 - restart
-- classlimit
-- team
-- help
-- execute
-- rcon
+- classlimit `class` `new limit`
+- team `player` `new team`
+- help `optional: command name`
+- execute `code text`
+- rcon `command` `argument` - See RCON section
 - quit
 - reboot
 - disconnect
 - clear
 - players
 - log
+
+### RCON (Remote CONsole)
+> Allows clients to use admin only commands
+	- Host can either set a password which players login with or manually add RCON users
+	- Commands:
+		- `rcon login <password>` - Client provides the correct password to gain RCON access
+		- `rcon add <player>` - Host grants RCON access to given player
+		- `rcon remove <player>` - Host removes RCON access to given player
+		- `rcon password <new password>` - Host sets a new RCON password
+		- `rcon toggle` - Host enables or disables RCON access
+		- `rcon save` - Host toggles saving RCON logins
+		- `rcon users` - Prints a list of all users with RCON access
+	- Multi-clienting hosts are automatically given RCON access
 
 
 

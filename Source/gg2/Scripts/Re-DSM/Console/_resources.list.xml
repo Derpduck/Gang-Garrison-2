@@ -3,6 +3,7 @@
   <resource name="Commands" type="GROUP"/>
   <resource name="Bans" type="GROUP"/>
   <resource name="RCON" type="GROUP"/>
+  <resource name="Binds" type="GROUP"/>
   <resource name="console_init" type="RESOURCE"/>
   <resource name="console_options" type="RESOURCE"/>
   <resource name="console_print" type="RESOURCE"/>

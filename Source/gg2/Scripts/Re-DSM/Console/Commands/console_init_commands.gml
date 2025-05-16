@@ -15,12 +15,12 @@ cc_password();
 cc_end();
 cc_map();
 cc_maps();
-cc_slots();
+cc_rotation();
 cc_shuffle();
+cc_slots();
 cc_time();
 cc_restart();
 cc_classlimit();
-cc_rotation();
 cc_team();
 
 // Client Side Commands
@@ -28,10 +28,10 @@ cc_help();
 cc_execute();
 cc_rcon();
 cc_flag();
-cc_test();
 cc_quit();
 cc_reboot();
 cc_disconnect();
 cc_clear();
 cc_players();
 cc_log();
+cc_bind();

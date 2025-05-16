@@ -9,10 +9,13 @@ if (global.saveRconUsers)
     {
         ds_map_add(global.rconSavedUsers, playerIP, player.name);
     }
-        
-    var rconFile;
-    rconFile = file_text_open_write(working_directory + "\DSM\RCON_Users.txt");
-    file_text_write_string(rconFile, string(playerIP) + "@" + player.name);
-    file_text_writeln(rconFile);
-    file_text_close(rconFile);
+    
+    // Get RCON file
+    var fileHandle;
+    fileHandle = file_text_open_append(working_directory + "\DSM\RCON_Users.txt");
+    
+    // Write to file
+    file_text_write_string(fileHandle, string(playerIP) + "@" + player.name);
+    file_text_writeln(fileHandle);
+    file_text_close(fileHandle);
 }

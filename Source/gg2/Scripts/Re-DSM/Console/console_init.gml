@@ -29,3 +29,4 @@ SINGLE_QUOTE = chr(39);
 DOUBLE_QUOTE = chr(34);
 
 console_init_commands();
+binds_init();
