@@ -26,7 +26,7 @@ else
         exit;
     }
     
-    if (change_player_team(player, newTeam))
+    if (change_player_team(player, newTeam, true))
     {
         console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " was moved to team: " + get_team_color_code(newTeam) + get_team_string(newTeam));
     }

@@ -22,5 +22,5 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: rotation <new rotation> <optional: shuffle>");
 console_print(COL_ORANGE + "Changes the current map rotation to the given rotation file");
-console_print(COL_ORANGE + "Add true or 1 to shuffle the rotation");
+console_print(COL_ORANGE + "Specify true for <shuffle> to shuffle the rotation");
 ', CC_HOST);

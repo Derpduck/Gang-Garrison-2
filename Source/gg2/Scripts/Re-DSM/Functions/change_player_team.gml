@@ -1,7 +1,8 @@
 // Taken from processClientCommands, PLAYER_CHANGETEAM
-var player, newTeam, balance, redSuperiority;
+var player, newTeam, ignoreBalance, balance, redSuperiority;
 player = argument0;
 newTeam = argument1;
+ignoreBalance = argument2;
 
 // Invalid team was requested, treat it as a random team
 if(newTeam != TEAM_RED and newTeam != TEAM_BLUE and newTeam != TEAM_SPECTATOR)
@@ -35,7 +36,7 @@ if(newTeam == TEAM_ANY)
         newTeam = choose(TEAM_RED, TEAM_BLUE);
 }
     
-if(newTeam != player.team)
+if((ignoreBalance or balance != newTeam) and newTeam != player.team)
 {
     if(getCharacterObject(player.class) != -1 or newTeam==TEAM_SPECTATOR)
     {  
@@ -73,7 +74,8 @@ if(newTeam != player.team)
         player.team = newTeam;
         ServerPlayerChangeteam(ds_list_find_index(global.players, player), player.team, global.sendBuffer);
         clearPlayerDominations(player);
-        ServerBalanceTeams();
+        if (!ignoreBalance)
+            ServerBalanceTeams();
         
         return true;
     }

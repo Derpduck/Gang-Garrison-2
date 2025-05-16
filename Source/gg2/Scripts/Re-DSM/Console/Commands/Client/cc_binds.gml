@@ -3,7 +3,7 @@ console_add_command('binds', '
 
 var bindsMapKey;
 bindsMapKey = ds_map_find_first(global.bindsMap);
-console_print(COL_ORANGE + string(ds_map_size(global.bindsMap)) + " bind(s) found")
+console_print(COL_YELLOW + string(ds_map_size(global.bindsMap)) + COL_ORANGE + " bind(s) found")
 
 for (i=0; i<ds_map_size(global.bindsMap); i+=1)
 {

@@ -21,4 +21,5 @@
   <resource name="cc_restart" type="RESOURCE"/>
   <resource name="cc_classlimit" type="RESOURCE"/>
   <resource name="cc_team" type="RESOURCE"/>
+  <resource name="cc_scramble" type="RESOURCE"/>
 </resources>

@@ -130,7 +130,7 @@ case "users":
     }
     
     // ID | IP | Name
-    console_print(COL_ORANGE + string(ds_list_size(global.rconUsers)) + " rcon user(s) currently active")
+    console_print(COL_YELLOW + string(ds_list_size(global.rconUsers)) + COL_ORANGE + " rcon user(s) currently active")
     for (i=0; i<ds_list_size(global.rconUsers); i+=1)
     {
         var player, playerID, playerIP, idSpaces, ipSpaces;

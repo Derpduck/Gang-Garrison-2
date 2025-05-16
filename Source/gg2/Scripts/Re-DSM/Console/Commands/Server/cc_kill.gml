@@ -10,9 +10,17 @@ if (player == -1)
 }
 else
 {
-    sendEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
-    doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
-    console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was killed");
+    if (player.object != -1)
+    {
+        sendEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
+        doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
+        player.alarm[5] = global.Server_Respawntime / global.delta_factor;
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was killed");
+    }
+    else
+    {
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive");
+    }
 }
 ', '
 console_print(COL_ORANGE + "Syntax: kill <player>");
