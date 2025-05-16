@@ -35,3 +35,5 @@ cc_clear();
 cc_players();
 cc_log();
 cc_bind();
+cc_unbind();
+cc_binds();
