@@ -3,18 +3,19 @@
 ## Current Version: v1
 
 ### Console
-> Implemented an improved version of the console from E-Sports Mod. Press `F3` to open the console
+> Implemented an improved version of the console from E-Sports Mod
+> Press `F3` to open the console
 - New console commands, improvements and bug fixes for old commands
 - New visual style, features and improved UI:
-	- Fullscreen button to adjust the size of the console window (or press F4)
-	- Input box expands to fit text longer than 1 line
+	- Fullscreen button to adjust the size of the console window (or press `F4`)
+	- Input box expands to fit multiple lines of text
 	- Multiple colors per line are now supported
-- Press Tab to auto-complete typed commands
+- Press `Tab` to auto-complete typed commands
 - New input shortcuts:
 	- Shift + Enter to type a new line
 		- New lines are treated as new arguments
-	- CTRL + Backspace or CTRL + Delete to delete all typed text
-	- PGUP and PGDN to scroll through output history
+	- `CTRL + Backspace` or `CTRL + Delete` to delete all typed text
+	- `PGUP` and `PGDN` to scroll through output history
 - Fixed many bugs and QOL issues found in previous implementations of the Console in DSM and E-Sports Mod
 
 #### Console Commands
@@ -42,7 +43,7 @@ restart || Restarts the current map | Host + RCON
 classlimit | `class`, `new limit` | Changes the classlimit for the given class. 'All' changes all classlimits at once | Host + RCON
 team | `player`, `new team`| Changes the given player's team to the given team, ignoring team balance | Host + RCON
 scramble || Randomly shuffles the teams of all active players | Host + RCON
-help | `optional: command name`| Prints documentation for the given command | Client
+help | `optional: command name`| Prints documentation for the given command. If no command is specified, prints a list of all available commands | Client
 execute | `code text` | Runs the given text as GML code, use with caution | Client
 rcon | `command`, `argument` | See RCON section |
 quit || Immediately quits the game to desktop | Client
@@ -58,15 +59,17 @@ binds || Prints all saved binds | Client
 #### RCON (Remote CONsole)
 > Allows clients to use host only commands
 - Host can either set a password which players login with or manually add RCON users
-- Commands:
-	- `rcon login <password>` - Client provides the correct password to gain RCON access
-	- `rcon add <player>` - Host grants RCON access to given player
-	- `rcon remove <player>` - Host removes RCON access to given player
-	- `rcon password <new password>` - Host sets a new RCON password
-	- `rcon toggle` - Host enables or disables RCON access
-	- `rcon save` - Host toggles saving RCON logins
-	- `rcon users` - Prints a list of all users with RCON access
 - Multi-clienting hosts are automatically given RCON access
+
+**Command** | **Arguments** | **Description** | **Usage**
+----------- | ------------- | --------------- | -----------
+`rcon login` | `password` | Asks for RCON access using the given password | Client
+`rcon add` | `player` | Grants RCON access to the given player | Host Only
+`rcon remove` | `player` | Removes RCON access from the given player | Host Only
+`rcon password` | `new password` | Sets the RCON login password to the given text | Host Only
+`rcon toggle` || Toggles RCON access on / off | Host Only
+`rcon save` || Toggles saving of new RCON users on / off | Host Only
+`rcon users` || Prints a list of all active RCON users | Host Only
 
 
 ### Bug Fixes
