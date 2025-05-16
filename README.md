@@ -4,13 +4,13 @@
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod
-- New commands and improvements to old ones
-- Cleaner visual style that with improved display features
+- New console commands, improvements and bug fixes for old commands
+- New visual style, features and improved UI:
 	- Fullscreen button to adjust the size of the console window (or press F4)
 	- Input box expands to fit text longer than 1 line
 	- Multiple colors per line are now supported
 - Press Tab to auto-complete typed commands
-- New input shortcuts
+- New input shortcuts:
 	- Shift + Enter to type a new line
 		- New lines are treated as new arguments
 	- CTRL + Backspace or CTRL + Delete to delete all typed text
