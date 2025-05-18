@@ -66,6 +66,7 @@
     ');
     menu_addlink("Quit Game", '
         if (show_question("Do you really want to quit?")) {
+            console_save_log();
             game_end();
         }
     ');

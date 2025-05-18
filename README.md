@@ -52,13 +52,13 @@ disconnect || Immediately leaves the server | Client
 clear || Removes all console output history | Client
 players || Prints a list of all players on the server and their ID numbers | Client
 log || Saves the current console log to `/../DSM/Logs/` | Client
-bind | `key`, `command` | Binds the given console command to the key | Client
+bind | `key`, `command` | Binds the given console command to the given key | Client
 unbind | `key` | Removes the bind assigned to the given key | Client
 binds || Prints all saved binds | Client
 
-#### RCON (Remote CONsole)
+#### RCON (**R**emote **CON**sole)
 > Allows clients to use host only commands
-- Host can either set a password which players login with or manually add RCON users
+- Host can either set a password which can players login with, or manually add RCON users
 - Multi-clienting hosts are automatically given RCON access
 
 **Command** | **Arguments** | **Description** | **Usage**

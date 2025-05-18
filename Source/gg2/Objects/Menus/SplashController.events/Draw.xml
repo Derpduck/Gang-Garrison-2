@@ -14,7 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if image_index &gt;= 21 image_speed = 0;
-draw_sprite_ext(sprite_index,image_index,300,300,4,4,0,c_white,1);</argument>
+draw_sprite_ext(sprite_index,image_index,view_wview[0] / 2,view_hview[0] / 2,4,4,0,c_white,1);
+</argument>
       </arguments>
     </action>
   </actions>

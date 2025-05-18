@@ -1,12 +1,8 @@
-AudioControlToggleMute(); // TODO: Remove, for testing
+//AudioControlToggleMute(); // TODO: Remove, for testing
 
+DSM_options();
 create_DSM_folders();
 color_codes();
 console_init();
 
-ini_open("Re-DSM.ini");
-
-ini_close();
-
-ini_open("controls.gg2");
-ini_close();
+sound_global_volume(global.soundVolume / 100);

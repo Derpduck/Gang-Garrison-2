@@ -24,10 +24,14 @@ case 4: // 2:1
 }
 
 var maprooms, nummaps;
-nummaps = 2;
+nummaps = 6;
 
 maprooms[0] = CustomMapRoom
 maprooms[1] = BuilderRoom
+maprooms[2] = Menu
+maprooms[3] = Options
+maprooms[4] = Lobby
+maprooms[5] = BuilderOptions
 
 for(i = 0; i < nummaps; i += 1)
 {

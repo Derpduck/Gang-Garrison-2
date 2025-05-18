@@ -3,8 +3,8 @@
 // argument2 - width
 // argument3 - valueoffset
 // argument4 - spacing
-// argument5 - tab offset (upwards) [thanks GM for making unset args default to 0!!!11]
-// argument6 - tab spacing
+// argument5 - tab offset (downwards)
+// argument6 - was tab spacing, now tab width
 // argument7 - tab margin
 
 virtualitem = -1;
@@ -14,7 +14,7 @@ width = argument2;
 valueoffset = argument3;
 spacing = argument4;
 taboffset = argument5;
-tabspacing = argument6;
+tabwidth = argument6;
 tabmargin = argument7;
 items = 0;
 tabs = 0;

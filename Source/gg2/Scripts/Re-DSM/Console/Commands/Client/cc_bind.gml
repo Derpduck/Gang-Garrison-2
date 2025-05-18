@@ -35,5 +35,5 @@ else
 }
 ', '
 console_print(COL_ORANGE + "Syntax: bind <key> <command>");
-console_print(COL_ORANGE + "Binds the given console command to the key");
+console_print(COL_ORANGE + "Binds the given console command to the given key");
 ', CC_CLIENT);

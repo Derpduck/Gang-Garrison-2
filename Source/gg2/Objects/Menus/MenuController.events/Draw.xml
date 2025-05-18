@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(!variable_local_exists("baseybegin")) // This needs to be duplicated because of code execution order issues
+        <argument kind="STRING">// Menu Scrolling
+if(!variable_local_exists("baseybegin")) // This needs to be duplicated because of code execution order issues
 {
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
@@ -29,21 +30,25 @@ if(view_hview[0] &lt; 600)
         des_y += ds_list_find_value(mouse_samples, i);
     des_y /= ds_list_size(mouse_samples);
     
+    // Offset menu from start position by this amount
     ybegin = round(baseybegin
                    - min(1, max(0, des_y/view_hview[0]))
                      *(600-view_hview[0]));
 }
 {
-    var i, val, gotVar, itemx, itemy, itemcount;
+    var i, val, gotVar, itemx, itemy, itemcount, tabcount;
     menu_hack_backbutton();
     itemcount = menu_get_itemcount();
+    tabcount = menu_get_tabcount();
     
+    // Dimmed background (in-game)
     if (dimmed)
     {   
         draw_set_color(c_black);
         draw_set_alpha(0.71);
         draw_rectangle(view_xview[0], view_yview[0], view_xview[0]+view_wview[0], view_yview[0]+view_hview[0], false);   
     }
+    // Options menus background (main menu)
     if (!dimmed and menumode and drawbg)
     {
         draw_set_color(c_black);
@@ -64,21 +69,27 @@ if(view_hview[0] &lt; 600)
     draw_set_halign(fa_left);
     draw_set_alpha(1);
     
-    itemy = view_yview[0]+ybegin-taboffset;
-    for(i=0; i&lt;tabs; i+=1)
+    // Tabs
+    //itemy = view_yview[0]+ybegin-taboffset;
+    itemx = view_xview[0] + xbegin - tabmargin - tabwidth;
+    for(i=0; i&lt;tabcount; i+=1)
     {
-        itemx = view_xview[0]+xbegin+i*tabspacing+tabmargin;
+        // Tab Position
+        //itemx = view_xview[0]+xbegin+i*tabspacing+tabmargin;
+        itemy = view_yview[0] + baseybegin + taboffset + (i * spacing);
         
+        // Tab Background
         if(bgtabs)
         {
             draw_set_color(c_black);
             draw_set_alpha(0.5);
             
-            draw_pinched_blackrect(itemx-bgoffsetx, itemy-bgoffsety, tabspacing-8, bgheight, bginset, bgbezel);
+            draw_pinched_blackrect(itemx-bgoffsetx, itemy-bgoffsety, tabwidth, bgheight, bginset, bgbezel);
             
             draw_set_alpha(1);
         }
         
+        // Tab Text
         if(i == -2-virtualitem and !editing)
             draw_set_color(c_red);
         else
@@ -87,10 +98,14 @@ if(view_hview[0] &lt; 600)
         draw_text(itemx, itemy, tab_name[i]);
     }
     
+    // Menu Items
     itemx = view_xview[0]+xbegin;
     for (i = 0; i &lt; itemcount; i += 1)
     {
+        // Item Position
         itemy = view_yview[0]+ybegin+i*spacing;
+        
+        // Item Background
         if(drawbg)
         {
             draw_set_color(c_black);
@@ -100,7 +115,8 @@ if(view_hview[0] &lt; 600)
             
             draw_set_alpha(1);
         }
-    
+        
+        // Item Text
         if (editing == i)
             draw_set_color(c_orange);
         else if(i == virtualitem and getsHighlight)
@@ -108,8 +124,10 @@ if(view_hview[0] &lt; 600)
         else
             draw_set_color(c_white);
 
+        // Item Name
         draw_text(view_xview[0]+xbegin,view_yview[0]+ybegin+i*spacing,item_name[i]);
         
+        // Item Value
         switch (item_type[i])
         {
         case "script":

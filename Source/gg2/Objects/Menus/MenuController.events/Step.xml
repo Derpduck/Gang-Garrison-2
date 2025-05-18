@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(!variable_local_exists("baseybegin"))
+        <argument kind="STRING">// Menu Scrolling Offset
+if(!variable_local_exists("baseybegin"))
 {
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
@@ -29,17 +30,20 @@ if(view_hview[0] &lt; 600)
         des_y += ds_list_find_value(mouse_samples, i);
     des_y /= ds_list_size(mouse_samples);
     
+    // Offset menu from start position by this amount
     ybegin = round(baseybegin
                    - min(1, max(0, des_y/view_hview[0]))
                      *(600-view_hview[0]));
 }
 stepHasRun = true;
 
-var itemcount;
+var itemcount, tabcount;
 menu_hack_backbutton();
 itemcount = menu_get_itemcount();
+tabcount = menu_get_tabcount();
 
 if(editing != -1) {
+    // Handle input when editing
     switch (item_type[editing]) {
         case "edittext2":
         case "edittext":
@@ -72,9 +76,11 @@ if(editing != -1) {
                 exit;
             }
     }
-} else if(mouse_x &gt; view_xview[0]+xbegin) {
-    if(mouse_y &gt;= view_yview[0]+ybegin-(spacing/2) and mouse_x &lt; view_xview[0]+xbegin+width)
+} else if(mouse_x &gt; view_xview[0]+xbegin - tabmargin - tabwidth) {
+    // Handle selecting menu items
+    if(mouse_y &gt;= view_yview[0]+ybegin-(spacing/2) and mouse_x &lt; view_xview[0]+xbegin+width and mouse_x &gt; view_xview[0]+xbegin)
     {
+        // Items
         virtualitem = max(0, round((mouse_y-(view_yview[0]+ybegin))/spacing));
         if(mouse_check_button_pressed(mb_left)){
             mouse_clear(mb_left);
@@ -106,14 +112,14 @@ if(editing != -1) {
             }
         }
     }
-    else if(mouse_y &lt; view_yview[0]+ybegin-taboffset+spacing/2 and mouse_y &gt; view_yview[0]+ybegin-taboffset-spacing/2
-            and mouse_x &gt; view_xview[0]+xbegin+tabmargin and mouse_x &lt; view_xview[0]+xbegin+tabmargin+tabspacing*tabs)
+    else if (mouse_y &gt;= view_yview[0] + baseybegin + taboffset - (spacing / 2) and mouse_x &lt; view_xview[0] + xbegin)
     {
-        virtualitem = min(-2, -2-floor((mouse_x-(view_xview[0]+xbegin+tabmargin))/tabspacing));
+        // Tabs
+        virtualitem = min(-2, -2-round((mouse_y-(view_yview[0]+baseybegin+taboffset))/spacing));
         if(mouse_check_button_pressed(mb_left))
         {
             mouse_clear(mb_left);
-            if(-2-virtualitem &lt; tabs)
+            if(-2-virtualitem &lt; tabcount)
             {
                 execute_string(tab_script[-2-virtualitem]);
             }
