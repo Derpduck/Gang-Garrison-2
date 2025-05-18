@@ -174,6 +174,7 @@ do {
                 write_ubyte(global.serverSocket, global.queueJumping);
             }
             socket_send(global.serverSocket);
+            register_DSM_client();
             break;
             
         case JOIN_UPDATE:

@@ -46,6 +46,11 @@ case "add":
         break;
     }
     
+    if (!player.isDSMClient)
+    {
+        console_print(COL_RED + "WARNING: " + get_team_color_code(player.team) + player.name + COL_RED + " does not have DSM; cannot be informed of their RCON status");
+    }
+    
     if (rcon_user_add(player))
         console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " was given RCON access");
     else
@@ -67,6 +72,11 @@ case "remove":
     {
         console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[2]);
         break;
+    }
+    
+    if (!player.isDSMClient)
+    {
+        console_print(COL_RED + "WARNING: " + get_team_color_code(player.team) + player.name + COL_RED + " does not have DSM; cannot be informed of their RCON status");
     }
     
     if (rcon_user_remove(player))

@@ -123,9 +123,6 @@ case STATE_EXPECT_COMMAND:
         ds_list_add(global.players, player);
         ServerPlayerJoin(player.name, global.sendBuffer);
         
-        // RCON
-        rcon_user_join(player);
-        
         if(global.welcomeMessage != "")
             ServerMessageString(global.welcomeMessage, player.socket);
     

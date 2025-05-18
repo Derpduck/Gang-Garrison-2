@@ -39,6 +39,9 @@
     serverPlayer.name = global.playerName;
     ds_list_add(global.players, serverPlayer);
     
+    // DSM
+    serverPlayer.isDSMClient = true;
+    
     // RCON
     global.isRCON = false;
     global.rconUsers = ds_list_create();

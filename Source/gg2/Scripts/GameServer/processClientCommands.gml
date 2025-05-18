@@ -370,12 +370,21 @@ while(commandLimitRemaining > 0) {
         case DSM_RCON_LOGIN:
             var rconPasswordLength, rconPassword;
             rconPasswordLength = socket_receivebuffer_size(player.socket);
-            rconPassword = read_string(player.socket, rconPasswordLength);
+            rconPasswordReceived = read_string(player.socket, rconPasswordLength);
+            
+            player.isDSMClient = true;
+            
+            // Register player as a DSM client
+            if (rconPasswordReceived == "ijustwanttheservertoknowihavedsm")
+            {
+                rcon_user_join(player);
+                break;
+            }
             
             if (!global.rconEnabled or global.rconPassword == "")
                 break;
             
-            if (rconPassword == global.rconPassword)
+            if (rconPasswordReceived == global.rconPassword)
             {
                 // Correct password
                 if (rcon_user_add(player))
@@ -397,6 +406,8 @@ while(commandLimitRemaining > 0) {
             var rconCommandLength, rconCommand;
             rconCommandLength = socket_receivebuffer_size(player.socket);
             rconCommand = read_string(player.socket, rconCommandLength);
+            
+            player.isDSMClient = true;
             
             if (global.rconEnabled)
             {

@@ -8,4 +8,5 @@
   <resource name="get_team_from_string" type="RESOURCE"/>
   <resource name="get_team_string" type="RESOURCE"/>
   <resource name="change_player_team" type="RESOURCE"/>
+  <resource name="register_DSM_client" type="RESOURCE"/>
 </resources>
