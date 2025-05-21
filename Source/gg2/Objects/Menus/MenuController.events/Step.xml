@@ -13,13 +13,23 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Menu Scrolling Offset
-if(!variable_local_exists("baseybegin"))
+        <argument kind="STRING">if(!variable_local_exists("baseybegin"))
 {
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
 }
-if(view_hview[0] &lt; 600)
+stepHasRun = true;
+
+var itemcount, tabcount;
+menu_hack_backbutton();
+itemcount = menu_get_itemcount();
+tabcount = menu_get_tabcount();
+
+// Menu Scrolling
+var menuSize;
+menuSize = baseybegin + (itemcount * spacing) + bgheight;
+
+if (menuSize &gt; view_hview[0])
 {
     ds_list_add(mouse_samples, window_mouse_get_y());
     while(ds_list_size(mouse_samples) &gt; 10)
@@ -33,14 +43,8 @@ if(view_hview[0] &lt; 600)
     // Offset menu from start position by this amount
     ybegin = round(baseybegin
                    - min(1, max(0, des_y/view_hview[0]))
-                     *(600-view_hview[0]));
+                     *(menuSize-view_hview[0]));
 }
-stepHasRun = true;
-
-var itemcount, tabcount;
-menu_hack_backbutton();
-itemcount = menu_get_itemcount();
-tabcount = menu_get_tabcount();
 
 if(editing != -1) {
     // Handle input when editing

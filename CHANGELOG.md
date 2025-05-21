@@ -4,8 +4,9 @@
 - Menu tabs are now placed vertically down the side of options menus
 - Back button will appear under tabs in options menus
 - Menus now use the in-game resolution
+- Menus will now scroll only if they are too big to fit on the screen, regardless of resolution
 
-### Features
+### Audio
 - Added sound volume option
 
 ### Bug Fixes

@@ -17,7 +17,7 @@
 image_xscale = scale;
 image_yscale = scale;
 
-xSpeedMin = 0.25;
+xSpeedMin = 0.4;
 ySpeedMin = 0;
 xSpeedMax = 1.5;
 ySpeedMax = 0.5;

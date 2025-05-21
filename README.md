@@ -76,10 +76,10 @@ binds || Prints all saved binds | Client
 - Menu tabs are now placed vertically down the side of options menus
 - Back button will appear under tabs in options menus
 - Menus now use the in-game resolution
+- Menus will now scroll only if they are too big to fit on the screen, regardless of resolution
 
 ### Audio
 - Added sound volume option
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open
-- ~~Fixed multi-client limit disconnect message never being received by clients~~
