@@ -71,6 +71,14 @@ binds || Prints all saved binds | Client
 `rcon save` || Toggles saving of new RCON users on / off | Host Only
 `rcon users` || Prints a list of all active RCON users | Host Only
 
+### Menus
+- A randomly chosen built-in map is now featured as the menu background
+- Menu tabs are now placed vertically down the side of options menus
+- Back button will appear under tabs in options menus
+- Menus now use the in-game resolution
+
+### Audio
+- Added sound volume option
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open

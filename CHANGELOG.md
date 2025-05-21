@@ -1,6 +1,9 @@
 ## V2 (WIP)
 ### Menus
-
+- A randomly chosen built-in map is now featured as the menu background
+- Menu tabs are now placed vertically down the side of options menus
+- Back button will appear under tabs in options menus
+- Menus now use the in-game resolution
 
 ### Features
 - Added sound volume option
