@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">{
     global.levelchoice = 1
-    menu_create(40, 300, 200, 200, 32);
+    menu_create(40, 240, 200, 200, 32);
     
     menu_background(208, 24, 8, 12, 4);
     
@@ -61,7 +61,7 @@
         AudioControlPlaySong(global.MenuMusic);
     }
 
-    fade = 0;
+    /*fade = 0;
     
     // ini says we have a downloaded background
     if (global.backgroundHash != "default")
@@ -105,10 +105,13 @@
 
     // use default background if ini says we should
     if (global.backgroundHash == "default")
-        menuimage = global.defaultBackground;
+        menuimage = global.defaultBackground;*/
 
     if(global.dedicatedMode == 1)
         event_user(0);
+    
+    if (!instance_exists(MenuMapViewer))
+        instance_create(0, 0, MenuMapViewer);
 }
 </argument>
       </arguments>

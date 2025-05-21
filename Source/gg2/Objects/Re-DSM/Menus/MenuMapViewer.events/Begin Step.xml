@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (room != Menu and room != Options and room != Lobby)
+    instance_destroy();
+
+var spriteLeft, spriteRight, spriteTop, spriteBottom;
+spriteLeft = x;
+spriteRight = x + (sprite_width);
+spriteTop = y;
+spriteBottom = y + (sprite_height);
+
+// Stop map going below top of view / above bottom of view
+if ((spriteTop &gt; -20 and vspeed &gt; 0) or (spriteBottom &lt; view_hview[0] + 20 and vspeed &lt; 0))
+{
+    vspeed *= -1;
+}
+
+// Stop map going past left of view / right of view
+if ((spriteLeft &gt; -20 and hspeed &gt; 0) or (spriteRight &lt; view_wview[0] + 20 and hspeed &lt; 0))
+{
+    hspeed *= -1;
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

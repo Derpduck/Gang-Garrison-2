@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">scale = 6
+image_xscale = scale;
+image_yscale = scale;
+
+xSpeedMin = 0.25;
+ySpeedMin = 0;
+xSpeedMax = 1.5;
+ySpeedMax = 0.5;
+
+panTime = 25;
+alarm[0] = (panTime * 30) / global.delta_factor;
+
+// Pick a map to use
+var map;
+mapList = ds_list_create();
+ds_list_add(mapList, "ctf_truefort");
+ds_list_add(mapList, "ctf_2dfort");
+ds_list_add(mapList, "ctf_conflict");
+ds_list_add(mapList, "ctf_classicwell");
+ds_list_add(mapList, "ctf_waterway");
+ds_list_add(mapList, "ctf_orange");
+ds_list_add(mapList, "cp_dirtbowl");
+ds_list_add(mapList, "cp_egypt");
+ds_list_add(mapList, "arena_montane");
+ds_list_add(mapList, "arena_lumberyard");
+ds_list_add(mapList, "gen_destroy");
+ds_list_add(mapList, "koth_valley");
+ds_list_add(mapList, "koth_corinth");
+ds_list_add(mapList, "koth_harvest");
+ds_list_add(mapList, "dkoth_atalia");
+ds_list_add(mapList, "dkoth_sixties");
+ds_list_add(mapList, "koth_gallery");
+ds_list_add(mapList, "ctf_eiger");
+
+var filename, path;
+filename = findInternalMapName(ds_list_find_value(mapList, irandom(ds_list_size(mapList) - 1)));
+path = temp_directory + "\" + filename;
+// file not already in temp directory, export it
+if (!file_exists(path))
+    file = export_include_file_location(filename, path);
+
+if (!sprite_replace(MenuMapS, path, 0, false, false, 0, 0))
+{
+    // Failed to get a sprite
+}
+
+ds_list_destroy(mapList);
+
+event_user(0);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

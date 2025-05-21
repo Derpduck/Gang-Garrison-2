@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Set a random start position within the bounds of the screen
+var xMin, yMin, xMax, yMax;
+xMin = 50;
+yMin = 50;
+xMax = sprite_width - view_wview[0] - 50;
+yMax = sprite_height - view_hview[0] - 50;
+
+x = random_range(xMin, xMax) * -1;
+y = random_range(yMin, yMax) * -1;
+
+// Set a random movement speed and direction
+hspeed = random_range(xSpeedMin, xSpeedMax) * choose(-global.delta_factor, global.delta_factor);
+vspeed = random_range(ySpeedMin, ySpeedMax) * choose(-global.delta_factor, global.delta_factor);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

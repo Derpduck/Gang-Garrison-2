@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
+        <argument kind="STRING">/*{
     draw_background(menuimage, 0, 0);
 
     // display background info, if downloaded
@@ -48,7 +48,7 @@
     {
         draw_sprite(MenuBackgroundVersionS,0,300,300);
     }
-}
+}*/
 </argument>
       </arguments>
     </action>
