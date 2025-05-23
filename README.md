@@ -30,7 +30,7 @@ kill | `player` | Kills the given player | Host + RCON
 gib | `player` | Kills the given player with a gib explosion | Host + RCON
 hurt | `player`, `damage` | Deals damage to the given player | Host + RCON
 teleport | `player` | Teleports the given player to the current cursor position | Host Only
-message | `message text` | Sents a custom pop-up message to all players | Host + RCON
+message | `message text` | Sents a custom notification message to all players | Host + RCON
 password | `new password` | Changes the server password to the given text. Leave `new password` blank to remove the current password | Host + RCON
 end | `optional: winning team` | Ends the current round. Specify `team` to select RED or BLUE as the winning team | Host + RCON
 map | `map name` | Sets the next map to the given map | Host + RCON
@@ -79,7 +79,21 @@ binds || Prints all saved binds | Client
 - Menus will now scroll only if they are too big to fit on the screen, regardless of resolution
 
 ### Audio
-- Added sound volume option
+- Added master volume option
+
+### UI
+- Re-worked kick and error message window
+	- No longer freezes the game unless necessary
+	- Fatal errors and multi-choice messages will still use the old window
+	- Removed warning messages in the options menu for UPNP and server-sent plugins
+
+### Performance
+- Added `-high` launch option
+	- Sets the process priority to high
+- Added `-headless` launch option / `Re-DSM.ini` option
+	- Disables all rendering
+	- Frees backgrounds and sounds from memory
+	- Enables dedicated mode
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open

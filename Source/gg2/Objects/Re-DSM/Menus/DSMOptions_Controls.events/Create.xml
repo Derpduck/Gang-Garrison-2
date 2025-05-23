@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(128, 172, 500, 260, 32, 0, 96, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_addedit_key("Toggle Console:", "global.consoleKey");
+menu_addedit_key("Toggle Console Fullscreen:", "global.consoleFullscreenKey");
+
+
+menu_addtablink("General", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions);
+');
+menu_addtablink("Hosting", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Hosting);
+');
+menu_addtablink("Console", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Console);
+');
+menu_addtablink("Controls", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Controls);
+');
+
+menu_addback("Back", '
+    instance_destroy();
+    if(room == DSMOptionsRoom)
+        room_goto_fix(Menu);
+    else
+        instance_create(0,0,InGameMenuController);
+');
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

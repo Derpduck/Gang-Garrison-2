@@ -43,7 +43,7 @@
         sprite_index = TombstonePyroS;
         break;
     default: // not all classes supported
-        show_message("Unsupported class: " + string(global.paramCharacter.player.class));
+        show_notification_message("Unsupported class: " + string(global.paramCharacter.player.class));
         instance_destroy();
 }
 

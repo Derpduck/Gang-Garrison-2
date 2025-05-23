@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var windowWidth, windowHeight, xbegin, ybegin;
+windowWidth = max(closeButtonWidth + padding, string_width(messageText) + padding);
+windowHeight = string_height(messageText) + closeButtonHeight + (padding * 2);
+xbegin = view_xview[0] + (view_wview[0] / 2);
+ybegin = round(view_yview[0] + (view_hview[0] / 2) - (windowHeight / 2));
+
+
+// Background
+draw_set_color(c_black);
+draw_set_alpha(0.5);
+draw_pinched_blackrect(round(xbegin - (windowWidth / 2)),
+                        ybegin,
+                        windowWidth, windowHeight, 4, 1)
+
+// Close Button
+draw_pinched_blackrect(round(xbegin - (closeButtonWidth / 2)),
+                        (ybegin + windowHeight - closeButtonHeight) - (padding / 2),
+                        closeButtonWidth, closeButtonHeight, 4, 1)
+
+// Text
+draw_set_color(c_white);
+draw_set_alpha(1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
+
+draw_text(xbegin, ybegin + (padding / 2), messageText);
+
+draw_set_valign(fa_middle);
+
+var buttonX1, buttonX2, buttonY1, buttonY2;
+buttonX1 = round(xbegin - (closeButtonWidth / 2));
+buttonX2 = buttonX1 + closeButtonWidth ;
+buttonY1 = (ybegin + windowHeight - closeButtonHeight) - (padding / 2);
+buttonY2 = buttonY1 + closeButtonHeight;
+
+if (mouse_x &gt;= buttonX1 and mouse_x &lt;= buttonX2 and mouse_y &gt;= buttonY1 and mouse_y &lt;= buttonY2)
+    draw_set_color(c_red);
+
+draw_text(xbegin, (ybegin + windowHeight - closeButtonHeight / 2) - (padding / 2), "Close");
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

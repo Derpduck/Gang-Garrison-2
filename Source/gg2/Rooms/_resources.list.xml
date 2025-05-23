@@ -4,6 +4,7 @@
   <resource name="Menu" type="RESOURCE"/>
   <resource name="Credits" type="RESOURCE"/>
   <resource name="Options" type="RESOURCE"/>
+  <resource name="DSMOptionsRoom" type="RESOURCE"/>
   <resource name="Lobby" type="RESOURCE"/>
   <resource name="CustomMapRoom" type="RESOURCE"/>
   <resource name="DownloadRoom" type="RESOURCE"/>

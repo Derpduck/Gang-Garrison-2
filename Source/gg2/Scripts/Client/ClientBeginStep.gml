@@ -3,9 +3,9 @@ var i, playerObject, playerID, player, otherPlayerID, otherPlayer, sameVersion, 
 
 if(tcp_eof(global.serverSocket)) {
     if(gotServerHello)
-        show_message("You have been disconnected from the server.");
+        show_notification_message("You have been disconnected from the server.");
     else
-        show_message("Unable to connect to the server.");
+        show_notification_message("Unable to connect to the server.");
     instance_destroy();
     exit;
 }
@@ -48,7 +48,7 @@ do {
 
             if(string_pos("/", downloadMapName) != 0 or string_pos("\", downloadMapName) != 0)
             {
-                show_message("Server sent illegal map name: "+downloadMapName);
+                show_notification_message("Server sent illegal map name:#"+downloadMapName);
                 instance_destroy();
                 exit;
             }
@@ -124,7 +124,7 @@ do {
                 {
                     if (!loadserverplugins(plugins))
                     {
-                        show_message("Error ocurred loading server-sent plugins.");
+                        show_notification_message("Error ocurred loading server-sent plugins.");
                         instance_destroy();
                         exit;
                     }
@@ -419,12 +419,12 @@ do {
             break;
        
         case PASSWORD_WRONG:                                    
-            show_message("Incorrect Password.");
+            show_notification_message("Incorrect Password.");
             instance_destroy();
             exit;
         
         case INCOMPATIBLE_PROTOCOL:
-            show_message("Incompatible server protocol version.");
+            show_notification_message("Incompatible server protocol version.");
             instance_destroy();
             exit;
             
@@ -439,7 +439,7 @@ do {
             else if reason == DSM_KICK_TEMP_BAN kickReason = "You were temporarily banned from the server";
             else if reason == DSM_KICK_BANNED kickReason = "You are banned from this server";
             else kickReason = "";
-            show_message("You have been kicked from the server. "+kickReason+".");
+            show_notification_message("You have been kicked from the server.#"+kickReason+".");
             instance_destroy();
             exit;
            
@@ -483,14 +483,14 @@ do {
                     room_goto_fix(CustomMapRoom);
                 else
                 {
-                    show_message("Error:#Server went to invalid internal map: " + global.currentMap + "#Exiting.");
+                    show_notification_message("Error:#Server went to invalid internal map: " + global.currentMap + "#Exiting.");
                     instance_destroy();
                     exit;
                 }
             } else { // it's an external map
                 if(string_pos("/", global.currentMap) != 0 or string_pos("\", global.currentMap) != 0)
                 {
-                    show_message("Server sent illegal map name: "+global.currentMap);
+                    show_notification_message("Server sent illegal map name: "+global.currentMap);
                     instance_destroy();
                     exit;
                 }
@@ -551,7 +551,7 @@ do {
             break;
         
         case SERVER_FULL:
-            show_message("The server is full.");
+            show_notification_message("The server is full.");
             instance_destroy();
             exit;
         

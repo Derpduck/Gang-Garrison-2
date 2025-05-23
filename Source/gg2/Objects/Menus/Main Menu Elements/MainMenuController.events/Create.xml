@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">{
     global.levelchoice = 1
-    menu_create(40, 240, 200, 200, 32);
+    menu_create(40, 200, 200, 200, 32);
     
     menu_background(208, 24, 8, 12, 4);
     
@@ -35,6 +35,9 @@
     ');
     menu_addlink("Options", '
         room_goto_fix(Options);
+    ');
+    menu_addlink("DSM Options", '
+        room_goto_fix(DSMOptionsRoom);
     ');
     if (global.rewardId != '')
     {

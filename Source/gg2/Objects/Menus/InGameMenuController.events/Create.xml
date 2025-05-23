@@ -17,7 +17,7 @@
     cursor_sprite = CrosshairS;
     global.levelchoice = 1
 
-    menu_create(40, 300, 200, 200, 32);
+    menu_create(40, 200, 200, 200, 32);
     menu_background(212, 24, 8, 12, 4);
     menu_setdimmed();
     
@@ -45,6 +45,10 @@
     menu_addlink("Options", '
         instance_destroy();
         instance_create(0,0,OptionsController);
+    ');
+    menu_addlink("DSM Options", '
+        instance_destroy();
+        instance_create(0,0,DSMOptions);
     ');
     menu_addlink("Disconnect", '
         // Force dedicated mode to off so you can go to main menu instead of just restarting server

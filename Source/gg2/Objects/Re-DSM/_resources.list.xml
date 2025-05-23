@@ -2,4 +2,5 @@
 <resources>
   <resource name="Console" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
+  <resource name="GameElements" type="GROUP"/>
 </resources>

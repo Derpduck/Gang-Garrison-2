@@ -60,6 +60,7 @@
     global.tcpListener = tcp_listen(global.hostingPort);
     if(socket_has_error(global.tcpListener))
     {
+        // TODO: Fix message being too long for show_notification_message
         show_message("Unable to host: " + socket_error(global.tcpListener));
         instance_destroy();
         exit;
@@ -67,7 +68,7 @@
     global.serverSocket = tcp_connect("127.0.0.1", global.hostingPort);    
     if(socket_has_error(global.serverSocket))
     {
-        show_message("Unable to connect to self. Epic fail, dude.");
+        show_notification_message("Unable to connect to self.#Epic fail, dude.");
         instance_destroy();
         exit;
     }
@@ -77,7 +78,7 @@
     do {
         if(current_time - loopbackStartTime > 500) // 0.5s should be enough to create a loopback connection...
         {
-            show_message("Unable to host: Maybe the port is already in use.");
+            show_notification_message("Unable to host:#Maybe the port is already in use.");
             instance_destroy();
             exit;
         }
@@ -143,7 +144,7 @@
         pluginList = getpluginhashes(global.serverPluginList);
         if (pluginList == 'failure')
         {
-            show_message("Error ocurred getting server-sent plugin hashes.");
+            show_notification_message("Error ocurred getting server-sent plugin hashes.");
             game_end();
             exit;
         }

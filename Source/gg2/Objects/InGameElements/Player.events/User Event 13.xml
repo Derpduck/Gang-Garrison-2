@@ -54,7 +54,7 @@
                 object = instance_create(0,0,charObj);
                 global.paramPlayer = noone;
             } else {
-                show_message("Invalid player object while deserializing");
+                show_notification_message("Invalid player object while deserializing");
             }
         }
         with(object) event_user(13);

@@ -127,7 +127,7 @@
     {
         global.playerLimit = 48;
         if (global.dedicatedMode != 1)
-            show_message("Warning: Player Limit cannot exceed 48. It has been set to 48");
+            show_notification_message("Warning:#Player Limit cannot exceed 48.#It has been set to 48");
     }
     
     global.currentMapArea = 1;
@@ -255,6 +255,7 @@
 var a, IPRaw, portRaw;
 doubleCheck = 0;
 global.launchMap = "";
+global.isNoDraw = false;
 
     for(a = 1; a <= parameter_count(); a += 1) 
     {
@@ -294,6 +295,14 @@ global.launchMap = "";
         {
             global.launchMap = parameter_string(a+1);
             global.dedicatedMode = 1;
+        }
+        else if (parameter_string(a) == "-high")
+        {
+            set_program_priority(2);
+        }
+        else if (parameter_string(a) == "-headless")
+        {
+            global.headlessMode = 1;
         }
     }
     

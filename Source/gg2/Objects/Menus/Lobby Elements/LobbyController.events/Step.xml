@@ -19,7 +19,7 @@
     if(lobbysocket != -1) {
         if(socket_has_error(lobbysocket)) {
             if(numServers == -1) {
-                show_message("Connecting to the lobby server has failed. Reason:#" + socket_error(lobbysocket));
+                show_notification_message("Connecting to the lobby server has failed. Reason:#" + socket_error(lobbysocket));
             }
             socket_destroy(lobbysocket);
             lobbysocket = -1;
@@ -33,7 +33,7 @@
                     serverInfoLength = read_uint(lobbysocket);
                     if(serverInfoLength&gt;100000)
                     {
-                        show_message("Server data block from lobby is too large ("+string(serverInfoLength)+")");
+                        show_notification_message("Server data block from lobby is too large ("+string(serverInfoLength)+")");
                         serverInfoLength = -1;
                         socket_destroy(lobbysocket);
                         lobbysocket = -1;

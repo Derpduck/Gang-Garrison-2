@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="headless_mode" type="RESOURCE"/>
+  <resource name="discard_backgrounds" type="RESOURCE"/>
+  <resource name="discard_sounds" type="RESOURCE"/>
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(128, 172, 500, 260, 32, 0, 96, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_addedit_boolean("Save Log:", "global.saveConsoleLog", '
+    DSM_write_ini("Console", "Save Log", argument0);
+');
+
+menu_addedit_num("Output Window Rows:", "global.consoleOutputRows", '
+    DSM_write_ini("Console", "Output Window Rows", argument0);
+');
+
+menu_addedit_num("Window Opacity:", "global.consoleOpacity", '
+    DSM_write_ini("Console", "Window Opacity", argument0);
+', 100);
+
+menu_addedit_boolean("Tab Autocomplete:", "global.consoleAutocomplete", '
+    DSM_write_ini("Console", "Tab Autocomplete", argument0);
+');
+
+menu_addedit_boolean("Show Timestamps:", "global.consoleTimestamps", '
+    DSM_write_ini("Console", "Show Timestamps", argument0);
+');
+
+menu_addedit_boolean("Use Bold Font:", "global.consoleBoldFont", '
+    DSM_write_ini("Console", "Bold Font", argument0);
+');
+
+
+menu_addtablink("General", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions);
+');
+menu_addtablink("Hosting", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Hosting);
+');
+menu_addtablink("Console", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Console);
+');
+menu_addtablink("Controls", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Controls);
+');
+
+menu_addback("Back", '
+    instance_destroy();
+    if(room == DSMOptionsRoom)
+        room_goto_fix(Menu);
+    else
+        instance_create(0,0,InGameMenuController);
+');
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

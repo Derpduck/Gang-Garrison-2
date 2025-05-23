@@ -9,7 +9,7 @@ else if(object_is_ancestor(object, Sentry) or object == Sentry )
 else if(object_is_ancestor(object, Generator) or object == Generator )
     damageGenerator( argument0, argument1, argument2 );
 else // This is probably a mistake, error
-    show_message("ERROR: Tried to apply damage to an entity that#"+
+    show_notification_message("ERROR: Tried to apply damage to an entity that#"+
                  "probably doesn't have health. Please report this error.##"+
                  "Technical information for debuggers: "
                     + string(argument0.class) + " "

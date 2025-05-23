@@ -23,7 +23,7 @@ if(spawner.team == TEAM_RED) {
 
 character = getCharacterObject(spawner.class);
 if(character == -1) {
-    show_message("Spawning a player did not succeed because his class and/or team were invalid.");
+    show_notification_message("Spawning a player did not succeed because his class and/or team were invalid.");
     exit;
 }
 

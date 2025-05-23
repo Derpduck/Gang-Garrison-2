@@ -99,7 +99,7 @@ case "password":
     console_print(COL_ORANGE + "RCON password changed to: " + COL_YELLOW + global.rconPassword);
     console_print(COL_ORANGE + "New password saved to: " + SINGLE_QUOTE + "Re-DSM.ini" + SINGLE_QUOTE);
     
-    DSM_write_ini("RCON", "RconPassword", global.rconPassword);
+    DSM_write_ini("RCON", "Rcon Password", global.rconPassword);
     break;
 
 case "toggle":

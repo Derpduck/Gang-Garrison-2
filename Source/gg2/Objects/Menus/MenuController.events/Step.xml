@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(!variable_local_exists("baseybegin"))
+        <argument kind="STRING">if (instance_exists(NotificationMessage)) exit;
+
+if(!variable_local_exists("baseybegin"))
 {
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
@@ -27,7 +29,9 @@ tabcount = menu_get_tabcount();
 
 // Menu Scrolling
 var menuSize;
-menuSize = baseybegin + (itemcount * spacing) + bgheight;
+menuSize = baseybegin + ((itemcount - 1) * spacing) + 16;
+if (drawbg)
+        menuSize += bgheight;
 
 if (menuSize &gt; view_hview[0])
 {

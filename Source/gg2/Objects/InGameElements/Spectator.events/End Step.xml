@@ -114,7 +114,7 @@ if((afktimer&lt;=0) and global.isHost==false)
     with(Client)
         instance_destroy();
 
-    show_message("You have been disconnected from the server. Reason: AFK");
+    show_notification_message("You have been disconnected from the server.#Reason: AFK");
 }
 </argument>
       </arguments>

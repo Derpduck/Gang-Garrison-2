@@ -19,7 +19,7 @@ image_yscale = scale;
 
 xSpeedMin = 0.4;
 ySpeedMin = 0;
-xSpeedMax = 1.5;
+xSpeedMax = 1.25;
 ySpeedMax = 0.5;
 
 panTime = 25;

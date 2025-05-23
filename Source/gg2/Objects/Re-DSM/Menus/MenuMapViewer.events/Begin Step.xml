@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if (room != Menu and room != Options and room != Lobby)
+        <argument kind="STRING">if (room != Menu and room != Options and room != Lobby and room != DSMOptionsRoom)
     instance_destroy();
 
 var spriteLeft, spriteRight, spriteTop, spriteBottom;

@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Map sprite
+        <argument kind="STRING">draw_set_color(c_white);
+draw_set_alpha(1);
+
+// Map sprite
 draw_sprite_ext(sprite_index, image_index, round(x), round(y), image_xscale, image_yscale, image_angle, c_white, image_alpha);
 
 if (!instance_exists(MainMenuController))

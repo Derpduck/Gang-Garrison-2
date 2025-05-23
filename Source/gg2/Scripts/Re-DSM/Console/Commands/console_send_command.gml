@@ -24,7 +24,6 @@ if (rconPlayer == -1)
 // Split input into arguments at spaces until there are none left
 while (string_count(" ", input) > 0)
 {
-    //show_message(input)
     var separatorIndex, startIndex, endIndex, quoteString;
     
     // Find the first space in the string; remove if it's the first character

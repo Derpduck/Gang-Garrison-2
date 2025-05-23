@@ -18,5 +18,5 @@ if(uberer.object != -1) {
         uberer.roundStats[POINTS] += 1;
     }
 } else {
-    show_message("The Uber-Event has just been called for a dead player. Please report this bug.");
+    show_notification_message("The Uber-Event has just been called for a dead player. Please report this bug.");
 }
