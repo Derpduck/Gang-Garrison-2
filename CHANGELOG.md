@@ -1,4 +1,4 @@
-## V2 (WIP)
+## V2 (2025/05/23)
 ### Menus
 - Added DSM options menus
 - A randomly chosen built-in map is now featured as the menu background
