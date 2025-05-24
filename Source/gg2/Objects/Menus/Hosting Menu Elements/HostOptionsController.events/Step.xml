@@ -14,8 +14,11 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if(!instance_exists(HostWarningsController))
-    instance_create(0, 0, HostWarningsController);
-
+{
+    var warningsController;
+    warningsController = instance_create(0, 0, HostWarningsController);
+    warningsController.shuffleRotation = global.shuffleRotation;
+}
 </argument>
       </arguments>
     </action>

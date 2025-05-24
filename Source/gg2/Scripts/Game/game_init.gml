@@ -255,7 +255,6 @@
 var a, IPRaw, portRaw;
 doubleCheck = 0;
 global.launchMap = "";
-global.isNoDraw = false;
 
     for(a = 1; a <= parameter_count(); a += 1) 
     {
@@ -395,6 +394,8 @@ global.isNoDraw = false;
         sprite_replace(CrosshairS,CrosshairFilename,1,CrosshairRemoveBG,false,0,0);
         sprite_set_offset(CrosshairS,sprite_get_width(CrosshairS)/2,sprite_get_height(CrosshairS)/2);
     }
+    
+    global.isHost = false;
     
     if(global.dedicatedMode == 1) {
         AudioControlToggleMute();

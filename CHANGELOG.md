@@ -1,3 +1,14 @@
+## V3 (WIP)
+### Menus
+- Host options menus are now availabe to the host while in-game
+	- Any changes made will be reflected live in-game
+- Combined main and advanced host options into a single menu
+- Combined controls menus into a single menu
+- Moved all menus closer to the top of the screen
+
+### UI
+- Next map name is shown on the map change screen
+
 ## V2 (2025/05/23)
 ### Menus
 - Added DSM options menus

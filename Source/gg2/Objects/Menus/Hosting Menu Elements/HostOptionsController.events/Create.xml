@@ -13,21 +13,28 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">ini_open("gg2.ini");
-global.timeLimitMins = ini_read_real("Server", "Time Limit", 15);
-global.caplimit = ini_read_real("Server", "CapLimit", 5);
-global.Server_RespawntimeSec = ini_read_real("Server", "Respawn Time", 5);
-readClasslimitsFromIni();
-ini_close();
+        <argument kind="STRING">if (room == Menu)
+{
+    ini_open("gg2.ini");
+    global.timeLimitMins = ini_read_real("Server", "Time Limit", 15);
+    global.caplimit = ini_read_real("Server", "CapLimit", 5);
+    global.Server_RespawntimeSec = ini_read_real("Server", "Respawn Time", 5);
+    readClasslimitsFromIni();
+    ini_close();
+    
+    //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
+    if (global.Server_RespawntimeSec == 0)
+        global.Server_Respawntime = 1;
+    else
+        global.Server_Respawntime = global.Server_RespawntimeSec * 30;
+}
 
-//Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
-if (global.Server_RespawntimeSec == 0)
-    global.Server_Respawntime = 1;
-else
-    global.Server_Respawntime = global.Server_RespawntimeSec * 30;
-
-menu_create(128, 172, 500, 260, 32, 0, 96, 16);
+shuffleRotation = global.shuffleRotation;
+menu_create(128, 100, 500, 260, 32, 0, 96, 16);
 menumode = true;
+
+if (room != Options)
+    menu_setdimmed();
 
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
@@ -44,7 +51,6 @@ menu_addedit_text2("Welcome message:", "global.welcomeMessage", '
     gg2_write_ini("Server", "WelcomeMessage", newMessage);
     return newMessage;
 ');
-
 menu_addedit_text("Password:", "global.serverPassword", '
     gg2_write_ini("Server", "Password", argument0);
 ');
@@ -66,27 +72,98 @@ menu_addedit_num("TDM Invulnerability (secs):", "global.tdmInvulnerabilitySecond
 menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
     gg2_write_ini("Server", "Respawn Time", argument0);
 ');
-    
-    
-menu_addtablink("Main", '
-    instance_create(x,y,HostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Advanced", '
-    instance_create(x,y,AdvHostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Classlimits", '
-    instance_create(x,y,ClasslimitsMenuController);
-    instance_destroy();
-');
+if (room == Menu)
+{
+    menu_addedit_num("Hosting Port:", "global.hostingPort", '
+        gg2_write_ini("Settings", "HostingPort", argument0);
+    ', 65535);
+}
+menu_addedit_script("Map Rotation:", menu_format_maprotation_filepath(global.mapRotationFile), '
+    var absPath;
 
-menu_addlink("Start Game", '
-    start_server();
+    absPath = get_open_filename("Map Rotation|*.txt", "");
+
+    if (absPath == "") {
+        global.mapRotationFile = absPath;
+    } else {
+        global.mapRotationFile = getRelativePathIfDescendand(working_directory + "\", absPath);
+    }
+    
+    gg2_write_ini("Server", "MapRotation", global.mapRotationFile);
+    
+    load_map_rotation();
+    if (room != Menu)
+    {
+        shuffle_rotation(false);
+    }
+    return menu_format_maprotation_filepath(global.mapRotationFile);
 ');
+menu_addedit_select("Shuffle map rotation:", "global.shuffleRotation", '
+    gg2_write_ini("Server", "ShuffleRotation", argument0);
+');
+menu_add_option(0, "Don't shuffle");
+menu_add_option(1, "Shuffle (no arena initial map)");
+menu_add_option(2, "Shuffle without bias");
+
+menu_addedit_boolean("Auto Balance:", "global.autobalance", '
+    gg2_write_ini("Server", "AutoBalance", argument0);
+');
+menu_addedit_boolean("Announce to Lobby:", "global.useLobbyServer", '
+    gg2_write_ini("Settings", "UseLobby", argument0);
+');
+if (room == Menu)
+{
+    menu_addedit_boolean("Attempt UPnP Forwarding:", "global.attemptPortForward", '
+        gg2_write_ini("Server", "Attempt UPnP Forwarding", argument0);
+    ');
+}
+    
+if (room == Menu)
+{
+    menu_addtablink("Start Game", '
+        start_server();
+    ');
+}
+
+if (room != Menu)
+{
+    menu_addtablink("Ingame", '
+        instance_destroy();
+        instance_create(x,y,OptionsController);
+    ');
+    menu_addtablink("Engine", '
+        instance_destroy();
+        instance_create(x,y,EngineOptionsController);
+    ');
+    menu_addtablink("Controls", '
+        instance_destroy();
+        instance_create(x,y,ControlsController);
+    ');
+    menu_addtablink("HUD", '
+        instance_destroy();
+        instance_create(x,y,HUDOptionsController);
+    ');
+}
+
+if ((global.isHost and room != Menu) or room == Menu)
+{
+    menu_addtablink("Server", '
+        instance_create(x,y,HostOptionsController);
+        instance_destroy();
+    ');
+    menu_addtablink("Classlimits", '
+        instance_create(x,y,ClasslimitsMenuController);
+        instance_destroy();
+    ');
+}
+
+
 menu_addback("Back", '
-    instance_create(x,y,MainMenuController);
     instance_destroy();
+    if (room == Menu)
+        instance_create(x,y,MainMenuController);
+    else
+        instance_create(0,0,InGameMenuController);
 ');
 </argument>
       </arguments>

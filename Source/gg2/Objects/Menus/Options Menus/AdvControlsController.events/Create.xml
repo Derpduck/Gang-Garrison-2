@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    menu_create(128, 172, 500, 260, 32, 0, 96, 16);
+    menu_create(128, 100, 500, 260, 32, 0, 96, 16);
     menumode = true;
     
     if (room != Options)
@@ -51,6 +51,17 @@
         instance_destroy();
         instance_create(x,y,HUDOptionsController);
     ');
+    if ((global.isHost and room != Menu) or room == Menu)
+    {
+        menu_addtablink("Server", '
+            instance_create(x,y,HostOptionsController);
+            instance_destroy();
+        ');
+        menu_addtablink("Classlimits", '
+            instance_create(x,y,ClasslimitsMenuController);
+            instance_destroy();
+        ');
+    }
     
     menu_addback("Back", '
         instance_destroy();

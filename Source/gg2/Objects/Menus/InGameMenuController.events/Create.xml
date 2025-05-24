@@ -17,7 +17,7 @@
     cursor_sprite = CrosshairS;
     global.levelchoice = 1
 
-    menu_create(40, 200, 200, 200, 32);
+    menu_create(40, 100, 200, 200, 32);
     menu_background(212, 24, 8, 12, 4);
     menu_setdimmed();
     

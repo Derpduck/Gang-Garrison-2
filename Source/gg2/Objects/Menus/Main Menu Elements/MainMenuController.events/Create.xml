@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">{
     global.levelchoice = 1
-    menu_create(40, 200, 200, 200, 32);
+    menu_create(40, 100, 200, 200, 32);
     
     menu_background(208, 24, 8, 12, 4);
     

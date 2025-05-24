@@ -31,6 +31,11 @@ if(classlimittotal &lt; floor(global.playerLimit/2))
     n += 1;
 }
 
+if(shuffleRotation != global.shuffleRotation and room != Menu and global.shuffleRotation != 0)
+{
+    item_name[n] = "Map rotation will be shuffled upon close."
+    n += 1;
+}
 
 items = n;
 

@@ -28,6 +28,11 @@
     }
     else
         draw_text(50, 530, "Connecting (press Esc to abort)");
+    
+    if (variable_local_exists("downloadMapName"))
+    {
+        draw_text(50, 510, "Next Map: " + downloadMapName);
+    }
 }
 </argument>
       </arguments>

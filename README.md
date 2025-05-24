@@ -58,7 +58,7 @@ binds || Prints all saved binds | Client
 
 #### RCON (**R**emote **CON**sole)
 > Allows clients to use host only commands
-- Host can either set a password which can players login with, or manually add RCON users
+- Host can either set a password for players to login with, or manually add RCON users themselves
 - Multi-clienting hosts are automatically given RCON access
 
 **Command** | **Arguments** | **Description** | **Usage**

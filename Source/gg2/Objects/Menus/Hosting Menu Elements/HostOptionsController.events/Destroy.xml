@@ -15,6 +15,14 @@
       <arguments>
         <argument kind="STRING">with(HostWarningsController)
     instance_destroy();
+
+if(shuffleRotation != global.shuffleRotation and global.shuffleRotation != 0)
+{
+    if (room != Menu)
+    {
+        shuffle_rotation(false);
+    }
+}
 </argument>
       </arguments>
     </action>
