@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">var maxOutputBoxSize;
-maxOutputBoxSize = (outputBoxBottom - offsetY) - (fullscreenYBottom - fullscreenYTop) - (boxPaddingHeight * 3);
+maxOutputBoxSize = (outputBoxBottom - yoffset) - (fullscreenYBottom - fullscreenYTop) - (boxPaddingHeight * 3);
 
 if (fullscreen)
 {
@@ -76,7 +76,7 @@ var minOutputBoxSize, fullscreenButtonSize, maxInputSize, maxRows;
 // Always allow room for 2 lines of the output box + fullscreen button
 minOutputBoxSize = (2 * lineSpacing) + boxPaddingHeight;
 fullscreenButtonSize = (fullscreenYBottom - fullscreenYTop) + (boxPaddingHeight * 2);
-maxInputSize = (inputBoxBottom - (minOutputBoxSize + fullscreenButtonSize)) - offsetY;
+maxInputSize = (inputBoxBottom - (minOutputBoxSize + fullscreenButtonSize)) - yoffset;
 maxRows = min(1 + string_count(chr(10), displayText), maxInputSize div characterHeight, maxInputBoxRows);
 
 inputBoxRows = max(1, maxRows);

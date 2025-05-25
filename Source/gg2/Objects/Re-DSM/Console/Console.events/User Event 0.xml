@@ -15,18 +15,18 @@
       <arguments>
         <argument kind="STRING">// Set console dimensions and positions for drawing
 // View Area
-offsetX = view_xview[0];
-offsetY = view_yview[0];
-sizeX = view_wview[0] + offsetX;
-sizeY = view_hview[0] + offsetY;
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0] + xoffset;
+ysize = view_hview[0] + yoffset;
 
 // Horizontal Bounds
-boxLeft = offsetX + boxPaddingWidth;
-boxRight = sizeX - boxPaddingWidth;
+boxLeft = xoffset + boxPaddingWidth;
+boxRight = xsize - boxPaddingWidth;
 global.consoleWidth = boxRight - boxLeft;
 
 // Input Box
-inputBoxBottom = sizeY - boxPaddingHeight;
+inputBoxBottom = ysize - boxPaddingHeight;
 inputBoxTop = inputBoxBottom - 2 - (inputBoxPaddingHeight * 2) - (inputBoxRows * characterHeight);
 
 // Output Box
@@ -40,7 +40,7 @@ fullscreenXLeft = fullscreenXRight - 23;
 if (fullscreen)
 {
     // Pin to top when fullscreen
-    fullscreenYTop = offsetY + boxPaddingHeight;
+    fullscreenYTop = yoffset + boxPaddingHeight;
     fullscreenYBottom = fullscreenYTop + 21;
 }
 else
