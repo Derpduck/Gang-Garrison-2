@@ -114,7 +114,7 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
         itemy = view_yview[0]+ybegin+i*spacing;
         
         // Item Background
-        if(drawbg)
+        if(drawbg and item_type[i] != "divider")
         {
             draw_set_color(c_black);
             draw_set_alpha(0.5);
@@ -127,7 +127,7 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
         // Item Text
         if (editing == i)
             draw_set_color(c_orange);
-        else if(i == virtualitem and getsHighlight)
+        else if(i == virtualitem and getsHighlight and item_type[i] != "divider")
             draw_set_color(c_red);
         else
             draw_set_color(c_white);
@@ -138,6 +138,7 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
         // Item Value
         switch (item_type[i])
         {
+        case "divider":
         case "script":
             val = "";
             break;

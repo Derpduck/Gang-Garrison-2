@@ -13,15 +13,44 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(24, 148, 72, 100, 30);
+        <argument kind="STRING">menu_create(24, 148, 112, 100, 30);
 
-menu_background(80, 24, 8, 12, 4);
+if (room != Lobby)
+{
+    menu_setdimmed();
+}
+else
+{
+    if (!instance_exists(MenuMapViewer))
+        instance_create(0, 0, MenuMapViewer);
+}
+
+menu_background(120, 24, 8, 12, 4);
 
 menu_addlink("Refresh", '
     event_user(0);
 ');
+menu_addlink("Join (manual)", '
+    var ip, port;
+    ip = get_string("Please enter the IP address or hostname of the server you want to join", "127.0.0.1");
+    port = get_integer("Please enter the port of the server you want to join", 8190);
+    join_server(ip, port);
+    Client.returnRoom = Menu;
+');
 menu_addback("Back", '
-    room_goto_fix(Menu);
+    if (room == Lobby)
+    {
+        room_goto_fix(Menu);
+    }
+    else
+    {
+        instance_destroy();
+        with(LobbyNameController) instance_destroy();
+        with(LobbyController) instance_destroy();
+        with(ScrollUpO) instance_destroy();
+        with(ScrollDownO) instance_destroy();
+        instance_create(0, 0, InGameMenuController);
+    }
 ');
 
 cooleddown = false;

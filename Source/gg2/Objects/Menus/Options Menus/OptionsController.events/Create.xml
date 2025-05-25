@@ -18,7 +18,14 @@
     menumode = true;
     
     if (room != Options)
+    {
         menu_setdimmed();
+    }
+    else
+    {
+        if (!instance_exists(MenuMapViewer))
+            instance_create(0, 0, MenuMapViewer);
+    }
     
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;

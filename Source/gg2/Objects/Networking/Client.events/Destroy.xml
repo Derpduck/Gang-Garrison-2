@@ -25,7 +25,15 @@
     with(PlayerControl)
         instance_destroy();
 
-    room_goto_fix(returnRoom);
+    if (global.queuedJoin)
+    {
+        room_goto_fix(QueuedJoinRoom);
+    }
+    else
+    {
+        room_goto_fix(returnRoom);
+    }
+    
     if (global.serverPluginsInUse &amp;&amp; !noUnloadPlugins)
         pluginscleanup();
 }

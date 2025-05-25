@@ -13,14 +13,24 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(312, 116, 250, 100, 30);
+        <argument kind="STRING">menu_create(352, 116, 250, 100, 30);
 
 menu_background(272, 24, 8, 12, 4);
 
+oldPlayerName = global.playerName;
 menu_addedit_text2("Player name:", "global.playerName", '
     var newName;
     newName = string_copy(argument0, 0, min(string_length(argument0), MAX_PLAYERNAME_LENGTH));
     gg2_write_ini("Settings", "PlayerName", newName);
+    
+    if (room != Lobby and newName != oldPlayerName)
+    {
+        write_ubyte(global.serverSocket, PLAYER_CHANGENAME);
+        write_ubyte(global.serverSocket, string_length(newName));
+        write_string(global.serverSocket, newName);
+        socket_send(global.serverSocket);
+    }
+    
     oldPlayerName = newName;
     return newName;
 ');

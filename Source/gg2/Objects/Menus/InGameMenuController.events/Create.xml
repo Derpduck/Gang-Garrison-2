@@ -28,13 +28,11 @@
         instance_destroy();
     ');
     
-    // Console
     menu_addlink("Console", '
         instance_destroy();
         if !(instance_exists(Console))
             instance_create(0, 0, Console);
     ');
-    
     if (global.isHost) {
         menu_addlink("Kick players", '
             if(!instance_exists(ScoreTableController)) instance_create(0,0,ScoreTableController);
@@ -49,6 +47,17 @@
     menu_addlink("DSM Options", '
         instance_destroy();
         instance_create(0,0,DSMOptions);
+    ');
+    
+    menu_divider("");
+    
+    menu_addlink("Lobby", '
+        instance_destroy();
+        instance_create(112, 224, LobbyController);
+        instance_create(176, 160, LobbySideController);
+        instance_create(176, 80, LobbyNameController);
+        instance_create(564, 152, ScrollUpO);
+        instance_create(564, 528, ScrollDownO);
     ');
     menu_addlink("Disconnect", '
         // Force dedicated mode to off so you can go to main menu instead of just restarting server

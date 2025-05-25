@@ -9,5 +9,4 @@
   <resource name="Nodraw" type="GROUP"/>
   <resource name="DSM_init" type="RESOURCE"/>
   <resource name="DSM_options" type="RESOURCE"/>
-  <resource name="DSM_write_ini" type="RESOURCE"/>
 </resources>

@@ -15,6 +15,8 @@
       <arguments>
         <argument kind="STRING">{
     var size, namelength, server;
+    xbegin = view_xview[0] + 152;
+    ybegin = view_yview[0] + 152;
     
     if(lobbysocket != -1) {
         if(socket_has_error(lobbysocket)) {
@@ -102,6 +104,8 @@
         }                    
     }
     
+    if (instance_exists(NotificationMessage)) exit;
+    
     if(mouse_x &gt; xbegin and mouse_x &lt; xbegin+width) {
         virtualitem = round((mouse_y-ybegin+12)/spacing-0.5);
         if(virtualitem&lt;0 or virtualitem&gt;items) {
@@ -112,23 +116,8 @@
         if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0){
             server = ds_list_find_value(servers, virtualitem);
             if(server.compatible)
-            {            
-                global.isHost = false;
-                global.serverIP = server.ip;
-                global.serverPort = server.port;
-                if(instance_exists(Client))
-                {   // We can't _actually_ destroy and recreate the Client here, because destroying it will cause a room change and that will cause the Create event not to run... Yay, GM!
-                    with(Client)
-                    {
-                        event_perform(ev_destroy,0);
-                        ClientCreate();
-                    }
-                }
-                else
-                {
-                    instance_create(0,0,Client);
-                }
-                Client.returnRoom = Lobby;
+            {
+                join_server(server.ip, server.port);
             }
             else
             {
@@ -150,7 +139,7 @@
                 }
                 else
                 {
-                    show_message(question);
+                    show_notification_message(question);
                 }
             }
         }

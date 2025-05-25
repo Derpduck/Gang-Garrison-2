@@ -11,4 +11,5 @@
   <resource name="UpdaterRoom" type="RESOURCE"/>
   <resource name="BuilderOptions" type="RESOURCE"/>
   <resource name="BuilderRoom" type="RESOURCE"/>
+  <resource name="QueuedJoinRoom" type="RESOURCE"/>
 </resources>

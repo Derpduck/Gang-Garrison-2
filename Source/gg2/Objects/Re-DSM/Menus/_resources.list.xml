@@ -5,4 +5,5 @@
   <resource name="DSMOptions_Hosting" type="RESOURCE"/>
   <resource name="DSMOptions_Console" type="RESOURCE"/>
   <resource name="DSMOptions_Controls" type="RESOURCE"/>
+  <resource name="QueuedRoomController" type="RESOURCE"/>
 </resources>

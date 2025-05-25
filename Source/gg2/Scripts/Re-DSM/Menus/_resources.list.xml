@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="menu_get_tabcount" type="RESOURCE"/>
+  <resource name="menu_divider" type="RESOURCE"/>
+  <resource name="DSM_write_ini" type="RESOURCE"/>
 </resources>

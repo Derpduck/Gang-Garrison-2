@@ -5,9 +5,13 @@
 - Combined main and advanced host options into a single menu
 - Combined controls menus into a single menu
 - Moved all menus closer to the top of the screen
+- Added lobby to in-game menu
+	- Currently does not connect to the server chosen while in-game
+- Moved manual join button to lobby menu
+- Adjusted lobby ping color ranges and added more colors
 
 ### UI
-- Next map name is shown on the map change screen
+- Next map name is now shown on the map change screen
 
 ## V2 (2025/05/23)
 ### Menus

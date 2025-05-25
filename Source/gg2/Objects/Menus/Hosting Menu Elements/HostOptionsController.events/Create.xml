@@ -72,12 +72,6 @@ menu_addedit_num("TDM Invulnerability (secs):", "global.tdmInvulnerabilitySecond
 menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
     gg2_write_ini("Server", "Respawn Time", argument0);
 ');
-if (room == Menu)
-{
-    menu_addedit_num("Hosting Port:", "global.hostingPort", '
-        gg2_write_ini("Settings", "HostingPort", argument0);
-    ', 65535);
-}
 menu_addedit_script("Map Rotation:", menu_format_maprotation_filepath(global.mapRotationFile), '
     var absPath;
 
@@ -108,6 +102,12 @@ menu_add_option(2, "Shuffle without bias");
 menu_addedit_boolean("Auto Balance:", "global.autobalance", '
     gg2_write_ini("Server", "AutoBalance", argument0);
 ');
+if (room == Menu)
+{
+    menu_addedit_num("Hosting Port:", "global.hostingPort", '
+        gg2_write_ini("Settings", "HostingPort", argument0);
+    ', 65535);
+}
 menu_addedit_boolean("Announce to Lobby:", "global.useLobbyServer", '
     gg2_write_ini("Settings", "UseLobby", argument0);
 ');

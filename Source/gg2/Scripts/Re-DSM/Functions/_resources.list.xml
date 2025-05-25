@@ -10,4 +10,6 @@
   <resource name="change_player_team" type="RESOURCE"/>
   <resource name="register_DSM_client" type="RESOURCE"/>
   <resource name="shuffle_rotation" type="RESOURCE"/>
+  <resource name="get_ping_color" type="RESOURCE"/>
+  <resource name="join_server" type="RESOURCE"/>
 </resources>
