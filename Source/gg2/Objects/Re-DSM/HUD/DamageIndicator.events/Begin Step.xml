@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (!ds_map_empty(damageMap))
+{
+    // Remove any damage instance older than the max duration
+    var damageInstance;
+    damageInstance = ds_map_find_first(damageMap);
+    
+    if (current_time - damageInstance &gt;= (global.damageIndicatorLingerDuration + global.damageIndicatorHoldDuration) * 1000)
+    {
+        ds_map_delete(damageMap, damageInstance);
+    }
+    
+    // Combine damage instances within quick succession
+    var damageInstancePrevious;
+    damageInstance = ds_map_find_last(damageMap);
+    damageInstancePrevious = ds_map_find_previous(damageMap,damageInstance);
+    
+    if (damageInstance - damageInstancePrevious &lt;= global.damageIndicatorHoldDuration * 1000)
+    {
+        //ds_map_replace(damageMap, damageInstance, ds_map_find_value(damageMap, damageInstance) + ds_map_find_value(damageMap, damageInstancePrevious));
+        //ds_map_delete(damageMap, damageInstancePrevious);
+        //show_message(string(ds_map_find_value(damageMap, damageInstance)))
+        //show_message(string(ds_map_find_value(damageMap, damageInstancePrevious)))
+    }
+}
+else
+{
+    instance_destroy();
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

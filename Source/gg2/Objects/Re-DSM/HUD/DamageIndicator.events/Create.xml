@@ -13,11 +13,15 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">alpha=0.1;
-done=false;
-playsound(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2),NoticeSnd);
-message = "";
-alarm[0]=200 / global.delta_factor;
+        <argument kind="STRING">victim = -1;
+damageMap = ds_map_create();
+
+// Drawing
+lastx = 0;
+lasty = 0;
+ybaseoffset = 30;
+yoffset = 0;
+riseSpeed = 25;
 </argument>
       </arguments>
     </action>

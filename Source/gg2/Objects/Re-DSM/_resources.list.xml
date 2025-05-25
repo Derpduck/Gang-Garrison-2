@@ -3,4 +3,5 @@
   <resource name="Console" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
   <resource name="GameElements" type="GROUP"/>
+  <resource name="HUD" type="GROUP"/>
 </resources>

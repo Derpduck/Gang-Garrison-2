@@ -45,4 +45,5 @@
   <resource name="ImpactSnd" type="RESOURCE"/>
   <resource name="DominationSnd" type="RESOURCE"/>
   <resource name="RevengeSnd" type="RESOURCE"/>
+  <resource name="HitsoundSnd" type="RESOURCE"/>
 </resources>

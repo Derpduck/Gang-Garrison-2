@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="CREATE" id="0">
+<event category="DESTROY" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,11 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">alpha=0.1;
-done=false;
-playsound(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2),NoticeSnd);
-message = "";
-alarm[0]=200 / global.delta_factor;
+        <argument kind="STRING">ds_map_destroy(damageMap);
 </argument>
       </arguments>
     </action>

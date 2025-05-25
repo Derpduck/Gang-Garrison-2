@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (!ds_map_empty(damageMap))
+{
+    var damageInstance;
+    damageInstance = ds_map_find_first(damageMap);
+    
+    for (i=0; i&lt;ds_map_size(damageMap); i+=1)
+    {
+        var lifetime, alpha;
+        lifetime = (current_time - damageInstance) / 1000;
+        yoffset =  max(0, lifetime - global.damageIndicatorHoldDuration);
+        alpha = 1 - (yoffset / global.damageIndicatorLingerDuration);
+        
+        
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_bottom);
+        draw_set_alpha(alpha);
+        
+        draw_set_color(c_black);
+        draw_text(lastx + 1, (lasty - ybaseoffset) - (yoffset * riseSpeed) + 1, ds_map_find_value(damageMap, damageInstance));
+        
+        draw_set_color(c_red);
+        draw_text(lastx, (lasty - ybaseoffset) - (yoffset * riseSpeed), ds_map_find_value(damageMap, damageInstance));
+        
+        damageInstance = ds_map_find_next(damageMap, damageInstance);
+    };
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

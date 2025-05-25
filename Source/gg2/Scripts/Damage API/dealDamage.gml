@@ -8,7 +8,11 @@ with(argument1)
     }
 }
 
+if (argument0 == global.myself)
+{
+    dmgIndDealDamage(argument0, argument1, argument2);
+}
+
 argument1.hp -= argument2;
 
 execute_string( global.dealDamageFunction, argument0, argument1, argument2 );
-

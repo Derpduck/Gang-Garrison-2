@@ -1,4 +1,6 @@
 ## V3 (WIP)
+### Damage Indicator
+
 ### Menus
 - Host options menus are now availabe to the host while in-game
 	- Any changes made will be reflected live in-game
@@ -12,6 +14,9 @@
 
 ### UI
 - Next map name is now shown on the map change screen
+
+### Bug Fixes
+- Fixed notice message sound being panned if not playing in 4:3 resolution
 
 ## V2 (2025/05/23)
 ### Menus
