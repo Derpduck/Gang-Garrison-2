@@ -20,21 +20,36 @@
     
     for (i=0; i&lt;ds_map_size(damageMap); i+=1)
     {
-        var lifetime, alpha;
+        var damage, lifetime, yposition, alpha, xdraw, ydraw, scale;
+        xdraw = ds_map_find_value(damageMapX, damageInstance);
+        ydraw = ds_map_find_value(damageMapY, damageInstance);
+        
+        damage = round(ds_map_find_value(damageMap, damageInstance));
         lifetime = (current_time - damageInstance) / 1000;
         yoffset =  max(0, lifetime - global.damageIndicatorHoldDuration);
+        yposition = (ydraw - ybaseoffset) - (yoffset * riseSpeed * global.damageIndicatorScale);
         alpha = 1 - (yoffset / global.damageIndicatorLingerDuration);
         
+        if (global.damageIndicatorShrink)
+            scale = global.damageIndicatorScale * alpha;
+        else
+            scale = global.damageIndicatorScale;
         
         draw_set_halign(fa_center);
         draw_set_valign(fa_bottom);
         draw_set_alpha(alpha);
         
-        draw_set_color(c_black);
-        draw_text(lastx + 1, (lasty - ybaseoffset) - (yoffset * riseSpeed) + 1, ds_map_find_value(damageMap, damageInstance));
+        if (global.damageIndicatorShadow)
+        {
+            if (get_color_option(global.damageIndicatorColor) == c_black)
+                draw_set_color(c_white);
+            else
+                draw_set_color(c_black);
+            draw_text_transformed(xdraw + scale, yposition + scale, damage, scale, scale, 0);
+        }
         
-        draw_set_color(c_red);
-        draw_text(lastx, (lasty - ybaseoffset) - (yoffset * riseSpeed), ds_map_find_value(damageMap, damageInstance));
+        draw_set_color(get_color_option(global.damageIndicatorColor));
+        draw_text_transformed(xdraw, yposition, damage, scale, scale, 0);
         
         damageInstance = ds_map_find_next(damageMap, damageInstance);
     };

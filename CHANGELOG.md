@@ -1,5 +1,10 @@
 ## V3 (WIP)
 ### Damage Indicator
+- Added damage indicator
+	- Accurate tracking of damage numbers per target hit
+	- Customizable visuals and audio
+		- Custom hitsounds can be stored in `../DSM/Sounds/`
+			> Currently cannot change the sound
 
 ### Menus
 - Host options menus are now availabe to the host while in-game
@@ -8,9 +13,10 @@
 - Combined controls menus into a single menu
 - Moved all menus closer to the top of the screen
 - Added lobby to in-game menu
-	- Currently does not connect to the server chosen while in-game
+	> Currently does not connect to the server chosen while in-game
 - Moved manual join button to lobby menu
 - Adjusted lobby ping color ranges and added more colors
+- Added menu option type for setting numbers to non-integer values
 
 ### UI
 - Next map name is now shown on the map change screen

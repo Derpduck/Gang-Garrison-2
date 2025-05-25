@@ -1,0 +1,11 @@
+menu_add_option(0, "White");
+menu_add_option(1, "Red");
+menu_add_option(2, "Orange");
+menu_add_option(3, "Yellow");
+menu_add_option(4, "Green");
+menu_add_option(5, "Cyan");
+menu_add_option(6, "Blue");
+menu_add_option(7, "Purple");
+menu_add_option(8, "Pink");
+menu_add_option(9, "Gray");
+menu_add_option(10, "Black");

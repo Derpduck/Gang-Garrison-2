@@ -2,7 +2,7 @@
 // argument1 = Damage victim instance ID
 // argument2 = Damage dealt
 //show_message(string(argument2))
-if (!global.damageIndicator) exit;
+if (!global.damageIndicator and argument2 > 0) exit;
 
 if (!global.damageIndicatorSelf and global.myself.object != -1)
 {
@@ -33,10 +33,6 @@ if (indicator == -1)
     indicator.victim = argument1;
 }
 
-// Add damage instance to indicator
-var damageMap, damage;
-ds_map_add(indicator.damageMap, current_time, argument2);
-
 // Set position of damage indicator
 if (instance_exists(argument1))
 {
@@ -44,4 +40,17 @@ if (instance_exists(argument1))
     indicator.lasty = round(argument1.y);
 }
 
-playsound(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound);
+// Add damage instance to indicator, append value if the timestamp exists
+var damageMap, damage;
+if (ds_map_exists(indicator.damageMap, current_time))
+{
+    ds_map_replace(indicator.damageMap, current_time, ds_map_find_value(indicator.damageMap, current_time) + argument2);
+}
+else
+{
+    ds_map_add(indicator.damageMap, current_time, argument2);
+    ds_map_add(indicator.damageMapX, current_time, indicator.lastx);
+    ds_map_add(indicator.damageMapY, current_time, indicator.lasty);
+    
+    playsound_volume(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound, global.damageIndicatorVolume / 100);
+}

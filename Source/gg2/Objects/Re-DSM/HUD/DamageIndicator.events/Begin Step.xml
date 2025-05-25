@@ -22,19 +22,21 @@
     if (current_time - damageInstance &gt;= (global.damageIndicatorLingerDuration + global.damageIndicatorHoldDuration) * 1000)
     {
         ds_map_delete(damageMap, damageInstance);
+        ds_map_delete(damageMapX, damageInstance);
+        ds_map_delete(damageMapY, damageInstance);
     }
     
     // Combine damage instances within quick succession
     var damageInstancePrevious;
     damageInstance = ds_map_find_last(damageMap);
-    damageInstancePrevious = ds_map_find_previous(damageMap,damageInstance);
+    damageInstancePrevious = ds_map_find_previous(damageMap, damageInstance);
     
     if (damageInstance - damageInstancePrevious &lt;= global.damageIndicatorHoldDuration * 1000)
     {
-        //ds_map_replace(damageMap, damageInstance, ds_map_find_value(damageMap, damageInstance) + ds_map_find_value(damageMap, damageInstancePrevious));
-        //ds_map_delete(damageMap, damageInstancePrevious);
-        //show_message(string(ds_map_find_value(damageMap, damageInstance)))
-        //show_message(string(ds_map_find_value(damageMap, damageInstancePrevious)))
+        ds_map_replace(damageMap, damageInstance, ds_map_find_value(damageMap, damageInstance) + ds_map_find_value(damageMap, damageInstancePrevious));
+        ds_map_delete(damageMap, damageInstancePrevious);
+        ds_map_delete(damageMapX, damageInstancePrevious);
+        ds_map_delete(damageMapY, damageInstancePrevious);
     }
 }
 else

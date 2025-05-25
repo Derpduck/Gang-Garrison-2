@@ -14,6 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">ds_map_destroy(damageMap);
+ds_map_destroy(damageMapX);
+ds_map_destroy(damageMapY);
 </argument>
       </arguments>
     </action>

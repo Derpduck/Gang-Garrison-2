@@ -56,6 +56,7 @@ if(editing != -1) {
         case "edittext2":
         case "edittext":
         case "editnum":
+        case "editfloat":
             if (keyboard_check(vk_control) &amp;&amp; keyboard_check(ord("V"))) {
                 keyboard_string += clipboard_get_text();
                 keyboard_clear(ord("V"));
@@ -108,6 +109,7 @@ if(editing != -1) {
                     case "edittext":
                     case "edittext2":
                     case "editnum":
+                    case "editfloat":
                         keyboard_string = "";
                         editing = virtualitem;
                         break;

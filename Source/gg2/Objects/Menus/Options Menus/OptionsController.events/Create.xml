@@ -23,6 +23,7 @@
     }
     else
     {
+        global.isHost = false;
         if (!instance_exists(MenuMapViewer))
             instance_create(0, 0, MenuMapViewer);
     }

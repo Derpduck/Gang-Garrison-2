@@ -35,30 +35,7 @@ menu_addedit_text("RCON Password:", "global.rconPassword", '
 ');
 
 
-menu_addtablink("General", '
-    instance_destroy();
-    instance_create(x,y,DSMOptions);
-');
-menu_addtablink("Hosting", '
-    instance_destroy();
-    instance_create(x,y,DSMOptions_Hosting);
-');
-menu_addtablink("Console", '
-    instance_destroy();
-    instance_create(x,y,DSMOptions_Console);
-');
-menu_addtablink("Controls", '
-    instance_destroy();
-    instance_create(x,y,DSMOptions_Controls);
-');
-
-menu_addback("Back", '
-    instance_destroy();
-    if(room == DSMOptionsRoom)
-        room_goto_fix(Menu);
-    else
-        instance_create(0,0,InGameMenuController);
-');
+DSM_menu_tabs();
 </argument>
       </arguments>
     </action>
