@@ -23,6 +23,9 @@
     
     selfPopRadius = 4;
     selfPop = false;
+    
+    if (global.teamColors_Bubbles)
+        sprite_index = Team_BubbleS;
 }
 </argument>
       </arguments>

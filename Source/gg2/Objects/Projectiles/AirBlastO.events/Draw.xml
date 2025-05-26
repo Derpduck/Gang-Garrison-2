@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="DESTROY" id="0">
+<event category="DRAW" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,14 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(instance_exists(owner))
-    gun.bubbleCount -= 1;
-
-var pop;
-pop = instance_create(x,y,Pop);
-pop.team = team;
-if (global.teamColors_Bubbles)
-    pop.sprite_index = Team_PopS;
+        <argument kind="STRING">var imageOffset;
+imageOffset = floor(image_index mod 6) + 6 * owner.team;
+draw_sprite_ext(sprite_index, imageOffset, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 </argument>
       </arguments>
     </action>

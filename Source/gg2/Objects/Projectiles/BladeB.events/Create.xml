@@ -18,6 +18,9 @@
     alarm[0] = 15 / global.delta_factor;
     ammoDrained = 0;
     image_speed = global.delta_factor;
+    
+    if (global.teamColors_Blades)
+        sprite_index = Team_BladeProjectileS;
 }
 </argument>
       </arguments>

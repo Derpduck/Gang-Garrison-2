@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
+        <argument kind="STRING">var imageOffset;
+imageOffset = floor(image_index mod 4) + 4 * team;
+draw_sprite_ext(sprite_index, imageOffset, x, y, image_xscale, image_yscale, 0, c_white, 1);
 </argument>
       </arguments>
     </action>

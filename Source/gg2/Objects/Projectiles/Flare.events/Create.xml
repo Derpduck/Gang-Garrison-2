@@ -19,6 +19,9 @@ burnIncrease = 8;
 durationIncrease = 35;
 afterburnFalloff = false;
 penetrateCap = 0;
+
+if (global.teamColors_Flares)
+    sprite_index = Team_FlareS;
 </argument>
       </arguments>
     </action>

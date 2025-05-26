@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">alarm[0]=2 / global.delta_factor;
+team = 0;
 </argument>
       </arguments>
     </action>

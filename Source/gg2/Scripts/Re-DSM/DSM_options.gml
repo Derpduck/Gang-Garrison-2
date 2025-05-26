@@ -74,7 +74,7 @@ ini_write_string("Damage Indicator", "Custom Sound File", global.damageIndicator
 global.damageIndicatorScale = ini_read_real("Damage Indicator", "Scale", 1);
 ini_write_real("Damage Indicator", "Scale", global.damageIndicatorScale);
 
-global.damageIndicatorHoldDuration = ini_read_real("Damage Indicator", "Hold Duration", 0.75);
+global.damageIndicatorHoldDuration = ini_read_real("Damage Indicator", "Hold Duration", 0.5);
 ini_write_real("Damage Indicator", "Hold Duration", global.damageIndicatorHoldDuration);
 
 global.damageIndicatorFadeDuration = ini_read_real("Damage Indicator", "Fade Duration", 1.5);
