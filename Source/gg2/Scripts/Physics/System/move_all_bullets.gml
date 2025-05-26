@@ -174,8 +174,13 @@ with(BurningProjectile)
     {
         if(not variable_global_exists("flameParticleType"))
         {
+            var flameParticleSprite;
+            if ((global.teamColors_Flames and object_index == Flame) or (global.teamColors_Flares and object_index == Flare) and team == TEAM_BLUE)
+                flameParticleSprite = Team_FlameBlueS;
+            else
+                flameParticleSprite = FlameS;
             global.flameParticleType = part_type_create();
-            part_type_sprite(global.flameParticleType, FlameS, true, false, true);
+            part_type_sprite(global.flameParticleType, flameParticleSprite, true, false, true);
             part_type_alpha2(global.flameParticleType, 1, 0.3);
             part_type_life(global.flameParticleType, 4, 7);
         }

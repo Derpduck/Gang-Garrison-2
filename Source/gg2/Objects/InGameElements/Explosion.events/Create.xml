@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">alarm[0]=13/global.delta_factor;
 image_speed = global.delta_factor;
+team = 0;
 </argument>
       </arguments>
     </action>

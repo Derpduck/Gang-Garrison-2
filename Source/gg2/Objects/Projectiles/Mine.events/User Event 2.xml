@@ -21,7 +21,11 @@
     }
     var explosion;
     explosion = instance_create(x,y,Explosion);
-    explosion.sprite_index = ExplosionSmallS;
+    explosion.team = owner.team;
+    if (global.teamColors_Explosions)
+        explosion.sprite_index = Team_ExplosionSmallS;
+    else
+        explosion.sprite_index = ExplosionSmallS;
     playsound(x,y,ExplosionSnd);
     
     with (Character) {

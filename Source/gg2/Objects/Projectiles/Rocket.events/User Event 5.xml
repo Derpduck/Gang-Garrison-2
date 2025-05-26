@@ -37,7 +37,12 @@
                 characterHit.lastDamageSource = weapon;
             }
         }
-        instance_create(x,y,Explosion);
+        var explosion;
+        explosion = instance_create(x,y,Explosion);
+        explosion.team = team;
+        if (global.teamColors_Explosions)
+            explosion.sprite_index = Team_ExplosionS;
+        
         playsound(x,y,ExplosionSnd);
         
         with (Character) {

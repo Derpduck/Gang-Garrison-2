@@ -28,7 +28,7 @@ ini_write_real("Team Colors", "Flames", global.teamColors_Flames);
 global.teamColors_Flares = ini_read_real("Team Colors", "Flares", 1);
 ini_write_real("Team Colors", "Flares", global.teamColors_Flares);
 
-global.teamColors_AirBlasts = ini_read_real("Team Colors", "Air Blasts", 1);
+global.teamColors_AirBlasts = ini_read_real("Team Colors", "Air Blasts", 0);
 ini_write_real("Team Colors", "Air Blasts", global.teamColors_AirBlasts);
 
 global.teamColors_Needles = ini_read_real("Team Colors", "Needles", 1);

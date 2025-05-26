@@ -5,6 +5,7 @@
   <resource name="Team_BlueRocketS" type="RESOURCE"/>
   <resource name="Team_ShotS" type="RESOURCE"/>
   <resource name="Team_FlameS" type="RESOURCE"/>
+  <resource name="Team_FlameBlueS" type="RESOURCE"/>
   <resource name="Team_FlareS" type="RESOURCE"/>
   <resource name="Team_NeedleS" type="RESOURCE"/>
   <resource name="Team_BladeProjectileS" type="RESOURCE"/>
