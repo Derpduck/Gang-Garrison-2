@@ -1,4 +1,11 @@
 ## V3 (WIP)
+### HUD
+- Made health bar and teammate stats enabled visible by default
+- Added ammo count bar
+- Added Ubercharge bar
+- Added Nuts 'N' Bolts bar
+- Added Sandwich bar
+
 ### Damage Indicator
 - Added damage indicator
 	- Accurate tracking of damage numbers per target hit

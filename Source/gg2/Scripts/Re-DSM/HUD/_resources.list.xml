@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Damage Indicator" type="GROUP"/>
+  <resource name="draw_character_info_overlays" type="RESOURCE"/>
+  <resource name="get_remaining_afterburn" type="RESOURCE"/>
+</resources>

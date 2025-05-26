@@ -30,6 +30,8 @@
     shot=false;
     t=0;
     
+    lastReloadTime = reloadTime;
+    
     if(golden)
     {
         normalSprite = RifleGoldS;

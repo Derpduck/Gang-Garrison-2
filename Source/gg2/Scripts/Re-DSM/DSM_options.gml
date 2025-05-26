@@ -1,4 +1,20 @@
 ini_open("Re-DSM.ini");
+// HUD
+global.ammoBar = ini_read_real("HUD", "Show Ammo Bar", 1);
+ini_write_real("HUD", "Show Ammo Bar", global.ammoBar);
+
+global.uberBar = ini_read_real("HUD", "Show Uber Bar", 1);
+ini_write_real("HUD", "Show Uber Bar", global.uberBar);
+
+global.nutsBar = ini_read_real("HUD", "Show Nuts N Bolts Bar", 1);
+ini_write_real("HUD", "Show Nuts N Bolts Bar", global.nutsBar);
+
+global.sandwichBar = ini_read_real("HUD", "Show Sandwich Bar", 1);
+ini_write_real("HUD", "Show Sandwich Bar", global.sandwichBar);
+
+global.afterburnBar = ini_read_real("HUD", "Show Afterburn Bar", 1);
+ini_write_real("HUD", "Show Afterburn Bar", global.afterburnBar);
+
 // Damage Indicator
 global.damageIndicator = ini_read_real("Damage Indicator", "Show Damage Indicator", 1);
 ini_write_real("Damage Indicator", "Show Damage Indicator", global.damageIndicator);

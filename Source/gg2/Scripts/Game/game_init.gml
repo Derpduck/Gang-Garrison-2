@@ -65,8 +65,8 @@
     global.medicRadar = ini_read_real("Settings", "Healer Radar", 1);
     global.showHealer = ini_read_real("Settings", "Show Healer", 1);
     global.showHealing = ini_read_real("Settings", "Show Healing", 1);
-    global.showHealthBar = ini_read_real("Settings", "Show Healthbar", 0);
-    global.showTeammateStats = ini_read_real("Settings", "Show Extra Teammate Stats", 0);
+    global.showHealthBar = ini_read_real("Settings", "Show Healthbar", 1);
+    global.showTeammateStats = ini_read_real("Settings", "Show Extra Teammate Stats", 1);
     global.serverPluginsPrompt = ini_read_real("Settings", "ServerPluginsPrompt", 1);
     global.restartPrompt = ini_read_real("Settings", "RestartPrompt", 1);
     //user HUD settings
