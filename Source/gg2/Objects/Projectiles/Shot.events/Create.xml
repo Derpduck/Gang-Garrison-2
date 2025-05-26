@@ -23,6 +23,9 @@
     // Controls whether this bullet penetrates bubbles or not
     // Also controls whether this bullet destroys friendly bubbles
     perseverant = choose(0, 0, 1); // 1/3 chance
+    
+    if (global.teamColors_Bullets)
+        sprite_index = Team_ShotS;
 }
 </argument>
       </arguments>

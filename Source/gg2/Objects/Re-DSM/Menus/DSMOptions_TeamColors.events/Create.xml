@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_addedit_boolean("Bullets:", "global.teamColors_Bullets", '
+    DSM_write_ini("Team Colors", "Bullets", argument0);
+');
+menu_addedit_boolean("Rockets:", "global.teamColors_Rockets", '
+    DSM_write_ini("Team Colors", "Rockets", argument0);
+');
+menu_addedit_boolean("Flames:", "global.teamColors_Flames", '
+    DSM_write_ini("Team Colors", "Flames", argument0);
+');
+menu_addedit_boolean("Flares:", "global.teamColors_Flares", '
+    DSM_write_ini("Team Colors", "Flares", argument0);
+');
+menu_addedit_boolean("Air Blasts:", "global.teamColors_AirBlasts", '
+    DSM_write_ini("Team Colors", "Air Blasts", argument0);
+');
+menu_addedit_boolean("Needles:", "global.teamColors_Needles", '
+    DSM_write_ini("Team Colors", "Needles", argument0);
+');
+menu_addedit_boolean("Mine Trails:", "global.teamColors_MineTrails", '
+    DSM_write_ini("Team Colors", "Mine Trails", argument0);
+');
+menu_addedit_boolean("Blades:", "global.teamColors_Blades", '
+    DSM_write_ini("Team Colors", "Blades", argument0);
+');
+menu_addedit_boolean("Bubbles:", "global.teamColors_Bubbles", '
+    DSM_write_ini("Team Colors", "Bubbles", argument0);
+');
+menu_addedit_boolean("Explosions:", "global.teamColors_Explosions", '
+    DSM_write_ini("Team Colors", "Explosions", argument0);
+');
+
+DSM_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

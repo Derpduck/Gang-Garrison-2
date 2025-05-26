@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">{
     warnoptioneffect = false;
-    menu_create(128, 100, 500, 260, 32, 0, 96, 16);
+    menu_create(144, 100, 500, 260, 32, 0, 112, 16);
     menumode = true;
 
     if(room != Options)

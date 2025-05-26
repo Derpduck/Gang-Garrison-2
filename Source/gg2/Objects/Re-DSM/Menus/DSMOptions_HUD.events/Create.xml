@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(128, 100, 500, 260, 32, 0, 96, 16);
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
 menumode = true;
 
 if (room != DSMOptionsRoom)
@@ -56,14 +56,6 @@ menu_addedit_select("Show Afterburn Bar:", "global.afterburnBar", '
 menu_add_option(0, "No");
 menu_add_option(1, "Yes");
 menu_add_option(2, "Yes (Self Only)");
-
-/*menu_addedit_boolean("Show Damage Indicator:", "global.damageIndicator", '
-    DSM_write_ini("Damage Indicator", "Show Damage Indicator", argument0);
-');
-
-menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
-    DSM_write_ini("Damage Indicator", "Volume", argument0);
-', 100);*/
 
 DSM_menu_tabs();
 </argument>

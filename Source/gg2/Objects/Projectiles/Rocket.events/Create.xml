@@ -29,6 +29,9 @@
     
     alarm[1] = 20 / global.delta_factor;
     alarm[2] = 30 / global.delta_factor;
+    
+    if (global.teamColors_Rockets)
+        sprite_index = Team_RocketS;
 }
 </argument>
       </arguments>

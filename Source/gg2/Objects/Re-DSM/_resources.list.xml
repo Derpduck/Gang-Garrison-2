@@ -4,4 +4,5 @@
   <resource name="Menus" type="GROUP"/>
   <resource name="GameElements" type="GROUP"/>
   <resource name="HUD" type="GROUP"/>
+  <resource name="QueuedRoomController" type="RESOURCE"/>
 </resources>

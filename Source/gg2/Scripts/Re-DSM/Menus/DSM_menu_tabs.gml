@@ -10,6 +10,10 @@ menu_addtablink("Indicator", '
     instance_destroy();
     instance_create(x,y,DSMOptions_Indicator);
 ');
+menu_addtablink("Team Colors", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_TeamColors);
+');
 menu_addtablink("Hosting", '
     instance_destroy();
     instance_create(x,y,DSMOptions_Hosting);

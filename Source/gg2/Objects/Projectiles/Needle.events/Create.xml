@@ -17,6 +17,9 @@
     hitDamage = 4;
     lifetime = 40;
     alarm[0] = lifetime / global.delta_factor;
+    
+    if (global.teamColors_Needles)
+        sprite_index = Team_NeedleS;
 }
 </argument>
       </arguments>

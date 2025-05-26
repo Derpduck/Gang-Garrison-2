@@ -71,8 +71,16 @@ with(Rocket)
                 if (!variable_local_exists("rocketblurParticleType"))
                 {
                     rocketblurParticleType = part_type_create();
-                    if team == TEAM_RED rocketParticleSprite = RedRocketS;
-                    else rocketParticleSprite = BlueRocketS;
+                    if (global.teamColors_Rockets)
+                    {
+                        if team == TEAM_RED rocketParticleSprite = Team_RedRocketS;
+                        else rocketParticleSprite = Team_BlueRocketS;
+                    }
+                    else
+                    {
+                        if team == TEAM_RED rocketParticleSprite = RedRocketS;
+                        else rocketParticleSprite = BlueRocketS;
+                    }
                     part_type_sprite(rocketblurParticleType,rocketParticleSprite,false,true,false);
                     part_type_alpha2(rocketblurParticleType,0.7,0.1);
                     
@@ -242,7 +250,13 @@ with(Mine)
         {
             particleCycle = (particleCycle + 1) mod 2;
             if(particleCycle)
-                instance_create(x, y, MineTrail);
+            {
+                var mineTrail;
+                mineTrail = instance_create(x, y, MineTrail);
+                mineTrail.team = team;
+                if (global.teamColors_MineTrails)
+                    mineTrail.sprite_index = Team_MineTrailS;
+            }
         }
     }
     

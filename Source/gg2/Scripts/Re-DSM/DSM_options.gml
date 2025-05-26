@@ -15,6 +15,37 @@ ini_write_real("HUD", "Show Sandwich Bar", global.sandwichBar);
 global.afterburnBar = ini_read_real("HUD", "Show Afterburn Bar", 1);
 ini_write_real("HUD", "Show Afterburn Bar", global.afterburnBar);
 
+// Team Colors
+global.teamColors_Bullets = ini_read_real("Team Colors", "Bullets", 1);
+ini_write_real("Team Colors", "Bullets", global.teamColors_Bullets);
+
+global.teamColors_Rockets = ini_read_real("Team Colors", "Rockets", 1);
+ini_write_real("Team Colors", "Rockets", global.teamColors_Rockets);
+
+global.teamColors_Flames = ini_read_real("Team Colors", "Flames", 1);
+ini_write_real("Team Colors", "Flames", global.teamColors_Flames);
+
+global.teamColors_Flares = ini_read_real("Team Colors", "Flares", 1);
+ini_write_real("Team Colors", "Flares", global.teamColors_Flares);
+
+global.teamColors_AirBlasts = ini_read_real("Team Colors", "Air Blasts", 1);
+ini_write_real("Team Colors", "Air Blasts", global.teamColors_AirBlasts);
+
+global.teamColors_Needles = ini_read_real("Team Colors", "Needles", 1);
+ini_write_real("Team Colors", "Needles", global.teamColors_Needles);
+
+global.teamColors_MineTrails = ini_read_real("Team Colors", "Mine Trails", 1);
+ini_write_real("Team Colors", "Trails", global.teamColors_MineTrails);
+
+global.teamColors_Blades = ini_read_real("Team Colors", "Blades", 1);
+ini_write_real("Team Colors", "Blades", global.teamColors_Blades);
+
+global.teamColors_Bubbles = ini_read_real("Team Colors", "Bubbles", 1);
+ini_write_real("Team Colors", "Bubbles", global.teamColors_Bubbles);
+
+global.teamColors_Explosions = ini_read_real("Team Colors", "Explosions", 1);
+ini_write_real("Team Colors", "Explosions", global.teamColors_Explosions);
+
 // Damage Indicator
 global.damageIndicator = ini_read_real("Damage Indicator", "Show Damage Indicator", 1);
 ini_write_real("Damage Indicator", "Show Damage Indicator", global.damageIndicator);
