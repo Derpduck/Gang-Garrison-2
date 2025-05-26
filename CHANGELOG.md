@@ -21,7 +21,7 @@
 - Combined controls menus into a single menu
 - Moved all menus closer to the top of the screen
 - Added lobby to in-game menu
-	> Currently does not connect to the server chosen while in-game
+	> Currently cannot connect to other games while in-game
 - Moved manual join button to lobby menu
 - Adjusted lobby ping color ranges and added more colors
 - Added menu option type for setting numbers to non-integer values
@@ -30,6 +30,8 @@
 - Next map name is now shown on the map change screen
 
 ### Bug Fixes
+- Fixed bug that consistently caused crashes when leaving and joining another server without leaving the lobby
+	- TODO: Find the root cause and restore intended lobby behaviour
 - Fixed notice message sound being panned if not playing in 4:3 resolution
 
 ## V2 (2025/05/23)

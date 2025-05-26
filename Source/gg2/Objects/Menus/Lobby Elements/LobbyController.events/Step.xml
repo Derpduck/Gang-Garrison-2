@@ -113,11 +113,27 @@
         } else {
             virtualitem += offset;
         }
-        if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0){
+        if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0) and room == Lobby{
             server = ds_list_find_value(servers, virtualitem);
             if(server.compatible)
             {
-                join_server(server.ip, server.port);
+                //join_server(server.ip, server.port);
+                global.isHost = false;
+                global.serverIP = server.ip;
+                global.serverPort = server.port;
+                if(instance_exists(Client))
+                {   // We can't _actually_ destroy and recreate the Client here, because destroying it will cause a room change and that will cause the Create event not to run... Yay, GM!
+                    with(Client)
+                    {
+                        event_perform(ev_destroy,0);
+                        ClientCreate();
+                    }
+                }
+                else
+                {
+                    instance_create(0,0,Client);
+                }
+                Client.returnRoom = Lobby;
             }
             else
             {

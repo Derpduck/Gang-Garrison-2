@@ -125,7 +125,7 @@
         pluginList = getpluginhashes(global.serverPluginList);
         if (pluginList == 'failure')
         {
-            show_notification_message("Error ocurred getting server-sent plugin hashes.");
+            show_message("Error ocurred getting server-sent plugin hashes.");
             game_end();
             exit;
         }

@@ -10,7 +10,7 @@ if(argument0 == FULL_UPDATE) {
 
 receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
 if(read_ubyte(global.tempBuffer) != ds_list_size(global.players))
-    show_notification_message("Wrong number of players while deserializing state");
+    show_message("Wrong number of players while deserializing state");
 
 if(argument0 != CAPS_UPDATE) {
     for(i=0; i<ds_list_size(global.players); i+=1) {
