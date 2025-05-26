@@ -22,9 +22,32 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_addedit_boolean("Damage Indicator Enabled:", "global.damageIndicator", '
-    DSM_write_ini("Damage Indicator", "Damage Indicator Enabled", argument0);
+menu_addedit_boolean("Show Damage Indicator:", "global.damageIndicator", '
+    DSM_write_ini("Damage Indicator", "Show Damage Indicator", argument0);
 ');
+
+menu_addedit_boolean("Show Self Damage:", "global.damageIndicatorSelf", '
+    DSM_write_ini("Damage Indicator", "Show Self Damage", argument0);
+');
+
+menu_addedit_boolean("Show Healing Given:", "global.damageIndicatorHealing", '
+    DSM_write_ini("Damage Indicator", "Show Healing Given", argument0);
+');
+
+menu_addedit_select("Damage Indicator Color:", "global.damageIndicatorColor", '
+    DSM_write_ini("Damage Indicator", "Damage Indicator Color", argument0);
+');
+DSM_menu_color_options();
+
+menu_addedit_select("Self Damage Color:", "global.damageIndicatorColorSelf", '
+    DSM_write_ini("Damage Indicator", "Self Damage Color", argument0);
+');
+DSM_menu_color_options();
+
+menu_addedit_select("Healing Color:", "global.damageIndicatorColorHealing", '
+    DSM_write_ini("Damage Indicator", "Healing Color", argument0);
+');
+DSM_menu_color_options();
 
 menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
     DSM_write_ini("Damage Indicator", "Volume", argument0);
@@ -32,11 +55,6 @@ menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
 
 //global.damageIndicatorCustomSound = ini_read_string("Damage Indicator", "Custom Sound File", "");
 //ini_write_string("Damage Indicator", "Custom Sound File", global.damageIndicatorCustomSound);
-
-menu_addedit_select("Damage Indicator Color:", "global.damageIndicatorColor", '
-    DSM_write_ini("Damage Indicator", "Damage Indicator Color", argument0);
-');
-DSM_menu_color_options();
 
 menu_addedit_float("Scale:", "global.damageIndicatorScale", '
     DSM_write_ini("Damage Indicator", "Scale", argument0);
@@ -46,8 +64,8 @@ menu_addedit_float("Hold Duration:", "global.damageIndicatorHoldDuration", '
     DSM_write_ini("Damage Indicator", "Hold Duration", argument0);
 ');
 
-menu_addedit_float("Linger Duration:", "global.damageIndicatorLingerDuration", '
-    DSM_write_ini("Damage Indicator", "Linger Duration", argument0);
+menu_addedit_float("Fade Duration:", "global.damageIndicatorFadeDuration", '
+    DSM_write_ini("Damage Indicator", "Fade Duration", argument0);
 ');
 
 menu_addedit_boolean("Shrink While Fading:", "global.damageIndicatorShrink", '
@@ -56,10 +74,6 @@ menu_addedit_boolean("Shrink While Fading:", "global.damageIndicatorShrink", '
 
 menu_addedit_boolean("Drop Shadow:", "global.damageIndicatorShadow", '
     DSM_write_ini("Damage Indicator", "Drop Shadow", argument0);
-');
-
-menu_addedit_boolean("Show Self Damage:", "global.damageIndicatorSelf", '
-    DSM_write_ini("Damage Indicator", "Show Self Damage", argument0);
 ');
 
 DSM_menu_tabs();

@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">victim = -1;
+type = -1;
 damageMap = ds_map_create();
 damageMapX = ds_map_create();
 damageMapY = ds_map_create();
@@ -24,6 +25,7 @@ lasty = 0;
 ybaseoffset = 30;
 yoffset = 0;
 riseSpeed = 25;
+indicatorColor = c_red;
 </argument>
       </arguments>
     </action>

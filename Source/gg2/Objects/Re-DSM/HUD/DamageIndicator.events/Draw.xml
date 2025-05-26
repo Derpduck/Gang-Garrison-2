@@ -28,7 +28,7 @@
         lifetime = (current_time - damageInstance) / 1000;
         yoffset =  max(0, lifetime - global.damageIndicatorHoldDuration);
         yposition = (ydraw - ybaseoffset) - (yoffset * riseSpeed * global.damageIndicatorScale);
-        alpha = 1 - (yoffset / global.damageIndicatorLingerDuration);
+        alpha = 1 - (yoffset / global.damageIndicatorFadeDuration);
         
         if (global.damageIndicatorShrink)
             scale = global.damageIndicatorScale * alpha;
@@ -41,14 +41,14 @@
         
         if (global.damageIndicatorShadow)
         {
-            if (get_color_option(global.damageIndicatorColor) == c_black)
+            if (indicatorColor == c_black)
                 draw_set_color(c_white);
             else
                 draw_set_color(c_black);
             draw_text_transformed(xdraw + scale, yposition + scale, damage, scale, scale, 0);
         }
         
-        draw_set_color(get_color_option(global.damageIndicatorColor));
+        draw_set_color(indicatorColor);
         draw_text_transformed(xdraw, yposition, damage, scale, scale, 0);
         
         damageInstance = ds_map_find_next(damageMap, damageInstance);

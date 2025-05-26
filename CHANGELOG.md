@@ -2,6 +2,7 @@
 ### Damage Indicator
 - Added damage indicator
 	- Accurate tracking of damage numbers per target hit
+	- Option to show healing given, and self damage
 	- Customizable visuals and audio
 		- Custom hitsounds can be stored in `../DSM/Sounds/`
 			> Currently cannot change the sound

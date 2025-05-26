@@ -19,7 +19,7 @@
     var damageInstance;
     damageInstance = ds_map_find_first(damageMap);
     
-    if (current_time - damageInstance &gt;= (global.damageIndicatorLingerDuration + global.damageIndicatorHoldDuration) * 1000)
+    if (current_time - damageInstance &gt;= (global.damageIndicatorFadeDuration + global.damageIndicatorHoldDuration) * 1000)
     {
         ds_map_delete(damageMap, damageInstance);
         ds_map_delete(damageMapX, damageInstance);
