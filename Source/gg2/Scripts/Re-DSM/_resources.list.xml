@@ -6,7 +6,7 @@
   <resource name="Functions" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
   <resource name="Messages" type="GROUP"/>
-  <resource name="Nodraw" type="GROUP"/>
+  <resource name="Headless" type="GROUP"/>
   <resource name="HUD" type="GROUP"/>
   <resource name="DSM_init" type="RESOURCE"/>
   <resource name="DSM_options" type="RESOURCE"/>

@@ -43,6 +43,8 @@ else
 {
     instance_destroy();
 }
+
+lastDingTime -= 1;
 </argument>
       </arguments>
     </action>

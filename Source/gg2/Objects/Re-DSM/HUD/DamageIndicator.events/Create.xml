@@ -26,6 +26,9 @@ ybaseoffset = 30;
 yoffset = 0;
 riseSpeed = 25;
 indicatorColor = c_red;
+
+// Sound
+lastDingTime = 0;
 </argument>
       </arguments>
     </action>

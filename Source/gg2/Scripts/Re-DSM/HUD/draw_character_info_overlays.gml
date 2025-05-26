@@ -17,7 +17,8 @@ if (player != global.myself or global.showHealthBar)
                    ceil((hp / maxHp) * 100), c_black, c_red, barColor, 0, true, true);
     
     // Afterburn Bar
-    var afterburn;
+    /*var afterburn;
+    barCount += 1;
     afterburn = min(maxHp, get_remaining_afterburn());
     if (afterburn > 0)
     {
@@ -28,6 +29,8 @@ if (player != global.myself or global.showHealthBar)
                    xr + 10, yr - (ybaseoffset + (barCount * barHeight)),
                    ceil((afterburn / maxHp) * 100), c_black, c_orange, c_orange, 0, true, true);
     }
+    
+    draw_text(xr - 40, yr, afterburn);*/
     
     barCount += 1;
 }

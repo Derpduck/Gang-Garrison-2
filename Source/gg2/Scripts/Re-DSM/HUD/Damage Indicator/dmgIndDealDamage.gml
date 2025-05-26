@@ -52,7 +52,11 @@ else
     ds_map_add(indicator.damageMapX, current_time, indicator.lastx);
     ds_map_add(indicator.damageMapY, current_time, indicator.lasty);
     
-    playsound_volume(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound, global.damageIndicatorVolume / 100);
+    if (indicator.lastDingTime <= 0)
+    {
+        playsound_volume(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound, global.damageIndicatorVolume / 100);
+        indicator.lastDingTime = 5;
+    }
 }
 
 if (global.myself.object != -1)
