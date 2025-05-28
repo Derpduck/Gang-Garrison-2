@@ -2,4 +2,5 @@
 <resources>
   <resource name="DSM_ChargeS" type="RESOURCE"/>
   <resource name="ScoreboardStatsS" type="RESOURCE"/>
+  <resource name="DSM_MVPBannerS" type="RESOURCE"/>
 </resources>

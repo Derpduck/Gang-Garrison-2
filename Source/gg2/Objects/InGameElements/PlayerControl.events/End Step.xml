@@ -21,7 +21,7 @@ if(global.isHost)
 else
     afktimer -= 1 * global.delta_factor;
 
-if ((afktimer &lt;= 0) and !global.myself.object.afk)
+if ((afktimer &lt;= 0) and !global.myself.object.afk and !global.noAFKAutoSpectate)
 {
     global.myself.object.afk = true;
     if !instance_exists(TeamSelectController)

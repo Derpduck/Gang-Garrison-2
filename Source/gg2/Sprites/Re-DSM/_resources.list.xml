@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="Console" type="GROUP"/>
+  <resource name="Fonts" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
   <resource name="Projectiles" type="GROUP"/>
   <resource name="HUD" type="GROUP"/>

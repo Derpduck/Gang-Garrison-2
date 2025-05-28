@@ -1,4 +1,8 @@
 ini_open("Re-DSM.ini");
+// General
+global.noAFKAutoSpectate = ini_read_real("HUD", "Disable AFK Auto-Spectate", 1);
+ini_write_real("General", "Disable AFK Auto-Spectate", global.noAFKAutoSpectate);
+
 // HP Text
 global.healthText = ini_read_real("HUD", "Show HP Text", 1);
 ini_write_real("HUD", "Show HP Text", global.healthText);
