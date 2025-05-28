@@ -248,6 +248,30 @@
     ds_priority_destroy(redteam);
     ds_priority_destroy(blueteam);
     ds_priority_destroy(spec);
+    
+    // Scoreboard Stats Panel
+    if (global.scoreboardStats)
+    {
+        var statsyoffset;
+        statsyoffset = 405;
+        draw_set_valign(fa_top);
+        
+        draw_sprite_ext(ScoreboardStatsS, 0, xoffset, yoffset + statsyoffset, 1, 1, 0, c_white, alpha*0.8);
+        draw_set_halign(fa_left);
+        draw_text(xoffset + 16, yoffset + statsyoffset + 10, "Kills: " + string(floor(global.myself.stats[KILLS])));
+        draw_text(xoffset + 16, yoffset + statsyoffset + 27, "Deaths: " + string(floor(global.myself.stats[DEATHS])));
+        draw_text(xoffset + 16, yoffset + statsyoffset + 44, "Assists: " + string(floor(global.myself.stats[ASSISTS])));
+        
+        draw_set_halign(fa_center);
+        draw_text(xoffset + 280, yoffset + statsyoffset + 10, "Destruction: " + string(floor(global.myself.stats[DESTRUCTION])));
+        draw_text(xoffset + 280, yoffset + statsyoffset + 27, "Captures: " + string(floor(global.myself.stats[CAPS])));
+        draw_text(xoffset + 280, yoffset + statsyoffset + 44, "Defenses: " + string(floor(global.myself.stats[DEFENSES])));
+        
+        draw_set_halign(fa_right);
+        draw_text(xoffset + 544, yoffset + statsyoffset + 10, "Superbursts: " + string(floor(global.myself.stats[INVULNS])));
+        draw_text(xoffset + 544, yoffset + statsyoffset + 27, "Healing: " + string(floor(global.myself.stats[HEALING])));
+        draw_text(xoffset + 544, yoffset + statsyoffset + 44, "Stabs: " + string(floor(global.myself.stats[STABS])));
+    }
 }
 </argument>
       </arguments>

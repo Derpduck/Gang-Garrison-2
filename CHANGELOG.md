@@ -10,11 +10,12 @@
 - Added ammo text display
 	- Position and color can be customized
 - Added ammo count bar
-- Added Ubercharge bar
+- Added Superburst bar
 - Added Nuts 'N' Bolts bar
 - Added Sandwich bar
 - Added afterburn bar
 - Added option for improved sniper charge HUD sprite and damage numbers
+- Added detailed scoreboard stats panel
 
 ### Damage Indicator
 - Added damage indicator

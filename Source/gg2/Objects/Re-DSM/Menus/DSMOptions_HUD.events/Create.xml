@@ -97,8 +97,8 @@ menu_add_option(0, "No");
 menu_add_option(1, "Yes");
 menu_add_option(2, "Yes (Self Only)");
 
-menu_addedit_select("Show Uber Bar:", "global.uberBar", '
-    DSM_write_ini("HUD", "Show Uber Bar", argument0);
+menu_addedit_select("Show Superburst Bar:", "global.uberBar", '
+    DSM_write_ini("HUD", "Show Superburst Bar", argument0);
 ');
 menu_add_option(0, "No");
 menu_add_option(1, "Yes");
@@ -136,6 +136,10 @@ menu_add_option(2, "Sprite Only");
 menu_add_option(3, "Charge Numbers &amp; Sprite");
 
 menu_divider("Misc. HUD");
+
+menu_addedit_boolean("Show Detailed Scoreboard Stats:", "global.scoreboardStats", '
+    DSM_write_ini("HUD", "Detailed Scoreboard Stats", argument0);
+');
 
 menu_addedit_select("Show Death Info Panel:", "global.deathInfo", '
     DSM_write_ini("HUD", "Show Death Info Panel", argument0);

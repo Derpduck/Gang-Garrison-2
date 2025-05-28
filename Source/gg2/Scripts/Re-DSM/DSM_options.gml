@@ -35,8 +35,8 @@ ini_write_real("HUD", "Ammo Text Shadow", global.ammoTextShadow);
 global.ammoBar = ini_read_real("HUD", "Show Ammo Bar", 1);
 ini_write_real("HUD", "Show Ammo Bar", global.ammoBar);
 
-global.uberBar = ini_read_real("HUD", "Show Uber Bar", 1);
-ini_write_real("HUD", "Show Uber Bar", global.uberBar);
+global.uberBar = ini_read_real("HUD", "Show Superburst Bar", 1);
+ini_write_real("HUD", "Show Superburst Bar", global.uberBar);
 
 global.nutsBar = ini_read_real("HUD", "Show Nuts N Bolts Bar", 1);
 ini_write_real("HUD", "Show Nuts N Bolts Bar", global.nutsBar);
@@ -52,6 +52,9 @@ global.sniperCharge = ini_read_real("HUD", "Upgraded Sniper Charge HUD", 3);
 ini_write_real("HUD", "Upgraded Sniper Charge HUD", global.sniperCharge);
 
 // Misc HUD
+global.scoreboardStats = ini_read_real("HUD", "Detailed Scoreboard Stats", 1);
+ini_write_real("HUD", "Detailed Scoreboard Stats", global.scoreboardStats);
+
 global.deathInfo = ini_read_real("HUD", "Show Death Info Panel", 1);
 ini_write_real("HUD", "Show Death Info Panel", global.deathInfo);
 
