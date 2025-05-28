@@ -41,6 +41,7 @@
     
     // DSM
     serverPlayer.isDSMClient = true;
+    fastEndRound = false;
     
     // RCON
     global.isRCON = false;

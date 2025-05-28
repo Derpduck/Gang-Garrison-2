@@ -287,6 +287,10 @@ if (hasReward(victim, 'Ghost') and victim.ghost == noone) {
     victim.ghost.vspeed = vspeed;
 }
 
+// Death Info
+if (victim == global.myself)
+    create_death_info_panel(killer, assistant);
+
 with(victim.object) {       
     instance_destroy();
 }

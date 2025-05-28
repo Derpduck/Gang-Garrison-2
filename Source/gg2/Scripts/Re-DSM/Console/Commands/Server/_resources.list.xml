@@ -12,6 +12,7 @@
   <resource name="cc_message" type="RESOURCE"/>
   <resource name="cc_password" type="RESOURCE"/>
   <resource name="cc_end" type="RESOURCE"/>
+  <resource name="cc_fastend" type="RESOURCE"/>
   <resource name="cc_map" type="RESOURCE"/>
   <resource name="cc_maps" type="RESOURCE"/>
   <resource name="cc_rotation" type="RESOURCE"/>

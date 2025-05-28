@@ -34,6 +34,15 @@ menu_addedit_boolean("Show Healing Given:", "global.damageIndicatorHealing", '
     DSM_write_ini("Damage Indicator", "Show Healing Given", argument0);
 ');
 
+menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
+    DSM_write_ini("Damage Indicator", "Volume", argument0);
+', 100);
+
+//global.damageIndicatorCustomSound = ini_read_string("Damage Indicator", "Custom Sound File", "");
+//ini_write_string("Damage Indicator", "Custom Sound File", global.damageIndicatorCustomSound);
+
+menu_divider("Appearance");
+
 menu_addedit_select("Damage Indicator Color:", "global.damageIndicatorColor", '
     DSM_write_ini("Damage Indicator", "Damage Indicator Color", argument0);
 ');
@@ -48,13 +57,6 @@ menu_addedit_select("Healing Color:", "global.damageIndicatorColorHealing", '
     DSM_write_ini("Damage Indicator", "Healing Color", argument0);
 ');
 DSM_menu_color_options();
-
-menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
-    DSM_write_ini("Damage Indicator", "Volume", argument0);
-', 100);
-
-//global.damageIndicatorCustomSound = ini_read_string("Damage Indicator", "Custom Sound File", "");
-//ini_write_string("Damage Indicator", "Custom Sound File", global.damageIndicatorCustomSound);
 
 menu_addedit_float("Scale:", "global.damageIndicatorScale", '
     DSM_write_ini("Damage Indicator", "Scale", argument0);

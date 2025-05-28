@@ -30,6 +30,9 @@ ini_write_real("HUD", "Show Afterburn Bar", global.afterburnBar);
 global.sniperCharge = ini_read_real("HUD", "Upgraded Sniper Charge HUD", 3);
 ini_write_real("HUD", "Upgraded Sniper Charge HUD", global.sniperCharge);
 
+global.deathInfo = ini_read_real("HUD", "Show Death Info", 1);
+ini_write_real("HUD", "Show Death Info", global.deathInfo);
+
 // Team Colors
 global.teamColors_Bullets = ini_read_real("Team Colors", "Bullets", 1);
 ini_write_real("Team Colors", "Bullets", global.teamColors_Bullets);

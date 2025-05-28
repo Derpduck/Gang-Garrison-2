@@ -13,6 +13,7 @@ cc_teleport();
 cc_message();
 cc_password();
 cc_end();
+cc_fastend();
 cc_map();
 cc_maps();
 cc_rotation();

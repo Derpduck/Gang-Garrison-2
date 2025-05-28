@@ -69,7 +69,14 @@ if(global.winners != -1 and !global.mapchanging)
     }
     
     global.mapchanging = true;
-    impendingMapChange = 300; // in 300 ticks (ten seconds), we'll do a map change
+    
+    if (fastEndRound)
+    {
+        impendingMapChange = 30;
+        fastEndRound = false;
+    }
+    else
+        impendingMapChange = 300; // in 300 ticks (ten seconds), we'll do a map change
     
     write_ubyte(global.sendBuffer, MAP_END);
     write_ubyte(global.sendBuffer, string_length(global.nextMap));

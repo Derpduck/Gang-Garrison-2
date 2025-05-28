@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="CREATE" id="0">
+<event category="STEP" id="1">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,24 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
-menumode = true;
-
-if (room != DSMOptionsRoom)
-    menu_setdimmed();
-
-menu_background(512, 24, 8, 12, 4);
-bgtabs = true;
-
-menu_divider("Audio");
-
-menu_addedit_float("Master Volume:", "global.masterVolume", '
-    DSM_write_ini("Audio", "Master Volume", argument0);
-    sound_global_volume(argument0 / 100);
-', 100);
-
-
-DSM_menu_tabs();
+        <argument kind="STRING">if (!instance_exists(Spectator))
+    instance_destroy();
 </argument>
       </arguments>
     </action>

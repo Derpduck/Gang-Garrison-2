@@ -4,4 +4,5 @@
   <resource name="draw_character_info_bars" type="RESOURCE"/>
   <resource name="draw_character_info_numbers" type="RESOURCE"/>
   <resource name="get_remaining_afterburn" type="RESOURCE"/>
+  <resource name="create_death_info_panel" type="RESOURCE"/>
 </resources>

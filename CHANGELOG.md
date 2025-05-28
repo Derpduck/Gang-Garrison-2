@@ -1,4 +1,8 @@
 ## V3 (WIP)
+### Console
+- Added `fastend` command
+	- Instantly ends the current round, skipping the map change delay
+
 ### HUD
 - Made health bar and teammate stats enabled visible by default
 - Added HP text display
