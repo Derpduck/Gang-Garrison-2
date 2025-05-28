@@ -1,5 +1,17 @@
 ini_open("Re-DSM.ini");
 // HUD
+global.healthText = ini_read_real("HUD", "Show HP Text", 1);
+ini_write_real("HUD", "Show HP Text", global.healthText);
+
+global.healthTextPosition = ini_read_real("HUD", "HP Text Position", 1);
+ini_write_real("HUD", "HP Text Position", global.healthTextPosition);
+
+global.healthTextColor = ini_read_real("HUD", "HP Text Color", 0);
+ini_write_real("HUD", "HP Text Color", global.healthTextColor);
+
+global.healthTextShadow = ini_read_real("HUD", "HP Text Shadow", 1);
+ini_write_real("HUD", "HP Text Shadow", global.healthTextShadow);
+
 global.ammoBar = ini_read_real("HUD", "Show Ammo Bar", 1);
 ini_write_real("HUD", "Show Ammo Bar", global.ammoBar);
 

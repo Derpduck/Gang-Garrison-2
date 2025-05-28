@@ -53,7 +53,7 @@ if(stabbing)
 
 var barCount;
 if (team == global.myself.team)
-    barCount = draw_character_info_overlays(xr, yr);
+    barCount = draw_character_info_bars(xr, yr);
 else
     barCount = 0;
 
@@ -313,6 +313,9 @@ if (demon != -1)
 
     demonFrame += 1;
 }
+
+if (team == global.myself.team)
+    draw_character_info_numbers();
 </argument>
       </arguments>
     </action>

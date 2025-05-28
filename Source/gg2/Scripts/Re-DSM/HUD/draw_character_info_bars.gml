@@ -6,7 +6,7 @@ ybaseoffset = 25;
 barHeight = 5;
 
 draw_set_alpha(1);
-draw_set_color(c_white);
+//draw_set_color(c_white);
 
 // Health Bar
 if (player != global.myself or global.showHealthBar)
@@ -131,42 +131,5 @@ if (global.sandwichBar != 0 and (player == global.myself or global.sandwichBar =
     barCount += 1;
 }
 
+//draw_set_color(c_white);
 return barCount;
-
-
-// Health Numbers
-
-// Ammo Numbers
-
-/*
-if (((team == global.myself.team or (global.myself.class=CLASS_SPY and point_distance(x,y,global.myself.object.x,global.myself.object.y)<=150)) and (player != global.myself or global.showHealthBar) or global.myself.team==TEAM_SPECTATOR)){
-    var xr, yr;
-    xr = round(x)
-    yr = round(y)
-    //0=no text
-    if global.hpTextPos==1{
-        //centre, top
-        draw_set_halign(fa_center)
-        draw_set_valign(fa_middle)
-        draw_text_color(xr+1,yr-19,ceil(hp),c_black,c_black,c_black,c_black,1)
-        draw_text_color(xr,yr-20,ceil(hp),c_white,c_white,c_white,c_white,1)
-    }else if global.hpTextPos==2{
-        //left side
-        draw_set_halign(fa_right)
-        draw_set_valign(fa_middle)
-        draw_text_color(xr-10,yr-29,ceil(hp),c_black,c_black,c_black,c_black,1)
-        draw_text_color(xr-11,yr-30,ceil(hp),c_white,c_white,c_white,c_white,1)
-    }else if global.hpTextPos==3{
-        //right side
-        draw_set_halign(fa_left)
-        draw_set_valign(fa_middle)
-        draw_text_color(xr+11,yr-29,ceil(hp),c_black,c_black,c_black,c_black,1)
-        draw_text_color(xr+12,yr-30,ceil(hp),c_white,c_white,c_white,c_white,1)
-    }else if global.hpTextPos==4{
-        //centre, bottom
-        draw_set_halign(fa_center)
-        draw_set_valign(fa_middle)
-        draw_text_color(xr+1,yr+34,ceil(hp),c_black,c_black,c_black,c_black,1)
-        draw_text_color(xr,yr+35,ceil(hp),c_white,c_white,c_white,c_white,1)
-    }
-}
