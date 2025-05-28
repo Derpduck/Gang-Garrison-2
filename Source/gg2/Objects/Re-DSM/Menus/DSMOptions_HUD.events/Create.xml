@@ -103,8 +103,9 @@ menu_addedit_select("Show Death Info:", "global.deathInfo", '
     DSM_write_ini("HUD", "Show Death Info", argument0);
 ');
 menu_add_option(0, "No");
-menu_add_option(1, "Yes (Simple)");
-menu_add_option(2, "Yes (Detailed)");
+menu_add_option(1, "Yes");
+//menu_add_option(1, "Yes (Simple)");
+//menu_add_option(2, "Yes (Detailed)");
 
 DSM_menu_tabs();
 </argument>
