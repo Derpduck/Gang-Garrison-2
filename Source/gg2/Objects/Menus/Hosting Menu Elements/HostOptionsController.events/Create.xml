@@ -71,6 +71,13 @@ menu_addedit_num("TDM Invulnerability (secs):", "global.tdmInvulnerabilitySecond
 ');
 menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
     gg2_write_ini("Server", "Respawn Time", argument0);
+    if (room != Menu)
+    {
+        if (argument0 == 0)
+            global.Server_Respawntime = 1;
+        else
+            global.Server_Respawntime = argument0 * 30;
+    }
 ');
 menu_addedit_script("Map Rotation:", menu_format_maprotation_filepath(global.mapRotationFile), '
     var absPath;

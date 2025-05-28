@@ -35,7 +35,7 @@ else
     // Get living killer info
     killerName = deathInfo.killer.name;
     killerClass = deathInfo.killer.class;
-    killerHP = deathInfo.killer.object.hp;
+    killerHP = string(ceil(deathInfo.killer.object.hp));
 }
 
 var assistName, assistClass;
@@ -68,7 +68,7 @@ if (deathInfo.killer != noone)
 {
     deathInfo.messageKiller = ( "Killed By:#" + killerName
                               + "#(" + classname(killerClass) + ")#"
-                              + "#HP Remaining:#" + string(ceil(killerHP)));
+                              + "#HP Remaining:#" + killerHP);
 }
 
 if (deathInfo.assistant != noone)

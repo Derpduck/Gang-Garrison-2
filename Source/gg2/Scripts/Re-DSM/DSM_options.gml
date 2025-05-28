@@ -1,5 +1,5 @@
 ini_open("Re-DSM.ini");
-// HUD
+// HP Text
 global.healthText = ini_read_real("HUD", "Show HP Text", 1);
 ini_write_real("HUD", "Show HP Text", global.healthText);
 
@@ -9,9 +9,29 @@ ini_write_real("HUD", "HP Text Position", global.healthTextPosition);
 global.healthTextColor = ini_read_real("HUD", "HP Text Color", 0);
 ini_write_real("HUD", "HP Text Color", global.healthTextColor);
 
+global.healthTextLowColor = ini_read_real("HUD", "HP Text Low Color", 2);
+ini_write_real("HUD", "HP Text Low Color", global.healthTextLowColor);
+
 global.healthTextShadow = ini_read_real("HUD", "HP Text Shadow", 1);
 ini_write_real("HUD", "HP Text Shadow", global.healthTextShadow);
 
+// Ammo Text
+global.ammoText = ini_read_real("HUD", "Show Ammo Text", 1);
+ini_write_real("HUD", "Show Ammo Text", global.ammoText);
+
+global.ammoTextPosition = ini_read_real("HUD", "Ammo Text Position", 5);
+ini_write_real("HUD", "Ammo Text Position", global.ammoTextPosition);
+
+global.ammoTextColor = ini_read_real("HUD", "Ammo Text Color", 0);
+ini_write_real("HUD", "Ammo Text Color", global.ammoTextColor);
+
+global.ammoTextLowColor = ini_read_real("HUD", "Ammo Text Low Color", 2);
+ini_write_real("HUD", "Ammo Text Low Color", global.ammoTextLowColor);
+
+global.ammoTextShadow = ini_read_real("HUD", "Ammo Text Shadow", 1);
+ini_write_real("HUD", "Ammo Text Shadow", global.ammoTextShadow);
+
+// Bars
 global.ammoBar = ini_read_real("HUD", "Show Ammo Bar", 1);
 ini_write_real("HUD", "Show Ammo Bar", global.ammoBar);
 
@@ -27,11 +47,13 @@ ini_write_real("HUD", "Show Sandwich Bar", global.sandwichBar);
 global.afterburnBar = ini_read_real("HUD", "Show Afterburn Bar", 1);
 ini_write_real("HUD", "Show Afterburn Bar", global.afterburnBar);
 
+// Character HUD
 global.sniperCharge = ini_read_real("HUD", "Upgraded Sniper Charge HUD", 3);
 ini_write_real("HUD", "Upgraded Sniper Charge HUD", global.sniperCharge);
 
-global.deathInfo = ini_read_real("HUD", "Show Death Info", 1);
-ini_write_real("HUD", "Show Death Info", global.deathInfo);
+// Misc HUD
+global.deathInfo = ini_read_real("HUD", "Show Death Info Panel", 1);
+ini_write_real("HUD", "Show Death Info Panel", global.deathInfo);
 
 // Team Colors
 global.teamColors_Bullets = ini_read_real("Team Colors", "Bullets", 1);

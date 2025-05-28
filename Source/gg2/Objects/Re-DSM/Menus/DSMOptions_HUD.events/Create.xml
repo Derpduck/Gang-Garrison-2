@@ -46,8 +46,46 @@ menu_addedit_select("HP Text Color:", "global.healthTextColor", '
 ');
 DSM_menu_color_options();
 
+menu_addedit_select("HP Text Low Color:", "global.healthTextLowColor", '
+    DSM_write_ini("HUD", "HP Text Low Color", argument0);
+');
+DSM_menu_color_options();
+
 menu_addedit_boolean("HP Text Drop Shadow:", "global.healthTextShadow", '
     DSM_write_ini("HUD", "HP Text Shadow", argument0);
+');
+
+menu_divider("Ammo Text");
+
+menu_addedit_select("Show Ammo Text:", "global.ammoText", '
+    DSM_write_ini("HUD", "Show Ammo Text", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Self Only)");
+
+menu_addedit_select("Ammo Text Position:", "global.ammoTextPosition", '
+    DSM_write_ini("HUD", "Ammo Text Position", argument0);
+');
+menu_add_option(1, "Below Health Bar");
+menu_add_option(2, "Above Name");
+menu_add_option(3, "Left");
+menu_add_option(4, "Right");
+menu_add_option(5, "Below Character");
+menu_add_option(6, "Below Cursor");
+
+menu_addedit_select("Ammo Text Color:", "global.ammoTextColor", '
+    DSM_write_ini("HUD", "Ammo Text Color", argument0);
+');
+DSM_menu_color_options();
+
+menu_addedit_select("Ammo Text Low Color:", "global.ammoTextLowColor", '
+    DSM_write_ini("HUD", "Ammo Text Low Color", argument0);
+');
+DSM_menu_color_options();
+
+menu_addedit_boolean("Ammo Text Drop Shadow:", "global.ammoTextShadow", '
+    DSM_write_ini("HUD", "Ammo Text Shadow", argument0);
 ');
 
 menu_divider("Info Bars");
@@ -99,8 +137,8 @@ menu_add_option(3, "Charge Numbers &amp; Sprite");
 
 menu_divider("Misc. HUD");
 
-menu_addedit_select("Show Death Info:", "global.deathInfo", '
-    DSM_write_ini("HUD", "Show Death Info", argument0);
+menu_addedit_select("Show Death Info Panel:", "global.deathInfo", '
+    DSM_write_ini("HUD", "Show Death Info Panel", argument0);
 ');
 menu_add_option(0, "No");
 menu_add_option(1, "Yes");

@@ -7,6 +7,8 @@
 - Made health bar and teammate stats enabled visible by default
 - Added HP text display
 	- Position and color can be customized
+- Added ammo text display
+	- Position and color can be customized
 - Added ammo count bar
 - Added Ubercharge bar
 - Added Nuts 'N' Bolts bar
@@ -43,6 +45,9 @@
 - Fixed afterburn duration being doubled on 60 FPS (121b33c)
 - Fixed notice message sound being panned in non-4:3 resolutions
 - Fixed sniper charge HUD being drawn under weapons
+- Fixed changing respawn time in-game not updating the respawn time
+- Fixed respawn timer being hidden while tracking a player
+	- Dying causes you to track yourself, so the respawn timer would be hidden unless you moved the camera
 
 ## V2 (2025/05/23)
 ### Menus

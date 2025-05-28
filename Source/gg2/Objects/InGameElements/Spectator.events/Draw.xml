@@ -26,6 +26,20 @@ draw_rectangle_color(view_xview,view_yview,view_xview+xsize,view_yview+20,c_blac
 draw_rectangle_color(view_xview,view_yview+ysize-20,view_xview+xsize,view_yview+ysize,c_black,c_black,c_black,c_black,0);
 
 draw_set_color(c_white);
+
+if (global.myself != -1)
+{
+    if ((global.myself.alarm[5] &gt; 0) and (global.myself.team != TEAM_SPECTATOR))
+    {
+        draw_set_valign(fa_center);
+        draw_set_halign(fa_left);
+        if (!instance_exists(ArenaHUD))
+            draw_text(xoffset+10, yoffset+10,'Respawn in ' +string(ceil(global.myself.alarm[5]/30*global.delta_factor))+ ' second(s).')
+        else
+            draw_text(xoffset+10, yoffset+10,'No Respawning in Arena');
+    }
+}
+
 if (tracking)
 {
     draw_name_badges(xoffset+50, yoffset+ysize-16, player, 1);
@@ -46,19 +60,6 @@ if (tracking)
                 round(player.object.x) + cos(degtorad(player.object.aimDirection))*player.object.aimDistance,
                 round(player.object.y) - sin(degtorad(player.object.aimDirection))*player.object.aimDistance);
     
-}
-
-if (global.myself != -1)
-{
-    if ((global.myself.alarm[5] &gt; 0) and (global.myself.team != TEAM_SPECTATOR))
-    {
-        draw_set_valign(fa_center);
-        draw_set_halign(fa_left);
-        if (!instance_exists(ArenaHUD))
-            draw_text(xoffset+10, yoffset+10,'Respawn in ' +string(ceil(global.myself.alarm[5]/30*global.delta_factor))+ ' second(s).')
-        else
-            draw_text(xoffset+10, yoffset+10,'No Respawning in Arena');
-    }
 }
 </argument>
       </arguments>
