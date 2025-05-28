@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">padding = 16;
+closeButtonWidth = 80;
+closeButtonHeight = 24;
+windowWidth = max(closeButtonWidth + padding, string_width(messageText) + padding);
+windowHeight = string_height(messageText) + closeButtonHeight + (padding * 2);
+xbegin = view_xview[0] + (view_wview[0] / 2);
+ybegin = round(view_yview[0] + (view_hview[0] / 2) - (windowHeight / 2));
+
+buttonX1 = round(xbegin - (closeButtonWidth / 2));
+buttonX2 = buttonX1 + closeButtonWidth ;
+buttonY1 = (ybegin + windowHeight - closeButtonHeight) - (padding / 2);
+buttonY2 = buttonY1 + closeButtonHeight;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

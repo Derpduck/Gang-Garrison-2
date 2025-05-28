@@ -15,6 +15,9 @@ ini_write_real("HUD", "Show Sandwich Bar", global.sandwichBar);
 global.afterburnBar = ini_read_real("HUD", "Show Afterburn Bar", 1);
 ini_write_real("HUD", "Show Afterburn Bar", global.afterburnBar);
 
+global.sniperCharge = ini_read_real("HUD", "Upgraded Sniper Charge HUD", 3);
+ini_write_real("HUD", "Upgraded Sniper Charge HUD", global.sniperCharge);
+
 // Team Colors
 global.teamColors_Bullets = ini_read_real("Team Colors", "Bullets", 1);
 ini_write_real("Team Colors", "Bullets", global.teamColors_Bullets);

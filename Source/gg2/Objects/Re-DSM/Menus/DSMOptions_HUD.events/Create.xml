@@ -57,6 +57,14 @@ menu_add_option(0, "No");
 menu_add_option(1, "Yes");
 menu_add_option(2, "Yes (Self Only)");
 
+menu_addedit_select("Upgraded Sniper Charge HUD:", "global.sniperCharge", '
+    DSM_write_ini("HUD", "Upgraded Sniper Charge HUD", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Charge Numbers Only");
+menu_add_option(2, "Sprite Only");
+menu_add_option(3, "Sprite and Charge Numbers");
+
 DSM_menu_tabs();
 </argument>
       </arguments>

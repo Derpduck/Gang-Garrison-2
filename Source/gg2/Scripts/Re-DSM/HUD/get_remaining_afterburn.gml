@@ -9,6 +9,21 @@ if (burnDuration <= 0 or burnIntensity <= 0)
     return 0;
 
 
+// Calculate damage before decay
+var durationBeforeDecay, damageBeforeDecay;
+durationBeforeDecay = max(0, min(alarm[0] * global.delta_factor, burnDuration));
+damageBeforeDecay = durationBeforeDecay * (burnIntensity / 30);
+
+
+// Calculate damage after decay, linear decay
+var durationAfterDecay, damageAfterDecay;
+durationAfterDecay = min(decayDuration, burnDuration - durationBeforeDecay);
+damageAfterDecay = ((burnIntensity / 30) * durationAfterDecay) / 2;
+
+
+return damageBeforeDecay + damageAfterDecay;
+
+/*
 var durationBeforeDecay, durationAfterDecay, afterburnBeforeDecay, afterburnAfterDecay;
 if (alarm[0] != -1)
 {

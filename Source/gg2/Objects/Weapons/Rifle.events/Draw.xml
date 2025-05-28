@@ -38,15 +38,46 @@ else
 
 if (owner.zoomed &amp;&amp; owner == global.myself.object)
 {
-    if (hitDamage &lt; maxDamage)
+    if (global.sniperCharge &gt;= 2)
     {
-        draw_set_alpha(0.25);
-        draw_sprite_ext(ChargeS, 0, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, 0, c_white, image_alpha);
-        draw_set_alpha(0.8);
+        if (hitDamage &lt; maxDamage)
+        {
+            draw_set_alpha(0.25);
+            draw_sprite_ext(DSM_ChargeS, 0, mouse_x + 15*-image_xscale, mouse_y - 2, -image_xscale, 1, 0, c_white, 0.75);
+            draw_set_alpha(0.75);
+            
+            if (global.sniperCharge &gt;= 3)
+            {
+                draw_set_halign(fa_center);
+                draw_set_valign(fa_middle);
+                draw_set_color(make_color_rgb(64, 0, 0));
+                draw_text(mouse_x + 65 * -image_xscale, mouse_y, ceil(hitDamage));
+            }
+        }
+        else
+            draw_sprite_ext(FullChargeS, 0, mouse_x + 65*-image_xscale, mouse_y, 1, 1, 0, c_white, image_alpha);
+            draw_sprite_part_ext(DSM_ChargeS, 1, 0, 0, ceil((hitDamage-baseDamage)*40/(maxDamage-baseDamage)), 20, mouse_x + 15*-image_xscale, mouse_y - 2, -image_xscale, 1, c_white, image_alpha);
     }
     else
-        draw_sprite_ext(FullChargeS, 0, mouse_x + 65*-image_xscale, mouse_y, 1, 1, 0, c_white, image_alpha);
-        draw_sprite_part_ext(ChargeS, 1, 0, 0, ceil((hitDamage-baseDamage)*40/(maxDamage-baseDamage)), 20, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, c_white, image_alpha);
+    {
+        if (hitDamage &lt; maxDamage)
+        {
+            draw_set_alpha(0.25);
+            draw_sprite_ext(ChargeS, 0, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, 0, c_white, image_alpha);
+            draw_set_alpha(0.8);
+            
+            if (global.sniperCharge &gt;= 1)
+            {
+                draw_set_halign(fa_center);
+                draw_set_valign(fa_middle);
+                draw_set_color(make_color_rgb(64, 0, 0));
+                draw_text(mouse_x + 65 * -image_xscale, mouse_y, ceil(hitDamage));
+            }
+        }
+        else
+            draw_sprite_ext(FullChargeS, 0, mouse_x + 65*-image_xscale, mouse_y, 1, 1, 0, c_white, image_alpha);
+            draw_sprite_part_ext(ChargeS, 1, 0, 0, ceil((hitDamage-baseDamage)*40/(maxDamage-baseDamage)), 20, mouse_x + 15*-image_xscale, mouse_y - 10, -image_xscale, 1, c_white, image_alpha);
+    }
 }
 
 </argument>

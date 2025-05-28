@@ -14,11 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">messageText = "";
-stringWidth = 0;
-stringHeight = 0;
 
+// Since we often create this on room changes sometimes they create event may not run, so they are duplicated
 padding = 16;
-
 closeButtonWidth = 80;
 closeButtonHeight = 24;
 </argument>

@@ -1,12 +1,12 @@
-var xr, yr, barCount, ybaseoffset, barHeight;
+var barCount, xr, yr, ybaseoffset, barHeight, barColor;
+barCount = 0;
 xr = argument0;
 yr = argument1;
-barCount = 0;
 ybaseoffset = 25;
 barHeight = 5;
 
 draw_set_alpha(1);
-var barColor;
+draw_set_color(c_white);
 
 // Health Bar
 if (player != global.myself or global.showHealthBar)
@@ -17,20 +17,26 @@ if (player != global.myself or global.showHealthBar)
                    ceil((hp / maxHp) * 100), c_black, c_red, barColor, 0, true, true);
     
     // Afterburn Bar
-    /*var afterburn;
-    barCount += 1;
-    afterburn = min(maxHp, get_remaining_afterburn());
-    if (afterburn > 0)
+    if (global.afterburnBar)
     {
-        barColor = c_orange;
+        var afterburn;
+        afterburn = get_remaining_afterburn();
         
-        // Make bar start where end of current health is
-        draw_healthbar(xr - 10, yr - (ybaseoffset + (barCount * barHeight)) - barHeight,
-                   xr + 10, yr - (ybaseoffset + (barCount * barHeight)),
-                   ceil((afterburn / maxHp) * 100), c_black, c_orange, c_orange, 0, true, true);
+        if (afterburn > 0)
+        {
+            barColor = c_red;
+            
+            var barWidth, currentHpWidth, afterburnWidth;
+            barWidth = 18;
+            currentHpWidth = (hp / maxHp) * barWidth;
+            afterburnWidth = min(currentHpWidth, (afterburn / maxHp) * barWidth);
+            
+            draw_rectangle_color(xr - 9 + (currentHpWidth - afterburnWidth),
+                                 yr - (ybaseoffset + (barCount * barHeight)) - (barHeight / 2),
+                                 xr - 9 + currentHpWidth,
+                                 yr - (ybaseoffset + (barCount * barHeight)) - 1, barColor, barColor, barColor, barColor, false);
+        }
     }
-    
-    draw_text(xr - 40, yr, afterburn);*/
     
     barCount += 1;
 }

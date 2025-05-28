@@ -5,6 +5,8 @@
 - Added Ubercharge bar
 - Added Nuts 'N' Bolts bar
 - Added Sandwich bar
+- Added afterburn bar
+- Added option for improved sniper charge HUD sprite and damage numbers
 
 ### Damage Indicator
 - Added damage indicator
@@ -32,7 +34,9 @@
 ### Bug Fixes
 - Fixed bug that consistently caused crashes when leaving and joining another server without leaving the lobby
 	- TODO: Find the root cause and restore intended lobby behaviour
-- Fixed notice message sound being panned if not playing in 4:3 resolution
+- Fixed afterburn duration being doubled on 60 FPS (121b33c)
+- Fixed notice message sound being panned in non-4:3 resolutions
+- Fixed sniper charge HUD being drawn under weapons
 
 ## V2 (2025/05/23)
 ### Menus
