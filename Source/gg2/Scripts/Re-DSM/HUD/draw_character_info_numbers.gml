@@ -116,7 +116,7 @@ if (global.ammoText != 0 and (player == global.myself or global.ammoText == 1) a
     else
         textColor = c_red;
     
-    if (global.healthTextShadow)
+    if (global.ammoTextShadow)
     {
         // Drop Shadow
         if (textColor == c_black)

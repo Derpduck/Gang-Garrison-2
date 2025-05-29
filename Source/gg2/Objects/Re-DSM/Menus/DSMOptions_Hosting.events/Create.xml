@@ -22,6 +22,8 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
+menu_divider("RCON");
+
 menu_addedit_boolean("RCON Enabled:", "global.rconEnabled", '
     DSM_write_ini("RCON", "Rcon Enabled", argument0);
 ');
@@ -34,6 +36,19 @@ menu_addedit_text("RCON Password:", "global.rconPassword", '
     DSM_write_ini("RCON", "Rcon Password", argument0);
 ');
 
+menu_divider("Freeze Time");
+
+menu_addedit_boolean("Freeze Time Enabled:", "global.freezeTime", '
+    DSM_write_ini("Freeze Time", "Freeze Time Enabled", argument0);
+');
+
+menu_addedit_num("Countdown Duration:", "global.freezeTimeCountdownDuration", '
+    DSM_write_ini("Freeze Time", "Countdown Duration", argument0);
+');
+
+menu_addedit_boolean("Show Countdown:", "global.freezeTimeShowCountdown", '
+    DSM_write_ini("Freeze Time", "Show Countdown", argument0);
+');
 
 DSM_menu_tabs();
 </argument>

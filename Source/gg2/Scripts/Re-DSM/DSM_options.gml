@@ -137,6 +137,16 @@ ini_write_real("Damage Indicator", "Drop Shadow", global.damageIndicatorShadow);
 global.headlessMode = ini_read_real("Hosting", "Headless Mode (Launch Option Only)", 0);
 ini_write_real("Hosting", "Headless Mode (Launch Option Only)", global.headlessMode);
 
+// Freeze Time
+global.freezeTime = ini_read_real("Freeze Time", "Freeze Time Enabled", 1);
+ini_write_real("Freeze Time", "Freeze Time Enabled", global.freezeTime);
+
+global.freezeTimeCountdownDuration = ini_read_real("Freeze Time", "Countdown Duration", 10);
+ini_write_real("Freeze Time", "Countdown Duration", global.freezeTimeCountdownDuration);
+
+global.freezeTimeShowCountdown = ini_read_real("Freeze Time", "Show Countdown", 1);
+ini_write_real("Freeze Time", "Show Countdown", global.freezeTimeShowCountdown);
+
 // Audio
 global.masterVolume = max(0, min(100, ini_read_real("Audio", "Master Volume", 100)));
 ini_write_real("Audio", "Master Volume", global.masterVolume);

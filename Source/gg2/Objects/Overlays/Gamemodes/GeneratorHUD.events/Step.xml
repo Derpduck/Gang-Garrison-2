@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if timer &gt; 0
+        <argument kind="STRING">if (timer &gt; 0 and freezeTimeTimer &lt; 0)
     timer -= 1 * global.delta_factor;
 else if (timer &lt;= 0 and instance_exists(GeneratorRed) and instance_exists(GeneratorBlue))
 {
@@ -46,6 +46,8 @@ else if (timer &lt;= 0 and instance_exists(GeneratorRed) and instance_exists(Gen
     if (redStage &lt; blueStage) global.winners = TEAM_BLUE;
     if (redStage == blueStage) global.winners = TEAM_SPECTATOR;
 }
+
+freezeTimeTimer = freeze_time_countdown(freezeTimeTimer);
 </argument>
       </arguments>
     </action>

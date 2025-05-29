@@ -17,6 +17,11 @@
 blueTimer = 180*30;
 cpUnlock = 900;
 hostTimer = global.timeLimitMins*30*60;
+
+if (global.freezeTime and global.isHost)
+    freezeTimeTimer = global.freezeTimeCountdownDuration * 30;
+else
+    freezeTimeTimer = -1;
 </argument>
       </arguments>
     </action>

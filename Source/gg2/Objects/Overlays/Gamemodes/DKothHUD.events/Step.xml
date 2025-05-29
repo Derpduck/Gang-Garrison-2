@@ -62,8 +62,10 @@ if global.isHost and KothRedControlPoint.locked and KothBlueControlPoint.locked 
         GameServer.syncTimer = 1;
 }
 
-if (cpUnlock &gt; 0 and global.run_virtual_ticks)
+if (cpUnlock &gt; 0 and global.run_virtual_ticks and freezeTimeTimer &lt; 0)
     cpUnlock -= 1;
+
+freezeTimeTimer = freeze_time_countdown(freezeTimeTimer);
 </argument>
       </arguments>
     </action>

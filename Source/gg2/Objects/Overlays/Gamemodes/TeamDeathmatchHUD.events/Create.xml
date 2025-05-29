@@ -18,6 +18,7 @@ timer=timeLimit;
 killLimit = global.killLimit;
 overtime = false;
 
+freezeTimeTimer = -1;
 </argument>
       </arguments>
     </action>

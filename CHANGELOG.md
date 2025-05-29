@@ -37,6 +37,12 @@
 - Adjusted lobby ping color ranges and added more colors
 - Added menu option type for setting numbers to non-integer values
 
+### Freeze Time
+- Added freeze time feature
+	- Spawn doors will be locked until round is live
+	- Countdown timer can be adjusted and notification messages disabled
+	- Health, ammo, and uber charge are reset when round goes live
+
 ### UI
 - Next map name is now shown on the map change screen
 

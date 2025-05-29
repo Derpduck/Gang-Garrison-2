@@ -13,10 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if (timer &gt; 0)
+        <argument kind="STRING">if (timer &gt; 0 and freezeTimeTimer &lt; 0)
     timer -= 1 * global.delta_factor;
 
-if (mode == 1 and global.run_virtual_ticks)
+if (mode == 1 and global.run_virtual_ticks and freezeTimeTimer &lt; 0)
 {
     if (global.setupTimer &gt; 0)
         global.setupTimer -= 1;
@@ -82,6 +82,8 @@ else if (mode == 1)
         GameServer.syncTimer = 1;
     }
 }
+
+freezeTimeTimer = freeze_time_countdown(freezeTimeTimer);
 </argument>
       </arguments>
     </action>

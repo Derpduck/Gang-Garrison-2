@@ -16,6 +16,11 @@
         <argument kind="STRING">timeLimit=global.timeLimitMins*30*60;
 timer=timeLimit;
 overtime = 0;
+
+if (global.freezeTime and global.isHost)
+    freezeTimeTimer = global.freezeTimeCountdownDuration * 30;
+else
+    freezeTimeTimer = -1;
 </argument>
       </arguments>
     </action>

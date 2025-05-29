@@ -18,6 +18,11 @@ timer=timeLimit;
 overtime = 0;
 global.totalControlPoints = instance_number(ControlPoint);
 
+if (global.freezeTime and global.isHost)
+    freezeTimeTimer = global.freezeTimeCountdownDuration * 30;
+else
+    freezeTimeTimer = -1;
+
 if instance_exists(ControlPointSetupGate)
 {
     global.setupTimer=900;

@@ -4,10 +4,20 @@ with(Obstacle)
 if(!global.mapchanging)
 {
     with(IntelGate)
-        solid = (team != other.team and other.intel);
+    {
+        if (HUD.freezeTimeTimer < 0)
+            solid = (team != other.team and other.intel);
+        else
+            solid = true;
+    }
 
     with(TeamGate)
-        solid = (team != other.team or other.intel);
+    {
+        if (HUD.freezeTimeTimer < 0)
+            solid = (team != other.team or other.intel);
+        else
+            solid = true;
+    }
 }
 
 if(areSetupGatesClosed())

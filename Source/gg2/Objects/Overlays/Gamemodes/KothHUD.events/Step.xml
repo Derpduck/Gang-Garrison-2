@@ -46,9 +46,10 @@ if global.isHost and KothControlPoint.locked and !global.mapchanging {
         GameServer.syncTimer = 1;
     }
 }
-if (cpUnlock &gt; 0)
+if (cpUnlock &gt; 0 and freezeTimeTimer &lt; 0)
     cpUnlock -= 1 * global.delta_factor;
 
+freezeTimeTimer = freeze_time_countdown(freezeTimeTimer);
 </argument>
       </arguments>
     </action>

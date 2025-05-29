@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">alpha=0.1;
 done=false;
-playsound(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2),NoticeSnd);
+playsound(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), NoticeSnd);
 message = "";
 alarm[0]=200 / global.delta_factor;
 </argument>

@@ -22,7 +22,7 @@ if (!redIsCapping)
 if (!blueIsCapping)
     blueIsCapping = (IntelligenceRed.x != IntelligenceBaseRed.x or IntelligenceRed.y != IntelligenceBaseRed.y);
 
-if (timer &gt; 0)
+if (timer &gt; 0 and freezeTimeTimer &lt; 0)
     timer -= 1 * global.delta_factor;
 if ((global.redCaps &gt;= global.caplimit) or (global.blueCaps &gt;= global.caplimit) or timer&lt;=0) {
     if (global.redCaps &gt; global.blueCaps)
@@ -35,6 +35,8 @@ if ((global.redCaps &gt;= global.caplimit) or (global.blueCaps &gt;= global.capl
     
 if (timer &lt;= 0 and global.winners == -1)
     overtime = true;
+
+freezeTimeTimer = freeze_time_countdown(freezeTimeTimer);
 </argument>
       </arguments>
     </action>

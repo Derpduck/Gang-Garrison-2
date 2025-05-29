@@ -49,6 +49,7 @@ redteamCharacters = 0;
 blueteamCharacters = 0;
 state = ARENA_STATE_WAITING;
 
+freezeTimeTimer = -1;
 </argument>
       </arguments>
     </action>

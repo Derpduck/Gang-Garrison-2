@@ -18,6 +18,10 @@ timer=timeLimit;
 overtime = 0;
 global.setupTimer=1800;
 
+if (global.freezeTime and global.isHost)
+    freezeTimeTimer = global.freezeTimeCountdownDuration * 30;
+else
+    freezeTimeTimer = -1;
 </argument>
       </arguments>
     </action>
