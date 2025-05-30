@@ -40,7 +40,7 @@
     else if notice == NOTICE_HAVEINTEL draw_text_ext_color(xoffset+50, (yoffset+ysize)-100,"You have the intelligence!",-1,-1,c_white,c_white,c_white,c_white,alpha);    
     else if notice == NOTICE_SETCHECKPOINT draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, "Checkpoint set at this location!", -1,-1,c_white,c_white,c_white,c_white,alpha);
     else if notice == NOTICE_DESTROYCHECKPOINT draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, "Checkpoint destroyed at this location!", -1,-1,c_white,c_white,c_white,c_white,alpha);
-    else if notice == NOTICE_CUSTOM draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, message, -1,-1,c_white,c_white,c_white,c_white,alpha);
+    else if notice == NOTICE_CUSTOM draw_text_ext_color(xoffset+50, (yoffset+ysize)-100, sanitiseNewlines(message), -1,-1,c_white,c_white,c_white,c_white,alpha);
 }
 </argument>
       </arguments>

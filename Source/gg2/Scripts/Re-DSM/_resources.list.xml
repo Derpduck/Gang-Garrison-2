@@ -5,7 +5,6 @@
   <resource name="Unit Tests" type="GROUP"/>
   <resource name="Functions" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
-  <resource name="Messages" type="GROUP"/>
   <resource name="Headless" type="GROUP"/>
   <resource name="HUD" type="GROUP"/>
   <resource name="Input" type="GROUP"/>

@@ -44,6 +44,7 @@
 
 ### UI
 - Next map name is now shown on the map change screen
+- Prevented custom notices messages from containing multiple lines of text
 
 ### Quality of Life
 - Added option to disable automatically moving to spectator when AFK
