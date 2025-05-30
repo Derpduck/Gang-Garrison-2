@@ -53,6 +53,7 @@ menu_addedit_boolean("Bubbles:", "global.teamColors_Bubbles", '
 ');
 
 menu_divider("Effects");
+
 menu_addedit_boolean("Explosions:", "global.teamColors_Explosions", '
     DSM_write_ini("Team Colors", "Explosions", argument0);
 ');

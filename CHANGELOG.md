@@ -20,7 +20,7 @@
 ### Damage Indicator
 - Added damage indicator
 	- Accurate tracking of damage numbers for each target hit
-	- Option to show healing given and self damage
+	- Option to show healing given, self damage, and healing target's damage
 	- Customizable visuals and audio
 		- Custom hitsounds should be stored in `../DSM/Sounds/`
 
@@ -47,18 +47,23 @@
 
 ### Quality of Life
 - Added option to disable automatically moving to spectator when AFK
+- Added option to disable resizing the game window
 - Added key bind for Superburst bubble (default: `R`)
 - Added key bind for Infiltrator bubble (default: `G`)
+
+### Miscellaneous
+- Added option for taunt heal
+	- Heal amount can be customized (default: `5`)
 
 ### Bug Fixes
 - Fixed bug that consistently caused crashes when leaving and joining another server without leaving the lobby
 	- TODO: Find the root cause and restore intended lobby behaviour
-- Fixed afterburn duration being doubled on 60 FPS (121b33c)
+- Fixed afterburn duration being doubled on 60 FPS (`121b33c`)
 - Fixed notice message sound being panned in non-4:3 resolutions
 - Fixed sniper charge HUD being drawn under weapons
 - Fixed changing respawn time in-game not updating the respawn time
 - Fixed respawn timer being hidden while tracking a player
-	- Dying causes you to track yourself, so the respawn timer would be hidden unless you moved the camera
+	- Dying causes you to track yourself, so the respawn timer was hidden until the camera was moved
 
 ## V2 (2025/05/23)
 ### Menus

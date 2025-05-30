@@ -97,6 +97,13 @@ if (taunting)
         if (tauntindex == 0.30)
             instance_create(x, y, Money);
     }
+    
+    if (global.tauntHeal and global.isHost)
+    {
+        hp += global.tauntHealAmount * tauntspeed * 0.1 * global.delta_factor / sprite_get_number(tauntsprite);
+        if (!taunting)
+            hp = round(hp);
+    }
 }
     
 //sandvich

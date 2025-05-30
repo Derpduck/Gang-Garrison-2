@@ -2,6 +2,7 @@ ini_open("Re-DSM.ini");
 // General
 global.noAFKAutoSpectate = DSM_add_option("General", "Disable AFK Auto-Spectate", 1);
 global.disableWindowResizing = DSM_add_option("General", "Disable Window Resizing", 0);
+window_set_sizeable(!global.disableWindowResizing);
 
 // HP Text
 global.healthText = DSM_add_option("HUD", "Show HP Text", 1);
@@ -47,6 +48,7 @@ global.teamColors_Explosions = DSM_add_option("Team Colors", "Explosions", 1);
 global.damageIndicator = DSM_add_option("Damage Indicator", "Show Damage Indicator", 1);
 global.damageIndicatorSelf = DSM_add_option("Damage Indicator", "Show Self Damage", 0);
 global.damageIndicatorHealing = DSM_add_option("Damage Indicator", "Show Healing Given", 1);
+global.damageIndicatorHealingTarget = DSM_add_option("Damage Indicator", "Show Healing Target Damage", 1);
 global.damageIndicatorColor = DSM_add_option("Damage Indicator", "Damage Indicator Color", 1);
 global.damageIndicatorColorSelf = DSM_add_option("Damage Indicator", "Self Damage Color", 2);
 global.damageIndicatorColorHealing = DSM_add_option("Damage Indicator", "Healing Color", 4);
@@ -61,6 +63,8 @@ global.damageIndicatorShadow = DSM_add_option("Damage Indicator", "Drop Shadow",
 
 // Hosting
 global.headlessMode = DSM_add_option("Hosting", "Headless Mode (Launch Option Only)", 0);
+global.tauntHeal = DSM_add_option("Hosting", "Taunt Heal", 0);
+global.tauntHealAmount = DSM_add_option("Hosting", "Taunt Heal Amount", 5);
 
 // Freeze Time
 global.freezeTime = DSM_add_option("Freeze Time", "Freeze Time Enabled", 1);
