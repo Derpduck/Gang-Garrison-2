@@ -130,8 +130,8 @@ binds || Prints all saved binds | Client
 ### Quality of Life
 - Added option to disable automatically moving to spectator when AFK
 - Added option to disable resizing the game window
-- Added key bind for Superburst bubble (default: `R`)
-- Added key bind for Infiltrator bubble (default: `G`)
+- Added key bind for Superburst bubble (default key: `R`)
+- Added key bind for Infiltrator bubble (default key: `G`)
 
 ### Miscellaneous
 - Added option for taunt heal
