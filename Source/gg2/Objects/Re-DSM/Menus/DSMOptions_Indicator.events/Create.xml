@@ -38,8 +38,23 @@ menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
     DSM_write_ini("Damage Indicator", "Volume", argument0);
 ', 100);
 
-//global.damageIndicatorCustomSound = ini_read_string("Damage Indicator", "Custom Sound File", "");
-//ini_write_string("Damage Indicator", "Custom Sound File", global.damageIndicatorCustomSound);
+menu_addedit_script("Hitsound File:", menu_format_hitsound_filepath(global.damageIndicatorCustomSound), '
+    var absPath;
+
+    absPath = get_open_filename("Sound files|*.wav|*.mp3", working_directory + "\DSM\Sounds\*");
+
+    if (absPath == "") {
+        global.damageIndicatorCustomSound = absPath;
+    } else {
+        global.damageIndicatorCustomSound = getRelativePathIfDescendand(working_directory + "\DSM\Sounds\", absPath);
+    }
+    
+    DSM_write_ini("Damage Indicator", "Custom Sound File", global.damageIndicatorCustomSound);
+    
+    load_custom_hitsound();
+    
+    return menu_format_hitsound_filepath(global.damageIndicatorCustomSound);
+');
 
 menu_divider("Appearance");
 

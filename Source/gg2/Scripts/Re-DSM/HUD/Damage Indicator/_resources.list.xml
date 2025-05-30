@@ -2,4 +2,5 @@
 <resources>
   <resource name="dmgIndDealDamage" type="RESOURCE"/>
   <resource name="dmgIndDealHealing" type="RESOURCE"/>
+  <resource name="load_custom_hitsound" type="RESOURCE"/>
 </resources>

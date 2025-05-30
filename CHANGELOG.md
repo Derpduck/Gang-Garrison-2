@@ -19,11 +19,10 @@
 
 ### Damage Indicator
 - Added damage indicator
-	- Accurate tracking of damage numbers per target hit
-	- Option to show healing given, and self damage
+	- Accurate tracking of damage numbers for each target hit
+	- Option to show healing given and self damage
 	- Customizable visuals and audio
-		- Custom hitsounds can be stored in `../DSM/Sounds/`
-			> Currently cannot change the sound
+		- Custom hitsounds should be stored in `../DSM/Sounds/`
 
 ### Menus
 - Host options menus are now availabe to the host while in-game

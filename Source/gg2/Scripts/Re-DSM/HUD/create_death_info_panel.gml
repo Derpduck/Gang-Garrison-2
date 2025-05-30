@@ -66,14 +66,14 @@ else
 
 if (deathInfo.killer != noone)
 {
-    deathInfo.messageKiller = ( "Killed By:#" + killerName
+    deathInfo.messageKiller = ( "Killed By:#" + sanitiseNewlines(killerName)
                               + "#(" + classname(killerClass) + ")#"
                               + "#HP Remaining:#" + killerHP);
 }
 
 if (deathInfo.assistant != noone)
 {
-    deathInfo.messageAssist = ( "##Assisted By:#" + assistName
+    deathInfo.messageAssist = ( "##Assisted By:#" + sanitiseNewlines(assistName)
                               + "#(" + classname(assistClass) + ")");
 }
 
