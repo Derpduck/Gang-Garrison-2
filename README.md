@@ -1,6 +1,6 @@
 # Re-DSM Readme
 
-## Current Version: v2
+## Current Version: v3
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod  
@@ -34,6 +34,7 @@ teleport | `player` | Teleports the given player to the current cursor position 
 message | `message text` | Sents a custom notification message to all players | Host + RCON
 password | `new password` | Changes the server password to the given text. Leave `new password` blank to remove the current password | Host + RCON
 end | `optional: winning team` | Ends the current round. Specify `team` to select RED or BLUE as the winning team | Host + RCON
+fastend | `optional: winning team` | Ends the current round, instantly changes map. Specify `team` to select RED or BLUE as the winning team | Host + RCON
 map | `map name` | Sets the next map to the given map | Host + RCON
 maps || Prints the current map rotation order | Host Only
 rotation | `new rotation` | Changes the current map rotation to the given rotation file. Specify true for `shuffle` to shuffle the rotation | Host Only
@@ -72,21 +73,69 @@ binds || Prints all saved binds | Client
 `rcon save` || Toggles saving of new RCON users on / off | Host Only
 `rcon users` || Prints a list of all active RCON users | Host Only
 
+### HUD
+- Made health bar and teammate stats enabled visible by default
+- Added HP text display
+	- Position and color can be customized
+- Added ammo text display
+	- Position and color can be customized
+- Added ammo count bar
+- Added Superburst bar
+- Added Nuts 'N' Bolts bar
+- Added Sandwich bar
+- Added afterburn bar
+- Added option for improved sniper charge HUD sprite and damage numbers
+- Added detailed scoreboard stats panel
+
+### Damage Indicator
+- Added damage indicator
+	- Accurate tracking of damage numbers for each target hit
+	- Option to show healing given, self damage, and healing target's damage
+	- Customizable visuals and audio
+		- Custom hitsounds should be stored in `../DSM/Sounds/`
+
 ### Menus
 - A randomly chosen built-in map is now featured as the menu background
 - Menu tabs are now placed vertically down the side of options menus
 - Back button will appear under tabs in options menus
 - Menus now use the in-game resolution
 - Menus will now scroll only if they are too big to fit on the screen, regardless of resolution
+- Host options menus are now availabe to the host while in-game
+	- Any changes made will be reflected live in-game
+- Combined main and advanced host options into a single menu
+- Combined controls menus into a single menu
+- Added lobby to in-game menu
+	> Currently cannot connect to other games while in-game
+- Moved manual join button to lobby menu
+- Adjusted lobby ping color ranges and added more colors
+- Added menu option type for setting numbers to non-integer values
 
 ### Audio
 - Added master volume option
+
+### Freeze Time
+- Added freeze time feature
+	- Spawn doors will be locked until round is live
+	- Countdown timer can be adjusted and notification messages disabled
+	- Health, ammo, and uber charge are reset when round goes live
 
 ### UI
 - Re-worked kick and error message window
 	- No longer freezes the game unless necessary
 	- Fatal errors and multi-choice messages will still use the old window
 	- Removed warning messages in the options menu for UPNP and server-sent plugins
+- Next map name is now shown on the map change screen
+- Prevented custom notices messages from containing multiple lines of text
+
+### Quality of Life
+- Added option to disable automatically moving to spectator when AFK
+- Added option to disable resizing the game window
+- Added key bind for Superburst bubble (default: `R`)
+- Added key bind for Infiltrator bubble (default: `G`)
+
+### Miscellaneous
+- Added option for taunt heal
+	- Heal amount can be customized (default: `5`)
 
 ### Performance
 - Added `-high` launch option
@@ -98,3 +147,8 @@ binds || Prints all saved binds | Client
 
 ### Bug Fixes
 - Fixed spectator checkpoints only being usable when a menu is open
+- Fixed afterburn duration being doubled on 60 FPS (`121b33c`)
+- Fixed notice message sound being panned in non-4:3 resolutions
+- Fixed sniper charge HUD being drawn under weapons
+- Fixed respawn timer being hidden while tracking a player
+	- Dying causes you to track yourself, so the respawn timer was hidden until the camera was moved

@@ -1,4 +1,4 @@
-## V3 (WIP)
+## V3 (2025/05/30)
 ### Console
 - Added `fastend` command
 	- Instantly ends the current round, skipping the map change delay
@@ -29,7 +29,7 @@
 	- Any changes made will be reflected live in-game
 - Combined main and advanced host options into a single menu
 - Combined controls menus into a single menu
-- Moved all menus closer to the top of the screen
+- Adjusted positioning of menus
 - Added lobby to in-game menu
 	> Currently cannot connect to other games while in-game
 - Moved manual join button to lobby menu
