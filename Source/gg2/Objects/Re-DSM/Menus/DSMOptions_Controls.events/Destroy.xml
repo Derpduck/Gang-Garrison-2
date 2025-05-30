@@ -16,6 +16,8 @@
         <argument kind="STRING">ini_open("controls.gg2");
 ini_write_real("DSM", "ConsoleKey", global.consoleKey);
 ini_write_real("DSM", "ConsoleFullscreenKey", global.consoleFullscreenKey);
+ini_write_real("DSM", "UberBubble", global.uberBubbleKey);
+ini_write_real("DSM", "SpyBubble", global.spyBubbleKey);
 ini_close();
 </argument>
       </arguments>

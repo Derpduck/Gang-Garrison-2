@@ -47,6 +47,8 @@
 
 ### Quality of Life
 - Added option to disable automatically moving to spectator when AFK
+- Added key bind for Superburst bubble (default: `R`)
+- Added key bind for Infiltrator bubble (default: `G`)
 
 ### Bug Fixes
 - Fixed bug that consistently caused crashes when leaving and joining another server without leaving the lobby

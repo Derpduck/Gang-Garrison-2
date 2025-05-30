@@ -11,11 +11,12 @@
 	- Input box expands to fit multiple lines of text
 	- Multiple colors per line are now supported
 - Press `Tab` to auto-complete typed commands
-- New input shortcuts:
-	- Shift + Enter to type a new line
+- Input shortcuts:
+	- `Up Arrow` and `Down Arrow` to scroll through input history
+	- `PGUP` and `PGDN` to scroll through output history
+	- `Shift + Enter` to type a new line
 		- New lines are treated as new arguments
 	- `CTRL + Backspace` or `CTRL + Delete` to delete all typed text
-	- `PGUP` and `PGDN` to scroll through output history
 - Fixed many bugs and QOL issues found in previous implementations of the Console in DSM and E-Sports Mod
 
 #### Console Commands

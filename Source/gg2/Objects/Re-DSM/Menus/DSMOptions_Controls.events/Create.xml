@@ -22,8 +22,13 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
+menu_divider("Console");
 menu_addedit_key("Toggle Console:", "global.consoleKey");
 menu_addedit_key("Toggle Console Fullscreen:", "global.consoleFullscreenKey");
+
+menu_divider("Bubbles");
+menu_addedit_key("Superburst Bubble:", "global.uberBubbleKey");
+menu_addedit_key("Infiltrator Bubble:", "global.spyBubbleKey");
 
 DSM_menu_tabs();
 </argument>

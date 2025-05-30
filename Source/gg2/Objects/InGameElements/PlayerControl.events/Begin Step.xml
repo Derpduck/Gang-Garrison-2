@@ -115,6 +115,16 @@ if(global.myself.object != -1)
             inputCallMedic();
         }
         
+        if(keyboard_check_pressed(global.uberBubbleKey))
+        {
+            inputCallUber();
+        }
+        
+        if(keyboard_check_pressed(global.spyBubbleKey))
+        {
+            inputWarnSpy();
+        }
+        
         if(!global.myself.humiliated)
         {
             if(keyboard_check(global.attack)) keybyte |= $10;

@@ -1,33 +1,16 @@
 // Console Options
 ini_open("Re-DSM.ini");
-global.saveConsoleLog = ini_read_real("Console", "Save Log", 0);
-ini_write_real("Console", "Save Log", global.saveConsoleLog);
-    
-global.consoleOutputRows = ini_read_real("Console", "Output Window Rows", 14);
-ini_write_real("Console", "Output Window Rows", global.consoleOutputRows);
-
-global.consoleOpacity = ini_read_real("Console", "Window Opacity", 75);
-ini_write_real("Console", "Window Opacity", global.consoleOpacity);
-
-global.consoleAutocomplete = ini_read_real("Console", "Tab Autocomplete", 1);
-ini_write_real("Console", "Tab Autocomplete", global.consoleAutocomplete);
-
-global.consoleTimestamps = ini_read_real("Console", "Show Timestamps", 0);
-ini_write_real("Console", "Show Timestamps", global.consoleTimestamps);
-
-global.consoleBoldFont = ini_read_real("Console", "Bold Font", 0);
-ini_write_real("Console", "Bold Font", global.consoleBoldFont);
-
+global.saveConsoleLog = DSM_add_option("Console", "Save Log", 0);
+global.consoleOutputRows = DSM_add_option("Console", "Output Window Rows", 14);
+global.consoleOpacity = DSM_add_option("Console", "Window Opacity", 75);
+global.consoleAutocomplete = DSM_add_option("Console", "Tab Autocomplete", 1);
+global.consoleTimestamps = DSM_add_option("Console", "Show Timestamps", 0);
+global.consoleBoldFont = DSM_add_option("Console", "Bold Font", 0);
 
 // RCON Options
-global.rconEnabled = ini_read_real("RCON", "Rcon Enabled", 1);
-ini_write_real("RCON", "Rcon Enabled", global.rconEnabled);
-
-global.saveRconUsers = ini_read_real("RCON", "Save Rcon Users", 1);
-ini_write_real("RCON", "Save Rcon Users", global.saveRconUsers);
-
-global.rconPassword = ini_read_string("RCON", "Rcon Password", "");
-ini_read_string("RCON", "Rcon Password", global.rconPassword);
+global.rconEnabled = DSM_add_option("RCON", "Rcon Enabled", 1);
+global.saveRconUsers = DSM_add_option("RCON", "Save Rcon Users", 1);
+global.rconPassword = DSM_add_option_string("RCON", "Rcon Password", "");
 ini_close();
 
 

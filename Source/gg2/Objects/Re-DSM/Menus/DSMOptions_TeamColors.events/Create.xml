@@ -22,6 +22,8 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
+menu_divider("Projectiles");
+
 menu_addedit_boolean("Bullets:", "global.teamColors_Bullets", '
     DSM_write_ini("Team Colors", "Bullets", argument0);
 ');
@@ -49,6 +51,8 @@ menu_addedit_boolean("Blades:", "global.teamColors_Blades", '
 menu_addedit_boolean("Bubbles:", "global.teamColors_Bubbles", '
     DSM_write_ini("Team Colors", "Bubbles", argument0);
 ');
+
+menu_divider("Effects");
 menu_addedit_boolean("Explosions:", "global.teamColors_Explosions", '
     DSM_write_ini("Team Colors", "Explosions", argument0);
 ');
