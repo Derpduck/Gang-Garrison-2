@@ -103,6 +103,15 @@ if (global.ammoText != 0 and (player == global.myself or global.ammoText == 1) a
         break;
     }
     
+    // Prevent ammo text from overlapping health text
+    if (global.healthTextPosition == global.ammoTextPosition and global.healthText != 0 and (player == global.myself or global.healthText == 1))
+    {
+        if (global.ammoTextPosition == 2)
+            yoffset -= 13;
+        else
+            yoffset += 13;
+    }
+    
     draw_set_valign(fa_middle);
     if (player.class == CLASS_HEAVY)
         ammoText = floor(currentWeapon.ammoCount / 3);

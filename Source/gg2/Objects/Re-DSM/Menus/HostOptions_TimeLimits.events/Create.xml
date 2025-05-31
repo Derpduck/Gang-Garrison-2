@@ -24,46 +24,46 @@ bgtabs = true;
 
 menu_divider("Time Limit Overrides (0 = Use Global Time Limit)");
 
-menu_addedit_num("CTF Time Limit Override:", "global.timeLimit_CTF", '
+menu_addedit_num("CTF Time Limit:", "global.timeLimit_CTF", '
     DSM_write_ini("Time Limits", "CTF Time Limit Override", argument0);
 ');
-menu_addedit_num("Invasion Time Limit Override:", "global.timeLimit_Invasion", '
+menu_addedit_num("Invasion Time Limit:", "global.timeLimit_Invasion", '
     DSM_write_ini("Time Limits", "Invasion Time Limit Override", argument0);
 ');
-menu_addedit_num("A/D CP Time Limit Override:", "global.timeLimit_ADCP", '
+menu_addedit_num("A/D CP Time Limit:", "global.timeLimit_ADCP", '
     DSM_write_ini("Time Limits", "A/D CP Time Limit Override", argument0);
 ');
-menu_addedit_num("A/D CP Time Limit Cap Override:", "global.timeLimit_ADCP_Cap", '
+menu_addedit_num("A/D CP Time Limit Cap:", "global.timeLimit_ADCP_Cap", '
     DSM_write_ini("Time Limits", "A/D CP Time Limit Cap Override", argument0);
 ');
-menu_addedit_num("1CP Time Limit Override:", "global.timeLimit_1CP", '
+menu_addedit_num("1CP Time Limit:", "global.timeLimit_1CP", '
     DSM_write_ini("Time Limits", "1CP Time Limit Override", argument0);
 ');
-menu_addedit_num("2CP Time Limit Override:", "global.timeLimit_2CP", '
+menu_addedit_num("2CP Time Limit:", "global.timeLimit_2CP", '
     DSM_write_ini("Time Limits", "2CP Time Limit Override", argument0);
 ');
-menu_addedit_num("3CP Time Limit Override:", "global.timeLimit_3CP", '
+menu_addedit_num("3CP Time Limit:", "global.timeLimit_3CP", '
     DSM_write_ini("Time Limits", "3CP Time Limit Override", argument0);
 ');
-menu_addedit_num("4CP Time Limit Override:", "global.timeLimit_4CP", '
+menu_addedit_num("4CP Time Limit:", "global.timeLimit_4CP", '
     DSM_write_ini("Time Limits", "4CP Time Limit Override", argument0);
 ');
-menu_addedit_num("5CP Time Limit Override:", "global.timeLimit_5CP", '
+menu_addedit_num("5CP Time Limit:", "global.timeLimit_5CP", '
     DSM_write_ini("Time Limits", "5CP Time Limit Override", argument0);
 ');
-menu_addedit_num("Arena Time Limit Override:", "global.timeLimit_Arena", '
+menu_addedit_num("Arena Time Limit:", "global.timeLimit_Arena", '
     DSM_write_ini("Time Limits", "Arena Time Limit Override", argument0);
 ');
-menu_addedit_num("Generator Time Limit Override:", "global.timeLimit_Generator", '
+menu_addedit_num("Generator Time Limit:", "global.timeLimit_Generator", '
     DSM_write_ini("Time Limits", "Generator Time Limit Override", argument0);
 ');
-menu_addedit_num("KoTH Time Limit Override:", "global.timeLimit_KOTH", '
+menu_addedit_num("KoTH Time Limit:", "global.timeLimit_KOTH", '
     DSM_write_ini("Time Limits", "KoTH Time Limit Override", argument0);
 ');
-menu_addedit_num("DKoTH Time Limit Override:", "global.timeLimit_DKOTH", '
+menu_addedit_num("DKoTH Time Limit:", "global.timeLimit_DKOTH", '
     DSM_write_ini("Time Limits", "DKoTH Time Limit Override", argument0);
 ');
-menu_addedit_num("TDM Time Limit Override:", "global.timeLimit_TDM", '
+menu_addedit_num("TDM Time Limit:", "global.timeLimit_TDM", '
     DSM_write_ini("Time Limits", "TDM Time Limit Override", argument0);
 ');
 
