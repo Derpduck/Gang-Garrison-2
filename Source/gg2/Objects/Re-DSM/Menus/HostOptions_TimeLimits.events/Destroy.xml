@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="OTHER" id="22">
+<event category="DESTROY" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,10 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">write_ubyte(global.serializeBuffer, timeLimit / (30 * 60));
-write_uint(global.serializeBuffer, timer);
-with GeneratorBlue event_user(12);
-with GeneratorRed event_user(12);
+        <argument kind="STRING">with(HostWarningsController)
+    instance_destroy();
+
 </argument>
       </arguments>
     </action>

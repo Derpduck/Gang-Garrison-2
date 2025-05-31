@@ -65,33 +65,7 @@ if (room == Menu)
     ');
 }
 
-if (room == Menu)
-{
-    menu_addlink("Start Game", '
-        start_server();
-    ');
-}
-
-menu_addtablink("Server", '
-    instance_create(x,y,HostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Adv. Server", '
-    instance_create(x,y,AdvHostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Classlimits", '
-    instance_create(x,y,ClasslimitsMenuController);
-    instance_destroy();
-');
-
-menu_addback("Back", '
-    instance_destroy();
-    if (room == Menu)
-        instance_create(x,y,MainMenuController);
-    else
-        instance_create(0,0,InGameMenuController);
-');
+vanilla_menu_tabs();
 </argument>
       </arguments>
     </action>

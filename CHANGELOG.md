@@ -1,4 +1,7 @@
 ## V4 (WIP)
+### Gamemodes
+- Added options to set time limits on a per-gamemode basis
+
 ### HUD
 - Changed ammo text display default to show for self only
 
@@ -7,6 +10,9 @@
 
 ### Miscellaneous
 - Added option to skip the FAUCeT logo
+
+### Bug Fixes
+- Fixed host warnings controller incorrectly warning that the rotation will be shuffled when switching to the classlimits menu
 
 
 ## V3 (2025/05/30)

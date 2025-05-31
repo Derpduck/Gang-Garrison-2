@@ -67,6 +67,22 @@ global.headlessMode = DSM_add_option("Hosting", "Headless Mode (Launch Option On
 global.tauntHeal = DSM_add_option("Hosting", "Taunt Heal", 0);
 global.tauntHealAmount = DSM_add_option("Hosting", "Taunt Heal Amount", 5);
 
+// Time Limits
+global.timeLimit_CTF = DSM_add_option("Time Limits", "CTF Time Limit Override", 0);
+global.timeLimit_Invasion = DSM_add_option("Time Limits", "Invasion Time Limit Override", 0);
+global.timeLimit_ADCP = DSM_add_option("Time Limits", "A/D CP Time Limit Override", 0);
+global.timeLimit_ADCP_Cap = DSM_add_option("Time Limits", "A/D CP Time Limit Cap Override", 0);
+global.timeLimit_1CP = DSM_add_option("Time Limits", "1CP Time Limit Override", 0);
+global.timeLimit_2CP = DSM_add_option("Time Limits", "2CP Time Limit Override", 0);
+global.timeLimit_3CP = DSM_add_option("Time Limits", "3CP Time Limit Override", 0);
+global.timeLimit_4CP = DSM_add_option("Time Limits", "4CP Time Limit Override", 0);
+global.timeLimit_5CP = DSM_add_option("Time Limits", "5CP Time Limit Override", 0);
+global.timeLimit_Arena = DSM_add_option("Time Limits", "Arena Time Limit Override", 0);
+global.timeLimit_Generator = DSM_add_option("Time Limits", "Generator Time Limit Override", 0);
+global.timeLimit_KOTH = DSM_add_option("Time Limits", "KoTH Time Limit Override", 0);
+global.timeLimit_DKOTH = DSM_add_option("Time Limits", "DKoTH Time Limit Override", 0);
+global.timeLimit_TDM = DSM_add_option("Time Limits", "TDM Time Limit Override", 0);
+
 // Freeze Time
 global.freezeTime = DSM_add_option("Freeze Time", "Freeze Time Enabled", 1);
 global.freezeTimeCountdownDuration = DSM_add_option("Freeze Time", "Countdown Duration", 10);

@@ -1,6 +1,6 @@
 menu_addtablink("General", '
     instance_destroy();
-    instance_create(x,y,DSMOptions);
+    instance_create(x,y,DSMOptions_General);
 ');
 menu_addtablink("HUD", '
     instance_destroy();

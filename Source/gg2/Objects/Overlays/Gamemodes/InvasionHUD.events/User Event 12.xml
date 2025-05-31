@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">write_ubyte(global.serializeBuffer, global.timeLimitMins);
+        <argument kind="STRING">write_ubyte(global.serializeBuffer, timeLimit / (30 * 60));
 write_uint(global.serializeBuffer, timer);
 write_ushort(global.serializeBuffer, global.setupTimer);
 

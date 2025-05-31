@@ -25,10 +25,13 @@ else
 
 if instance_exists(ControlPointSetupGate)
 {
+    
     global.setupTimer=900;
     mode=1;
-    // 3 minutes
-    timeLimit = 3*30*60;
+    if (global.timeLimit_ADCP &gt; 0 and global.isHost)
+        timeLimit=global.timeLimit_ADCP*30*60;
+    else
+        timeLimit = 3*30*60;
     basetime=6*30;
     //basetime=10;
     if global.totalControlPoints == 5 {
@@ -64,6 +67,8 @@ else
     basetime=7*30;
     //basetime=20;
     if global.totalControlPoints == 5 {
+        if (global.timeLimit_5CP &gt; 0 and global.isHost)
+            timeLimit=global.timeLimit_5CP*30*60;
         ControlPoint5.capTime = basetime;
         ControlPoint4.capTime = basetime*2;
         ControlPoint3.capTime = basetime*3;
@@ -71,23 +76,33 @@ else
         ControlPoint1.capTime = basetime;
     }
     else if global.totalControlPoints == 4 {
+        if (global.timeLimit_4CP &gt; 0 and global.isHost)
+            timeLimit=global.timeLimit_4CP*30*60;
         ControlPoint4.capTime = basetime*1.5;
         ControlPoint3.capTime = basetime*3;
         ControlPoint2.capTime = basetime*3;
         ControlPoint1.capTime = basetime*1.5;
     }
     else if global.totalControlPoints == 3 {
+        if (global.timeLimit_3CP &gt; 0 and global.isHost)
+            timeLimit=global.timeLimit_3CP*30*60;
         ControlPoint3.capTime = basetime*2.25;
         ControlPoint2.capTime = basetime*4.5;
         ControlPoint1.capTime = basetime*2.25;
     }
     else if global.totalControlPoints == 2 {
+        if (global.timeLimit_2CP &gt; 0 and global.isHost)
+            timeLimit=global.timeLimit_2CP*30*60;
         ControlPoint2.capTime = basetime*4.5;
         ControlPoint1.capTime = basetime*4.5;
     }
     else if global.totalControlPoints == 1 {
+        if (global.timeLimit_1CP &gt; 0 and global.isHost)
+            timeLimit=global.timeLimit_1CP*30*60;
         ControlPoint1.capTime = basetime*9;
     }
+    
+    timer=timeLimit;
 }
 
 if (mode==0)

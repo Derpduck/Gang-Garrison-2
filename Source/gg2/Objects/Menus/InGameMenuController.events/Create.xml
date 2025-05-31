@@ -46,7 +46,7 @@
     ');
     menu_addlink("DSM Options", '
         instance_destroy();
-        instance_create(0,0,DSMOptions);
+        instance_create(0,0,DSMOptions_General);
     ');
     
     menu_divider("");

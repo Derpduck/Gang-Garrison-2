@@ -45,41 +45,7 @@
         gg2_write_ini("Settings", "Fade Scoreboard", argument0);
     ');
     
-    menu_addtablink("Ingame", '
-        instance_destroy();
-        instance_create(x,y,OptionsController);
-    ');
-    menu_addtablink("Engine", '
-        instance_destroy();
-        instance_create(x,y,EngineOptionsController);
-    ');
-    menu_addtablink("Controls", '
-        instance_destroy();
-        instance_create(x,y,ControlsController);
-    ');
-    menu_addtablink("HUD", '
-        instance_destroy();
-        instance_create(x,y,HUDOptionsController);
-    ');
-    if ((global.isHost and room != Menu) or room == Menu)
-    {
-        menu_addtablink("Server", '
-            instance_create(x,y,HostOptionsController);
-            instance_destroy();
-        ');
-        menu_addtablink("Classlimits", '
-            instance_create(x,y,ClasslimitsMenuController);
-            instance_destroy();
-        ');
-    }
-    
-    menu_addback("Back", '
-        instance_destroy();
-        if(room == Options)
-            room_goto_fix(Menu);
-        else
-            instance_create(0,0,InGameMenuController);
-    ');
+    vanilla_menu_tabs();
 }
 </argument>
       </arguments>

@@ -36,7 +36,10 @@ ARENA_STATE_ROUND_SETUP = 1;
 ARENA_STATE_ROUND_PROPER = 2;
 ARENA_STATE_ROUND_END = 3;
 
-timeLimit = global.timeLimitMins*30*60;
+if (global.timeLimit_Arena &gt; 0 and global.isHost)
+    timeLimit=global.timeLimit_Arena*30*60;
+else
+    timeLimit=global.timeLimitMins*30*60;
 timer = timeLimit;
 winners = TEAM_SPECTATOR;
 redWins = 0;

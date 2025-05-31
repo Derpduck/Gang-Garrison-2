@@ -13,8 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">redTimer = 180*30;
-blueTimer = 180*30;
+        <argument kind="STRING">if (global.timeLimit_KOTH &gt; 0 and global.isHost)
+{
+    redTimer = global.timeLimit_KOTH*30*60;
+    blueTimer = global.timeLimit_KOTH*30*60;
+}
+else
+{
+    redTimer = 180*30;
+    blueTimer = 180*30;
+}
 cpUnlock = 900;
 hostTimer = global.timeLimitMins*30*60;
 

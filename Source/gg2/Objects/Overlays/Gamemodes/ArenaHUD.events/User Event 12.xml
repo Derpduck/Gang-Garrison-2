@@ -22,7 +22,7 @@
     write_ushort(global.serializeBuffer, endCount);
 }
 
-write_ubyte(global.serializeBuffer, global.timeLimitMins);
+write_ubyte(global.serializeBuffer, timeLimit / (30 * 60));
 write_uint(global.serializeBuffer, timer);
 write_ushort(global.serializeBuffer, cpUnlock);
 write_ubyte(global.serializeBuffer, floor(roundStart/2));

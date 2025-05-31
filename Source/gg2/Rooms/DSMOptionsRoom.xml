@@ -146,7 +146,7 @@
   </views>
   <instances>
     <instance>
-      <object>DSMOptions</object>
+      <object>DSMOptions_General</object>
       <position x="96" y="208"/>
       <creationCode/>
       <locked>false</locked>

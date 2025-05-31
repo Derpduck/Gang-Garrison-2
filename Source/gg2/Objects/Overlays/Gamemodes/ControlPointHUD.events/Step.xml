@@ -76,9 +76,16 @@ else if (mode == 1)
     // prevent timer overflow
     // credits go to nagn
     // limit time to 5 minute as heenok suggests
-    if (timer &gt; 9000)
+    var defaultCap;
+    defaultCap = 9000;
+    if (global.timeLimit_ADCP_Cap &gt; 0 and timer &gt; global.timeLimit_ADCP_Cap and global.isHost)
     {
-        timer = 9000;
+        timer = global.timeLimit_ADCP_Cap;
+        GameServer.syncTimer = 1;
+    }
+    else if (timer &gt; defaultCap)
+    {
+        timer = defaultCap;
         GameServer.syncTimer = 1;
     }
 }

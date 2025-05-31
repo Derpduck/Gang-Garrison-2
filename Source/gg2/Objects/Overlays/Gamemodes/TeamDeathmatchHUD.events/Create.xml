@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">timeLimit=global.timeLimitMins*30*60;
+        <argument kind="STRING">if (global.timeLimit_TDM &gt; 0 and global.isHost)
+    timeLimit=global.timeLimit_TDM*30*60;
+else
+    timeLimit=global.timeLimitMins*30*60;
 timer=timeLimit;
 killLimit = global.killLimit;
 overtime = false;

@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(16, 24, 340, 200, 40);
+        <argument kind="STRING">menu_create(16, 24, 0, 200, 40);
 menu_background(352, 32, 8, 16, 4);
 bgbezel = false;
 getsHighlight = false;
@@ -24,7 +24,7 @@ menu_addlink("", '');
 menu_addlink("", '');
 items = 0;
 
-shuffleRotation = 0;
+shuffleRotation = global.shuffleRotation;
 </argument>
       </arguments>
     </action>
