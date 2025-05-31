@@ -13,6 +13,7 @@
 
 ### Bug Fixes
 - Fixed host warnings controller incorrectly warning that the rotation will be shuffled when switching to the classlimits menu
+- Fixed error when changing damage indicator show healing target's damage setting
 
 
 ## V3 (2025/05/30)

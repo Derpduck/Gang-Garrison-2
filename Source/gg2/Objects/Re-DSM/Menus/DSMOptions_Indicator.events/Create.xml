@@ -35,7 +35,7 @@ menu_addedit_boolean("Show Healing Given:", "global.damageIndicatorHealing", '
 ');
 
 menu_addedit_boolean("Show Healing Target's Damage:", "global.damageIndicatorHealingTarget", '
-    DSM_write_ini("Damage Indicator", "Show Healing Target Damage, argument0);
+    DSM_write_ini("Damage Indicator", "Show Healing Target Damage", argument0);
 ');
 
 menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
