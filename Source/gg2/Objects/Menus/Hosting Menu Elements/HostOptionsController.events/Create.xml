@@ -123,10 +123,15 @@ if (room == Menu)
     menu_addedit_boolean("Attempt UPnP Forwarding:", "global.attemptPortForward", '
         gg2_write_ini("Server", "Attempt UPnP Forwarding", argument0);
     ');
-}
     
-if (room == Menu)
-{
+    menu_addedit_text("Server Sent Plugins:", "global.serverPluginList", '
+        gg2_write_ini("Server", "ServerPluginList", argument0);
+    ');
+    
+    menu_addedit_boolean("Server Sent Plugins Required:", "global.serverPluginsRequired", '
+        gg2_write_ini("Server", "ServerPluginsRequired", argument0);
+    ');
+    
     menu_addtablink("Start Game", '
         start_server();
     ');

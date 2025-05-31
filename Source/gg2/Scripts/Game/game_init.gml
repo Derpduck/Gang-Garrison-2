@@ -96,10 +96,6 @@
     global.attemptPortForward = ini_read_real("Server", "Attempt UPnP Forwarding", 0); 
     global.serverPluginList = ini_read_string("Server", "ServerPluginList", "");
     global.serverPluginsRequired = ini_read_real("Server", "ServerPluginsRequired", 0);
-    if (string_length(global.serverPluginList) > 254) {
-        show_message("Error: Server plugin list cannot exceed 254 characters");
-        return false;
-    }
     var CrosshairFilename, CrosshairRemoveBG;
     CrosshairFilename = ini_read_string("Settings", "CrosshairFilename", "");
     CrosshairRemoveBG = ini_read_real("Settings", "CrosshairRemoveBG", 1);
@@ -398,6 +394,11 @@ global.launchMap = "";
     global.isHost = false;
     
     if(global.dedicatedMode == 1) {
+        if (string_length(global.serverPluginList) > 254)
+        {
+            show_message("Error: Server plugin list cannot exceed 254 characters");
+            return false;
+        }
         AudioControlToggleMute();
         room_goto_fix(Menu);
     } else if(restart) {

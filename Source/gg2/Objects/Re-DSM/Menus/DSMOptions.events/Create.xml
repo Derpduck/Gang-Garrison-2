@@ -31,6 +31,10 @@ menu_addedit_float("Master Volume:", "global.masterVolume", '
 
 menu_divider("Miscellaneous");
 
+menu_addedit_boolean("Skip FAUCeT Logo:", "global.skipFaucetLogo", '
+    DSM_write_ini("General", "Skip FAUCeT Logo", argument0);
+');
+
 menu_addedit_boolean("Disable AFK Auto-Spectate:", "global.noAFKAutoSpectate", '
     DSM_write_ini("General", "Disable AFK Auto-Spectate", argument0);
 ');

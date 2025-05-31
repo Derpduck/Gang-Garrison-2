@@ -1,5 +1,6 @@
 ini_open("Re-DSM.ini");
 // General
+global.skipFaucetLogo = DSM_add_option("General", "Skip FAUCeT Logo", 1);
 global.noAFKAutoSpectate = DSM_add_option("General", "Disable AFK Auto-Spectate", 1);
 global.disableWindowResizing = DSM_add_option("General", "Disable Window Resizing", 0);
 window_set_sizeable(!global.disableWindowResizing);
@@ -12,7 +13,7 @@ global.healthTextLowColor = DSM_add_option("HUD", "HP Text Low Color", 2);
 global.healthTextShadow = DSM_add_option("HUD", "HP Text Shadow", 1);
 
 // Ammo Text
-global.ammoText = DSM_add_option("HUD", "Show Ammo Text", 1);
+global.ammoText = DSM_add_option("HUD", "Show Ammo Text", 2);
 global.ammoTextPosition = DSM_add_option("HUD", "Ammo Text Position", 5);
 global.ammoTextColor = DSM_add_option("HUD", "Ammo Text Color", 0);
 global.ammoTextLowColor = DSM_add_option("HUD", "Ammo Text Low Color", 2);

@@ -1,3 +1,14 @@
+## V4 (WIP)
+### HUD
+- Changed ammo text display default to show for self only
+
+### Menus
+- Added server sent plugin list and server sent plugin required to the host options menu
+
+### Miscellaneous
+- Added option to skip the FAUCeT logo
+
+
 ## V3 (2025/05/30)
 ### Console
 - Added `fastend` command
