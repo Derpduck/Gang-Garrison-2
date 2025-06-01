@@ -575,7 +575,7 @@ do {
             break;
             
         case MESSAGE_STRING:
-            var message, notice;
+            var message;
             message = receivestring(global.serverSocket, 1);
             create_notice_message(message);
             break;
@@ -647,12 +647,9 @@ do {
             break;
         
         case DSM_RCON_LOGIN:
-            receiveCompleteMessage(global.serverSocket,1 , global.tempBuffer);
+            receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
             
-            var loginResult;
-            loginResult = read_ubyte(global.tempBuffer);
-            
-            switch(loginResult)
+            switch(read_ubyte(global.tempBuffer))
             {
             case RCON_LOGIN_SUCCESS:
                 // Successful login
@@ -680,12 +677,9 @@ do {
             break;
         
         case DSM_RCON_CMD:
-            receiveCompleteMessage(global.serverSocket, 1 ,global.tempBuffer);
+            receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
             
-            var commandResult;
-            commandResult = read_ubyte(global.tempBuffer);
-            
-            switch(commandResult)
+            switch(read_ubyte(global.tempBuffer))
             {
             case RCON_CMD_SUCCESS:
                 // Command executed successfully

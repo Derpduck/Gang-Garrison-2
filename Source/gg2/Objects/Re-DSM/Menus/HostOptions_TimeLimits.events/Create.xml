@@ -31,10 +31,10 @@ menu_addedit_num("Invasion Time Limit:", "global.timeLimit_Invasion", '
     DSM_write_ini("Time Limits", "Invasion Time Limit Override", argument0);
 ');
 menu_addedit_num("A/D CP Time Limit:", "global.timeLimit_ADCP", '
-    DSM_write_ini("Time Limits", "A/D CP Time Limit Override", argument0);
+    DSM_write_ini("Time Limits", "AD CP Time Limit Override", argument0);
 ');
 menu_addedit_num("A/D CP Time Limit Cap:", "global.timeLimit_ADCP_Cap", '
-    DSM_write_ini("Time Limits", "A/D CP Time Limit Cap Override", argument0);
+    DSM_write_ini("Time Limits", "AD CP Time Limit Cap Override", argument0);
 ');
 menu_addedit_num("1CP Time Limit:", "global.timeLimit_1CP", '
     DSM_write_ini("Time Limits", "1CP Time Limit Override", argument0);

@@ -146,14 +146,14 @@
   </views>
   <instances>
     <instance>
-      <object>LobbyController</object>
-      <position x="112" y="224"/>
+      <object>LobbySideController</object>
+      <position x="176" y="160"/>
       <creationCode/>
       <locked>false</locked>
     </instance>
     <instance>
-      <object>LobbySideController</object>
-      <position x="176" y="160"/>
+      <object>LobbyController</object>
+      <position x="112" y="224"/>
       <creationCode/>
       <locked>false</locked>
     </instance>

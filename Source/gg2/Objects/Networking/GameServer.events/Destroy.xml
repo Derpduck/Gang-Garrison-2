@@ -36,8 +36,6 @@ if (global.attemptPortForward and portForwarded)
 
 if (instance_exists(Builder))
     room_goto_fix(BuilderRoom);
-//else if (global.queuedJoin)
-//    room_goto_fix(QueuedJoinRoom);
 else
     room_goto_fix(Menu);
 

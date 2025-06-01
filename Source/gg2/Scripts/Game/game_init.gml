@@ -91,7 +91,7 @@
     global.Server_RespawntimeSec = ini_read_real("Server", "Respawn Time", 5);
     global.rewardKey = unhex(ini_read_string("Haxxy", "RewardKey", ""));
     global.rewardId = ini_read_string("Haxxy", "RewardId", "");
-    global.mapdownloadLimitBps = ini_read_real("Server", "Total bandwidth limit for map downloads in bytes per second", 50000);
+    global.mapdownloadLimitBps = ini_read_real("Server", "Total bandwidth limit for map downloads in bytes per second", 100000);
     global.updaterBetaChannel = ini_read_real("General", "UpdaterBetaChannel", isBetaVersion());
     global.attemptPortForward = ini_read_real("Server", "Attempt UPnP Forwarding", 0); 
     global.serverPluginList = ini_read_string("Server", "ServerPluginList", "");

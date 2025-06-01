@@ -70,8 +70,8 @@ global.tauntHealAmount = DSM_add_option("Hosting", "Taunt Heal Amount", 5);
 // Time Limits
 global.timeLimit_CTF = DSM_add_option("Time Limits", "CTF Time Limit Override", 0);
 global.timeLimit_Invasion = DSM_add_option("Time Limits", "Invasion Time Limit Override", 0);
-global.timeLimit_ADCP = DSM_add_option("Time Limits", "A/D CP Time Limit Override", 0);
-global.timeLimit_ADCP_Cap = DSM_add_option("Time Limits", "A/D CP Time Limit Cap Override", 0);
+global.timeLimit_ADCP = DSM_add_option("Time Limits", "AD CP Time Limit Override", 0);
+global.timeLimit_ADCP_Cap = DSM_add_option("Time Limits", "AD CP Time Limit Cap Override", 0);
 global.timeLimit_1CP = DSM_add_option("Time Limits", "1CP Time Limit Override", 0);
 global.timeLimit_2CP = DSM_add_option("Time Limits", "2CP Time Limit Override", 0);
 global.timeLimit_3CP = DSM_add_option("Time Limits", "3CP Time Limit Override", 0);

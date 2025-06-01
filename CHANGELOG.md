@@ -8,8 +8,13 @@
 ### Menus
 - Added server sent plugin list and server sent plugin required to the host options menu
 
+### UI
+- Map download progress is displayed in kbps on the download screen
+- "Wrong number of players while deserializing state" error will now show the received and expected values
+
 ### Miscellaneous
 - Added option to skip the FAUCeT logo
+- Increased default bandwidth limit for map downloads 
 
 ### Bug Fixes
 - Fixed host warnings controller incorrectly warning that the rotation will be shuffled when switching to the classlimits menu

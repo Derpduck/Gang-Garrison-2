@@ -20,18 +20,30 @@
     draw_set_halign(fa_left);
     draw_rectangle(50, 550, 300, 560, 2);
     
+    var rows, rowGap;
+    rows = 0;
+    rowGap = 20;
+    
     if(downloadingMap)
     {
-        draw_text(50, 530, "Downloading map (press Esc to abort)");
         if(downloadMapBytes &gt; 0)
+        {
+            draw_text(50, 530 - (rows * rowGap), string(buffer_size(downloadMapBuffer) / 1024) + " / " + string(downloadMapBytes / 1024) + " KB (" + string((buffer_size(downloadMapBuffer) / downloadMapBytes) * 100) + "%)");
+            rows += 1;
             draw_rectangle(50, 550, 50+buffer_size(downloadMapBuffer)/downloadMapBytes * 250, 560, 0);
+        }
+        draw_text(50, 530 - (rows * rowGap), "Downloading map (press Esc to abort)");
+        rows += 1;
     }
     else
-        draw_text(50, 530, "Connecting (press Esc to abort)");
+    {
+        draw_text(50, 530 - (rows * rowGap), "Connecting (press Esc to abort)");
+        rows += 1;
+    }
     
     if (variable_local_exists("downloadMapName"))
     {
-        draw_text(50, 510, "Next Map: " + downloadMapName);
+        draw_text(50, 530 - (rows * rowGap), "Next Map: " + downloadMapName);
     }
 }
 </argument>
