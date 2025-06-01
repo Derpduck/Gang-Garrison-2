@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">image_index=0;
+team = 0;
 </argument>
       </arguments>
     </action>

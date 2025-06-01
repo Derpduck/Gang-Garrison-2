@@ -30,6 +30,7 @@
             poof.image_angle = owner.aimDirection+180;
         }
         poof.owner = owner;
+        poof.team = owner.team;
         if (global.teamColors_AirBlasts)
             poof.sprite_index = Team_AirBlastS;
         with(poof)
