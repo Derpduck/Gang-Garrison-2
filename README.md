@@ -73,6 +73,9 @@ binds || Prints all saved binds | Client
 `rcon save` || Toggles saving of new RCON users on / off | Host Only
 `rcon users` || Prints a list of all active RCON users | Host Only
 
+### Gamemodes
+- Added options to set time limits on a per-gamemode basis
+
 ### HUD
 - Made health bar and teammate stats enabled visible by default
 - Added HP text display
@@ -109,6 +112,7 @@ binds || Prints all saved binds | Client
 - Moved manual join button to lobby menu
 - Adjusted lobby ping color ranges and added more colors
 - Added menu option type for setting numbers to non-integer values
+- Added server sent plugin list and server sent plugin required to the host options menu
 
 ### Audio
 - Added master volume option
@@ -125,7 +129,9 @@ binds || Prints all saved binds | Client
 	- Fatal errors and multi-choice messages will still use the old window
 	- Removed warning messages in the options menu for UPNP and server-sent plugins
 - Next map name is now shown on the map change screen
+- Map download progress is displayed in KB on the download screen
 - Prevented custom notices messages from containing multiple lines of text
+- "Wrong number of players while deserializing state" error will now show the received and expected values
 
 ### Quality of Life
 - Added option to disable automatically moving to spectator when AFK
@@ -136,6 +142,8 @@ binds || Prints all saved binds | Client
 ### Miscellaneous
 - Added option for taunt heal
 	- Heal amount can be customized (default: `5`)
+- Added option to skip the FAUCeT logo
+- Increased default bandwidth limit for map downloads 
 
 ### Performance
 - Added `-high` launch option
