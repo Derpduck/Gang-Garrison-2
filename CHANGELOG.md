@@ -20,6 +20,7 @@
 - Fixed host warnings controller incorrectly warning that the rotation will be shuffled when switching to the classlimits menu
 - Fixed error when changing damage indicator show healing target's damage setting
 - Fixed health and ammo number displays overlapping if they are set to the same positions
+- Fixed air blast team error
 
 
 ## V3 (2025/05/30)
