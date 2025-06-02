@@ -1,6 +1,6 @@
 # Re-DSM Readme
 
-## Current Version: v3
+## Current Version: v4
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod  

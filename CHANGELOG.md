@@ -1,4 +1,4 @@
-## V4 (WIP)
+## V4 (2025/06/02)
 ### Gamemodes
 - Added options to set time limits on a per-gamemode basis
 
@@ -9,7 +9,7 @@
 - Added server sent plugin list and server sent plugin required to the host options menu
 
 ### UI
-- Map download progress is displayed in kbps on the download screen
+- Map download progress is displayed in KB on the download screen
 - "Wrong number of players while deserializing state" error will now show the received and expected values
 
 ### Miscellaneous
@@ -17,11 +17,10 @@
 - Increased default bandwidth limit for map downloads 
 
 ### Bug Fixes
-- Fixed host warnings controller incorrectly warning that the rotation will be shuffled when switching to the classlimits menu
+- Fixed host warnings controller incorrectly stating that the rotation will be shuffled when switching to the classlimits menu
 - Fixed error when changing damage indicator show healing target's damage setting
-- Fixed health and ammo number displays overlapping if they are set to the same positions
+- Fixed health and ammo number displays overlapping if both are set to the same position
 - Fixed air blast team error
-
 
 ## V3 (2025/05/30)
 ### Console
