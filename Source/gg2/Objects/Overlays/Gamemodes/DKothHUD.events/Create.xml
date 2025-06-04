@@ -28,6 +28,9 @@ cpFirstUnlocked = false;
 hostTimer = global.timeLimitMins*30*60;
 global.totalControlPoints = 2;
 
+// Stalemate countdown
+stalemateTimer = global.dkothStalemateTimer * 60 * 30;
+
 KothRedControlPoint.team = TEAM_RED;
 KothBlueControlPoint.team = TEAM_BLUE;
 

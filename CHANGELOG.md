@@ -2,15 +2,23 @@
 ### Gamemodes
 #### DKoTH
 - Added options to help prevent excessively long DKoTH games (disabled by default)
-	- Added option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
-		- This guarentees additional time off the clock each time both points are captured
-		- Contensting the point while it is locked will still trigger overtime
+	- Option to reduce both teams clocks during a stalemate
+		- Choose a stalemate modes to change how the clocks behave during a stalemate
+			- Losing Team's Favor - The losing team's clock counts down faster than the winning team's
+			- Winning Team's Favor - The winning team's clock counts down faster than the losing team's
+			- Equal Count Down - Both team's clocks count down at the same rate
+		- Stalemate timer determines how long both points need to go uncaptured for before the clocks start counting down (default: `3 minutes`)
+			- Contesting the point will pause the timer
+		- Stalemate countdown speed determines how fast the clocks count down as a percentage of their normal speed (default `50%`)
+		- The game will go into overtime instead of ending if one team's timer reaches zero
+	- Option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
 		- Set to `0` to disable this feature
-	- Added options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
+		- Contensting the point while it is locked will still trigger overtime
+		> This guarentees additional time off the clock each time both points are captured
+	- Options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
 		- Home Point: How fast a team captures their own point (default: `100%`)
 		- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
 		- Set to `100%` to disable this feature
-		> This also affects how fast the capture decays if nobody is capturing the point, based on the defending team's capture rate
 > In addition to the above, the option to change the overall DKoTH time limit for both teams is available in the Time Limits host options menu
 
 ### HUD

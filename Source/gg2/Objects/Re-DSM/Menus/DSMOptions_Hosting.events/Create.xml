@@ -52,13 +52,21 @@ menu_addedit_boolean("Anti-Stall Measures Enabled:", "global.dkothAntiStall", '
     DSM_write_ini("DKOTH Anti-Stall", "Anti-Stall Measures Enabled", argument0);
 ');
 
-menu_addedit_select("Stalemate Countdown Mode:", "global.dkothStalemateCountdown", '
-    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Countdown Mode", argument0);
+menu_addedit_select("Stalemate Mode:", "global.dkothStalemateMode", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Mode", argument0);
 ');
 menu_add_option(0, "Off");
-menu_add_option(1, "Weighted (Losing Team's Favor)");
-menu_add_option(2, "Weighted (Winning Team's Favor)");
-menu_add_option(3, "Classic (Both Teams Equal)");
+menu_add_option(1, "Losing Team's Favor");
+menu_add_option(2, "Winning Team's Favor");
+menu_add_option(3, "Equal Count Down");
+
+menu_addedit_float("Stalemate Timer (Minutes):", "global.dkothStalemateTimer", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Timer", argument0);
+');
+
+menu_addedit_num_percent("Stalemate Countdown Speed:", "global.dkothStalemateSpeed", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Countdown Speed", argument0);
+');
 
 menu_addedit_num("Enemy CP Capture Lock Duration:", "global.dkothCaptureLockTime", '
     DSM_write_ini("DKOTH Anti-Stall", "Enemy CP Capture Lock Duration", argument0);

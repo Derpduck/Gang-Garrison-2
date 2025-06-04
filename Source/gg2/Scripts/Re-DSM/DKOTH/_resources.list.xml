@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="dkoth_capture_lock" type="RESOURCE"/>
+  <resource name="dkoth_stalemate_countdown" type="RESOURCE"/>
+  <resource name="dkoth_stalemate_message" type="RESOURCE"/>
 </resources>
