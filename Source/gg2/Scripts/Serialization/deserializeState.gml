@@ -12,7 +12,20 @@ receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
 var newPlayersSize;
 newPlayersSize = read_ubyte(global.tempBuffer);
 if(newPlayersSize != ds_list_size(global.players))
+{
     show_message("Wrong number of players while deserializing state#Received: " + string(newPlayersSize) + " / Expected: " + string(ds_list_size(global.players)));
+    
+    // If we have the wrong number of players, attempt clean up to match the server
+    /*for (i=newPlayersSize; i<ds_list_size(global.players); i+=1)
+    {
+        //var player;
+        //player = ds_list_find_value(global.players, i);
+        //if (instance_exists(player))
+        //    with(player) instance_destroy();
+        
+        ds_list_delete(global.players, i);
+    };*/
+}
 
 if(argument0 != CAPS_UPDATE) {
     for(i=0; i<ds_list_size(global.players); i+=1) {
