@@ -1,4 +1,8 @@
 ## V5 (WIP)
+### Menus
+- Lobby menus can now be used to connect to other servers while in-game
+	- This was disabled due to the crash bug fixed in this update
+
 ### Bug Fixes
 - Fixed wrong number of players crash when downloading a new map
 

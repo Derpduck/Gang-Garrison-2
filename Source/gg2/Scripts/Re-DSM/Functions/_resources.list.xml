@@ -12,6 +12,7 @@
   <resource name="shuffle_rotation" type="RESOURCE"/>
   <resource name="get_ping_color" type="RESOURCE"/>
   <resource name="join_server" type="RESOURCE"/>
+  <resource name="ask_to_leaver_server" type="RESOURCE"/>
   <resource name="playsound_volume" type="RESOURCE"/>
   <resource name="get_color_option" type="RESOURCE"/>
   <resource name="show_notification_message" type="RESOURCE"/>

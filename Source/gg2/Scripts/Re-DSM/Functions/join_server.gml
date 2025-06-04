@@ -2,38 +2,50 @@ var serverIP, serverPort;
 serverIP = argument0;
 serverPort = argument1;
 
+// Don't allow
 if (instance_exists(GameServer) and serverIP == "127.0.0.1")
 {
-    show_notification_message("You are already connected to this server.")
-    return false;
+    show_notification_message("You are currently hosting this server,#you cannot reconnect without closing the server.")
+    exit;
 }
-
-if (instance_exists(Client))
+/*else if (instance_exists(Client))
 {
     if (global.serverIP == serverIP and global.serverPort == serverPort)
-    {
-        show_notification_message("You are already connected to this server.")
-        return false;
-    }
-}
+        if (!show_question("You are already connected to this server,#are you sure you wish to reconnect?."))
+            exit;
+}*/
+
 
 global.isHost = false;
 global.serverIP = serverIP;
 global.serverPort = serverPort;
 
+// If currently hosting a game
 if (instance_exists(GameServer) and room != Menu and room != Lobby)
 {
-    //global.queuedJoin = true;
-    
-    global.dedicatedMode = 0;
-    with(GameServer)
-        instance_destroy();
-    
-    return true;
+    if (ask_to_leaver_server())
+    {
+        global.isHost = false;
+        global.serverIP = serverIP;
+        global.serverPort = serverPort;
+        global.queuedJoin = true;
+        
+        // Force dedicated mode to off so you can go to main menu instead of just restarting server
+        global.dedicatedMode = 0;
+        
+        with(GameServer)
+            instance_destroy();
+    }
 }
 
-if (room == Lobby)
+// Joining from Lobby room / not in a game
+if (room == Lobby or room == Menu)
 {
+    global.isHost = false;
+    global.serverIP = serverIP;
+    global.serverPort = serverPort;
+    global.queuedJoin = false;
+    
     if(instance_exists(Client))
     {   // We can't _actually_ destroy and recreate the Client here, because destroying it will cause a room change and that will cause the Create event not to run... Yay, GM!
         with(Client)
@@ -44,30 +56,23 @@ if (room == Lobby)
     }
     else
     {
-        instance_create(0,0,Client);
+        instance_create(0, 0, Client);
     }
     Client.returnRoom = Lobby;
 }
 else
 {
-    // Force dedicated mode to off so you can go to main menu instead of just restarting server
-    if (show_question("Do you really want to leave this match?"))
+    // Joining while in-game
+    if (ask_to_leaver_server())
     {
-        if (global.serverPluginsInUse)
-        {
-            pluginscleanup(true);
-            return false; // TODO: Update if plugins cleanup is changed to not force restarts
-        }
-        else
-        {
-            //global.queuedJoin = true;
-            Client.returnRoom = Lobby;
-            
-            with(Client)
-                instance_destroy();
-        }
+        global.isHost = false;
+        global.serverIP = serverIP;
+        global.serverPort = serverPort;
+        global.queuedJoin = true;
+        
+        Client.returnRoom = Lobby;
+        
+        with(Client)
+            instance_destroy();
     }
 }
-
-Client.returnRoom = Lobby;
-return true;

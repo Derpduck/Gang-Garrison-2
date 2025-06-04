@@ -113,12 +113,12 @@
         } else {
             virtualitem += offset;
         }
-        if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0) and room == Lobby{
+        if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0){
             server = ds_list_find_value(servers, virtualitem);
             if(server.compatible)
             {
-                //join_server(server.ip, server.port);
-                global.isHost = false;
+                join_server(server.ip, server.port);
+                /*global.isHost = false;
                 global.serverIP = server.ip;
                 global.serverPort = server.port;
                 if(instance_exists(Client))
@@ -133,7 +133,7 @@
                 {
                     instance_create(0,0,Client);
                 }
-                Client.returnRoom = Lobby;
+                Client.returnRoom = Lobby;*/
             }
             else
             {
