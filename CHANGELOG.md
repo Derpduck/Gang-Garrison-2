@@ -1,3 +1,7 @@
+## V5 (WIP)
+### Bug Fixes
+- Fixed wrong number of players crash when downloading a new map
+
 ## V4 (2025/06/02)
 ### Gamemodes
 - Added options to set time limits on a per-gamemode basis
