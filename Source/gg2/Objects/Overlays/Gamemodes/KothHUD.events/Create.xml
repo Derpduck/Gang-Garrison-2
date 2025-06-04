@@ -24,7 +24,10 @@ else
     blueTimer = 180*30;
 }
 cpUnlock = 900;
-hostTimer = global.timeLimitMins*30*60;
+if (global.timeLimit_KOTH_Overall &gt; 0)
+    hostTimer = global.timeLimit_KOTH_Overall*30*60;
+else
+    hostTimer = global.timeLimitMins*30*60;
 
 if (global.freezeTime and global.isHost)
     freezeTimeTimer = global.freezeTimeCountdownDuration * 30;

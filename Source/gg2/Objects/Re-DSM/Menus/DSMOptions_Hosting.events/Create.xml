@@ -46,40 +46,6 @@ menu_addedit_boolean("Show Countdown:", "global.freezeTimeShowCountdown", '
     DSM_write_ini("Freeze Time", "Show Countdown", argument0);
 ');
 
-menu_divider("DKOTH Anti-Stall Measures");
-
-menu_addedit_boolean("Anti-Stall Measures Enabled:", "global.dkothAntiStall", '
-    DSM_write_ini("DKOTH Anti-Stall", "Anti-Stall Measures Enabled", argument0);
-');
-
-menu_addedit_select("Stalemate Mode:", "global.dkothStalemateMode", '
-    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Mode", argument0);
-');
-menu_add_option(0, "Off");
-menu_add_option(1, "Losing Team's Favor");
-menu_add_option(2, "Winning Team's Favor");
-menu_add_option(3, "Equal Count Down");
-
-menu_addedit_float("Stalemate Timer (Minutes):", "global.dkothStalemateTimer", '
-    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Timer", argument0);
-');
-
-menu_addedit_num_percent("Stalemate Countdown Speed:", "global.dkothStalemateSpeed", '
-    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Countdown Speed", argument0);
-');
-
-menu_addedit_num("Enemy CP Capture Lock Duration:", "global.dkothCaptureLockTime", '
-    DSM_write_ini("DKOTH Anti-Stall", "Enemy CP Capture Lock Duration", argument0);
-');
-
-menu_addedit_num_percent("Home Point Capture Speed:", "global.dkothHomeCapturePower", '
-    DSM_write_ini("DKOTH Anti-Stall", "Home Point Capture Speed", argument0);
-');
-
-menu_addedit_num_percent("Enemy Point Capture Speed:", "global.dkothEnemyCapturePower", '
-    DSM_write_ini("DKOTH Anti-Stall", "Enemy Point Capture Speed", argument0);
-');
-
 menu_divider("Taunt Heal");
 
 menu_addedit_boolean("Taunt Heal:", "global.tauntHeal", '

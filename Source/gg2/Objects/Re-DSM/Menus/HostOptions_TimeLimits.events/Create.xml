@@ -22,7 +22,7 @@ if (room != Menu)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_divider("Time Limit Overrides (0 = Use Global Time Limit)");
+menu_divider("Time Limit Overrides (0 = Use Default Time Limit)");
 
 menu_addedit_num("CTF Time Limit:", "global.timeLimit_CTF", '
     DSM_write_ini("Time Limits", "CTF Time Limit Override", argument0);
@@ -60,8 +60,14 @@ menu_addedit_num("Generator Time Limit:", "global.timeLimit_Generator", '
 menu_addedit_num("KoTH Time Limit (Team Timers):", "global.timeLimit_KOTH", '
     DSM_write_ini("Time Limits", "KoTH Time Limit Override", argument0);
 ');
+menu_addedit_num("KoTH Time Limit (Overall):", "global.timeLimit_KOTH_Overall", '
+    DSM_write_ini("Time Limits", "KoTH Overall Time Limit Override", argument0);
+');
 menu_addedit_num("DKoTH Time Limit (Team Timers):", "global.timeLimit_DKOTH", '
     DSM_write_ini("Time Limits", "DKoTH Time Limit Override", argument0);
+');
+menu_addedit_num("DKoTH Time Limit (Overall):", "global.timeLimit_DKOTH_Overall", '
+    DSM_write_ini("Time Limits", "DKoTH Overall Time Limit Override", argument0);
 ');
 menu_addedit_num("TDM Time Limit:", "global.timeLimit_TDM", '
     DSM_write_ini("Time Limits", "TDM Time Limit Override", argument0);

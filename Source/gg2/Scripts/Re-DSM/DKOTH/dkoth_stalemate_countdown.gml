@@ -36,7 +36,7 @@ if (stalemateTimer == -1)
     
     switch(global.dkothStalemateMode)
     {
-    case 1: // Loser's Favor
+    case 2: // Loser's Favor
         if (redTimer > 0)
         {
             if (winningTeam == TEAM_RED)
@@ -52,7 +52,7 @@ if (stalemateTimer == -1)
                 blueTimer -= global.dkothStalemateSpeed / 100;
         }
         break;
-    case 2: // Winner's Favor
+    case 3: // Winner's Favor
         if (redTimer > 0)
         {
             if (winningTeam == TEAM_RED)
@@ -68,7 +68,7 @@ if (stalemateTimer == -1)
                 blueTimer -= global.dkothStalemateSpeed / 200;
         }
         break;
-    case 3: // Equal
+    default: // Equal
         if (redTimer > 0)
             redTimer -= global.dkothStalemateSpeed / 100;
         if (blueTimer > 0)

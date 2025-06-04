@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">//automatically change maps if the server is empty for too long
 if (global.isHost and hostTimer &gt; 0 and freezeTimeTimer &lt; 0 // What we're doing makes sense
-    and !KothControlPoint.locked and KothControlPoint.team != -1    // Not pregame
+    and !KothControlPoint.locked and KothControlPoint.team == -1    // Not pregame
     and KothControlPoint.capping == 0 and KothControlPoint.bluePresence == 0 and KothControlPoint.redPresence == 0) // Nobody capping
 {
     hostTimer -= 1 * global.delta_factor;

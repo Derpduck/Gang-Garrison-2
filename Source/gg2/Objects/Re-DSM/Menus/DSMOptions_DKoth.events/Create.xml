@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_divider("Time Limit Overrides (0 = Use Default Time Limit)");
+
+menu_addedit_num("DKoTH Time Limit (Team Timers):", "global.timeLimit_DKOTH", '
+    DSM_write_ini("Time Limits", "DKoTH Time Limit Override", argument0);
+');
+
+menu_addedit_num("DKoTH Time Limit (Overall):", "global.timeLimit_DKOTH_Overall", '
+    DSM_write_ini("Time Limits", "DKoTH Overall Time Limit Override", argument0);
+');
+
+menu_addedit_boolean("Overall Time Limit Doesn't Reset:", "global.dkothNoResetTimeLimit", '
+    DSM_write_ini("DKOTH Anti-Stall", "Overall Time Limit Persists", argument0);
+');
+
+menu_divider("DKOTH Anti-Stall Measures");
+
+menu_addedit_boolean("Anti-Stall Measures Enabled:", "global.dkothAntiStall", '
+    DSM_write_ini("DKOTH Anti-Stall", "Anti-Stall Measures Enabled", argument0);
+');
+
+menu_addedit_num("Enemy CP Capture Lock Duration:", "global.dkothCaptureLockTime", '
+    DSM_write_ini("DKOTH Anti-Stall", "Enemy CP Capture Lock Duration", argument0);
+');
+
+menu_divider("Stalemate Clock Countdown");
+
+menu_addedit_select("Stalemate Mode:", "global.dkothStalemateMode", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Mode", argument0);
+');
+menu_add_option(0, "Off");
+menu_add_option(1, "No Team Bias");
+menu_add_option(2, "Losing Team's Favor");
+menu_add_option(3, "Winning Team's Favor");
+
+menu_addedit_float("Stalemate Timer (Minutes):", "global.dkothStalemateTimer", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Timer", argument0);
+');
+
+menu_addedit_num_percent("Stalemate Countdown Speed:", "global.dkothStalemateSpeed", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Countdown Speed", argument0);
+');
+
+menu_divider("Capture Speed");
+
+menu_addedit_num_percent("Home Point Capture Speed:", "global.dkothHomeCapturePower", '
+    DSM_write_ini("DKOTH Anti-Stall", "Home Point Capture Speed", argument0);
+');
+
+menu_addedit_num_percent("Enemy Point Capture Speed:", "global.dkothEnemyCapturePower", '
+    DSM_write_ini("DKOTH Anti-Stall", "Enemy Point Capture Speed", argument0);
+');
+
+DSM_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

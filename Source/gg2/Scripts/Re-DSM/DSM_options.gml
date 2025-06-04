@@ -84,7 +84,9 @@ global.timeLimit_5CP = DSM_add_option("Time Limits", "5CP Time Limit Override", 
 global.timeLimit_Arena = DSM_add_option("Time Limits", "Arena Time Limit Override", 0);
 global.timeLimit_Generator = DSM_add_option("Time Limits", "Generator Time Limit Override", 0);
 global.timeLimit_KOTH = DSM_add_option("Time Limits", "KoTH Time Limit Override", 0);
+global.timeLimit_KOTH_Overall = DSM_add_option("Time Limits", "KoTH Overall Time Limit Override", 0);
 global.timeLimit_DKOTH = DSM_add_option("Time Limits", "DKoTH Time Limit Override", 0);
+global.timeLimit_DKOTH_Overall = DSM_add_option("Time Limits", "DKoTH Overall Time Limit Override", 0);
 global.timeLimit_TDM = DSM_add_option("Time Limits", "TDM Time Limit Override", 0);
 
 // Freeze Time
@@ -95,9 +97,10 @@ global.freezeTimeShowCountdown = DSM_add_option("Freeze Time", "Show Countdown",
 // DKOTH Anti-Stall
 global.dkothAntiStall = DSM_add_option("DKOTH Anti-Stall", "Anti-Stall Measures Enabled", 0);
 global.dkothStalemateMode = DSM_add_option("DKOTH Anti-Stall", "Stalemate Mode", 0);
-global.dkothStalemateTimer = DSM_add_option("DKOTH Anti-Stall", "Stalemate Timer", 3);
+global.dkothStalemateTimer = DSM_add_option("DKOTH Anti-Stall", "Stalemate Timer", 3, true, 0);
 global.dkothStalemateSpeed = DSM_add_option("DKOTH Anti-Stall", "Stalemate Countdown Speed", 50, true, 0);
 global.dkothCaptureLockTime = DSM_add_option("DKOTH Anti-Stall", "Enemy CP Capture Lock Duration", 10);
+global.dkothNoResetTimeLimit = DSM_add_option("DKOTH Anti-Stall", "Overall Time Limit Persists", 0);
 global.dkothHomeCapturePower = DSM_add_option("DKOTH Anti-Stall", "Home Point Capture Speed", 100, true, 0);
 global.dkothEnemyCapturePower = DSM_add_option("DKOTH Anti-Stall", "Enemy Point Capture Speed", 100, true, 0);
 

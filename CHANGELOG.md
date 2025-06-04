@@ -1,25 +1,38 @@
 ## V5 (WIP)
 ### Gamemodes
+#### KoTH
+- Added option to change overall time limit
+> This time limit only counts down while the point is uncaptured and uncontested
+
 #### DKoTH
-- Added options to help prevent excessively long DKoTH games (disabled by default)
+- Added options to help prevent excessively long DKoTH games (disabled by default):
+
 	- Option to reduce both teams clocks during a stalemate
 		- Choose a stalemate modes to change how the clocks behave during a stalemate
+			- No Team Bias - Both team's clocks count down at the same rate
 			- Losing Team's Favor - The losing team's clock counts down faster than the winning team's
 			- Winning Team's Favor - The winning team's clock counts down faster than the losing team's
-			- Equal Count Down - Both team's clocks count down at the same rate
 		- Stalemate timer determines how long both points need to go uncaptured for before the clocks start counting down (default: `3 minutes`)
 			- Contesting the point will pause the timer
 		- Stalemate countdown speed determines how fast the clocks count down as a percentage of their normal speed (default `50%`)
 		- The game will go into overtime instead of ending if one team's timer reaches zero
+		
 	- Option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
 		- Set to `0` to disable this feature
 		- Contensting the point while it is locked will still trigger overtime
 		> This guarentees additional time off the clock each time both points are captured
+	
+	- Option to set the overall time limit
+	- Option for overall time limit to not reset when a point is captured (default: `off`)
+	> By default DKoTH has a time limit that counts down while the points are neutral and uncontested, but any point being captured resets the time limit
+	> Turning this setting on will stop the time limit from being reset when a point is captured
+		
 	- Options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
 		- Home Point: How fast a team captures their own point (default: `100%`)
 		- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
 		- Set to `100%` to disable this feature
-> In addition to the above, the option to change the overall DKoTH time limit for both teams is available in the Time Limits host options menu
+
+> In addition to the above, the option to change the DKoTH clock time limit is available in the Time Limits host options menu
 
 ### HUD
 - HP and ammo text under cursor position option now only applies to yourself
@@ -32,6 +45,7 @@
 - Lobby menus can now be used to connect to other servers while in-game
 	- This was disabled due to the crash bug fixed in this update
 - Options that represent a percentage value will now be shown with a % sign
+- DSM Hosting options menu now only visible from the main menu or when hosting
 
 ### Quality of Life
 - Added key bind to show map collisions (default key: `F7`)
@@ -45,6 +59,9 @@
 - Fixed freeze time countdown messages not being sent to clients
 - Fixed `message` command not sending messages to clients
 - Fixed DKoTH control points unlocking never being sycned with clients
+- Fixed DKoTH overall time limit not counting down if a player is standing on their own team's point
+- Fixed KoTH overall time limit only counting down if the point has been captured
+	- This prevented KoTH maps from ever ending on empty servers
 
 ## V4 (2025/06/02)
 ### Gamemodes

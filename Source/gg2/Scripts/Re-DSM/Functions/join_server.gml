@@ -19,25 +19,6 @@ if (instance_exists(GameServer) and serverIP == "127.0.0.1")
 global.isHost = false;
 global.serverIP = serverIP;
 global.serverPort = serverPort;
-
-// If currently hosting a game
-if (instance_exists(GameServer) and room != Menu and room != Lobby)
-{
-    if (ask_to_leaver_server())
-    {
-        global.isHost = false;
-        global.serverIP = serverIP;
-        global.serverPort = serverPort;
-        global.queuedJoin = true;
-        
-        // Force dedicated mode to off so you can go to main menu instead of just restarting server
-        global.dedicatedMode = 0;
-        
-        with(GameServer)
-            instance_destroy();
-    }
-}
-
 // Joining from Lobby room / not in a game
 if (room == Lobby or room == Menu)
 {
@@ -70,9 +51,21 @@ else
         global.serverPort = serverPort;
         global.queuedJoin = true;
         
-        Client.returnRoom = Lobby;
-        
-        with(Client)
-            instance_destroy();
+        // If currently hosting a game
+        if (instance_exists(GameServer) and room != Menu and room != Lobby)
+        {
+            // Force dedicated mode to off so you can go to main menu instead of just restarting server
+            global.dedicatedMode = 0;
+            
+            with(GameServer)
+                instance_destroy();
+        }
+        else
+        {
+            Client.returnRoom = Lobby;
+            
+            with(Client)
+                instance_destroy();
+        }
     }
 }
