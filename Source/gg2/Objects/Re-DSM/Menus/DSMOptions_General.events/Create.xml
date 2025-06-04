@@ -24,7 +24,7 @@ bgtabs = true;
 
 menu_divider("Audio");
 
-menu_addedit_float("Master Volume:", "global.masterVolume", '
+menu_addedit_num_percent("Master Volume:", "global.masterVolume", '
     DSM_write_ini("Audio", "Master Volume", argument0);
     sound_global_volume(argument0 / 100);
 ', 100);

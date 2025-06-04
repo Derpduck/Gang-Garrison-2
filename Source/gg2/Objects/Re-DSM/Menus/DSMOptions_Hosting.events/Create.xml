@@ -27,11 +27,9 @@ menu_divider("RCON");
 menu_addedit_boolean("RCON Enabled:", "global.rconEnabled", '
     DSM_write_ini("RCON", "Rcon Enabled", argument0);
 ');
-
 menu_addedit_boolean("Save RCON Users:", "global.saveRconUsers", '
     DSM_write_ini("RCON", "Save Rcon Users", argument0);
 ');
-    
 menu_addedit_text("RCON Password:", "global.rconPassword", '
     DSM_write_ini("RCON", "Rcon Password", argument0);
 ');
@@ -41,13 +39,37 @@ menu_divider("Freeze Time");
 menu_addedit_boolean("Freeze Time Enabled:", "global.freezeTime", '
     DSM_write_ini("Freeze Time", "Freeze Time Enabled", argument0);
 ');
-
 menu_addedit_num("Countdown Duration:", "global.freezeTimeCountdownDuration", '
     DSM_write_ini("Freeze Time", "Countdown Duration", argument0);
 ');
-
 menu_addedit_boolean("Show Countdown:", "global.freezeTimeShowCountdown", '
     DSM_write_ini("Freeze Time", "Show Countdown", argument0);
+');
+
+menu_divider("DKOTH Anti-Stall Measures");
+
+menu_addedit_boolean("Anti-Stall Measures Enabled:", "global.dkothAntiStall", '
+    DSM_write_ini("DKOTH Anti-Stall", "Anti-Stall Measures Enabled", argument0);
+');
+
+menu_addedit_select("Stalemate Countdown Mode:", "global.dkothStalemateCountdown", '
+    DSM_write_ini("DKOTH Anti-Stall", "Stalemate Countdown Mode", argument0);
+');
+menu_add_option(0, "Off");
+menu_add_option(1, "Weighted (Losing Team's Favor)");
+menu_add_option(2, "Weighted (Winning Team's Favor)");
+menu_add_option(3, "Classic (Both Teams Equal)");
+
+menu_addedit_num("Enemy CP Capture Lock Duration:", "global.dkothCaptureLockTime", '
+    DSM_write_ini("DKOTH Anti-Stall", "Enemy CP Capture Lock Duration", argument0);
+');
+
+menu_addedit_num_percent("Home Point Capture Speed:", "global.dkothHomeCapturePower", '
+    DSM_write_ini("DKOTH Anti-Stall", "Home Point Capture Speed", argument0);
+');
+
+menu_addedit_num_percent("Enemy Point Capture Speed:", "global.dkothEnemyCapturePower", '
+    DSM_write_ini("DKOTH Anti-Stall", "Enemy Point Capture Speed", argument0);
 ');
 
 menu_divider("Taunt Heal");
@@ -55,7 +77,6 @@ menu_divider("Taunt Heal");
 menu_addedit_boolean("Taunt Heal:", "global.tauntHeal", '
     DSM_write_ini("Hosting", "Taunt Heal", argument0);
 ');
-
 menu_addedit_num("Taunt Heal Amount:", "global.tauntHealAmount", '
     DSM_write_ini("Hosting", "Taunt Heal Amount", argument0);
 ');

@@ -33,10 +33,10 @@ if (global.isHost and hostTimer &gt; 0) { // What we're doing makes sense
     if (KothRedControlPoint.locked or KothBlueControlPoint.locked)
         hostTimer = global.timeLimitMins*30*60;
 }
-    
 
 //both teams' countdown timers
-if (!KothRedControlPoint.locked or !KothBlueControlPoint.locked)
+// Allow timers to countdown if both points are locked due to anti-stall settings
+if ((!KothRedControlPoint.locked or !KothBlueControlPoint.locked) or (cpFirstUnlocked and cpUnlock &gt; 0 and KothRedControlPoint.team == KothBlueControlPoint.team))
 {
     if (KothBlueControlPoint.team == TEAM_RED and redTimer &gt;0)
         redTimer -= 1 * global.delta_factor;
@@ -45,10 +45,12 @@ if (!KothRedControlPoint.locked or !KothBlueControlPoint.locked)
 }
 //endgame logic
 if (redTimer == 0 and KothBlueControlPoint.team == TEAM_RED
-    and KothBlueControlPoint.capping == 0 and KothBlueControlPoint.bluePresence == 0)
+    and KothBlueControlPoint.capping == 0 and KothBlueControlPoint.bluePresence == 0
+    and !KothBlueControlPoint.locked)
     global.winners = TEAM_RED;
 if (blueTimer == 0 and KothRedControlPoint.team == TEAM_BLUE
-    and KothRedControlPoint.capping == 0 and KothRedControlPoint.redPresence == 0)
+    and KothRedControlPoint.capping == 0 and KothRedControlPoint.redPresence == 0
+    and !KothRedControlPoint.locked)
     global.winners = TEAM_BLUE;
 
 if global.isHost and KothRedControlPoint.locked and KothBlueControlPoint.locked and !global.mapchanging

@@ -38,7 +38,7 @@ menu_addedit_boolean("Show Healing Target's Damage:", "global.damageIndicatorHea
     DSM_write_ini("Damage Indicator", "Show Healing Target Damage", argument0);
 ');
 
-menu_addedit_num("Hitsound Volume:", "global.damageIndicatorVolume", '
+menu_addedit_num_percent("Hitsound Volume:", "global.damageIndicatorVolume", '
     DSM_write_ini("Damage Indicator", "Volume", argument0);
 ', 100);
 
@@ -77,7 +77,7 @@ menu_addedit_select("Healing Color:", "global.damageIndicatorColorHealing", '
 ');
 DSM_menu_color_options();
 
-menu_addedit_float("Scale:", "global.damageIndicatorScale", '
+menu_addedit_float_percent("Scale:", "global.damageIndicatorScale", '
     DSM_write_ini("Damage Indicator", "Scale", argument0);
 ');
 

@@ -27,13 +27,13 @@
         damage = round(ds_map_find_value(damageMap, damageInstance));
         lifetime = (current_time - damageInstance) / 1000;
         yoffset =  max(0, lifetime - global.damageIndicatorHoldDuration);
-        yposition = (ydraw - ybaseoffset) - (yoffset * riseSpeed * global.damageIndicatorScale);
+        yposition = (ydraw - ybaseoffset) - (yoffset * riseSpeed * (global.damageIndicatorScale / 100));
         alpha = 1 - (yoffset / global.damageIndicatorFadeDuration);
         
         if (global.damageIndicatorShrink)
-            scale = global.damageIndicatorScale * alpha;
+            scale = (global.damageIndicatorScale / 100) * alpha;
         else
-            scale = global.damageIndicatorScale;
+            scale = (global.damageIndicatorScale / 100);
         
         draw_set_halign(fa_center);
         draw_set_valign(fa_bottom);

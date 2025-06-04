@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="DESTROY" id="0">
+<event category="STEP" id="1">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,13 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">ini_open("controls.gg2");
-ini_write_real("DSM", "ConsoleKey", global.consoleKey);
-ini_write_real("DSM", "ConsoleFullscreenKey", global.consoleFullscreenKey);
-ini_write_real("DSM", "UberBubble", global.uberBubbleKey);
-ini_write_real("DSM", "SpyBubble", global.spyBubbleKey);
-ini_write_real("DSM", "ShowMapCollision", global.showMapCollisionKey);
-ini_close();
+        <argument kind="STRING">if (keyboard_check_pressed(global.showMapCollisionKey))
+    visible = !visible;
 </argument>
       </arguments>
     </action>

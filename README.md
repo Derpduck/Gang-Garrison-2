@@ -74,6 +74,7 @@ binds || Prints all saved binds | Client
 `rcon users` || Prints a list of all active RCON users | Host Only
 
 ### Gamemodes
+#### All Gamemodes
 - Added options to set time limits on a per-gamemode basis
 
 ### HUD

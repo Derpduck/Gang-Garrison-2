@@ -1,4 +1,8 @@
 ini_open("Re-DSM.ini");
+// One time option changes notifications
+DSM_add_ini_notification("Damage Indicator", "Scale", 100, "Damage Indicator Scale now uses a percentage value.");
+DSM_add_ini_notification("HUD", "Show Ammo Text", 2, "Show Ammo Text default has been changed to only show your own ammo.");
+
 // General
 global.skipFaucetLogo = DSM_add_option("General", "Skip FAUCeT Logo", 1);
 global.noAFKAutoSpectate = DSM_add_option("General", "Disable AFK Auto-Spectate", 1);
@@ -54,10 +58,9 @@ global.damageIndicatorHealingTarget = DSM_add_option("Damage Indicator", "Show H
 global.damageIndicatorColor = DSM_add_option("Damage Indicator", "Damage Indicator Color", 1);
 global.damageIndicatorColorSelf = DSM_add_option("Damage Indicator", "Self Damage Color", 2);
 global.damageIndicatorColorHealing = DSM_add_option("Damage Indicator", "Healing Color", 4);
-global.damageIndicatorVolume = max(0, min(100, ini_read_real("Damage Indicator", "Volume", 100)));
-ini_write_real("Damage Indicator", "Volume", global.damageIndicatorVolume);
+global.damageIndicatorVolume = DSM_add_option("Damage Indicator", "Volume", 100, true, 0, true, 100);
 global.damageIndicatorCustomSound = DSM_add_option_string("Damage Indicator", "Custom Sound File", "");
-global.damageIndicatorScale = DSM_add_option("Damage Indicator", "Scale", 1);
+global.damageIndicatorScale = DSM_add_option("Damage Indicator", "Scale", 100);
 global.damageIndicatorHoldDuration = DSM_add_option("Damage Indicator", "Hold Duration", 0.5);
 global.damageIndicatorFadeDuration = DSM_add_option("Damage Indicator", "Fade Duration", 1.5);
 global.damageIndicatorShrink = DSM_add_option("Damage Indicator", "Shrink on Fade", 1);
@@ -89,12 +92,20 @@ global.freezeTime = DSM_add_option("Freeze Time", "Freeze Time Enabled", 1);
 global.freezeTimeCountdownDuration = DSM_add_option("Freeze Time", "Countdown Duration", 10);
 global.freezeTimeShowCountdown = DSM_add_option("Freeze Time", "Show Countdown", 1);
 
+// DKOTH Anti-Stall
+global.dkothAntiStall = DSM_add_option("DKOTH Anti-Stall", "Anti-Stall Measures Enabled", 0);
+global.dkothStalemateCountdown = DSM_add_option("DKOTH Anti-Stall", "Stalemate Countdown Mode", 0);
+global.dkothCaptureLockTime = DSM_add_option("DKOTH Anti-Stall", "Enemy CP Capture Lock Duration", 10);
+global.dkothHomeCapturePower = DSM_add_option("DKOTH Anti-Stall", "Home Point Capture Speed", 100, true, 0);
+global.dkothEnemyCapturePower = DSM_add_option("DKOTH Anti-Stall", "Enemy Point Capture Speed", 100, true, 0);
+
 // Audio
-global.masterVolume = max(0, min(100, ini_read_real("Audio", "Master Volume", 100)));
-ini_write_real("Audio", "Master Volume", global.masterVolume);
+global.masterVolume = DSM_add_option("Audio", "Master Volume", 100, true, 0, true, 100);
 ini_close();
 
 ini_open("controls.gg2");
 global.uberBubbleKey = ini_read_real("DSM", "UberBubble", ord("R"));
 global.spyBubbleKey = ini_read_real("DSM", "SpyBubble", ord("G"));
+global.showMapCollisionKey = ini_read_real("DSM", "ShowMapCollision", vk_f7);
 ini_close();
+

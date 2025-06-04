@@ -30,6 +30,9 @@ menu_divider("Bubbles");
 menu_addedit_key("Superburst Bubble:", "global.uberBubbleKey");
 menu_addedit_key("Infiltrator Bubble:", "global.spyBubbleKey");
 
+menu_divider("Miscellaneous");
+menu_addedit_key("Show Map Collision:", "global.showMapCollisionKey");
+
 DSM_menu_tabs();
 </argument>
       </arguments>

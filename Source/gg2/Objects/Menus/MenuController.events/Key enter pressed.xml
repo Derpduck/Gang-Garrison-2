@@ -24,6 +24,7 @@
             menu_set_var(editing, item_value[editing]);
             break;
         case "editnum":
+        case "editnum_percent":
             var newval;
             newval = real(string_digits(item_value[editing]));
             if(item_limit[editing]&gt;0)
@@ -33,6 +34,7 @@
             item_value[editing] = string(menu_get_var(editing));
             break;
         case "editfloat":
+        case "editfloat_percent":
             var newval;
             if (!string_is_real(item_value[editing]))
             {

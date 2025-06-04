@@ -8,8 +8,10 @@
   <resource name="Headless" type="GROUP"/>
   <resource name="HUD" type="GROUP"/>
   <resource name="Input" type="GROUP"/>
+  <resource name="DKOTH" type="GROUP"/>
   <resource name="DSM_init" type="RESOURCE"/>
   <resource name="DSM_options" type="RESOURCE"/>
   <resource name="DSM_add_option" type="RESOURCE"/>
   <resource name="DSM_add_option_string" type="RESOURCE"/>
+  <resource name="DSM_add_ini_notification" type="RESOURCE"/>
 </resources>

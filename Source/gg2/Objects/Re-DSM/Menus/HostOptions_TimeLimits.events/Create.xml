@@ -57,10 +57,10 @@ menu_addedit_num("Arena Time Limit:", "global.timeLimit_Arena", '
 menu_addedit_num("Generator Time Limit:", "global.timeLimit_Generator", '
     DSM_write_ini("Time Limits", "Generator Time Limit Override", argument0);
 ');
-menu_addedit_num("KoTH Time Limit:", "global.timeLimit_KOTH", '
+menu_addedit_num("KoTH Time Limit (Team Timers):", "global.timeLimit_KOTH", '
     DSM_write_ini("Time Limits", "KoTH Time Limit Override", argument0);
 ');
-menu_addedit_num("DKoTH Time Limit:", "global.timeLimit_DKOTH", '
+menu_addedit_num("DKoTH Time Limit (Team Timers):", "global.timeLimit_DKOTH", '
     DSM_write_ini("Time Limits", "DKoTH Time Limit Override", argument0);
 ');
 menu_addedit_num("TDM Time Limit:", "global.timeLimit_TDM", '

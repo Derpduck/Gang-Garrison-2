@@ -29,8 +29,11 @@ if(mode == 2) {
         locked = true; 
     else //bruteforce because the below code won't lock the two edge cases without causing errors in other modes.
     {
-        if (cp == 1) { if (global.cp[2].team == TEAM_RED) locked = true else locked = false; }
-        if (cp == 2) { if (global.cp[1].team == TEAM_BLUE) locked = true else locked = false; }
+        if ((global.isHost and DKothHUD.cpFirstUnlocked) or !global.isHost)
+        {
+            if (cp == 1) { if (global.cp[2].team == TEAM_RED) locked = true else locked = false; }
+            if (cp == 2) { if (global.cp[1].team == TEAM_BLUE) locked = true else locked = false; }
+        }
     }
 } else if (mode != 3){
     // Locking is done externally in Arena mode and KotH
@@ -128,6 +131,20 @@ if(object_index == ArenaControlPoint)
     maxCappingPower = 4;
     cappingPower[TEAM_BLUE] = max(1,reds)/((1-1/maxCappingPower)*livereds + (1/maxCappingPower)*max(1,reds));
     cappingPower[TEAM_RED] = max(1,blues)/((1-1/maxCappingPower)*liveblues + (1/maxCappingPower)*max(1,blues));
+}
+else if (global.isHost and mode == 4 and global.dkothAntiStall)
+{
+    // DKOTH anti-stall capping power
+    if (object_index == KothRedControlPoint)
+    {
+        cappingPower[TEAM_RED] = global.dkothHomeCapturePower / 100;
+        cappingPower[TEAM_BLUE] = global.dkothEnemyCapturePower / 100;
+    }
+    else if (object_index == KothBlueControlPoint)
+    {
+        cappingPower[TEAM_RED] = global.dkothEnemyCapturePower / 100;
+        cappingPower[TEAM_BLUE] = global.dkothHomeCapturePower / 100;
+    }
 }
 else
 {
@@ -229,10 +246,19 @@ if(capping &lt;= 0) {
     capping = 0;
     cappingTeam = -1;
 } else if global.isHost {
+    if (mode == 4 and global.dkothAntiStall)
+    {
+        if (cappingPower[cappingTeam] != 1 and round((capping * global.delta_factor) / cappingPower[cappingTeam]) mod 30 == 0)
+        {
+            GameServer.syncTimer = 1;
+        }
+    }
+    
     if floor(capping) == floor(capTime - capTime/4) || floor(capping) == floor(capTime/4) || floor(capping) == floor(capTime/10){
         GameServer.syncTimer = 1;
     } else if capping &gt;= capTime {
         pointCapture(cp);
+        dkoth_capture_lock();
         if instance_exists(ControlPointHUD) {
             if ControlPointHUD.mode == 1 ControlPointHUD.timer += 5400;
         }

@@ -151,6 +151,11 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
             val = item_value[i];
             break;
         
+        case "editnum_percent":
+        case "editfloat_percent":
+            val = item_value[i] + "%";
+            break;
+        
         case "editselect":
             val = item_option_label[i, item_value[i]];
             break;

@@ -30,7 +30,7 @@ menu_addedit_num("Output Window Rows:", "global.consoleOutputRows", '
     DSM_write_ini("Console", "Output Window Rows", argument0);
 ');
 
-menu_addedit_num("Window Opacity:", "global.consoleOpacity", '
+menu_addedit_num_percent("Window Opacity:", "global.consoleOpacity", '
     DSM_write_ini("Console", "Window Opacity", argument0);
 ', 100);
 

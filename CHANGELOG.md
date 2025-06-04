@@ -1,17 +1,42 @@
 ## V5 (WIP)
+### Gamemodes
+#### DKoTH
+- Added options to help prevent excessively long DKoTH games (disabled by default)
+	- Added option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
+		- This guarentees additional time off the clock each time both points are captured
+		- Contensting the point while it is locked will still trigger overtime
+		- Set to `0` to disable this feature
+	- Added options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
+		- Home Point: How fast a team captures their own point (default: `100%`)
+		- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
+		- Set to `100%` to disable this feature
+		> This also affects how fast the capture decays if nobody is capturing the point, based on the defending team's capture rate
+> In addition to the above, the option to change the overall DKoTH time limit for both teams is available in the Time Limits host options menu
+
 ### HUD
 - HP and ammo text under cursor position option now only applies to yourself
 - Changed HP and ammo text option to show above name to show above info bars
 - Added option to show Sentry HP text
+- Changed damage indicator scale to be represented as a percent
+	> Be sure to adjust your settings accordingly
 
 ### Menus
 - Lobby menus can now be used to connect to other servers while in-game
 	- This was disabled due to the crash bug fixed in this update
+- Options that represent a percentage value will now be shown with a % sign
+
+### Quality of Life
+- Added key bind to show map collisions (default key: `F7`)
+
+### Miscellaneous
+- Added a prompt for when a default value for an option has changed to set that option to the new default
+	- These prompts will only show one time
 
 ### Bug Fixes
 - Fixed wrong number of players crash when downloading a new map
 - Fixed freeze time countdown messages not being sent to clients
 - Fixed `message` command not sending messages to clients
+- Fixed DKoTH control points unlocking never being sycned with clients
 
 ## V4 (2025/06/02)
 ### Gamemodes
