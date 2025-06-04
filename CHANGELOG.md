@@ -1,4 +1,9 @@
 ## V5 (WIP)
+### HUD
+- HP and ammo text under cursor position option now only applies to yourself
+- Changed HP and ammo text option to show above name to show above info bars
+- Added option to show Sentry HP text
+
 ### Menus
 - Lobby menus can now be used to connect to other servers while in-game
 	- This was disabled due to the crash bug fixed in this update

@@ -31,15 +31,22 @@ menu_add_option(0, "No");
 menu_add_option(1, "Yes");
 menu_add_option(2, "Yes (Self Only)");
 
+menu_addedit_select("Show Sentry HP Text:", "global.healthTextSentry", '
+    DSM_write_ini("HUD", "Show Sentry HP Text", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Own Sentry Only)");
+
 menu_addedit_select("HP Text Position:", "global.healthTextPosition", '
     DSM_write_ini("HUD", "HP Text Position", argument0);
 ');
 menu_add_option(1, "Below Health Bar");
-menu_add_option(2, "Above Name");
+menu_add_option(2, "Above Info Bars");
 menu_add_option(3, "Left");
 menu_add_option(4, "Right");
 menu_add_option(5, "Below Character");
-menu_add_option(6, "Below Cursor");
+menu_add_option(6, "Below Cursor (Self Only)");
 
 menu_addedit_select("HP Text Color:", "global.healthTextColor", '
     DSM_write_ini("HUD", "HP Text Color", argument0);
@@ -68,11 +75,11 @@ menu_addedit_select("Ammo Text Position:", "global.ammoTextPosition", '
     DSM_write_ini("HUD", "Ammo Text Position", argument0);
 ');
 menu_add_option(1, "Below Health Bar");
-menu_add_option(2, "Above Name");
+menu_add_option(2, "Above Info Bars");
 menu_add_option(3, "Left");
 menu_add_option(4, "Right");
 menu_add_option(5, "Below Character");
-menu_add_option(6, "Below Cursor");
+menu_add_option(6, "Below Cursor (Self Only)");
 
 menu_addedit_select("Ammo Text Color:", "global.ammoTextColor", '
     DSM_write_ini("HUD", "Ammo Text Color", argument0);

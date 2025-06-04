@@ -7,6 +7,7 @@ window_set_sizeable(!global.disableWindowResizing);
 
 // HP Text
 global.healthText = DSM_add_option("HUD", "Show HP Text", 1);
+global.healthTextSentry = DSM_add_option("HUD", "Show Sentry HP Text", 1);
 global.healthTextPosition = DSM_add_option("HUD", "HP Text Position", 1);
 global.healthTextColor = DSM_add_option("HUD", "HP Text Color", 0);
 global.healthTextLowColor = DSM_add_option("HUD", "HP Text Low Color", 2);

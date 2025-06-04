@@ -1,6 +1,7 @@
-var xr, yr;
+var xr, yr, barCount;
 xr = round(x);
 yr = round(y);
+barCount = argument0;
 
 // Health Text
 if (global.healthText != 0 and (player == global.myself or global.healthText == 1))
@@ -14,10 +15,10 @@ if (global.healthText != 0 and (player == global.myself or global.healthText == 
         xoffset = 0;
         yoffset = -20;
         break;
-    case 2: // Above Name
+    case 2: // Above Info Bars
         draw_set_halign(fa_center);
         xoffset = 0;
-        yoffset = -53;
+        yoffset = -32 - (barCount * 5);
         break;
     case 3: // Left
         draw_set_halign(fa_right);
@@ -36,8 +37,16 @@ if (global.healthText != 0 and (player == global.myself or global.healthText == 
         break;
     case 6: // Below Cursor
         draw_set_halign(fa_center);
-        xoffset = mouse_x - xr;
-        yoffset = mouse_y - yr + 20;
+        if (player == global.myself)
+        {
+            xoffset = mouse_x - xr;
+            yoffset = mouse_y - yr + 20;
+        }
+        else
+        {
+            xoffset = 0;
+            yoffset = -20;
+        }
         break;
     }
     
@@ -76,10 +85,10 @@ if (global.ammoText != 0 and (player == global.myself or global.ammoText == 1) a
         xoffset = 0;
         yoffset = -20;
         break;
-    case 2: // Above Name
+    case 2: // Above Info Bars
         draw_set_halign(fa_center);
         xoffset = 0;
-        yoffset = -53;
+        yoffset = -32 - (barCount * 5);
         break;
     case 3: // Left
         draw_set_halign(fa_right);
@@ -98,8 +107,16 @@ if (global.ammoText != 0 and (player == global.myself or global.ammoText == 1) a
         break;
     case 6: // Below Cursor
         draw_set_halign(fa_center);
-        xoffset = mouse_x - xr;
-        yoffset = mouse_y - yr + 20;
+        if (player == global.myself)
+        {
+            xoffset = mouse_x - xr;
+            yoffset = mouse_y - yr + 20;
+        }
+        else
+        {
+            xoffset = 0;
+            yoffset = -20;
+        }
         break;
     }
     

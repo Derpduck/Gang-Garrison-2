@@ -315,7 +315,7 @@ if (demon != -1)
 }
 
 if (team == global.myself.team)
-    draw_character_info_numbers();
+    draw_character_info_numbers(barCount);
 </argument>
       </arguments>
     </action>
