@@ -31,7 +31,7 @@ kill | `player` | Kills the given player | Host + RCON
 gib | `player` | Kills the given player with a gib explosion | Host + RCON
 hurt | `player`, `damage` | Deals damage to the given player | Host + RCON
 teleport | `player` | Teleports the given player to the current cursor position | Host Only
-message | `message text` | Sents a custom notification message to all players | Host + RCON
+message | `message text` | Sends a custom message to all players | Host + RCON
 password | `new password` | Changes the server password to the given text. Leave `new password` blank to remove the current password | Host + RCON
 end | `optional: winning team` | Ends the current round. Specify `team` to select RED or BLUE as the winning team | Host + RCON
 fastend | `optional: winning team` | Ends the current round, instantly changes map. Specify `team` to select RED or BLUE as the winning team | Host + RCON

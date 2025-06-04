@@ -5,6 +5,8 @@
 
 ### Bug Fixes
 - Fixed wrong number of players crash when downloading a new map
+- Fixed freeze time countdown messages not being sent to clients
+- Fixed `message` command not sending messages to clients
 
 ## V4 (2025/06/02)
 ### Gamemodes

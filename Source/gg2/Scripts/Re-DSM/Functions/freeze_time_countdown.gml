@@ -30,7 +30,7 @@ if (freezeTimeTimer == 0)
     if (global.freezeTimeShowCountdown)
     {
         message = "Round is live!";
-        ServerMessageString(global.sendBuffer, message);
+        ServerMessageString(message, global.sendBuffer);
         create_notice_message(message);
     }
 }
@@ -39,7 +39,7 @@ else if (freezeTimeTimer mod 30 == 0)
     if (global.freezeTimeShowCountdown)
     {
         message = "Round will begin in: " + string(ceil(freezeTimeTimer / 30)) + " seconds";
-        ServerMessageString(global.sendBuffer, message);
+        ServerMessageString(message, global.sendBuffer);
         create_notice_message(message);
     }
 }
