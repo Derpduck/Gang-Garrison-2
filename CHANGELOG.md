@@ -49,7 +49,7 @@
 - Added key bind to show map collisions (default key: `F7`)
 
 ### Miscellaneous
-- Added a prompt for when a default value for an option has changed to set that option to the new default
+- Added a prompt for when the default value for an option has changed and may need resetting
 	- These prompts will only show one time
 - Added FPS & ping displays
 
