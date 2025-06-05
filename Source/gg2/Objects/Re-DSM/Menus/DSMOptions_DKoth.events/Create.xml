@@ -32,7 +32,7 @@ menu_addedit_num("DKoTH Time Limit (Overall):", "global.timeLimit_DKOTH_Overall"
     DSM_write_ini("Time Limits", "DKoTH Overall Time Limit Override", argument0);
 ');
 
-menu_addedit_boolean("Overall Time Limit Doesn't Reset:", "global.dkothNoResetTimeLimit", '
+menu_addedit_boolean("Never Reset Overall Time Limit:", "global.dkothNoResetTimeLimit", '
     DSM_write_ini("DKOTH Anti-Stall", "Overall Time Limit Persists", argument0);
 ');
 

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (global.performanceOverlayPosition == 0) exit;
+
+var xoffset, yoffset, xsize, ysize;
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0];
+ysize = view_hview[0];
+
+// Get position from settings
+var boxWidth, boxHeight, basexoffset, baseyoffset;
+boxWidth = 25;
+boxHeight = 15;
+
+switch(global.performanceOverlayPosition)
+{
+case 1:
+case 3:
+    basexoffset = xoffset;
+    break;
+case 2:
+case 4:
+    basexoffset = xoffset + xsize - boxWidth;
+    break;
+}
+switch(global.performanceOverlayPosition)
+{
+case 1:
+case 2:
+    baseyoffset = yoffset;
+    break;
+case 3:
+case 4:
+    baseyoffset = yoffset + ysize - boxHeight;
+    break;
+}
+
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+// FPS
+if (global.showFPS)
+{
+    var fpsColor, deltaFPS;
+    deltaFPS = fps * global.delta_factor;
+    if (deltaFPS &gt;= 30)
+        fpsColor = c_white;
+    else if (deltaFPS &gt;= 25)
+        fpsColor = c_yellow;
+    else if (deltaFPS &gt;= 20)
+        fpsColor = c_orange;
+    else
+        fpsColor = c_red;
+    
+    draw_set_color(c_black);
+    if (global.performanceOverlayBackground)
+    {
+        draw_set_alpha(0.6);
+        draw_rectangle(basexoffset, baseyoffset, basexoffset + boxWidth, baseyoffset + boxHeight, false);
+    }
+    else
+    {
+        draw_set_alpha(1);
+        draw_text(basexoffset + ceil(boxWidth / 2) + 1, baseyoffset + ceil(boxHeight / 2) + 1, fps);
+    }
+    
+    draw_set_color(fpsColor);
+    draw_set_alpha(1);
+    draw_text(basexoffset + ceil(boxWidth / 2), baseyoffset + ceil(boxHeight / 2), fps);
+}
+
+// Ping
+if (global.showPing != 0 and global.showPing != 2 and !global.isHost)
+{
+    // Adjust position if FPS counter is shown
+    var extrayoffset;
+    extrayoffset = 0;
+    if (global.showFPS)
+    {
+        if (global.performanceOverlayPosition &lt;= 2)
+            extrayoffset += boxHeight + 1;
+        else
+            extrayoffset -= boxHeight + 1;
+    }
+        
+    
+    var pingColor;
+    pingColor = get_ping_color(currentPing);
+    
+    draw_set_color(c_black);
+    if (global.performanceOverlayBackground)
+    {
+        draw_set_alpha(0.6);
+        draw_rectangle(basexoffset, baseyoffset + extrayoffset, basexoffset + boxWidth, baseyoffset + boxHeight + extrayoffset, false);
+    }
+    else
+    {
+        draw_set_alpha(1);
+        draw_text(basexoffset + ceil(boxWidth / 2) + 1, baseyoffset + ceil(boxHeight / 2) + 1 + extrayoffset, currentPing);
+    }
+    
+    draw_set_color(pingColor);
+    draw_set_alpha(1);
+    draw_text(basexoffset + ceil(boxWidth / 2), baseyoffset + ceil(boxHeight / 2) + extrayoffset, currentPing);
+}
+
+// Ping Graph
+if (global.showPing &gt;= 2 and !global.isHost)
+{
+    draw_set_alpha(0.5);
+    
+    var xgraphOffset, ygraphOffset, ping, pingColor, lineHeight;
+    
+    // Set X Position
+    if (global.performanceOverlayPosition == 1 or global.performanceOverlayPosition == 3)
+        xgraphOffset = boxWidth + 5;
+    else
+        xgraphOffset = -(pingHistoryMax + 4);
+    
+    // Set Y position
+    if (global.performanceOverlayPosition &lt;= 2)
+        ygraphOffset = 31;
+    else
+        ygraphOffset = 29 - boxHeight;
+    
+    // Draw bar for each stored ping
+    for (i=0; i&lt;ds_list_size(pingHistory); i+=1)
+    {
+        ping = ds_list_find_value(pingHistory, i);
+        if (ping &gt;= 1000)
+            pingColor = c_gray;
+        else
+            pingColor = get_ping_color(ping);
+        lineHeight = min(ping, 300) / 10;
+        
+        draw_set_color(pingColor);
+        draw_line(basexoffset + xgraphOffset + i,
+                  baseyoffset + ygraphOffset,
+                  basexoffset + xgraphOffset + i,
+                  baseyoffset + ygraphOffset - lineHeight);
+    };
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

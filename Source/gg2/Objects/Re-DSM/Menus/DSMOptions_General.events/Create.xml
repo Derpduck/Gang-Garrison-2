@@ -22,6 +22,33 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
+menu_divider("FPS &amp; Ping Display");
+
+menu_addedit_select("Display Position:", "global.performanceOverlayPosition", '
+    DSM_write_ini("General", "Performance Overlay Position", argument0);
+');
+menu_add_option(0, "Off");
+menu_add_option(1, "Top Left");
+menu_add_option(2, "Top Right");
+menu_add_option(3, "Bottom Left");
+menu_add_option(4, "Bottom Right");
+
+menu_addedit_boolean("Display Background:", "global.performanceOverlayBackground", '
+    DSM_write_ini("General", "Performance Overlay Background", argument0);
+');
+
+menu_addedit_boolean("Show FPS:", "global.showFPS", '
+    DSM_write_ini("General", "Show FPS", argument0);
+');
+
+menu_addedit_select("Show Ping:", "global.showPing", '
+    DSM_write_ini("General", "Show Ping", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes (Number Only)");
+menu_add_option(2, "Yes (Graph Only)");
+menu_add_option(3, "Yes (Number &amp; Graph)");
+
 menu_divider("Audio");
 
 menu_addedit_num_percent("Master Volume:", "global.masterVolume", '

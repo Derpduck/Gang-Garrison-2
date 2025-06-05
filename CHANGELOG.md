@@ -53,6 +53,7 @@
 ### Miscellaneous
 - Added a prompt for when a default value for an option has changed to set that option to the new default
 	- These prompts will only show one time
+- Added FPS & ping displays
 
 ### Bug Fixes
 - Fixed wrong number of players crash when downloading a new map

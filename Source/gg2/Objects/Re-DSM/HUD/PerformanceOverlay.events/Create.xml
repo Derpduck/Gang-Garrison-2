@@ -13,14 +13,15 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">afktimeout = 60*30;
-afktimer = afktimeout;
-oldScoreKeyDown = false;
+        <argument kind="STRING">currentFPS = 0;
+currentPing = 0;
+pingHistory = ds_list_create();
+pingHistoryMax = 50;
 
-console_create();
-
-if(!instance_exists(PerformanceOverlay))
-    instance_create(0, 0, PerformanceOverlay);
+pingTimer = 30;
+pingSocket = -1;
+pingStartTime = 0;
+pingRunning = false;
 </argument>
       </arguments>
     </action>

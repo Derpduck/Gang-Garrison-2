@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (room == Menu or room == Lobby) instance_destroy();
+
+if (global.performanceOverlayPosition &gt; 0 and global.showPing &gt; 0 and !global.isHost)
+{
+    if (pingTimer &gt; 0)
+    {
+        pingTimer -= 1 * global.delta_factor;
+    }
+    else if (!pingRunning)
+    {
+        pingSocket = tcp_connect(global.serverIP, global.serverPort);
+        pingStartTime = current_time;
+        pingRunning = true;
+    }
+    else if (!socket_connecting(pingSocket))
+    {
+        if (socket_has_error(pingSocket))
+        {
+            currentPing = 1000;
+        }
+        else
+        {
+            currentPing = current_time - pingStartTime;
+        }
+        
+        socket_destroy_abortive(pingSocket);
+        pingRunning = false;
+        pingTimer = 30;
+        
+        if (global.showPing &gt;= 2)
+        {
+            ds_list_add(pingHistory, currentPing);
+            
+            if (ds_list_size(pingHistory) &gt; pingHistoryMax)
+                ds_list_delete(pingHistory, 0);
+        }
+        
+        if (currentPing &gt;= 1000)
+            currentPing = "X";
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

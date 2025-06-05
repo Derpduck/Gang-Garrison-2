@@ -2,4 +2,5 @@
 <resources>
   <resource name="DamageIndicator" type="RESOURCE"/>
   <resource name="DeathInfo" type="RESOURCE"/>
+  <resource name="PerformanceOverlay" type="RESOURCE"/>
 </resources>

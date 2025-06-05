@@ -1,13 +1,20 @@
 ini_open("Re-DSM.ini");
-// One time option changes notifications
-DSM_add_ini_notification("Damage Indicator", "Scale", 100, "Damage Indicator Scale now uses a percentage value.");
-DSM_add_ini_notification("HUD", "Show Ammo Text", 2, "Show Ammo Text default has been changed to only show your own ammo.");
+if (!global.dedicatedMode)
+{
+    // One time option changes notifications
+    DSM_add_ini_notification("Damage Indicator", "Scale", 100, "Damage Indicator Scale now uses a percentage value.");
+    DSM_add_ini_notification("HUD", "Show Ammo Text", 2, "Show Ammo Text default has been changed to only show your own ammo.");
+}
 
 // General
 global.skipFaucetLogo = DSM_add_option("General", "Skip FAUCeT Logo", 1);
 global.noAFKAutoSpectate = DSM_add_option("General", "Disable AFK Auto-Spectate", 1);
 global.disableWindowResizing = DSM_add_option("General", "Disable Window Resizing", 0);
-window_set_sizeable(!global.disableWindowResizing);
+global.performanceOverlayPosition = DSM_add_option("General", "Performance Overlay Position", 1);
+global.performanceOverlayBackground = DSM_add_option("General", "Performance Overlay Background", 1);
+global.showFPS = DSM_add_option("General", "Show FPS", 0);
+global.showPing = DSM_add_option("General", "Show Ping", 1);
+
 
 // HP Text
 global.healthText = DSM_add_option("HUD", "Show HP Text", 1);
