@@ -5,34 +5,32 @@
 > This time limit only counts down while the point is uncaptured and uncontested
 
 #### DKoTH
-- Added options to help prevent excessively long DKoTH games (disabled by default):
+> Added options to help prevent excessively long DKoTH games (disabled by default)
 
-	- Option to reduce both teams clocks during a stalemate
-		- Choose a stalemate modes to change how the clocks behave during a stalemate
-			- No Team Bias - Both team's clocks count down at the same rate
-			- Losing Team's Favor - The losing team's clock counts down faster than the winning team's
-			- Winning Team's Favor - The winning team's clock counts down faster than the losing team's
-		- Stalemate timer determines how long both points need to go uncaptured for before the clocks start counting down (default: `3 minutes`)
-			- Contesting the point will pause the timer
-		- Stalemate countdown speed determines how fast the clocks count down as a percentage of their normal speed (default `50%`)
-		- The game will go into overtime instead of ending if one team's timer reaches zero
-		
-	- Option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
-		- Set to `0` to disable this feature
-		- Contensting the point while it is locked will still trigger overtime
-		> This guarentees additional time off the clock each time both points are captured
+- **Stalemate Clock Countdown** - If neither team has captured a point for some time, start running down the clocks
+	- **Stalemate Mode** determines how the clocks behave during a stalemate
+		- **No Team Bias** - Both team's clocks run down at the same rate
+		- **Losing Team's Favor** - The losing team's clock runs down faster than the winning team's
+		- **Winning Team's Favor** - The winning team's clock runs down faster than the losing team's
+	- **Stalemate Timer** determines how long it takes for a stalemate to trigger (default: `3 minutes`)
+		- Contesting the point pauses the timer
+	- **Stalemate Countdown Speed**  determines how quickly the clocks run down during a stalemate compared to normal (default `50%`)
+> The game will go into overtime instead of ending if one team's timer reaches zero from a stalemate
 	
-	- Option to set the overall time limit
-	- Option for overall time limit to not reset when a point is captured (default: `off`)
-	> By default DKoTH has a time limit that counts down while the points are neutral and uncontested, but any point being captured resets the time limit
-	> Turning this setting on will stop the time limit from being reset when a point is captured
-		
-	- Options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
-		- Home Point: How fast a team captures their own point (default: `100%`)
-		- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
-		- Set to `100%` to disable this feature
+- Added option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
+	- Set to `0` to disable this feature
+	- Contensting the point while it is locked will still trigger overtime
+	> This guarentees additional time off the clock each time both points are captured
 
-> In addition to the above, the option to change the DKoTH clock time limit is available in the Time Limits host options menu
+- Added option to set the overall match time limit
+- Added option for overall time limit to not reset when a point is captured (default: `off`)
+> By default DKoTH has a time limit that counts down while the points are neutral and uncontested, but any point being captured resets the time limit
+> Turning this setting on will stop the time limit from being reset when a point is captured
+	
+- Added options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
+	- Home Point: How fast a team captures their own point (default: `100%`)
+	- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
+	- Set to `100%` to disable this feature
 
 ### HUD
 - HP and ammo text under cursor position option now only applies to yourself
