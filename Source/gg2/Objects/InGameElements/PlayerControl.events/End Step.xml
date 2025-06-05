@@ -13,7 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(global.myself.object == -1) exit;
+        <argument kind="STRING">if(global.myself.object == -1)
+{
+    afktimer = afktimeout;
+    exit;
+}
     
 //AFK Check -- double length for server host
 if(global.isHost)
@@ -23,6 +27,7 @@ else
 
 if ((afktimer &lt;= 0) and !global.myself.object.afk and !global.noAFKAutoSpectate)
 {
+    afktimer = afktimeout;
     global.myself.object.afk = true;
     if !instance_exists(TeamSelectController)
         instance_create(0,0,TeamSelectController);

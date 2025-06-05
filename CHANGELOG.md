@@ -61,6 +61,7 @@
 - Fixed DKoTH overall time limit not counting down if a player is standing on their own team's point
 - Fixed KoTH overall time limit only counting down if the point has been captured
 	- This prevented KoTH maps from ever ending on empty servers
+- Fixed being instantly moved back to spectator when joining a team after being AFK 
 
 ## V4 (2025/06/02)
 ### Gamemodes
