@@ -41,13 +41,16 @@ menu_addedit_boolean("Show FPS:", "global.showFPS", '
     DSM_write_ini("General", "Show FPS", argument0);
 ');
 
-menu_addedit_select("Show Ping:", "global.showPing", '
+menu_addedit_boolean("Show Ping:", "global.showPing", '
     DSM_write_ini("General", "Show Ping", argument0);
 ');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes (Number Only)");
-menu_add_option(2, "Yes (Graph Only)");
-menu_add_option(3, "Yes (Number &amp; Graph)");
+
+menu_addedit_select("Show Ping Graph:", "global.showPingGraph", '
+    DSM_write_ini("General", "Show Ping Graph", argument0);
+');
+menu_add_option(0, "Off");
+menu_add_option(1, "Yes (Always)");
+menu_add_option(2, "Yes (On Scoreboard Open)");
 
 menu_divider("Audio");
 
@@ -55,6 +58,19 @@ menu_addedit_num_percent("Master Volume:", "global.masterVolume", '
     DSM_write_ini("Audio", "Master Volume", argument0);
     sound_global_volume(argument0 / 100);
 ', 100);
+
+menu_divider("Window Options");
+
+menu_addedit_boolean("Borderless Window:", "global.borderlessWindow", '
+    DSM_write_ini("General", "Borderless Window", argument0);
+    window_set_showborder(!argument0);
+    window_set_showicons(!argument0);
+');
+
+menu_addedit_boolean("Disable Window Resizing:", "global.disableWindowResizing", '
+    DSM_write_ini("General", "Disable Window Resizing", argument0);
+    window_set_sizeable(!argument0);
+');
 
 menu_divider("Miscellaneous");
 
@@ -64,11 +80,6 @@ menu_addedit_boolean("Skip FAUCeT Logo:", "global.skipFaucetLogo", '
 
 menu_addedit_boolean("Disable AFK Auto-Spectate:", "global.noAFKAutoSpectate", '
     DSM_write_ini("General", "Disable AFK Auto-Spectate", argument0);
-');
-
-menu_addedit_boolean("Disable Window Resizing:", "global.disableWindowResizing", '
-    DSM_write_ini("General", "Disable Window Resizing", argument0);
-    window_set_sizeable(!argument0);
 ');
 
 DSM_menu_tabs();

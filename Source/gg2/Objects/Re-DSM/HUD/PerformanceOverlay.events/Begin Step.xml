@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if (room == Menu or room == Lobby) instance_destroy();
 
-if (global.performanceOverlayPosition &gt; 0 and global.showPing &gt; 0 and !global.isHost)
+if (global.performanceOverlayPosition &gt; 0 and (global.showPing or global.showPingGraph) and !global.isHost)
 {
     if (pingTimer &gt; 0)
     {
@@ -42,7 +42,7 @@ if (global.performanceOverlayPosition &gt; 0 and global.showPing &gt; 0 and !glo
         pingRunning = false;
         pingTimer = 30;
         
-        if (global.showPing &gt;= 2)
+        if (global.showPingGraph)
         {
             ds_list_add(pingHistory, currentPing);
             

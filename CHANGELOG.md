@@ -53,6 +53,7 @@
 - Added a prompt for when the default value for an option has changed and may need resetting
 	- These prompts will only show one time
 - Added FPS & ping displays
+- Added borderless window option
 
 ### Bug Fixes
 - Fixed wrong number of players crash when downloading a new map

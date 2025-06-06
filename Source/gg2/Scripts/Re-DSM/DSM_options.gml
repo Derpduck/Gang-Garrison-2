@@ -9,11 +9,13 @@ if (!global.dedicatedMode)
 // General
 global.skipFaucetLogo = DSM_add_option("General", "Skip FAUCeT Logo", 1);
 global.noAFKAutoSpectate = DSM_add_option("General", "Disable AFK Auto-Spectate", 1);
+global.borderlessWindow = DSM_add_option("General", "Borderless Window", 0);
 global.disableWindowResizing = DSM_add_option("General", "Disable Window Resizing", 0);
 global.performanceOverlayPosition = DSM_add_option("General", "Performance Overlay Position", 1);
 global.performanceOverlayBackground = DSM_add_option("General", "Performance Overlay Background", 1);
 global.showFPS = DSM_add_option("General", "Show FPS", 0);
 global.showPing = DSM_add_option("General", "Show Ping", 1);
+global.showPingGraph = DSM_add_option("General", "Show Ping Graph", 0);
 
 
 // HP Text
