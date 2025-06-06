@@ -2,7 +2,7 @@ menu_addtablink("General", '
     instance_destroy();
     instance_create(x,y,DSMOptions_General);
 ');
-menu_addtablink("HP & Ammo HUD", '
+menu_addtablink("HP & Ammo", '
     instance_destroy();
     instance_create(x,y,DSMOptions_HUD_HP_Ammo);
 ');

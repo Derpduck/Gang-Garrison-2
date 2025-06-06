@@ -21,6 +21,7 @@
     name = "";
     kicked = false;
     isDSMClient = false;
+    activeBadge = -1;
     
     // client setting stuff; set to defaults
     queueJump = false;

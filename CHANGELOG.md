@@ -57,6 +57,7 @@
 - Added FPS & ping displays
 - Added window scale option
 - Added borderless window option
+- Added option to cycle through player's haxxy badges instead of showing all of them at once
 
 ### Bug Fixes
 - Fixed wrong number of players crash when downloading a new map
