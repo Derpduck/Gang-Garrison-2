@@ -48,7 +48,7 @@ menu_addedit_boolean("Show Ping:", "global.showPing", '
 menu_addedit_select("Show Ping Graph:", "global.showPingGraph", '
     DSM_write_ini("General", "Show Ping Graph", argument0);
 ');
-menu_add_option(0, "Off");
+menu_add_option(0, "No");
 menu_add_option(1, "Yes (Always)");
 menu_add_option(2, "Yes (On Scoreboard Open)");
 
@@ -60,6 +60,11 @@ menu_addedit_num_percent("Master Volume:", "global.masterVolume", '
 ', 100);
 
 menu_divider("Window Options");
+
+menu_addedit_num_percent("Window Scale:", "global.windowScale", '
+    DSM_write_ini("General", "Window Scale", argument0);
+    set_window_scale(argument0);
+');
 
 menu_addedit_boolean("Borderless Window:", "global.borderlessWindow", '
     DSM_write_ini("General", "Borderless Window", argument0);

@@ -17,4 +17,5 @@
   <resource name="get_color_option" type="RESOURCE"/>
   <resource name="show_notification_message" type="RESOURCE"/>
   <resource name="freeze_time_countdown" type="RESOURCE"/>
+  <resource name="set_window_scale" type="RESOURCE"/>
 </resources>

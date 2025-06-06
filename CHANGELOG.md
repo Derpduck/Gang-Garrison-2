@@ -53,6 +53,7 @@
 - Added a prompt for when the default value for an option has changed and may need resetting
 	- These prompts will only show one time
 - Added FPS & ping displays
+- Added window scale option
 - Added borderless window option
 
 ### Bug Fixes

@@ -27,6 +27,7 @@
     menu_addedit_boolean("Fullscreen:", "global.fullscreen", '
         gg2_write_ini("Settings", "Fullscreen", argument0);
         window_set_fullscreen(argument0);
+        set_window_scale(global.windowScale);
     ');
     menu_addedit_select("Music:", "global.music", '
         gg2_write_ini("Settings", "Music", argument0);

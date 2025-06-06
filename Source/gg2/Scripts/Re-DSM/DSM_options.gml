@@ -9,6 +9,7 @@ if (!global.dedicatedMode)
 // General
 global.skipFaucetLogo = DSM_add_option("General", "Skip FAUCeT Logo", 1);
 global.noAFKAutoSpectate = DSM_add_option("General", "Disable AFK Auto-Spectate", 1);
+global.windowScale = DSM_add_option("General", "Window Scale", 100, true, 0);
 global.borderlessWindow = DSM_add_option("General", "Borderless Window", 0);
 global.disableWindowResizing = DSM_add_option("General", "Disable Window Resizing", 0);
 global.performanceOverlayPosition = DSM_add_option("General", "Performance Overlay Position", 1);
