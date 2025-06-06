@@ -54,6 +54,7 @@
 - Number of characters remaining is now shown when editing your player name and server name
 - Split HUD options into multiple separate menus
 - Added scrolling for menu tabs
+- Separated in-game menu and main menu buttons for clarity
 
 ### Quality of Life
 - Added key bind to show map collisions (default key: `F7`)

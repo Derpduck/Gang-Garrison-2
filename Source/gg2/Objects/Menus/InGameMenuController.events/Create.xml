@@ -94,6 +94,8 @@
             game_end();
         }
     ');
+    
+    menu_divider("");
 }
 </argument>
       </arguments>

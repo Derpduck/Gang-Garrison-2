@@ -27,6 +27,9 @@
     menu_addlink("Garrison Builder", '
         room_goto_fix(BuilderOptions);
     ');
+    
+    menu_divider("");
+    
     menu_addlink("Options", '
         room_goto_fix(Options);
     ');
@@ -45,6 +48,9 @@
             splash_show_web("http://www.ganggarrison.com/forums/rewards/frame.php?gg2_login=yes&amp;reward_id=" + global.rewardId + "&amp;reward_key=" + hex(global.rewardKey), 0);
         ');
     }
+    
+    menu_divider("");
+    
     menu_addlink("Credits", '
         room_goto_fix(Credits);
     ');
