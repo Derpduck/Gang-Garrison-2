@@ -146,6 +146,13 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
         case "editscript":
         case "edittext2":
         case "edittext":
+            if (item_name[i] == "Player name:" and editing == i)
+                val = item_value[i] + " (" + string(MAX_PLAYERNAME_LENGTH - string_length(item_value[i])) + ")";
+            else if (item_name[i] == "Server Name:" and editing == i)
+                val = item_value[i] + " (" + string(25 - string_length(item_value[i])) + ")";
+            else
+                val = item_value[i];
+            break;
         case "editnum":
         case "editfloat":
             val = item_value[i];

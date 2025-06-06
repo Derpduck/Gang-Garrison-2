@@ -44,6 +44,7 @@
 	- This was disabled due to the crash bug fixed in this update
 - Options that represent a percentage value will now be shown with a % sign
 - DSM Hosting options menu now only visible from the main menu or when hosting
+- Number of characters remaining is now shown when editing your player name and server name
 
 ### Quality of Life
 - Added key bind to show map collisions (default key: `F7`)
