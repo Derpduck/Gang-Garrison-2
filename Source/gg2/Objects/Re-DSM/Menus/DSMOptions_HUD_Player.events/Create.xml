@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_divider("Info Bars");
+
+menu_addedit_select("Show Ammo Bar:", "global.ammoBar", '
+    DSM_write_ini("HUD", "Show Ammo Bar", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Self Only)");
+
+menu_addedit_select("Show Superburst Bar:", "global.uberBar", '
+    DSM_write_ini("HUD", "Show Superburst Bar", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Self Only)");
+
+menu_addedit_select("Show Nuts 'N' Bolts Bar:", "global.nutsBar", '
+    DSM_write_ini("HUD", "Show Nuts N Bolts Bar", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Self Only)");
+
+menu_addedit_select("Show Sandwich Bar:", "global.sandwichBar", '
+    DSM_write_ini("HUD", "Show Sandwich Bar", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Self Only)");
+
+menu_addedit_select("Show Afterburn Bar:", "global.afterburnBar", '
+    DSM_write_ini("HUD", "Show Afterburn Bar", argument0);
+');
+menu_add_option(0, "No");
+menu_add_option(1, "Yes");
+menu_add_option(2, "Yes (Self Only)");
+
+menu_divider("Sniper HUD");
+
+menu_addedit_boolean("Small Sniper Charge Bar:", "global.sniperChargeBar", '
+    DSM_write_ini("HUD", "Small Sniper Charge Bar", argument0);
+');
+
+menu_addedit_boolean("Show Sniper Charge Damage:", "global.sniperChargeDamage", '
+    DSM_write_ini("HUD", "Show Sniper Charge Damage", argument0);
+');
+
+DSM_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

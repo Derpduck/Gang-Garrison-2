@@ -2,9 +2,17 @@ menu_addtablink("General", '
     instance_destroy();
     instance_create(x,y,DSMOptions_General);
 ');
-menu_addtablink("HUD", '
+menu_addtablink("HP & Ammo HUD", '
     instance_destroy();
-    instance_create(x,y,DSMOptions_HUD);
+    instance_create(x,y,DSMOptions_HUD_HP_Ammo);
+');
+menu_addtablink("Player HUD", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_HUD_Player);
+');
+menu_addtablink("Game HUD", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_HUD_Game);
 ');
 menu_addtablink("Indicator", '
     instance_destroy();

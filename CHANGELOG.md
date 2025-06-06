@@ -38,6 +38,7 @@
 - Added option to show Sentry HP text
 - Changed damage indicator scale to be represented as a percent
 	> Be sure to adjust your settings accordingly
+- Split sniper charge HUD options into two separate options
 
 ### Menus
 - Lobby menus can now be used to connect to other servers while in-game
@@ -45,6 +46,7 @@
 - Options that represent a percentage value will now be shown with a % sign
 - DSM Hosting options menu now only visible from the main menu or when hosting
 - Number of characters remaining is now shown when editing your player name and server name
+- Split HUD options into multiple separate menus
 
 ### Quality of Life
 - Added key bind to show map collisions (default key: `F7`)
@@ -64,7 +66,8 @@
 - Fixed DKoTH overall time limit not counting down if a player is standing on their own team's point
 - Fixed KoTH overall time limit only counting down if the point has been captured
 	- This prevented KoTH maps from ever ending on empty servers
-- Fixed being instantly moved back to spectator when joining a team after being AFK 
+- Fixed being instantly moved back to spectator when joining a team after being AFK
+- Fixed window position going to the top left corner when exiting fullscreen
 
 ## V4 (2025/06/02)
 ### Gamemodes

@@ -95,67 +95,6 @@ menu_addedit_boolean("Ammo Text Drop Shadow:", "global.ammoTextShadow", '
     DSM_write_ini("HUD", "Ammo Text Shadow", argument0);
 ');
 
-menu_divider("Info Bars");
-
-menu_addedit_select("Show Ammo Bar:", "global.ammoBar", '
-    DSM_write_ini("HUD", "Show Ammo Bar", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes");
-menu_add_option(2, "Yes (Self Only)");
-
-menu_addedit_select("Show Superburst Bar:", "global.uberBar", '
-    DSM_write_ini("HUD", "Show Superburst Bar", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes");
-menu_add_option(2, "Yes (Self Only)");
-
-menu_addedit_select("Show Nuts 'N' Bolts Bar:", "global.nutsBar", '
-    DSM_write_ini("HUD", "Show Nuts N Bolts Bar", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes");
-menu_add_option(2, "Yes (Self Only)");
-
-menu_addedit_select("Show Sandwich Bar:", "global.sandwichBar", '
-    DSM_write_ini("HUD", "Show Sandwich Bar", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes");
-menu_add_option(2, "Yes (Self Only)");
-
-menu_addedit_select("Show Afterburn Bar:", "global.afterburnBar", '
-    DSM_write_ini("HUD", "Show Afterburn Bar", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes");
-menu_add_option(2, "Yes (Self Only)");
-
-menu_divider("Player HUD");
-
-menu_addedit_select("Upgraded Sniper Charge HUD:", "global.sniperCharge", '
-    DSM_write_ini("HUD", "Upgraded Sniper Charge HUD", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Charge Numbers Only");
-menu_add_option(2, "Sprite Only");
-menu_add_option(3, "Charge Numbers &amp; Sprite");
-
-menu_divider("Additional Info Panels");
-
-menu_addedit_boolean("Show Detailed Scoreboard Stats:", "global.scoreboardStats", '
-    DSM_write_ini("HUD", "Detailed Scoreboard Stats", argument0);
-');
-
-menu_addedit_select("Show Death Info Panel:", "global.deathInfo", '
-    DSM_write_ini("HUD", "Show Death Info Panel", argument0);
-');
-menu_add_option(0, "No");
-menu_add_option(1, "Yes");
-//menu_add_option(1, "Yes (Simple)");
-//menu_add_option(2, "Yes (Detailed)");
-
 DSM_menu_tabs();
 </argument>
       </arguments>

@@ -2,7 +2,7 @@ room_caption = global.currentMap;
 global.startedGame = true;
 
 if(!global.fullscreen)
-    window_set_position(previous_window_x+previous_window_w/2-global.ingamewidth/2, previous_window_y);
+    window_set_position(previous_window_x+previous_window_w/2-(global.ingamewidth * abs(window_get_region_scale()))/2, previous_window_y);
 
 global.totalMapAreas = 1+instance_number(NextAreaO);
 

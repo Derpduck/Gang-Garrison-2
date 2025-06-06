@@ -42,7 +42,8 @@ global.sandwichBar = DSM_add_option("HUD", "Show Sandwich Bar", 1);
 global.afterburnBar = DSM_add_option("HUD", "Show Afterburn Bar", 1);
 
 // Character HUD
-global.sniperCharge = DSM_add_option("HUD", "Upgraded Sniper Charge HUD", 3);
+global.sniperChargeBar = DSM_add_option("HUD", "Small Sniper Charge Bar", 1);
+global.sniperChargeDamage = DSM_add_option("HUD", "Show Sniper Charge Damage", 1);
 
 // Misc HUD
 global.scoreboardStats = DSM_add_option("HUD", "Detailed Scoreboard Stats", 1);
