@@ -31,4 +31,4 @@ GameServer.fastEndRound = true;
 console_print(COL_ORANGE + "Syntax: fastend <optional: team>");
 console_print(COL_ORANGE + "Ends the current round, instantly changes map");
 console_print(COL_ORANGE + "Specify <team> to select RED or BLUE as the winning team")
-', CC_HOST_RCON);
+', console_init_access_level('fastend', CC_HOST_RCON));

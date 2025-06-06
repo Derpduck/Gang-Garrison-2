@@ -24,4 +24,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: teleport <player>");
 console_print(COL_ORANGE + "Teleports the given player to the current cursor position");
-', CC_HOST);
+', console_init_access_level('teleport', CC_HOST));

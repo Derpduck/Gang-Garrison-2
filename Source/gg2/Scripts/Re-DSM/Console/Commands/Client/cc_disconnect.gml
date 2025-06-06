@@ -16,4 +16,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: disconnect");
 console_print(COL_ORANGE + "Immediately leaves the server");
-', CC_CLIENT);
+', console_init_access_level('disconnect', CC_CLIENT));

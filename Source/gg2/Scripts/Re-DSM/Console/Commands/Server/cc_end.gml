@@ -29,4 +29,4 @@ else
 console_print(COL_ORANGE + "Syntax: end <optional: team>");
 console_print(COL_ORANGE + "Ends the current round");
 console_print(COL_ORANGE + "Specify <team> to select RED or BLUE as the winning team")
-', CC_HOST_RCON);
+', console_init_access_level('end', CC_HOST_RCON));

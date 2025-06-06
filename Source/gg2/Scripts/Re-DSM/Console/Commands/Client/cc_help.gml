@@ -35,4 +35,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: help <command>");
 console_print(COL_ORANGE + "Prints documentation for the given command");
-', CC_CLIENT);
+', console_init_access_level('help', CC_CLIENT));

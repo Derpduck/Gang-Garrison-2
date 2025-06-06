@@ -98,4 +98,4 @@ else
 console_print(COL_ORANGE + "Syntax: classlimit <class> <new limit>");
 console_print(COL_ORANGE + "Changes the classlimit for the given class");
 console_print(COL_ORANGE + SINGLE_QUOTE + "All" + SINGLE_QUOTE + " changes all classlimits at once");
-', CC_HOST_RCON);
+', console_init_access_level('classlimit', CC_HOST_RCON));

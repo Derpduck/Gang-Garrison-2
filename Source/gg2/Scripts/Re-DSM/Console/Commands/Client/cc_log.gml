@@ -7,4 +7,4 @@ global.saveConsoleLog = saveLogSetting;
 ', '
 console_print(COL_ORANGE + "Syntax: log");
 console_print(COL_ORANGE + "Saves the current console log to /../DSM/Logs/");
-', CC_CLIENT);
+', console_init_access_level('log', CC_CLIENT));

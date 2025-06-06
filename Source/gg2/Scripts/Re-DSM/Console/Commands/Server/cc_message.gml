@@ -10,4 +10,4 @@ console_print(COL_ORANGE + "Sent message: " + COL_YELLOW + message);
 ', '
 console_print(COL_ORANGE + "Syntax: message <text>");
 console_print(COL_ORANGE + "Sends a custom message to all players");
-', CC_HOST_RCON);
+', console_init_access_level('message', CC_HOST_RCON));

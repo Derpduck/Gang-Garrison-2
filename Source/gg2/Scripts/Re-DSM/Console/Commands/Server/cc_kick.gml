@@ -18,4 +18,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: kick <player>");
 console_print(COL_ORANGE + "Kicks the given player from the server");
-', CC_HOST_RCON);
+', console_init_access_level('kick', CC_HOST_RCON));

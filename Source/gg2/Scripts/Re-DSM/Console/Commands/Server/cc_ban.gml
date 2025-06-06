@@ -26,4 +26,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: ban <player>");
 console_print(COL_ORANGE + "Bans the given player from the server permanently");
-', CC_HOST);
+', console_init_access_level('ban', CC_HOST));

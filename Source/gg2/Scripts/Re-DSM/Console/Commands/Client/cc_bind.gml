@@ -36,4 +36,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: bind <key> <command>");
 console_print(COL_ORANGE + "Binds the given console command to the given key");
-', CC_CLIENT);
+', console_init_access_level('bind', CC_CLIENT));

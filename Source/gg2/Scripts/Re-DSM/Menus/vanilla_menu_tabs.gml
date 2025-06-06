@@ -48,7 +48,7 @@ menu_addback("Back", '
     if(room == Options)
         room_goto_fix(Menu);
     else if (room == Menu)
-        instance_create(x,y,MainMenuController);
+        instance_create(0,0,MainMenuController);
     else
         instance_create(0,0,InGameMenuController);
 ');

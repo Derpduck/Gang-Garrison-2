@@ -7,4 +7,4 @@ for (i=1; i<=arg[0]; i+=1)
 if (console_validate_args(1, arg[0], "test") == false) exit;
 
 console_get_player(arg[1], false)
-', '', CC_CLIENT);
+', '', console_init_access_level('test', CC_HOST_RCON));

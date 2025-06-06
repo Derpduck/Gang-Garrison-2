@@ -40,6 +40,9 @@
             instance_destroy();
         ');
     }
+    
+    menu_divider("");
+    
     menu_addlink("Options", '
         instance_destroy();
         instance_create(0,0,OptionsController);
@@ -48,6 +51,14 @@
         instance_destroy();
         instance_create(0,0,DSMOptions_General);
     ');
+    
+    if (global.isHost)
+    {
+        menu_addlink("Server Management", '
+            instance_destroy();
+            instance_create(0,0,ServerMgt_Commands);
+        ');
+    }
     
     menu_divider("");
     

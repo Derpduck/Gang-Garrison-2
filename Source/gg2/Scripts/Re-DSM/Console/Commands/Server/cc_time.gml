@@ -34,4 +34,4 @@ console_print(COL_ORANGE + "Timer set to: " + COL_YELLOW + format_timer_value(ne
 console_print(COL_ORANGE + "Syntax: time <minutes>");
 console_print(COL_ORANGE + "Sets the current round timer to the given number of minutes");
 console_print(COL_ORANGE + "Decimal values are accepted, e.g. 0.5 = 30 seconds");
-', CC_HOST_RCON);
+', console_init_access_level('time', CC_HOST_RCON));

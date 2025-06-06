@@ -25,4 +25,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: kill <player>");
 console_print(COL_ORANGE + "Kills the given player");
-', CC_HOST_RCON);
+', console_init_access_level('kill', CC_HOST_RCON));

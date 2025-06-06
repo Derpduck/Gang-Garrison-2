@@ -4,4 +4,4 @@ restartGG2();
 ', '
 console_print(COL_ORANGE + "Syntax: reboot");
 console_print(COL_ORANGE + "Immediately re-launches the game");
-', CC_CLIENT);
+', console_init_access_level('reboot', CC_CLIENT));

@@ -21,4 +21,4 @@ else
 console_print(COL_ORANGE + "Syntax: password <new password>");
 console_print(COL_ORANGE + "Changes the server password to the given text");
 console_print(COL_ORANGE + "Leave <new password> blank to remove the current password");
-', CC_HOST_RCON);
+', console_init_access_level('password', CC_HOST_RCON));

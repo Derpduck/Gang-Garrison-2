@@ -21,4 +21,4 @@ for (i=0; i<ds_map_size(global.bannedUsers); i+=1)
 ', '
 console_print(COL_ORANGE + "Syntax: bans");
 console_print(COL_ORANGE + "Prints a list of all banned players");
-', CC_HOST);
+', console_init_access_level('bans', CC_HOST));

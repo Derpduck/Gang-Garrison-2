@@ -36,4 +36,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: unbind <key>");
 console_print(COL_ORANGE + "Removes the bind assigned to the given key");
-', CC_CLIENT);
+', console_init_access_level('unbind', CC_CLIENT));

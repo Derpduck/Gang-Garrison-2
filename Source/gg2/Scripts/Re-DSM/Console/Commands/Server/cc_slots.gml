@@ -46,4 +46,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: slots <player limit>");
 console_print(COL_ORANGE + "Sets the number of player slots allowed the server");
-', CC_HOST_RCON);
+', console_init_access_level('slots', CC_HOST_RCON));

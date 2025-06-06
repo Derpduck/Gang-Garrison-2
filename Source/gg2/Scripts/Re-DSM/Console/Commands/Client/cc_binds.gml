@@ -17,4 +17,4 @@ for (i=0; i<ds_map_size(global.bindsMap); i+=1)
 ', '
 console_print(COL_ORANGE + "Syntax: binds");
 console_print(COL_ORANGE + "Prints all saved binds");
-', CC_CLIENT);
+', console_init_access_level('binds', CC_CLIENT));

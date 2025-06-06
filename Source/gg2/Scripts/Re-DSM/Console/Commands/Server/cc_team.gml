@@ -38,4 +38,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: team <player> <new team>");
 console_print(COL_ORANGE + "Changes the given player" + SINGLE_QUOTE + "s team to the given team, ignoring team balance");
-', CC_HOST_RCON);
+', console_init_access_level('team', CC_HOST_RCON));

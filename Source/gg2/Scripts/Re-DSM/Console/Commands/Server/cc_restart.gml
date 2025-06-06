@@ -5,4 +5,4 @@ console_print(COL_ORANGE + "Restarting current map");
 ', '
 console_print(COL_ORANGE + "Syntax: restart");
 console_print(COL_ORANGE + "Restarts the current map");
-', CC_HOST_RCON);
+', console_init_access_level('restart', CC_HOST_RCON));

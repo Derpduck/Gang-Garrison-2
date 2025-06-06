@@ -25,4 +25,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: tempban <player>");
 console_print(COL_ORANGE + "Bans the given player from the server for the current session");
-', CC_HOST_RCON);
+', console_init_access_level('tempban', CC_HOST_RCON));

@@ -2,6 +2,7 @@
 <resources>
   <resource name="DSM_write_ini" type="RESOURCE"/>
   <resource name="DSM_menu_tabs" type="RESOURCE"/>
+  <resource name="ServerMgt_menu_tabs" type="RESOURCE"/>
   <resource name="vanilla_menu_tabs" type="RESOURCE"/>
   <resource name="DSM_menu_color_options" type="RESOURCE"/>
   <resource name="menu_get_tabcount" type="RESOURCE"/>

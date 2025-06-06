@@ -27,12 +27,17 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
     tabcount = menu_get_tabcount();
     
     // Menu Scrolling
-    var menuSize;
+    var menuSize, tabSize;
     menuSize = baseybegin + ((itemcount - 1) * spacing) + 16;
-    if (drawbg)
-        menuSize += bgheight;
+    tabSize = baseybegin + ((tabcount - 1) * spacing) + 16;
     
-    if (menuSize &gt; view_hview[0])
+    if (drawbg)
+    {
+        menuSize += bgheight;
+        tabSize += bgheight;
+    }
+    
+    if (menuSize &gt; view_hview[0] or tabSize &gt; view_hview[0])
     {
         ds_list_add(mouse_samples, window_mouse_get_y());
         while(ds_list_size(mouse_samples) &gt; 10)
@@ -42,11 +47,21 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
         for(i = 0; i &lt; ds_list_size(mouse_samples); i += 1)
             des_y += ds_list_find_value(mouse_samples, i);
         des_y /= ds_list_size(mouse_samples);
-        
+    }
+    
+    if (menuSize &gt; view_hview[0])
+    {
         // Offset menu from start position by this amount
         ybegin = round(baseybegin
                        - min(1, max(0, des_y/view_hview[0]))
                          *(menuSize-view_hview[0]));
+    }
+    
+    if (tabSize &gt; view_hview[0])
+    {
+        ybegintabs = round(baseybegin
+                       - min(1, max(0, des_y/view_hview[0]))
+                         *(tabSize-view_hview[0]));
     }
     
     // Dimmed background (in-game)
@@ -84,7 +99,7 @@ if(!variable_local_exists("baseybegin")) // This needs to be duplicated because 
     {
         // Tab Position
         //itemx = view_xview[0]+xbegin+i*tabspacing+tabmargin;
-        itemy = view_yview[0] + baseybegin + taboffset + (i * spacing);
+        itemy = view_yview[0] + ybegintabs + taboffset + (i * spacing);
         
         // Tab Background
         if(bgtabs)

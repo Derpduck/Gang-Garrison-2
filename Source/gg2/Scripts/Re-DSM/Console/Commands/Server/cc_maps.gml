@@ -45,4 +45,4 @@ for (i=0; i<ds_list_size(global.map_rotation); i+=1)
 ', '
 console_print(COL_ORANGE + "Syntax: maps ");
 console_print(COL_ORANGE + "Prints the current map rotation order");
-', CC_HOST);
+', console_init_access_level('maps', CC_HOST));

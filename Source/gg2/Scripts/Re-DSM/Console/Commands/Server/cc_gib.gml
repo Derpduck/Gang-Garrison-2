@@ -25,4 +25,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: gib <player>");
 console_print(COL_ORANGE + "Kills the given player with a gib explosion");
-', CC_HOST_RCON);
+', console_init_access_level('gib', CC_HOST_RCON));

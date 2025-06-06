@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="DSMOptions_General" type="RESOURCE"/>
+  <resource name="DSMOptions_HUD_HP_Ammo" type="RESOURCE"/>
+  <resource name="DSMOptions_HUD_Player" type="RESOURCE"/>
+  <resource name="DSMOptions_HUD_Game" type="RESOURCE"/>
+  <resource name="DSMOptions_Indicator" type="RESOURCE"/>
+  <resource name="DSMOptions_TeamColors" type="RESOURCE"/>
+  <resource name="DSMOptions_Console" type="RESOURCE"/>
+  <resource name="DSMOptions_Controls" type="RESOURCE"/>
+  <resource name="DSMOptions_Hosting" type="RESOURCE"/>
+  <resource name="DSMOptions_DKoth" type="RESOURCE"/>
+</resources>

@@ -17,4 +17,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: map <map name>");
 console_print(COL_ORANGE + "Sets the next map to the given map");
-', CC_HOST_RCON);
+', console_init_access_level('map', CC_HOST_RCON));

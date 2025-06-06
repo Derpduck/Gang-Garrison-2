@@ -1,4 +1,9 @@
 ## V5 (WIP)
+### Console
+- Added options to change the access level of console commands
+> This can be found in the Server Management menu
+> Changing access levels for some commands may cause unintended behaviour or errors currently, especially for clients as the access levels are set locally
+
 ### Gamemodes
 #### KoTH
 - Added option to change overall time limit
@@ -31,6 +36,7 @@
 	- Home Point: How fast a team captures their own point (default: `100%`)
 	- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
 	- Set to `100%` to disable this feature
+> This is more of an experimental setting, and doesn't sync with clients very well
 
 ### HUD
 - HP and ammo text under cursor position option now only applies to yourself
@@ -47,6 +53,7 @@
 - DSM Hosting options menu now only visible from the main menu or when hosting
 - Number of characters remaining is now shown when editing your player name and server name
 - Split HUD options into multiple separate menus
+- Added scrolling for menu tabs
 
 ### Quality of Life
 - Added key bind to show map collisions (default key: `F7`)

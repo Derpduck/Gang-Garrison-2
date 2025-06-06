@@ -10,6 +10,7 @@
 virtualitem = -1;
 xbegin = argument0;
 ybegin = argument1;
+ybegintabs = ybegin;
 width = argument2;
 valueoffset = argument3;
 spacing = argument4;

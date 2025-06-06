@@ -17,4 +17,4 @@ console_print(COL_FLAG + "5BCEFA################################")
 ', '
 console_print(COL_ORANGE + "Syntax: flag");
 console_print(COL_ORANGE + "Prints a random flag");
-', CC_CLIENT);
+', console_init_access_level('flag', CC_CLIENT));

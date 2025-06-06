@@ -9,4 +9,4 @@ console_print(COL_ORANGE + "Executed Code: " + COL_YELLOW + code);
 ', '
 console_print(COL_ORANGE + "Syntax: execute <code>");
 console_print(COL_ORANGE + "Runs the given text as GML code, use with caution");
-', CC_CLIENT);
+', console_init_access_level('execute', CC_CLIENT));

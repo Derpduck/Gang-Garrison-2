@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != Menu)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+var commandMapKey, commandVariable;
+commandMapKey = ds_map_find_first(global.consoleCommandMap);
+
+for (i=0; i&lt;ds_map_size(global.consoleCommandMap); i+=1)
+{
+    global.commandRule[i] = ds_map_find_value(global.consoleCommandMapRules, commandMapKey);
+    menu_addedit_select(commandMapKey + ":", 'global.commandRule[' + string(i) + ']', '
+        ds_map_replace(global.consoleCommandMapRules, "' + commandMapKey + '", argument0);
+    ');
+    menu_add_option(CC_DISABLED, "Disabled");
+    menu_add_option(CC_CLIENT, "Client-side Only");
+    menu_add_option(CC_HOST, "Host Only");
+    menu_add_option(CC_HOST_RCON, "Host + RCON Only");
+    
+    commandMapKey = ds_map_find_next(global.consoleCommandMap, commandMapKey);
+};
+
+ServerMgt_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

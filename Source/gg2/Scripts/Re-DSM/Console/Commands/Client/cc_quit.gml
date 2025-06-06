@@ -4,4 +4,4 @@ game_end();
 ', '
 console_print(COL_ORANGE + "Syntax: quit");
 console_print(COL_ORANGE + "Immediately quits the game to desktop");
-', CC_CLIENT);
+', console_init_access_level('quit', CC_CLIENT));

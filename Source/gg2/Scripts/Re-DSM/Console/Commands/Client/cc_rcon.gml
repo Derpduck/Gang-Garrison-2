@@ -179,4 +179,4 @@ console_print(COL_ORANGE + "Syntax: rcon save");
 console_print(COL_ORANGE + "[Host Only] Toggles saving of new RCON users on / off");
 console_print(COL_ORANGE + "Syntax: rcon users");
 console_print(COL_ORANGE + "[Host Only] Prints a list of all active RCON users");
-', CC_CLIENT);
+', console_init_access_level('rcon', CC_CLIENT));

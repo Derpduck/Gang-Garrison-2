@@ -48,4 +48,4 @@ console_print(COL_ORANGE + "Teams have been scrambled");
 ', '
 console_print(COL_ORANGE + "Syntax: scramble");
 console_print(COL_ORANGE + "Randomly shuffles the teams of all active players");
-', CC_HOST_RCON);
+', console_init_access_level('scramble', CC_HOST_RCON));

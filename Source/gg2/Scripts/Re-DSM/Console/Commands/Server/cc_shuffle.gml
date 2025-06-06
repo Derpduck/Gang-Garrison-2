@@ -6,4 +6,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: shuffle");
 console_print(COL_ORANGE + "Shuffles the current map rotation");
-', CC_HOST_RCON);
+', console_init_access_level('shuffle', CC_HOST_RCON));

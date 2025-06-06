@@ -13,4 +13,4 @@ ban_remove_from_file(playerIP);
 ', '
 console_print(COL_ORANGE + "Syntax: unban <player IP>");
 console_print(COL_ORANGE + "Unbans the given player IP from the server");
-', CC_HOST);
+', console_init_access_level('unban', CC_HOST));

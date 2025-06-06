@@ -33,4 +33,4 @@ else
 ', '
 console_print(COL_ORANGE + "Syntax: hurt <player> <damage>");
 console_print(COL_ORANGE + "Deals damage to the given player");
-', CC_HOST_RCON);
+', console_init_access_level('hurt', CC_HOST_RCON));

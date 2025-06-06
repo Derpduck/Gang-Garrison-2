@@ -71,6 +71,12 @@ case CC_HOST:
     execute = true;
     break;
 
+case CC_DISABLED:
+    // Don't allow this command to be used by anyone
+    console_print(COL_RED + "[ERROR] This command is disabled");
+    execute = false;
+    break;
+    
 //Client
 default:
     // As host: Reject command if it came from RCON client

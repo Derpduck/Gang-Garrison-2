@@ -10,4 +10,5 @@
   <resource name="console_get_rules" type="RESOURCE"/>
   <resource name="console_get_player" type="RESOURCE"/>
   <resource name="console_validate_args" type="RESOURCE"/>
+  <resource name="console_init_access_level" type="RESOURCE"/>
 </resources>
