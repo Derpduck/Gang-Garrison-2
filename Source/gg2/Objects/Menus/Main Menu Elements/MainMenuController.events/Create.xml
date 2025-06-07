@@ -36,10 +36,10 @@
     menu_addlink("DSM Options", '
         room_goto_fix(DSMOptionsRoom);
     ');
-    menu_addlink("Server Management", '
+    /*menu_addlink("Server Management", '
         instance_create(x,y,ServerMgt_Commands);
         instance_destroy();
-    ');
+    ');*/
     if (global.rewardId != '')
     {
         menu_addlink("Manage Haxxy Rewards", '

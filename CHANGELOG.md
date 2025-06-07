@@ -1,9 +1,4 @@
 ## V5 (WIP)
-### Console
-- Added options to change the access level of console commands
-> This can be found in the Server Management menu
-> Changing access levels for some commands may cause unintended behaviour or errors currently, especially for clients as the access levels are set locally
-
 ### Gamemodes
 #### KoTH
 - Added option to change overall time limit
