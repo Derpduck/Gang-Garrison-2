@@ -1,6 +1,6 @@
 # Re-DSM Readme
 
-## Current Version: v4
+## Current Version: v5
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod  
@@ -76,6 +76,34 @@ binds || Prints all saved binds | Client
 ### Gamemodes
 #### All Gamemodes
 - Added options to set time limits on a per-gamemode basis
+#### DKoTH
+> Added options to help prevent excessively long DKoTH games (disabled by default)
+
+- **Stalemate Clock Countdown** - If neither team has captured a point for some time, start running down the clocks
+	- **Stalemate Mode** determines how the clocks behave during a stalemate
+		- **No Team Bias** - Both team's clocks run down at the same rate
+		- **Losing Team's Favor** - The losing team's clock runs down faster than the winning team's
+		- **Winning Team's Favor** - The winning team's clock runs down faster than the losing team's
+	- **Stalemate Timer** determines how long it takes for a stalemate to trigger (default: `3 minutes`)
+		- Contesting the point pauses the timer
+	- **Stalemate Countdown Speed**  determines how quickly the clocks run down during a stalemate compared to normal (default `50%`)
+> The game will go into overtime instead of ending if one team's timer reaches zero from a stalemate
+	
+- Added option to lock both control points for a set duration after a team captures both points (default: `10 seconds`)
+	- Set to `0` to disable this feature
+	- Contensting the point while it is locked will still trigger overtime
+	> This guarentees additional time off the clock each time both points are captured
+
+- Added option to set the overall match time limit
+- Added option for overall time limit to not reset when a point is captured (default: `off`)
+> By default DKoTH has a time limit that counts down while the points are neutral and uncontested, but any point being captured resets the time limit
+> Turning this setting on will stop the time limit from being reset when a point is captured
+	
+- Added options to modify the capture speed depending on which team is capturing each point (for reference, the default capture time is `10 seconds`)
+	- Home Point: How fast a team captures their own point (default: `100%`)
+	- Enemy Point: How fast a team captures the enemy's point (default: `100%`)
+	- Set to `100%` to disable this feature
+> This is more of an experimental setting, and doesn't sync with clients very well
 
 ### HUD
 - Made health bar and teammate stats enabled visible by default
@@ -88,7 +116,7 @@ binds || Prints all saved binds | Client
 - Added Nuts 'N' Bolts bar
 - Added Sandwich bar
 - Added afterburn bar
-- Added option for improved sniper charge HUD sprite and damage numbers
+- Added option for small sniper charge HUD sprite and charge damage numbers
 - Added detailed scoreboard stats panel
 
 ### Damage Indicator
@@ -109,11 +137,11 @@ binds || Prints all saved binds | Client
 - Combined main and advanced host options into a single menu
 - Combined controls menus into a single menu
 - Added lobby to in-game menu
-	> Currently cannot connect to other games while in-game
 - Moved manual join button to lobby menu
 - Adjusted lobby ping color ranges and added more colors
 - Added menu option type for setting numbers to non-integer values
 - Added server sent plugin list and server sent plugin required to the host options menu
+- Number of characters remaining is now shown when editing your player name and server name
 
 ### Audio
 - Added master volume option
@@ -139,12 +167,17 @@ binds || Prints all saved binds | Client
 - Added option to disable resizing the game window
 - Added key bind for Superburst bubble (default key: `R`)
 - Added key bind for Infiltrator bubble (default key: `G`)
+- Added key bind to show map collisions (default key: `F7`)
 
 ### Miscellaneous
 - Added option for taunt heal
 	- Heal amount can be customized (default: `5`)
 - Added option to skip the FAUCeT logo
 - Increased default bandwidth limit for map downloads 
+- Added FPS & ping displays
+- Added window scale option
+- Added borderless window option
+- Added option to cycle through player's haxxy badges instead of showing all of them at once
 
 ### Performance
 - Added `-high` launch option
@@ -161,3 +194,9 @@ binds || Prints all saved binds | Client
 - Fixed sniper charge HUD being drawn under weapons
 - Fixed respawn timer being hidden while tracking a player
 	- Dying causes you to track yourself, so the respawn timer was hidden until the camera was moved
+- Fixed DKoTH control points unlocking never being sycned with clients
+- Fixed DKoTH overall time limit not counting down if a player is standing on their own team's point
+- Fixed KoTH overall time limit only counting down if the point has been captured
+	- This prevented KoTH maps from ever ending on empty servers
+- Fixed being instantly moved back to spectator when joining a team after being AFK
+- Fixed window position going to the top left corner when exiting fullscreen

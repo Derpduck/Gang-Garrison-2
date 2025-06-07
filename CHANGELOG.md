@@ -1,4 +1,4 @@
-## V5 (WIP)
+## V5 (2025/06/07)
 ### Gamemodes
 #### KoTH
 - Added option to change overall time limit
