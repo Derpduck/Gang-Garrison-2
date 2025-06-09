@@ -14,6 +14,7 @@ global.consoleMapChangeQueued = false;
 global.consoleCommandMap = ds_map_create();
 global.consoleCommandMapHelp = ds_map_create();
 global.consoleCommandMapRules = ds_map_create();
+global.consoleCommandMapRulesDefault = ds_map_create();
 global.consoleCommandList = ds_list_create();
 
 // Console Size

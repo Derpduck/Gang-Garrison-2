@@ -77,7 +77,7 @@ case CC_DISABLED:
     execute = false;
     break;
     
-//Client
+// Client
 default:
     // As host: Reject command if it came from RCON client
     if (rconCommand)

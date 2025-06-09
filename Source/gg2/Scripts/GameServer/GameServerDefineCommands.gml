@@ -26,3 +26,4 @@ commandBytes[PLUGIN_PACKET] = commandBytesPrefixLength2;
 commandBytes[CLIENT_SETTINGS] = 1;
 commandBytes[DSM_RCON_LOGIN] = commandBytesPrefixLength1;
 commandBytes[DSM_RCON_CMD] = commandBytesPrefixLength1;
+commandBytes[DSM_HANDSHAKE] = 1;

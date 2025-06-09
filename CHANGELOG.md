@@ -1,6 +1,12 @@
 ## V6 (WIP)
+### Console
+- Added options to change the access level of console commands, allowing the host to change which commands can be used by RCON users
+> This can be found in the Server Management menu
+
 ### Bug Fixes
 - Fixed cycle badges option not working for players other than yourself
+
+***
 
 ## V5 (2025/06/07)
 ### Gamemodes
@@ -77,6 +83,8 @@
 - Fixed being instantly moved back to spectator when joining a team after being AFK
 - Fixed window position going to the top left corner when exiting fullscreen
 
+***
+
 ## V4 (2025/06/02)
 ### Gamemodes
 - Added options to set time limits on a per-gamemode basis
@@ -100,6 +108,8 @@
 - Fixed error when changing damage indicator show healing target's damage setting
 - Fixed health and ammo number displays overlapping if both are set to the same position
 - Fixed air blast team error
+
+***
 
 ## V3 (2025/05/30)
 ### Console
@@ -169,6 +179,8 @@
 - Fixed respawn timer being hidden while tracking a player
 	- Dying causes you to track yourself, so the respawn timer was hidden until the camera was moved
 
+***
+
 ## V2 (2025/05/23)
 ### Menus
 - Added DSM options menus
@@ -200,6 +212,8 @@
 - Fixed non-DSM clients crashing from receiving RCON data
 - Fixed console font being replaced by server-sent chat's font
 - Fixed console always printing your own server's name instead of the current server's name
+
+***
 
 ## V1 (2025/05/16)
 - Initial release

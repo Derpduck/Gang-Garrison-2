@@ -701,6 +701,15 @@ do {
                 console_print(COL_PINK + "[RCON CMD] RCON command failed unexpectedly");
             }
             break;
+        
+        case DSM_ACCESS_LEVELS:
+            var commandAccessLevel, commandName;
+            receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
+            commandAccessLevel = read_ubyte(global.tempBuffer);
+            commandName = receivestring(global.serverSocket, 1);
+            
+            ds_map_replace(global.consoleCommandMapRules, commandName, commandAccessLevel);
+            break;
 
         default:
             promptRestartOrQuit("The Server sent unexpected data.");

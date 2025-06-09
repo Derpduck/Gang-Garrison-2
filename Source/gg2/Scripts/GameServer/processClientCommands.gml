@@ -372,14 +372,18 @@ while(commandLimitRemaining > 0) {
             rconPasswordLength = socket_receivebuffer_size(player.socket);
             rconPasswordReceived = read_string(player.socket, rconPasswordLength);
             
-            player.isDSMClient = true;
-            
             // Register player as a DSM client
             if (rconPasswordReceived == "ijustwanttheservertoknowihavedsm")
             {
+                if (player.dsmClientVersion == -1)
+                    player.dsmClientVersion = 5;
+                
                 rcon_user_join(player);
                 break;
             }
+            
+            if (player.dsmClientVersion == -1)
+                player.dsmClientVersion = 0;
             
             if (!global.rconEnabled or global.rconPassword == "")
                 break;
@@ -407,7 +411,8 @@ while(commandLimitRemaining > 0) {
             rconCommandLength = socket_receivebuffer_size(player.socket);
             rconCommand = read_string(player.socket, rconCommandLength);
             
-            player.isDSMClient = true;
+            if (player.dsmClientVersion == -1)
+                player.dsmClientVersion = 0;
             
             if (global.rconEnabled)
             {
@@ -432,7 +437,13 @@ while(commandLimitRemaining > 0) {
                 write_ubyte(player.socket, RCON_CMD_DISABLED);
                 break
             }
-            
+            break;
+        case DSM_HANDSHAKE:
+            // -1: No DSM
+            // 0: Old DSM
+            // >0: Re-DSM
+            player.dsmClientVersion = read_ubyte(player.socket);
+            rcon_user_join(player);
             break;
         
         }

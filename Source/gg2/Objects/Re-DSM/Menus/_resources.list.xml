@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="DSM Options" type="GROUP"/>
-  <resource name="Host Options" type="GROUP"/>
   <resource name="Server Management" type="GROUP"/>
+  <resource name="Host Options" type="GROUP"/>
   <resource name="MenuMapViewer" type="RESOURCE"/>
 </resources>

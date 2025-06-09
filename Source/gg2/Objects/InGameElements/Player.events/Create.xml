@@ -20,7 +20,7 @@
     socket = -1;
     name = "";
     kicked = false;
-    isDSMClient = false;
+    dsmClientVersion = -1;
     activeBadge = -1;
     
     // client setting stuff; set to defaults

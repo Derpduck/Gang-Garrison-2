@@ -52,13 +52,13 @@
         instance_create(0,0,DSMOptions_General);
     ');
     
-    /*if (global.isHost)
+    if (global.isHost or global.isRCON)
     {
         menu_addlink("Server Management", '
             instance_destroy();
             instance_create(0,0,ServerMgt_Commands);
         ');
-    }*/
+    }
     
     menu_divider("");
     

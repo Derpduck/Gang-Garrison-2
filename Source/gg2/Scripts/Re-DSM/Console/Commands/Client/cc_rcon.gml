@@ -46,7 +46,7 @@ case "add":
         break;
     }
     
-    if (!player.isDSMClient)
+    if (player.dsmClientVersion == -1)
     {
         console_print(COL_RED + "WARNING: " + get_team_color_code(player.team) + player.name + COL_RED + " does not have DSM; cannot be informed of their RCON status");
     }
@@ -74,7 +74,7 @@ case "remove":
         break;
     }
     
-    if (!player.isDSMClient)
+    if (player.dsmClientVersion == -1)
     {
         console_print(COL_RED + "WARNING: " + get_team_color_code(player.team) + player.name + COL_RED + " does not have DSM; cannot be informed of their RCON status");
     }

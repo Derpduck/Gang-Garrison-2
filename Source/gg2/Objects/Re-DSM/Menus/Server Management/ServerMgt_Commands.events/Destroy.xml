@@ -13,13 +13,18 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">ini_open("Re-DSM.ini");
-var commandMapKey, commandVariable;
+        <argument kind="STRING">if (!global.isHost) exit;
+
+ini_open("Re-DSM.ini");
+var commandMapKey, commandAccessLevel;
 commandMapKey = ds_map_find_first(global.consoleCommandMap);
 
 for (i=0; i&lt;ds_map_size(global.consoleCommandMap); i+=1)
 {
-    ini_write_real("Command Access Level", commandMapKey, ds_map_find_value(global.consoleCommandMapRules, commandMapKey));
+    commandAccessLevel = ds_map_find_value(global.consoleCommandMapRules, commandMapKey);
+    
+    if (commandAccessLevel != CC_CLIENT)
+        ini_write_real("Command Access Level", commandMapKey, commandAccessLevel);
     
     commandMapKey = ds_map_find_next(global.consoleCommandMap, commandMapKey);
 };

@@ -40,7 +40,7 @@
     ds_list_add(global.players, serverPlayer);
     
     // DSM
-    serverPlayer.isDSMClient = true;
+    serverPlayer.dsmClientVersion = DSM_VERSION;
     fastEndRound = false;
     
     // RCON

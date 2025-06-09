@@ -30,6 +30,8 @@
     else
         room_goto_fix(returnRoom);
     
+    console_reset_access_levels();
+    
     if (global.serverPluginsInUse &amp;&amp; !noUnloadPlugins)
         pluginscleanup();
 }

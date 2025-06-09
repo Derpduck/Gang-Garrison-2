@@ -22,19 +22,42 @@ if (room != Menu)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-var commandMapKey, commandVariable;
+if (global.isHost or room == Menu)
+{
+    menu_addlink("Reset to Default", "
+        console_reset_access_levels();
+        instance_destroy();
+        instance_create(x,y,ServerMgt_Commands);
+    ");
+}
+
+var commandMapKey;
 commandMapKey = ds_map_find_first(global.consoleCommandMap);
 
 for (i=0; i&lt;ds_map_size(global.consoleCommandMap); i+=1)
 {
-    global.commandRule[i] = ds_map_find_value(global.consoleCommandMapRules, commandMapKey);
-    menu_addedit_select(commandMapKey + ":", 'global.commandRule[' + string(i) + ']', '
-        ds_map_replace(global.consoleCommandMapRules, "' + commandMapKey + '", argument0);
-    ');
-    menu_add_option(CC_DISABLED, "Disabled");
-    menu_add_option(CC_CLIENT, "Client-side Only");
-    menu_add_option(CC_HOST, "Host Only");
-    menu_add_option(CC_HOST_RCON, "Host + RCON Only");
+    commandAccessLevel[i] = ds_map_find_value(global.consoleCommandMapRules, commandMapKey);
+    
+    if (commandAccessLevel[i] != CC_CLIENT)
+    {
+        if (global.isHost or room == Menu)
+        {
+            menu_addedit_select(commandMapKey + ":", 'commandAccessLevel[' + string(i) + ']', '
+                ds_map_replace(global.consoleCommandMapRules, "' + commandMapKey + '", argument0);
+                
+                console_change_access_level("' + commandMapKey + '", argument0);
+            ');
+            menu_add_option(CC_DISABLED, "Disabled");
+            menu_add_option(CC_HOST, "Host Only");
+            menu_add_option(CC_HOST_RCON, "Host + RCON Only");
+        }
+        else
+        {
+            menu_addedit_script(commandMapKey + ":", get_access_string(commandAccessLevel[i]), '
+                return get_access_string(ds_map_find_value(global.consoleCommandMapRules, "' + commandMapKey + '"));
+            ');
+        }
+    }
     
     commandMapKey = ds_map_find_next(global.consoleCommandMap, commandMapKey);
 };

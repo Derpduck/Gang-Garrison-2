@@ -3,7 +3,7 @@ var player;
 player = argument0;
 playerIP = socket_remote_ip(player.socket);
 
-if (global.rconEnabled and player.isDSMClient)
+if (global.rconEnabled)
 {
     if (ds_map_exists(global.rconSavedUsers, playerIP) or playerIP == "127.0.0.1" or playerIP == "::1")
     {
