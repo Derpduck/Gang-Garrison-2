@@ -4,6 +4,7 @@
   <resource name="console_init_access_level" type="RESOURCE"/>
   <resource name="console_send_access_levels" type="RESOURCE"/>
   <resource name="console_change_access_level" type="RESOURCE"/>
-  <resource name="console_reset_access_levels" type="RESOURCE"/>
+  <resource name="console_default_access_levels" type="RESOURCE"/>
+  <resource name="console_reload_access_levels" type="RESOURCE"/>
   <resource name="get_access_string" type="RESOURCE"/>
 </resources>

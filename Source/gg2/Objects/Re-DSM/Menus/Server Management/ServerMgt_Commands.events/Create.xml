@@ -25,7 +25,7 @@ bgtabs = true;
 if (global.isHost or room == Menu)
 {
     menu_addlink("Reset to Default", "
-        console_reset_access_levels();
+        console_default_access_levels();
         instance_destroy();
         instance_create(x,y,ServerMgt_Commands);
     ");

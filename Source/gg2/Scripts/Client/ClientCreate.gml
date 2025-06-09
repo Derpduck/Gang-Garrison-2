@@ -17,7 +17,7 @@
     global.deserializeBuffer = buffer_create();
     global.isHost = false;
     global.isRCON = false;
-    console_reset_access_levels();
+    console_default_access_levels();
 
     global.myself = -1;
     gotServerHello = false;  
