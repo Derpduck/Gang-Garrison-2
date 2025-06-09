@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <constants>
-  <constant name="DSM_VERSION" value="5"/>
-  <constant name="DSM_VERSION_STRING" value="&quot;v5&quot;"/>
+  <constant name="DSM_VERSION" value="6"/>
+  <constant name="DSM_VERSION_STRING" value="&quot;v6&quot;"/>
   <constant name="VERSION" value="29200"/>
   <constant name="GAME_VERSION_STRING" value="&quot;v2.9.2&quot;"/>
   <constant name="GAME_NAME_STRING" value="&quot;Re-DSM&quot;"/>

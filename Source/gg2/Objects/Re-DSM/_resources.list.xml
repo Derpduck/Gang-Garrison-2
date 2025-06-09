@@ -5,4 +5,5 @@
   <resource name="GameElements" type="GROUP"/>
   <resource name="HUD" type="GROUP"/>
   <resource name="QueuedRoomController" type="RESOURCE"/>
+  <resource name="DSMController" type="RESOURCE"/>
 </resources>

@@ -13,17 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">afktimeout = 60*30;
-afktimer = afktimeout;
-oldScoreKeyDown = false;
-
-console_create();
-
-if (!instance_exists(PerformanceOverlay))
-    instance_create(0, 0, PerformanceOverlay);
-
-if (!instance_exists(DSMController))
-    instance_create(0, 0, DSMController);
+        <argument kind="STRING">alarm[0] = 45 / global.delta_factor;
 </argument>
       </arguments>
     </action>

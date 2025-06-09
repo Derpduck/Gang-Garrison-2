@@ -1,3 +1,7 @@
+## V6 (WIP)
+### Bug Fixes
+- Fixed cycle badges option not working for players other than yourself
+
 ## V5 (2025/06/07)
 ### Gamemodes
 #### KoTH
@@ -35,7 +39,7 @@
 
 ### HUD
 - HP and ammo text under cursor position option now only applies to yourself
-- Changed HP and ammo text option to show above name to show above info bars
+- Changed HP and ammo text option from `show above name` to `show above info bars`
 - Added option to show Sentry HP text
 - Changed damage indicator scale to be represented as a percent
 	> Be sure to adjust your settings accordingly

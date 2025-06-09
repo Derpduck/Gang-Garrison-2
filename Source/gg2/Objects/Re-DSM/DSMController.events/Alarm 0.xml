@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="ALARM" id="11">
+<event category="ALARM" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,16 +13,27 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Cycle Badges
-if (ds_list_empty(badges))
-    activeBadge = -1;
+        <argument kind="STRING">with(Player)
+{
+    // Cycle Badges
+    if (global.cycleBadges)
+    {
+        if (ds_list_empty(badges))
+            activeBadge = -1;
+        else
+        {
+            if (activeBadge == -1)
+                activeBadge = 0;
+            
+            if (activeBadge == ds_list_size(badges) - 1)
+                activeBadge = 0;
+            else
+                activeBadge += 1;
+        }
+    }
+}
 
-if (activeBadge &gt;= ds_list_size(badges))
-    activeBadge = 0;
-else
-    activeBadge += 1;
-
-alarm[11] = 45 / global.delta_factor;
+alarm[0] = 45 / global.delta_factor;
 </argument>
       </arguments>
     </action>

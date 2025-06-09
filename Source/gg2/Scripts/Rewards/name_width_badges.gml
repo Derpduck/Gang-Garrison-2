@@ -5,8 +5,6 @@ var player, badges;
 player = argument0;
 
 if (global.cycleBadges)
-    badges = min(1, ds_list_size(player.badges));
+    return string_width(sanitiseNewlines(player.name)) + (sprite_get_width(HaxxyBadgeS) * min(1, ds_list_size(player.badges)));
 else
-    badges = ds_list_size(player.badges);
-
-return string_width(sanitiseNewlines(player.name)) + (sprite_get_width(HaxxyBadgeS) * badges);
+    return string_width(sanitiseNewlines(player.name)) + (sprite_get_width(HaxxyBadgeS) * ds_list_size(player.badges));
