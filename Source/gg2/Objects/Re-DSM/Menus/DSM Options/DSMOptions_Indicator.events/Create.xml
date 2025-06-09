@@ -81,6 +81,10 @@ menu_addedit_float_percent("Scale:", "global.damageIndicatorScale", '
     DSM_write_ini("Damage Indicator", "Scale", argument0);
 ');
 
+menu_addedit_num_percent("Opacity:", "global.damageIndicatorOpacity", '
+    DSM_write_ini("Damage Indicator", "Opacity", argument0);
+', 100);
+
 menu_addedit_float("Hold Duration:", "global.damageIndicatorHoldDuration", '
     DSM_write_ini("Damage Indicator", "Hold Duration", argument0);
 ');

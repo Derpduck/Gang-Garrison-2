@@ -3,6 +3,14 @@
 - Added options to change the access level of console commands, allowing the host to change which commands can be used by RCON users
 > This can be found in the Server Management menu
 
+### HUD
+- Added opacity options:
+	- Kill log background
+	- Kill log text
+
+### Damage Indicator
+- Added opacity option
+
 ### Bug Fixes
 - Fixed cycle badges option not working for players other than yourself
 

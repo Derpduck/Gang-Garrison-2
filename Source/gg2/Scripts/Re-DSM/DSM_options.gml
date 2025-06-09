@@ -81,6 +81,7 @@ global.damageIndicatorHoldDuration = DSM_add_option("Damage Indicator", "Hold Du
 global.damageIndicatorFadeDuration = DSM_add_option("Damage Indicator", "Fade Duration", 1.5);
 global.damageIndicatorShrink = DSM_add_option("Damage Indicator", "Shrink on Fade", 1);
 global.damageIndicatorShadow = DSM_add_option("Damage Indicator", "Drop Shadow", 1);
+global.damageIndicatorOpacity = DSM_add_option("Damage Indicator", "Opacity", 100, true, 0, true, 100);
 
 // Hosting
 global.headlessMode = DSM_add_option("Hosting", "Headless Mode (Launch Option Only)", 0);
