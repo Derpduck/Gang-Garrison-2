@@ -4,6 +4,7 @@
   <resource name="DSMOptions_HUD_HP_Ammo" type="RESOURCE"/>
   <resource name="DSMOptions_HUD_Player" type="RESOURCE"/>
   <resource name="DSMOptions_HUD_Game" type="RESOURCE"/>
+  <resource name="DSMOptions_HUD_Opacity" type="RESOURCE"/>
   <resource name="DSMOptions_Indicator" type="RESOURCE"/>
   <resource name="DSMOptions_TeamColors" type="RESOURCE"/>
   <resource name="DSMOptions_Console" type="RESOURCE"/>

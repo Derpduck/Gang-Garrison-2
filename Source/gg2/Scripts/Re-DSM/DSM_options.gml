@@ -50,6 +50,10 @@ global.scoreboardStats = DSM_add_option("HUD", "Detailed Scoreboard Stats", 1);
 global.deathInfo = DSM_add_option("HUD", "Show Death Info Panel", 1);
 global.cycleBadges = DSM_add_option("HUD", "Cycle Through Name Badges", 1);
 
+// HUD Opacity
+global.opacityKillLogBackground = DSM_add_option("Opacity", "Kill Log Background", 100, true, 0, true, 100);
+global.opacityKillLogText = DSM_add_option("Opacity", "Kill Log Text", 100, true, 0, true, 100);
+
 // Team Colors
 global.teamColors_Bullets = DSM_add_option("Team Colors", "Bullets", 1);
 global.teamColors_Rockets = DSM_add_option("Team Colors", "Rockets", 1);

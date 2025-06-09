@@ -33,14 +33,17 @@ for (i = 0; i &lt; ds_list_size(kills); i += 1) {
     in = ds_map_find_value(map, "inthis"); // Am I involved in this event?
     str = sanitiseNewlines(ds_map_find_value(map, "string")); // Special text: Finish off, bid farewell, domination, revenge
     
-    draw_set_alpha(1);
+    draw_set_alpha(global.opacityKillLogBackground / 100);
     if (in)
        color = make_color_rgb(217,217,183);
     else color = make_color_rgb(49,45,26);
 
     draw_rectangle_color(view_xview[0] + view_wview[0] - string_width(n1 + n2 + str) - 12 - sprite_get_width(w1), view_yview[0] + i * 20 + 14 + yoffset,
         view_xview[0] + view_wview[0] - 8, view_yview[0] + i * 20 + 24 + 8 + yoffset, color, color, color, color, 0);
+    // End pieces
     draw_rectangle_color(view_xview[0] + view_wview[0] - string_width(n1 + n2 + str) - 14 - sprite_get_width(w1), view_yview[0] + i * 20 + 16 + yoffset,
+        view_xview[0] + view_wview[0] - string_width(n1 + n2 + str) - 13 - sprite_get_width(w1), view_yview[0] + i * 20 + 24 + 6+ yoffset, color, color, color, color, 0);
+    draw_rectangle_color(view_xview[0] + view_wview[0] - 7, view_yview[0] + i * 20 + 16 + yoffset,
         view_xview[0] + view_wview[0] - 6, view_yview[0] + i * 20 + 24 + 6+ yoffset, color, color, color, color, 0);
     
     if (t1 == TEAM_RED) {
@@ -50,10 +53,12 @@ for (i = 0; i &lt; ds_list_size(kills); i += 1) {
     } else {
         draw_set_color(c_white);
     }
+    draw_set_alpha(global.opacityKillLogText / 100);
     draw_text(view_xview[0] + view_wview[0] - string_width(n1 + n2 + str) - 12 - sprite_get_width(w1), view_yview[0] + i * 20 + 24 + yoffset, n1);
     draw_set_halign(fa_left);
     if (w1 != -1) {
-        draw_sprite(w1, in, floor(view_xview[0] + view_wview[0] - string_width(n2 + str) - 10 - sprite_get_width(w1)/2 /*- sprite_get_xoffset(w1)*/), floor(view_yview[0] + i * 20 + 24 + yoffset));
+        draw_sprite_ext(w1, in, floor(view_xview[0] + view_wview[0] - string_width(n2 + str) - 10 - sprite_get_width(w1)/2 /*- sprite_get_xoffset(w1)*/), floor(view_yview[0] + i * 20 + 24 + yoffset),
+        1, 1, 0, c_white, global.opacityKillLogText / 100);
     }
     
     if (in)

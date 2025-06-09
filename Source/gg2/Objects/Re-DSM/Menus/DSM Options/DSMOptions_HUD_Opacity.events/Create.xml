@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_addedit_num_percent("Kill Log Background Opacity:", "global.opacityKillLogBackground", '
+    DSM_write_ini("Opacity", "Kill Log Background", argument0);
+', 100);
+menu_addedit_num_percent("Kill Log Text Opacity:", "global.opacityKillLogText", '
+    DSM_write_ini("Opacity", "Kill Log Text", argument0);
+', 100);
+
+DSM_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>
