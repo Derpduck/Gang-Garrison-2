@@ -30,11 +30,11 @@ if (global.myself.object == -1 or global.myself.class != CLASS_ENGINEER)
 }
 draw_set_valign(fa_center);
 draw_set_halign(fa_right);
-draw_set_alpha(1);
+draw_set_alpha(global.opacityClassHudForeground / 100);
 draw_set_color(c_white);
 
-draw_sprite_ext(sprite_index,offset,xoffset+xsize-70,yoffset+ysize-85,2,2,0,c_white,1);
-draw_text_transformed_color(xoffset+xsize-66,yoffset+ysize-81,string(floor(global.myself.object.nutsNBolts)),1.5,1.5,0,c_white,c_white,c_white,c_white,1);
+draw_sprite_ext(sprite_index,offset,xoffset+xsize-70,yoffset+ysize-85,2,2,0,c_white,global.opacityClassHudBackground / 100);
+draw_text_transformed_color(xoffset+xsize-66,yoffset+ysize-81,string(floor(global.myself.object.nutsNBolts)),1.5,1.5,0,c_white,c_white,c_white,c_white,global.opacityClassHudForeground / 100);
 </argument>
       </arguments>
     </action>

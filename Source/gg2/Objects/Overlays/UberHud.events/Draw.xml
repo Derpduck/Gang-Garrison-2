@@ -29,7 +29,7 @@
     
     draw_set_valign(fa_center);
     draw_set_halign(fa_center);
-    draw_set_alpha(1);
+    draw_set_alpha(global.opacityClassHudForeground / 100);
 
     var myMedigun;
     myMedigun = -1;
@@ -40,9 +40,9 @@
     }
     if(myMedigun != -1)
     {
-        draw_healthbar(xoffset+xsize-135, yoffset+ysize-100, xoffset+xsize-15, yoffset+ysize-68,myMedigun.uberCharge*100/2000,c_black,c_white,c_white,0,true,true);
-        draw_sprite_ext(UberHudS,uberoffset,xoffset+xsize-80,yoffset+ysize-85,2,2,0,c_white,1);
-        draw_text_color(xoffset+xsize-70,yoffset+ysize-90,"SUPERBURST",c_white,c_white,c_white,c_white,1);
+        draw_healthbar(xoffset+xsize-135, yoffset+ysize-78, xoffset+xsize-18, yoffset+ysize-70,myMedigun.uberCharge*100/2000,c_black,c_white,c_white,0,true,false);
+        draw_sprite_ext(UberHudS,uberoffset,xoffset+xsize-80,yoffset+ysize-85,2,2,0,c_white,global.opacityClassHudBackground / 100);
+        draw_text_color(xoffset+xsize-70,yoffset+ysize-90,"SUPERBURST",c_white,c_white,c_white,c_white,global.opacityClassHudForeground / 100);
     }
 </argument>
       </arguments>

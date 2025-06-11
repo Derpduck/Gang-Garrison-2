@@ -27,20 +27,30 @@ menu_divider("HP, Ammo &amp; Class");
 menu_addedit_num_percent("Info Bars Opacity:", "global.opacityInfoBars", '
     DSM_write_ini("Opacity", "Info Bars", argument0);
 ', 100);
+
 menu_addedit_num_percent("HP &amp; Ammo Text Opacity:", "global.opacityHPAmmoText", '
     DSM_write_ini("Opacity", "HP &amp; Ammo Text", argument0);
 ', 100);
+
 menu_addedit_num_percent("HP HUD Background Opacity:", "global.opacityHpHudBackground", '
     DSM_write_ini("Opacity", "HP HUD Background", argument0);
 ', 100);
 menu_addedit_num_percent("HP HUD Foreground Opacity:", "global.opacityHpHudForeground", '
     DSM_write_ini("Opacity", "HP HUD Foreground", argument0);
 ', 100);
+
 menu_addedit_num_percent("Ammo HUD Background Opacity:", "global.opacityAmmoHudBackground", '
     DSM_write_ini("Opacity", "Ammo HUD Background", argument0);
 ', 100);
 menu_addedit_num_percent("Ammo HUD Foreground Opacity:", "global.opacityAmmoHudForeground", '
     DSM_write_ini("Opacity", "Ammo HUD Foreground", argument0);
+', 100);
+
+menu_addedit_num_percent("Class HUD Background Opacity:", "global.opacityClassHudBackground", '
+    DSM_write_ini("Opacity", "Class HUD Background", argument0);
+', 100);
+menu_addedit_num_percent("Class HUD Foreground Opacity:", "global.opacityClassHudForeground", '
+    DSM_write_ini("Opacity", "Class HUD Foreground", argument0);
 ', 100);
 
 menu_addedit_num_percent("Healer HUD Background Opacity:", "global.opacityHealingBackground", '
@@ -59,12 +69,14 @@ menu_addedit_num_percent("Kill Log Background Opacity:", "global.opacityKillLogB
 menu_addedit_num_percent("Kill Log Foreground Opacity:", "global.opacityKillLogForeground", '
     DSM_write_ini("Opacity", "Kill Log Foreground", argument0);
 ', 100);
+
 menu_addedit_num_percent("Timer Background Opacity:", "global.opacityTimerBackground", '
     DSM_write_ini("Opacity", "Timer Background", argument0);
 ', 100);
 menu_addedit_num_percent("Timer Foreground Opacity:", "global.opacityTimerForeground", '
     DSM_write_ini("Opacity", "Timer Foreground", argument0);
 ', 100);
+
 menu_addedit_num_percent("Gamemode Background Opacity:", "global.opacityGamemodeBackground", '
     DSM_write_ini("Opacity", "Gamemode Background", argument0);
 ', 100);

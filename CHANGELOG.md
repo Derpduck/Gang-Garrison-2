@@ -11,6 +11,7 @@
 	- HP & Ammo Text
 	- HP HUD
 	- Ammo HUD
+	- Class-specifc HUDs
 	- Healing HUD
 	- Kill Log
 	- Timer
@@ -22,6 +23,7 @@
 
 ### Bug Fixes
 - Fixed cycle badges option not working for players other than yourself
+- Fixed superburst HUD bar inaccuracy
 
 ***
 

@@ -53,18 +53,20 @@ global.cycleBadges = DSM_add_option("HUD", "Cycle Through Name Badges", 1);
 // HUD Opacity
 global.opacityInfoBars = DSM_add_option("Opacity", "Info Bars", 100, true, 0, true, 100);
 global.opacityHPAmmoText = DSM_add_option("Opacity", "HP & Ammo Text", 100, true, 0, true, 100);
+global.opacityHpHudBackground = DSM_add_option("Opacity", "HP HUD Background", 100, true, 0, true, 100);
+global.opacityHpHudForeground = DSM_add_option("Opacity", "HP HUD Foreground", 100, true, 0, true, 100);
+global.opacityAmmoHudBackground = DSM_add_option("Opacity", "Ammo HUD Background", 100, true, 0, true, 100);
+global.opacityAmmoHudForeground = DSM_add_option("Opacity", "Ammo HUD Foreground", 100, true, 0, true, 100);
+global.opacityClassHudBackground = DSM_add_option("Opacity", "Class HUD Background", 100, true, 0, true, 100);
+global.opacityClassHudForeground = DSM_add_option("Opacity", "Class HUD Foreground", 100, true, 0, true, 100);
+global.opacityHealingBackground = DSM_add_option("Opacity", "Healing Background", 100, true, 0, true, 100);
+global.opacityHealingForeground = DSM_add_option("Opacity", "Healing Foreground", 100, true, 0, true, 100);
 global.opacityKillLogBackground = DSM_add_option("Opacity", "Kill Log Background", 100, true, 0, true, 100);
 global.opacityKillLogForeground = DSM_add_option("Opacity", "Kill Log Foreground", 100, true, 0, true, 100);
 global.opacityTimerBackground = DSM_add_option("Opacity", "Timer Background", 100, true, 0, true, 100);
 global.opacityTimerForeground = DSM_add_option("Opacity", "Timer Foreground", 100, true, 0, true, 100);
 global.opacityGamemodeBackground = DSM_add_option("Opacity", "Gamemode Background", 100, true, 0, true, 100);
 global.opacityGamemodeForeground = DSM_add_option("Opacity", "Gamemode Foreground", 100, true, 0, true, 100);
-global.opacityHpHudBackground = DSM_add_option("Opacity", "HP HUD Background", 100, true, 0, true, 100);
-global.opacityHpHudForeground = DSM_add_option("Opacity", "HP HUD Foreground", 100, true, 0, true, 100);
-global.opacityAmmoHudBackground = DSM_add_option("Opacity", "Ammo HUD Background", 100, true, 0, true, 100);
-global.opacityAmmoHudForeground = DSM_add_option("Opacity", "Ammo HUD Foreground", 100, true, 0, true, 100);
-global.opacityHealingBackground = DSM_add_option("Opacity", "Healing Background", 100, true, 0, true, 100);
-global.opacityHealingForeground = DSM_add_option("Opacity", "Healing Foreground", 100, true, 0, true, 100);
 
 // Team Colors
 global.teamColors_Bullets = DSM_add_option("Team Colors", "Bullets", 1);
