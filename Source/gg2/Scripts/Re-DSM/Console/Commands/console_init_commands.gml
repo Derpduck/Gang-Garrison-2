@@ -24,6 +24,7 @@ cc_restart();
 cc_classlimit();
 cc_team();
 cc_scramble();
+cc_lobby();
 
 // Client Side Commands
 cc_help();

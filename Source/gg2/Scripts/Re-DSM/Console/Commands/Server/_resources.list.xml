@@ -23,4 +23,5 @@
   <resource name="cc_classlimit" type="RESOURCE"/>
   <resource name="cc_team" type="RESOURCE"/>
   <resource name="cc_scramble" type="RESOURCE"/>
+  <resource name="cc_lobby" type="RESOURCE"/>
 </resources>

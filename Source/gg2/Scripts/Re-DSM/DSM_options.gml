@@ -52,7 +52,9 @@ global.cycleBadges = DSM_add_option("HUD", "Cycle Through Name Badges", 1);
 
 // HUD Opacity
 global.opacityKillLogBackground = DSM_add_option("Opacity", "Kill Log Background", 100, true, 0, true, 100);
-global.opacityKillLogText = DSM_add_option("Opacity", "Kill Log Text", 100, true, 0, true, 100);
+global.opacityKillLogForeground = DSM_add_option("Opacity", "Kill Log Foreground", 100, true, 0, true, 100);
+global.opacityTimerBackground = DSM_add_option("Opacity", "Timer Background", 100, true, 0, true, 100);
+global.opacityTimerForeground = DSM_add_option("Opacity", "Timer Foreground", 100, true, 0, true, 100);
 
 // Team Colors
 global.teamColors_Bullets = DSM_add_option("Team Colors", "Bullets", 1);

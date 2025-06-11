@@ -53,12 +53,12 @@ for (i = 0; i &lt; ds_list_size(kills); i += 1) {
     } else {
         draw_set_color(c_white);
     }
-    draw_set_alpha(global.opacityKillLogText / 100);
+    draw_set_alpha(global.opacityKillLogForeground / 100);
     draw_text(view_xview[0] + view_wview[0] - string_width(n1 + n2 + str) - 12 - sprite_get_width(w1), view_yview[0] + i * 20 + 24 + yoffset, n1);
     draw_set_halign(fa_left);
     if (w1 != -1) {
         draw_sprite_ext(w1, in, floor(view_xview[0] + view_wview[0] - string_width(n2 + str) - 10 - sprite_get_width(w1)/2 /*- sprite_get_xoffset(w1)*/), floor(view_yview[0] + i * 20 + 24 + yoffset),
-        1, 1, 0, c_white, global.opacityKillLogText / 100);
+        1, 1, 0, c_white, global.opacityKillLogForeground / 100);
     }
     
     if (in)

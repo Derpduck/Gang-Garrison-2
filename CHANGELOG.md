@@ -2,11 +2,13 @@
 ### Console
 - Added options to change the access level of console commands, allowing the host to change which commands can be used by RCON users
 > This can be found in the Server Management menu
+- Added lobby command
+	- Toggles visibility of the server in the lobby
 
 ### HUD
-- Added opacity options:
-	- Kill log background
-	- Kill log text
+- Added opacity options for various HUD elements:
+	- Kill log
+	- Timer
 
 ### Damage Indicator
 - Added opacity option
