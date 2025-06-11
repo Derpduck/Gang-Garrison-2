@@ -1,4 +1,4 @@
-## V6 (WIP)
+## V6 (2025/06/11)
 ### Console
 - Added options to change the access level of console commands, allowing the host to change which commands can be used by RCON users
 > This can be found in the Server Management menu
@@ -23,6 +23,10 @@
 ### Damage Indicator
 - Added opacity option
 - Hitsound no longer plays on self damage
+
+### Miscellaneous
+- Added `-30fps` launch option to launch the game in 30 FPS, regardless of settings
+- Added `-60fps` launch option to launch the game in 60 FPS, regardless of settings
 
 ### Bug Fixes
 - Fixed cycle badges option not working for players other than yourself

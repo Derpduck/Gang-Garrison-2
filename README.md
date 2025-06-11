@@ -1,6 +1,6 @@
 # Re-DSM Readme
 
-## Current Version: v5
+## Current Version: v6
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod  
@@ -20,7 +20,7 @@
 - Fixed many bugs and QOL issues found in previous implementations of the Console in DSM and E-Sports Mod
 
 #### Console Commands
-**Command** | **Arguments** | **Description** | **Usage**
+**Command** | **Arguments** | **Description** | **Access Level**
 ----------- | ------------- | --------------- | -----------
 kick | `player` | Kicks the given player from the server | Host + RCON
 ban | `player` | Bans the given player from the server permanently | Host Only
@@ -45,6 +45,7 @@ restart || Restarts the current map | Host + RCON
 classlimit | `class`, `new limit` | Changes the classlimit for the given class. 'All' changes all classlimits at once | Host + RCON
 team | `player`, `new team`| Changes the given player's team to the given team, ignoring team balance | Host + RCON
 scramble || Randomly shuffles the teams of all active players | Host + RCON
+lobby || Toggles visibility of the server in the lobby | Host Only
 help | `optional: command name`| Prints documentation for the given command. If no command is specified, prints a list of all available commands | Client
 execute | `code text` | Runs the given text as GML code, use with caution | Client
 rcon | `command`, `argument` | See RCON section |
@@ -58,12 +59,14 @@ bind | `key`, `command` | Binds the given console command to the given key | Cli
 unbind | `key` | Removes the bind assigned to the given key | Client
 binds || Prints all saved binds | Client
 
+> The access level of commands can be changed in the `Server Management > Commands` menu
+
 #### RCON (**R**emote **CON**sole)
 > Allows clients to use host only commands
 - Host can either set a password for players to login with, or manually add RCON users themselves
 - Multi-clienting hosts are automatically given RCON access
 
-**Command** | **Arguments** | **Description** | **Usage**
+**Command** | **Arguments** | **Description** | **Access Level**
 ----------- | ------------- | --------------- | -----------
 `rcon login` | `password` | Asks for RCON access using the given password | Client
 `rcon add` | `player` | Grants RCON access to the given player | Host Only
@@ -118,6 +121,19 @@ binds || Prints all saved binds | Client
 - Added afterburn bar
 - Added option for small sniper charge HUD sprite and charge damage numbers
 - Added detailed scoreboard stats panel
+- Added opacity options for the following HUD elements:
+	- Info Bars
+	- HP & Ammo Text
+	- HP HUD
+	- Ammo HUD
+	- Class-specifc HUDs
+	- Healing HUD
+	- Healer Radar
+	- Scoreboard
+	- Kill Log
+	- Timer
+	- Gamemodes
+- Added option to show the intel carrier's class
 
 ### Damage Indicator
 - Added damage indicator
@@ -178,6 +194,8 @@ binds || Prints all saved binds | Client
 - Added window scale option
 - Added borderless window option
 - Added option to cycle through player's haxxy badges instead of showing all of them at once
+- Added `-30fps` launch option to launch the game in 30 FPS, regardless of settings
+- Added `-60fps` launch option to launch the game in 60 FPS, regardless of settings
 
 ### Performance
 - Added `-high` launch option
@@ -200,3 +218,4 @@ binds || Prints all saved binds | Client
 	- This prevented KoTH maps from ever ending on empty servers
 - Fixed being instantly moved back to spectator when joining a team after being AFK
 - Fixed window position going to the top left corner when exiting fullscreen
+- Fixed superburst HUD bar appearing full when superburst is close to being fully charged
