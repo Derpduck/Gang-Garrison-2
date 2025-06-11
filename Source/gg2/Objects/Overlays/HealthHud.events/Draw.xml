@@ -28,7 +28,7 @@ if(global.myself.object == -1) {
 }
 
 drawHealth(45, ysize-53, global.myself.object.hp, global.myself.object.maxHp);
-draw_sprite_ext(sprite_index, image_index, view_xview[0]+5, view_yview[0]+ysize-75, 2, 2, 0, c_white, 1);
+draw_sprite_ext(sprite_index, image_index, view_xview[0]+5, view_yview[0]+ysize-75, 2, 2, 0, c_white, global.opacityHpHudBackground / 100);
 </argument>
       </arguments>
     </action>

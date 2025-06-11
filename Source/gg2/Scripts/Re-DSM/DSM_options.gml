@@ -59,6 +59,10 @@ global.opacityTimerBackground = DSM_add_option("Opacity", "Timer Background", 10
 global.opacityTimerForeground = DSM_add_option("Opacity", "Timer Foreground", 100, true, 0, true, 100);
 global.opacityGamemodeBackground = DSM_add_option("Opacity", "Gamemode Background", 100, true, 0, true, 100);
 global.opacityGamemodeForeground = DSM_add_option("Opacity", "Gamemode Foreground", 100, true, 0, true, 100);
+global.opacityHpHudBackground = DSM_add_option("Opacity", "HP HUD Background", 100, true, 0, true, 100);
+global.opacityHpHudForeground = DSM_add_option("Opacity", "HP HUD Foreground", 100, true, 0, true, 100);
+global.opacityAmmoHudBackground = DSM_add_option("Opacity", "Ammo HUD Background", 100, true, 0, true, 100);
+global.opacityAmmoHudForeground = DSM_add_option("Opacity", "Ammo HUD Foreground", 100, true, 0, true, 100);
 global.opacityHealingBackground = DSM_add_option("Opacity", "Healing Background", 100, true, 0, true, 100);
 global.opacityHealingForeground = DSM_add_option("Opacity", "Healing Foreground", 100, true, 0, true, 100);
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="Ammo" type="GROUP"/>
   <resource name="DSM_ChargeS" type="RESOURCE"/>
   <resource name="ScoreboardStatsS" type="RESOURCE"/>
   <resource name="DSM_MVPBannerS" type="RESOURCE"/>

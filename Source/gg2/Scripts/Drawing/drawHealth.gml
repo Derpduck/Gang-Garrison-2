@@ -16,7 +16,7 @@ maxHp = argument3;
 
 draw_set_valign(fa_center);
 draw_set_halign(fa_center);
-draw_set_alpha(1);
+draw_set_alpha(global.opacityHpHudForeground / 100);
 draw_healthbar(xoffset+xpos, yoffset+ypos, xoffset+xpos+42, yoffset+ypos+37, hp*100/maxHp, c_black, c_red, c_green, 3, true, false);
 
 var hpText,hpColor;
@@ -27,4 +27,4 @@ else
 
 hpText = string(ceil(min(max(hp,0),maxHp)));
 
-draw_text_color(xoffset+xpos+24, yoffset+ypos+18, hpText, hpColor, hpColor, hpColor, hpColor, 1);
+draw_text_color(xoffset+xpos+24, yoffset+ypos+18, hpText, hpColor, hpColor, hpColor, hpColor, global.opacityHpHudForeground / 100);

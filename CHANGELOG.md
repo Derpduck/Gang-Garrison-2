@@ -7,10 +7,14 @@
 
 ### HUD
 - Added opacity options for various HUD elements:
-	- Kill log
+	- Info Bars
+	- HP & Ammo Text
+	- HP HUD
+	- Ammo HUD
+	- Healing HUD
+	- Kill Log
 	- Timer
 	- Gamemodes
-	- Healing HUD
 
 ### Damage Indicator
 - Added opacity option
