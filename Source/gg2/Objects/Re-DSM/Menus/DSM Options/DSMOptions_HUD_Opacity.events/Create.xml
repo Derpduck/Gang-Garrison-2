@@ -22,7 +22,7 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_divider("HP, Ammo &amp; Class");
+menu_divider("HP, Ammo &amp; Class HUDs");
 
 menu_addedit_num_percent("Info Bars Opacity:", "global.opacityInfoBars", '
     DSM_write_ini("Opacity", "Info Bars", argument0);
@@ -61,7 +61,14 @@ menu_addedit_num_percent("Healer HUD Foreground Opacity:", "global.opacityHealin
 ', 100);
 
 
-menu_divider("Gameplay");
+menu_divider("General HUDs");
+
+menu_addedit_num_percent("Scoreboard Background Opacity:", "global.opacityScoreboardBackground", '
+    DSM_write_ini("Opacity", "Scoreboard Background", argument0);
+', 100);
+menu_addedit_num_percent("Scoreboard Foreground Opacity:", "global.opacityScoreboardForeground", '
+    DSM_write_ini("Opacity", "Scoreboard Foreground", argument0);
+', 100);
 
 menu_addedit_num_percent("Kill Log Background Opacity:", "global.opacityKillLogBackground", '
     DSM_write_ini("Opacity", "Kill Log Background", argument0);

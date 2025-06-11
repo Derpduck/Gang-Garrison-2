@@ -25,9 +25,9 @@
     ysize = 600/5*3;
     xcenter = view_xview[0]+view_wview[0]/2;
     
-    draw_sprite_ext(Scoreboard, 0, xoffset, yoffset, 1, 1, 0, c_white, alpha*0.8);
+    draw_sprite_ext(Scoreboard, 0, xoffset, yoffset, 1, 1, 0, c_white, alpha * (global.opacityScoreboardBackground / 100));
 
-    draw_set_alpha(alpha);
+    draw_set_alpha(alpha * (global.opacityScoreboardForeground / 100));
     draw_set_color(c_white);
     draw_set_valign(fa_top);
     draw_set_halign(fa_center);
@@ -85,11 +85,11 @@
                 var _x, _y;
                 _x = xoffset+6;
                 _y = yoffset+70+20*(i+1);
-                draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_white,alpha);
+                draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_white,alpha * (global.opacityScoreboardForeground / 100));
                 if (mouse_x &gt;= _x and mouse_x &lt; _x+16
                     and mouse_y &gt;= _y and mouse_y &lt; _y+16)
                 {
-                    draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_red,alpha*0.5);
+                    draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_red,alpha * (global.opacityScoreboardForeground / 100) * 0.5);
                     if (mouse_check_button_pressed(mb_left)) {
                         mouse_clear(mb_left);
                         player.kicked = true;
@@ -100,12 +100,12 @@
             {
                 if (global.myself.team == player.team or global.mapchanging)
                 {
-                    draw_sprite_ext(Icon,player.class,xoffset+14,yoffset+70+20*(i+1),1,1,0,c_white,alpha);
-                    draw_sprite_ext(Icon,player.class,xoffset+14,yoffset+70+20*(i+1),1,1,0,c_red,alpha*0.2);
+                    draw_sprite_ext(Icon,player.class,xoffset+14,yoffset+70+20*(i+1),1,1,0,c_white,alpha * (global.opacityScoreboardForeground / 100));
+                    draw_sprite_ext(Icon,player.class,xoffset+14,yoffset+70+20*(i+1),1,1,0,c_red,alpha * (global.opacityScoreboardForeground / 100) * 0.2);
                 }
             }
         
-            draw_name_badges(xoffset+28, yoffset+70+20*(i+1), player, alpha);
+            draw_name_badges(xoffset+28, yoffset+70+20*(i+1), player, alpha * (global.opacityScoreboardForeground / 100));
         
             draw_set_halign(fa_right);
             draw_text(xoffset+xsize/2-15, yoffset+70+20*(i+1), string(floor(player.stats[POINTS])));
@@ -113,19 +113,19 @@
             //Domination Medals
             domCount = domination_kills_getDomCount(player);
             if (domCount &gt; 0) {
-                draw_sprite_ext(MedalS, 0, xoffset+xsize/2-5, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(MedalS, 0, xoffset+xsize/2-5, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
                 draw_set_color(make_color_rgb(227, 226, 225));
                 draw_text_transformed(xoffset+xsize/2 + 12, yoffset+70+20*(i+1), string(domCount), 1, 1, 0);
             }
             //Dominated player
             if (domination_kills_get(global.myself.dominationKills, player) &gt; 3)
-                draw_sprite_ext(MedalS, 3, xoffset+xsize/2 + 15, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(MedalS, 3, xoffset+xsize/2 + 15, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
             //Nemesis
             else if (domination_kills_get(player.dominationKills, global.myself) &gt; 3)
-                draw_sprite_ext(MedalS, 5, xoffset+xsize + 55, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(MedalS, 5, xoffset+xsize + 55, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
             
             if(player.object == -1)
-                draw_sprite_ext(DeadS, 0, xoffset+195, yoffset+75+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(DeadS, 0, xoffset+195, yoffset+75+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
         }          
     }
     
@@ -138,11 +138,11 @@
                 var _x, _y;
                 _x = xoffset+xsize/2+44;
                 _y = yoffset+70+20*(i+1);
-                draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_white,alpha);
+                draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_white,alpha * (global.opacityScoreboardForeground / 100));
                 if (mouse_x &gt;= _x and mouse_x &lt; _x+16
                     and mouse_y &gt;= _y and mouse_y &lt; _y+16)
                 {
-                    draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_red,alpha*0.5);
+                    draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_red,alpha * (global.opacityScoreboardForeground / 100) * 0.5);
                     if (mouse_check_button_pressed(mb_left)) {
                         mouse_clear(mb_left);
                         player.kicked = true;
@@ -150,12 +150,12 @@
                 }
             } else {
                 if(global.myself.team == player.team) {
-                    draw_sprite_ext(Icon,player.class,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_white,alpha);
-                    draw_sprite_ext(Icon,player.class,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_blue,alpha*0.2);
+                    draw_sprite_ext(Icon,player.class,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_white,alpha * (global.opacityScoreboardForeground / 100));
+                    draw_sprite_ext(Icon,player.class,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_blue,alpha * (global.opacityScoreboardForeground / 100) * 0.2);
                 }
             }
        
-            draw_name_badges(xoffset+xsize/2+60, yoffset+70+20*(i+1), player, alpha);
+            draw_name_badges(xoffset+xsize/2+60, yoffset+70+20*(i+1), player, alpha * (global.opacityScoreboardForeground / 100));
         
             draw_set_halign(fa_right);
             draw_text(xoffset+xsize+25, yoffset+70+20*(i+1), string(floor(player.stats[POINTS])));
@@ -163,19 +163,19 @@
             //Domination Medals
             domCount = domination_kills_getDomCount(player);
             if (domCount &gt; 0) {
-                draw_sprite_ext(MedalS, 0, xoffset+xsize + 35, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(MedalS, 0, xoffset+xsize + 35, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
                 draw_set_color(make_color_rgb(227, 226, 225));
                 draw_text_transformed(xoffset+xsize + 52, yoffset+70+20*(i+1), string(domCount), 1, 1, 0);
             }
             //Dominated player
             if (domination_kills_get(global.myself.dominationKills, player) &gt; 3)
-                draw_sprite_ext(MedalS, 3, xoffset+xsize + 55, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(MedalS, 3, xoffset+xsize + 55, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
             //Nemesis
             else if (domination_kills_get(player.dominationKills, global.myself) &gt; 3)
-                draw_sprite_ext(MedalS, 6, xoffset+xsize + 55, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(MedalS, 6, xoffset+xsize + 55, yoffset+70+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
                      
             if (player.object == -1)
-                draw_sprite_ext(DeadS, 0, xoffset+472, yoffset+75+20*(i+1), 1, 1, 0, c_white, alpha);
+                draw_sprite_ext(DeadS, 0, xoffset+472, yoffset+75+20*(i+1), 1, 1, 0, c_white, alpha * (global.opacityScoreboardForeground / 100));
         
         }
     }
@@ -204,11 +204,11 @@
             _x = __x;
             _y = __y;
             __bootlen = 16;
-            draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_white,alpha);
+            draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_white,alpha * (global.opacityScoreboardForeground / 100));
             if (mouse_x &gt;= _x and mouse_x &lt; _x+16
                 and mouse_y &gt;= _y and mouse_y &lt; _y+16)
             {
-                draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_red,alpha*0.5);
+                draw_sprite_ext(Boot,0,_x,_y,1,1,0,c_red,alpha * (global.opacityScoreboardForeground / 100) * 0.5);
                 if (mouse_check_button_pressed(mb_left)) {
                     mouse_clear(mb_left);
                     player.kicked = true;
@@ -238,7 +238,7 @@
         if(player.object_index == JoiningPlayer)
             draw_text(__bootlen + __x, __y, '['+sanitiseNewlines(player.name)+']');
         else
-            draw_name_badges(__bootlen + __x, __y, player, alpha);
+            draw_name_badges(__bootlen + __x, __y, player, alpha * (global.opacityScoreboardForeground / 100));
                         
         __x += __bootlen + nameWidth;
         draw_text(__x, __y, __str);
@@ -259,7 +259,7 @@
         statsyoffset = 405;
         draw_set_valign(fa_top);
         
-        draw_sprite_ext(ScoreboardStatsS, 0, xoffset, yoffset + statsyoffset, 1, 1, 0, c_white, alpha*0.8);
+        draw_sprite_ext(ScoreboardStatsS, 0, xoffset, yoffset + statsyoffset, 1, 1, 0, c_white, alpha * (global.opacityScoreboardBackground / 100) * 0.8);
         draw_set_halign(fa_left);
         draw_text(xoffset + 16, yoffset + statsyoffset + 10, "Kills: " + string(floor(global.myself.stats[KILLS])));
         draw_text(xoffset + 16, yoffset + statsyoffset + 27, "Deaths: " + string(floor(global.myself.stats[DEATHS])));

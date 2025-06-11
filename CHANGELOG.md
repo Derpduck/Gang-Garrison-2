@@ -6,13 +6,14 @@
 	- Toggles visibility of the server in the lobby
 
 ### HUD
-- Added opacity options for various HUD elements:
+- Added opacity options for the following HUD elements:
 	- Info Bars
 	- HP & Ammo Text
 	- HP HUD
 	- Ammo HUD
 	- Class-specifc HUDs
 	- Healing HUD
+	- Scoreboard
 	- Kill Log
 	- Timer
 	- Gamemodes

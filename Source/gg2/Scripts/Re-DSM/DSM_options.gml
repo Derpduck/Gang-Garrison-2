@@ -67,6 +67,8 @@ global.opacityTimerBackground = DSM_add_option("Opacity", "Timer Background", 10
 global.opacityTimerForeground = DSM_add_option("Opacity", "Timer Foreground", 100, true, 0, true, 100);
 global.opacityGamemodeBackground = DSM_add_option("Opacity", "Gamemode Background", 100, true, 0, true, 100);
 global.opacityGamemodeForeground = DSM_add_option("Opacity", "Gamemode Foreground", 100, true, 0, true, 100);
+global.opacityScoreboardBackground = DSM_add_option("Opacity", "Scoreboard Background", 80, true, 0, true, 100);
+global.opacityScoreboardForeground = DSM_add_option("Opacity", "Scoreboard Foreground", 100, true, 0, true, 100);
 
 // Team Colors
 global.teamColors_Bullets = DSM_add_option("Team Colors", "Bullets", 1);
