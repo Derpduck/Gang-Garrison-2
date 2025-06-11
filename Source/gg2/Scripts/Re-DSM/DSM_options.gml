@@ -45,6 +45,9 @@ global.afterburnBar = DSM_add_option("HUD", "Show Afterburn Bar", 1);
 global.sniperChargeBar = DSM_add_option("HUD", "Small Sniper Charge Bar", 1);
 global.sniperChargeDamage = DSM_add_option("HUD", "Show Sniper Charge Damage", 1);
 
+// Gamemode HUDs
+global.intelCarrierClass = DSM_add_option("HUD", "Show Intel Carrier Class", 1);
+
 // Misc HUD
 global.scoreboardStats = DSM_add_option("HUD", "Detailed Scoreboard Stats", 1);
 global.deathInfo = DSM_add_option("HUD", "Show Death Info Panel", 1);

@@ -22,6 +22,14 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
+menu_divider("Gamemodes")
+
+menu_addedit_boolean("Show Intel Carrier Class:", "global.intelCarrierClass", '
+    DSM_write_ini("HUD", "Show Intel Carrier Class", argument0);
+');
+
+menu_divider("Miscellaneous")
+
 menu_addedit_boolean("Show Detailed Scoreboard Stats:", "global.scoreboardStats", '
     DSM_write_ini("HUD", "Detailed Scoreboard Stats", argument0);
 ');

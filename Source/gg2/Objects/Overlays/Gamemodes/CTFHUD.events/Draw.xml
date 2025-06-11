@@ -20,7 +20,7 @@
     ysize = view_hview[0];
     xshift = -320*global.timerPos;
     yshift = 5*global.timerPos;
-    var reddir, bluedir, redx, redy, bluex, bluey;
+    var reddir, bluedir, redx, redy, bluex, bluey, redClass, blueClass;
     
     if (global.myself == -1)
         exit;
@@ -31,6 +31,8 @@
     redy = yoffset+ysize-50;
     bluex = xoffset+xsize/2+60;
     bluey = yoffset+ysize-50;
+    redClass = -1;
+    blueClass = -1;
     
     draw_set_alpha(global.opacityGamemodeForeground / 100);
     
@@ -78,8 +80,12 @@
         with(Character)
         {
             // Otherwise it whould point at the person who's carrying it
-            if (team == TEAM_BLUE and intel and id != global.myself.object)
-                reddir = point_direction(redx, redy, x, y);
+            if (team == TEAM_BLUE and intel)
+            {
+                redClass = player.class;
+                if (id != global.myself.object)
+                    reddir = point_direction(redx, redy, x, y);
+            }
         }
         redintelstatus=1;
     }
@@ -97,8 +103,12 @@
         bluedir = point_direction(bluex, bluey, IntelligenceBaseRed.x, IntelligenceBaseRed.y);
         with(Character)
         {
-            if (team == TEAM_RED and intel and id != global.myself.object)
-                bluedir = point_direction(bluex, bluey, x, y);
+            if (team == TEAM_RED and intel)
+            {
+                blueClass = player.class;
+                if (id != global.myself.object)
+                    bluedir = point_direction(bluex, bluey, x, y);
+            }
         }
         blueintelstatus=1;
     }
@@ -126,6 +136,14 @@
     
     draw_sprite_ext(IntelStatusS, redintelstatus, redx, redy, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
     draw_sprite_ext(IntelStatusS, blueintelstatus, bluex, bluey, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
+    
+    if (global.intelCarrierClass)
+    {
+        if (redintelstatus == 1)
+            draw_sprite_ext(IconOutlineS, redClass, redx - 10, redy - 1, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
+        if (blueintelstatus == 1)
+            draw_sprite_ext(IconOutlineS, blueClass, bluex - 10, bluey - 1, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
+    }
     
     draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
 </argument>

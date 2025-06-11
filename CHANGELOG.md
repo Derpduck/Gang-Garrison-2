@@ -18,6 +18,7 @@
 	- Kill Log
 	- Timer
 	- Gamemodes
+- Added option to show the intel carrier's class
 
 ### Damage Indicator
 - Added opacity option
@@ -25,7 +26,7 @@
 
 ### Bug Fixes
 - Fixed cycle badges option not working for players other than yourself
-- Fixed superburst HUD bar inaccuracy
+- Fixed superburst HUD bar appearing full when superburst is close to being fully charged
 
 ***
 
