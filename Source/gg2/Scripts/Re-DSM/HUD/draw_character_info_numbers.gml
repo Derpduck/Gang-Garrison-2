@@ -3,6 +3,8 @@ xr = round(x);
 yr = round(y);
 barCount = argument0;
 
+draw_set_alpha(global.opacityHPAmmoText / 100);
+
 // Health Text
 if (global.healthText != 0 and (player == global.myself or global.healthText == 1))
 {
@@ -159,3 +161,4 @@ if (global.ammoText != 0 and (player == global.myself or global.ammoText == 1) a
 
 
 draw_set_color(c_white);
+draw_set_alpha(1);

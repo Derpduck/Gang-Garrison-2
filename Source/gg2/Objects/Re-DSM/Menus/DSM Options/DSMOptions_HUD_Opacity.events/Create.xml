@@ -22,6 +22,12 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
+menu_addedit_num_percent("Info Bars Opacity:", "global.opacityInfoBars", '
+    DSM_write_ini("Opacity", "Info Bars", argument0);
+', 100);
+menu_addedit_num_percent("HP &amp; Ammo Text Opacity:", "global.opacityHPAmmoText", '
+    DSM_write_ini("Opacity", "HP &amp; Ammo Text", argument0);
+', 100);
 menu_addedit_num_percent("Kill Log Background Opacity:", "global.opacityKillLogBackground", '
     DSM_write_ini("Opacity", "Kill Log Background", argument0);
 ', 100);

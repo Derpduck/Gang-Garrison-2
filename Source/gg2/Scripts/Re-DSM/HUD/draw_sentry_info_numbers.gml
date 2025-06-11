@@ -2,6 +2,8 @@ var xr, yr;
 xr = round(x);
 yr = round(y);
 
+draw_set_alpha(global.opacityHPAmmoText / 100);
+
 // Health Text
 if (global.healthTextSentry != 0 and (ownerPlayer == global.myself or global.healthTextSentry == 1))
 {
@@ -82,3 +84,4 @@ if (global.healthTextSentry != 0 and (ownerPlayer == global.myself or global.hea
 
 
 draw_set_color(c_white);
+draw_set_alpha(1);

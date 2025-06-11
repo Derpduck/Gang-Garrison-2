@@ -5,8 +5,7 @@ yr = argument1;
 ybaseoffset = 25;
 barHeight = 5;
 
-draw_set_alpha(1);
-//draw_set_color(c_white);
+draw_set_alpha(global.opacityInfoBars / 100);
 
 // Health Bar
 if (player != global.myself or global.showHealthBar)
@@ -131,5 +130,5 @@ if (global.sandwichBar != 0 and (player == global.myself or global.sandwichBar =
     barCount += 1;
 }
 
-//draw_set_color(c_white);
+draw_set_alpha(1);
 return barCount;

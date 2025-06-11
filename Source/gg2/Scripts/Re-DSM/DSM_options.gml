@@ -51,6 +51,8 @@ global.deathInfo = DSM_add_option("HUD", "Show Death Info Panel", 1);
 global.cycleBadges = DSM_add_option("HUD", "Cycle Through Name Badges", 1);
 
 // HUD Opacity
+global.opacityInfoBars = DSM_add_option("Opacity", "Info Bars", 100, true, 0, true, 100);
+global.opacityHPAmmoText = DSM_add_option("Opacity", "HP & Ammo Text", 100, true, 0, true, 100);
 global.opacityKillLogBackground = DSM_add_option("Opacity", "Kill Log Background", 100, true, 0, true, 100);
 global.opacityKillLogForeground = DSM_add_option("Opacity", "Kill Log Foreground", 100, true, 0, true, 100);
 global.opacityTimerBackground = DSM_add_option("Opacity", "Timer Background", 100, true, 0, true, 100);
