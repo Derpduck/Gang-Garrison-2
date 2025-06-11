@@ -60,6 +60,10 @@ menu_addedit_num_percent("Healer HUD Foreground Opacity:", "global.opacityHealin
     DSM_write_ini("Opacity", "Healing Foreground", argument0);
 ', 100);
 
+menu_addedit_num_percent("Healer Radar Opacity:", "global.opacityHealerRadar", '
+    DSM_write_ini("Opacity", "Healer Radar", argument0);
+', 100);
+
 
 menu_divider("General HUDs");
 

@@ -13,6 +13,7 @@
 	- Ammo HUD
 	- Class-specifc HUDs
 	- Healing HUD
+	- Healer Radar
 	- Scoreboard
 	- Kill Log
 	- Timer

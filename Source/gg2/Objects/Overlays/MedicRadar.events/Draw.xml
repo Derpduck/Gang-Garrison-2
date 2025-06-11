@@ -28,10 +28,12 @@ if(global.myself.team==TEAM_RED) {
     draw_set_color(c_blue);
 }
 
+draw_set_alpha(global.opacityHealerRadar / 100);
+
 with(Character) {
     var bubbleImage, bubbleAlpha, theta, unknown, cornerDegree;
     bubbleImage = bubble.image_index;
-    bubbleAlpha = bubble.image_alpha;
+    bubbleAlpha = bubble.image_alpha * (global.opacityHealerRadar / 100);
     cornerDegree = arcsin(.6);
     if(     player.team == global.myself.team &amp;&amp;
             bubble.visible &amp;&amp;

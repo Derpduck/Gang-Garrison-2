@@ -61,6 +61,7 @@ global.opacityClassHudBackground = DSM_add_option("Opacity", "Class HUD Backgrou
 global.opacityClassHudForeground = DSM_add_option("Opacity", "Class HUD Foreground", 100, true, 0, true, 100);
 global.opacityHealingBackground = DSM_add_option("Opacity", "Healing Background", 100, true, 0, true, 100);
 global.opacityHealingForeground = DSM_add_option("Opacity", "Healing Foreground", 100, true, 0, true, 100);
+global.opacityHealerRadar = DSM_add_option("Opacity", "Healer Radar", 100, true, 0, true, 100);
 global.opacityKillLogBackground = DSM_add_option("Opacity", "Kill Log Background", 100, true, 0, true, 100);
 global.opacityKillLogForeground = DSM_add_option("Opacity", "Kill Log Foreground", 100, true, 0, true, 100);
 global.opacityTimerBackground = DSM_add_option("Opacity", "Timer Background", 100, true, 0, true, 100);
