@@ -9,9 +9,12 @@
 - Added opacity options for various HUD elements:
 	- Kill log
 	- Timer
+	- Gamemodes
+	- Healing HUD
 
 ### Damage Indicator
 - Added opacity option
+- Hitsound no longer plays on self damage
 
 ### Bug Fixes
 - Fixed cycle badges option not working for players other than yourself

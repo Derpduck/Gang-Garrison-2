@@ -16,7 +16,7 @@ drawx = xoffset+xsize/2 - (global.totalControlPoints - 1)/2*60;
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_set_alpha(1);
+draw_set_alpha(global.opacityGamemodeForeground / 100);
 
 for (i=1; i<= global.totalControlPoints; i+=1)
 {
@@ -31,19 +31,19 @@ for (i=1; i<= global.totalControlPoints; i+=1)
         teamoffset = 0;
 
     if (global.cp[i].capping != 0)
-        draw_sprite_ext(ControlPointStatusS, teamoffset+floor(global.cp[i].capping/global.cp[i].capTime*30), drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+        draw_sprite_ext(ControlPointStatusS, teamoffset+floor(global.cp[i].capping/global.cp[i].capTime*30), drawx, yoffset+ysize-40, 3, 3, 0, c_white, global.opacityGamemodeBackground / 100);
     else if (global.cp[i].capping == 0)
-        draw_sprite_ext(ControlPointStatusS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+        draw_sprite_ext(ControlPointStatusS, teamoffset, drawx, yoffset+ysize-40, 3, 3, 0, c_white, global.opacityGamemodeBackground / 100);
     if (global.cp[i].locked)
     {
         if (cpUnlock >= 150 or cpUnlock == 0)
-            draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+            draw_sprite_ext(ControlPointLockS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, global.opacityGamemodeForeground / 100);
         else if (cpUnlock > 0)
             draw_text_transformed(drawx+2, yoffset+ysize-38, ceil(cpUnlock/30), 3, 3, 0);
     }
     else if (global.cp[i].cappers > 0 and not global.cp[i].locked)
     {
-        draw_sprite_ext(ControlPointCappersS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, 1);
+        draw_sprite_ext(ControlPointCappersS, 0, drawx, yoffset+ysize-40, 3, 3, 0, c_white, global.opacityGamemodeForeground / 100);
         draw_set_color(c_black);
         draw_text_transformed(drawx+13, yoffset+ysize-38, string(global.cp[i].cappers), 1.5, 1.5, 0);
     }

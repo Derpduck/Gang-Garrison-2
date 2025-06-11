@@ -32,9 +32,9 @@
     bluex = xoffset+xsize/2+60;
     bluey = yoffset+ysize-50;
     
-    draw_set_alpha(1);
+    draw_set_alpha(global.opacityGamemodeForeground / 100);
     
-    draw_sprite_ext(sprite_index, 0, xoffset+xsize/2+1, yoffset+ysize+100, 3, 3, 0, c_white, 1);
+    draw_sprite_ext(sprite_index, 0, xoffset+xsize/2+1, yoffset+ysize+100, 3, 3, 0, c_white, global.opacityGamemodeBackground / 100);
 
     draw_set_color(c_black);
     draw_set_valign(fa_middle);
@@ -52,7 +52,7 @@
     {
         if (global.caplimit &gt; 999)
         {
-            draw_sprite_ext(infinity,0,xoffset+xsize/2-3, yoffset+ysize-17, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(infinity,0,xoffset+xsize/2-3, yoffset+ysize-17, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
         }
         else
         {
@@ -112,20 +112,20 @@
     }
     
     if (blueintelstatus == 0)
-        draw_sprite_ext(IntelReturnTimeS,max(1,floor(IntelligenceBlue.alarm[0]/900*17*global.delta_factor)),bluex-26,bluey-27,3,3,0,c_white,1);
+        draw_sprite_ext(IntelReturnTimeS,max(1,floor(IntelligenceBlue.alarm[0]/900*17*global.delta_factor)),bluex-26,bluey-27,3,3,0,c_white,global.opacityGamemodeForeground / 100);
     else
-        draw_sprite_ext(IntelReturnTimeS,16,bluex-26,bluey-27,3,3,0,c_white,1);
+        draw_sprite_ext(IntelReturnTimeS,16,bluex-26,bluey-27,3,3,0,c_white,global.opacityGamemodeForeground / 100);
     
     if (redintelstatus == 0)
-        draw_sprite_ext(IntelReturnTimeS,max(18,floor(IntelligenceRed.alarm[0]/900*17*global.delta_factor)+17),redx-27,redy-27,3,3,0,c_white,1);
+        draw_sprite_ext(IntelReturnTimeS,max(18,floor(IntelligenceRed.alarm[0]/900*17*global.delta_factor)+17),redx-27,redy-27,3,3,0,c_white,global.opacityGamemodeForeground / 100);
     else
-        draw_sprite_ext(IntelReturnTimeS,33,redx-27,redy-27,3,3,0,c_white,1);
+        draw_sprite_ext(IntelReturnTimeS,33,redx-27,redy-27,3,3,0,c_white,global.opacityGamemodeForeground / 100);
     
-    draw_sprite_ext(IntelArrowS, 0, redx, redy, 3, 3, reddir, c_white, 1);
-    draw_sprite_ext(IntelArrowS, 1, bluex, bluey, 3, 3, bluedir, c_white, 1);
+    draw_sprite_ext(IntelArrowS, 0, redx, redy, 3, 3, reddir, c_white, global.opacityGamemodeForeground / 100);
+    draw_sprite_ext(IntelArrowS, 1, bluex, bluey, 3, 3, bluedir, c_white, global.opacityGamemodeForeground / 100);
     
-    draw_sprite_ext(IntelStatusS, redintelstatus, redx, redy, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(IntelStatusS, blueintelstatus, bluex, bluey, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(IntelStatusS, redintelstatus, redx, redy, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
+    draw_sprite_ext(IntelStatusS, blueintelstatus, bluex, bluey, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
     
     draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
 </argument>

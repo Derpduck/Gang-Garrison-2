@@ -1,11 +1,12 @@
 // argument0 = Source player
 // argument1 = Damage victim instance ID
 // argument2 = Damage dealt
-var sourcePlayer, damageVictim, damageDealt, indicatorType;
+var sourcePlayer, damageVictim, damageDealt, indicatorType, selfDamage;
 sourcePlayer = argument0;
 damageVictim = argument1;
 damageDealt = argument2;
 indicatorType = 0;
+selfDamage = false;
 
 // Damage indicator disabled or no damage dealt
 if (!global.damageIndicator or damageDealt <= 0)
@@ -25,11 +26,16 @@ if (sourcePlayer != global.myself)
         exit;
 }
 
-// Don't show self damage unless enabled
-if (!global.damageIndicatorSelf and global.myself.object != -1)
+if (damageVictim.object_index == Character or object_is_ancestor(damageVictim.object_index, Character)) 
 {
-    if (damageVictim == global.myself.object)
-        exit;
+    if (damageVictim.player == global.myself)
+        selfDamage = true;
+}
+
+// Don't show self damage unless enabled
+if (!global.damageIndicatorSelf and selfDamage)
+{
+    exit;
 }
 
 var indicator;
@@ -75,21 +81,14 @@ else
     ds_map_add(indicator.damageMapX, current_time, indicator.lastx);
     ds_map_add(indicator.damageMapY, current_time, indicator.lasty);
     
-    if (indicator.lastDingTime <= 0)
+    if (indicator.lastDingTime <= 0 and !selfDamage)
     {
         playsound_volume(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound, global.damageIndicatorVolume / 100);
         indicator.lastDingTime = 5;
     }
 }
 
-if (global.myself.object != -1)
-{
-    if (damageVictim != global.myself.object)
-        indicator.indicatorColor = get_color_option(global.damageIndicatorColor);
-    else
-        indicator.indicatorColor = get_color_option(global.damageIndicatorColorSelf);
-}
-else
-{
+if (!selfDamage)
     indicator.indicatorColor = get_color_option(global.damageIndicatorColor);
-}
+else
+    indicator.indicatorColor = get_color_option(global.damageIndicatorColorSelf);

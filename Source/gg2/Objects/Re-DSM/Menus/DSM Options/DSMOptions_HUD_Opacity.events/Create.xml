@@ -34,6 +34,18 @@ menu_addedit_num_percent("Timer Background Opacity:", "global.opacityTimerBackgr
 menu_addedit_num_percent("Timer Foreground Opacity:", "global.opacityTimerForeground", '
     DSM_write_ini("Opacity", "Timer Foreground", argument0);
 ', 100);
+menu_addedit_num_percent("Gamemode Background Opacity:", "global.opacityGamemodeBackground", '
+    DSM_write_ini("Opacity", "Gamemode Background", argument0);
+', 100);
+menu_addedit_num_percent("Gamemode Foreground Opacity:", "global.opacityGamemodeForeground", '
+    DSM_write_ini("Opacity", "Gamemode Foreground", argument0);
+', 100);
+menu_addedit_num_percent("Healing Background Opacity:", "global.opacityHealingBackground", '
+    DSM_write_ini("Opacity", "Healing Background", argument0);
+', 100);
+menu_addedit_num_percent("Healing Foreground Opacity:", "global.opacityHealingForeground", '
+    DSM_write_ini("Opacity", "Healing Foreground", argument0);
+', 100);
 
 DSM_menu_tabs();
 </argument>
