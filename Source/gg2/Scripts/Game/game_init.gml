@@ -299,6 +299,16 @@ global.launchMap = "";
         {
             global.headlessMode = 1;
         }
+        else if (parameter_string(a) == "-30fps")
+        {
+            global.frameratekind = 0;
+            global.game_fps = 30;
+        }
+        else if (parameter_string(a) == "-60fps")
+        {
+            global.frameratekind = 1;
+            global.game_fps = 60;
+        }
     }
     
     if (doubleCheck == 2)
