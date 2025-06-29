@@ -22,10 +22,20 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_divider("Gamemodes")
+menu_divider("CTF")
 
 menu_addedit_boolean("Show Intel Carrier Class:", "global.intelCarrierClass", '
     DSM_write_ini("HUD", "Show Intel Carrier Class", argument0);
+');
+
+menu_divider("Control Points")
+
+menu_addedit_boolean("Show Capture %:", "global.cpCapturePercent", '
+    DSM_write_ini("HUD", "Show CP Capture %", argument0);
+');
+
+menu_addedit_boolean("Show Remaining Capture Time:", "global.cpCaptureTime", '
+    DSM_write_ini("HUD", "Show Remaining Capture Time", argument0);
 ');
 
 menu_divider("Miscellaneous")

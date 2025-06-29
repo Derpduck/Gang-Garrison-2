@@ -35,7 +35,7 @@ draw_sprite_ext(MenuLogoDSMS, 0, 32, view_hview[0] - 84, 4, 4, 0, c_white, 1);
 
 // Re-DSM Version
 var stringText, offset;
-stringText = DSM_VERSION_STRING;
+stringText = "v" + string(DSM_VERSION);
 offset = 8;
 
 draw_set_color(make_color_rgb(64, 64, 64));
