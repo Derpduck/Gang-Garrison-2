@@ -1,3 +1,9 @@
+## V7 (WIP)
+### HUD
+- Added option to show control point capture %
+- Added optioin to show remaining control point capture time
+
+
 ## V6 (2025/06/11)
 ### Console
 - Added options to change the access level of console commands, allowing the host to change which commands can be used by RCON users
