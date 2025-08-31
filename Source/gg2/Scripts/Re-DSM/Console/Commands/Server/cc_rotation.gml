@@ -11,13 +11,13 @@ if (console_validate_args(2, arg[0], "rotation <new rotation> <optional: shuffle
 
 if (swap_map_rotation(arg[1], shuffle))
 {
-    console_print(COL_ORANGE + "Map rotation: " + COL_YELLOW + arg[1] + COL_ORANGE + " loaded successfully");
+    console_print(COL_ORANGE + "Map rotation: " + COL_YELLOW + arg[1] + COL_ORANGE + " loaded successfully", rconPlayer);
     if (shuffle)
         console_print(COL_ORANGE + "Map rotation was shuffled");
 }
 else
 {
-    console_print(COL_RED + "[ERROR] Rotation: " + COL_YELLOW + arg[1] + COL_RED + " could not be found");
+    console_print(COL_RED + "[ERROR] Rotation: " + COL_YELLOW + arg[1] + COL_RED + " could not be found", rconPlayer);
 }
 ', '
 console_print(COL_ORANGE + "Syntax: rotation <new rotation> <optional: shuffle>");

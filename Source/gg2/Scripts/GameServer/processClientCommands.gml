@@ -426,9 +426,9 @@ while(commandLimitRemaining > 0) {
                 }
                 
                 // Let player know command was executed successfully
-                console_send_command(rconCommand, player);
                 write_ubyte(player.socket, DSM_RCON_CMD);
                 write_ubyte(player.socket, RCON_CMD_SUCCESS);
+                console_send_command(rconCommand, player);
             }
             else
             {
@@ -438,6 +438,7 @@ while(commandLimitRemaining > 0) {
                 break
             }
             break;
+        
         case DSM_HANDSHAKE:
             // -1: No DSM
             // 0: Old DSM

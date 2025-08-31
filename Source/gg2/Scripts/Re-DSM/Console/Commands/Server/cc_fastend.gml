@@ -2,7 +2,7 @@ console_add_command('fastend', '
 if (console_validate_args(1, arg[0], "fastend <team>", true) == false)
 {
     global.winners = TEAM_SPECTATOR;
-    console_print(COL_ORANGE + "Round has been ended, next map: " + COL_YELLOW + get_next_map());
+    console_print(COL_ORANGE + "Round has been ended, next map: " + COL_YELLOW + get_next_map(), rconPlayer);
 }
 else
 {
@@ -12,17 +12,17 @@ else
     if (winningTeam == TEAM_RED)
     {
         global.winners = winningTeam;
-        console_print(COL_ORANGE + "Round has been ended, " + COL_RED_LT + "RED Team" + COL_ORANGE + " wins, next map: " + COL_YELLOW + get_next_map());
+        console_print(COL_ORANGE + "Round has been ended, " + COL_RED_LT + "RED Team" + COL_ORANGE + " wins, next map: " + COL_YELLOW + get_next_map(), rconPlayer);
     }
     else if (winningTeam == TEAM_BLUE)
     {
         global.winners = winningTeam;
-        console_print(COL_ORANGE + "Round has been ended, " + COL_BLUE_LT + "BLUE Team" + COL_ORANGE + " wins, next map: " + COL_YELLOW + get_next_map());
+        console_print(COL_ORANGE + "Round has been ended, " + COL_BLUE_LT + "BLUE Team" + COL_ORANGE + " wins, next map: " + COL_YELLOW + get_next_map(), rconPlayer);
     }
     else
     {
         global.winners = TEAM_SPECTATOR;
-        console_print(COL_ORANGE + "Round has been ended, next map: " + COL_YELLOW + get_next_map());
+        console_print(COL_ORANGE + "Round has been ended, next map: " + COL_YELLOW + get_next_map(), rconPlayer);
     }
 }
 

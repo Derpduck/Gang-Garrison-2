@@ -1,4 +1,8 @@
 ## V7 (WIP)
+### Console
+- Console output is now sent to RCON users for commands they send
+- Fixed misplaced colored text on DSM version print
+
 ### HUD
 - Added option to show control point capture %
 - Added optioin to show remaining control point capture time

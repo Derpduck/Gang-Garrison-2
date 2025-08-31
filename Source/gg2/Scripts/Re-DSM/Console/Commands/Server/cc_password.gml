@@ -3,18 +3,18 @@ if (console_validate_args(1, arg[0], "password <new password>", true) == false)
 {
     // No password given, remove the password
     global.serverPassword = "";
-    console_print(COL_ORANGE + "Server password has been removed");
+    console_print(COL_ORANGE + "Server password has been removed", rconPlayer);
 }
 else
 {
     if (global.serverPassword == arg[1])
     {
-        console_print(COL_ORANGE + "Server password is already set to: " + COL_YELLOW + arg[1]);
+        console_print(COL_ORANGE + "Server password is already set to: " + COL_YELLOW + arg[1], rconPlayer);
     }
     else
     {
         global.serverPassword = string(arg[1]);
-        console_print(COL_ORANGE + "Server password set to: " + COL_YELLOW + arg[1]);
+        console_print(COL_ORANGE + "Server password set to: " + COL_YELLOW + arg[1], rconPlayer);
     }
 }
 ', '

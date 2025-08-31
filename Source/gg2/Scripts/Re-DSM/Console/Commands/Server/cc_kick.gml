@@ -5,7 +5,7 @@ var player;
 player = console_get_player(arg[1]);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1], rconPlayer);
     break;
 }
 else
@@ -13,7 +13,7 @@ else
     write_ubyte(player.socket, KICK);
     write_ubyte(player.socket, DSM_KICK_ADMIN);
     player.kicked = true;
-    console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was kicked");
+    console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was kicked", rconPlayer);
 }
 ', '
 console_print(COL_ORANGE + "Syntax: kick <player>");

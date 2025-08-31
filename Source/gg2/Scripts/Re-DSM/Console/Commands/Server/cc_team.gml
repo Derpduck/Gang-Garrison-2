@@ -5,7 +5,7 @@ var player;
 player = console_get_player(arg[1], true);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1], rconPlayer);
     break;
 }
 else
@@ -16,23 +16,23 @@ else
     
     if (newTeam == -1)
     {
-        console_print(COL_RED + "[ERROR] Invalid team: " + COL_YELLOW + arg[2]);
+        console_print(COL_RED + "[ERROR] Invalid team: " + COL_YELLOW + arg[2], rconPlayer);
         exit;
     }
     
     if (oldTeam == newTeam)
     {
-        console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " is already on team: " + get_team_color_code(newTeam) + get_team_string(newTeam));
+        console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " is already on team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
         exit;
     }
     
     if (change_player_team(player, newTeam, true))
     {
-        console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " was moved to team: " + get_team_color_code(newTeam) + get_team_string(newTeam));
+        console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " was moved to team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
     }
     else
     {
-        console_print(COL_ORANGE + "Unable to move :" + get_team_color_code(oldTeam) + player.name + COL_ORANGE + " to team: " + get_team_color_code(newTeam) + get_team_string(newTeam));
+        console_print(COL_ORANGE + "Unable to move :" + get_team_color_code(oldTeam) + player.name + COL_ORANGE + " to team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
     }
 }
 ', '

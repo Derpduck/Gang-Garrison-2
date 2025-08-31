@@ -5,7 +5,7 @@ var player;
 player = console_get_player(arg[1], true);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1], rconPlayer);
     break;
 }
 else
@@ -14,11 +14,11 @@ else
     {
         player.object.x = mouse_x;
         player.object.y = mouse_y;
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was teleported to: " + COL_YELLOW + string(mouse_x) + "," + string(mouse_y));
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was teleported to: " + COL_YELLOW + string(mouse_x) + "," + string(mouse_y), rconPlayer);
     }
     else
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive", rconPlayer);
     }
 }
 ', '

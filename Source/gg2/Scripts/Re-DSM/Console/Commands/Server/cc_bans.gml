@@ -1,7 +1,7 @@
 console_add_command('bans', '
 var banMapKey;
 banMapKey = ds_map_find_first(global.bannedUsers);
-console_print(COL_YELLOW + string(ds_map_size(global.bannedUsers)) + COL_ORANGE + " player(s) currently banned")
+console_print(COL_YELLOW + string(ds_map_size(global.bannedUsers)) + COL_ORANGE + " player(s) currently banned", rconPlayer)
 
 for (i=0; i<ds_map_size(global.bannedUsers); i+=1)
 {
@@ -14,7 +14,7 @@ for (i=0; i<ds_map_size(global.bannedUsers); i+=1)
     else
         isTempBan = "";
     
-    console_print(COL_ORANGE + "IP: " + COL_WHITE + banMapKey + ipSpaces + COL_ORANGE + " | " + COL_WHITE + playerName + isTempBan);
+    console_print(COL_ORANGE + "IP: " + COL_WHITE + banMapKey + ipSpaces + COL_ORANGE + " | " + COL_WHITE + playerName + isTempBan, rconPlayer);
     
     banMapKey = ds_map_find_next(global.bannedUsers, banMapKey);
 };

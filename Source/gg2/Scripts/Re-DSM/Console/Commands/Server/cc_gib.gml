@@ -5,7 +5,7 @@ var player;
 player = console_get_player(arg[1], true);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1], rconPlayer);
     break;
 }
 else
@@ -15,11 +15,11 @@ else
         sendEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF_GIB);
         doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF_GIB);
         player.alarm[5] = global.Server_Respawntime / global.delta_factor;
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was gibbed");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was gibbed", rconPlayer);
     }
     else
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive", rconPlayer);
     }
 }
 ', '

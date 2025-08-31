@@ -710,6 +710,10 @@ do {
             
             ds_map_replace(global.consoleCommandMapRules, commandName, commandAccessLevel);
             break;
+        
+        case DSM_RCON_PRINT:
+            console_print(COL_PINK + "[RCON CMD] " + receivestring(global.serverSocket, 1));
+            break;
 
         default:
             promptRestartOrQuit("The Server sent unexpected data.");

@@ -44,7 +44,7 @@ for (i=0; i<ds_list_size(scramblePlayers); i+=1)
 };
 
 ds_list_destroy(scramblePlayers);
-console_print(COL_ORANGE + "Teams have been scrambled");
+console_print(COL_ORANGE + "Teams have been scrambled", rconPlayer);
 ', '
 console_print(COL_ORANGE + "Syntax: scramble");
 console_print(COL_ORANGE + "Randomly shuffles the teams of all active players");

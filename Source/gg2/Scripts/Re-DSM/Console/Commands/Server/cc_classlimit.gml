@@ -4,7 +4,7 @@ if (console_validate_args(2, arg[0], "classlimit <class> <new limit>") == false)
 // Check if new limit given is actually a number
 if (!string_is_real(arg[2]))
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[2] + COL_RED + " is not a valid number");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[2] + COL_RED + " is not a valid number", rconPlayer);
     break;
 }
 
@@ -80,19 +80,19 @@ if (real_is_int(newLimit))
         {
             global.classlimits[i] = newLimit;
         }
-        console_print(COL_YELLOW + "All" + COL_ORANGE + " classlimits changed to: " + COL_YELLOW + string(newLimit));
+        console_print(COL_YELLOW + "All" + COL_ORANGE + " classlimits changed to: " + COL_YELLOW + string(newLimit), rconPlayer);
         exit;
     default:
-        console_print(COL_RED + "[ERROR] " + COL_YELLOW + class + COL_RED + " is not a valid class");
+        console_print(COL_RED + "[ERROR] " + COL_YELLOW + class + COL_RED + " is not a valid class", rconPlayer);
         exit;
     }
     
     global.classlimits[class] = newLimit;
-    console_print(COL_YELLOW + classname(class) + COL_ORANGE + " classlimit changed to: " + COL_YELLOW + string(newLimit));
+    console_print(COL_YELLOW + classname(class) + COL_ORANGE + " classlimit changed to: " + COL_YELLOW + string(newLimit), rconPlayer);
 }
 else
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[2] + COL_RED + " is not a valid classlimit number");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[2] + COL_RED + " is not a valid classlimit number", rconPlayer);
 }
 ', '
 console_print(COL_ORANGE + "Syntax: classlimit <class> <new limit>");

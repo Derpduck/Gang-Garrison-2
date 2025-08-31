@@ -5,9 +5,9 @@ var playerIP;
 playerIP = arg[1];
 
 if (unban_user(playerIP))
-    console_print(COL_YELLOW + playerIP + COL_ORANGE + " was unbanned");
+    console_print(COL_YELLOW + playerIP + COL_ORANGE + " was unbanned", rconPlayer);
 else
-    console_print(COL_YELLOW + playerIP + COL_ORANGE + " is not banned");
+    console_print(COL_YELLOW + playerIP + COL_ORANGE + " is not banned", rconPlayer);
 
 ban_remove_from_file(playerIP);
 ', '

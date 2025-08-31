@@ -4,7 +4,7 @@ if (console_validate_args(1, arg[0], "time <minutes>") == false) exit;
 // Check if number given is actually a number
 if (!string_is_real(arg[1]))
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number", rconPlayer);
     break;
 }
 
@@ -14,7 +14,7 @@ newTime = real(arg[1]);
 // Check if time is valid
 if (newTime <= 0)
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid time");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid time", rconPlayer);
     break;
 }
 
@@ -28,7 +28,7 @@ with (HUD)
 
 GameServer.syncTimer = 1;
 
-console_print(COL_ORANGE + "Timer set to: " + COL_YELLOW + format_timer_value(newTime));
+console_print(COL_ORANGE + "Timer set to: " + COL_YELLOW + format_timer_value(newTime), rconPlayer);
 
 ', '
 console_print(COL_ORANGE + "Syntax: time <minutes>");

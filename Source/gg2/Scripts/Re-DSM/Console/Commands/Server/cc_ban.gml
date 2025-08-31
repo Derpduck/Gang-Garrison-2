@@ -5,19 +5,19 @@ var player;
 player = console_get_player(arg[1]);
 if (player == -1)
 {
-    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1]);
+    console_print(COL_RED + "[ERROR] Invalid player: " + COL_YELLOW + arg[1], rconPlayer);
     break;
 }
 else
 {
     if (ban_user(player, 0))
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was banned");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was banned", rconPlayer);
     }
     else
     {
         // This should never be possible
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is already banned");
+        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is already banned", rconPlayer);
     }
     
     ban_write_to_file(player);

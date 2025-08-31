@@ -148,6 +148,7 @@
   <constant name="DSM_RCON_CMD" value="71"/>
   <constant name="DSM_HANDSHAKE" value="72"/>
   <constant name="DSM_ACCESS_LEVELS" value="73"/>
+  <constant name="DSM_RCON_PRINT" value="74"/>
   <constant name="RCON_LOGIN_SUCCESS" value="1"/>
   <constant name="RCON_LOGIN_FAILED" value="2"/>
   <constant name="RCON_LOGIN_REMOVED" value="3"/>

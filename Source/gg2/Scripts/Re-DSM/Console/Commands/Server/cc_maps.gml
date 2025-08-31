@@ -17,13 +17,13 @@ for (i=0; i<ds_list_size(global.map_rotation); i+=1)
         if (ds_list_find_value(global.map_rotation, i) != global.currentMap)
         {
             // Current map has been manually changed to by console
-            console_print(COL_ORANGE + string(i + 1) + ": " + ds_list_find_value(global.map_rotation, i));
-            console_print(COL_ORANGE + "CON: " + COL_GREEN + global.currentMap + COL_YELLOW + " [CURRENT MAP]");
+            console_print(COL_ORANGE + string(i + 1) + ": " + ds_list_find_value(global.map_rotation, i), rconPlayer);
+            console_print(COL_ORANGE + "CON: " + COL_GREEN + global.currentMap + COL_YELLOW + " [CURRENT MAP]", rconPlayer);
         }
         else
         {
             // Highlight current map
-            console_print(COL_ORANGE + string(i + 1) + ": " + COL_GREEN + ds_list_find_value(global.map_rotation, i) + COL_YELLOW + " [CURRENT MAP]");
+            console_print(COL_ORANGE + string(i + 1) + ": " + COL_GREEN + ds_list_find_value(global.map_rotation, i) + COL_YELLOW + " [CURRENT MAP]", rconPlayer);
         }
     }
     else
@@ -34,12 +34,12 @@ for (i=0; i<ds_list_size(global.map_rotation); i+=1)
             if (global.nextMap != global.currentMap and global.consoleMapChangeQueued)
             {
                 // Next map has been manually set by console
-                console_print(COL_ORANGE + "CON: " + global.nextMap);
+                console_print(COL_ORANGE + "CON: " + global.nextMap, rconPlayer);
             }
         }
         
         // Any other maps in the rotation
-        console_print(COL_ORANGE + string(i + 1) + ": " + ds_list_find_value(global.map_rotation, i));
+        console_print(COL_ORANGE + string(i + 1) + ": " + ds_list_find_value(global.map_rotation, i), rconPlayer);
     }
 };
 ', '

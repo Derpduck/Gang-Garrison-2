@@ -3,7 +3,7 @@ if (console_validate_args(1, arg[0], "slots <player limit>") == false) exit;
 
 if (!string_is_real(arg[1]))
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number", rconPlayer);
     break;
 }
 
@@ -15,7 +15,7 @@ if (newSlots >= 1 - global.dedicatedMode and real_is_int(newSlots))
     if (newSlots > 48)
     {
         newSlots = 48;
-        console_print(COL_RED + "WARNING: Player limit must be less than 48; limiting slots to 48");
+        console_print(COL_RED + "WARNING: Player limit must be less than 48; limiting slots to 48", rconPlayer);
     }
 
     var totalClasslimits;
@@ -26,22 +26,22 @@ if (newSlots >= 1 - global.dedicatedMode and real_is_int(newSlots))
     
     if (totalClasslimits < newSlots div 2)
     {
-        console_print(COL_RED + "WARNING: Player limit is too low for current classlimits");
+        console_print(COL_RED + "WARNING: Player limit is too low for current classlimits", rconPlayer);
     }
     
     if (newSlots == global.playerLimit)
     {
-        console_print(COL_ORANGE + "Player limit is already set to: " + COL_YELLOW + string(newSlots));
+        console_print(COL_ORANGE + "Player limit is already set to: " + COL_YELLOW + string(newSlots), rconPlayer);
     }
     else
     {
         global.playerLimit = newSlots;
-        console_print(COL_ORANGE + "Player limit set to: " + COL_YELLOW + string(newSlots));
+        console_print(COL_ORANGE + "Player limit set to: " + COL_YELLOW + string(newSlots), rconPlayer);
     }
 }
 else
 {
-    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number of slots");
+    console_print(COL_RED + "[ERROR] " + COL_YELLOW + arg[1] + COL_RED + " is not a valid number of slots", rconPlayer);
 }
 ', '
 console_print(COL_ORANGE + "Syntax: slots <player limit>");
