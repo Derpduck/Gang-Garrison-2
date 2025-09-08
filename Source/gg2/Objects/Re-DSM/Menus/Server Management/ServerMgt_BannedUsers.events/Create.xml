@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != Menu)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+if (global.isHost or room == Menu)
+{
+    var bannedUsersKey;
+    
+    // Get all permanently banned users
+    bannedUsersKey = ds_map_find_first(global.bannedUsers);
+    menu_divider("Permanent Bans");
+    
+    for (i=0; i&lt;ds_map_size(global.bannedUsers); i+=1)
+    {
+        if (ds_map_exists(global.bannedSavedUsers, bannedUsersKey))
+        {
+            menu_addedit_script(bannedUsersKey, ds_map_find_value(global.bannedUsers, bannedUsersKey), '
+                var question;
+                question = show_question("Would you like to unban this user?");
+                if (question)
+                {
+                    unban_user(item_name[virtualitem]);
+                    ban_remove_from_file(item_name[virtualitem]);
+                    instance_destroy();
+                    instance_create(x,y,ServerMgt_BannedUsers);
+                }
+                
+                return item_name[virtualitem];
+            ');
+        }
+        
+        bannedUsersKey = ds_map_find_next(global.bannedUsers, bannedUsersKey);
+    };
+    
+    // Get all temporarily banned users
+    bannedUsersKey = ds_map_find_first(global.bannedUsers);
+    menu_divider("Temporary Bans");
+    
+    for (i=0; i&lt;ds_map_size(global.bannedUsers); i+=1)
+    {
+        if (!ds_map_exists(global.bannedSavedUsers, bannedUsersKey))
+        {
+            menu_addedit_script(bannedUsersKey, ds_map_find_value(global.bannedUsers, bannedUsersKey), '
+                var question;
+                question = show_question("Would you like to unban this user?");
+                if (question)
+                {
+                    unban_user(item_name[virtualitem]);
+                    instance_destroy();
+                    instance_create(x,y,ServerMgt_BannedUsers);
+                }
+                
+                return item_name[virtualitem];
+            ');
+        }
+        
+        bannedUsersKey = ds_map_find_next(global.bannedUsers, bannedUsersKey);
+    }
+}
+
+ServerMgt_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

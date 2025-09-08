@@ -1,5 +1,6 @@
 // Get all banned users from file, create a file if it doesn't exist
-global.bannedSavedUsers = ds_map_create();
+ds_map_clear(global.bannedUsers);
+ds_map_clear(global.bannedSavedUsers);
 
 if (file_exists(working_directory + "\DSM\Banned_Users.txt"))
 {

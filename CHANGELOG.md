@@ -1,6 +1,12 @@
 ## V7 (WIP)
+### Server Management
+- Added menu to manage banned users
+	- View all currently banned users
+	- Select a user to unban them
+
 ### Console
 - Console output is now sent to RCON users for commands they send
+	- `maps` command can now be used by RCON users
 - Fixed misplaced colored text on DSM version print
 
 ### HUD

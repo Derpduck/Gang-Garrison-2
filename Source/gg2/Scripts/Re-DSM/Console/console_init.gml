@@ -24,6 +24,11 @@ global.consoleTextPadding = 6;
 // RCON
 global.isRCON = false;
 
+// Bans
+global.bannedUsers = ds_map_create();
+global.bannedSavedUsers = ds_map_create();
+bans_get_users_from_file();
+
 // Strings within console commands
 globalvar SINGLE_QUOTE, DOUBLE_QUOTE;
 SINGLE_QUOTE = chr(39);

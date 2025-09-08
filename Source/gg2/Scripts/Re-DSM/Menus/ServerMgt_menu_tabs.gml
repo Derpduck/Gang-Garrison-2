@@ -1,3 +1,8 @@
+menu_addtablink("Banned Users", '
+    instance_destroy();
+    instance_create(x,y,ServerMgt_BannedUsers);
+');
+
 menu_addtablink("Commands", '
     instance_destroy();
     instance_create(x,y,ServerMgt_Commands);
