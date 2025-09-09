@@ -1,3 +1,8 @@
+menu_addtablink("RCON Users", '
+    instance_destroy();
+    instance_create(x,y,ServerMgt_RCONUsers);
+');
+
 menu_addtablink("Banned Users", '
     instance_destroy();
     instance_create(x,y,ServerMgt_BannedUsers);

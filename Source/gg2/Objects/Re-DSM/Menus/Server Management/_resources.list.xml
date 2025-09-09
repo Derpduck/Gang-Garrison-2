@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="ServerMgt_RCONUsers" type="RESOURCE"/>
   <resource name="ServerMgt_BannedUsers" type="RESOURCE"/>
   <resource name="ServerMgt_Commands" type="RESOURCE"/>
 </resources>

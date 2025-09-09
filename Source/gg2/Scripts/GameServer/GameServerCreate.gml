@@ -45,7 +45,6 @@
     
     // RCON
     global.isRCON = false;
-    global.rconUsers = ds_list_create();
     rcon_get_users_from_file();
     
     // Bans

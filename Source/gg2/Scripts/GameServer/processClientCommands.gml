@@ -392,11 +392,12 @@ while(commandLimitRemaining > 0) {
             {
                 // Correct password
                 if (rcon_user_add(player))
+                {
+                    rcon_write_to_file(player);
                     console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
+                }
                 else
                     console_print(COL_PINK + "[RCON LOGIN] " + player.name + " already has RCON access");
-                
-                rcon_write_to_file(player);
             }
             else
             {

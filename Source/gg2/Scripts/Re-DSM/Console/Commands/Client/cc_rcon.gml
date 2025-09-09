@@ -84,7 +84,7 @@ case "remove":
     else
         console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " does not have RCON access");
     
-    rcon_remove_from_file(player);
+    rcon_remove_from_file(player, 0);
 
     break;
 

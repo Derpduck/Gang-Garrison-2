@@ -37,7 +37,7 @@
         room_goto_fix(DSMOptionsRoom);
     ');
     menu_addlink("Server Management", '
-        instance_create(x,y,ServerMgt_BannedUsers);
+        instance_create(x,y,ServerMgt_RCONUsers);
         instance_destroy();
     ');
     if (global.rewardId != '')

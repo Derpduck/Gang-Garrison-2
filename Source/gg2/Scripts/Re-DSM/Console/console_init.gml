@@ -23,6 +23,9 @@ global.consoleTextPadding = 6;
 
 // RCON
 global.isRCON = false;
+global.rconUsers = ds_list_create();
+global.rconSavedUsers = ds_map_create();
+rcon_get_users_from_file();
 
 // Bans
 global.bannedUsers = ds_map_create();

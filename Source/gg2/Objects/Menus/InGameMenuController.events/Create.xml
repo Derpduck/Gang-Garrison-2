@@ -56,7 +56,7 @@
     {
         menu_addlink("Server Management", '
             instance_destroy();
-            instance_create(0,0,ServerMgt_BannedUsers);
+            instance_create(0,0,ServerMgt_RCONUsers);
         ');
     }
     

@@ -1,7 +1,11 @@
 // Remove RCON user from file
-var player, playerIP;
+var player, removeType, playerIP;
 player = argument0;
-playerIP = socket_remote_ip(player.socket);
+removeType = argument1;
+if (removeType == 0)
+    playerIP = socket_remote_ip(player.socket);
+else
+    playerIP = player;
 
 if (global.saveRconUsers)
 {

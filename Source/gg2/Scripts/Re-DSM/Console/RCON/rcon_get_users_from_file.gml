@@ -1,5 +1,6 @@
 // Get all saved RCON users from file, create a file if it doesn't exist
-global.rconSavedUsers = ds_map_create();
+ds_list_clear(global.rconUsers);
+ds_map_clear(global.rconSavedUsers);
 
 if (global.rconEnabled)
 {
