@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(40, 100, 200, 200, 32);
+    
+//menumode = true;
+
+if (room != Menu)
+    menu_setdimmed();
+
+menu_background(212, 24, 8, 12, 4);
+//bgtabs = true;
+
+if (room == Menu)
+{
+    menu_addlink("Play Replay", '
+        if (replay_play_file())
+        {
+            instance_destroy();
+        }
+    ');
+}
+
+if (room != Menu and global.isHost and !global.recordingReplay)
+{
+    menu_addlink("Record Replay", '
+        replay_record();
+        instance_destroy();
+        instance_create(0, 0, ReplayMenuController);
+    ');
+}
+
+if (room != Menu and global.isHost and global.recordingReplay)
+{
+    menu_addlink("Stop Recording", '
+        replay_stop_recording();
+        instance_destroy();
+        instance_create(0, 0, ReplayMenuController);
+    ');
+}
+
+if (room != Menu and global.isHost and global.playingReplay)
+{
+    /*menu_addlink("Show Replay UI", '
+        instance_destroy();
+    ');*/
+    
+    menu_addlink("Stop Replay", '
+        replay_playback_end();
+        instance_destroy();
+    ');
+}
+
+menu_addback("Back", '
+    instance_destroy();
+    if(room == Menu)
+        instance_create(0,0,MainMenuController);
+    else
+        instance_create(0,0,InGameMenuController);
+');
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

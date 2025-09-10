@@ -7,3 +7,6 @@ if (!directory_exists(working_directory + "\DSM\Logs"))
 
 if (!directory_exists(working_directory + "\DSM\Sounds"))
     directory_create(working_directory + "\DSM\Sounds");
+
+if (!directory_exists(working_directory + "\DSM\Replays"))
+    directory_create(working_directory + "\DSM\Replays");

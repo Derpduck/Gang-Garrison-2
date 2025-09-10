@@ -30,6 +30,10 @@ menu_addtablink("Console", '
     instance_destroy();
     instance_create(x,y,DSMOptions_Console);
 ');
+menu_addtablink("Replays", '
+    instance_destroy();
+    instance_create(x,y,DSMOptions_Replays);
+');
 menu_addtablink("Controls", '
     instance_destroy();
     instance_create(x,y,DSMOptions_Controls);

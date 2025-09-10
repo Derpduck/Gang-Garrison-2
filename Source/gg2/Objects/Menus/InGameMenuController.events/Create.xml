@@ -28,6 +28,8 @@
         instance_destroy();
     ');
     
+    menu_divider("");
+    
     menu_addlink("Console", '
         instance_destroy();
         if !(instance_exists(Console))
@@ -38,6 +40,13 @@
             if(!instance_exists(ScoreTableController)) instance_create(0,0,ScoreTableController);
             ScoreTableController.showadmin = true;
             instance_destroy();
+        ');
+    }
+        if (global.isHost or global.playingReplay)
+    {
+        menu_addlink("Replays", '
+            instance_destroy();
+            instance_create(x,y,ReplayMenuController);
         ');
     }
     
@@ -91,6 +100,7 @@
     menu_addlink("Quit Game", '
         if (show_question("Do you really want to quit?")) {
             console_save_log();
+            replay_stop_recording();
             game_end();
         }
     ');

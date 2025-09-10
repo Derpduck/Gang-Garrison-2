@@ -1,7 +1,7 @@
 // Color codes for console
 
 globalvar COL_WHITE, COL_BLACK, COL_GRAY,
-COL_RED, COL_RED_LT, COL_ORANGE, COL_YELLOW, COL_GOLD,
+COL_RED, COL_RED_LT, COL_RED_DK, COL_ORANGE, COL_YELLOW, COL_GOLD,
 COL_GREEN, COL_GREEN_LT, COL_GREEN_DK,
 COL_CYAN, COL_TEAL,
 COL_BLUE, COL_BLUE_LT, COL_BLUE_DK,
@@ -22,7 +22,7 @@ COL_GREEN       =   COL_FLAG + "00ff00" // Spectator team
 COL_GREEN_LT    =   COL_FLAG + "80ff80" // Not used
 COL_GREEN_DK    =   COL_FLAG + "00c800" // Not used
 
-COL_CYAN        =   COL_FLAG + "00ffff"
+COL_CYAN        =   COL_FLAG + "00ffff" // Not used
 COL_TEAL        =   COL_FLAG + "00a5a5" // Not used
 
 COL_BLUE        =   COL_FLAG + "0000ff"
@@ -33,7 +33,7 @@ COL_PINK        =   COL_FLAG + "ff00ff" // RCON
 COL_PINK_LT     =   COL_FLAG + "ff80ff"
 COL_PINK_DK     =   COL_FLAG + "c80080"
 COL_PURPLE      =   COL_FLAG + "8000ff" // Not used
-COL_PURPLE_LT   =   COL_FLAG + "bf80ff" // Not used
+COL_PURPLE_LT   =   COL_FLAG + "bf80ff" // Replays
 
 
 

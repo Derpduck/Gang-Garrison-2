@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">menu_create(144, 100, 500, 260, 32, 0, 112, 16);
+menumode = true;
+
+if (room != DSMOptionsRoom)
+    menu_setdimmed();
+
+menu_background(512, 24, 8, 12, 4);
+bgtabs = true;
+
+menu_divider("Replays");
+
+menu_addedit_boolean("Auto-Record Replays (Host):", "global.replaysAutoRecordHost", '
+    DSM_write_ini("Replays", "Auto-Record (Host)", argument0);
+');
+/*menu_addedit_boolean("Auto-Record Replays (Client):", "global.replaysAutoRecordClient", '
+    DSM_write_ini("Replays", "Auto-Record (Client)", argument0);
+');*/
+menu_addedit_boolean("Continuous Recording:", "global.replaysContinuous", '
+    DSM_write_ini("Replays", "Continuous Recording", argument0);
+');
+
+DSM_menu_tabs();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -147,6 +147,11 @@ global.dkothEnemyCapturePower = DSM_add_option("DKOTH Anti-Stall", "Enemy Point 
 
 // Audio
 global.masterVolume = DSM_add_option("Audio", "Master Volume", 100, true, 0, true, 100);
+
+// Replays
+global.replaysAutoRecordHost = DSM_add_option("Replays", "Auto-Record (Host)", 0);
+global.replaysAutoRecordClient = DSM_add_option("Replays", "Auto-Record (Client)", 0);
+global.replaysContinuous = DSM_add_option("Replays", "Continuous Recording", 1);
 ini_close();
 
 ini_open("controls.gg2");

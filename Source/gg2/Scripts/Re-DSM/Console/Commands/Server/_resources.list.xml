@@ -24,4 +24,6 @@
   <resource name="cc_team" type="RESOURCE"/>
   <resource name="cc_scramble" type="RESOURCE"/>
   <resource name="cc_lobby" type="RESOURCE"/>
+  <resource name="cc_record" type="RESOURCE"/>
+  <resource name="cc_stop" type="RESOURCE"/>
 </resources>

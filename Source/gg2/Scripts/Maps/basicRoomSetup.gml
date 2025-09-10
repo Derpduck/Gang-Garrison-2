@@ -70,7 +70,9 @@ else
     instance_create(0, 0, TeamDeathmatchHUD);
 }
 
-instance_create(0,0,TeamSelectController);
+if (!global.playingReplay)
+    instance_create(0,0,TeamSelectController);
+
 if (!instance_exists(KillLog))
     instance_create(0,0,KillLog);
 
@@ -84,6 +86,13 @@ instance_create(map_width()/2,map_height()/2,Spectator);
 global.redCaps = 0;
 global.blueCaps = 0;
 global.winners = -1;
+
+if ((global.isHost and global.replaysAutoRecordHost and !global.recordingReplay)
+    or (!global.isHost and global.replaysAutoRecordClient and !global.recordingReplay)
+    or (global.recordingReplay and global.replaysContinuous))
+{
+    replay_record();
+}
 
 if(instance_exists(GameServer))
 {

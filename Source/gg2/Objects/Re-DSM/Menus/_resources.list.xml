@@ -4,4 +4,5 @@
   <resource name="Server Management" type="GROUP"/>
   <resource name="Host Options" type="GROUP"/>
   <resource name="MenuMapViewer" type="RESOURCE"/>
+  <resource name="ReplayMenuController" type="RESOURCE"/>
 </resources>

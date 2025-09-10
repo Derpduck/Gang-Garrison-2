@@ -6,6 +6,7 @@ DSM_options();
 create_DSM_folders();
 color_codes();
 console_init();
+replays_init();
 headless_mode();
 load_custom_hitsound();
 set_window_scale(global.windowScale);

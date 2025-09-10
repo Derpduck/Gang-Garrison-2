@@ -8,6 +8,7 @@
   <resource name="DSMOptions_Indicator" type="RESOURCE"/>
   <resource name="DSMOptions_TeamColors" type="RESOURCE"/>
   <resource name="DSMOptions_Console" type="RESOURCE"/>
+  <resource name="DSMOptions_Replays" type="RESOURCE"/>
   <resource name="DSMOptions_Controls" type="RESOURCE"/>
   <resource name="DSMOptions_Hosting" type="RESOURCE"/>
   <resource name="DSMOptions_DKoth" type="RESOURCE"/>

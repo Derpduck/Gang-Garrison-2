@@ -92,6 +92,8 @@ if(global.winners != -1 and !global.mapchanging)
 // if map change timer hits 0, do a map change
 if(impendingMapChange == 0)
 {
+    replay_stop_recording();
+    
     global.mapchanging = false;
     serverGotoMap(global.nextMap);
     ServerChangeMap(global.currentMap, global.currentMapMD5, global.sendBuffer);

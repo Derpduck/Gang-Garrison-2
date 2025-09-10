@@ -1,4 +1,7 @@
 ## V7 (WIP)
+### Replays
+- Added replay functionality
+
 ### Server Management
 - Added menu to manage RCON users
 - Added menu to manage banned users
@@ -7,6 +10,9 @@
 - Console output is now sent to RCON users for commands they send
 	- `maps` command can now be used by RCON users
 - Fixed misplaced colored text on DSM version print
+- Added `colcodes` command 
+	- Prints a list of all color codes in their colors
+- Updated log naming format
 
 ### HUD
 - Added option to show control point capture %

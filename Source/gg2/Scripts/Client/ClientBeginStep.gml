@@ -16,6 +16,8 @@ if(room == DownloadRoom and keyboard_check(vk_escape))
     exit;
 }
 
+replay_playback();
+
 if(downloadingMap)
 {
     while(tcp_receive(global.serverSocket, min(1024, downloadMapBytes-buffer_size(downloadMapBuffer))))
@@ -202,11 +204,14 @@ do {
         case PLAYER_JOIN:
             player = instance_create(0,0,Player);
             player.name = receivestring(global.serverSocket, 1);
-                  
+            
             ds_list_add(global.players, player);
-            if(ds_list_size(global.players)-1 == global.playerID) {
-                global.myself = player;
-                instance_create(0,0,PlayerControl);
+            if (!global.playingReplay)
+            {
+                if(ds_list_size(global.players)-1 == global.playerID) {
+                    global.myself = player;
+                    instance_create(0,0,PlayerControl);
+                }
             }
             break;
             
@@ -474,6 +479,7 @@ do {
             break;
 
         case CHANGE_MAP:
+            replay_stop_recording();
             roomchange=true;
             global.mapchanging = false;
             global.currentMap = receivestring(global.serverSocket, 1);
@@ -713,6 +719,11 @@ do {
         
         case DSM_RCON_PRINT:
             console_print(COL_PINK + "[RCON CMD] " + receivestring(global.serverSocket, 1));
+            break;
+        
+        case REPLAY_END:
+            show_notification_message("Replay playback ended.");
+            replay_playback_end();
             break;
 
         default:

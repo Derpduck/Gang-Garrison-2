@@ -84,7 +84,7 @@ if (global.showFPS)
 }
 
 // Ping
-if (global.showPing and !global.isHost)
+if (global.showPing and !global.isHost and !global.playingReplay)
 {
     // Adjust position if FPS counter is shown
     var extrayoffset;
@@ -119,7 +119,7 @@ if (global.showPing and !global.isHost)
 }
 
 // Ping Graph
-if ((global.showPingGraph == 1 or (global.showPingGraph == 2 and instance_exists(ScoreTableController))) and !global.isHost)
+if ((global.showPingGraph == 1 or (global.showPingGraph == 2 and instance_exists(ScoreTableController))) and !global.isHost and !global.playingReplay)
 {
     draw_set_alpha(0.5);
     

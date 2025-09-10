@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="replay_play_file" type="RESOURCE"/>
+  <resource name="replay_playback_start" type="RESOURCE"/>
+  <resource name="replay_playback" type="RESOURCE"/>
+  <resource name="replay_playback_end" type="RESOURCE"/>
+</resources>

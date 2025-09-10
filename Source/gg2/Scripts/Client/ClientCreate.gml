@@ -25,7 +25,10 @@
     downloadingMap = false;
     downloadMapBuffer = -1;
     
-    global.serverSocket = tcp_connect(global.serverIP, global.serverPort);
+    if (global.playingReplay)
+        replay_playback_start();
+    else
+        global.serverSocket = tcp_connect(global.serverIP, global.serverPort);
     
     write_ubyte(global.serverSocket, HELLO);
     write_buffer(global.serverSocket, global.protocolUuid);

@@ -109,7 +109,7 @@ view_yview = y-view_hview/2;
 
 afktimer -= 1 * global.delta_factor;
 
-if((afktimer&lt;=0) and global.isHost==false)
+if((afktimer&lt;=0) and !global.isHost and !global.playingReplay)
 {
     with(Client)
         instance_destroy();

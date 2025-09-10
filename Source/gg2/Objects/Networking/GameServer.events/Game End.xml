@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(global.useLobbyServer) {
+        <argument kind="STRING">replay_stop_recording();
+if(global.useLobbyServer) {
     sendLobbyUnreg();
     sleep(10); // Wait a bit so the networking extension has time to send the packet...
 }

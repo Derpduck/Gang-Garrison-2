@@ -17,6 +17,10 @@
     sendLobbyUnreg();
 }
 
+replay_stop_recording();
+global.recordingReplay = false;
+global.playingReplay = false;
+
 ds_list_destroy(global.players);
 socket_destroy(global.tcpListener);
 socket_destroy(global.serverSocket);

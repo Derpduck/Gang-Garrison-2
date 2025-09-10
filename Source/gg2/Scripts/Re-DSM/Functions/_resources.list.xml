@@ -18,4 +18,5 @@
   <resource name="show_notification_message" type="RESOURCE"/>
   <resource name="freeze_time_countdown" type="RESOURCE"/>
   <resource name="set_window_scale" type="RESOURCE"/>
+  <resource name="generate_stamped_filename" type="RESOURCE"/>
 </resources>

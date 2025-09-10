@@ -25,6 +25,8 @@ cc_classlimit();
 cc_team();
 cc_scramble();
 cc_lobby();
+cc_record();
+cc_stop();
 
 // Client Side Commands
 cc_help();
@@ -40,3 +42,4 @@ cc_log();
 cc_bind();
 cc_unbind();
 cc_binds();
+cc_colcodes();

@@ -3,6 +3,9 @@ with(Player)
     write_buffer(socket, global.sendBuffer);
     socket_send(socket);
 }
+
+replay_write_data();
+
 buffer_clear(global.sendBuffer);
 
 global.runningMapDownloads = 0;
