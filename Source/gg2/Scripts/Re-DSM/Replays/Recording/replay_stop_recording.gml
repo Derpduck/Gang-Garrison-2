@@ -1,13 +1,21 @@
 if (!global.recordingReplay) exit;
 
-global.recordingReplay = false;
+if (!global.replaysContinuous)
+    global.recordingReplay = false;
 
-var replayFileName;
-replayFileName = generate_stamped_filename("", "rply");
+var replayFileName, fpsName;
+if (global.frameratekind == 1)
+    fpsName = "(60 FPS)";
+else
+    fpsName = "(30 FPS)";
 
+replayFileName = generate_stamped_filename("", fpsName, "rply");
+
+// Write replay end byte
 write_ushort(global.replayRecordBuffer, 1);
 write_ubyte(global.replayRecordBuffer, REPLAY_END);
 
+// Save replay to file
 write_buffer_to_file(global.replayRecordBuffer, working_directory + "\DSM\Replays\" + replayFileName);
 buffer_destroy(global.replayRecordBuffer);
 

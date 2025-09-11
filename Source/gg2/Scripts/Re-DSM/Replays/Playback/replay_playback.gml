@@ -5,16 +5,43 @@ if (global.playingReplay)
         global.myself = instance_create(0, 0, Player);
         instance_create(0, 0, PlayerControl);
     }
+
+    var bufferLength;
+    // Correct playback for framerate and timescale
+    if (global.replayFramerate == 1 and global.frameratekind == 0) // 60 FPS replay / 30 FPS client
+        global.ticksToRead += 2 * global.replayTimescale;
+    else if (global.replayFramerate == 0 and global.frameratekind == 1) // 30 FPS replay / 60 FPS client
+        global.ticksToRead += 0.5 * global.replayTimescale;
+    else
+        global.ticksToRead += 1 * global.replayTimescale; // Replay and client FPS match
     
-    var length;
-    for(a=0; a < global.replayTimescale; a+=1)
+    // Change playback speed with timescale
+    
+    //global.replayTimescale
+    
+    if (global.ticksToRead >= 1)
     {
-        length = read_ushort(global.replayBuffer);
-        for(i = 0; i < length; i += 1)
+        for(a=0; a < global.ticksToRead; a+=1)
         {
-            write_ubyte(global.replaySocket, read_ubyte(global.replayBuffer));
+            // Get length of next buffer packet
+            bufferLength = read_ushort(global.replayBuffer);
+            
+            for(i = 0; i < bufferLength; i += 1)
+            {
+                // Read next buffer packet and send data to the client
+                write_ubyte(global.replaySocket, read_ubyte(global.replayBuffer));
+            }
+            
+            global.replayTick += 1;
+            global.replayLastReadTick = global.replayTick;
         }
-        global.replayTick += 1;
+        
+        global.ticksToRead = 0;
+        
+        // Simulate server sending data to client
+        socket_send(global.replaySocket);
     }
-    socket_send(global.replaySocket);
+    
+    // Ensure game always runs at correct speed
+    io_handle();
 }

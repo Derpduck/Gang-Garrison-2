@@ -2,7 +2,7 @@
 if (!global.saveConsoleLog) exit;
 
 var logFileName, logFile;
-logFileName = generate_stamped_filename("CON", "txt");
+logFileName = generate_stamped_filename("CON", "", "txt");
 
 logFile = file_text_open_write(working_directory + "\DSM\Logs\" + logFileName);
 

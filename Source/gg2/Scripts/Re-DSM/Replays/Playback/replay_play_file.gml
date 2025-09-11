@@ -3,6 +3,7 @@ replayFile = get_open_filename(working_directory + "\DSM\Replays\*.rply", "");
 
 if (file_exists(replayFile))
 {
+    // Get replay from file and load replay as a client
     global.playingReplay = true;
     global.isHost = false;
         
@@ -16,6 +17,8 @@ if (file_exists(replayFile))
     
     global.replayTimescale = 1;
     global.replayTick = 0;
+    global.replayLastReadTick = global.replayTick;
+    global.ticksToRead = 0;
     
     return true;
 }

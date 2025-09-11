@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <constants>
   <constant name="DSM_VERSION" value="7"/>
+  <constant name="REPLAY_VERSION" value="1"/>
   <constant name="VERSION" value="29200"/>
   <constant name="GAME_VERSION_STRING" value="&quot;v2.9.2&quot;"/>
   <constant name="GAME_NAME_STRING" value="&quot;Re-DSM&quot;"/>
@@ -159,5 +160,6 @@
   <constant name="DSM_KICK_BAN" value="2"/>
   <constant name="DSM_KICK_TEMP_BAN" value="3"/>
   <constant name="DSM_KICK_BANNED" value="4"/>
+  <constant name="REPLAY_HEADER" value="254"/>
   <constant name="REPLAY_END" value="255"/>
 </constants>

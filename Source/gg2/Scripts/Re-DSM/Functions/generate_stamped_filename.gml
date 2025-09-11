@@ -1,11 +1,15 @@
 // Create a file name with the current date / time, server name, and map name
-var prefix, extension;
+var prefix, suffix, extension;
 prefix = string(argument0);
-extension = string(argument1); // Without the "."
+suffix = string(argument1);
+extension = string(argument2); // Without the "."
 
 // Add separator for prefix if given
 if (string_length(prefix) > 0)
     prefix += " ";
+
+if (string_length(suffix) > 0)
+    suffix = " " + suffix;
 
 // Use system format for date and time
 //var dateAndTime;
@@ -34,7 +38,7 @@ else
 
 // Concatenate file name
 var fileName;
-fileName = prefix + timestamp + serverMapName;
+fileName = prefix + timestamp + serverMapName + suffix;
 
 // Sanitize file name
 var invalidCharacters, i;

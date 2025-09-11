@@ -42,7 +42,7 @@ if (room != Menu and global.isHost and !global.recordingReplay)
     ');
 }
 
-if (room != Menu and global.isHost and global.recordingReplay)
+if (room != Menu and global.recordingReplay)
 {
     menu_addlink("Stop Recording", '
         replay_stop_recording();
@@ -51,7 +51,7 @@ if (room != Menu and global.isHost and global.recordingReplay)
     ');
 }
 
-if (room != Menu and global.isHost and global.playingReplay)
+if (room != Menu and global.playingReplay)
 {
     /*menu_addlink("Show Replay UI", '
         instance_destroy();

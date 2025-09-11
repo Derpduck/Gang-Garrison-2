@@ -721,6 +721,23 @@ do {
             console_print(COL_PINK + "[RCON CMD] " + receivestring(global.serverSocket, 1));
             break;
         
+        case REPLAY_HEADER:
+            receiveCompleteMessage(global.serverSocket,4,global.tempBuffer);
+            var replayVersion, gg2Version, replayFramerate;
+            replayVersion = read_ubyte(global.tempBuffer);
+            gg2Version = read_ushort(global.tempBuffer);
+            global.replayFramerate = read_ubyte(global.tempBuffer);
+            
+            if (replayVersion != REPLAY_VERSION or gg2Version != VERSION)
+            {
+                var versionDifference;
+                versionDifference = "Playback Replay Version: " + string(REPLAY_VERSION) + " / Replay File Version: " + string(replayVersion)
+                                    + "#Playback GG2 Version: " + string(VERSION) + " / Replay GG2 Version: " + string(gg2Version);
+                
+                show_message("DSM or GG2 version does not match replay,#playback may not function as intended.#" + versionDifference);
+            }
+            break;
+        
         case REPLAY_END:
             show_notification_message("Replay playback ended.");
             replay_playback_end();
