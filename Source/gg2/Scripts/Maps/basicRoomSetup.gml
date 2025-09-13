@@ -87,13 +87,6 @@ global.redCaps = 0;
 global.blueCaps = 0;
 global.winners = -1;
 
-if ((global.isHost and global.replaysAutoRecordHost and !global.recordingReplay)
-    or (!global.isHost and global.replaysAutoRecordClient and !global.recordingReplay)
-    or (global.recordingReplay and global.replaysContinuous))
-{
-    replay_record();
-}
-
 if(instance_exists(GameServer))
 {
     if(!GameServer.hostSeenMOTD and !global.dedicatedMode and global.welcomeMessage != "")

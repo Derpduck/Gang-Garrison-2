@@ -13,13 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(global.useLobbyServer) {
-    sendLobbyUnreg();
-}
-
-replay_stop_recording();
+        <argument kind="STRING">replay_stop_recording();
 global.recordingReplay = false;
 global.playingReplay = false;
+
+if(global.useLobbyServer) {
+    sendLobbyUnreg();
+}
 
 ds_list_destroy(global.players);
 socket_destroy(global.tcpListener);

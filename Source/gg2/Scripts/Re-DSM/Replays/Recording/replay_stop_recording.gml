@@ -1,7 +1,9 @@
-if (!global.recordingReplay) exit;
+if (!global.recordingReplay or global.playingReplay) exit;
 
-if (!global.replaysContinuous)
-    global.recordingReplay = false;
+global.recordingReplay = false;
+
+if (global.replaysContinuous)
+    global.continueReplayRecording = true;
 
 var replayFileName, fpsName;
 if (global.frameratekind == 1)

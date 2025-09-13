@@ -6,14 +6,20 @@ if (global.playingReplay)
         instance_create(0, 0, PlayerControl);
     }
 
-    var bufferLength;
+    var bufferLength, timescale;
+    
+    if (global.replayPaused)
+        timescale = 0;
+    else
+        timescale = global.replayTimescale / 100;
+        
     // Correct playback for framerate and timescale
     if (global.replayFramerate == 1 and global.frameratekind == 0) // 60 FPS replay / 30 FPS client
-        global.ticksToRead += 2 * global.replayTimescale;
+        global.ticksToRead += 2 * timescale;
     else if (global.replayFramerate == 0 and global.frameratekind == 1) // 30 FPS replay / 60 FPS client
-        global.ticksToRead += 0.5 * global.replayTimescale;
+        global.ticksToRead += 0.5 * timescale;
     else
-        global.ticksToRead += 1 * global.replayTimescale; // Replay and client FPS match
+        global.ticksToRead += 1 * timescale; // Replay and client FPS match
     
     // Change playback speed with timescale
     

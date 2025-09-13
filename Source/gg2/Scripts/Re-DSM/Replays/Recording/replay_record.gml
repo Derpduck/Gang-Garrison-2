@@ -1,6 +1,7 @@
-if (global.playingReplay) exit;
+if (global.playingReplay or global.recordingReplay) exit;
 
 global.recordingReplay = true;
+global.continueReplayRecording = false;
 global.replayRecordBuffer = buffer_create();
 
 var replayHeaderBuffer;
@@ -12,8 +13,7 @@ write_ubyte(replayHeaderBuffer, REPLAY_VERSION);
 write_ushort(replayHeaderBuffer, VERSION);
 write_ubyte(replayHeaderBuffer, global.frameratekind);
 
-// Write current server state to the beginning of the replay
-// Write join state to buffer to simulate joining server and sync current game state when replay is played back
+// Write join state to replay to simulate joining server and sync current game state
 write_ubyte(replayHeaderBuffer, HELLO);
 
 write_ubyte(replayHeaderBuffer, string_length(global.serverName));

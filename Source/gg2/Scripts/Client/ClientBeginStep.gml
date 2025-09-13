@@ -139,6 +139,19 @@ do {
             {
                 var download;
                 download = not file_exists("Maps/" + downloadMapName + ".png");
+                
+                // TODO: Never actually runs, just get unable to connect error
+                if (global.playingReplay)
+                {
+                    if (download)
+                        show_notification_message("Unable to play replay:#Map not found.");
+                    else if (!download and CustomMapGetMapMD5(downloadMapName) != advertisedMapMd5)
+                        show_notification_message("Unable to play replay:#Replay's copy of the map differs from ours.");
+                    
+                    instance_destroy();
+                    exit;
+                }
+                
                 if(!download and CustomMapGetMapMD5(downloadMapName) != advertisedMapMd5)
                 {
                     if(show_question("The server's copy of the map (" + downloadMapName + ") differs from ours.#Would you like to download this server's version of the map?"))
@@ -206,7 +219,7 @@ do {
             player.name = receivestring(global.serverSocket, 1);
             
             ds_list_add(global.players, player);
-            if (!global.playingReplay)
+            if (!global.playingReplay) // Skip creating PlayerControl during replay playback
             {
                 if(ds_list_size(global.players)-1 == global.playerID) {
                     global.myself = player;
