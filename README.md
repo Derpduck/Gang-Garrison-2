@@ -1,6 +1,6 @@
 # Re-DSM Readme
 
-## Current Version: v6
+## Current Version: v7
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod  
@@ -36,7 +36,7 @@ password | `new password` | Changes the server password to the given text. Leave
 end | `optional: winning team` | Ends the current round. Specify `team` to select RED or BLUE as the winning team | Host + RCON
 fastend | `optional: winning team` | Ends the current round, instantly changes map. Specify `team` to select RED or BLUE as the winning team | Host + RCON
 map | `map name` | Sets the next map to the given map | Host + RCON
-maps || Prints the current map rotation order | Host Only
+maps || Prints the current map rotation order | Host + RCON
 rotation | `new rotation` | Changes the current map rotation to the given rotation file. Specify true for `shuffle` to shuffle the rotation | Host Only
 shuffle || Shuffles the current map rotation | Host + RCON
 slots | `number of slots`| Sets the number of player slots allowed the server | Host + RCON
@@ -58,6 +58,7 @@ log || Saves the current console log to `/../DSM/Logs/` | Client
 bind | `key`, `command` | Binds the given console command to the given key | Client
 unbind | `key` | Removes the bind assigned to the given key | Client
 binds || Prints all saved binds | Client
+colcodes || Prints a list of all color codes in their colors | Client
 
 > The access level of commands can be changed in the `Server Management > Commands` menu
 
@@ -75,6 +76,16 @@ binds || Prints all saved binds | Client
 `rcon toggle` || Toggles RCON access on / off | Host Only
 `rcon save` || Toggles saving of new RCON users on / off | Host Only
 `rcon users` || Prints a list of all active RCON users | Host Only
+
+### Replays
+- Hosts can record games in an easily shareable replay format with some improvements from the previous implementation
+- Replays can be played, recorded, stopped and controlled through the `Replays` menu found on the main menu and in-game menu
+	- Replays can be paused or have their timescale (playback speed) changed through this menu
+		- Any gameplay or visual elements that are not sycned with the server will appear incorrect with the timescale changed (e.g. timers, projectiles, etc.)
+- Option to automatically record replays for all games at the start of a round
+	- If recording is stopped manually, it will resume on the next map unless this setting is turned off
+- Option to continue recording recording replays until manually stopped
+	- This can be used to have replay recording continue through map changes without auto-recording being turned on
 
 ### Gamemodes
 #### All Gamemodes
@@ -133,7 +144,12 @@ binds || Prints all saved binds | Client
 	- Kill Log
 	- Timer
 	- Gamemodes
+#### CTF Modes
 - Added option to show the intel carrier's class
+#### Control Point Modes
+- Added option to show control point capture %
+- Added optioin to show remaining control point capture time
+- Added option to show the full capture point unlock timer
 
 ### Damage Indicator
 - Added damage indicator
@@ -158,6 +174,7 @@ binds || Prints all saved binds | Client
 - Added menu option type for setting numbers to non-integer values
 - Added server sent plugin list and server sent plugin required to the host options menu
 - Number of characters remaining is now shown when editing your player name and server name
+- Added multi-client limit option to host options menu
 
 ### Audio
 - Added master volume option
