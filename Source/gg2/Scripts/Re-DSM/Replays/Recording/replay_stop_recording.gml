@@ -1,8 +1,12 @@
 if (!global.recordingReplay or global.playingReplay) exit;
 
+// Was recording stopped automatically by a map change?
+var mapChangeStop;
+mapChangeStop = argument0;
+
 global.recordingReplay = false;
 
-if (global.replaysContinuous)
+if (global.replaysContinuous and mapChangeStop)
     global.continueReplayRecording = true;
 
 var replayFileName, fpsName;
@@ -18,7 +22,11 @@ write_ushort(global.replayRecordBuffer, 1);
 write_ubyte(global.replayRecordBuffer, REPLAY_END);
 
 // Save replay to file
-write_buffer_to_file(global.replayRecordBuffer, working_directory + "\DSM\Replays\" + replayFileName);
+var saveReplay;
+saveReplay = write_buffer_to_file(global.replayRecordBuffer, working_directory + "\DSM\Replays\" + replayFileName);
 buffer_destroy(global.replayRecordBuffer);
 
-console_print(COL_PURPLE_LT + "Replay saved: " + COL_YELLOW + "/../DSM/Replays/" + replayFileName);
+if (saveReplay)
+    console_print(COL_PURPLE_LT + "Replay saved: " + COL_YELLOW + "/../DSM/Replays/" + replayFileName);
+else
+    console_print(COL_RED + "[ERROR] Failed to save replay: " + + COL_YELLOW + "/../DSM/Replays/" + replayFileName);

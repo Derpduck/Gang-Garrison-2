@@ -492,7 +492,7 @@ do {
             break;
 
         case CHANGE_MAP:
-            replay_stop_recording();
+            //replay_stop_recording(true);
             roomchange=true;
             global.mapchanging = false;
             global.currentMap = receivestring(global.serverSocket, 1);
@@ -747,7 +747,7 @@ do {
                 versionDifference = "Playback Replay Version: " + string(REPLAY_VERSION) + " / Replay File Version: " + string(replayVersion)
                                     + "#Playback GG2 Version: " + string(VERSION) + " / Replay GG2 Version: " + string(gg2Version);
                 
-                show_message("DSM or GG2 version does not match replay,#playback may not function as intended.#" + versionDifference);
+                show_message("Replay Header version or GG2 version does not match replay,#playback may not function as intended.#" + versionDifference);
             }
             break;
         

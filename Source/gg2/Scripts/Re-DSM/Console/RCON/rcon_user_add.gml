@@ -2,6 +2,9 @@
 var player;
 player = argument0;
 
+if (player == GameServer.serverPlayer)
+    exit;
+
 if (player.dsmClientVersion >= 0)
 {
     write_ubyte(player.socket, DSM_RCON_LOGIN);

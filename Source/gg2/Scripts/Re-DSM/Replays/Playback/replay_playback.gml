@@ -27,10 +27,11 @@ if (global.playingReplay)
     
     if (global.ticksToRead >= 1)
     {
-        for(a=0; a < global.ticksToRead; a+=1)
+        for(a=0; a < floor(global.ticksToRead); a+=1)
         {
             // Get length of next buffer packet
             bufferLength = read_ushort(global.replayBuffer);
+            //show_message(string(bufferLength))
             
             for(i = 0; i < bufferLength; i += 1)
             {
@@ -42,7 +43,7 @@ if (global.playingReplay)
             global.replayLastReadTick = global.replayTick;
         }
         
-        global.ticksToRead = 0;
+        global.ticksToRead -= floor(global.ticksToRead);
         
         // Simulate server sending data to client
         socket_send(global.replaySocket);

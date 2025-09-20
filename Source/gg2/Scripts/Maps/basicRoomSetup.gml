@@ -87,6 +87,14 @@ global.redCaps = 0;
 global.blueCaps = 0;
 global.winners = -1;
 
+// Automatically record replays
+if ((global.isHost and global.replaysAutoRecordHost)
+    or (!global.isHost and global.replaysAutoRecordClient)
+    or (global.continueReplayRecording and global.replaysContinuous))
+{
+    replay_record();
+}
+
 if(instance_exists(GameServer))
 {
     if(!GameServer.hostSeenMOTD and !global.dedicatedMode and global.welcomeMessage != "")

@@ -19,6 +19,9 @@
 - Added optioin to show remaining control point capture time
 - Performance overlays now render in front of the in-game menu
 
+### Menus
+- Added multi-client limit option to host options menu
+
 
 ## V6 (2025/06/11)
 ### Console

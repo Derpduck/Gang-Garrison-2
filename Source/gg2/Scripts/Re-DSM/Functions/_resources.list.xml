@@ -19,4 +19,5 @@
   <resource name="freeze_time_countdown" type="RESOURCE"/>
   <resource name="set_window_scale" type="RESOURCE"/>
   <resource name="generate_stamped_filename" type="RESOURCE"/>
+  <resource name="clear_send_buffer" type="RESOURCE"/>
 </resources>

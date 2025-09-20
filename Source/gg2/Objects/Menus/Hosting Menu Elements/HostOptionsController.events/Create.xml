@@ -132,6 +132,9 @@ if (room == Menu)
         gg2_write_ini("Server", "ServerPluginsRequired", argument0);
     ');
 }
+menu_addedit_num("Multi-client Limit:", "global.multiClientLimit", '
+    gg2_write_ini("Settings", "MultiClientLimit", argument0);
+');
 
 vanilla_menu_tabs();
 </argument>

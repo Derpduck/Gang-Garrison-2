@@ -3,6 +3,7 @@ var player, playerId, commandLimitRemaining;
 player = argument0;
 playerId = argument1;
 
+// TODO: Add option to change this limit, maybe could prevent desyncs on more populated servers
 // To prevent players from flooding the server, limit the number of commands to process per step and player.
 commandLimitRemaining = 10;
 

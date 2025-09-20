@@ -45,8 +45,7 @@ if (room != Menu and global.isHost and !global.recordingReplay)
 if (room != Menu and global.recordingReplay)
 {
     menu_addlink("Stop Recording", '
-        replay_stop_recording();
-        global.recordingReplay = false;
+        replay_stop_recording(false);
         instance_destroy();
         instance_create(0, 0, ReplayMenuController);
     ');

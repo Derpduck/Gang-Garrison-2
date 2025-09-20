@@ -4,12 +4,20 @@ replayFile = get_open_filename(working_directory + "\DSM\Replays\*.rply", "");
 if (file_exists(replayFile))
 {
     // Get replay from file and load replay as a client
+    global.replayBuffer = buffer_create();
     global.playingReplay = true;
     global.recordingReplay = false;
     global.isHost = false;
-        
-    global.replayBuffer = buffer_create();
-    append_file_to_buffer(global.replayBuffer, replayFile);
+    
+    var readReplay;
+    readReplay = append_file_to_buffer(global.replayBuffer, replayFile);
+    
+    if (!readReplay)
+    {
+        show_notification_message("Failed to read replay file.");
+        buffer_destroy(global.replayBuffer);
+        exit;
+    }
     
     // TODO: Read first byte to check for REPLAY_HEADER (read short first)
     

@@ -2,7 +2,7 @@ console_add_command('stop', '
 if (global.recordingReplay and !global.playingReplay)
 {
     console_print(COL_ORANGE + "Stopping replay recording", rconPlayer);
-    replay_stop_recording();
+    replay_stop_recording(false);
 }
 else
 {

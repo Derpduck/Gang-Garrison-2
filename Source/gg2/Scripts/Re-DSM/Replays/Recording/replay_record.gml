@@ -1,10 +1,9 @@
 if (global.playingReplay or global.recordingReplay) exit;
 
+var replayHeaderBuffer;
+global.replayRecordBuffer = buffer_create();
 global.recordingReplay = true;
 global.continueReplayRecording = false;
-global.replayRecordBuffer = buffer_create();
-
-var replayHeaderBuffer;
 replayHeaderBuffer = buffer_create();
 
 // Write header data to replay
@@ -14,6 +13,7 @@ write_ushort(replayHeaderBuffer, VERSION);
 write_ubyte(replayHeaderBuffer, global.frameratekind);
 
 // Write join state to replay to simulate joining server and sync current game state
+// Should mirror STATE_CLIENT_AUTHENTICATED in serviceJoiningPlayer
 write_ubyte(replayHeaderBuffer, HELLO);
 
 write_ubyte(replayHeaderBuffer, string_length(global.serverName));
@@ -39,3 +39,5 @@ write_buffer(global.replayRecordBuffer, replayHeaderBuffer);
 buffer_destroy(replayHeaderBuffer);
 
 console_print(COL_PURPLE_LT + "Recording replay...");
+//console_print(string(buffer_size(global.sendBuffer)));
+//console_print(string(buffer_size(global.replayRecordBuffer)));
