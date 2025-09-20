@@ -56,7 +56,16 @@ for (i=1; i<= global.totalControlPoints; i+=1)
     if (global.cp[i].locked)
     {
         if (cpUnlock >= 150 or cpUnlock == 0)
-            draw_sprite_ext(ControlPointLockS, 0, drawx, drawy, 3, 3, 0, c_white, global.opacityGamemodeForeground / 100);
+        {
+            if (global.cpShowUnlockTimer and cpUnlock > 0)
+            {
+                draw_sprite_ext(ControlPointLockS, 0, drawx, drawy - 10, 2, 2, 0, c_white, global.opacityGamemodeForeground / 100);
+                draw_set_color(c_white);
+                draw_text_transformed(drawx+1, drawy + 13, ceil(cpUnlock/30), 2, 2, 0);
+            }
+            else
+                draw_sprite_ext(ControlPointLockS, 0, drawx, drawy, 3, 3, 0, c_white, global.opacityGamemodeForeground / 100);
+        }
         else if (cpUnlock > 0)
         {
             draw_set_color(c_white);

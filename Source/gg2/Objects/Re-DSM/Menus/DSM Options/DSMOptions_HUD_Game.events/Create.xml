@@ -38,6 +38,10 @@ menu_addedit_boolean("Show Remaining Capture Time:", "global.cpCaptureTime", '
     DSM_write_ini("HUD", "Show Remaining Capture Time", argument0);
 ');
 
+menu_addedit_boolean("Always Show Unlock Timer:", "global.cpShowUnlockTimer", '
+    DSM_write_ini("HUD", "Always Show Unlock Timer", argument0);
+');
+
 menu_divider("Miscellaneous")
 
 menu_addedit_boolean("Show Detailed Scoreboard Stats:", "global.scoreboardStats", '

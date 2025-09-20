@@ -3,7 +3,8 @@ var player, playerId, commandLimitRemaining;
 player = argument0;
 playerId = argument1;
 
-// TODO: Add option to change this limit, maybe could prevent desyncs on more populated servers
+// TODO: Add option to change this limit, maybe could prevent desyncs on more populated servers. This limit is per client - measure how many commands occur under normal gameplay
+// TODO: Also this limit doesn't count clients sending invalid data so it doesn't help much
 // To prevent players from flooding the server, limit the number of commands to process per step and player.
 commandLimitRemaining = 10;
 

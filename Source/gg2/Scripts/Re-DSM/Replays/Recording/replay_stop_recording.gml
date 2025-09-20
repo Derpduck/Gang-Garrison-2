@@ -1,12 +1,16 @@
 if (!global.recordingReplay or global.playingReplay) exit;
 
+global.recordingReplay = false;
+
 // Was recording stopped automatically by a map change?
 var mapChangeStop;
 mapChangeStop = argument0;
 
-global.recordingReplay = false;
-
-if (global.replaysContinuous and mapChangeStop)
+// Continue recording if continuous recording is on, or if auto-record is on
+if ((mapChangeStop)
+    and ((global.replaysContinuous)
+    or (mapChangeStop and global.isHost and global.replaysAutoRecordHost)
+    or (mapChangeStop and !global.isHost and global.replaysAutoRecordClient)))
     global.continueReplayRecording = true;
 
 var replayFileName, fpsName;

@@ -1,6 +1,14 @@
-## V7 (WIP)
+## V7 (2025/09/20)
 ### Replays
-- Added replay functionality
+- Hosts can now record games in an easily shareable replay format with some improvements from the previous implementation
+- Replays can be played, recorded, stopped and controlled through the `Replays` menu found on the main menu and in-game menu
+	- Replays can be paused or have their timescale (playback speed) changed through this menu
+		- Any gameplay or visual elements that are not sycned with the server will appear incorrect with the timescale changed (e.g. timers, projectiles, etc.)
+- Option to automatically record replays for all games at the start of a round
+	- If recording is stopped manually, it will resume on the next map unless this setting is turned off
+- Option to continue recording recording replays until manually stopped
+	- This can be used to have replay recording continue through map changes without auto-recording being turned on
+> **Note:** Replays are not (or may not be) cross-compatible between Re-DSM and old DSM 
 
 ### Server Management
 - Added menu to manage RCON users
@@ -17,6 +25,7 @@
 ### HUD
 - Added option to show control point capture %
 - Added optioin to show remaining control point capture time
+- Added option to show the full capture point unlock timer
 - Performance overlays now render in front of the in-game menu
 
 ### Menus

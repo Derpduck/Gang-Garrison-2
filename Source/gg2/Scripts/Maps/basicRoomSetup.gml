@@ -90,7 +90,7 @@ global.winners = -1;
 // Automatically record replays
 if ((global.isHost and global.replaysAutoRecordHost)
     or (!global.isHost and global.replaysAutoRecordClient)
-    or (global.continueReplayRecording and global.replaysContinuous))
+    or (global.continueReplayRecording))
 {
     replay_record();
 }

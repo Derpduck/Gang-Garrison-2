@@ -51,6 +51,7 @@ global.intelCarrierClass = DSM_add_option("HUD", "Show Intel Carrier Class", 1);
 // Control Points
 global.cpCapturePercent = DSM_add_option("HUD", "Show CP Capture %", 1);
 global.cpCaptureTime = DSM_add_option("HUD", "Show Remaining Capture Time", 1);
+global.cpShowUnlockTimer = DSM_add_option("HUD", "Always Show Unlock Timer", 1);
 
 // Misc HUD
 global.scoreboardStats = DSM_add_option("HUD", "Detailed Scoreboard Stats", 1);
