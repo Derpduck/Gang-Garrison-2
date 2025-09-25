@@ -26,6 +26,7 @@ if (ds_map_exists(global.bannedSavedUsers, playerIP))
         };
         
         file_text_close(fileHandle);
+        file_find_close();
     }
     
     return true;

@@ -127,5 +127,23 @@
 </argument>
       </arguments>
     </action>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// If replay is queued, automatically play next replay in queue
+if (!ds_list_empty(global.replayPlaybackQueue))
+    replay_play_file();
+</argument>
+      </arguments>
+    </action>
   </actions>
 </event>

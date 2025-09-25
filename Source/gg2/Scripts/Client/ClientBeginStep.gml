@@ -752,8 +752,9 @@ do {
             break;
         
         case REPLAY_END:
-            show_notification_message("Replay playback ended.");
-            replay_playback_end();
+            if (ds_list_empty(global.replayPlaybackQueue))
+                show_notification_message("Replay playback ended.");
+            replay_playback_end(false);
             break;
 
         default:

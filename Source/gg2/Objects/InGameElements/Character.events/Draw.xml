@@ -42,7 +42,7 @@ yr = round(y);
 
 image_alpha = cloakAlpha;
 
-if (global.myself.team == team and canCloak)
+if ((global.myself.team == team or global.playingReplay) and canCloak)
     image_alpha = cloakAlpha/2 + 0.5;
 
 if (invisible)
@@ -52,7 +52,7 @@ if(stabbing)
     image_alpha -= power(currentWeapon.stab.alpha, 2);
 
 var barCount;
-if (team == global.myself.team)
+if (team == global.myself.team or global.playingReplay)
     barCount = draw_character_info_bars(xr, yr);
 else
     barCount = 0;
@@ -260,7 +260,7 @@ if (domination_kills_get(player.dominationKills, global.myself) &gt; 3)
 
 if (distance_to_point(mouse_x, mouse_y) &lt; 25)
 {
-    if (cloak and team != global.myself.team)
+    if (cloak and (team != global.myself.team and !global.playingReplay))
         exit;
     draw_set_alpha(1);
     if(team == TEAM_RED)
@@ -276,7 +276,7 @@ if (distance_to_point(mouse_x, mouse_y) &lt; 25)
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
     
-    if(team == global.myself.team &amp;&amp; global.showTeammateStats)
+    if((team == global.myself.team or global.playingReplay) &amp;&amp; global.showTeammateStats)
     {
         if(weapons[0] == Medigun)
             draw_text(xr,round(y)+50, "Superburst: " + string(currentWeapon.uberCharge/20) + "%");

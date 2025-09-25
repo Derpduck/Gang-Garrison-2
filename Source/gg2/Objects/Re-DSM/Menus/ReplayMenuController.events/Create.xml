@@ -13,23 +13,41 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(40, 100, 264, 200, 32);
+        <argument kind="STRING">menu_create(40, 100, 248, 200, 32);
     
 //menumode = true;
 
 if (room != Menu)
     menu_setdimmed();
 
-menu_background(272, 24, 8, 12, 4);
+menu_background(256, 24, 8, 12, 4);
 //bgtabs = true;
 
 if (room == Menu)
 {
     menu_addlink("Play Replay", '
-        if (replay_play_file())
+        if (ds_list_empty(global.replayPlaybackQueue))
         {
+            if (replay_queue_add(true, false))
+                instance_destroy();
+        }
+        else
+        {
+            replay_play_file();
             instance_destroy();
         }
+    ');
+    
+    menu_addlink("Queue Replay", '
+        replay_queue_add(false, false)
+    ');
+    
+    menu_addlink("Queue Replays From Folder", '
+        replay_queue_add(false, true)
+    ');
+    
+    menu_addlink("Clear Queue", '
+        ds_list_clear(global.replayPlaybackQueue);
     ');
 }
 
@@ -80,9 +98,34 @@ if (room != Menu and global.playingReplay)
     
     menu_addedit_num_percent("Timescale:", "global.replayTimescale", '');
     
+    menu_divider("Replay Queue");
+    
+    menu_addlink("Queue Replay", '
+        if (replay_queue_add(false, false))
+            instance_destroy();
+    ');
+    
+    menu_addlink("Queue Replays From Folder", '
+        if (replay_queue_add(false, true))
+            instance_destroy();
+    ');
+    
+    menu_addlink("Clear Queue", '
+        ds_list_clear(global.replayPlaybackQueue);
+    ');
+
     menu_divider("");
     
-    menu_addlink("Stop Replay", '
+    if (!ds_list_empty(global.replayPlaybackQueue))
+    {
+        menu_addlink("Next Replay", '
+            replay_playback_end();
+            instance_destroy();
+        ');
+    }
+    
+    menu_addlink("Exit Replay Playback", '
+        ds_list_clear(global.replayPlaybackQueue);
         replay_playback_end();
         instance_destroy();
     ');

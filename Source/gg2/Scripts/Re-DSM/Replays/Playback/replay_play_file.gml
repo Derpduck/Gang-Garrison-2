@@ -1,5 +1,15 @@
 var replayFile;
-replayFile = get_open_filename(working_directory + "\DSM\Replays\*.rply", "");
+
+if (!ds_list_empty(global.replayPlaybackQueue))
+{
+    // Get next replay in the queue
+    replayFile = ds_list_find_value(global.replayPlaybackQueue, 0);
+    ds_list_delete(global.replayPlaybackQueue, 0);
+}
+else
+{
+    return false;
+}
 
 if (file_exists(replayFile))
 {
@@ -16,7 +26,14 @@ if (file_exists(replayFile))
     {
         show_notification_message("Failed to read replay file.");
         buffer_destroy(global.replayBuffer);
-        exit;
+        
+        // Skip to next replay if we can't play this one
+        if (!ds_list_empty(global.replayPlaybackQueue))
+        {
+            replay_play_file();
+            return true;
+        }
+        return false;
     }
     
     // TODO: Read first byte to check for REPLAY_HEADER (read short first)
@@ -37,5 +54,12 @@ if (file_exists(replayFile))
 }
 else
 {
+    // Skip to next replay if we can't play this one
+    if (!ds_list_empty(global.replayPlaybackQueue))
+    {
+        replay_play_file();
+        return true;
+    }
+    
     return false;
 }

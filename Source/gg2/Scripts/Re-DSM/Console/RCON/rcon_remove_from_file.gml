@@ -33,6 +33,7 @@ if (global.saveRconUsers)
             };
             
             file_text_close(fileHandle);
+            file_find_close();
         }
     }
 }

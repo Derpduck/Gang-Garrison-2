@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="604" library="1">
+      <!--action name: Inherited-->
+      <kind>NORMAL</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>false</canApplyTo>
+      <actionType>FUNCTION</actionType>
+      <functionName>action_inherited</functionName>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments/>
+    </action>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Show list of queued replays
+var xoffset, yoffset, xsize, ysize;
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0];
+ysize = view_hview[0];
+
+// Get list of replays
+var replaysString, replayName;
+replaysString = "Queued Replays:";
+
+for (i=0; i&lt;ds_list_size(global.replayPlaybackQueue); i+=1)
+{
+    replayName = filename_name(ds_list_find_value(global.replayPlaybackQueue, i));
+    replayName = string_delete(replayName, string_length(replayName) - 4, 5);
+    
+    replaysString += "#" + replayName;
+};
+
+if (ds_list_empty(global.replayPlaybackQueue)) replaysString += "#None";
+
+var xpos, ypos;
+xpos = xoffset + xsize - 8;
+ypos = yoffset + 32;
+
+// Background
+draw_set_color(c_black);
+draw_set_alpha(0.5);
+draw_rectangle(xpos, ypos, xpos - (string_width(replaysString) + 8), ypos + (string_height(replaysString) + 8), false)
+
+// List
+draw_set_halign(fa_right);
+draw_set_valign(fa_top);
+draw_set_color(c_white);
+draw_set_alpha(1);
+draw_text(xpos - 4, ypos + 4, replaysString);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

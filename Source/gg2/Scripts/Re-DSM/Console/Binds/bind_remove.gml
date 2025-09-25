@@ -26,5 +26,6 @@ if (ds_map_exists(global.bindsMap, bindKey))
         };
         
         file_text_close(fileHandle);
+        file_find_close();
     }
 }

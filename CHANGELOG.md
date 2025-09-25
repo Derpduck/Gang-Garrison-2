@@ -2,6 +2,12 @@
 ### RCON
 - Fixed host multi-clients from being saved to the RCON users list
 
+### Replays
+- Replays can now be queued up to play in sequence automatically
+- Invisible spies are now visible and can be tracked during playback
+- Info bars (health, ammo, etc.) are now visible during playback
+- Fixed replay file picker not defaulting to the replays folder
+
 ### HUD
 - Added option to highlight own name on the scoreboard
 - Added option to show uber charge % on HUD
