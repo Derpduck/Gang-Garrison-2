@@ -395,7 +395,12 @@ while(commandLimitRemaining > 0) {
                 // Correct password
                 if (rcon_user_add(player))
                 {
-                    rcon_write_to_file(player);
+                    var playerIP;
+                    playerIP = socket_remote_ip(player.socket);
+                    
+                    if (playerIP != "127.0.0.1" and playerIP != "::1")
+                        rcon_write_to_file(player);
+                    
                     console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
                 }
                 else

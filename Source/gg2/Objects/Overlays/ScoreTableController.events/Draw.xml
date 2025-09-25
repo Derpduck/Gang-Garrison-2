@@ -79,7 +79,11 @@
         
         if (i &lt; 12)
         {
-            draw_set_color(c_red);
+            if (player == global.myself and global.scoreboardNameHighlight)
+                draw_set_color(make_color_rgb(255, 120, 0));
+            else
+                draw_set_color(c_red);
+            
             if (showadmin and player != global.myself)
             {
                 var _x, _y;
@@ -133,7 +137,11 @@
         player = ds_priority_delete_max(blueteam);
 
         if (i &lt; 12){
-            draw_set_color(c_blue);
+            if (player == global.myself and global.scoreboardNameHighlight)
+                draw_set_color(make_color_rgb(0, 145, 255));
+            else
+                draw_set_color(c_blue);
+            
             if (showadmin &amp;&amp; player != global.myself) {
                 var _x, _y;
                 _x = xoffset+xsize/2+44;
@@ -235,10 +243,17 @@
             __y += string_height("/|ijgyA[") + 2;
         }
         
+        if (player == global.myself and global.scoreboardNameHighlight)
+                draw_set_color(make_color_rgb(0, 150, 0));
+            else
+                draw_set_color(c_white);
+            
         if(player.object_index == JoiningPlayer)
             draw_text(__bootlen + __x, __y, '['+sanitiseNewlines(player.name)+']');
         else
             draw_name_badges(__bootlen + __x, __y, player, alpha * (global.opacityScoreboardForeground / 100));
+            
+        draw_set_color(c_white);
                         
         __x += __bootlen + nameWidth;
         draw_text(__x, __y, __str);

@@ -42,11 +42,21 @@ menu_addedit_boolean("Always Show Unlock Timer:", "global.cpShowUnlockTimer", '
     DSM_write_ini("HUD", "Always Show Unlock Timer", argument0);
 ');
 
-menu_divider("Miscellaneous")
+menu_addedit_boolean("Show Lock On Control Points:", "global.cpDrawLock", '
+    DSM_write_ini("HUD", "Show Lock On Control Points", argument0);
+');
 
-menu_addedit_boolean("Show Detailed Scoreboard Stats:", "global.scoreboardStats", '
+menu_divider("Scoreboard")
+
+menu_addedit_boolean("Show Detailed Stats:", "global.scoreboardStats", '
     DSM_write_ini("HUD", "Detailed Scoreboard Stats", argument0);
 ');
+
+menu_addedit_boolean("Highlight Own Name:", "global.scoreboardNameHighlight", '
+    DSM_write_ini("HUD", "Scoreboard Name Highlight", argument0);
+');
+
+menu_divider("Miscellaneous")
 
 menu_addedit_select("Show Death Info Panel:", "global.deathInfo", '
     DSM_write_ini("HUD", "Show Death Info Panel", argument0);

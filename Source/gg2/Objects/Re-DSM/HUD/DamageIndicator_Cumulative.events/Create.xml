@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="DESTROY" id="0">
+<event category="CREATE" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,9 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">console_destroy();
+        <argument kind="STRING">damageMap = ds_map_create();
 
-with (DamageIndicator_Cumulative) instance_destroy();
+// Drawing
+damageValue = 0;
+indicatorColor = c_red;
 </argument>
       </arguments>
     </action>

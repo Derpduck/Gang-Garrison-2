@@ -42,6 +42,7 @@ global.sandwichBar = DSM_add_option("HUD", "Show Sandwich Bar", 1);
 global.afterburnBar = DSM_add_option("HUD", "Show Afterburn Bar", 1);
 
 // Player HUD
+global.showUberPercentage = DSM_add_option("HUD", "Show Superburst %", 1);
 global.sniperChargeBar = DSM_add_option("HUD", "Small Sniper Charge Bar", 1);
 global.sniperChargeDamage = DSM_add_option("HUD", "Show Sniper Charge Damage", 1);
 
@@ -52,9 +53,14 @@ global.intelCarrierClass = DSM_add_option("HUD", "Show Intel Carrier Class", 1);
 global.cpCapturePercent = DSM_add_option("HUD", "Show CP Capture %", 1);
 global.cpCaptureTime = DSM_add_option("HUD", "Show Remaining Capture Time", 1);
 global.cpShowUnlockTimer = DSM_add_option("HUD", "Always Show Unlock Timer", 1);
+global.cpDrawLock = DSM_add_option("HUD", "Show Lock On Control Points", 1);
+
+
+// Scoreboard
+global.scoreboardStats = DSM_add_option("HUD", "Detailed Scoreboard Stats", 1);
+global.scoreboardNameHighlight = DSM_add_option("HUD", "Scoreboard Name Highlight", 1);
 
 // Misc HUD
-global.scoreboardStats = DSM_add_option("HUD", "Detailed Scoreboard Stats", 1);
 global.deathInfo = DSM_add_option("HUD", "Show Death Info Panel", 1);
 global.cycleBadges = DSM_add_option("HUD", "Cycle Through Name Badges", 1);
 
@@ -92,21 +98,32 @@ global.teamColors_Bubbles = DSM_add_option("Team Colors", "Bubbles", 1);
 global.teamColors_Explosions = DSM_add_option("Team Colors", "Explosions", 1);
 
 // Damage Indicator
-global.damageIndicator = DSM_add_option("Damage Indicator", "Show Damage Indicator", 1);
-global.damageIndicatorSelf = DSM_add_option("Damage Indicator", "Show Self Damage", 0);
+global.damageIndicatorFloating = DSM_add_option("Damage Indicator", "Floating Indicator", 1);
+global.damageIndicatorCumulative = DSM_add_option("Damage Indicator", "Cumulative Indicator", 1);
 global.damageIndicatorHealing = DSM_add_option("Damage Indicator", "Show Healing Given", 1);
 global.damageIndicatorHealingTarget = DSM_add_option("Damage Indicator", "Show Healing Target Damage", 1);
+global.damageIndicatorVolume = DSM_add_option("Damage Indicator", "Volume", 100, true, 0, true, 100);
+global.damageIndicatorCustomSound = DSM_add_option_string("Damage Indicator", "Custom Sound File", "");
+// Floating Damage Indicator Style
+global.damageIndicatorSelf = DSM_add_option("Damage Indicator", "Show Self Damage", 0);
 global.damageIndicatorColor = DSM_add_option("Damage Indicator", "Damage Indicator Color", 1);
 global.damageIndicatorColorSelf = DSM_add_option("Damage Indicator", "Self Damage Color", 2);
 global.damageIndicatorColorHealing = DSM_add_option("Damage Indicator", "Healing Color", 4);
-global.damageIndicatorVolume = DSM_add_option("Damage Indicator", "Volume", 100, true, 0, true, 100);
-global.damageIndicatorCustomSound = DSM_add_option_string("Damage Indicator", "Custom Sound File", "");
 global.damageIndicatorScale = DSM_add_option("Damage Indicator", "Scale", 100);
 global.damageIndicatorHoldDuration = DSM_add_option("Damage Indicator", "Hold Duration", 0.5);
 global.damageIndicatorFadeDuration = DSM_add_option("Damage Indicator", "Fade Duration", 1.5);
 global.damageIndicatorShrink = DSM_add_option("Damage Indicator", "Shrink on Fade", 1);
 global.damageIndicatorShadow = DSM_add_option("Damage Indicator", "Drop Shadow", 1);
 global.damageIndicatorOpacity = DSM_add_option("Damage Indicator", "Opacity", 100, true, 0, true, 100);
+// Cumulative Damage Indicator Style
+global.damageIndicatorCumulativePosition = DSM_add_option("Damage Indicator", "Indicator Position (Cumulative)", 1);
+global.damageIndicatorCumulativeShowZero = DSM_add_option("Damage Indicator", "Show Zero (Cumulative)", 0);
+global.damageIndicatorCumulativeSelf = DSM_add_option("Damage Indicator", "Show Self Damage (Cumulative)", 0);
+global.damageIndicatorCumulativeColor = DSM_add_option("Damage Indicator", "Indicator Color (Cumulative)", 1);
+global.damageIndicatorCumulativeScale = DSM_add_option("Damage Indicator", "Scale (Cumulative)", 400);
+global.damageIndicatorCumulativeHoldDuration = DSM_add_option("Damage Indicator", "Hold Duration (Cumulative)", 2);
+global.damageIndicatorCumulativeShadow = DSM_add_option("Damage Indicator", "Drop Shadow (Cumulative)", 1);
+global.damageIndicatorCumulativeOpacity = DSM_add_option("Damage Indicator", "Opacity (Cumulative)", 100, true, 0, true, 100);
 
 // Hosting
 global.headlessMode = DSM_add_option("Hosting", "Headless Mode (Launch Option Only)", 0);

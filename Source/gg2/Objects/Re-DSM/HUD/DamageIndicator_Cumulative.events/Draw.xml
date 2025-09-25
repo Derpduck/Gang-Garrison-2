@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (!global.damageIndicatorCumulative) exit;
+if (!instance_exists(global.myself) or global.myself == -1) exit;
+if (global.myself.team == TEAM_SPECTATOR) exit;
+
+var xoffset, yoffset, xsize, ysize;
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+xsize = view_wview[0];
+ysize = view_hview[0];
+
+var damage, indicatorColor, scale, xpos, ypos;
+damage = round(damageValue);
+indicatorColor = get_color_option(global.damageIndicatorCumulativeColor);
+scale = global.damageIndicatorCumulativeScale / 100;
+
+if (damage == 0 and !global.damageIndicatorCumulativeShowZero) exit
+
+if (global.damageIndicatorCumulativePosition == 1)
+{
+    // Left
+    draw_set_halign(fa_left);
+    xpos = xoffset + 100;
+}
+else
+{
+    // Right
+    draw_set_halign(fa_right);
+    xpos = xoffset + xsize - 145;
+}
+ypos = yoffset + ysize - 11;
+draw_set_valign(fa_bottom);
+draw_set_alpha(global.damageIndicatorCumulativeOpacity / 100);
+
+
+if (global.damageIndicatorCumulativeShadow)
+{
+    if (indicatorColor == c_black)
+        draw_set_color(c_white);
+    else
+        draw_set_color(c_black);
+    draw_text_transformed(xpos + scale, ypos + scale, damage, scale, scale, 0);
+}
+
+draw_set_color(indicatorColor);
+draw_text_transformed(xpos, ypos, damage, scale, scale, 0);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

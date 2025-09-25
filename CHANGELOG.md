@@ -1,3 +1,16 @@
+## V8 (WIP)
+### RCON
+- Fixed host multi-clients from being saved to the RCON users list
+
+### HUD
+- Added option to highlight own name on the scoreboard
+- Added option to show uber charge % on HUD
+#### Control Point Modes
+- Added open to show a lock over locked control points
+
+### Damage Indicator
+- Added option for a cumulative damage indicator display on the HUD
+
 ## V7 (2025/09/20)
 ### Replays
 - Hosts can now record games in an easily shareable replay format with some improvements from the previous implementation

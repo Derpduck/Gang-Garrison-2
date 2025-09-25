@@ -22,12 +22,12 @@ if (room != DSMOptionsRoom)
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_addedit_boolean("Show Damage Indicator:", "global.damageIndicator", '
-    DSM_write_ini("Damage Indicator", "Show Damage Indicator", argument0);
+menu_addedit_boolean("Show Floating Indicator:", "global.damageIndicatorFloating", '
+    DSM_write_ini("Damage Indicator", "Floating Indicator", argument0);
 ');
 
-menu_addedit_boolean("Show Self Damage:", "global.damageIndicatorSelf", '
-    DSM_write_ini("Damage Indicator", "Show Self Damage", argument0);
+menu_addedit_boolean("Show Cumulative Indicator:", "global.damageIndicatorCumulative", '
+    DSM_write_ini("Damage Indicator", "Cumulative Indicator", argument0);
 ');
 
 menu_addedit_boolean("Show Healing Given:", "global.damageIndicatorHealing", '
@@ -60,7 +60,11 @@ menu_addedit_script("Hitsound File:", menu_format_hitsound_filepath(global.damag
     return menu_format_hitsound_filepath(global.damageIndicatorCustomSound);
 ');
 
-menu_divider("Appearance");
+menu_divider("Floating Indicator Style");
+
+menu_addedit_boolean("Show Self Damage:", "global.damageIndicatorSelf", '
+    DSM_write_ini("Damage Indicator", "Show Self Damage", argument0);
+');
 
 menu_addedit_select("Damage Indicator Color:", "global.damageIndicatorColor", '
     DSM_write_ini("Damage Indicator", "Damage Indicator Color", argument0);
@@ -76,6 +80,10 @@ menu_addedit_select("Healing Color:", "global.damageIndicatorColorHealing", '
     DSM_write_ini("Damage Indicator", "Healing Color", argument0);
 ');
 DSM_menu_color_options();
+
+menu_addedit_boolean("Drop Shadow:", "global.damageIndicatorShadow", '
+    DSM_write_ini("Damage Indicator", "Drop Shadow", argument0);
+');
 
 menu_addedit_float_percent("Scale:", "global.damageIndicatorScale", '
     DSM_write_ini("Damage Indicator", "Scale", argument0);
@@ -97,8 +105,41 @@ menu_addedit_boolean("Shrink While Fading:", "global.damageIndicatorShrink", '
     DSM_write_ini("Damage Indicator", "Shrink on Fade", argument0);
 ');
 
-menu_addedit_boolean("Drop Shadow:", "global.damageIndicatorShadow", '
-    DSM_write_ini("Damage Indicator", "Drop Shadow", argument0);
+menu_divider("Cumulative Indicator Style");
+
+menu_addedit_select("Indicator Position:", "global.damageIndicatorCumulativePosition", '
+    DSM_write_ini("Damage Indicator", "Indicator Position (Cumulative)", argument0);
+');
+menu_add_option(1, "Left");
+menu_add_option(2, "Right");
+
+menu_addedit_boolean("Always Visible With No Damage:", "global.damageIndicatorCumulativeShowZero", '
+    DSM_write_ini("Damage Indicator", "Show Zero (Cumulative)", argument0);
+');
+
+menu_addedit_boolean("Show Self Damage:", "global.damageIndicatorCumulativeSelf", '
+    DSM_write_ini("Damage Indicator", "Show Self Damage (Cumulative)", argument0);
+');
+
+menu_addedit_select("Damage Indicator Color:", "global.damageIndicatorCumulativeColor", '
+    DSM_write_ini("Damage Indicator", "Indicator Color (Cumulative)", argument0);
+');
+DSM_menu_color_options();
+
+menu_addedit_boolean("Drop Shadow:", "global.damageIndicatorCumulativeShadow", '
+    DSM_write_ini("Damage Indicator", "Drop Shadow (Cumulative)", argument0);
+');
+
+menu_addedit_float_percent("Scale:", "global.damageIndicatorCumulativeScale", '
+    DSM_write_ini("Damage Indicator", "Scale (Cumulative)", argument0);
+');
+
+menu_addedit_num_percent("Opacity:", "global.damageIndicatorCumulativeOpacity", '
+    DSM_write_ini("Damage Indicator", "Opacity (Cumulative)", argument0);
+', 100);
+
+menu_addedit_float("Hold Duration:", "global.damageIndicatorCumulativeHoldDuration", '
+    DSM_write_ini("Damage Indicator", "Hold Duration (Cumulative)", argument0);
 ');
 
 DSM_menu_tabs();

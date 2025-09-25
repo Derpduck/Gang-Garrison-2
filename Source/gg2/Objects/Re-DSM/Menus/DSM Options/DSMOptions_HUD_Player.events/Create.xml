@@ -59,7 +59,11 @@ menu_add_option(0, "No");
 menu_add_option(1, "Yes");
 menu_add_option(2, "Yes (Self Only)");
 
-menu_divider("Sniper HUD");
+menu_divider("Class HUDs");
+
+menu_addedit_boolean("Show Superburst %:", "global.showUberPercentage", '
+    DSM_write_ini("HUD", "Show Superburst %", argument0);
+');
 
 menu_addedit_boolean("Small Sniper Charge Bar:", "global.sniperChargeBar", '
     DSM_write_ini("HUD", "Small Sniper Charge Bar", argument0);

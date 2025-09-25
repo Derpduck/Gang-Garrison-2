@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if (!ds_map_empty(damageMap))
+        <argument kind="STRING">if (!global.damageIndicatorFloating) exit;
+
+if (!ds_map_empty(damageMap))
 {
     var damageInstance;
     damageInstance = ds_map_find_first(damageMap);

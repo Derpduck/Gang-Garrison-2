@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="DamageIndicator" type="RESOURCE"/>
+  <resource name="DamageIndicator_Cumulative" type="RESOURCE"/>
   <resource name="DeathInfo" type="RESOURCE"/>
   <resource name="PerformanceOverlay" type="RESOURCE"/>
 </resources>

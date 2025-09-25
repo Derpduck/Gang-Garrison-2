@@ -8,7 +8,7 @@ with(argument1)
     }
 }
 
-dmgIndDealDamage(argument0, argument1, argument2);
+dmg_ind_deal_damage(argument0, argument1, argument2);
 
 argument1.hp -= argument2;
 

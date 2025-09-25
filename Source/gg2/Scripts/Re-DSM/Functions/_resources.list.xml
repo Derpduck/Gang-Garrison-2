@@ -20,4 +20,5 @@
   <resource name="set_window_scale" type="RESOURCE"/>
   <resource name="generate_stamped_filename" type="RESOURCE"/>
   <resource name="clear_send_buffer" type="RESOURCE"/>
+  <resource name="get_superburst_string" type="RESOURCE"/>
 </resources>

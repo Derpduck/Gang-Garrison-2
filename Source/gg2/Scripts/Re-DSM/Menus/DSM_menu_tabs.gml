@@ -18,7 +18,7 @@ menu_addtablink("HUD Opacity", '
     instance_destroy();
     instance_create(x,y,DSMOptions_HUD_Opacity);
 ');
-menu_addtablink("Indicator", '
+menu_addtablink("DMG Indicator", '
     instance_destroy();
     instance_create(x,y,DSMOptions_Indicator);
 ');

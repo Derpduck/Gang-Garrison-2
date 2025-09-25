@@ -13,9 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">console_destroy();
-
-with (DamageIndicator_Cumulative) instance_destroy();
+        <argument kind="STRING">ds_map_destroy(damageMap);
 </argument>
       </arguments>
     </action>
