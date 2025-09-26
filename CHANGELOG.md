@@ -1,4 +1,7 @@
 ## V8 (WIP)
+### Console
+- Using `fastend` during a normal round end will now skip the round end delay
+
 ### RCON
 - Fixed host multi-clients from being saved to the RCON users list
 
@@ -16,6 +19,9 @@
 
 ### Damage Indicator
 - Added option for a cumulative damage indicator display on the HUD
+
+### Miscellaneous
+- Added option to enable friendly fire during round end
 
 ## V7 (2025/09/20)
 ### Replays

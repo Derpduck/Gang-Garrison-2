@@ -29,7 +29,7 @@
     playsound(x,y,ExplosionSnd);
     
     with (Character) {
-        if (distance_to_object(other) &lt; other.blastRadius and !(team == other.team and id != other.ownerPlayer.object and place_meeting(x, y+1, Obstacle)))
+        if (distance_to_object(other) &lt; other.blastRadius and (!(team == other.team and id != other.ownerPlayer.object and place_meeting(x, y+1, Obstacle)) or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)))
         {
             var rdir, vectorfactor;
             rdir = point_direction(other.x, other.y, x+(left_bound_offset+right_bound_offset)/2, y+(top_bound_offset+bottom_bound_offset)/2);
@@ -37,7 +37,7 @@
             if (1 - distance_to_object(other)/other.blastRadius &lt;= 0.25 and other.splashThreshhold) // skip if we're out of theshhold
                 continue;
             motion_add(rdir, min(15, other.knockback-other.knockback*(distance_to_object(other)/other.blastRadius)) * vectorfactor);
-            if((other.team != team or id==other.ownerPlayer.object) and !ubered and hp &gt; 0)
+            if(((other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) or id==other.ownerPlayer.object) and !ubered and hp &gt; 0)
             {
                 var dmg;
                 dmg = other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius));
@@ -90,7 +90,7 @@
     
     with (Sentry)
     {
-        if (distance_to_object(other) &lt; other.blastRadius) and (team != other.team)
+        if (distance_to_object(other) &lt; other.blastRadius) and (team != other.team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))
         { 
             if (1 - distance_to_object(other)/other.blastRadius &lt;= 0.25 and other.splashThreshhold) // skip if we're out of theshhold
                 continue;
@@ -113,7 +113,7 @@
     with (Rocket)
     {
         if (distance_to_object(other) &lt; other.affectRadius * 0.75
-            and (other.team != team or other.ownerPlayer == ownerPlayer))
+            and ((other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) or other.ownerPlayer == ownerPlayer))
         {
             if(distance_to_object(other) &lt; other.affectRadius * 0.25)
             {
@@ -137,7 +137,7 @@
     
     with(Mine) {
         if (distance_to_object(other) &lt; other.blastRadius
-            and (other.team != team or other.ownerPlayer == ownerPlayer))
+            and ((other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) or other.ownerPlayer == ownerPlayer))
         {
             if (1 - distance_to_object(other)/other.blastRadius &lt;= 0.25 and other.splashThreshhold) // skip if we're out of theshhold
                 continue;

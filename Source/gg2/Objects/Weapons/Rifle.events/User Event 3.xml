@@ -75,7 +75,7 @@ with(Generator) {
 }
 
 with(Sentry) {
-    if(team == other.owner.team) {
+    if(team == other.owner.team and !((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) {
         ds_map_add(originalMask, id, mask_index);
         mask_index = emptyMaskS;
     }
@@ -123,7 +123,7 @@ ds_list_destroy(bulletStoppingObjects);
 // Apply dramatic effect
 with(hitInstance) {
     if(object_index == Character or object_is_ancestor(object_index, Character)) {
-        if(!ubered and team != other.owner.team) {
+        if(!ubered and (team != other.owner.team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))) {
             damageCharacter(other.ownerPlayer, id, other.hitDamage);
             if (lastDamageDealer != other.ownerPlayer and lastDamageDealer != player)
             {

@@ -121,7 +121,7 @@ global.damageIndicatorCumulativeShowZero = DSM_add_option("Damage Indicator", "S
 global.damageIndicatorCumulativeSelf = DSM_add_option("Damage Indicator", "Show Self Damage (Cumulative)", 0);
 global.damageIndicatorCumulativeColor = DSM_add_option("Damage Indicator", "Indicator Color (Cumulative)", 1);
 global.damageIndicatorCumulativeScale = DSM_add_option("Damage Indicator", "Scale (Cumulative)", 400);
-global.damageIndicatorCumulativeHoldDuration = DSM_add_option("Damage Indicator", "Hold Duration (Cumulative)", 2);
+global.damageIndicatorCumulativeHoldDuration = DSM_add_option("Damage Indicator", "Hold Duration (Cumulative)", 1.5);
 global.damageIndicatorCumulativeShadow = DSM_add_option("Damage Indicator", "Drop Shadow (Cumulative)", 1);
 global.damageIndicatorCumulativeOpacity = DSM_add_option("Damage Indicator", "Opacity (Cumulative)", 100, true, 0, true, 100);
 
@@ -129,6 +129,7 @@ global.damageIndicatorCumulativeOpacity = DSM_add_option("Damage Indicator", "Op
 global.headlessMode = DSM_add_option("Hosting", "Headless Mode (Launch Option Only)", 0);
 global.tauntHeal = DSM_add_option("Hosting", "Taunt Heal", 0);
 global.tauntHealAmount = DSM_add_option("Hosting", "Taunt Heal Amount", 5);
+global.roundEndFriendlyFire = DSM_add_option("Hosting", "Round End Friendly Fire", 0);
 
 // Time Limits
 global.timeLimit_CTF = DSM_add_option("Time Limits", "CTF Time Limit Override", 0);

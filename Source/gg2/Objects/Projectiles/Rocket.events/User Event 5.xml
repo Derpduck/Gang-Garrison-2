@@ -21,7 +21,7 @@
         else
             exploded = true;
         if(characterHit != -1) {
-            if(characterHit.team != team || characterHit.id == ownerPlayer.object and !characterHit.ubered )
+            if((characterHit.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) || characterHit.id == ownerPlayer.object and !characterHit.ubered )
             {
                 damageAuto( ownerPlayer, characterHit, hitDamage );
                 if object_is_ancestor(characterHit.object_index, Character)
@@ -46,7 +46,7 @@
         playsound(x,y,ExplosionSnd);
         
         with (Character) {
-            if (distance_to_object(other) &lt; other.blastRadius and !(team == other.team and id != other.ownerPlayer.object and place_meeting(x, y+1, Obstacle))){
+            if (distance_to_object(other) &lt; other.blastRadius and (!(team == other.team and id != other.ownerPlayer.object and place_meeting(x, y+1, Obstacle)) or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))){
                 var rdir, vectorfactor;
                 rdir = point_direction(other.x, other.y, x+(left_bound_offset+right_bound_offset)/2, y+(top_bound_offset+bottom_bound_offset)/2);
                 vectorfactor = point_distance(0, 0, power(sin(degtorad(rdir)), 2), power(cos(degtorad(rdir)), 2));
@@ -58,7 +58,7 @@
                 motion_add(rdir, min(15, other.knockback-other.knockback*(fake_distance/other.blastRadius)) * vectorfactor);
                 if(!ubered and hp &gt; 0)
                 {
-                    if (other.team != team) or (id==other.ownerPlayer.object)
+                    if (other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) or (id==other.ownerPlayer.object)
                     {
                         damageCharacter( other.ownerPlayer, id, other.explosionDamage*(1-(fake_distance/other.blastRadius)) );
                         
@@ -80,7 +80,7 @@
                     if id==other.ownerPlayer.object and other.team == team {
                         moveStatus = 1;
                         speed*=1.06;
-                    }else if other.team == team and (id!=other.ownerPlayer.object){
+                    }else if (other.team == team and !((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) and (id!=other.ownerPlayer.object){
                         moveStatus = 4;
                             if point_direction(x,y+5,other.x,other.y-5)&gt;210 and point_direction(x,y,other.x,other.y)&lt;330 {
                             vspeed-=4*(1-(fake_distance/other.blastRadius));
@@ -94,7 +94,7 @@
                         }
                     }
                     if(global.gibLevel &gt; 0) {
-                        if (id==other.ownerPlayer.object) or (other.team!=team) {
+                        if (id==other.ownerPlayer.object) or (other.team!=team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) {
                             repeat(3) {
                                 var blood;
                                 blood = instance_create(x,y,Blood);
@@ -113,7 +113,7 @@
 
         with (Sentry) {
             if (distance_to_object(other) &lt; other.blastRadius){
-                if(other.team != team)
+                if(other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))
                 {
                     damageSentry( other.ownerPlayer, id, other.explosionDamage*(1-(distance_to_object(other)/other.blastRadius)) );
                     
@@ -146,7 +146,7 @@
         }
     
         with(Mine) {
-            if (distance_to_object(other) &lt; other.blastRadius*0.66 and (other.team != team or other.ownerPlayer == ownerPlayer)){
+            if (distance_to_object(other) &lt; other.blastRadius*0.66 and ((other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) or other.ownerPlayer == ownerPlayer)){
                 event_user(2);
             }
         }

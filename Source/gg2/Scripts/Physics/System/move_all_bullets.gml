@@ -73,12 +73,12 @@ with(Rocket)
                     rocketblurParticleType = part_type_create();
                     if (global.teamColors_Rockets)
                     {
-                        if team == TEAM_RED rocketParticleSprite = Team_RedRocketS;
+                        if (team == TEAM_RED) rocketParticleSprite = Team_RedRocketS;
                         else rocketParticleSprite = Team_BlueRocketS;
                     }
                     else
                     {
-                        if team == TEAM_RED rocketParticleSprite = RedRocketS;
+                        if (team == TEAM_RED) rocketParticleSprite = RedRocketS;
                         else rocketParticleSprite = BlueRocketS;
                     }
                     part_type_sprite(rocketblurParticleType,rocketParticleSprite,false,true,false);

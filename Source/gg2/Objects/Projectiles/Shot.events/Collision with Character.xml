@@ -22,7 +22,7 @@
     }
     gunUnsetSolids();
 
-    if(other.id != ownerPlayer.object and other.team != team  &amp;&amp; other.hp &gt; 0 &amp;&amp; other.ubered == 0)
+    if(other.id != ownerPlayer.object and (other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))  &amp;&amp; other.hp &gt; 0 &amp;&amp; other.ubered == 0)
     {
         damageCharacter(ownerPlayer, other.id, hitDamage);
         if (other.lastDamageDealer != ownerPlayer and other.lastDamageDealer != other.player)

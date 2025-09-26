@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    if(other.id != ownerPlayer.object and other.team != team)
+    if(other.id != ownerPlayer.object and (other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)))
     {
         if(!other.ubered)
         { 

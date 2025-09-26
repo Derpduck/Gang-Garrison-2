@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(other.team != team)
+        <argument kind="STRING">if(other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))
 {
     damageSentry(ownerPlayer, other.id, hitDamage);
     other.lastDamageDealer = ownerPlayer;

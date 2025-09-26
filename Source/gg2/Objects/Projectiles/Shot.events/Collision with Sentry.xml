@@ -22,7 +22,7 @@ if (!place_free(x, y))
 }
 gunUnsetSolids();
 
-if(other.team != team)
+if(other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging))
 {
     damageSentry(ownerPlayer, other.id, hitDamage);
     other.lastDamageDealer = ownerPlayer;

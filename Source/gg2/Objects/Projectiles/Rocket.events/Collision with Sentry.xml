@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(team != other.team) {
+        <argument kind="STRING">if(team != other.team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) {
     characterHit=other.id;
     event_user(5);
 }

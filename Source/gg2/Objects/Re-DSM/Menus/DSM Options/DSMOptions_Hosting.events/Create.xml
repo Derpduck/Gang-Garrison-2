@@ -55,6 +55,12 @@ menu_addedit_num("Taunt Heal Amount:", "global.tauntHealAmount", '
     DSM_write_ini("Hosting", "Taunt Heal Amount", argument0);
 ');
 
+menu_divider("Miscellaneous");
+
+menu_addedit_boolean("Friendly Fire on Round End:", "global.roundEndFriendlyFire", '
+    DSM_write_ini("Hosting", "Round End Friendly Fire", argument0);
+');
+
 DSM_menu_tabs();
 </argument>
       </arguments>
