@@ -23,11 +23,11 @@ else
     if (player.object != -1)
     {
         player.object.hp -= damage;
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was dealt: " + COL_YELLOW + arg[2] + COL_ORANGE + " damage", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " was dealt: " + COL_YELLOW + arg[2] + COL_ORANGE + " damage", rconPlayer);
     }
     else
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " is not alive", rconPlayer);
     }
 }
 ', '

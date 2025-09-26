@@ -46,6 +46,10 @@ menu_addedit_boolean("Use Bold Font:", "global.consoleBoldFont", '
     DSM_write_ini("Console", "Bold Font", argument0);
 ');
 
+menu_addedit_boolean("Show Player IDs With Names:", "global.consolePlayerID", '
+    DSM_write_ini("Console", "Show Player ID", argument0);
+');
+
 DSM_menu_tabs();
 </argument>
       </arguments>

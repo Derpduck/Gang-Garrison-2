@@ -9,5 +9,6 @@
   <resource name="console_get_command_list" type="RESOURCE"/>
   <resource name="console_send_command" type="RESOURCE"/>
   <resource name="console_get_player" type="RESOURCE"/>
+  <resource name="console_get_player_name" type="RESOURCE"/>
   <resource name="console_validate_args" type="RESOURCE"/>
 </resources>

@@ -48,13 +48,13 @@ case "add":
     
     if (player.dsmClientVersion == -1)
     {
-        console_print(COL_RED + "WARNING: " + get_team_color_code(player.team) + player.name + COL_RED + " does not have DSM; cannot be informed of their RCON status");
+        console_print(COL_RED + "WARNING: " + console_get_player_name(player) + COL_RED + " does not have DSM; cannot be informed of their RCON status");
     }
     
     if (rcon_user_add(player))
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " was given RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + console_get_player_name(player) + COL_PINK + " was given RCON access");
     else
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " already has RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + console_get_player_name(player) + COL_PINK + " already has RCON access");
     
     rcon_write_to_file(player);
     break;
@@ -76,13 +76,13 @@ case "remove":
     
     if (player.dsmClientVersion == -1)
     {
-        console_print(COL_RED + "WARNING: " + get_team_color_code(player.team) + player.name + COL_RED + " does not have DSM; cannot be informed of their RCON status");
+        console_print(COL_RED + "WARNING: " + console_get_player_name(player) + COL_RED + " does not have DSM; cannot be informed of their RCON status");
     }
     
     if (rcon_user_remove(player))
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + SINGLE_QUOTE + "s " + COL_PINK + "RCON access was revoked");
+        console_print(COL_PINK + "[RCON LOGIN] " + console_get_player_name(player) + SINGLE_QUOTE + "s " + COL_PINK + "RCON access was revoked");
     else
-        console_print(COL_PINK + "[RCON LOGIN] " + get_team_color_code(player.team) + player.name + COL_PINK + " does not have RCON access");
+        console_print(COL_PINK + "[RCON LOGIN] " + console_get_player_name(player) + COL_PINK + " does not have RCON access");
     
     rcon_remove_from_file(player, 0);
 

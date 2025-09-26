@@ -6,6 +6,7 @@ global.consoleOpacity = DSM_add_option("Console", "Window Opacity", 75);
 global.consoleAutocomplete = DSM_add_option("Console", "Tab Autocomplete", 1);
 global.consoleTimestamps = DSM_add_option("Console", "Show Timestamps", 0);
 global.consoleBoldFont = DSM_add_option("Console", "Bold Font", 0);
+global.consolePlayerID = DSM_add_option("Console", "Show Player ID", 0);
 
 // RCON Options
 global.rconEnabled = DSM_add_option("RCON", "Rcon Enabled", 1);

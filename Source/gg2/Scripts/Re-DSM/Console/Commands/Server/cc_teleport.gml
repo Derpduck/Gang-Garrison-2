@@ -14,11 +14,11 @@ else
     {
         player.object.x = mouse_x;
         player.object.y = mouse_y;
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was teleported to: " + COL_YELLOW + string(mouse_x) + "," + string(mouse_y), rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " was teleported to: " + COL_YELLOW + string(mouse_x) + "," + string(mouse_y), rconPlayer);
     }
     else
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " is not alive", rconPlayer);
     }
 }
 ', '

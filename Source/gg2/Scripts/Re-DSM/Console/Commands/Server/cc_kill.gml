@@ -15,11 +15,11 @@ else
         sendEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
         doEventPlayerDeath(player, noone, noone, DAMAGE_SOURCE_FINISHED_OFF);
         player.alarm[5] = global.Server_Respawntime / global.delta_factor;
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was killed", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " was killed", rconPlayer);
     }
     else
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is not alive", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " is not alive", rconPlayer);
     }
 }
 ', '

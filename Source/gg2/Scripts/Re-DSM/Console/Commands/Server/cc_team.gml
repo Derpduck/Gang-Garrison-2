@@ -22,17 +22,17 @@ else
     
     if (oldTeam == newTeam)
     {
-        console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " is already on team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
+        console_print(console_get_player_name(player, get_team_color_code(oldTeam)) + COL_ORANGE + " is already on team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
         exit;
     }
     
     if (change_player_team(player, newTeam, true))
     {
-        console_print(get_team_color_code(oldTeam) + player.name + COL_ORANGE + " was moved to team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
+        console_print(console_get_player_name(player, get_team_color_code(oldTeam)) + COL_ORANGE + " was moved to team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
     }
     else
     {
-        console_print(COL_ORANGE + "Unable to move :" + get_team_color_code(oldTeam) + player.name + COL_ORANGE + " to team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
+        console_print(COL_ORANGE + "Unable to move :" + console_get_player_name(player, get_team_color_code(oldTeam)) + COL_ORANGE + " to team: " + get_team_color_code(newTeam) + get_team_string(newTeam), rconPlayer);
     }
 }
 ', '

@@ -12,12 +12,12 @@ else
 {
     if (ban_user(player, 1))
     {
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " was temporarily banned", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " was temporarily banned", rconPlayer);
     }
     else
     {
         // This should never be possible
-        console_print(get_team_color_code(player.team) + player.name + COL_ORANGE + " is already banned", rconPlayer);
+        console_print(console_get_player_name(player) + COL_ORANGE + " is already banned", rconPlayer);
     }
     
     player.kicked = true;

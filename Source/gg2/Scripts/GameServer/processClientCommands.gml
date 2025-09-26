@@ -401,10 +401,10 @@ while(commandLimitRemaining > 0) {
                     if (playerIP != "127.0.0.1" and playerIP != "::1")
                         rcon_write_to_file(player);
                     
-                    console_print(COL_PINK + "[RCON LOGIN] " + player.name + " was given RCON access");
+                    console_print(COL_PINK + "[RCON LOGIN] " + console_get_player_name(player) + COL_PINK + " was given RCON access");
                 }
                 else
-                    console_print(COL_PINK + "[RCON LOGIN] " + player.name + " already has RCON access");
+                    console_print(COL_PINK + "[RCON LOGIN] " + console_get_player_name(player) + COL_PINK + " already has RCON access");
             }
             else
             {
@@ -427,7 +427,7 @@ while(commandLimitRemaining > 0) {
                 // Check if player has RCON access
                 if (ds_list_find_index(global.rconUsers, player) == -1)
                 {
-                    console_print(COL_PINK + "[RCON CMD] " + player.name + " attempted to send a command without RCON access by using a modified client");
+                    console_print(COL_PINK + "[RCON CMD] " + console_get_player_name(player) + COL_PINK + " attempted to send a command without RCON access by using a modified client");
                     write_ubyte(player.socket, DSM_RCON_CMD);
                     write_ubyte(player.socket, RCON_CMD_FAILED);
                     break;

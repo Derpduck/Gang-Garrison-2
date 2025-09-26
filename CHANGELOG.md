@@ -30,6 +30,8 @@
 ### Miscellaneous
 - Added option to enable friendly fire during round end
 
+***
+
 ## V7 (2025/09/20)
 ### Replays
 - Hosts can now record games in an easily shareable replay format with some improvements from the previous implementation
@@ -63,6 +65,7 @@
 ### Menus
 - Added multi-client limit option to host options menu
 
+***
 
 ## V6 (2025/06/11)
 ### Console

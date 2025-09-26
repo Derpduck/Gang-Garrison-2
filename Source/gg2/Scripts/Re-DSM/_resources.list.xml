@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="Console" type="GROUP"/>
+  <resource name="Replays" type="GROUP"/>
+  <resource name="Bans" type="GROUP"/>
+  <resource name="RCON" type="GROUP"/>
+  <resource name="Binds" type="GROUP"/>
   <resource name="Color Codes" type="GROUP"/>
-  <resource name="Unit Tests" type="GROUP"/>
   <resource name="Functions" type="GROUP"/>
   <resource name="Menus" type="GROUP"/>
   <resource name="Headless" type="GROUP"/>
-  <resource name="HUD" type="GROUP"/>
   <resource name="Input" type="GROUP"/>
+  <resource name="HUD" type="GROUP"/>
   <resource name="DKOTH" type="GROUP"/>
-  <resource name="Replays" type="GROUP"/>
   <resource name="DSM_init" type="RESOURCE"/>
   <resource name="DSM_options" type="RESOURCE"/>
   <resource name="DSM_add_option" type="RESOURCE"/>
