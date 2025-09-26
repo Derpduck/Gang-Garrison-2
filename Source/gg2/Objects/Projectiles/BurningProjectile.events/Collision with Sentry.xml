@@ -14,7 +14,13 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if(other.team != team or ((global.roundEndFriendlyFire and global.isHost) and global.mapchanging)) {
-    damageSentry(ownerPlayer, other.id, hitDamage);
+    var damageType;
+    if (object_index == Flame or object_is_ancestor(object_index, Flame))
+        damageType = DMG_IND_AFTERBURN;
+    else
+        damageType = DMG_IND_UNSPECIFIED;
+    
+    damageSentry(ownerPlayer, other.id, hitDamage, damageType);
     other.lastDamageDealer = ownerPlayer;
     other.lastDamageSource = weapon;
     instance_destroy();

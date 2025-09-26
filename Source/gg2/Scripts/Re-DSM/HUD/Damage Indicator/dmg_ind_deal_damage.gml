@@ -1,10 +1,12 @@
 // argument0 = Source player
 // argument1 = Damage victim instance ID
 // argument2 = Damage dealt
-var sourcePlayer, damageVictim, damageDealt, indicatorType, selfDamage;
+// argument3 = Damage type (0 = unspecified, 1 = afterburn, 2 = sentry)
+var sourcePlayer, damageVictim, damageDealt, damageType, indicatorType, selfDamage;
 sourcePlayer = argument0;
 damageVictim = argument1;
 damageDealt = argument2;
+damageType = argument3;
 indicatorType = 0;
 selfDamage = false;
 
@@ -26,7 +28,7 @@ if (sourcePlayer != global.myself)
         exit;
 }
 
-if (damageVictim.object_index == Character or object_is_ancestor(damageVictim.object_index, Character)) 
+if (damageVictim.object_index == Character or object_is_ancestor(damageVictim.object_index, Character))
 {
     if (damageVictim.player == global.myself)
         selfDamage = true;
@@ -84,8 +86,22 @@ if ((selfDamage and global.damageIndicatorSelf) or (!selfDamage))
 // Play sound
 if (newInstance and indicator.lastDingTime <= 0 and !selfDamage and global.damageIndicatorVolume != 0)
 {
-    playsound_volume(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound, global.damageIndicatorVolume / 100);
-    indicator.lastDingTime = 5;
+    var volume;
+    switch(damageType)
+    {
+    case DMG_IND_AFTERBURN:
+        volume = global.damageIndicatorVolumeAfterburn * (global.damageIndicatorVolume / 100);
+        break;
+    case DMG_IND_SENTRY:
+        volume = global.damageIndicatorVolumeSentry * (global.damageIndicatorVolume / 100);
+        break;
+    default:
+        volume = global.damageIndicatorVolume;
+        break;
+    }
+    
+    playsound_volume(view_xview[0] + (view_wview[0] / 2),view_yview[0] + (view_hview[0] / 2), global.damageIndicatorSound, volume / 100);
+    indicator.lastDingTime = 5 / global.delta_factor;
 }
 
 // Add damage instance to cumulative indicator

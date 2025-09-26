@@ -102,8 +102,10 @@ global.damageIndicatorFloating = DSM_add_option("Damage Indicator", "Floating In
 global.damageIndicatorCumulative = DSM_add_option("Damage Indicator", "Cumulative Indicator", 1);
 global.damageIndicatorHealing = DSM_add_option("Damage Indicator", "Show Healing Given", 1);
 global.damageIndicatorHealingTarget = DSM_add_option("Damage Indicator", "Show Healing Target Damage", 1);
-global.damageIndicatorVolume = DSM_add_option("Damage Indicator", "Volume", 100, true, 0, true, 100);
 global.damageIndicatorCustomSound = DSM_add_option_string("Damage Indicator", "Custom Sound File", "");
+global.damageIndicatorVolume = DSM_add_option("Damage Indicator", "Volume", 100, true, 0, true, 100);
+global.damageIndicatorVolumeAfterburn = DSM_add_option("Damage Indicator", "Volume (Afterburn)", 50, true, 0, true, 100);
+global.damageIndicatorVolumeSentry = DSM_add_option("Damage Indicator", "Volume (Sentry)", 50, true, 0, true, 100);
 // Floating Damage Indicator Style
 global.damageIndicatorSelf = DSM_add_option("Damage Indicator", "Show Self Damage", 0);
 global.damageIndicatorColor = DSM_add_option("Damage Indicator", "Damage Indicator Color", 1);

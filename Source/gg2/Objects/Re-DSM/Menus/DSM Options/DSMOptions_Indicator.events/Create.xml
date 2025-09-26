@@ -38,9 +38,7 @@ menu_addedit_boolean("Show Healing Target's Damage:", "global.damageIndicatorHea
     DSM_write_ini("Damage Indicator", "Show Healing Target Damage", argument0);
 ');
 
-menu_addedit_num_percent("Hitsound Volume:", "global.damageIndicatorVolume", '
-    DSM_write_ini("Damage Indicator", "Volume", argument0);
-', 100);
+menu_divider("Sound");
 
 menu_addedit_script("Hitsound File:", menu_format_hitsound_filepath(global.damageIndicatorCustomSound), '
     var absPath;
@@ -59,6 +57,18 @@ menu_addedit_script("Hitsound File:", menu_format_hitsound_filepath(global.damag
     
     return menu_format_hitsound_filepath(global.damageIndicatorCustomSound);
 ');
+
+menu_addedit_num_percent("Global Hitsound Volume:", "global.damageIndicatorVolume", '
+    DSM_write_ini("Damage Indicator", "Volume", argument0);
+', 100);
+
+menu_addedit_num_percent("Flames / Afterburn Volume:", "global.damageIndicatorVolumeAfterburn", '
+    DSM_write_ini("Damage Indicator", "Volume (Afterburn)", argument0);
+', 100);
+
+menu_addedit_num_percent("Sentry Hitsound Volume:", "global.damageIndicatorVolumeSentry", '
+    DSM_write_ini("Damage Indicator", "Volume (Sentry)", argument0);
+', 100);
 
 menu_divider("Floating Indicator Style");
 

@@ -21,4 +21,5 @@
   <resource name="generate_stamped_filename" type="RESOURCE"/>
   <resource name="clear_send_buffer" type="RESOURCE"/>
   <resource name="get_superburst_string" type="RESOURCE"/>
+  <resource name="calc_linear_volume" type="RESOURCE"/>
 </resources>

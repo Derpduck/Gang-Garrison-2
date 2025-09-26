@@ -1,4 +1,4 @@
-// dealDamage( sourcePlayer, damagedObject, damageDealt )
+// dealDamage( sourcePlayer, damagedObject, damageDealt, damageType (Damage Indicator) )
 with(argument1)
 {
     if(variable_local_exists("deathmatch_invulnerable"))
@@ -8,7 +8,7 @@ with(argument1)
     }
 }
 
-dmg_ind_deal_damage(argument0, argument1, argument2);
+dmg_ind_deal_damage(argument0, argument1, argument2, argument3);
 
 argument1.hp -= argument2;
 

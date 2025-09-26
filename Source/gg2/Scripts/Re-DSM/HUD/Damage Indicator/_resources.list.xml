@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="damage_indicator_init" type="RESOURCE"/>
   <resource name="dmg_ind_deal_damage" type="RESOURCE"/>
   <resource name="dmg_ind_deal_healing" type="RESOURCE"/>
   <resource name="load_custom_hitsound" type="RESOURCE"/>

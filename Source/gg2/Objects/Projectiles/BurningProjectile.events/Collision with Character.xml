@@ -17,8 +17,14 @@
 {
     if (ds_list_find_index(enemiesHit,other.id) != -1)
         exit;
-        
-    damageCharacter(ownerPlayer, other.id, hitDamage);
+    
+    var damageType;
+    if (object_index == Flame or object_is_ancestor(object_index, Flame))
+        damageType = DMG_IND_AFTERBURN;
+    else
+        damageType = DMG_IND_UNSPECIFIED;
+    
+    damageCharacter(ownerPlayer, other.id, hitDamage, damageType);
         
     if (other.lastDamageDealer != ownerPlayer and other.lastDamageDealer != other.player)
     {

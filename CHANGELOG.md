@@ -19,6 +19,13 @@
 
 ### Damage Indicator
 - Added option for a cumulative damage indicator display on the HUD
+- Added option to adjust volume of flames / afterburn and sentry hitsounds (default: 50%)
+- Fixed hitsound repeat delay being framerate dependent
+
+### Quality of Life
+- Made master volume and damage indicator volume settings more intuitive to set
+> **NOTE:** Make sure to adjust your volume setting accordingly, the settings are closer to being linear now so it should be easier to make fine adjustments
+> **New setting:** (Old Volume / 100)² (e.g. Old: 0.75 / New: 0.56)
 
 ### Miscellaneous
 - Added option to enable friendly fire during round end

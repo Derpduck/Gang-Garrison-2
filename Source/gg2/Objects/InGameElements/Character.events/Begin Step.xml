@@ -68,7 +68,7 @@ if (global.run_virtual_ticks)
             alarm[3] = ASSIST_TIME / global.delta_factor;
             lastDamageDealer = burnedBy;
             lastDamageSource = afterburnSource;
-            dealDamage(lastDamageDealer, id, burnIntensity / 30);
+            dealDamage(lastDamageDealer, id, burnIntensity / 30, DMG_IND_AFTERBURN);
         }
         burnDuration -= durationDecay;
         timeUnscathed = 0;
