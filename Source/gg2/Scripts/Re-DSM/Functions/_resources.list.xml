@@ -23,4 +23,5 @@
   <resource name="clear_send_buffer" type="RESOURCE"/>
   <resource name="get_superburst_string" type="RESOURCE"/>
   <resource name="calc_linear_volume" type="RESOURCE"/>
+  <resource name="replace_crosshair" type="RESOURCE"/>
 </resources>

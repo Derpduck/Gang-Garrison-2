@@ -96,9 +96,8 @@
     global.attemptPortForward = ini_read_real("Server", "Attempt UPnP Forwarding", 0); 
     global.serverPluginList = ini_read_string("Server", "ServerPluginList", "");
     global.serverPluginsRequired = ini_read_real("Server", "ServerPluginsRequired", 0);
-    var CrosshairFilename, CrosshairRemoveBG;
-    CrosshairFilename = ini_read_string("Settings", "CrosshairFilename", "");
-    CrosshairRemoveBG = ini_read_real("Settings", "CrosshairRemoveBG", 1);
+    global.CrosshairFilename = ini_read_string("Settings", "CrosshairFilename", "");
+    global.CrosshairRemoveBG = ini_read_real("Settings", "CrosshairRemoveBG", 1);
     global.queueJumping = ini_read_real("Settings", "Queued Jumping", 0);
     global.hideSpyGhosts = ini_read_real("Settings", "Hide Spy Ghosts", 0);
     //Hidden setting
@@ -175,8 +174,8 @@
     ini_write_real("Server", "Attempt UPnP Forwarding", global.attemptPortForward); 
     ini_write_string("Server", "ServerPluginList", global.serverPluginList); 
     ini_write_real("Server", "ServerPluginsRequired", global.serverPluginsRequired); 
-    ini_write_string("Settings", "CrosshairFilename", CrosshairFilename);
-    ini_write_real("Settings", "CrosshairRemoveBG", CrosshairRemoveBG);
+    ini_write_string("Settings", "CrosshairFilename", global.CrosshairFilename);
+    ini_write_real("Settings", "CrosshairRemoveBG", global.CrosshairRemoveBG);
     ini_write_real("Settings", "Queued Jumping", global.queueJumping);
     ini_write_real("Settings", "Hide Spy Ghosts", global.hideSpyGhosts);
 
@@ -395,11 +394,7 @@ global.launchMap = "";
     previous_window_y = window_get_y();
     previous_window_w = window_get_width();
     
-    if (file_exists(CrosshairFilename))
-    {
-        sprite_replace(CrosshairS,CrosshairFilename,1,CrosshairRemoveBG,false,0,0);
-        sprite_set_offset(CrosshairS,sprite_get_width(CrosshairS)/2,sprite_get_height(CrosshairS)/2);
-    }
+    replace_crosshair();
     
     global.isHost = false;
     

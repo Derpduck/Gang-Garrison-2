@@ -68,6 +68,29 @@
         gg2_write_ini("Settings", "Queued Jumping", argument0);
     ');
     
+    menu_addedit_script("Custom Crosshair:", menu_format_crosshair_filepath(global.CrosshairFilename), '
+        var absPath;
+    
+        absPath = get_open_filename("Crosshair Sprite|*.png", working_directory + "\*");
+    
+        if (absPath == "") {
+            global.CrosshairFilename = absPath;
+        } else {
+            global.CrosshairFilename = getRelativePathIfDescendand(working_directory + "\", absPath);
+        }
+        
+        gg2_write_ini("Settings", "CrosshairFilename", global.CrosshairFilename);
+        
+        replace_crosshair();
+        
+        return menu_format_crosshair_filepath(global.CrosshairFilename);
+    ');
+    
+    menu_addedit_boolean("Remove Crosshair Background:", "global.CrosshairRemoveBG", '
+        gg2_write_ini("Settings", "CrosshairRemoveBG", argument0);
+        replace_crosshair();
+    ');
+    
     vanilla_menu_tabs();
 }
 </argument>

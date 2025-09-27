@@ -7,6 +7,7 @@
   <resource name="DSM_menu_color_options" type="RESOURCE"/>
   <resource name="menu_get_tabcount" type="RESOURCE"/>
   <resource name="menu_format_hitsound_filepath" type="RESOURCE"/>
+  <resource name="menu_format_crosshair_filepath" type="RESOURCE"/>
   <resource name="menu_divider" type="RESOURCE"/>
   <resource name="menu_addedit_float" type="RESOURCE"/>
   <resource name="menu_addedit_num_percent" type="RESOURCE"/>

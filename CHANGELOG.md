@@ -22,6 +22,9 @@
 - Added option to adjust volume of flames / afterburn and sentry hitsounds (default: 50%)
 - Fixed hitsound repeat delay being framerate dependent
 
+### Menus
+- Added option to change crosshair to the options menu
+
 ### Quality of Life
 - Made master volume and damage indicator volume settings more intuitive to set
 > **NOTE:** Make sure to adjust your volume setting accordingly, the settings are closer to being linear now so it should be easier to make fine adjustments
