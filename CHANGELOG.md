@@ -1,4 +1,4 @@
-## V8 (WIP)
+## V8 (2025/09/27)
 ### Console
 - Using `fastend` during a normal round end will now skip the round end delay
 

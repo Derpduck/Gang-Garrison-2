@@ -1,6 +1,6 @@
 # Re-DSM Readme
 
-## Current Version: v7
+## Current Version: v8
 
 ### Console
 > Implemented an improved version of the console from E-Sports Mod  
@@ -86,6 +86,7 @@ colcodes || Prints a list of all color codes in their colors | Client
 	- If recording is stopped manually, it will resume on the next map unless this setting is turned off
 - Option to continue recording recording replays until manually stopped
 	- This can be used to have replay recording continue through map changes without auto-recording being turned on
+- Replays can be queued up to play in sequence automatically
 
 ### Gamemodes
 #### All Gamemodes
@@ -144,16 +145,20 @@ colcodes || Prints a list of all color codes in their colors | Client
 	- Kill Log
 	- Timer
 	- Gamemodes
+- Added option to highlight own name on the scoreboard
+- Added option to show uber charge % on HUD
 #### CTF Modes
 - Added option to show the intel carrier's class
 #### Control Point Modes
 - Added option to show control point capture %
 - Added optioin to show remaining control point capture time
 - Added option to show the full capture point unlock timer
+- Added open to show a lock over locked control points
 
 ### Damage Indicator
 - Added damage indicator
 	- Accurate tracking of damage numbers for each target hit
+	- Option to show floating numbers over the target and/or a cumulative counter on the HUD
 	- Option to show healing given, self damage, and healing target's damage
 	- Customizable visuals and audio
 		- Custom hitsounds should be stored in `../DSM/Sounds/`
@@ -176,9 +181,6 @@ colcodes || Prints a list of all color codes in their colors | Client
 - Number of characters remaining is now shown when editing your player name and server name
 - Added multi-client limit option to host options menu
 
-### Audio
-- Added master volume option
-
 ### Freeze Time
 - Added freeze time feature
 	- Spawn doors will be locked until round is live
@@ -196,6 +198,7 @@ colcodes || Prints a list of all color codes in their colors | Client
 - "Wrong number of players while deserializing state" error will now show the received and expected values
 
 ### Quality of Life
+- Added master volume option
 - Added option to disable automatically moving to spectator when AFK
 - Added option to disable resizing the game window
 - Added key bind for Superburst bubble (default key: `R`)
@@ -213,6 +216,7 @@ colcodes || Prints a list of all color codes in their colors | Client
 - Added option to cycle through player's haxxy badges instead of showing all of them at once
 - Added `-30fps` launch option to launch the game in 30 FPS, regardless of settings
 - Added `-60fps` launch option to launch the game in 60 FPS, regardless of settings
+- Added option to enable friendly fire during round end
 
 ### Performance
 - Added `-high` launch option
