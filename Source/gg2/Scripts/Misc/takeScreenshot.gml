@@ -41,4 +41,6 @@
     until(!file_exists(filename));
     
     screen_save(filename);
+    
+    console_print("Screenshot saved: " + COL_YELLOW + "/../" + filename);
 }
